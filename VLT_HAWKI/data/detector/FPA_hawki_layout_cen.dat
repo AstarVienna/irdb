@@ -1,0 +1,3 @@
+id   x_cen  y_cen    xhw    yhw  x_len  y_len  pixsize  angle    gain
+#       mm     mm     mm     mm    pix    pix       mm    deg  e-/ADU
+  1      0      0  30.72  30.72   2048   2048    0.015    0.0     1.7

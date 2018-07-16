@@ -1,0 +1,6 @@
+#  id    x_cen    y_cen    x_len   y_len    gain
+#        arcsec   arcsec   pixel   pixel  e-/ADU 
+    0      -116     -116    2048    2048   1.705
+    1       116     -116    2048    2048   1.870
+    2       116      116    2048    2048   1.735
+    3      -116      116    2048    2048   2.110
