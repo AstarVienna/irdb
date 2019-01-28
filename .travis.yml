@@ -4,6 +4,7 @@ python:
 
 install:
     - pip install -r requirements.travis.txt
+    - pip install .
 
 script:
     - pytest

@@ -1,6 +1,6 @@
 .idea/
-old_files/
-PSFs/
+_OLD_FILES/
+_PSFs/
 _ZIPPED_PACKAGES/
 .pytest_cache/
 __pycache__

@@ -1,0 +1,5 @@
+include ELT/*
+include METIS/*
+include MICADO/*
+include NIR_sources/*
+include test_package/*

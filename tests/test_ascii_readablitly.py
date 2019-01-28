@@ -14,9 +14,9 @@ from astropy.table import Table
 
 cur_frame = os.path.dirname(inspect.getfile(inspect.currentframe()))
 HOME = os.path.abspath(os.path.join(cur_frame, "../"))
-REPORTS = os.path.abspath(os.path.join(cur_frame, "../../_REPORTS"))
+REPORTS = os.path.abspath(os.path.join(HOME, "_REPORTS"))
 
-with open(os.path.join(HOME, "../packages.yaml")) as f:
+with open(os.path.join(HOME, "packages.yaml")) as f:
     PKGS_DICT = yaml.load(f)
 
 
