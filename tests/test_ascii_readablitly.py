@@ -52,20 +52,20 @@ def write_report(filename, dic, tag):
     failing_url = "[![](https://img.shields.io/badge/{}-failing-red.svg)]()"
 
     with open(os.path.join(REPORTS, filename), "w") as f:
-        f.write("# REPORT : {} \n".format(filename))
+        f.write("# REPORT : {} \n\n".format(filename))
 
         for pkg, files in dic.items():
-            f.write("# ``{}`` package\n".format(pkg))
+            f.write("# ``{}`` package\n\n".format(pkg))
             if len(files) > 0:
-                f.write(failing_url.format(tag) + "\n")
+                f.write(failing_url.format(tag) + "\n\n")
                 f.write("The following files have headers which are not in the "
                         "YAML format: \n\n")
                 for file in files:
                     f.write("- ``{}``\n".format(file))
             else:
-                f.write(passing_url.format(tag) + "\n")
-                f.write("All ASCII file headers are in the YAML format\n")
-            f.write("\n")
+                f.write(passing_url.format(tag) + "\n\n")
+                f.write("All ASCII file headers are in the YAML format\n\n")
+            f.write("\n\n")
 
 
 def test_all_ascii_files_readable_by_astropy_io_ascii():
