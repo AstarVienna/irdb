@@ -52,7 +52,7 @@ def write_report(filename, dic, tag):
     failing_url = "[![](https://img.shields.io/badge/{}-failing-red.svg)]()"
 
     with open(os.path.join(REPORTS, filename), "w") as f:
-        f.write("# REPORT : {} \n\n".format(filename))
+        f.write("# REPORT : {} \n\n".format(tag.replace("_", " ")))
 
         for pkg, files in dic.items():
             f.write("# ``{}`` package\n\n".format(pkg))

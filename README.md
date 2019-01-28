@@ -33,7 +33,12 @@ The data is split in the following way:
 
 ## PACKAGE STATUS
 
-You can view the status of the packages using the report files here:
+Combined status of all packages hosted here, tested by TravisCI:
+
+[![Build Status](https://travis-ci.org/astronomyk/irdb.svg?branch=master)](https://travis-ci.org/astronomyk/irdb)
+
+You can view the status of the types of tests run on all the packages hosted 
+here by looking at the report files:
 
 * [Files with failing ASCII header format](_REPORTS/failed_ascii_meta.md)
 * [Files with failing ASCII table format](_REPORTS/failed_ascii_meta.md)
