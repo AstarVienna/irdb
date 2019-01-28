@@ -103,5 +103,10 @@ def test_all_ascii_files_readable_by_astropy_io_ascii():
     write_report("failed_ascii_table.md", tbl_failed_dict, "ASCII_table_format")
     write_report("failed_ascii_meta.md", meta_failed_dict, "ASCII_meta_format")
 
+    print("Tables failing to be read")
+    print(tbl_failed_dict)
+    print("Meta data failing to be read")
+    print(meta_failed_dict)
+
     assert len(tbl_failed) == 0
     assert len(meta_failed) == 0
