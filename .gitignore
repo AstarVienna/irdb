@@ -2,3 +2,5 @@
 old_files/
 PSFs/
 _ZIPPED_PACKAGES/
+.pytest_cache/
+__pycache__
