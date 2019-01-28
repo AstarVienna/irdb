@@ -2,8 +2,6 @@
 """IRDB"""
 
 from distutils.core import setup
-import os
-import glob
 import yaml
 
 # Version number
@@ -30,6 +28,7 @@ def setup_package():
           author = "Kieran Leschinski",
           author_email = "kieran.leschinski@unive.ac.at",
           url = "http://homepage.univie.ac.at/kieran.leschinski/",
+          packages = ["tests"],
           )
 
 

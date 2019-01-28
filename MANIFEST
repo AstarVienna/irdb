@@ -10,6 +10,7 @@ ELT\TER_MAORY_dichroic.dat
 ELT\TER_mirror_aluminium.dat
 ELT\TER_mirror_gold_MAORY.dat
 ELT\TER_mirror_mgf2agal.dat
+METIS\METIS.config
 MICADO\EC_mirrors_MICADO_Spec.dat
 MICADO\EC_mirrors_MICADO_Wide.dat
 MICADO\EC_mirrors_MICADO_Zoom.dat
@@ -69,3 +70,5 @@ NIR_sources\SED_ulirg.dat
 NIR_sources\vega.dat
 test_package\TC_filter_Ks.dat
 test_package\test_instrument_package.yaml
+tests\__init__.py
+tests\test_ascii_readablitly.py
