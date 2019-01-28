@@ -1,4 +1,6 @@
+# REPORT : failed_ascii_meta.md 
 # ``ELT`` package
+[![](https://img.shields.io/badge/ASCII_meta_format-failing-red.svg)]()
 The following files have headers which are not in the YAML format: 
 
 - ``C:\Work\irdb\ELT\EC_mirrors_SCAO_relay.dat``
@@ -6,9 +8,11 @@ The following files have headers which are not in the YAML format:
 - ``C:\Work\irdb\ELT\EC_mirrors_MCAO_MAORY.tbl``
 
 # ``METIS`` package
+[![](https://img.shields.io/badge/ASCII_meta_format-passing-green.svg)]()
 All ASCII file headers are in the YAML format
 
 # ``MICADO`` package
+[![](https://img.shields.io/badge/ASCII_meta_format-failing-red.svg)]()
 The following files have headers which are not in the YAML format: 
 
 - ``C:\Work\irdb\MICADO\FPA_array_layout.dat``
@@ -48,6 +52,7 @@ The following files have headers which are not in the YAML format:
 - ``C:\Work\irdb\MICADO\TER_full_adc.dat``
 
 # ``NIR_Sources`` package
+[![](https://img.shields.io/badge/ASCII_meta_format-failing-red.svg)]()
 The following files have headers which are not in the YAML format: 
 
 - ``C:\Work\irdb\NIR_sources\EC_pickles_MS.dat``
@@ -60,6 +65,7 @@ The following files have headers which are not in the YAML format:
 - ``C:\Work\irdb\NIR_sources\vega.dat``
 
 # ``test_package`` package
+[![](https://img.shields.io/badge/ASCII_meta_format-failing-red.svg)]()
 The following files have headers which are not in the YAML format: 
 
 - ``C:\Work\irdb\test_package\TC_filter_Ks.dat``
