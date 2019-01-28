@@ -1,8 +1,8 @@
 import os
 import inspect
 import warnings
-
 from glob import glob
+
 import yaml
 from astropy.io import ascii as ioascii
 from astropy.table import Table
