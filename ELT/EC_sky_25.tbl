@@ -4,12 +4,12 @@
 # date_modified : 2018-11-19
 # status : Design - pre PDR list of SCAO relay mirrors
 # type : atmosphere:emission
-# changes :
-# - 2018-11-19 (KL) Added meta data
-#
 # PWV : 2.5
 # fluxunit : ph s-1 m-2 arcsec-2 um-1
 # waveunit : um
+# changes :
+# - 2018-11-19 (KL) Added meta data
+#
 #
      lambda   lambda_nm       X1.0       X1.1       X1.2       X1.3       X1.5       X1.7       X2.0       X2.5       X3.0
         0.3         300    5.28909    4.53034    3.94645    5.42565    4.65732    4.21194    5.01832    5.61402    6.18854

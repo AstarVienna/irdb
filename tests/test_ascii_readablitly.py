@@ -108,5 +108,8 @@ def test_all_ascii_files_readable_by_astropy_io_ascii():
     print("Meta data failing to be read")
     print(meta_failed_dict)
 
-    assert len(tbl_failed) == 0
-    assert len(meta_failed) == 0
+    for pkg in tbl_failed_dict:
+        assert len(tbl_failed_dict[pkg]) == 0
+
+    for pkg in meta_failed_dict:
+        assert len(meta_failed_dict[pkg]) == 0

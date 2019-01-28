@@ -1,8 +1,14 @@
-# Date: 2018-11-13
-# Orig-Date: 2018-04-03
-# Origin: SimMETIS
-#Wavelength	Flux
-#um	ph/s/m2
+# name : vega spectrum
+# author : Matt Kenworthy
+# date_modified : 2018-11-13
+# date_created : 2018-04-03
+# source : SimMETIS
+# flux_unit : ph/s/m2
+# wavelength_unit : um
+# changes :
+# - 2019-01-28 (KL) meta data conforms to yaml
+#
+wavelength	flux
 3.000e-01 7.483e+11
 3.013e-01 9.639e+11
 3.025e-01 9.711e+11

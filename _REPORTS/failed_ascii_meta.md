@@ -2,13 +2,10 @@
 
 # ``ELT`` package
 
-[![](https://img.shields.io/badge/ASCII_meta_format-failing-red.svg)]()
+[![](https://img.shields.io/badge/ASCII_meta_format-passing-green.svg)]()
 
-The following files have headers which are not in the YAML format: 
+All ASCII file headers are in the YAML format
 
-- ``C:\Work\irdb\ELT\EC_mirrors_SCAO_relay.dat``
-- ``C:\Work\irdb\ELT\EC_mirrors_ELT.tbl``
-- ``C:\Work\irdb\ELT\EC_mirrors_MCAO_MAORY.tbl``
 
 
 # ``METIS`` package
@@ -64,26 +61,17 @@ The following files have headers which are not in the YAML format:
 
 # ``NIR_Sources`` package
 
-[![](https://img.shields.io/badge/ASCII_meta_format-failing-red.svg)]()
+[![](https://img.shields.io/badge/ASCII_meta_format-passing-green.svg)]()
 
-The following files have headers which are not in the YAML format: 
+All ASCII file headers are in the YAML format
 
-- ``C:\Work\irdb\NIR_sources\EC_pickles_MS.dat``
-- ``C:\Work\irdb\NIR_sources\IMF_1E4.dat``
-- ``C:\Work\irdb\NIR_sources\SED_elliptical.dat``
-- ``C:\Work\irdb\NIR_sources\SED_interacting.dat``
-- ``C:\Work\irdb\NIR_sources\SED_spiral.dat``
-- ``C:\Work\irdb\NIR_sources\SED_starburst.dat``
-- ``C:\Work\irdb\NIR_sources\SED_ulirg.dat``
-- ``C:\Work\irdb\NIR_sources\vega.dat``
 
 
 # ``test_package`` package
 
-[![](https://img.shields.io/badge/ASCII_meta_format-failing-red.svg)]()
+[![](https://img.shields.io/badge/ASCII_meta_format-passing-green.svg)]()
 
-The following files have headers which are not in the YAML format: 
+All ASCII file headers are in the YAML format
 
-- ``C:\Work\irdb\test_package\TC_filter_Ks.dat``
 
 

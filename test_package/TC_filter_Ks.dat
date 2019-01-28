@@ -1,12 +1,13 @@
-## Author: Kieran Leschinski
-## Date: 2018-11-09
-## Orig-Date: 2018-11-09
-## Sources: HAWK-I_Ks, SVO Filter service
-## Changes:
-##     2019-11-09 Added to the test package
-## Ks filter curve
-wavelength transmission 
-# [um]       [0..1]
+# name : Ks filter curve
+# author : unknown
+# date_created : 2018-11-09
+# date_modified : 2018-01-28
+# sources : HAWK-I_Ks, SVO Filter service
+# wavelength_unit : um
+# changes :
+# - 2019-11-09 Added to the test package
+#
+wavelength transmission
 1.9244       0.004092
 1.9264       0.004719
 1.9284       0.005363
