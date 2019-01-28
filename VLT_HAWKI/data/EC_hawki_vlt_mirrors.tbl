@@ -1,4 +1,0 @@
-#Mirror Outer   Inner   Temp   Coating
-M1      8.2     1.0     0.     TC_mirror_aluminium.dat
-M2      1.116   0.05    0.     TC_mirror_aluminium.dat
-M3      1.0     0.      0.     TC_mirror_aluminium.dat
