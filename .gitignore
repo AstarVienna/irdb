@@ -1,4 +1,4 @@
-/.idea
-/old_files
-/PSFs
-/zipped_packages
+.idea/
+old_files/
+PSFs/
+_ZIPPED_PACKAGES/

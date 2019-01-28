@@ -20,11 +20,19 @@ The data is split in the following way:
 
   Currently PSFs are kept separately, simply due to their size
 
-## Telescopes
+### Telescopes
 
 * ELT
 
-## Instruments
+### Instruments
 
 * MICADO
 * METIS (coming soon)
+
+## PACKAGE STATUS
+
+You can view the status of the packages using the report files here:
+
+* [Files with failing ASCII header format](_REPORTS/failed_ascii_meta.md)
+* [Files with failing ASCII table format](_REPORTS/failed_ascii_meta.md)
+
