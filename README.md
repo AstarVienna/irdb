@@ -20,6 +20,8 @@ The data is split in the following way:
 
   Currently PSFs are kept separately, simply due to their size
 
+## PACKAGES KEPT HERE
+
 ### Telescopes
 
 * ELT
