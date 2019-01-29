@@ -1,4 +1,7 @@
 # IRDB
+
+[![Build Status](https://travis-ci.org/astronomyk/irdb.svg?branch=master)](https://travis-ci.org/astronomyk/irdb)
+
 ### The instrument reference database for SimCADO
  
 This repository contains the data files needed by SimCADO to create a model of
