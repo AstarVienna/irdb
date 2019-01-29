@@ -18,13 +18,10 @@ All ASCII file headers are in the YAML format
 
 # ``MICADO`` package
 
-[![](https://img.shields.io/badge/ASCII_meta_format-failing-red.svg)]()
+[![](https://img.shields.io/badge/ASCII_meta_format-passing-green.svg)]()
 
-The following files have headers which are not in the YAML format: 
+All ASCII file headers are in the YAML format
 
-- ``C:\Work\irdb\MICADO\FPA_array_layout.dat``
-- ``C:\Work\irdb\MICADO\TER_entrance_window.dat``
-- ``C:\Work\irdb\MICADO\TER_full_adc.dat``
 
 
 # ``NIR_Sources`` package

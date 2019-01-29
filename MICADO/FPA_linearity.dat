@@ -1,9 +1,12 @@
+# name : H2RG linearity curve
 # author : Kieran Leschinski
 # sources: Ingraham+ 2014 - Gemini Calibrations II for H2RG
 # date_created : 2016
 # date_modified : 2018-11-19
 # type : detector:linearity
 # status : Design - approximated from the H2RG
+# real_flux_unit : ph
+# measured_flux_unit : ph
 # changes :
 # - 2018-11-19 (KL) updated meta data to new format
 #
@@ -47,4 +50,3 @@ real_flux   measured_flux
 200000      130000
 1000000     150000
 1000000000  150000
-10000000000 150000

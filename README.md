@@ -42,4 +42,4 @@ here by looking at the report files:
 
 * [Files with failing ASCII header format](_REPORTS/failed_ascii_meta.md)
 * [Files with failing ASCII table format](_REPORTS/failed_ascii_meta.md)
-
+* [Files whose column names could not read](_REPORTS/failed_ascii_colnames.md)

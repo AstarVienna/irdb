@@ -72,6 +72,7 @@ def test_all_ascii_files_readable_by_astropy_io_ascii():
 
     tbl_failed_dict = {}
     meta_failed_dict = {}
+    colname_failed_dict = {}
 
     for pkg in PKGS_DICT:
 
@@ -81,18 +82,18 @@ def test_all_ascii_files_readable_by_astropy_io_ascii():
         meta_passed = []
         meta_failed = []
 
+        colname_passed = []
+        colname_failed = []
+
         test_dir = PKGS_DICT[pkg]["dir"]
         test_files = get_ascii_files_in_package(os.path.join(HOME, test_dir))
 
         for file in test_files:
-            tbl = ioascii.read(file)
+            tbl = ioascii.read(file, fast_reader=False)
             print(file)
-            try:
-                if isinstance(tbl, Table):
-                    tbl_passed += [file]
-                else:
-                    tbl_failed += [file]
-            except:
+            if isinstance(tbl, Table):
+                tbl_passed += [file]
+            else:
                 tbl_failed += [file]
 
             meta = convert_table_comments_to_dict(tbl)
@@ -101,16 +102,25 @@ def test_all_ascii_files_readable_by_astropy_io_ascii():
             else:
                 meta_failed += [file]
 
+            if tbl.colnames[0] != "col0":
+                colname_passed += [file]
+            else:
+                colname_failed += [file]
+
         tbl_failed_dict[pkg] = tbl_failed
         meta_failed_dict[pkg] = meta_failed
+        colname_failed_dict[pkg] = colname_failed
 
     write_report("failed_ascii_table.md", tbl_failed_dict, "ASCII_table_format")
     write_report("failed_ascii_meta.md", meta_failed_dict, "ASCII_meta_format")
+    write_report("failed_ascii_colnames.md", meta_failed_dict, "ASCII_colnames")
 
     print("Tables failing to be read")
     print(tbl_failed_dict)
     print("Meta data failing to be read")
     print(meta_failed_dict)
+    print("Table column names failing to be read")
+    print(colname_failed_dict)
 
     for pkg in tbl_failed_dict:
         assert len(tbl_failed_dict[pkg]) == 0
