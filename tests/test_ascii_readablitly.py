@@ -86,9 +86,13 @@ def test_all_ascii_files_readable_by_astropy_io_ascii():
 
         for file in test_files:
             tbl = ioascii.read(file)
-            if isinstance(tbl, Table):
-                tbl_passed += [file]
-            else:
+            print(file)
+            try:
+                if isinstance(tbl, Table):
+                    tbl_passed += [file]
+                else:
+                    tbl_failed += [file]
+            except:
                 tbl_failed += [file]
 
             meta = convert_table_comments_to_dict(tbl)

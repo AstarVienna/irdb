@@ -4,11 +4,10 @@
 # date_modified : 2018-11-19
 # type : detector:quantum_efficiency
 # status : Design - guestimated by reading off the graph in Finger+ 2008
-# changes :
-# - 2018-11-19 (KL) updated meta data to new format
-#
 # description : H2RG chip quantum efficiency
 # waveunit : nm
+# changes :
+# - 2018-11-19 : (KL) updated meta data to new format
 #
 wavelength  transmission
 0.7     0.0
