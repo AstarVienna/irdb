@@ -8,6 +8,7 @@
 # width : 0.030834018084589923
 # blue_cutoff : 2.182644996222506
 # red_cutoff : 2.2134790143070964
+# wavelength_unit : um
 #  
 wavelength transmission
 0.780000 0.000100000

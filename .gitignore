@@ -2,5 +2,7 @@
 _OLD_FILES/
 _PSFs/
 _ZIPPED_PACKAGES/
+_Legacy_packages/
 .pytest_cache/
-__pycache__
+*__pycache__
+HAWKI/
