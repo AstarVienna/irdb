@@ -3,7 +3,7 @@ properties :
     pixel_scale : 0.0015
 
 effects :
--   name: zoom_mode_high_contrast_imaging
+-   name: wide_mode_optics
     description: list of extra mirror needed for the wide field mode
     class: SurfaceList
     kwargs:

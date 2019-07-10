@@ -14,9 +14,6 @@ effects :
     class : AnisocadoPSF
     kwargs:
         anisocado_params : {}
-        use_field_rotation: True
-        dit: !OBS.dit
-        ndit: !OBS.ndit
 
 -   name: relay_surface_list
     description : list of surfaces in the relay optics

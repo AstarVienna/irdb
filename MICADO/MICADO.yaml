@@ -21,20 +21,6 @@ effects :
     kwargs:
         filename: TC_filter_blank.dat
         
--   name: adc_3D_shift
-    description : atmospheric disperson corrector
-    class: AtmosphericDispersionCorrection
-    kwargs:
-        altitude : !ATMO.altitude
-        longitude : !ATMO.longitude
-        latitude : !ATMO.latitude
-        airmass : !OBS.airmass
-        temperature : !ATMO.temperature
-        humidity : !ATMO.humidity
-        pressure : !ATMO.pressure
-        pupil_angle : !OBS.pupil_angle
-        efficiency: 1
-
 -   name : ncpas_psf
     description : Effective NCPA induced PSF kernel
     class : NonCommonPathAberration
