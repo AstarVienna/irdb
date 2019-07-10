@@ -4,6 +4,8 @@
 # date_modified : 2018-11-19
 # status : Design - pre PDR list of MICADO mirrors for fixed zoom mode
 # type : mirror:list
+# ETYPE : SURFLIST
+# EDIM : 1 
 # outer_unit : m
 # inner_unit : m
 # angle_unit : degrees

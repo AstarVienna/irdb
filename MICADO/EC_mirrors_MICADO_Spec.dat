@@ -4,6 +4,8 @@
 # date_modified : 2018-01-28
 # status : Design - pre PDR list of MICADO mirrors for spectroscopy mode
 # type : mirror:list
+# ETYPE : SURFLIST
+# EDIM : 1 
 # outer_unit : m
 # inner_unit : m
 # angle_unit : degrees
