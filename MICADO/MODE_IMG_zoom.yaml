@@ -1,13 +1,18 @@
-# yaml extension for the wide field imaging mode
+# yaml extension for the zoom imaging mode
+object : instrument
+alias : INST
+name : MICADO_IMG_HR
+description : additional effects for the zoom imaging mode
+
 properties :
     pixel_scale : 0.0015
 
 effects :
--   name: wide_mode_optics
-    description: list of extra mirror needed for the wide field mode
+-   name: zoom_mirror_list
+    description: list of extra mirror needed for the zoom imaging mode
     class: SurfaceList
     kwargs:
-        filename: LIST_mirrors_MICADO_Wide.tbl
+        filename: LIST_MICADO_mirrors_zoom.dat
 
 -   name: adc_3D_shift
     description : atmospheric disperson corrector

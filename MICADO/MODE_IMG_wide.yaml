@@ -1,9 +1,14 @@
 # yaml extension for the wide field imaging mode
+object : instrument
+alias : INST
+name : MICADO_IMG_HCI
+description : additional effects for the high contrast imaging mode
+
 properties :
-    pixel_scale : 0.0015
+    pixel_scale : 0.004
 
 effects :
--   name: zoom_mode_high_contrast_imaging
+-   name: wide_field_mirror_list
     description: list of extra mirror needed for the wide field mode
     class: SurfaceList
     kwargs:

@@ -11,10 +11,6 @@ MICADO :
   dir : MICADO
   ignore_files : []
 
-NIR_Sources :
-  dir : NIR_sources
-  ignore_files : []
-
 test_package :
   dir : test_package
   ignore_files : []

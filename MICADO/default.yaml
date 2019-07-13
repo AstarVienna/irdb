@@ -1,0 +1,22 @@
+### default observation parameters needed for a MICADO simulation
+object : observation
+alias : OBS
+name : MICADO_DEFAULT_OBS
+description : default parameters needed for a MICADO simulation
+
+packages :
+- Armazones
+- ELT
+- MAORY
+- MICADO
+
+yamls :
+- Armazones.yaml
+- ELT.yaml
+- Standalone_RO.yaml
+- MICADO.yaml
+- MODE_IMG_wide.yaml
+- H4RG.yaml
+
+
+

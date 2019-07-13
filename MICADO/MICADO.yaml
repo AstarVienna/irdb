@@ -3,7 +3,6 @@ object : instrument
 alias : INST
 name : MICADO
 description : base configuration for MICADO
-mode_yaml : MODE_IMG_wide.yaml
 
 properties : 
     temperature : -190
@@ -19,7 +18,7 @@ effects :
     description : transmission curce for filter
     class: TERCurve
     kwargs:
-        filename: TC_filter_blank.dat
+        filename: !OBS.filter_name
         
 -   name : ncpas_psf
     description : Effective NCPA induced PSF kernel
