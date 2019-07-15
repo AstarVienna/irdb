@@ -1,0 +1,35 @@
+### Absolute most basic script
+alias : OBS
+use_instrument : MICADO
+
+properties :
+  dit : 60
+  filter_name : "Ks"
+
+
+---
+### Basic yaml file with everything that is needed
+name : my_MICADO_script
+alias : OBS
+
+use_instrument : MICADO
+
+yamls :
+- my_new_effects.yaml
+
+add_effects :
+- name : my_new_filter
+  description : a 1 um bandpass filter
+  class : TERCurve
+  kwargs :
+    wavelength : [0.99, 1.0, 2.0, 2.01]
+    transmission : [0, 1, 1, 0]
+    wavelength_unit : um
+
+override_effect_kwargs:
+  my_new_filter.wavelength_unit : m
+
+ignore_effects :
+- micado_filter
+
+

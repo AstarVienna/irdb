@@ -12,7 +12,7 @@ effects :
     description : MAORY field varying MCAO PSF
     class : FieldVaryingPSF
     kwargs:
-        filename : None
+        filename : !OBS.psf_filename
         use_field_rotation : True
         dit : !OBS.dit
         ndit : !OBS.ndit

@@ -17,13 +17,13 @@ properties :
 
 
 effects :
--   name : atmo_ter_curve
+-   name : armazones_atmo_ter_curve
     description : atmospheric emission and transmission
     class : SkycalcTERCurve
     kwargs :
         skycalc_params : {}
 
--   name : atmo_dispersion
+-   name : armazones_atmo_dispersion
     description : atmospheric dispersion
     class : AtmosphericDispersion
     kwargs :      # the properties dictionary is added to kwargs

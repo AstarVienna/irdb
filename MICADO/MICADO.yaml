@@ -8,19 +8,19 @@ properties :
     temperature : -190
 
 effects : 
--   name: static_micado_surfaces
+-   name: micado_static_surfaces
     description : surfaces list for wide field optics
     class: SurfaceList
     kwargs:
         filename: LIST_mirrors_MICADO_Wide.tbl
         
--   name: filter
+-   name: micado_filter
     description : transmission curce for filter
     class: TERCurve
     kwargs:
         filename: !OBS.filter_name
         
--   name : ncpas_psf
+-   name : micado_ncpas_psf
     description : Effective NCPA induced PSF kernel
     class : NonCommonPathAberration
     kwargs :

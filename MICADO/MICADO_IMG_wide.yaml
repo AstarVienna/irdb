@@ -8,13 +8,13 @@ properties :
     pixel_scale : 0.004
 
 effects :
--   name: wide_field_mirror_list
+-   name: micado_wide_field_mirror_list
     description: list of extra mirror needed for the wide field mode
     class: SurfaceList
     kwargs:
         filename: LIST_mirrors_MICADO_Wide.tbl
 
--   name: adc_3D_shift
+-   name: micado_adc_3D_shift
     description : atmospheric disperson corrector
     class: AtmosphericDispersionCorrection
     kwargs:
