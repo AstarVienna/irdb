@@ -5,7 +5,7 @@ name : ELT
 description : The extremely large telescope
 
 properties :
-    temperature : !ATMO.temperature
+    temperature : "!ATMO.temperature"
 
 effects :
 -   name: scope_surface_list

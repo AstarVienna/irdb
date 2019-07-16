@@ -4,13 +4,13 @@ alias : OBS
 name : MICADO_default_configuration
 description : default parameters needed for a MICADO simulation
 
-packages :
+packages:
 - Armazones
 - ELT
 - MAORY
 - MICADO
 
-yamls :
+yamls:
 - Armazones.yaml
 - ELT.yaml
 - MICADO.yaml

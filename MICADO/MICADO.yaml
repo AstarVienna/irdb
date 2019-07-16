@@ -12,13 +12,13 @@ effects :
     description : surfaces list for wide field optics
     class: SurfaceList
     kwargs:
-        filename: LIST_mirrors_MICADO_Wide.tbl
+        filename: LIST_MICADO_mirrors_static.dat
         
 -   name: micado_filter
     description : transmission curce for filter
     class: TERCurve
     kwargs:
-        filename: !OBS.filter_name
+        filename: "!OBS.filter_name"
         
 -   name : micado_ncpas_psf
     description : Effective NCPA induced PSF kernel

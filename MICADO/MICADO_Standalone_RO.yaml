@@ -5,7 +5,7 @@ name : default_ro
 description : Simple stand-alone relay optics module
 
 properties :
-    temperature : !ATMO.temperature
+    temperature : "!ATMO.temperature"
 
 effects :
 -   name : relay_psf

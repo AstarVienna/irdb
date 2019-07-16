@@ -8,12 +8,12 @@ properties :
     altitude : 3060   # m
     longitude : -70.1918  # deg
     latitude : -24.5899   # deg
-    airmass : !OBS.airmass
+    airmass : "!OBS.airmass"
     temperature : 9   # deg C
     humidity : 25     # %
     pressure : 750    # millibar
     pwv : 2.5         # mm
-    pupil_angle : !OBS.pupil_angle
+    pupil_angle : "!OBS.pupil_angle"
 
 
 effects :
@@ -27,4 +27,4 @@ effects :
     description : atmospheric dispersion
     class : AtmosphericDispersion
     kwargs :      # the properties dictionary is added to kwargs
-        central_wavelength : !SIM.lam_mid
+        central_wavelength : "!SIM.lam_mid"

@@ -6,8 +6,8 @@ description : A set of 9 H4RG detectors
 
 properties :
     temperature : -230
-    dit : !OBS.dit
-    ndit : !OBS.ndit
+    dit : "!OBS.dit"
+    ndit : "!OBS.ndit"
 
 effects :
 -   name: detector_array_list
