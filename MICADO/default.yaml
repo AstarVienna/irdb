@@ -38,4 +38,17 @@ properties :
     seed : 9001
 
 
+---
+### default parameters for Armazones
+object : atmosphere
+alias : ATMO
+name : default_armazones_conditions
+
+properties :
+  pwv : 2.5       # mm
+  temperature : 9 # deg C
+  humidity : 25   # %
+  pressure: 750   # millibar
+
+
 

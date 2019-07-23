@@ -5,26 +5,32 @@ name : armazones
 description : Atmosphere and location details for Cerro Armazones
 
 properties :
-    altitude : 3060   # m
-    longitude : -70.1918  # deg
-    latitude : -24.5899   # deg
-    airmass : "!OBS.airmass"
-    temperature : 9   # deg C
-    humidity : 25     # %
-    pressure : 750    # millibar
-    pwv : 2.5         # mm
-    pupil_angle : "!OBS.pupil_angle"
-
+    altitude :      3060        # m
+    longitude :     -70.1918    # deg
+    latitude :      -24.5899    # deg
+    pupil_angle :   "!OBS.pupil_angle"
+    airmass :       "!OBS.airmass"
+    temperature :   "!ATMO.temperature"
+    humidity :      "!ATMO.humidity"
+    pressure :      "!ATMO.pressure"
+    pwv :           "!ATMO.pwv"
 
 effects :
 -   name : armazones_atmo_ter_curve
     description : atmospheric emission and transmission
     class : SkycalcTERCurve
     kwargs :
-        skycalc_params : {}
+        observatory : armazones
+        wmin : "!SIM.spectral.lam_min"
+        wmax : "!SIM.spectral.lam_max"
+        wunit : um
+        wdelta : "!SIM.spectral.spectral_resolution"
+
 
 -   name : armazones_atmo_dispersion
     description : atmospheric dispersion
     class : AtmosphericDispersion
     kwargs :      # the properties dictionary is added to kwargs
-        central_wavelength : "!SIM.lam_mid"
+        wave_min : "!SIM.lam_min"
+        wave_mid : "!SIM.lam_mid"
+        wave_max : "!SIM.lam_max"
