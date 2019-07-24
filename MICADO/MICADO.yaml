@@ -24,4 +24,4 @@ effects :
     description : Effective NCPA induced PSF kernel
     class : NonCommonPathAberration
     kwargs :
-        filename : INST_wfe.tbl
+        filename : "!INST_wfe.tbl"

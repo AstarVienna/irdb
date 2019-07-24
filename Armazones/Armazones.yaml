@@ -8,16 +8,17 @@ properties :
     altitude :      3060        # m
     longitude :     -70.1918    # deg
     latitude :      -24.5899    # deg
-    pupil_angle :   "!OBS.pupil_angle"
+    temperature :   7           # deg C
+    humidity :      0.5         # [0..1]
+    pressure :      0.755       # [bar]
+    pwv :           2.5         # [mm]
     airmass :       "!OBS.airmass"
-    temperature :   "!ATMO.temperature"
-    humidity :      "!ATMO.humidity"
-    pressure :      "!ATMO.pressure"
-    pwv :           "!ATMO.pwv"
+    pupil_angle :   "!OBS.pupil_angle"
+    pixel_scale :   "!INST.pixel_scale"
 
 effects :
--   name : armazones_atmo_ter_curve
-    description : atmospheric emission and transmission
+-   name : armazones_atmo_skycalc_ter_curve
+    description : atmospheric spectra pulled from the skycalc server
     class : SkycalcTERCurve
     kwargs :
         observatory : armazones
@@ -26,11 +27,13 @@ effects :
         wunit : um
         wdelta : "!SIM.spectral.spectral_resolution"
 
+-   name : armazones_atmo_default_ter_curve
+    description : atmospheric emission and transmission
+    class : TERCurve
+    ignore : True
+    kwargs :
+        filename: "TER_armazones_default_NIR_IMG.dat"
 
 -   name : armazones_atmo_dispersion
     description : atmospheric dispersion
     class : AtmosphericDispersion
-    kwargs :      # the properties dictionary is added to kwargs
-        wave_min : "!SIM.lam_min"
-        wave_mid : "!SIM.lam_mid"
-        wave_max : "!SIM.lam_max"
