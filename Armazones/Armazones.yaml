@@ -17,23 +17,26 @@ properties :
     pixel_scale :   "!INST.pixel_scale"
 
 effects :
--   name : armazones_atmo_skycalc_ter_curve
-    description : atmospheric spectra pulled from the skycalc server
-    class : SkycalcTERCurve
-    kwargs :
-        observatory : armazones
-        wmin : "!SIM.spectral.lam_min"
-        wmax : "!SIM.spectral.lam_max"
-        wunit : um
-        wdelta : "!SIM.spectral.spectral_resolution"
-
 -   name : armazones_atmo_default_ter_curve
     description : atmospheric emission and transmission
     class : TERCurve
-    ignore : True
     kwargs :
         filename: "TER_armazones_default_NIR_IMG.dat"
 
 -   name : armazones_atmo_dispersion
     description : atmospheric dispersion
     class : AtmosphericDispersion
+
+
+####################### Alternative effects ####################################
+
+-   name : armazones_atmo_skycalc_ter_curve
+    description : atmospheric spectra pulled from the skycalc server
+    class : SkycalcTERCurve
+    include : False
+    kwargs :
+        observatory : armazones
+        wmin : "!SIM.spectral.lam_min"
+        wmax : "!SIM.spectral.lam_max"
+        wunit : um
+        wdelta : "!SIM.spectral.spectral_resolution"

@@ -8,9 +8,9 @@
 # - 2018-11-19 (KL) updated meta data to new format
 #
 # description : RMS wavefront error table
-# wfe_unit : nm
+# wfe_rms_unit : nm
 #
-element         material    no_surfaces wfe_rms     
+element         material    n_surfaces  wfe_rms
 mirror          gold        11          20          
 entrance_window glass       4           10          
 filter          glass       2           10          

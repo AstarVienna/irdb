@@ -5,11 +5,12 @@
 # status : Design - pre PDR list of MICADO mirrors for wide-field mode
 # type : mirror:reflectivity
 # changes :
+# - 2019-07-25 (KL) Changed 2-25um value to 0.98 to match ESO predictions
 #
 # description : Bare Aluminium
 # waveunit : um
 #
-wavelength  reflectivity
+wavelength  reflection
 0.309       0.921
 0.335       0.923
 0.372       0.925
@@ -59,4 +60,5 @@ wavelength  reflectivity
 1.885       0.965
 1.944       0.968
 2.000       0.970
-20.00       0.970
+2.500       0.980
+20.00       0.980

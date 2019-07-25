@@ -24,4 +24,5 @@ effects :
     description : Effective NCPA induced PSF kernel
     class : NonCommonPathAberration
     kwargs :
-        filename : "!INST_wfe.tbl"
+        pixel_size : "!INST.pixel_size"
+        filename : "!INST_MICADO_wavefront_error_budget.dat"
