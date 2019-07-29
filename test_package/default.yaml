@@ -7,6 +7,7 @@ packages :
 - test_package
 
 yamls :
+- test_package.yaml
 - test_telescope.yaml
 - test_instrument.yaml
 - test_detector.yaml
