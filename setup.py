@@ -3,6 +3,7 @@
 
 from distutils.core import setup
 import yaml
+from .tests.utils import get_packages
 
 # Version number
 MAJOR = 0
@@ -13,12 +14,10 @@ VERSION = '%d.%d%s' % (MAJOR, MINOR, ATTR)
 
 
 def create_manifest():
-    with open("packages.yaml") as f:
-        PKGS = yaml.load(f)
-
-        with open("MANIFEST.in", "w") as f:
-            for pkg_name in PKGS:
-                f.write("include {}/*\n".format(PKGS[pkg_name]["dir"]))
+    pkgs_dict = get_packages()
+    with open("MANIFEST.in", "w") as f:
+        for pkg_name in pkgs_dict:
+            f.write("include {}/*\n".format(pkg_name))
 
 
 def setup_package():
