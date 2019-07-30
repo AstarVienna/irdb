@@ -1,5 +1,6 @@
+include Armazones/*
 include ELT/*
-include METIS/*
+include MAORY/*
 include MICADO/*
-include NIR_sources/*
+include SimpleCADO/*
 include test_package/*

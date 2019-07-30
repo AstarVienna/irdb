@@ -2,8 +2,8 @@
 """IRDB"""
 
 from distutils.core import setup
-import yaml
-from .tests.utils import get_packages
+import os
+from os import path as pth
 
 # Version number
 MAJOR = 0
@@ -14,10 +14,12 @@ VERSION = '%d.%d%s' % (MAJOR, MINOR, ATTR)
 
 
 def create_manifest():
-    pkgs_dict = get_packages()
+    pkgs_list = [pkg for pkg in os.listdir("./") if \
+                 pth.isdir(pkg) and pth.exists(pth.join(pkg, f"{pkg}.yaml"))]
     with open("MANIFEST.in", "w") as f:
-        for pkg_name in pkgs_dict:
-            f.write("include {}/*\n".format(pkg_name))
+        for pkg_name in pkgs_list:
+            f.write(f"include {pkg_name}/*\n")
+            print(f"Including {pkg_name}")
 
 
 def setup_package():
