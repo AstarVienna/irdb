@@ -8,8 +8,15 @@ from tests.system_dict import SystemDict
 class TestMakeBadgeReport:
     """
     Run this to make a Badge report
+
+    Run test_package_contents before running this test
     """
     def test_reads_yaml_correctly(self):
+        # if not pth.exists("../_REPORTS/badges.yaml"):
+        #     with open(pth.join(pth.dirname(__file__),
+        #                        "../_REPORTS/badges.yaml"), "w") as f:
+        #         f.write("")
+
         print(make_badge_report())
 
 

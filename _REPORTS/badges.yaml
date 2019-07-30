@@ -1,0 +1,24 @@
+Armazones:
+  contents: {all_yamls_readable: true}
+  package_type: support
+  structure: {no_missing_files: true, self_named_yaml: true}
+ELT:
+  contents: {all_yamls_readable: true}
+  package_type: support
+  structure: {no_missing_files: true, self_named_yaml: true}
+MAORY:
+  contents: {all_yamls_readable: true}
+  package_type: support
+  structure: {no_missing_files: true, self_named_yaml: true}
+MICADO:
+  contents: {all_yamls_readable: true}
+  package_type: observation
+  structure: {FPA_noise.fits: missing, default_yaml: true, self_named_yaml: true}
+SimpleCADO:
+  contents: {all_yamls_readable: true}
+  package_type: support
+  structure: {no_missing_files: true, self_named_yaml: true}
+test_package:
+  contents: {all_yamls_readable: true}
+  package_type: observation
+  structure: {default_yaml: true, no_missing_files: true, self_named_yaml: true}

@@ -19,7 +19,7 @@ effects :
     description : list of surfaces in the relay optics
     class: SurfaceList
     kwargs:
-        filename: LIST_mirrors_SCAO_relay.tbl
+        filename: LIST_RO_SCAO_mirrors.dat
 
 
 ################################################################################

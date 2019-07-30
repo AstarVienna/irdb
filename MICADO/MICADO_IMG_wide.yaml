@@ -12,7 +12,7 @@ effects :
     description: list of extra mirror needed for the wide field mode
     class: SurfaceList
     kwargs:
-        filename: LIST_mirrors_MICADO_Wide.tbl
+        filename: LIST_MICADO_mirrors_wide.dat
 
 -   name: micado_adc_3D_shift
     description : atmospheric disperson corrector
