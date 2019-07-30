@@ -19,7 +19,7 @@ effects:
   class: DetectorList
   kwargs:
     array_dict:
-      id: [1],
+      id: [1]
       pixsize: [0.015]
       angle: [0.]
       gain: [1.0]
