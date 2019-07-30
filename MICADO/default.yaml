@@ -37,6 +37,10 @@ properties :
   random :
     seed : 9001
 
+  spectral :
+    lam_min : 0.7
+    lam_mid : 1.6
+    lam_max : 2.5
 
 ---
 ### default parameters for Armazones

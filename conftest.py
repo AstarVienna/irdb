@@ -1,8 +1,8 @@
 import pytest
-import os
 
 
 @pytest.fixture(scope="session")
 def renew_badges():
-    os.remove("_REPORTS/badges.yaml")
+    with open("_REPORTS/badges.yaml", "") as f:
+        f.write("")
     yield

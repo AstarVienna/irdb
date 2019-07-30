@@ -18,7 +18,8 @@ effects :
     description : MAORY field varying MCAO PSF
     class : FieldConstantPSF
     kwargs:
-        filename : PSF_MAORY_40_15_6.fits
+        filename : PSF_MCAO_ConstPSF_40_18_6.fits
+        warning : "Default PSF is not Field Varying. See Documentation"
 
 
 ####################### Alternative effects ####################################

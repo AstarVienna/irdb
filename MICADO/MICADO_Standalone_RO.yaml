@@ -10,9 +10,10 @@ properties :
 effects :
 -   name : relay_psf
     description : SCAO PSF
-    class : AnisocadoPSF
+    class : FieldConstantPSF
     kwargs:
-        anisocado_params : {}
+        filename : PSF_Anisocado_ConstPSF_5off.fits
+        warning : "Default PSF is NOT field varying. See documentation."
 
 -   name: relay_surface_list
     description : list of surfaces in the relay optics
@@ -20,3 +21,13 @@ effects :
     kwargs:
         filename: LIST_mirrors_SCAO_relay.tbl
 
+
+################################################################################
+
+-   name : relay_psf
+    description : SCAO PSF
+    class : FieldConstantPSF
+    include : False
+    kwargs:
+        filename : PSF_Anisocado_ConstPSF_5off.fits
+        warning : "Default PSF is NOT field varying. See documentation."
