@@ -12,7 +12,7 @@ effects :
     description : SCAO PSF
     class : FieldConstantPSF
     kwargs:
-        filename : PSF_Anisocado_ConstPSF_5off.fits
+        filename : PSF_SCAO_ConstPSF_0_5off.fits
         warning : "Default PSF is NOT field varying. See documentation."
 
 -   name: relay_surface_list
@@ -24,10 +24,10 @@ effects :
 
 ################################################################################
 
--   name : relay_psf
-    description : SCAO PSF
-    class : FieldConstantPSF
+# This one can be used if a filename from a FV-PSF file if provided
+-   name : relay_fv_psf
+    description : SCAO FV PSF
+    class : FieldVaryingPSF
     include : False
     kwargs:
-        filename : PSF_Anisocado_ConstPSF_5off.fits
-        warning : "Default PSF is NOT field varying. See documentation."
+        filename : None

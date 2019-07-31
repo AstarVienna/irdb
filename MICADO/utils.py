@@ -28,3 +28,4 @@ def make_standard_scao_constpsf():
     hdus = fits.HDUList([pri] + psfs)
     hdus.writeto("SCAO_ConstPSF_5off.fits", clobber=True)
     print(hdus.info())
+
