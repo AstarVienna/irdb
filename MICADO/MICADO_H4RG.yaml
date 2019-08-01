@@ -41,6 +41,17 @@ effects :
 
 -   name : readout_noise
     description : Readout noise frames
-    class : ReadoutNoise
+    class : BasicReadoutNoise
+    kwargs :
+        value : 4
+
+
+
+################################################################################
+
+-   name : readout_noise
+    description : Readout noise frames
+    class : HxrgReadoutNoise
+    include : False
     kwargs :
         file_name : FPA_noise.fits
