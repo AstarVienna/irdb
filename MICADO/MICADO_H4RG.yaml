@@ -43,8 +43,8 @@ effects :
     description : Readout noise frames
     class : BasicReadoutNoise
     kwargs :
-        value : 4
-
+        noise_std : 4
+        n_channels : 64
 
 
 ################################################################################
@@ -54,4 +54,4 @@ effects :
     class : HxrgReadoutNoise
     include : False
     kwargs :
-        file_name : FPA_noise.fits
+        file_name : FPA_noise.fitsgit statu

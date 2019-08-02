@@ -5,14 +5,14 @@
 # date_modified : 2018-11-19
 # type : detector:linearity
 # status : Design - approximated from the H2RG
-# real_flux_unit : ph
-# measured_flux_unit : ph
+# incident_unit : ph
+# measured_unit : ph
 # ETYPE : LINEARIT
 #
 # changes :
 # - 2018-11-19 (KL) updated meta data to new format
 #
-real_flux   measured_flux
+incident    measured
 0           0
 1           300
 1000        1160
