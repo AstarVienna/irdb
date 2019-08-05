@@ -36,7 +36,7 @@ effects :
     include : False
     kwargs :
         observatory : armazones
-        wmin : "!SIM.spectral.lam_min"
-        wmax : "!SIM.spectral.lam_max"
+        wmin : "!SIM.spectral.wave_min"
+        wmax : "!SIM.spectral.wave_max"
         wunit : um
         wdelta : "!SIM.spectral.spectral_resolution"
