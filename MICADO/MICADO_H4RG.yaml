@@ -54,4 +54,4 @@ effects :
     class : HxrgReadoutNoise
     include : False
     kwargs :
-        file_name : FPA_noise.fitsgit statu
+        file_name : FPA_noise.fits
