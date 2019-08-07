@@ -4,7 +4,7 @@
 # date_created  : 2019-07-10
 # date_modified : 2019-07-10
 # status : Guess - in the train on the way home from CM13
-# type : aperture:slit_geometry
+# type : aperture:imaging_pupil_mask
 # x_unit : arcsec
 # y_unit : arcsec
 # changes :

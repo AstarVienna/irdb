@@ -5,7 +5,8 @@ name : MICADO_IMG_HCI
 description : additional effects for the high contrast imaging mode
 
 properties :
-    pixel_scale : 0.004
+    pixel_scale : 0.004         # arcsec / pixel
+    plate_scale : 0.26666666666 # arcsec / mm
 
 effects :
 -   name: micado_wide_field_mirror_list

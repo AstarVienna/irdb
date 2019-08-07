@@ -5,7 +5,8 @@ name : MICADO_IMG_HR
 description : additional effects for the zoom imaging mode
 
 properties :
-    pixel_scale : 0.0015
+    pixel_scale : 0.0015    # arcsec / pixel
+    plate_scale : 0.1       # arcsec / mm
 
 effects :
 -   name: zoom_mirror_list
