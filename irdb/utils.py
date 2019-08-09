@@ -2,7 +2,7 @@ import os
 from os import path as pth
 import yaml
 
-from .system_dict import SystemDict
+from irdb.system_dict import SystemDict
 
 PKG_DIR = pth.abspath(pth.join(pth.dirname(__file__), "../"))
 

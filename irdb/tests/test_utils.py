@@ -1,8 +1,8 @@
 import os
 from os import path as pth
 
-from tests.utils import load_badge_yaml, write_badge_yaml, make_badge_report
-from tests.system_dict import SystemDict
+from irdb.utils import load_badge_yaml, write_badge_yaml, make_badge_report
+from irdb.system_dict import SystemDict
 
 
 class TestMakeBadgeReport:
@@ -40,5 +40,6 @@ class TestWriteBadgeYaml:
         for key in badges.dic:
             assert badges[key] == new_badges[key]
 
-        dname = pth.join(pth.dirname(__file__), "../", "_REPORTS")
+        dname = pth.abspath(pth.join(pth.dirname(__file__),
+                                     "../", "../", "_REPORTS"))
         os.remove(pth.join(dname, fname))

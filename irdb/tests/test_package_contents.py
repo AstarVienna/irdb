@@ -2,8 +2,8 @@ from os import path as pth
 from glob import glob
 import yaml
 
-from tests.utils import recursive_filename_search
-from .utils import get_packages, load_badge_yaml, write_badge_yaml
+from irdb.utils import get_packages, load_badge_yaml, write_badge_yaml, \
+    recursive_filename_search
 
 PKG_DIR = pth.abspath(pth.join(pth.dirname(__file__), "../"))
 PKG_DICT = get_packages()
