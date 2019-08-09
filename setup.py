@@ -29,7 +29,7 @@ def setup_package():
           author = "Kieran Leschinski",
           author_email = "kieran.leschinski@unive.ac.at",
           url = "http://homepage.univie.ac.at/kieran.leschinski/",
-          packages = ["tests"],
+          packages = ["irdb/tests"],
           )
 
 
