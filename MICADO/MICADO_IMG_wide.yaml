@@ -28,3 +28,4 @@ effects :
         pressure : "!ATMO.pressure"
         pupil_angle : "!OBS.pupil_angle"
         efficiency: 1
+        wave_mid: "!SIM.wave_mid"

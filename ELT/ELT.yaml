@@ -16,7 +16,7 @@ effects :
 
 -   name : scope_vibration
     description : residual vibration of telescope
-    class : VibrationPSF
+    class : Vibration
     kwargs :
         fwhm : 0.001    # [arcsec] FWHM of Gaussian kernel
         pixel_scale : "!INST.pixel_scale"

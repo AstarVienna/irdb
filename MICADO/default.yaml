@@ -19,7 +19,7 @@ yamls:
 - MICADO_H4RG.yaml
 
 properties :
-  filter_name : Ks
+  filter_name : TC_filter_Ks.dat
   airmass : 1.2
   declination : -30
   hour_angle : 0
