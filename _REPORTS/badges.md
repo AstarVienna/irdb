@@ -13,6 +13,14 @@
   * structure: 
     * [![](https://img.shields.io/badge/no_missing_files-True-green)]()
     * [![](https://img.shields.io/badge/self_named_yaml-True-green)]()
+## HAWKI: 
+  * contents: 
+    * [![](https://img.shields.io/badge/all_yamls_readable-True-green)]()
+  * [![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
+  * structure: 
+    * [![](https://img.shields.io/badge/default_yaml-True-green)]()
+    * [![](https://img.shields.io/badge/no_missing_files-True-green)]()
+    * [![](https://img.shields.io/badge/self_named_yaml-True-green)]()
 ## MAORY: 
   * contents: 
     * [![](https://img.shields.io/badge/all_yamls_readable-True-green)]()
@@ -25,10 +33,24 @@
     * [![](https://img.shields.io/badge/all_yamls_readable-True-green)]()
   * [![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
   * structure: 
-    * [![](https://img.shields.io/badge/FPA_noise.fits-missing-red)]()
     * [![](https://img.shields.io/badge/default_yaml-True-green)]()
+    * [![](https://img.shields.io/badge/no_missing_files-True-green)]()
+    * [![](https://img.shields.io/badge/self_named_yaml-True-green)]()
+## Paranal: 
+  * contents: 
+    * [![](https://img.shields.io/badge/all_yamls_readable-True-green)]()
+  * [![](https://img.shields.io/badge/package_type-support-blue)]()
+  * structure: 
+    * [![](https://img.shields.io/badge/no_missing_files-True-green)]()
     * [![](https://img.shields.io/badge/self_named_yaml-True-green)]()
 ## SimpleCADO: 
+  * contents: 
+    * [![](https://img.shields.io/badge/all_yamls_readable-True-green)]()
+  * [![](https://img.shields.io/badge/package_type-support-blue)]()
+  * structure: 
+    * [![](https://img.shields.io/badge/no_missing_files-True-green)]()
+    * [![](https://img.shields.io/badge/self_named_yaml-True-green)]()
+## VLT: 
   * contents: 
     * [![](https://img.shields.io/badge/all_yamls_readable-True-green)]()
   * [![](https://img.shields.io/badge/package_type-support-blue)]()

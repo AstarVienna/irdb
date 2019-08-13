@@ -78,3 +78,4 @@ class TestFileStructureOfPackages:
             if no_errors == 0:
                 BADGES[f"!{pkg_name}.contents.all_yamls_readable"] = True
 
+

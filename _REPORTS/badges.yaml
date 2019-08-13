@@ -6,6 +6,10 @@ ELT:
   contents: {all_yamls_readable: true}
   package_type: support
   structure: {no_missing_files: true, self_named_yaml: true}
+HAWKI:
+  contents: {all_yamls_readable: true}
+  package_type: observation
+  structure: {default_yaml: true, no_missing_files: true, self_named_yaml: true}
 MAORY:
   contents: {all_yamls_readable: true}
   package_type: support
@@ -13,8 +17,16 @@ MAORY:
 MICADO:
   contents: {all_yamls_readable: true}
   package_type: observation
-  structure: {FPA_noise.fits: missing, default_yaml: true, self_named_yaml: true}
+  structure: {default_yaml: true, no_missing_files: true, self_named_yaml: true}
+Paranal:
+  contents: {all_yamls_readable: true}
+  package_type: support
+  structure: {no_missing_files: true, self_named_yaml: true}
 SimpleCADO:
+  contents: {all_yamls_readable: true}
+  package_type: support
+  structure: {no_missing_files: true, self_named_yaml: true}
+VLT:
   contents: {all_yamls_readable: true}
   package_type: support
   structure: {no_missing_files: true, self_named_yaml: true}

@@ -1,7 +1,7 @@
 ### VLT Unit Telescope 4
 object: instrument
-alias: INST
-name: HAWKI
+alias: TEL
+name: VLT
 description : The very large telescope UT4
 
 properties:
