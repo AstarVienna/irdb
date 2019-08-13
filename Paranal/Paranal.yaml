@@ -1,16 +1,16 @@
-### Config file for the Armazones optical element
+### Config file for the Paranal optical element
 object : atmosphere
 alias : ATMO
-name : armazones
-description : Atmosphere and location details for Cerro Armazones
+name : paranal
+description : Atmosphere and location details for Paranal
 
 properties :
-    altitude :      2600        # m
-    longitude :     -70.1918    # deg
-    latitude :      -24.5899    # deg
+    altitude :      2635        # m
+    longitude :     -70.4042    # deg
+    latitude :      -24.6272    # deg
     temperature :   9           # deg C
-    humidity :      0.5         # [0..1]
-    pressure :      0.7  55       # [bar]
+    humidity :      0.15        # [0..1]
+    pressure :      0.75        # [bar]
     pwv :           2.5         # [mm]
     airmass :       "!OBS.airmass"
     pupil_angle :   "!OBS.pupil_angle"
@@ -21,7 +21,7 @@ effects :
     description : atmospheric emission and transmission
     class : TERCurve
     kwargs :
-        filename: "TER_armazones_default_NIR_IMG.dat"
+        filename: "TER_paranal_default_NIR_IMG.dat"
 
 -   name : armazones_atmo_dispersion
     description : atmospheric dispersion
@@ -35,7 +35,7 @@ effects :
     class : SkycalcTERCurve
     include : False
     kwargs :
-        observatory : armazones
+        observatory : paranal
         wmin : "!SIM.spectral.wave_min"
         wmax : "!SIM.spectral.wave_max"
         wunit : um

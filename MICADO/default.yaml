@@ -19,7 +19,7 @@ yamls:
 - MICADO_H4RG.yaml
 
 properties :
-  filter_name : TC_filter_Ks.dat
+  filter_name : Ks
   airmass : 1.2
   declination : -30
   hour_angle : 0
@@ -41,18 +41,3 @@ properties :
     wave_min : 0.7
     wave_mid : 1.6
     wave_max : 2.5
-
----
-### default parameters for Armazones
-object : atmosphere
-alias : ATMO
-name : default_armazones_conditions
-
-properties :
-  pwv : 2.5       # mm
-  temperature : 9 # deg C
-  humidity : 25   # %
-  pressure: 750   # millibar
-
-
-

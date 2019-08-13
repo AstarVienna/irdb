@@ -1,0 +1,8 @@
+Armazones: "locations/Armazones.zip"
+Paranal: "locations/Paranal.zip"
+VLT: "telescopes/VLT.zip"
+ELT: "telescopes/ELT.zip"
+MAORY: "instruments/MAORY.zip"
+MICADO: "instruments/MICADO.zip"
+HAWKI: "instruments/HAWKI.zip"
+test_package: "instruments/test_package.zip"

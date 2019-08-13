@@ -9,7 +9,7 @@ properties :
     longitude :     -70.1918    # deg
     latitude :      -24.5899    # deg
     temperature :   7           # deg C
-    humidity :      0.5         # [0..1]
+    humidity :      0.1         # [0..1]
     pressure :      0.755       # [bar]
     pwv :           2.5         # [mm]
     airmass :       "!OBS.airmass"

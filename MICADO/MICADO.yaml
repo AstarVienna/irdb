@@ -18,7 +18,8 @@ effects :
     description : transmission curce for filter
     class: TERCurve
     kwargs:
-        filename: "!OBS.filter_name"
+        filter_name: "!OBS.filter_name"
+        filename_format: "TC_filter_{}.dat"
         
 -   name : micado_ncpas_psf
     description : Effective NCPA induced PSF kernel

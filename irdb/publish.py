@@ -3,6 +3,7 @@ from os import path as pth
 import shutil
 from datetime import datetime as dt
 import pysftp
+import yaml
 
 
 PKGS_DIR = pth.abspath(pth.join(pth.dirname(__file__), "../"))
@@ -10,14 +11,11 @@ OLD_FILES = pth.join(PKGS_DIR, "_OLD_FILES")
 ZIPPED_DIR = pth.join(PKGS_DIR, "_ZIPPED_PACKAGES")
 
 SERVER_DIR = "./InstPkgSvr"
-PKGS = {"Armazones": "locations/Armazones.zip",
-        "ELT": "telescopes/ELT.zip",
-        "MAORY": "instruments/MAORY.zip",
-        "MICADO": "instruments/MICADO.zip",
-        "test_package": "instruments/test_package.zip"}
+with open("packages.yaml") as f:
+    PKGS = yaml.load(f)
 
 
-def publish(pkg_names=("Armazones", "ELT", "MAORY", "MICADO")):
+def publish(pkg_names=None):
     """
     Should be as easy as just calling this function to republish all packages
 
@@ -28,6 +26,9 @@ def publish(pkg_names=("Armazones", "ELT", "MAORY", "MICADO")):
     pkg_names : list
 
     """
+    if pkg_names is None:
+        pkg_names = PKGS.keys()
+
     make_packages(pkg_names)
     for pkg_name in pkg_names:
         push_to_server(pkg_name)
@@ -77,3 +78,7 @@ def push_to_server(pkg_name):
         if sftp.exists(PKGS[pkg_name]):
             sftp.remove(PKGS[pkg_name])
         sftp.put(local_path, PKGS[pkg_name])
+
+
+if __name__ == "__main__":
+    publish()
