@@ -1,7 +1,7 @@
 ### H4RG DETECTOR
 object : detector
 alias : DET
-name : micado_detector_array
+name : HAWKI_detector_array
 description : A set of 9 H4RG detectors
 
 properties :

@@ -7,11 +7,11 @@
 # outer_unit : m
 # inner_unit : m
 # angle_unit : degrees
-# temp_unit  : deg_C
+# temperature_unit  : deg_C
 # changes :
 # - 2019-08-13 : (KL) Created list based on VLT user manual
 #
-Name  Outer  Inner  Angle  Temp  Action         Filename
-M1    8.2    0.0    0.     0.    reflection     TC_mirror_aluminium.dat
-M2    1.116  0.05   0.     0.    reflection     TC_mirror_aluminium.dat
-M3    1.0    0.0    45.    0.    reflection     TC_mirror_aluminium.dat
+name  outer  inner  angle  temperature  action         filename
+M1    8.2    0.0    0.     0.           reflection     TC_mirror_aluminium.dat
+M2    1.116  0.05   0.     0.           reflection     TC_mirror_aluminium.dat
+M3    1.0    0.0    45.    0.           reflection     TC_mirror_aluminium.dat

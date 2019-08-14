@@ -3,7 +3,7 @@
 # date_created  : 2009-11-04
 # date_modified : 2018-11-19
 # status : Design - pre PDR list of MICADO mirrors for wide-field mode
-# type : mirror:reflectivity
+# type : mirror:reflection
 # changes :
 # - 2019-07-25 (KL) Changed 2-25um value to 0.98 to match ESO predictions
 #

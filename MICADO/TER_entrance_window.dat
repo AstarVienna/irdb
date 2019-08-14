@@ -11,7 +11,7 @@
 # changes :
 # - 2018-11-19 : (KL) updated meta data to new format
 #
-wavelength  transmission    reflectivity    emissivity
+wavelength  transmission    reflection      emissivity
 0.5         0               1               0
 0.51        0.95            0               0.05
 3.0         0.95            0               0.05

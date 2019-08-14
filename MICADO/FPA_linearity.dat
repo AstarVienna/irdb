@@ -1,16 +1,16 @@
 # name : H2RG linearity curve
 # author : Kieran Leschinski
 # sources: Ingraham+ 2014 - Gemini Calibrations II for H2RG
-# date_created : 2016
+# date_created : 2016-01-01
 # date_modified : 2018-11-19
 # type : detector:linearity
 # status : Design - approximated from the H2RG
 # incident_unit : ph
 # measured_unit : ph
-# ETYPE : LINEARIT
 #
 # changes :
 # - 2018-11-19 (KL) updated meta data to new format
+# - 2019-08-14 (KL) replaced long 1000000000 with 1e99
 #
 incident    measured
 0           0
@@ -51,4 +51,4 @@ incident    measured
 180000      126000
 200000      130000
 1000000     150000
-1000000000  150000
+1e99        150000

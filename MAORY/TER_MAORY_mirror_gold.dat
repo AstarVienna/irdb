@@ -3,13 +3,13 @@
 # date_created : 2016-11-22
 # date_modified : 2018-11-19
 # status : Design - pre PDR list of MAORY mirrors
-# type : mirror:reflectivity
+# type : mirror:reflection
 # changes :
 # - added meta data
 #
 # description : Unprotected Gold
 # waveunit : um
 #
-wavelength  reflectivity
+wavelength  reflection
 0.3         0.985
 3.0         0.985

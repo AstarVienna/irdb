@@ -12,8 +12,8 @@ effects:
   class: ApertureMask
   kwargs:
     array_dict:
-      x: [-8, 8, 8, -8]
-      y: [-8, -8, 8, 8]
+      x: [-240,  240, 240, -240]
+      y: [-240, -240, 240,  240]
     x_unit: arcsec
     y_unit: arcsec
 

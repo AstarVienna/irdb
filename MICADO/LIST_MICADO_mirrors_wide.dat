@@ -7,11 +7,11 @@
 # outer_unit : m
 # inner_unit : m
 # angle_unit : degrees
-# temp_unit  : deg_C
+# temperature_unit  : deg_C
 # changes :
 # - 2019-01-28 : (KL) Changed column names and added units to header
 # - 2019-07-10 : (KL) Shortened the list to only the swappable mirrors
 #
-Name        Outer   Inner   Angle   Temp    Action         Filename
-I08_SM5     0.2     0.0     00      -190    reflection     TER_mirror_gold.dat
-I09_SM6     0.2     0.0     00      -190    reflection     TER_mirror_gold.dat
+name        outer   inner   angle   temperature     action         filename
+I08_SM5     0.2     0.0     00      -190            reflection     TER_mirror_gold.dat
+I09_SM6     0.2     0.0     00      -190            reflection     TER_mirror_gold.dat

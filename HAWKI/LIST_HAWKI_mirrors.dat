@@ -7,13 +7,13 @@
 # outer_unit : m
 # inner_unit : m
 # angle_unit : degrees
-# temp_unit  : deg_C
+# temperature_unit  : deg_C
 # changes :
 # - 2019-08-13 : (KL) Created list based on HAWKI user manual
 #
-Name        Outer   Inner   Angle   Temp    Action         Filename
-I00_EntrWin 0.4     0.0     0       0       transmission   TER_window.dat
-I01_Fold    0.4     0.0     20      -198    reflection     TER_mirror_gold.dat
-I02_Img1    0.3     0.0     20      -198    reflection     TER_mirror_gold.dat
-I03_ReImg1  0.05    0.0     20      -198    reflection     TER_mirror_gold.dat
-I04_ReImg2  0.2     0.0     10      -198    reflection     TER_mirror_gold.dat
+name        outer   inner   angle   temperature     action         filename
+H0_EntrWin  0.4     0.0     0       0               transmission   TER_window.dat
+H1_Fold     0.4     0.0     20      -198            reflection     TER_mirror_gold.dat
+H2_Img1     0.3     0.0     20      -198            reflection     TER_mirror_gold.dat
+H3_ReImg1   0.05    0.0     20      -198            reflection     TER_mirror_gold.dat
+H4_ReImg2   0.2     0.0     10      -198            reflection     TER_mirror_gold.dat

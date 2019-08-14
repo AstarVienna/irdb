@@ -11,7 +11,7 @@
 #   - Fresh coatings without contamination. 
 #   - 4nm roughness modeled.
 #   - Partly based on measured data by Tom Schneider (Gemini).
-#   - Reflectivity is for the combined M1-M5 system, not for individual mirrors
+#   - Reflection is for the combined M1-M5 system, not for individual mirrors
 # changes : 
 #   - 2019-11-06 (KL) Converted from .xlsx to .dat file, added ScopeSim meta data
 #
