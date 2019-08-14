@@ -30,13 +30,16 @@ def publish(pkg_names=None):
     if pkg_names is None:
         pkg_names = PKGS.keys()
 
-    make_packages(pkg_names)
     for pkg_name in pkg_names:
+        make_packages(pkg_name)
         push_to_server(pkg_name)
         print(f"Pushed to server: {pkg_name}")
 
 
 def make_packages(pkg_names=()):
+    if isinstance(pkg_names, str):
+        pkg_names = [pkg_names]
+
     for pkg_name in pkg_names:
         old_pkg_path = pth.join(ZIPPED_DIR, pkg_name + ".zip")
 
@@ -52,6 +55,8 @@ def make_packages(pkg_names=()):
 def rename_package(pkg_path):
     suffix = "." + str(dt.now().date())
     new_path = pkg_path.replace(".zip", suffix + ".zip")
+    if pth.exists(new_path):
+        os.remove(new_path)
     os.rename(pkg_path, new_path)
 
     return new_path
@@ -75,8 +80,10 @@ def zip_package_folder(pkg_name):
 def push_to_server(pkg_name):
     local_path = pth.join(ZIPPED_DIR, pkg_name+".zip")
 
+    cnopts = pysftp.CnOpts()
+    cnopts.hostkeys = None
     sftp = pysftp.Connection(host="upload.univie.ac.at", username="simcado",
-                             password="M1(aDo(aM")
+                             password="M1(aDo(aM", cnopts=cnopts)
     with sftp.cd(f"html/InstPkgSvr/"):
         if sftp.exists(PKGS[pkg_name]):
             sftp.remove(PKGS[pkg_name])
