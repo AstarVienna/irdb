@@ -15,8 +15,8 @@ effects :
         filename: LIST_MICADO_mirrors_static.dat
         
 -   name: micado_filter
-    description : transmission curce for filter
-    class: TERCurve
+    description : transmission curve for filter
+    class: FilterCurve
     kwargs:
         filter_name: "!OBS.filter_name"
         filename_format: "TC_filter_{}.dat"

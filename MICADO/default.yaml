@@ -24,6 +24,9 @@ properties :
   declination : -30
   hour_angle : 0
   pupil_angle : 0
+  dit: 60
+  ndit: 1
+
 
 
 ---
