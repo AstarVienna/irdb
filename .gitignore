@@ -5,3 +5,6 @@ _ZIPPED_PACKAGES/
 _Legacy_packages/
 .pytest_cache/
 *__pycache__
+*php/
+*ezphp.exe
+
