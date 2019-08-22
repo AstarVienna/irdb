@@ -14,11 +14,10 @@ yamls:
 - Armazones.yaml
 - ELT.yaml
 - MICADO.yaml
-- MICADO_Standalone_RO.yaml
-- MICADO_IMG_wide.yaml
 - MICADO_H4RG.yaml
 
 properties :
+  mode : scao_lri
   filter_name : Ks
   airmass : 1.2
   declination : -30
@@ -27,6 +26,48 @@ properties :
   dit: 60
   ndit: 1
 
+mode_yamls:
+-   name: scao_lri
+    description: "SCAO low resolution imager : 4mas/pix"
+    yamls:
+    - MICADO_Standalone_RO.yaml
+    - MICADO_IMG_wide.yaml
+
+-   name: scao_hri
+    description: "SCAO high resolution imager : 1.5mas/pix"
+    yamls:
+    - MICADO_Standalone_RO.yaml
+    - MICADO_IMG_zoom.yaml
+
+-   name: scao_spec
+    description: "Spectroscopy in stand-alone mode"
+    yamls:
+    - MICADO_Standalone_RO.yaml
+    - MICADO_ISPEC_3000x16.yaml
+
+-   name: mcao_lri
+    description: "MCAO low resolution imager : 4mas/pix"
+    yamls:
+    - MAORY.yaml
+    - MICADO_IMG_wide.yaml
+
+-   name: mcao_hri
+    description: "MCAO high resolution imager : 1.5mas/pix"
+    yamls:
+    - MAORY.yaml
+    - MICADO_IMG_zoom.yaml
+
+-   name: mcao_spec
+    description: "Spectroscopy with MAORY attached"
+    yamls:
+    - MICADO_Standalone_RO.yaml
+    - MICADO_IMG_wide.yaml
+
+-   name: scao_hci
+    description: "High contrast imaging"
+    yamls:
+    - MICADO_Standalone_RO.yaml
+    - MICADO_IMG_HCI.yaml
 
 
 ---

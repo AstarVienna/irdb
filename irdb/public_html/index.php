@@ -14,7 +14,7 @@
 	<div class="container">
 	<h1>Welcome to your personal web server</h1>
 		<p>
-		<?= "This file is located in: C:\Work\irdb\irdb\public_html\index.php"; ?>
+		<?= "This file is located in: \Work\irdb\irdb\public_html\index.php"; ?>
 		</p>
 		<?= "Replaced it with your own file"; ?>
 		<p>

@@ -1,6 +1,6 @@
 <?php
 //start the server by running the ezphp.exe in parent folder
-//$arr = array ('REMOTE_ADDR'=>$_SERVER['REMOTE_ADDR']);
+//call https://www.univie.ac.at/simcado/InstPkgSvr/api.php?package_name=MICADO
 
     function log_package_use() {
         $log_file = "scopesim.log";
