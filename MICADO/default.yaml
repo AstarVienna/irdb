@@ -43,7 +43,7 @@ mode_yamls:
     description: "Spectroscopy in stand-alone mode"
     yamls:
     - MICADO_Standalone_RO.yaml
-    - MICADO_ISPEC_3000x16.yaml
+    - MICADO_SPEC.yaml
 
 -   name: mcao_lri
     description: "MCAO low resolution imager : 4mas/pix"
@@ -60,8 +60,8 @@ mode_yamls:
 -   name: mcao_spec
     description: "Spectroscopy with MAORY attached"
     yamls:
-    - MICADO_Standalone_RO.yaml
-    - MICADO_IMG_wide.yaml
+    - MAORY.yaml
+    - MICADO_SPEC.yaml
 
 -   name: scao_hci
     description: "High contrast imaging"
