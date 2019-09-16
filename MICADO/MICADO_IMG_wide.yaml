@@ -1,8 +1,8 @@
 # yaml extension for the wide field imaging mode
 object : instrument
 alias : INST
-name : MICADO_IMG_HCI
-description : additional effects for the high contrast imaging mode
+name : MICADO_IMG_LR
+description : additional effects for the wife-field imaging mode
 
 properties :
     pixel_scale : 0.004         # arcsec / pixel
