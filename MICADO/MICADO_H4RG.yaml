@@ -5,6 +5,7 @@ name : micado_detector_array
 description : A set of 9 H4RG detectors
 
 properties :
+    image_plane_id : 0
     temperature : -230
     dit : "!OBS.dit"
     ndit : "!OBS.ndit"
@@ -20,7 +21,7 @@ effects :
     description : Quantum efficiency curves for each detector
     class : QuantumEfficiencyCurve
     kwargs :
-        file_name : QE_detector_H2RG.dat
+        filename : QE_detector_H2RG.dat
 
 -   name: dark_current
     description : MICADO dark current

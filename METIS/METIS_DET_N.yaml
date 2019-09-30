@@ -1,21 +1,20 @@
 ### H4RG DETECTOR
 object : detector
 alias : DET
-name : HAWKI_detector_array
+name : micado_detector_array
 description : A set of 9 H4RG detectors
 
 properties :
-    image_plane_id : 0
-    temperature : -198
+    temperature : -230
     dit : "!OBS.dit"
     ndit : "!OBS.ndit"
 
 effects :
 -   name: detector_array_list
-    description : HAWKI detector array list
+    description : MICADO detector array list
     class: DetectorList
     kwargs:
-        filename : FPA_hawki_layout.dat
+        filename : FPA_array_layout.dat
 
 -   name : qe_curve
     description : Quantum efficiency curves for each detector
@@ -24,7 +23,7 @@ effects :
         file_name : QE_detector_H2RG.dat
 
 -   name: dark_current
-    description : HAWKI dark current
+    description : MICADO dark current
     class: DarkCurrent
     # [e-/s] level of dark current for each detector
     kwargs:
@@ -45,4 +44,4 @@ effects :
     class : BasicReadoutNoise
     kwargs :
         noise_std : 12
-        n_channels : 32
+        n_channels : 64
