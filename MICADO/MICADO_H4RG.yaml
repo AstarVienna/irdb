@@ -22,6 +22,10 @@ effects :
     kwargs :
         file_name : QE_detector_H2RG.dat
 
+-   name: exposure_action
+    description: Summing up sky signal for all DITs and NDITs
+    class: SummedExposure
+
 -   name: dark_current
     description : MICADO dark current
     class: DarkCurrent
