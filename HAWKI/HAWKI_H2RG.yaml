@@ -5,6 +5,7 @@ name : HAWKI_detector_array
 description : A set of 9 H4RG detectors
 
 properties :
+    image_plane_id : 0
     temperature : -198
     dit : "!OBS.dit"
     ndit : "!OBS.ndit"
