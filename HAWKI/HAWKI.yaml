@@ -17,6 +17,10 @@ effects:
       y: [-240, -240, 240,  240]
     x_unit: arcsec
     y_unit: arcsec
+    angle: 0
+    angle_unit: deg
+    shape: rect
+    conserve_image: True
 
 - name: hawki_mirror_list
   class: SurfaceList
