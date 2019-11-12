@@ -14,8 +14,30 @@ effects :
 -   name: detector_array_list
     description : MICADO detector array list
     class: DetectorList
+    include: True
     kwargs:
         filename : FPA_array_layout.dat
+
+-   name: SimpleCADO_1024_detector_window
+    class: DetectorList
+    include: False
+    kwargs:
+        array_dict:
+            id: [1]
+            pixsize: [0.015]
+            angle: [0.]
+            gain: [1.0]
+            x_cen: [0]
+            y_cen: [0]
+            xhw: [7.68]
+            yhw: [7.68]
+        x_cen_unit: mm
+        y_cen_unit: mm
+        xhw_unit: mm
+        yhw_unit: mm
+        pixsize_unit: mm
+        angle_unit: deg
+        gain_unit: electron/adu
 
 -   name : qe_curve
     description : Quantum efficiency curves for each detector
