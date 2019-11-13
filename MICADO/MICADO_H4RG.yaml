@@ -14,13 +14,13 @@ effects :
 -   name: detector_array_list
     description : MICADO detector array list
     class: DetectorList
-    include: True
+    include: False
     kwargs:
         filename : FPA_array_layout.dat
 
 -   name: SimpleCADO_1024_detector_window
     class: DetectorList
-    include: False
+    include: True
     kwargs:
         array_dict:
             id: [1]

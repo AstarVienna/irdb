@@ -19,7 +19,7 @@ properties :
 effects :
 -   name : armazones_atmo_default_ter_curve
     description : atmospheric emission and transmission
-    class : TERCurve
+    class : AtmosphericTERCurve
     kwargs :
         filename: "TER_armazones_default_NIR_IMG.dat"
 
