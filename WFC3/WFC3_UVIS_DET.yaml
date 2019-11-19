@@ -1,0 +1,14 @@
+# 162" x 162" FOV
+# waverange: 200-1000nm
+# pixel_scale: 0.04"/pixel
+# 62 filters
+# 1 grism
+# 4096 x 2051 pixel CCDs
+# 35 pixel gap (1.4")
+# MINDIT: 0.5s
+# sat limit 70k e-
+# modes only: ACCUM - destructive read-outs
+# distorsion: The
+#   WFC3 optics cause the nominally square field of view of the UVIS detector to
+#   be projected onto the sky as a skewed rhombus, 162" on a side, with an angle
+#   of 86.1 degrees between the sides.

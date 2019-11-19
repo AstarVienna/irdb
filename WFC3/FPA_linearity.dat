@@ -1,0 +1,20 @@
+# name : WFC3 IR linearity curve
+# author : Kieran Leschinski
+# sources: Extracted from HAWKI images
+# date_created : 2019-11-19
+# date_modified : 2019-11-19
+# type : detector:linearity
+# status : Measured - approximated from the online graph for WFC3-IR detector
+# incident_unit : ph
+# measured_unit : ph
+#
+# changes :
+# - 2019-11-19 (KL) Made the file
+#
+incident        measured
+0               0
+4e4             4.0e4
+6.5e4           6.37e4
+7.7eE4          7.3625e4
+9.5e4           8.5e4
+1e99            8.5e4

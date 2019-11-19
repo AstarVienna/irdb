@@ -1,0 +1,13 @@
+## IR channel info
+#
+# source: http://www.stsci.edu/files/live/sites/www/files/home/hst/instrumentation/wfc3/_documents/wfc3_dhb.pdf
+# FOV 136" x 123"
+# waverange: 800-1700nm
+# pixel_scale: 0.13"/pix
+# 15x filters
+# 2 grisms
+# 1014x1014 pixel
+# temp: 145 K
+# mode MULTIACCUM - i.e. Non-destruct read
+# MINDIT: 2.93
+# Detector pixel aspect: 0.9

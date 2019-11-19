@@ -1,0 +1,24 @@
+# author : Kieran Leschinski
+# source : https://hst-docs.stsci.edu/display/WFC3IHB/2.1+Optical+Design+and+Detectors
+# date_created  : 2019-11-19
+# date_modified : 2019-11-19
+# status : Design - pre PDR list of swappable mirrors for zoom mode
+# type : mirror:list
+# outer_unit : m
+# inner_unit : m
+# angle_unit : degrees
+# temperature_unit  : deg_C
+# changes :
+# - 2019-11-19 : (KL) Created file
+#
+name            outer   inner   angle   temperature     action          filename
+POM             0.2     0.0     45      -85             reflection      wfc3_ir_mir1_001_syn.fits
+IRChanSelect    0.2     0.0     10      15              reflection      wfc3_ir_csm_001_syn.fits
+IREntrEin       0.2     0.0     0       15              transmission    wfc3_ir_win_001_syn.fits
+IRColdMask      0.2     0.0     0       -85             transmission    wfc3_ir_mask_001_syn.fits
+IRFold          0.2     0.0     45      -85             reflection      wfc3_ir_fold_001_syn.fits
+IRMirr1         0.2     0.0     10      -85             reflection      wfc3_ir_mir1_001_syn.fits
+IRMirr2         0.2     0.0     10      -85             reflection      wfc3_ir_mir2_001_syn.fits
+RefrCorrPlate   0.2     0.0     0      -85              transmission    wfc3_ir_rcp_001_syn.fits
+IRFudge         0.2     0.0     0      -85              transmission    wfc3_ir_cor_004_syn.fits
+

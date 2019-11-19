@@ -1,0 +1,16 @@
+# author : Kieran Leschinski
+# source : https://stsynphot.readthedocs.io/en/latest/stsynphot/data_hst.html
+# date_created : 
+# date_modified : 2019-11-19
+# status : Final
+# type : mirror:list
+# outer_unit : m
+# inner_unit : m
+# angle_unit : degrees
+# temperature_unit  : deg_C
+# changes :
+# - 2019-11-19 (KL) Created the file
+#
+name            outer   inner   angle   temperature     action          filename
+HST_PriMirr     2.4     0.3     0.      15.             reflection      wfc3_ir_primary_001_syn.dat
+HST_SecMirr     0.3     0.      0.      15.             reflection      wfc3_ir_secondary_001_syn.dat
