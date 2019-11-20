@@ -16,7 +16,7 @@ with open(pth.join(pth.dirname(__file__), "packages.yaml"), "r") as f:
     PKGS = yaml.load(f)
 
 
-def publish(pkg_names=None):
+def publish(pkg_names=None, compile=True, upload=True):
     """
     Should be as easy as just calling this function to republish all packages
 
@@ -25,15 +25,16 @@ def publish(pkg_names=None):
     Parameters
     ----------
     pkg_names : list
+    compile : bool
+    upload : bool
 
     """
     if pkg_names is None:
         pkg_names = PKGS.keys()
 
     for pkg_name in pkg_names:
-        make_packages(pkg_name)
-        push_to_server(pkg_name)
-        print(f"Pushed to server: {pkg_name}")
+        if compile: make_packages(pkg_name)
+        if upload: push_to_server(pkg_name)
 
 
 def make_packages(pkg_names=()):
@@ -80,19 +81,42 @@ def zip_package_folder(pkg_name):
 def push_to_server(pkg_name):
     local_path = pth.join(ZIPPED_DIR, pkg_name+".zip")
 
+    if pkg_name not in PKGS:
+        raise ValueError(f"{pkg_name} was not found in 'irdb/packages.yaml'")
+
     cnopts = pysftp.CnOpts()
     cnopts.hostkeys = None
     sftp = pysftp.Connection(host="upload.univie.ac.at", username="simcado",
                              password="M1(aDo(aM", cnopts=cnopts)
-    with sftp.cd(f"html/InstPkgSvr/"):
+    with sftp.cd("html/InstPkgSvr/"):
         if sftp.exists(PKGS[pkg_name]):
             sftp.remove(PKGS[pkg_name])
         sftp.put(local_path, PKGS[pkg_name])
+        print(f"Pushed to server: {pkg_name}")
+
+
+def print_help_menu():
+    str = """Publish IRDB packages from the IRDB root directory:
+    
+python irdb/publish.py -cu <PKG_NAME> ... <PKG_NAME_N>
+    
+    -c, --compile : adds all files in a PKG folder to a .zip archive
+    -u, --upload : uploads the PKG .zip archive to the server
+    -h, --help : prints this statement 
+    """
+    print(str)
 
 
 if __name__ == "__main__":
-    _pkg_names = None
+    _pkg_names = []
     if len(sys.argv) > 1:
-        _pkg_names = sys.argv[1:]
+        kwargs = {"compile": False, "upload": False}
+        for arg in sys.argv[1:]:
+            if "-" in arg:
+                if "c" in arg: kwargs["compile"] = True
+                if "u" in arg: kwargs["upload"] = True
+                if "h" in arg: print_help_menu()
+            else:
+                _pkg_names += [arg]
 
-    publish(_pkg_names)
+        publish(_pkg_names, **kwargs)

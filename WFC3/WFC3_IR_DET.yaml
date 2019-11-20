@@ -17,7 +17,7 @@ effects:
       include: True
       kwargs:
         array_dict: {id: [1], pixsize: [0.01], angle: [0.], gain: [1.0],
-                     x_cen: [0], y_cen: [0], xhw: [5.07], yhw: [5.07]}
+                     x_cen: [0], y_cen: [0], xhw: [5.12], yhw: [5.12]}
         x_cen_unit: mm
         y_cen_unit: mm
         xhw_unit: mm
@@ -35,6 +35,13 @@ effects:
     - name: exposure_action
       description: Summing up sky signal for all DITs and NDITs
       class: SummedExposure
+
+    - name: detector_border
+      decription: blacks out the pixels at the edge of the detector
+      class: ReferencePixelBorder
+      kwargs:
+        width: 5
+        edges: ["all"]
 
     - name: dark_current
       description: WFC3-IR dark current

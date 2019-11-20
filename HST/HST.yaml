@@ -12,4 +12,4 @@ effects :
     description : list of HST surfaces
     class : SurfaceList
     kwargs :
-        filename : LIST_mirrors_ELT.tbl
+        filename : LIST_mirrors_HST.tbl

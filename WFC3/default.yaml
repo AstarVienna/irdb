@@ -21,11 +21,13 @@ mode_yamls:
     description: The NIR imaging channel
     yamls:
     - WFC3_IR.yaml
+    - WFC3_IR_DET.yaml
 
 -   name: UVIS_channel
     description: The UV and Visual imaging channel
     yamls:
     - WFC3_UVIS.yaml
+    - WFC3_UVIS_DET.yaml
 
 properties:
   mode: IR_channel
