@@ -22,6 +22,7 @@ effects :
     class: DetectorList
     include: True
     kwargs:
+        image_plane_id : 0
         array_dict:
             id: [1]
             pixsize: [0.015]

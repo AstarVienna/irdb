@@ -25,9 +25,9 @@ effects :
 ################################################################################
 
 # This one can be used if a filename from a FV-PSF file if provided
--   name : relay_fv_psf
-    description : SCAO FV PSF
-    class : FieldVaryingPSF
-    include : False
-    kwargs:
-        filename : None
+#-   name : relay_fv_psf
+#    description : SCAO FV PSF
+#    class : FieldVaryingPSF
+#    include : False
+#    kwargs:
+#        filename : None

@@ -2,7 +2,7 @@
 object : detector
 alias : DET
 name : HAWKI_detector_array
-description : A set of 9 H4RG detectors
+description : A set of 4 H2RG detectors
 
 properties :
     image_plane_id : 0
@@ -14,8 +14,24 @@ effects :
 -   name: detector_array_list
     description : HAWKI detector array list
     class: DetectorList
+    include: False
     kwargs:
         filename : FPA_hawki_layout.dat
+
+-   name: detector_1024_window
+    class: DetectorList
+    include: True
+    kwargs:
+        image_plane_id : 0
+        array_dict: {id: [1], pixsize: [0.01], angle: [0.], gain: [1.0],
+            x_cen: [0], y_cen: [0], xhw: [5.12], yhw: [5.12]}
+        x_cen_unit: mm
+        y_cen_unit: mm
+        xhw_unit: mm
+        yhw_unit: mm
+        pixsize_unit: mm
+        angle_unit: deg
+        gain_unit: electron/adu
 
 -   name : qe_curve
     description : Quantum efficiency curves for each detector
