@@ -14,13 +14,13 @@ effects :
 -   name: detector_array_list
     description : HAWKI detector array list
     class: DetectorList
-    include: False
+    include: True
     kwargs:
         filename : FPA_hawki_layout.dat
 
 -   name: detector_1024_window
     class: DetectorList
-    include: True
+    include: False
     kwargs:
         image_plane_id : 0
         array_dict: {id: [1], pixsize: [0.01], angle: [0.], gain: [1.0],

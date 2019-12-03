@@ -16,4 +16,10 @@ effects :
 
 -   name: spec_trace_list
     description : list of spectral order trace geometry on the focal plane
-    class : TraceList
+    class : SpectralTraceList
+    kwargs:
+        filename: "TRACE_15arcsec.fits"
+        wavecol_name: lam
+        wavecol_unit: um
+        slitcol_name: xi
+        slitcol_unit: arcsec

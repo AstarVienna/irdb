@@ -20,7 +20,7 @@ effects :
 -   name : armazones_atmo_default_ter_curve
     description : atmospheric emission and transmission
     class : AtmosphericTERCurve
-    include : False
+    include : True
     kwargs :
         filename: "TER_armazones_default_NIR_IMG.dat"
 
@@ -34,7 +34,7 @@ effects :
 -   name : armazones_atmo_skycalc_ter_curve
     description : atmospheric spectra pulled from the skycalc server
     class : SkycalcTERCurve
-    include : True
+    include : False
     kwargs :
         observatory : armazones
         wmin : "!SIM.spectral.wave_min"
