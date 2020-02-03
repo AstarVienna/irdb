@@ -1,20 +1,20 @@
-### H4RG DETECTOR
+### H2RG DETECTOR
 object : detector
 alias : DET
-name : micado_detector_array
-description : A set of 9 H4RG detectors
+name : metis_lms_detector_array
+description : A set of 4 H2RG detectors
 
 properties :
-    temperature : -230
+    temperature : -233
     dit : "!OBS.dit"
     ndit : "!OBS.ndit"
 
 effects :
 -   name: detector_array_list
-    description : MICADO detector array list
+    description : METIS LMS detector array list
     class: DetectorList
     kwargs:
-        filename : FPA_array_layout.dat
+        filename : FPA_metis_lms_layout.dat
 
 -   name : qe_curve
     description : Quantum efficiency curves for each detector
@@ -23,14 +23,14 @@ effects :
         filename : QE_detector_H2RG.dat
 
 -   name: dark_current
-    description : MICADO dark current
+    description : METIS LMS dark current
     class: DarkCurrent
     # [e-/s] level of dark current for each detector
     kwargs:
         value: 0.1
 
 -   name: detector_linearity
-    description : Linearity characteristics of H4RG chips
+    description : Linearity characteristics of H2RG chips
     class: LinearityCurve
     kwargs:
         filename : FPA_linearity.dat
@@ -44,4 +44,4 @@ effects :
     class : BasicReadoutNoise
     kwargs :
         noise_std : 12
-        n_channels : 64
+        n_channels : 32
