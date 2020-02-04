@@ -14,7 +14,7 @@ effects :
     description : METIS IMG-LM detector array list
     class: DetectorList
     kwargs:
-        filename : FPA_metis_lm_img_layout.dat
+        filename : FPA_metis_img_lm_layout.dat
 
 -   name : qe_curve
     description : Quantum efficiency curves for each detector
