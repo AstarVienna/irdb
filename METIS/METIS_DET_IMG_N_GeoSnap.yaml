@@ -14,7 +14,7 @@ effects :
     description : MICADO detector array list
     class: DetectorList
     kwargs:
-        filename : FPA_metis_img_n_geosnap.dat
+        filename : FPA_metis_img_n_geosnap_layout.dat
 
 -   name : qe_curve
     description : Quantum efficiency curves for each detector
