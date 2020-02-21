@@ -1,0 +1,152 @@
+#+TODO: TODO(t) VERIFY(v) | DONE(d) CANCELED(c)
+
+* list of items in SimMETIS
+This need to be transferred to irdb/METIS
+
+** TODO EC_mirrors_EELT_SCAO.tbl
+** TODO EC_mirrors_EELT_SCAO_best.tbl
+** TODO EC_mirrors_EELT_SCAO_default.tbl
+** TODO EC_mirrors_EELT_SCAO_median.tbl
+** TODO EC_mirrors_EELT_SCAO_poor.tbl
+** TODO EC_sky_extended_proper.tbl
+** CANCELLED FPA_AQUARIUS_no_noise.fits
+   CLOSED: [2020-02-21 Fri 16:56]
+   :LOGBOOK:
+   - State "CANCELLED"  from "TODO"       [2020-02-21 Fri 16:56]
+   :END:
+** TODO FPA_H2RG_linearity.dat
+** TODO FPA_H2RG_noise.fits
+** TODO FPA_chip_layout_AQUARIUS.dat
+** TODO FPA_chip_layout_HAWAII.dat
+** TODO FPA_linearity_aquarius.dat
+** TODO FPA_linearity_hawaii.dat
+** TODO PSF_11.6_microns.fits
+** TODO PSF_SCAO_9mag_06seeing.fits
+** TODO PSF_diffraction_limited_11.6_microns.fits
+** TODO PSF_diffraction_limited_4.0_microns.fits
+** TODO TC_ADC.dat
+** TODO TC_aluminium.dat
+** TODO TC_detector_METIS_LM.dat
+** TODO TC_detector_METIS_LM_no_losses.dat
+** TODO TC_detector_METIS_NQ.dat
+** TODO TC_detector_METIS_NQ_no_losses.dat
+** TODO TC_dichroic_CFO.dat
+** TODO TC_dichroic_IMG.dat
+** DONE TC_filter_Br_alpha.dat
+   CLOSED: [2020-02-21 Fri 17:02]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-21 Fri 17:02]
+   :END:
+** DONE TC_filter_Br_alpha_ref.dat
+   CLOSED: [2020-02-21 Fri 17:05]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-21 Fri 17:05]
+   :END:
+** DONE TC_filter_CO(1-0)_ice.dat -> TC_filter_CO_1-0_ice.dat
+   CLOSED: [2020-02-21 Fri 17:09]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-21 Fri 17:09]
+   :END:
+** DONE TC_filter_CO_ref.dat
+   CLOSED: [2020-02-21 Fri 17:11]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-21 Fri 17:11]
+   :END:
+** DONE TC_filter_H2O-ice.dat
+   CLOSED: [2020-02-21 Fri 17:14]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-21 Fri 17:14]
+   :END:
+** DONE TC_filter_IB_4.05.dat
+   CLOSED: [2020-02-21 Fri 17:15]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-21 Fri 17:15]
+   :END:
+** DONE TC_filter_L.dat
+   CLOSED: [2020-02-21 Fri 17:24]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-21 Fri 17:24]
+   :END:
+** DONE TC_filter_Lp.dat
+   CLOSED: [2020-02-21 Fri 17:28]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-21 Fri 17:28]
+   :END:
+** TODO TC_filter_Mp.dat
+** TODO TC_filter_N1.dat
+** TODO TC_filter_N2.dat
+** TODO TC_filter_N3.dat
+** TODO TC_filter_Ne_II.dat
+** TODO TC_filter_Ne_II_ref.dat
+** TODO TC_filter_PAH_11.25.dat
+** TODO TC_filter_PAH_11.25_ref.dat
+** TODO TC_filter_PAH_3.3.dat
+** TODO TC_filter_PAH_3.3_ref.dat
+** TODO TC_filter_PAH_8.6.dat
+** TODO TC_filter_PAH_8.6_ref.dat
+** TODO TC_filter_Q1.dat
+** TODO TC_filter_S_IV.dat
+** TODO TC_filter_S_IV_ref.dat
+** TODO TC_filter_open.dat
+** TODO TC_filter_short-L.dat
+** TODO TC_mirror_EELT.dat
+** TODO TC_mirror_ICD_emissivity.dat
+** TODO TC_mirror_aluminium.dat
+** TODO TC_mirror_emissivity_best.dat
+** TODO TC_mirror_emissivity_median.dat
+** TODO TC_mirror_emissivity_poor.dat
+** TODO TC_mirror_gold.dat
+** TODO TC_mirror_mgf2agal.dat
+** TODO TC_mirror_total_emissivity.dat
+** TODO TC_pupil.dat
+** TODO TC_sky_extended_proper.tbl
+** TODO TC_window_METIS.dat
+** TODO sirius_downsampled.txt
+** TODO skycal_R308296_best_conditions.fits
+** TODO skycal_R308296_median_conditions.fits
+** TODO skycal_R308296_poor_conditions.fits
+
+* New items
+These are newly created following the example from irdb/MICADO.
+** TODO default.yaml
+** DONE FPA_metis_img_lm_layout.dat
+   CLOSED: [2020-02-21 Fri 16:53]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-21 Fri 16:53]
+   :END:
+** DONE FPA_metis_img_n_geosnap_layout.dat
+   CLOSED: [2020-02-21 Fri 16:54]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-21 Fri 16:54]
+   :END:
+** DONE FPA_metis_img_nq_aquarius_layout.dat
+   CLOSED: [2020-02-21 Fri 16:54]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-21 Fri 16:54]
+   :END:
+** DONE FPA_metis_lms_layout.dat
+   CLOSED: [2020-02-21 Fri 16:54]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-21 Fri 16:54]
+   :END:
+** TODO LIST_ifu_apertures.dat
+** DONE METIS_DET_IFU.yaml
+   CLOSED: [2020-02-21 Fri 16:50]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-21 Fri 16:50]
+   :END:
+** DONE METIS_DET_IMG_LM.yaml
+   CLOSED: [2020-02-21 Fri 16:50]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-21 Fri 16:50]
+   :END:
+** DONE METIS_DET_IMG_N_Aquarius.yaml
+   CLOSED: [2020-02-21 Fri 16:51]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-21 Fri 16:51]
+   :END:
+** DONE METIS_DET_IMG_N_GeoSnap.yaml
+   CLOSED: [2020-02-21 Fri 16:51]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-21 Fri 16:51]
+   :END:
