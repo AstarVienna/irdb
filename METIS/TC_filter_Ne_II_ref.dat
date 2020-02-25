@@ -1,0 +1,17 @@
+# author : NN
+# source : Roy van Boekel
+# date_created : 2018-07
+# date_modified : 2020-02-25
+# status : Design - pre-PDR list of filters
+# type : filter:transmission
+# center : 13.02
+# width : 0.25
+# blue_cutoff : 12.89
+# red_cutoff : 13.15
+# comment : "[Ne II] ref" from Roys wish filter list, July 2018
+#
+wavelength  transmission
+12.8900      0.0000
+12.9200      0.6000
+13.1200      0.6000
+13.1500      0.0000

@@ -72,22 +72,86 @@ This need to be transferred to irdb/METIS
    :LOGBOOK:
    - State "DONE"       from "TODO"       [2020-02-21 Fri 17:28]
    :END:
-** TODO TC_filter_Mp.dat
-** TODO TC_filter_N1.dat
-** TODO TC_filter_N2.dat
-** TODO TC_filter_N3.dat
-** TODO TC_filter_Ne_II.dat
-** TODO TC_filter_Ne_II_ref.dat
-** TODO TC_filter_PAH_11.25.dat
-** TODO TC_filter_PAH_11.25_ref.dat
-** TODO TC_filter_PAH_3.3.dat
-** TODO TC_filter_PAH_3.3_ref.dat
-** TODO TC_filter_PAH_8.6.dat
-** TODO TC_filter_PAH_8.6_ref.dat
-** TODO TC_filter_Q1.dat
-** TODO TC_filter_S_IV.dat
-** TODO TC_filter_S_IV_ref.dat
-** TODO TC_filter_open.dat
+** DONE TC_filter_Mp.dat
+   CLOSED: [2020-02-25 Tue 12:47]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-25 Tue 12:47]
+   :END:
+** DONE TC_filter_N1.dat
+   CLOSED: [2020-02-25 Tue 13:59]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-25 Tue 13:59]
+   :END:
+** DONE TC_filter_N2.dat
+   CLOSED: [2020-02-25 Tue 14:01]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-25 Tue 14:01]
+   :END:
+** DONE TC_filter_N3.dat
+   CLOSED: [2020-02-25 Tue 14:02]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-25 Tue 14:02]
+   :END:
+** DONE TC_filter_Ne_II.dat
+   CLOSED: [2020-02-25 Tue 14:04]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-25 Tue 14:04]
+   :END:
+** DONE TC_filter_Ne_II_ref.dat
+   CLOSED: [2020-02-25 Tue 14:05]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-25 Tue 14:05]
+   :END:
+** DONE TC_filter_PAH_11.25.dat
+   CLOSED: [2020-02-25 Tue 14:06]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-25 Tue 14:06]
+   :END:
+** DONE TC_filter_PAH_11.25_ref.dat
+   CLOSED: [2020-02-25 Tue 14:07]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-25 Tue 14:07]
+   :END:
+** DONE TC_filter_PAH_3.3.dat
+   CLOSED: [2020-02-25 Tue 14:08]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-25 Tue 14:08]
+   :END:
+** DONE TC_filter_PAH_3.3_ref.dat
+   CLOSED: [2020-02-25 Tue 14:09]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-25 Tue 14:09]
+   :END:
+** DONE TC_filter_PAH_8.6.dat
+   CLOSED: [2020-02-25 Tue 14:10]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-25 Tue 14:10]
+   :END:
+** DONE TC_filter_PAH_8.6_ref.dat
+   CLOSED: [2020-02-25 Tue 14:11]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-25 Tue 14:11]
+   :END:
+** DONE TC_filter_Q1.dat
+   CLOSED: [2020-02-25 Tue 14:12]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-25 Tue 14:12]
+   :END:
+** DONE TC_filter_S_IV.dat
+   CLOSED: [2020-02-25 Tue 14:13]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-25 Tue 14:13]
+   :END:
+** DONE TC_filter_S_IV_ref.dat
+   CLOSED: [2020-02-25 Tue 14:14]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-25 Tue 14:14]
+   :END:
+** DONE TC_filter_open.dat
+   CLOSED: [2020-02-25 Tue 14:16]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-25 Tue 14:16]
+   :END:
 ** TODO TC_filter_short-L.dat
 ** TODO TC_mirror_EELT.dat
 ** TODO TC_mirror_ICD_emissivity.dat
