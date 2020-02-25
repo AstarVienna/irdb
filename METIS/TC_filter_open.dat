@@ -4,10 +4,10 @@
 # date_modified : 2020-02-25
 # status : Dummy filter for use with LMS simulator
 # type : filter:transmission
-# center :
-# width :
-# blue_cutoff :
-# red_cutoff :
+# center : 8.7
+# width : 17.5
+# blue_cutoff : 2.5
+# red_cutoff : 20.1
 # comment : Dummy filter for use with LMS simulator
 #
 wavelength  transmission
