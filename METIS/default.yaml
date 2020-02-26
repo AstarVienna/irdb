@@ -1,0 +1,42 @@
+### default observation parameters needed for a METIS simulation
+object : configuration
+alias : OBS
+name : METIS_default_configuration
+description : default parameters needed for a METIS simulation
+
+packages :
+  - Armazones
+  - ELT
+  - METIS
+
+yamls :
+  - Armazones.yaml
+  - ELT.yaml
+  - METIS.yaml
+  - METIS_DET_IMG_LM.yaml
+
+properties :
+  filter_name : L
+  airmass : 1.2
+  declination : -30
+  hour_angle : 0
+  pupil_angle : 0
+  dit : 60
+  ndit : 1
+
+
+---
+### default simulation parameters needed for a HAWKI simulation
+object : simulation
+alias : SIM
+name : METIS_simulation_parameters
+description : RC simulation parameters which need to change for a METIS run
+
+properties :
+  random :
+    seed : 9001
+
+  spectral :
+    wave_min : 3.0
+    wave_mid : 10.5
+    wave_max : 18.0
