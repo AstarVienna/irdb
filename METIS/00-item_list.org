@@ -152,7 +152,11 @@ This need to be transferred to irdb/METIS
    :LOGBOOK:
    - State "DONE"       from "TODO"       [2020-02-25 Tue 14:16]
    :END:
-** TODO TC_filter_short-L.dat
+** DONE TC_filter_short-L.dat
+   CLOSED: [2020-02-25 Tue 14:39]
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2020-02-25 Tue 14:39]
+   :END:
 ** TODO TC_mirror_EELT.dat
 ** TODO TC_mirror_ICD_emissivity.dat
 ** TODO TC_mirror_aluminium.dat
