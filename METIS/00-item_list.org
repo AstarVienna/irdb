@@ -30,7 +30,8 @@ This need to be transferred to irdb/METIS
 ** TODO TC_detector_METIS_LM_no_losses.dat
 ** TODO TC_detector_METIS_NQ.dat
 ** TODO TC_detector_METIS_NQ_no_losses.dat
-** TODO TC_dichroic_CFO.dat
+** DONE TC_dichroic_CFO.dat  -> TER_sca_dichroic.dat
+   CLOSED: [2020-02-28 Fri 19:04]
 ** TODO TC_dichroic_IMG.dat
 ** DONE TC_filter_Br_alpha.dat
    CLOSED: [2020-02-21 Fri 17:02]
@@ -163,12 +164,14 @@ This need to be transferred to irdb/METIS
 ** TODO TC_mirror_emissivity_best.dat
 ** TODO TC_mirror_emissivity_median.dat
 ** TODO TC_mirror_emissivity_poor.dat
-** TODO TC_mirror_gold.dat
+** DONE TC_mirror_gold.dat -> TER_mirror_gold.dat
+   CLOSED: [2020-02-28 Fri 19:04]
 ** TODO TC_mirror_mgf2agal.dat
 ** TODO TC_mirror_total_emissivity.dat
 ** TODO TC_pupil.dat
 ** TODO TC_sky_extended_proper.tbl
-** TODO TC_window_METIS.dat
+** DONE TC_window_METIS.dat -> TER_entrance_window.dat
+   CLOSED: [2020-02-28 Fri 19:04]
 ** TODO sirius_downsampled.txt
 ** TODO skycal_R308296_best_conditions.fits
 ** TODO skycal_R308296_median_conditions.fits
@@ -198,6 +201,8 @@ These are newly created following the example from irdb/MICADO.
    - State "DONE"       from "TODO"       [2020-02-21 Fri 16:54]
    :END:
 ** TODO LIST_ifu_apertures.dat
+** DONE LIST_METIS_mirrors_cfo.dat
+   CLOSED: [2020-02-28 Fri 19:05]
 ** DONE METIS_DET_IFU.yaml
    CLOSED: [2020-02-21 Fri 16:50]
    :LOGBOOK:
