@@ -1,0 +1,15 @@
+# author : Oliver Czoske
+# source : E-REP-NOVA-MET-1142
+# date_created : 2020-02-28
+# date_modified : 2020-02-28
+# status : PDR design, guess
+# type : mirror:reflection
+# wavelength_unit : um
+# description : Gold
+# comment : piecewise linear from wide-band numbers in source
+#
+wavelength    reflection
+2.7           0.9898
+5.5           0.9899
+7.5           0.9903
+14.0          0.9903

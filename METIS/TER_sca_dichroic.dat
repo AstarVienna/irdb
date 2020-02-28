@@ -1,0 +1,15 @@
+# author : Oliver Czoske
+# source : E-REP-NOVA-MET-1142
+# date_created : 2020-02-28
+# date_modified : 2020-02-28
+# status : PDR design, guess
+# type : window:transmission
+# wavelength_unit : um
+# description : SCA pickoff dichroic in CFO
+# comment : piecewise linear from wide-band numbers in source
+#
+wavelength   transmission  reflection  emissivity
+2.7          0.906         0.094       0.0
+5.5          0.910         0.090       0.0
+7.5          0.909         0.091       0.0
+14.0         0.909         0.091       0.0

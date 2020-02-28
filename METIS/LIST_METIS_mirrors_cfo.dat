@@ -1,31 +1,28 @@
 # author : Oliver Czoske
-# source : E-REP-NOVA-MET-1142
-# date_created : 2020-02-26
-# date_modified : 2020-02-26
-# status : PDR design
+# source : E-REP-NOVA-MET-1142, E-REP-NOVA-MET-1144
+# date_created : 2020-02-28
+# date_modified : 2020-02-28
+# status : PDR design, guess
 # type : mirror:list
-# ETYPE : SURFLIST
-# EDIM : 1
 # outer_unit : m
 # inner_unit : m
 # angle_unit : degrees
 # temperature_unit : deg_C
-# changes ;
+# changes:
 #
-name          outer inner angle temperature action      filename
-CFO_EntrWin
-CFO_CM1       0.3   0.0   0     -xx         reflection  xx
-CFO_FM1
-CFO_ADC
-CFO_CM2
-CFO_CM3
-CFO_KM1
-CFO_KM2
-CFO_KM3
-CFO_FM2
-CFO_Dichroic
-CFO_FM3
-CFO_CM4
-CFO_CM5
-CFO_CM6
-CFO_BeamSpl
+name          outer inner angle temperature action       filename
+CFO_EntrWin   0.2   0.0   15       0        transmission TER_entrance_window.dat
+CFO_CM1       0.3   0.0   0     -206        reflection   TER_mirror_gold.dat
+CFO_FM1       0.3   0.0   0     -206        reflection   TER_mirror_gold.dat
+CFO_ADC       0.3   0.0   0     -206        reflection   TER_mirror_gold.dat
+CFO_CM2       0.3   0.0   0     -206        reflection   TER_mirror_gold.dat
+CFO_CM3       0.3   0.0   0     -206        reflection   TER_mirror_gold.dat
+CFO_KM1       0.3   0.0   0     -206        reflection   TER_mirror_gold.dat
+CFO_KM2       0.3   0.0   0     -206        reflection   TER_mirror_gold.dat
+CFO_KM3       0.3   0.0   0     -206        reflection   TER_mirror_gold.dat
+CFO_FM2       0.3   0.0   0     -206        reflection   TER_mirror_gold.dat
+CFO_Dichroic  0.3   0.0   0     -206        transmission TER_sca_dichroic.dat
+CFO_FM3       0.3   0.0   0     -206        reflection   TER_mirror_gold.dat
+CFO_CM4       0.3   0.0   0     -206        reflection   TER_mirror_gold.dat
+CFO_CM5       0.3   0.0   0     -206        reflection   TER_mirror_gold.dat
+CFO_CM6       0.3   0.0   0     -206        reflection   TER_mirror_gold.dat

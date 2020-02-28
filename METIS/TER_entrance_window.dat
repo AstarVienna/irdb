@@ -1,0 +1,15 @@
+# author : Oliver Czoske
+# source : E-REP-NOVA-MET-1142
+# date_created : 2020-02-28
+# date_modified : 2020-02-28
+# status : PDR design, guess
+# type : window:transmission
+# wavelength_unit : um
+# description : METIS cryostat entrance window
+# comment : piecewise linear from wide-band numbers in source
+#
+wavelength transmission reflection emissivity
+2.7        0.921        0.02       0.059
+5.5        0.922        0.02       0.058
+7.5        0.937        0.02       0.043
+14.0       0.937        0.02       0.043
