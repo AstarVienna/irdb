@@ -13,9 +13,10 @@ yamls :
   - Armazones.yaml
   - ELT.yaml
   - METIS.yaml
-  - METIS_DET_IMG_LM.yaml
+
 
 properties :
+  mode : img_lm
   filter_name : L
   airmass : 1.2
   declination : -30
@@ -24,6 +25,10 @@ properties :
   dit : 60
   ndit : 1
 
+mode_yamls:
+  - name: img_lm
+    yamls:
+      - METIS_DET_IMG_LM.yaml
 
 ---
 ### default simulation parameters needed for a HAWKI simulation
