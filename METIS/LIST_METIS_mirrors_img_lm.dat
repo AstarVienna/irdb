@@ -1,0 +1,21 @@
+# author : Oliver Czoske
+# source :
+# date_created : 2020-03-03
+# date_modified : 2020-03-03
+# status : PDR design
+# type : mirror:list
+# outer_unit : m
+# inner_unit : m
+# angle_unit : degrees
+# temperature_unit : deg_C
+# comments : collimator (IMG_M?) listed here and in LIST_METIS_mirrors_img_n.dat
+# changes :
+#
+name           outer   inner   angle   temperature   action       filename
+IMG_M1         0.090   0.0     0.      -203.         reflection   TER_mirror_gold.dat
+IMG_M2         0.090   0.0     0.      -203.         reflection   TER_mirror_gold.dat
+IMG_M3         0.090   0.0     0.      -203.         reflection   TER_mirror_gold.dat
+IMG_dichroic   0.150   0.0     0.      -203          transmission TER_img_dichroic.dat
+IMG_LM_M1      0.150   0.0     0.      -203.         reflection   TER_mirror_gold.dat
+IMG_LM_M2      0.150   0.0     0.      -203.         reflection   TER_mirror_gold.dat
+IMG_LM_M3      0.150   0.0     0.      -203.         reflection   TER_mirror_gold.dat
