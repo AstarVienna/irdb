@@ -1,7 +1,7 @@
 # author : Oliver Czoske
-# source :
+# source : E-REP-MPIA-MET-1008
 # date_created : 2020-03-03
-# date_modified : 2020-03-04
+# date_modified : 2020-04-13
 # status : PDR design
 # type : mirror:list
 # outer_unit : m
@@ -12,6 +12,8 @@
 # changes :
 #     - 2020-03-04 : (OC) Added fold mirrors
 #     - 2020-04-13 : (OC) dichroic has two surfaces (E-SPE-NOVA-MET-1049_3-0)
+#     - 2020-04-13 : (OC) specify source
+#
 name           outer   inner   angle   temperature   action       filename
 IMG_M1         0.090   0.0     0.      -203.         reflection   TER_mirror_gold.dat
 IMG_M2         0.090   0.0     0.      -203.         reflection   TER_mirror_gold.dat
