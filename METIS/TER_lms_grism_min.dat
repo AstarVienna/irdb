@@ -1,0 +1,16 @@
+# author : Oliver Czoske
+# source : E-SPE-NOVA-MET-1049_3-0 (METIS transmission budget)
+# date_created : 2020-04-13
+# date_modified : 2020-04-13
+# status : rough estimate
+# type : grism:reflection
+# wavelength_unit : um
+# description : LMS echelle grating, minimum efficiency
+# comment :
+#  	  - extracted from excel sheet "CFO+LMS"
+#	  - unrealistic constant efficiency
+# changes :
+#
+wavelength    reflection
+0.50          0.30
+19.00         0.30
