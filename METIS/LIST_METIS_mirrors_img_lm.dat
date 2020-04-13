@@ -11,11 +11,12 @@
 # comments : collimator (IMG_M?) listed here and in LIST_METIS_mirrors_img_n.dat
 # changes :
 #     - 2020-03-04 : (OC) Added fold mirrors
-#
+#     - 2020-04-13 : (OC) dichroic has two surfaces (E-SPE-NOVA-MET-1049_3-0)
 name           outer   inner   angle   temperature   action       filename
 IMG_M1         0.090   0.0     0.      -203.         reflection   TER_mirror_gold.dat
 IMG_M2         0.090   0.0     0.      -203.         reflection   TER_mirror_gold.dat
 IMG_M3         0.090   0.0     0.      -203.         reflection   TER_mirror_gold.dat
+IMG_dichroic   0.150   0.0     0.      -203          transmission TER_img_dichroic.dat
 IMG_dichroic   0.150   0.0     0.      -203          transmission TER_img_dichroic.dat
 IMG_LM_FM1     0.150   0.0     0.      -203          reflection   TER_mirror_gold.dat
 IMG_LM_FM2     0.150   0.0     0.      -203          reflection   TER_mirror_gold.dat
