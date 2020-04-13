@@ -223,3 +223,10 @@ These are newly created following the example from irdb/MICADO.
    :LOGBOOK:
    - State "DONE"       from "TODO"       [2020-02-21 Fri 16:51]
    :END:
+* Transmission budget
+  The transmission budget is essential to building the METIS IRDB:
+  - version :: 3-0
+  - date :: 2020-03-20
+  - Doc number :: E-SPE-NOVA-MET-1049
+  - Polarion :: METIS-5207
+  - Author :: Tibor Agocs
