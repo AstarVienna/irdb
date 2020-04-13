@@ -3,7 +3,7 @@
 # date_created : 2020-02-28
 # date_modified : 2020-04-13
 # status : version 3.0, theory
-# type : mirror:reflection
+# type : window:transmission
 # wavelength_unit : um
 # description : Cryostat entrance window 25mm @ 15 deg
 # comment : extracted from excel sheet "CFO only"
