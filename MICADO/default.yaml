@@ -4,70 +4,93 @@ alias : OBS
 name : MICADO_default_configuration
 description : default parameters needed for a MICADO simulation
 
-packages:
+packages :
 - Armazones
 - ELT
 - MAORY
 - MICADO
 
-yamls:
+yamls :
 - Armazones.yaml
 - ELT.yaml
 - MICADO.yaml
 - MICADO_H4RG.yaml
 
 properties :
-  mode : scao_lri
-  filter_name : Ks
+  modes : ["SCAO", "IMG_4mas"]
   airmass : 1.2
   declination : -30
   hour_angle : 0
   pupil_angle : 0
-  dit: 60
-  ndit: 1
+  dit : 60
+  ndit : 1
+  use_full_detector : False
+  use_window_detector : True
 
-mode_yamls:
--   name: scao_lri
-    description: "SCAO low resolution imager : 4mas/pix"
-    yamls:
-    - MICADO_Standalone_RO.yaml
-    - MICADO_IMG_wide.yaml
+mode_yamls :
+- name : SCAO
+  description : "SCAO optical system"
+  alias: OBS
+  yamls :
+  - MICADO_Standalone_RO.yaml
 
--   name: scao_hri
-    description: "SCAO high resolution imager : 1.5mas/pix"
-    yamls:
-    - MICADO_Standalone_RO.yaml
-    - MICADO_IMG_zoom.yaml
+- name : MCAO
+  description : "MCAO optical system"
+  alias: OBS
+  yamls :
+  - MAORY.yaml
 
--   name: scao_spec
-    description: "Spectroscopy in stand-alone mode"
-    yamls:
-    - MICADO_Standalone_RO.yaml
-    - MICADO_SPEC.yaml
+- name : IMG_4mas
+  description : "wide-field imager  : 4mas/pix"
+  alias: OBS
+  yamls :
+  - MICADO_IMG_wide.yaml
+  properties :
+    filter_name : Ks
 
--   name: mcao_lri
-    description: "MCAO low resolution imager : 4mas/pix"
-    yamls:
-    - MAORY.yaml
-    - MICADO_IMG_wide.yaml
+- name : IMG_1.5mas
+  description : "high resolution imager  : 1.5mas/pix"
+  alias: OBS
+  yamls :
+  - MICADO_IMG_zoom.yaml
+  properties :
+    filter_name  : Ks
 
--   name: mcao_hri
-    description: "MCAO high resolution imager : 1.5mas/pix"
-    yamls:
-    - MAORY.yaml
-    - MICADO_IMG_zoom.yaml
+- name : IMG_HCI
+  description : "High contrast imaging"
+  alias: OBS
+  yamls :
+  - MICADO_IMG_HCI.yaml
 
--   name: mcao_spec
-    description: "Spectroscopy with MAORY attached"
-    yamls:
-    - MAORY.yaml
-    - MICADO_SPEC.yaml
+- name : SPEC_15000x50
+  description : "spectrograph  : slit size 15000x50mas"
+  alias: OBS
+  yamls :
+  - MICADO_SPEC.yaml
+  properties :
+    trace_file : TRACE_15arcsec.fits
+    slit_file : MASK_slit_15000x50.dat
+    filter_name : Spec_HK
 
--   name: scao_hci
-    description: "High contrast imaging"
-    yamls:
-    - MICADO_Standalone_RO.yaml
-    - MICADO_IMG_HCI.yaml
+- name : SPEC_3000x50
+  description : "spectrograph  : slit size 3000x50mas"
+  alias: OBS
+  yamls :
+  - MICADO_SPEC.yaml
+  properties :
+    trace_file : TRACE_3arcsec.fits
+    slit_file : MASK_slit_3000x50.dat
+    filter_name : Spec_HK
+
+- name : SPEC_3000x20
+  description : "spectrograph  : slit size 3000x20mas"
+  alias: OBS
+  yamls :
+  - MICADO_SPEC.yaml
+  properties :
+    trace_file : TRACE_3arcsec.fits
+    slit_file : MASK_slit_3000x20.dat
+    filter_name : Spec_HK
 
 
 ---
@@ -85,3 +108,6 @@ properties :
     wave_min : 0.7
     wave_mid : 1.6
     wave_max : 2.5
+    
+  computing : 
+    preload_field_of_view : True

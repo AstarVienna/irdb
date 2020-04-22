@@ -22,4 +22,4 @@ effects:
 - name: test_shot_noise
   class: ShotNoise
   kwargs:
-    use_inbuild_seed: True
+    use_inbuilt_seed: True

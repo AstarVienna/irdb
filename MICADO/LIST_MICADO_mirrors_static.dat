@@ -21,7 +21,7 @@ I02_Coli1   0.4     0.0     10      -190            reflection     TER_mirror_go
 I03_Coli2   0.2     0.0     10      -190            reflection     TER_mirror_gold.dat
 I04_Coli3   0.2     0.0     10      -190            reflection     TER_mirror_gold.dat
 I05_Fold2   0.2     0.0     45      -190            reflection     TER_mirror_gold.dat
-I06_Filter  0.2     0.0     00      -190            transmission   TC_filter_blank.dat
+I06_Filter  0.2     0.0     00      -190            transmission   filters/TC_filter_blank.dat
 I07_ADC     0.2     0.0     00      -190            transmission   TER_full_adc.dat
 I10_Fold3   0.2     0.0     45      -190            reflection     TER_mirror_gold.dat
 I11_ReIm1   0.2     0.0     10      -190            reflection     TER_mirror_gold.dat

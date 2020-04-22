@@ -18,7 +18,7 @@ effects :
     description: entrance pupil HCI optics transmission curve
     class: TERCurve
     kwargs:
-        filename: TC_filter_blank.dat
+        filename: filters/TC_filter_blank.dat
 
 -   name: hci_psf
     description: alterations to the PSF due to the coronagraph

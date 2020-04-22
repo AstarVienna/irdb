@@ -15,7 +15,7 @@ effects :
     kwargs:
         filename: LIST_MICADO_mirrors_zoom.dat
 
--   name: adc_3D_shift
+-   name: micado_adc_3D_shift
     description : atmospheric disperson corrector
     class: AtmosphericDispersionCorrection
     kwargs:

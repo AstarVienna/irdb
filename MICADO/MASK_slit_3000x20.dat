@@ -1,4 +1,4 @@
-# description : Slit mask for the short, narrow slit (3 arcsec x 16 mas)
+# description : Slit mask for the short, narrow slit (3 arcsec x 20 mas)
 # author : Kieran Leschinski
 # source : My imagination
 # date_created  : 2019-07-10
@@ -9,9 +9,10 @@
 # y_unit : arcsec
 # changes :
 # - 2019-07-10 : (KL) Created the file
+# - 2020-03-24 : (KL) Changed geometry to 3000x20mas
 #
 x       y
--1.5    -0.008
-1.5     -0.008
-1.5     0.008
--1.5    0.008
+-1.5    -0.01
+1.5     -0.01
+1.5     0.01
+-1.5    0.01

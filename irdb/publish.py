@@ -50,7 +50,7 @@ def make_packages(pkg_names=()):
 
         new_pkg_pth = zip_package_folder(pkg_name)
         move_package(new_pkg_pth, ZIPPED_DIR)
-        print(f"Compiled package: {pkg_name}")
+        print(f"[{str(dt.now())[:19]}]: Compiled package: {pkg_name}")
 
 
 def rename_package(pkg_path):
@@ -92,7 +92,7 @@ def push_to_server(pkg_name):
         if sftp.exists(PKGS[pkg_name]):
             sftp.remove(PKGS[pkg_name])
         sftp.put(local_path, PKGS[pkg_name])
-        print(f"Pushed to server: {pkg_name}")
+        print(f"[{str(dt.now())[:19]}]: Pushed to server: {pkg_name}")
 
 
 def print_help_menu():

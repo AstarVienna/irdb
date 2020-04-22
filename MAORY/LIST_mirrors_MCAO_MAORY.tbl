@@ -13,7 +13,7 @@
 # - 2019-01-28 (KL) Fixed YAML format in meta data
 #
 name        outer   inner   angle   temperature     action         filename
-M6          1.1     0.      45.     0.              reflection     TER_MAORY_mirror_mgf2agal.dat
+M6          1.1     0.      45.     0.              reflection     TER_MAORY_mirror_aluminium.dat
 M7          0.7     0.      0.      0.              reflection     TER_MAORY_mirror_gold.dat
 M8          0.85    0.      0.      0.              reflection     TER_MAORY_mirror_gold.dat
 M9          0.75    0.      0.      0.              reflection     TER_MAORY_mirror_gold.dat

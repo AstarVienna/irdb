@@ -1,17 +1,18 @@
-# description : on-sky aperture for wide field imager mode (20 x 20 arcsec)
+# description : Slit mask for the short, wide slit  (3 arcsec x 50 mas)
 # author : Kieran Leschinski
 # source : My imagination
 # date_created  : 2019-07-10
 # date_modified : 2019-07-10
 # status : Guess - in the train on the way home from CM13
-# type : aperture:imaging_pupil_mask
+# type : aperture:slit_geometry
 # x_unit : arcsec
 # y_unit : arcsec
 # changes :
 # - 2019-07-10 : (KL) Created the file
+# - 2020-03-24 : (KL) Changed geometry to 3000x50mas
 #
 x       y
--11     -11
-11      -11
-11      11
--11     11
+-1.5    -0.025
+1.5     -0.025
+1.5     0.025
+-1.5    0.025

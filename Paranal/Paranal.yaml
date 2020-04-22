@@ -32,7 +32,6 @@ effects :
     description : atmospheric dispersion
     class : AtmosphericDispersion
 
-
 ####################### Alternative effects ####################################
 
 -   name : paranal_atmo_skycalc_ter_curve

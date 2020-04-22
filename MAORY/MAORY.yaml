@@ -6,6 +6,7 @@ description : MAORY AO relay module
 
 properties :
     temperature : "!ATMO.temperature"
+    psf_filename :
 
 effects :
 -   name: maory_surface_list
@@ -24,13 +25,13 @@ effects :
 
 ####################### Alternative effects ####################################
 
--   name : maory_psf
-    description : MAORY field varying MCAO PSF
-    class : FieldVaryingPSF
-    include : False
-    kwargs:
-        filename : "!OBS.psf_filename"
-        use_field_rotation : True
-        dit : "!OBS.dit"
-        ndit : "!OBS.ndit"
+#-   name : maory_psf
+#    description : MAORY field varying MCAO PSF
+#    class : FieldVaryingPSF
+#    include : False
+#    kwargs:
+#        filename : "!RO.psf_filename"
+#        use_field_rotation : True
+#        dit : "!OBS.dit"
+#        ndit : "!OBS.ndit"
 

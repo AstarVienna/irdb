@@ -14,3 +14,14 @@ yamls :
 
 properties :
   airmass : 1.
+  modes : ["mode_1", "mode_2"]
+
+mode_yamls :
+- name : mode_1
+  alias: OBS
+  properties :
+    airmass : 2.
+
+- name : mode_2
+  yamls :
+  - test_mode_2.yaml
