@@ -1,0 +1,21 @@
+# name : METIS IMG-N GeoSnap FPA
+# author : Oliver Czoske
+# sources: E-REP-ATC-MET-1144_1-0
+# date_created : 2020-02-04
+# date_modified : 2020-02-04
+# type : detector:chip_list
+# x_cen_unit : mm
+# y_cen_unit : mm
+# xhw_unit : mm
+# yhw_unit : mm
+# x_len_unit : pix
+# y_len_unit : pix
+# pixsize_unit : mm
+# angle_unit : deg
+# gain_unit : electron/adu
+#
+# changes:
+# - 2020-02-04 : (OC) initialised
+#
+id   x_cen    y_cen     xhw     yhw  x_len  y_len  pixsize  angle    gain
+ 1    0.00     0.00  18.432  18.432   2048   2048    0.018    0.0     1.0

@@ -1,36 +1,36 @@
-### H4RG DETECTOR
+### Aquarius DETECTOR
 object : detector
 alias : DET
-name : micado_detector_array
-description : A set of 9 H4RG detectors
+name : metis_detector_array
+description : Aquarius detector for METIS IMG-NQ
 
 properties :
-    temperature : -230
+    temperature : -265
     dit : "!OBS.dit"
     ndit : "!OBS.ndit"
 
 effects :
 -   name: detector_array_list
-    description : MICADO detector array list
+    description : METIS detector array list
     class: DetectorList
     kwargs:
-        filename : FPA_array_layout.dat
+        filename : FPA_metis_img_nq_aquarius_layout.dat
 
 -   name : qe_curve
     description : Quantum efficiency curves for each detector
     class : QuantumEfficiencyCurve
     kwargs :
-        file_name : QE_detector_H2RG.dat
+        file_name : QE_detector_Aquarius.dat
 
 -   name: dark_current
-    description : MICADO dark current
+    description : METIS Aquarius dark current
     class: DarkCurrent
     # [e-/s] level of dark current for each detector
     kwargs:
         value: 0.1
 
 -   name: detector_linearity
-    description : Linearity characteristics of H4RG chips
+    description : Linearity characteristics of Aquarius chip
     class: LinearityCurve
     kwargs:
         filename : FPA_linearity.dat

@@ -1,36 +1,36 @@
-### H2RG DETECTOR
+### GeoSnap DETECTOR
 object : detector
 alias : DET
-name : metis_lms_detector_array
-description : A set of 4 H2RG detectors
+name : metis_detector_array
+description : Teledyne GeoSnap Detector
 
 properties :
-    temperature : -233
+    temperature : -240
     dit : "!OBS.dit"
     ndit : "!OBS.ndit"
 
 effects :
 -   name: detector_array_list
-    description : METIS LMS detector array list
+    description : MICADO detector array list
     class: DetectorList
     kwargs:
-        filename : FPA_metis_lms_layout.dat
+        filename : FPA_metis_img_n_geosnap_layout.dat
 
 -   name : qe_curve
     description : Quantum efficiency curves for each detector
     class : QuantumEfficiencyCurve
     kwargs :
-        filename : QE_detector_H2RG.dat
+        file_name : QE_detector_geosnap.dat
 
 -   name: dark_current
-    description : METIS LMS dark current
+    description : MICADO dark current
     class: DarkCurrent
     # [e-/s] level of dark current for each detector
     kwargs:
         value: 0.1
 
 -   name: detector_linearity
-    description : Linearity characteristics of H2RG chips
+    description : Linearity characteristics of GeoSnap chip
     class: LinearityCurve
     kwargs:
         filename : FPA_linearity.dat
@@ -44,4 +44,4 @@ effects :
     class : BasicReadoutNoise
     kwargs :
         noise_std : 12
-        n_channels : 32
+        n_channels : 64

@@ -1,0 +1,17 @@
+# author : NN
+# source : Roy van Boekel
+# date_created : 2018-07
+# date_modified : 2020-02-21
+# status : Design - pre-PDR list of filters
+# type : filter:transmission
+# center : 3.10
+# width : 0.22
+# blue_cutoff : 2.98
+# red_cutoff : 3.22
+# comment : "H2O-ice" from Roys wish filter list, July 2018
+#
+wavelength  transmission
+2.9800      0.0000
+3.0000      0.6000
+3.2000      0.6000
+3.2200      0.0000
