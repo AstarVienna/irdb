@@ -1,0 +1,9 @@
+# outer_unit : m
+# inner_unit : m
+# angle_unit : degrees
+# temperature_unit  : deg_C
+#
+name    outer   inner   angle   temperature action         filename
+M1      1.52    0.52    0       5           reflection     TER_mirror_aluminium.dat
+M2      0.52    0.0     0       5           reflection     TER_mirror_aluminium.dat
+M3      0.2     0.0     45      5           reflection     TER_mirror_aluminium.dat

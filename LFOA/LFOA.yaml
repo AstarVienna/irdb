@@ -1,0 +1,46 @@
+### Leopold Figl SBIG camera
+object : instrument
+alias : INST
+name : LFOA
+description : base configuration for LFOA SBIG camera
+
+properties :
+    temperature : 5
+    pixel_scale : 0.307     # arcsec / pixel
+    plate_scale : 45.15     # arcsec / mm
+
+effects :
+-   name : seeing_psf
+    description : Schoepfl PSF
+    class : SeeingPSF
+    kwargs :
+      seeing : 1.5       # [arcsec]
+
+-   name: atmospheric transmission
+    class: AtmosphericTERCurve
+    kwargs:
+      array_dict: {wavelength:   [0.3, 0.36, 0.45, 0.55, 0.65, 0.80, 1.0],
+                   transmission: [0.1, 0.55, 0.69, 0.83, 0.89, 0.93, 0.95],
+                   emission:     [  0,    0,    0,    0,    0,    0,    0]}
+      action: transmission
+      wavelength_unit: um
+      emission_unit: ph/s/m2/um
+      outer: 1.52
+      outer_unit: m
+      source : "BVRI extinction from Werner; 0.3+U from Cousins+98"
+
+-   name: lfoa_static_surfaces
+    description : telescope and camera optical surfaces
+    class: SurfaceList
+    kwargs:
+        filename: LIST_LFOA_mirrors_static.dat
+
+-   name: filter_curve
+    description : transmission curve for filter
+    class: FilterCurve
+    kwargs:
+        filter_name: "!OBS.filter_name"
+        filename_format: "filters/TC_filter_{}.dat"
+        minimum_throughput: !!float 1.01E-4
+        outer: 0.032
+        outer_unit: "m"
