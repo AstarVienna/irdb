@@ -2,7 +2,7 @@
 object : instrument
 alias : INST
 name : LFOA
-description : base configuration for LFOA SBIG camera
+description : base configuration for LFOA telescope + SBIG camera
 
 properties :
     temperature : 5
@@ -24,7 +24,7 @@ effects :
                    emission:     [  0,    0,    0,    0,    0,    0,    0]}
       action: transmission
       wavelength_unit: um
-      emission_unit: ph/s/m2/um
+      emission_unit: ph s-1 m-2 um-1
       outer: 1.52
       outer_unit: m
       source : "BVRI extinction from Werner; 0.3+U from Cousins+98"
@@ -40,7 +40,7 @@ effects :
     class: FilterCurve
     kwargs:
         filter_name: "!OBS.filter_name"
-        filename_format: "filters/TC_filter_{}.dat"
-        minimum_throughput: !!float 1.01E-4
+        filename_format: "filters/{}.dat"
+        minimum_throughput: !!float 1.01E-5
         outer: 0.032
         outer_unit: "m"
