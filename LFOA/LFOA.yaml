@@ -16,18 +16,20 @@ effects :
     kwargs :
       seeing : 1.5       # [arcsec]
 
--   name: atmospheric transmission
-    class: AtmosphericTERCurve
+-   name: atmospheric extinction
+    class: TERCurve
     kwargs:
       array_dict: {wavelength:   [0.3, 0.36, 0.45, 0.55, 0.65, 0.80, 1.0],
-                   transmission: [0.1, 0.55, 0.69, 0.83, 0.89, 0.93, 0.95],
-                   emission:     [  0,    0,    0,    0,    0,    0,    0]}
+                   transmission: [0.1, 0.55, 0.69, 0.83, 0.89, 0.93, 0.95]}
       action: transmission
       wavelength_unit: um
-      emission_unit: ph s-1 m-2 um-1
-      outer: 1.52
-      outer_unit: m
       source : "BVRI extinction from Werner; 0.3+U from Cousins+98"
+
+-   name: skycalc
+    class: AtmosphericTERCurve
+    kwargs:
+      filename: 
+
 
 -   name: lfoa_static_surfaces
     description : telescope and camera optical surfaces
