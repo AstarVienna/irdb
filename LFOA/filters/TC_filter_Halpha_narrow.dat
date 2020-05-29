@@ -1,5 +1,5 @@
-# source : Baader H-alpha 7nm Narrowband #2458382
-# wavelength_unit : nm
+# source : "Baader H-alpha 7nm Narrowband #2458382"
+# wavelength_unit : um
 wavelength transmission
 0.3 0.0
 0.301 0.0

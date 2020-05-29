@@ -1,5 +1,5 @@
-# Source : Baader H-beta 486.1nm Narrowband #2458425
-# wavelength_unit : nm
+# source : "Baader H-beta 486.1nm Narrowband #2458425"
+# wavelength_unit : um
 wavelength transmission
 0.3 0.0
 0.301 0.0

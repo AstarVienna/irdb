@@ -6,6 +6,7 @@
 # type : grating:reflection
 # description : Unprotected Gold
 # wavelength_unit : um
+# action : reflection
 # changes :
 # - 2019-07-10 : (KL) Created the file
 #

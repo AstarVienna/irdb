@@ -1,36 +1,101 @@
 Armazones:
-  contents: {all_yamls_readable: true}
+  contents:
+    all_yamls_readable: true
   package_type: support
-  structure: {no_missing_files: true, self_named_yaml: true}
+  structure:
+    no_missing_files: true
+    self_named_yaml: true
 ELT:
-  contents: {all_yamls_readable: true}
+  contents:
+    all_yamls_readable: true
   package_type: support
-  structure: {no_missing_files: true, self_named_yaml: true}
+  structure:
+    no_missing_files: true
+    self_named_yaml: true
 HAWKI:
-  contents: {all_yamls_readable: true}
+  contents:
+    all_yamls_readable: true
   package_type: observation
-  structure: {default_yaml: true, no_missing_files: true, self_named_yaml: true}
+  structure:
+    default_yaml: true
+    no_missing_files: true
+    self_named_yaml: true
+HST:
+  contents:
+    all_yamls_readable: true
+  package_type: support
+  structure:
+    no_missing_files: true
+    self_named_yaml: true
+LFOA:
+  contents:
+    all_yamls_readable: true
+  package_type: observation
+  structure:
+    default_yaml: true
+    no_missing_files: true
+    self_named_yaml: true
 MAORY:
-  contents: {all_yamls_readable: true}
+  contents:
+    all_yamls_readable: true
   package_type: support
-  structure: {no_missing_files: true, self_named_yaml: true}
+  structure:
+    no_missing_files: true
+    self_named_yaml: true
+METIS:
+  contents:
+    all_yamls_readable: true
+  package_type: observation
+  structure:
+    FPA_linearity.dat: missing
+    INST_METIS_wavefront_error_budget.dat: missing
+    QE_detector_Aquarius.dat: missing
+    QE_detector_H2RG.dat: missing
+    QE_detector_geosnap.dat: missing
+    default_yaml: true
+    self_named_yaml: true
 MICADO:
-  contents: {all_yamls_readable: true}
+  contents:
+    all_yamls_readable: true
   package_type: observation
-  structure: {default_yaml: true, no_missing_files: true, self_named_yaml: true}
+  structure:
+    default_yaml: true
+    no_missing_files: true
+    self_named_yaml: true
 Paranal:
-  contents: {all_yamls_readable: true}
+  contents:
+    all_yamls_readable: true
   package_type: support
-  structure: {no_missing_files: true, self_named_yaml: true}
+  structure:
+    no_missing_files: true
+    self_named_yaml: true
 SimpleCADO:
-  contents: {all_yamls_readable: true}
+  contents:
+    all_yamls_readable: true
   package_type: support
-  structure: {no_missing_files: true, self_named_yaml: true}
+  structure:
+    no_missing_files: true
+    self_named_yaml: true
 VLT:
-  contents: {all_yamls_readable: true}
+  contents:
+    all_yamls_readable: true
   package_type: support
-  structure: {no_missing_files: true, self_named_yaml: true}
-test_package:
-  contents: {all_yamls_readable: true}
+  structure:
+    no_missing_files: true
+    self_named_yaml: true
+WFC3:
+  contents:
+    all_yamls_readable: true
   package_type: observation
-  structure: {default_yaml: true, no_missing_files: true, self_named_yaml: true}
+  structure:
+    default_yaml: true
+    no_missing_files: true
+    self_named_yaml: true
+test_package:
+  contents:
+    all_yamls_readable: true
+  package_type: observation
+  structure:
+    default_yaml: true
+    no_missing_files: true
+    self_named_yaml: true

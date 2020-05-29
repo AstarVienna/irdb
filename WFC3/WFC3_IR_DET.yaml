@@ -65,4 +65,3 @@ effects:
       class : BasicReadoutNoise
       kwargs :
           noise_std : 12      # as high as 20 for a single read cycle
-          n_channels : 4

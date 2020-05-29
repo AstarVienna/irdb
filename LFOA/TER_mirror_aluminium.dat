@@ -8,7 +8,7 @@
 # - 2019-07-25 (KL) Changed 2-25um value to 0.98 to match ESO predictions
 #
 # description : Bare Aluminium
-# waveunit : um
+# wavelength_unit : um
 #
 wavelength  reflection
 0.309       0.921

@@ -19,6 +19,9 @@ properties :
   dit : 60
   ndit : 1
   filter_name : V
+  sky :
+    bg_mag : 19.5
+    filter_name : V
 
 ---
 

@@ -5,6 +5,7 @@
 # status : Design - pre PDR list of MAORY mirrors
 # type : mirror:reflection
 # wavelength_unit : um
+# action : reflection
 # description : Unprotected Gold
 # changes :
 # - 2019-01-28 : (KL) added meta data

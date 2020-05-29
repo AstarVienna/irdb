@@ -1,5 +1,5 @@
-# Source : Baader S-II 676nm 8nm Narrowband #2458430
-# wavelength_unit : nm
+# source : "Baader S-II 676nm 8nm Narrowband #2458430"
+# wavelength_unit : um
 wavelength transmission
 0.3 0.0
 0.301 0.0

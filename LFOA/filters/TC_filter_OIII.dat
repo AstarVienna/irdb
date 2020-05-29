@@ -1,5 +1,5 @@
-# Source : Baader OIII 2_ #2458396
-# wavelength_unit : nm
+# source : "Baader OIII 2_ #2458396"
+# wavelength_unit : um
 wavelength transmission
 0.3 0.0
 0.301 0.0

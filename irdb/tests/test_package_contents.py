@@ -53,11 +53,12 @@ class TestFileStructureOfPackages:
                     fnames += recursive_filename_search(yaml_dict)
 
                 for fname in fnames:
-                    if fname.lower() != "none" and fname[0] != "!":
-                        full_fname = pth.join(PKG_DICT[pkg_name], fname)
-                        if not pth.exists(full_fname):
-                            BADGES[pkg_name]["structure"][fname] = "missing"
-                            no_missing += 1
+                    if fname is not None:
+                        if fname.lower() != "none" and fname[0] != "!":
+                            full_fname = pth.join(PKG_DICT[pkg_name], fname)
+                            if not pth.exists(full_fname):
+                                BADGES[pkg_name]["structure"][fname] = "missing"
+                                no_missing += 1
 
             if no_missing == 0:
                 BADGES[f"!{pkg_name}.structure.no_missing_files"] = True

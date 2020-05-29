@@ -8,7 +8,8 @@
 # - 2019-07-25 (KL) Changed 2-25um value to 0.993 to match ESO predictions
 #
 # description : MgF2 protected Ag/Al
-# waveunit : um
+# wavelength_unit : um
+# action : reflection
 #
 wavelength  reflection
 0.317       0.243
