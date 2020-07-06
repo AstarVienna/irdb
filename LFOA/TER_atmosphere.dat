@@ -12,9 +12,9 @@
 # area_unit : m2
 # action : transmission
 # emission_unit : ph s-1 m-2 um-1 arcsec-2
-# wavelength_unit : angstrom
+# wavelength_unit : nm
 #
-wavelength	transmission	emission
+wavelength  transmission    emission
 300	        0.0172	        11.99
 301	        0.0249	        17.12
 302	        0.0339	        24.62

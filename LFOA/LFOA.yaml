@@ -16,21 +16,6 @@ effects :
     kwargs :
       fwhm : 1.5       # [arcsec]
 
--   name: basic_atmo
-    description: atmospheric spectral properties from extinction estimates
-    class: AtmosphericTERCurve
-    include : False
-    kwargs:
-      array_dict: {wavelength:   [0.3, 0.36, 0.45, 0.55, 0.65, 0.80, 1.0],
-                   transmission: [0.1, 0.55, 0.69, 0.83, 0.89, 0.93, 0.95],
-                   emission:     [  0,    0,    0,    0,    0,    0,    0]}
-      source : "BVRI extinction from Werner; 0.3+U from Cousins+98"
-      action: transmission
-      wavelength_unit: um
-      emission_unit: ph s-1 m-2 um-1 arcsec-2
-      outer: 1.52
-      outer_unit: m
-
 -   name : skycalc_average_atmo
     description : atmospheric properties for a default skycalc run
     class : AtmosphericTERCurve
@@ -39,7 +24,7 @@ effects :
         filename: "TER_atmosphere.dat"
         rescale_emission:
             filter_name: "!OBS.sky.filter_name"
-            filename_format: "filters/TC_filter_{}.dat"
+            filename_format: "filters/{}.dat"
             value: "!OBS.sky.bg_mag"
             unit: mag
 
@@ -54,7 +39,26 @@ effects :
     class: FilterCurve
     kwargs:
         filter_name: "!OBS.filter_name"
-        filename_format: "filters/TC_filter_{}.dat"
+        filename_format: "filters/{}.dat"
         minimum_throughput: !!float 1.01E-4
         outer: 0.032
         outer_unit: "m"
+
+
+################################################################################
+# Excluded effects
+
+-   name: basic_atmo
+    description: atmospheric spectral properties from extinction estimates
+    class: AtmosphericTERCurve
+    include : False
+    kwargs:
+      array_dict: {wavelength:   [0.3, 0.36, 0.45, 0.55, 0.65, 0.80, 1.0],
+                   transmission: [0.1, 0.55, 0.69, 0.83, 0.89, 0.93, 0.95],
+                   emission:     [  0,    0,    0,    0,    0,    0,    0]}
+      source : "BVRI extinction from Werner; 0.3+U from Cousins+98"
+      action: transmission
+      wavelength_unit: um
+      emission_unit: ph s-1 m-2 um-1 arcsec-2
+      outer: 1.52
+      outer_unit: m

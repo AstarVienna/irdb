@@ -1,0 +1,12 @@
+# author : Kieran Leschinski
+# source : Email from Werner
+# date_created  : 2020-06-07
+# date_modified : 2020-06-07
+# wavelength_unit : um
+# action : transmission
+#
+wavelength  transmission
+0.3         0
+0.301       0.98
+1.3         0.98
+1.301       0

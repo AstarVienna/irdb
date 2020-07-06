@@ -1,0 +1,20 @@
+#* System transmission
+#* AtmosphericTERCurve
+#* FilterCurve
+#* Detector Window
+#* RON
+#* Dark
+#* average stack
+#* Shot_noise
+
+
+effects
+-   name: micado_filter
+    description : transmission curve for filter
+    class: FilterCurve
+    kwargs:
+        filter_name: "!OBS.filter_name"
+        filename_format: "filters/TC_filter_{}.dat"
+        minimum_throughput: !!float 1.01E-4
+        outer: 0.2
+        outer_unit: "m"

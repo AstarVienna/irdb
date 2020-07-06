@@ -1,0 +1,75 @@
+### default observation parameters for MICADO-Sci
+object : configuration
+alias : OBS
+name : MICADO_sci_default_configuration
+description : default parameters needed for a MICADO-Sci simulation
+
+yamls :
+- MICADO.yaml
+- MICADO_detector.yaml
+
+properties :
+  modes : ["SCAO", "4mas"]
+  dit : 60
+  ndit : 1
+
+
+mode_yamls :
+- name : SCAO
+  description : "SCAO optical system"
+  alias : INST
+  yamls :
+  - MICADO_SCAO.yaml
+
+- name : MCAO
+  description : "MCAO optical system"
+  alias : INST
+  yamls :
+  - MICADO_MCAO.yaml
+
+- name : 4mas
+  description : "wide-field imager  : 4mas/pix"
+  alias : INST
+  properties :
+    filter_name : Ks
+    pixel_scale : 0.004         # arcsec / pixel
+    plate_scale : 0.26666666666 # arcsec / mm
+
+- name : 1.5mas
+  description : "zoom imager : 1.5mas/pix"
+  alias : INST
+  properties :
+    filter_name : Ks
+    pixel_scale : 0.0015    # arcsec / pixel
+    plate_scale : 0.1       # arcsec / mm
+
+- name : SPEC
+  description : "Spectroscopy"
+  alias : INST
+  yamls :
+    MICADO_SPEC.yaml
+  properties :
+    filter_name : Spec_HK
+    pixel_scale : 0.004         # arcsec / pixel
+    plate_scale : 0.26666666666 # arcsec / mm
+
+
+
+---
+### default simulation parameters needed for a MICADO simulation
+object : simulation
+alias : SIM
+name : MICADO_sci_simulation_paramters
+description : RC simulation paramters which need to change for a MICADO-Sci run
+
+properties :
+  random :
+    seed : 9001
+
+  spectral :
+    wave_min : 0.7
+    wave_mid : 1.6
+    wave_max : 2.5
+
+  computing :
+    preload_field_of_view : True

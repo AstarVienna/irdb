@@ -1,3 +1,14 @@
+#### General
+#* System transmission
+#* AtmosphericTERCurve
+#* FilterCurve
+#* Detector Window
+#* RON
+#* Dark
+#* average stack
+#* Shot_noise
+
+
 ### MICADO INSTRUMENT WIDE FIELD MODE
 object : instrument
 alias : INST

@@ -1,0 +1,14 @@
+#### SPEC
+#* RO TER
+#* SPEC TER
+#* SkyCalcTERCurve
+#* Detector Window
+#
+#* ApertureMask
+#    * filename_format
+#    * mask_name
+#
+#* XiLamConverter
+#* XiLamStrehlPSF (max SR JHK-40/60/80)
+#* BasicTraceMap
+#* AtmopshericDiffraction
