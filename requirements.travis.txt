@@ -3,3 +3,5 @@ matplotlib
 astropy
 pyyaml
 pysftp
+scopesim
+scopesim_templates
