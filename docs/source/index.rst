@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Instrument Reference Database's documentation!
-=========================================================
+The Instrument Reference Database for ScopeSim
+==============================================
 
 .. toctree::
    :maxdepth: 2
