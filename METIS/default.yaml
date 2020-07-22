@@ -16,7 +16,7 @@ yamls :
 
 
 properties :
-  mode : img_lm
+  modes : [img_lm]
   filter_name : L
   airmass : 1.2
   declination : -30

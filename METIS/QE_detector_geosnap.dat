@@ -1,0 +1,17 @@
+# author : Oliver Czoske
+# sources : E-REP-NOVA-MET-1191_2-0, Roy van Boekel
+# date_created  : 2020-07-14
+# date_modified : 2020-07-14
+# type : detector:quantum_efficiency
+# status : estimate, constant QE
+# description : Teledyne GeoSnap quantum efficiency
+# action : transmission
+# wavelength_unit : um
+# changes :
+# - 2020-07-22 : [OC] Added to IRDB package from SimMETIS v0.3rc1
+#
+# wavelength  transmission
+   2.99       0.0
+   3.         0.8
+  14.         0.8
+  14.01       0.0
