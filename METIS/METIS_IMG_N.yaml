@@ -1,0 +1,16 @@
+### METIS N-band IMAGING MODE
+object : instrument
+alias : INST
+name : METIS
+description : base configuration for METIS
+
+properties :
+  pixel_scale : 0.00679         # arcsec / pixel
+  plate_scale : 0.377222222222  # arcsec / mm
+
+effects:
+-   name: metis_img_n_mirror_list
+    description: list of extra mirrors needed for the N IMG mode
+    class: SurfaceList
+    kwargs:
+        filename: LIST_METIS_mirrors_img_n.dat

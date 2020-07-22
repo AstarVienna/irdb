@@ -1,0 +1,23 @@
+### METIS LM IMAGING MODE
+object : instrument
+alias : INST
+name : METIS
+description : base configuration for METIS
+
+properties :
+  pixel_scale : 0.00525         # arcsec / pixel
+  plate_scale : 0.291666666667  # arcsec / mm
+
+effects:
+-   name: metis_img_lm_mirror_list
+    description: list of extra mirrors needed for the LM IMG mode
+    class: SurfaceList
+    kwargs:
+        filename: LIST_METIS_mirrors_img_lm.dat
+
+-   name : metis_psf_img
+    descriptions: field constant, wavelength dependent PSF images for imaging mode
+    class: FieldConstantPSF
+    kwargs:
+        filename: PSF_SCAO_9mag_06seeing.fits
+        wave_key: "WAVELENG"

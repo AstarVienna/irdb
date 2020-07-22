@@ -24,9 +24,19 @@ effects :
       outer : 0.2
       outer_unit: "m"
 
-  - name : metis_ncpas_psf
-    description: Effective NCPA induced PSF kernel
-    class : NonCommonPathAberration
-    kwargs :
-      pixel_scale : "!INST.pixel_scale"
-      filename : "INST_METIS_wavefront_error_budget.dat"
+  - name : metis_adc_residuals
+    class : AtmosphericDispersionCorrection
+    include : False
+    kwargs:
+      altitude: "!ATMO.altitude"
+      longitude: "!ATMO.longitude"
+      latitude: "!ATMO.latitude"
+      airmass: "!OBS.airmass"
+      temperature: "!ATMO.temperature"
+      humidity: "!ATMO.humidity"
+      pressure: "!ATMO.pressure"
+      pupil_angle: "!OBS.pupil_angle"
+      efficiency: 1
+      wave_mid: "!SIM.spectral.wave_mid"
+      quick_adc: True
+

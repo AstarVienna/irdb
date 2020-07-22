@@ -28,7 +28,38 @@ properties :
 mode_yamls:
   - name: img_lm
     yamls:
+      - METIS_IMG_LM.yaml
       - METIS_DET_IMG_LM.yaml
+
+  - name: img_n
+    yamls:
+      - METIS_IMG_N.yaml
+      - METIS_DET_IMG_N_GeoSnap.yaml
+
+  - name: lss_lm
+    yamls:
+      - METIS_LSS_LM.yaml
+      - METIS_DET_IMG_LM.yaml
+
+  - name: lss_n
+    yamls:
+      - METIS_LSS_N.yaml
+      - METIS_DET_IMG_N_GeoSnap.yaml
+
+  - name: lms
+    yamls:
+      - METIS_LMS.yaml
+      - METIS_DET_IFU.yaml
+
+  - name: lms_extended
+    yamls:
+      - METIS_LMS_ext.yaml
+      - METIS_DET_IFU.yaml
+
+ignore_effects :
+  - armazones_atmo_dispersion
+
+
 
 ---
 ### default simulation parameters needed for a HAWKI simulation

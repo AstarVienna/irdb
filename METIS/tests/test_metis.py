@@ -17,19 +17,19 @@ scopesim.rc.__config__["!SIM.file.local_packages_path"] = PKGS_DIR
 
 class TestLoads:
     def test_scopesim_loads_package(self):
-        lfoa = scopesim.OpticalTrain("METIS")
-        assert isinstance(lfoa, scopesim.OpticalTrain)
+        metis = scopesim.OpticalTrain("METIS")
+        assert isinstance(metis, scopesim.OpticalTrain)
 
 
 class TestObserves:
     def test_something_comes_out(self):
         src = star_field(100, 15, 25, width=360, use_grid=True)
 
-        cmds = scopesim.UserCommands(use_instrument="LFOA")
+        cmds = scopesim.UserCommands(use_instrument="METIS")
         cmds["!OBS.dit"] = 30
         cmds["!OBS.ndit"] = 1
         cmds["!OBS.filter_name"] = "sloan_z"
 
-        lfoa = scopesim.OpticalTrain(cmds)
-        lfoa.observe(src)
-        hdus = lfoa.readout()
+        metis = scopesim.OpticalTrain(cmds)
+        metis.observe(src)
+        hdus = metis.readout()
