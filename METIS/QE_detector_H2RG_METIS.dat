@@ -8,11 +8,11 @@
 # action : transmission
 # wavelength_unit : um
 # changes :
-# - 2020-07-22 : [OC] Added to IRDB package from SimMETIS v0.3rc1
+# - 2020-07-22 : (OC) Added to IRDB package from SimMETIS v0.3rc1
 # notes :
-# - original name of this file: METIS_IMG_LM_QE.csv received from Roy on 24 May 2018; it is the same file as used in Roy's fluxes document
+# - original filename; METIS_IMG_LM_QE.csv received from Roy on 24 May 2018; it is the same file as used in Roy's fluxes document
 #
-#  wavelength       transmission
+   wavelength       transmission
    1.0033284        0.8861127
    1.0100157        0.8839129
    1.0167475        0.8826924
