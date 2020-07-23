@@ -10,7 +10,7 @@
 # changes :
 # - 2020-07-22 : (OC) Added to IRDB package from SimMETIS v0.3rc1
 #
-# wavelength  transmission
+wavelength    transmission
    2.99       0.0
    3.         0.8
   14.         0.8
