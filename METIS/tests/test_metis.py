@@ -26,10 +26,20 @@ class TestObserves:
         src = star_field(100, 15, 25, width=360, use_grid=True)
 
         cmds = scopesim.UserCommands(use_instrument="METIS")
-        cmds["!OBS.dit"] = 30
-        cmds["!OBS.ndit"] = 1
-        cmds["!OBS.filter_name"] = "sloan_z"
 
         metis = scopesim.OpticalTrain(cmds)
         metis.observe(src)
         hdus = metis.readout()
+
+        if not PLOTS:
+            plt.subplot(121)
+            wave = np.arange(3000, 11000)
+            thru = metis.optics_manager.surfaces_table.throughput(wave)
+            plt.plot(wave, thru)
+
+            plt.subplot(122)
+            im = hdus[0][1].data
+            plt.imshow(im, norm=LogNorm())
+            plt.colorbar()
+
+            plt.show()

@@ -14,7 +14,6 @@ yamls :
   - ELT.yaml
   - METIS.yaml
 
-
 properties :
   modes : [img_lm]
   filter_name : L
@@ -22,7 +21,7 @@ properties :
   declination : -30
   hour_angle : 0
   pupil_angle : 0
-  dit : 60
+  dit : 1
   ndit : 1
 
 mode_yamls:

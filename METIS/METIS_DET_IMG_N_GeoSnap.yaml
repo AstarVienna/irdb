@@ -22,6 +22,10 @@ effects :
     kwargs :
         file_name : QE_detector_geosnap.dat
 
+-   name: exposure_action
+    description: Summing up sky signal for all DITs and NDITs
+    class: SummedExposure
+
 -   name: dark_current
     description : METIS GeoSnap dark current
     class: DarkCurrent
@@ -36,7 +40,6 @@ effects :
         array_dict:
             incident: [0., !!float 2.7e6, !!float 1e99]
             measured: [0., !!float 2.7e6, !!float 2.7e6]
-
 
 -   name: shot_noise
     description : apply poisson shot noise to images
