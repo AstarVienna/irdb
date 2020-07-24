@@ -31,7 +31,7 @@ effects :
     class: DarkCurrent
     # [e-/s] level of dark current for each detector
     kwargs:
-        value: 100
+        value: 100.
 
 -   name: detector_linearity
     description : Linearity characteristics of GeoSnap chip
