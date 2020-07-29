@@ -57,6 +57,8 @@ mode_yamls:
 
 ignore_effects :
   - armazones_atmo_dispersion
+  - scope_vibration
+  - detector_linearity
 
 
 

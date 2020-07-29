@@ -24,8 +24,6 @@ properties :
   pupil_angle : 0
   dit : 60
   ndit : 1
-  use_full_detector : False
-  use_window_detector : True
 
 mode_yamls :
 - name : SCAO

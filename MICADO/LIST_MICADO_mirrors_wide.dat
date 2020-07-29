@@ -8,6 +8,7 @@
 # inner_unit : m
 # angle_unit : degrees
 # temperature_unit  : deg_C
+# report_table_caption: The list of surfaces from the rotating optics wheel that are added to the optical train when observing in the wide field mode
 # changes :
 # - 2019-01-28 : (KL) Changed column names and added units to header
 # - 2019-07-10 : (KL) Shortened the list to only the swappable mirrors

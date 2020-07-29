@@ -2,7 +2,17 @@
 object : instrument
 alias : INST
 name : LFOA
-description : base configuration for LFOA SBIG camera
+description : |
+  The Leopold-Figl observatory for astrophysics is a 1.5m telescope operated
+  by the Department of Astropyhics at the University of Vienna.
+
+  The telescope is located on the peak of Mt Schoepfl (900m ü.A.) near the town
+  of St Corona am Schöpfl in lower Austria
+
+  * A bullet point
+  * A second
+
+  Thats all
 
 properties :
     temperature : 5

@@ -14,14 +14,14 @@ effects :
 -   name: full_detector_array
     description : MICADO detector array list
     class: DetectorList
-    include: "!OBS.use_full_detector"
+    include: False
     kwargs:
         filename : FPA_array_layout.dat
         active_detectors : "all"
 
 -   name: detector_window
     class: DetectorList
-    include: "!OBS.use_window_detector"
+    include: True
     kwargs:
         image_plane_id : 0
         array_dict:
