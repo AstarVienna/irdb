@@ -14,3 +14,10 @@ effects:
     class: SurfaceList
     kwargs:
         filename: LIST_METIS_mirrors_img_n.dat
+
+-   name : metis_psf_img
+    descriptions: field constant, wavelength dependent PSF images for imaging mode
+    class: FieldConstantPSF
+    kwargs:
+      filename: PSF_SCAO_9mag_06seeing.fits
+      wave_key: "WAVELENG"
