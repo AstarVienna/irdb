@@ -1,13 +1,19 @@
 # name: micado_sci_default
 # description: default observation parameters for MICADO-Sci
 # author : Kieran Leschinski
-# date_created : 09.07.2020
-# date_modified : 09.07.2020
+# date_created : 2020-07-09
+# date_modified : 2020-08-17
 
 object : configuration
 alias : OBS
 name : MICADO_sci_default_configuration
 description : default parameters needed for a MICADO-Sci simulation
+
+packages :
+- Armazones
+- ELT
+- MAORY
+- MICADO_Sci
 
 yamls :
 - MICADO.yaml

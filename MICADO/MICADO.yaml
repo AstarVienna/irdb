@@ -1,19 +1,8 @@
-#### General
-#* System transmission
-#* AtmosphericTERCurve
-#* FilterCurve
-#* Detector Window
-#* RON
-#* Dark
-#* average stack
-#* Shot_noise
-
-
-### MICADO INSTRUMENT WIDE FIELD MODE
+### MICADO INSTRUMENT COMMON EFFECTS LIST
 object : instrument
 alias : INST
 name : MICADO
-description : base configuration for MICADO
+description : Effects from the MICADO common optics
 
 properties : 
     temperature : -190

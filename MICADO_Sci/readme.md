@@ -3,19 +3,20 @@
 ## What effects are needed
 
 ### General
-* System transmission
-* AtmosphericTERCurve
-* FilterCurve
-* Detector Window
-* RON 
-* Dark
-* average stack 
-* Shot_noise
+* Telescope system TER  [MICADO.yaml:TEL]
+* AtmosphericTERCurve   [MICADO.yaml:ATMO]
+* FilterCurve           [MICADO.yaml:INST]
+* MICADO common optics  **
+* QE curve              [MICADO_detector.yaml:DET]
+* RON                   [MICADO_detector.yaml:DET]
+* Dark                  [MICADO_detector.yaml:DET]
+* average stack         **
+* Shot_noise            [MICADO_detector.yaml:DET]
 
 #### SCAO
 * RO TER
-* Detector Window
-* PSF
+* Detector Window       [MICADO_detector.yaml:DET, (w,h) in MICADO_SCAO.yaml:DET]
+* PSF                   **
     * SCAO FVPSF 
     * SCAO AnisoCADO ConstPSF  
 

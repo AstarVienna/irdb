@@ -16,7 +16,7 @@
 object : detector
 alias : DET
 name : micado_sci_detector
-description : A settable window
+description : List of MICADO detector effects relevant for astronomers
 
 properties :
     image_plane_id : 0
@@ -26,18 +26,18 @@ properties :
     width : 1024
     height : 1024
 
-effects :
--   name: detector_window
-    class: DetectorWindow
-    kwargs:
-        image_plane_id : 0
-        array_dict:
-            pixel_size: 0.015
-            x: 0.
-            y: 0.
-            width: "!DET.width"
-            height: "!DET.height"
-            units: pixel
+effects:
+- name: detector_window
+  class: DetectorWindow
+  kwargs:
+      image_plane_id: 0
+      array_dict:
+          pixel_size: 0.015
+          x: 0.
+          y: 0.
+          width: "!DET.width"
+          height: "!DET.height"
+          units: pixel
 
 -   name : qe_curve
     description : Quantum efficiency curves for each detector
@@ -55,12 +55,6 @@ effects :
     # [e-/s] level of dark current for each detector
     kwargs:
         value: 0.1
-
--   name: detector_linearity
-    description : Linearity characteristics of H4RG chips
-    class: LinearityCurve
-    kwargs:
-        filename : FPA_linearity.dat
 
 -   name: shot_noise
     description : apply poisson shot noise to images
