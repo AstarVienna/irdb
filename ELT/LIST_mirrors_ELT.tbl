@@ -5,7 +5,7 @@
 # status : Design - pre MICADO-FDR mirror list
 # outer_unit : m
 # inner_unit : m
-# angle_unit : degrees
+# angle_unit : degree
 # temperature_unit  : deg_C
 # notes :
 # - 2020-08-17 (KL) Coatings match those described in ESO-253082_4

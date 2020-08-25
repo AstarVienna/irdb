@@ -7,7 +7,7 @@
 # type : mirror:list
 # outer_unit : m
 # inner_unit : m
-# angle_unit : degrees
+# angle_unit : degree
 # temperature_unit : deg_C
 # comments :
 # 	   - peak performance of echelle grism

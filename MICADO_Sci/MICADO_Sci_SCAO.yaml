@@ -5,16 +5,22 @@
 #    * SCAO FVPSF
 #    * SCAO AnisoCADO ConstPSF
 
+object : instrument
+alias : INST
 name : MICADO_SCAO
 description : "MICADO SCAO mode effects"
-alias : INST
-properties :
 
 effects:
--   name: relay_optics_ter
-    class:
+-   name: scao_relay_optics_ter
+    description: Combined TER curve for stand-alone relay optics module
+    class: TERCurve
     kwargs:
-        filename: TER_RO.dat
+        filename: TER_MICADO_RO.dat
+
+-   name: scao_const_psf
+    description: field constant PSF as produced by stand-alone SCAO
+    class: None
+    kwargs: None
 
 ---
 

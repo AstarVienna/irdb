@@ -26,43 +26,49 @@ properties :
   ndit : 1
 
 mode_yamls :
-- name : SCAO
-  description : "SCAO optical system"
+- object : instrument
   alias: OBS
+  name : SCAO
+  description : "SCAO optical system"
   yamls :
   - MICADO_Standalone_RO.yaml
 
-- name : MCAO
-  description : "MCAO optical system"
+- object : instrument
   alias: OBS
+  name : MCAO
+  description : "MCAO optical system"
   yamls :
   - MAORY.yaml
 
-- name : IMG_4mas
-  description : "wide-field imager  : 4mas/pix"
+- object : observation
   alias: OBS
+  name : IMG_4mas
+  description : "wide-field imager  : 4mas/pix"
   yamls :
   - MICADO_IMG_wide.yaml
   properties :
     filter_name : Ks
 
-- name : IMG_1.5mas
-  description : "high resolution imager  : 1.5mas/pix"
+- object : observation
   alias: OBS
+  name : IMG_1.5mas
+  description : "high resolution imager  : 1.5mas/pix"
   yamls :
   - MICADO_IMG_zoom.yaml
   properties :
     filter_name  : Ks
 
-- name : IMG_HCI
-  description : "High contrast imaging"
+- object : observation
   alias: OBS
+  name : IMG_HCI
+  description : "High contrast imaging"
   yamls :
   - MICADO_IMG_HCI.yaml
 
-- name : SPEC_15000x50
-  description : "spectrograph  : slit size 15000x50mas"
+- object : observation
   alias: OBS
+  name : SPEC_15000x50
+  description : "spectrograph  : slit size 15000x50mas"
   yamls :
   - MICADO_SPEC.yaml
   properties :
@@ -70,9 +76,10 @@ mode_yamls :
     slit_file : MASK_slit_15000x50.dat
     filter_name : Spec_HK
 
-- name : SPEC_3000x50
-  description : "spectrograph  : slit size 3000x50mas"
+- object : observation
   alias: OBS
+  name : SPEC_3000x50
+  description : "spectrograph  : slit size 3000x50mas"
   yamls :
   - MICADO_SPEC.yaml
   properties :
@@ -80,9 +87,10 @@ mode_yamls :
     slit_file : MASK_slit_3000x50.dat
     filter_name : Spec_HK
 
-- name : SPEC_3000x20
-  description : "spectrograph  : slit size 3000x20mas"
+- object : observation
   alias: OBS
+  name : SPEC_3000x20
+  description : "spectrograph  : slit size 3000x20mas"
   yamls :
   - MICADO_SPEC.yaml
   properties :

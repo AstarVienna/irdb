@@ -6,7 +6,7 @@
 # type : mirror:list
 # outer_unit : m
 # inner_unit : m
-# angle_unit : degrees
+# angle_unit : degree
 # temperature_unit  : deg_C
 # changes :
 # - 2019-08-13 : (KL) Created list based on VLT user manual

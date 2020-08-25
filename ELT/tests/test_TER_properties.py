@@ -8,6 +8,8 @@ from scopesim import rc
 TOP_PATH = pth.abspath(pth.join(pth.dirname(__file__), "../"))
 rc.__search_path__ += [TOP_PATH]
 
+PLOTS = True
+
 
 def test_eso_vs_scopesim_throughput():
     sl = sim.effects.SurfaceList(filename="LIST_mirrors_ELT.tbl")
@@ -15,10 +17,12 @@ def test_eso_vs_scopesim_throughput():
     plt.plot(wave, sl.throughput(wave), label="ScopeSim")
 
     ter = sim.effects.TERCurve(filename="TER_ELT_System_20190611.dat")
-    plt.plot(wave, ter.surface.reflection(wave), label="ESO-253082")
 
-    plt.legend(loc=4)
-    plt.show()
+    if PLOTS:
+        plt.plot(wave, ter.surface.reflection(wave), label="ESO-253082")
+
+        plt.legend(loc=4)
+        plt.show()
 
 
 def test_eso_vs_scopesim_emission():
@@ -33,10 +37,12 @@ def test_eso_vs_scopesim_emission():
     sl_flux = sl.emission(wave)
     ter_flux = ter.surface.emission(wave)
 
-    plt.plot(wave, sl_flux, label="ScopeSim")
-    plt.plot(wave, ter_flux, label="ESO-253082")
+    if PLOTS:
 
-    plt.semilogy()
-    plt.legend(loc=2)
-    #plt.ylim(ymin=1e-10)
-    plt.show()
+        plt.plot(wave, sl_flux, label="ScopeSim")
+        plt.plot(wave, ter_flux, label="ESO-253082")
+
+        plt.semilogy()
+        plt.legend(loc=2)
+        plt.ylim(ymin=1e-10)
+        plt.show()

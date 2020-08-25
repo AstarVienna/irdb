@@ -1,14 +1,15 @@
 # author : ESO ELT DRM
 # source : https://www.eso.org/sci/facilities/eelt/science/drm/tech_data/data/reflectivity/
+# description : MgF2 protected Ag/Al
 # date_created  : 2009-11-04
 # date_modified : 2018-11-19
 # status : Design - pre PDR list of MICADO mirrors for wide-field mode
 # type : mirror:reflection
+# wavelength_unit : um
+#
 # changes :
 # - 2019-07-25 (KL) Changed 2-25um value to 0.993 to match ESO predictions
-#
-# description : MgF2 protected Ag/Al
-# waveunit : um
+# - 2020-08-25 (KL) updated waveunit --> wavelength_unit
 #
 wavelength  reflection
 0.317       0.243

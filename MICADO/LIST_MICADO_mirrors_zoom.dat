@@ -8,7 +8,7 @@
 # EDIM : 1 
 # outer_unit : m
 # inner_unit : m
-# angle_unit : degrees
+# angle_unit : degree
 # temperature_unit  : deg_C
 # changes :
 # - 2019-01-28 : (KL) Changed column names and added units to header    

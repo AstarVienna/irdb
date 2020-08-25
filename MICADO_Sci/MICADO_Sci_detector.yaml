@@ -31,13 +31,12 @@ effects:
   class: DetectorWindow
   kwargs:
       image_plane_id: 0
-      array_dict:
-          pixel_size: 0.015
-          x: 0.
-          y: 0.
-          width: "!DET.width"
-          height: "!DET.height"
-          units: pixel
+      pixel_size: 0.015
+      x: 0.
+      y: 0.
+      width: "!DET.width"
+      height: "!DET.height"
+      units: pixel
 
 -   name : qe_curve
     description : Quantum efficiency curves for each detector

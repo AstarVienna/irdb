@@ -9,6 +9,7 @@
 # - AtmosphericTERCurve
 # - FilterCurve
 
+
 ### Config file for the Armazones optical element
 object : atmosphere
 alias : ATMO
@@ -41,6 +42,7 @@ effects :
         wunit: um
         wdelta: "!SIM.spectral.spectral_resolution"
 
+
 ---
 
 ### Config file for the ELT
@@ -59,8 +61,10 @@ effects:
     kwargs :
         filename : TER_ELT_System_20190611.dat
 
+
 ---
 
+### Config file for common MICADO elements
 object : instrument
 alias : INST
 name : MICADO
@@ -74,8 +78,14 @@ effects:
     description : transmission curve for filter
     class: FilterCurve
     kwargs:
-        filter_name: "!OBS.filter_name"
+        filter_name: "!INST.filter_name"
         filename_format: "filters/TC_filter_{}.dat"
         minimum_throughput: !!float 1.01E-4
         outer: 0.2
         outer_unit: "m"
+
+-   name: micado_common_optics
+    description : combined transmission for MICADO common optics
+    class: TERCurve
+    kwargs:
+        filename: TER_MICADO_IMG_common.dat

@@ -6,7 +6,7 @@
 # type : mirror:list
 # outer_unit : m
 # inner_unit : m
-# angle_unit : degrees
+# angle_unit : degree
 # temperature_unit : deg_C
 # comments : collimator (IMG_M?) listed here and in LIST_METIS_mirrors_img_lm.dat
 # changes :

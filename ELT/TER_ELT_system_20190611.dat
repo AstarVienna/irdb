@@ -23,7 +23,7 @@
 #   - 2020-07-09 (KL) Added inner and outer dimensions to meta, for use with MICADO-Sci
 #   - 2020-08-17 (KL) Added emissivity column according to ESO-253082_4, sect 4.12.2
 #
-wavelength    reflection  emissivity
+wavelength      reflection  emissivity
 0.300           0.0001      1.1199
 0.305           0.0000      1.1200
 0.310           0.0000      1.1200
