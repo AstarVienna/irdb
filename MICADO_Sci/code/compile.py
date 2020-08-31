@@ -5,7 +5,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 from astropy import units as u
 from astropy.table import Table
+from astropy.io import fits
 
+import anisocado as aniso
 from scopesim import rc
 from scopesim.effects import SurfaceList
 
@@ -69,3 +71,32 @@ compress_surface_list_to_ter(f_in="LIST_RO_SCAO_mirrors.dat",
 # MAORY common optics
 compress_surface_list_to_ter(f_in="LIST_mirrors_maory_mms.tbl",
                              f_out="TER_MAORY_MMS.dat", **kwargs)
+
+
+def generate_anisocado_strehl_map_for_micado():
+    # 310 nm --> 40 in Ks, 18 in H, 6 in J
+    nmRms = np.linspace(0, 700, 36)
+    waves = np.linspace(0.8, 2.4, 9)
+    offset = [0, 0]
+    psfs = []
+    srs = np.zeros((len(nmRms), len(waves)))
+    for y, wave in enumerate(waves):
+        sr = 1
+        for x, rms in enumerate(nmRms):
+            if sr > 0.001:
+                psf = aniso.AnalyticalScaoPsf(pixelSize=0.004, N=256,
+                                              wavelength=wave, nmRms=rms)
+                psf.shift_off_axis(offset[0], offset[1])
+                psfs += [psf.hdu]
+                sr = psf.strehl_ratio
+
+            srs[x, y] = sr
+
+            print(wave, rms, srs[x, y])
+
+    hdu = fits.ImageHDU(data=srs)
+    hdu.writeto("AnisoCADO_rms_map.fits", clobber=True)
+
+    plt.imshow(srs)
+    plt.colorbar()
+    plt.show()

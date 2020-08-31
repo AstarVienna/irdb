@@ -10,6 +10,11 @@ alias : INST
 name : MICADO_SCAO
 description : "MICADO SCAO mode effects"
 
+properties:
+    psf:
+        strehl: 0.4
+        wavelength: "!INST.filter_name"
+
 effects:
 -   name: scao_relay_optics_ter
     description: Combined TER curve for stand-alone relay optics module
@@ -19,8 +24,15 @@ effects:
 
 -   name: scao_const_psf
     description: field constant PSF as produced by stand-alone SCAO
-    class: None
-    kwargs: None
+    class: AnisocadoConstPSF
+    kwargs:
+        filename: "MICADO_AnisoCADO_rms_map.fits"
+        strehl: "!INST.psf.strehl"
+        wavelength: "!INST.psf.wavelength"
+        psf_side_length: 256
+        offset: [0,0]
+        rounded_edges: True
+        convolve_mode: full
 
 ---
 

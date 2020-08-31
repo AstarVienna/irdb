@@ -16,15 +16,15 @@
 #### SCAO
 * RO TER                [MICADO_Sci_SCAO.yaml:INST]
 * Detector Window       [MICADO_sci_detector.yaml:DET, (w,h) in MICADO_Sci_SCAO.yaml:DET]
-* PSF                   **
-    * SCAO FVPSF 
-    * SCAO AnisoCADO ConstPSF  
+* PSF                   
+    * SCAO FVPSF                **
+    * SCAO AnisoCADO ConstPSF   [MICADO_Sci_SCAO.yaml:INST]  
 
 #### MCAO
 * MAORY TER             [MICADO_Sci_MCAO.yaml:INST]
 * Detector Window       [MICADO_sci_detector.yaml:DET, (w,h) in MICADO_Sci_MCAO.yaml:DET]
 * PSF
-    * MCAO StrehlPSF (max SR JHK-13/30/50)
+    * MCAO StrehlPSF (max SR JHK-13/30/50)  [MICADO_Sci_SCAO.yaml:INST]
 
 
 ### SPEC

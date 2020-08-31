@@ -30,9 +30,31 @@ def test_reads_in_default_yaml():
     isinstance(cmd, sim.UserCommands)
 
 
-def test_makes_optical_train():
-    opt = sim.OpticalTrain("MICADO_Sci")
+def test_makes_mcao_4mas_optical_train():
+    cmd = sim.UserCommands(use_instrument="MICADO_Sci",
+                           set_modes=["MCAO", "4mas"])
+    opt = sim.OpticalTrain(cmd)
     print(opt)
+
+
+def test_makes_scao_1_5mas_optical_train():
+    cmd = sim.UserCommands(use_instrument="MICADO_Sci",
+                           set_modes=["SCAO", "1.5mas"])
+    opt = sim.OpticalTrain(cmd)
+    print(opt)
+
+
+def test_empty_sky_with_mcao_4mas():
+    cmd = sim.UserCommands(use_instrument="MICADO_Sci",
+                           set_modes=["MCAO", "4mas"])
+    opt = sim.OpticalTrain(cmd)
+    src = sim.source.source_templates.empty_sky()
+
+    opt.observe(src)
+
+    plt.imshow(opt.image_planes[0].image)
+    plt.show()
+
 
 
 

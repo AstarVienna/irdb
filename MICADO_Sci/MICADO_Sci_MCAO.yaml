@@ -10,6 +10,11 @@ alias : INST
 name : MICADO_MCAO
 description : "MICADO MCAO mode effects"
 
+properties:
+    psf:
+        strehl: 0.4
+        wavelength: "!INST.filter_name"
+
 effects:
 -   name: maory_mms_ter
     description: Combined TER curve for MAORY MMS relay optics module
@@ -19,8 +24,15 @@ effects:
 
 -   name: maory_const_psf
     description: field constant PSF as produced by MAORY
-    class:
+    class: AnisocadoConstPSF
     kwargs:
+        filename: "MICADO_AnisoCADO_rms_map.fits"
+        strehl: "!INST.psf.strehl"
+        wavelength: "!INST.psf.wavelength"
+        psf_side_length: 256
+        offset: [0,0]
+        rounded_edges: True
+        convolve_mode: full
 
 ---
 
