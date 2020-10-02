@@ -5,7 +5,7 @@
 # status : Design - new MAORY MMS design
 # outer_unit : m
 # inner_unit : m
-# angle_unit : degrees
+# angle_unit : degree
 # temperature_unit  : deg_C
 # changes :
 # - 2018-11-19 : (KL) Added meta data, changed Dichr. filename
