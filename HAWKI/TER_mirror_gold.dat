@@ -7,9 +7,10 @@
 # wavelength_unit : um
 # description : Unprotected Gold
 # changes :
-# - 2019-01-28 : (KL) added meta data
-# - 2019-08-13 : (KL) copied from MICADO to HAWKI
+# - 2019-01-28 (KL) added meta data
+# - 2019-08-13 (KL) copied from MICADO to HAWKI
+# - 2020-10-06 (KL) dropped reflection from 0.985 to 0.975
 #
 wavelength  reflection
-0.3         0.985
-3.0         0.985
+0.3         0.975
+3.0         0.975

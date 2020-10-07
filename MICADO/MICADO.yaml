@@ -17,6 +17,7 @@ description : base configuration for MICADO
 
 properties : 
     temperature : -190
+    filter_file_format : "filters/TC_filter_{}.dat"
 
 effects : 
 -   name: micado_static_surfaces
@@ -25,16 +26,28 @@ effects :
     kwargs:
         filename: LIST_MICADO_mirrors_static.dat
         
--   name: micado_filter
-    description : transmission curve for filter
-    class: FilterCurve
+#-   name: micado_filter
+#    description : transmission curve for filter
+#    class: FilterCurve
+#    kwargs:
+#        filter_name: "!OBS.filter_name"
+#        filename_format: "!INST.filter_file_format"
+#        minimum_throughput: !!float 1.01E-4
+#        outer: 0.2
+#        outer_unit: "m"
+#    include: False
+
+-   name: filter_wheel
+    class: FilterWheel
     kwargs:
-        filter_name: "!OBS.filter_name"
-        filename_format: "filters/TC_filter_{}.dat"
+        filter_names: ["blank", "I"]
+        filename_format: "!INST.filter_file_format"
+        current_filter: "!OBS.filter_name"
         minimum_throughput: !!float 1.01E-4
         outer: 0.2
         outer_unit: "m"
-        
+
+
 -   name : micado_ncpas_psf
     description : Effective NCPA induced PSF kernel
     class : NonCommonPathAberration
