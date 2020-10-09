@@ -26,18 +26,18 @@ effects :
         image_plane_id : 0
         array_dict:
             id: [1]
-            pixsize: [0.015]
+            pixel_size: [0.015]
             angle: [0.]
             gain: [1.0]
             x_cen: [0.]
             y_cen: [0.]
-            xhw: [7.68]
-            yhw: [7.68]
+            x_size: [15.36]
+            y_size: [15.36]
         x_cen_unit: mm
         y_cen_unit: mm
-        xhw_unit: mm
-        yhw_unit: mm
-        pixsize_unit: mm
+        x_size_unit: mm
+        y_size_unit: mm
+        pixel_size_unit: mm
         angle_unit: deg
         gain_unit: electron/adu
 

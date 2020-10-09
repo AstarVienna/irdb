@@ -15,3 +15,15 @@ def test_elt_ter_curve_reads_in():
     wave = np.arange(0.3, 2.5, 0.001) * u.um
     plt.plot(wave, elt.surface.reflection(wave))
     plt.show()
+
+
+def test_scao_1_5mas_works():
+    pass
+
+
+def test_mcao_4mas_works():
+    pass
+
+
+def test_spec_for_a_specific_wavelength_range_works():
+    pass
