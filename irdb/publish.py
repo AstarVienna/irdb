@@ -117,6 +117,9 @@ if __name__ == "__main__":
                 if "u" in arg: kwargs["upload"] = True
                 if "h" in arg: print_help_menu()
             else:
-                _pkg_names += [arg]
+                if arg.lower() == "all":
+                    _pkg_names = PKGS.keys()
+                else:
+                    _pkg_names += [arg]
 
         publish(_pkg_names, **kwargs)

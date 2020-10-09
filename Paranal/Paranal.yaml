@@ -22,6 +22,7 @@ effects :
     class : AtmosphericTERCurve
     kwargs :
         filename: "TER_paranal_default_NIR_IMG.dat"
+        area: "!TEL.area"
         rescale_emission:
             filter_name: "Ks"
             filename_format: "!INST.filter_file_format"

@@ -15,6 +15,10 @@ properties :
     airmass :       "!OBS.airmass"
     pupil_angle :   "!OBS.pupil_angle"
     pixel_scale :   "!INST.pixel_scale"
+    background :
+        filter_name : "Ks"
+        magnitude : 13.6
+
 
 effects :
 -   name : armazones_atmo_default_ter_curve
@@ -23,6 +27,13 @@ effects :
     include : True
     kwargs :
         filename: "TER_armazones_default_NIR_IMG.dat"
+        area: "!TEL.area"
+        rescale_emission:
+            filter_name: "!ATMO.background.filter_name"
+            filename_format: "!INST.filter_file_format"
+            value: "!ATMO.background.magnitude"
+            unit: mag
+
 
 -   name : armazones_atmo_dispersion
     description : atmospheric dispersion

@@ -56,6 +56,18 @@ def test_empty_sky_with_mcao_4mas():
     plt.show()
 
 
+def test_scao_1_5mas_works():
+    pass
+
+
+def test_mcao_4mas_works():
+    pass
+
+
+def test_spec_for_a_specific_wavelength_range_works():
+    pass
+
+
 
 
 

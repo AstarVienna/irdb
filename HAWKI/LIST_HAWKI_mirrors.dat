@@ -9,10 +9,11 @@
 # angle_unit : degree
 # temperature_unit  : deg_C
 # changes :
-# - 2019-08-13 : (KL) Created list based on HAWKI user manual
+# - 2019-08-13 (KL) Created list based on HAWKI user manual
+# - 2020-10-06 (KL) increase entrance window temp from 0 to 10 deg
 #
 name        outer   inner   angle   temperature     action         filename
-H0_EntrWin  0.4     0.0     0       0               transmission   TER_window.dat
+H0_EntrWin  0.4     0.0     0       10               transmission   TER_window.dat
 H1_Fold     0.4     0.0     20      -198            reflection     TER_mirror_gold.dat
 H2_Img1     0.3     0.0     20      -198            reflection     TER_mirror_gold.dat
 H3_ReImg1   0.05    0.0     20      -198            reflection     TER_mirror_gold.dat
