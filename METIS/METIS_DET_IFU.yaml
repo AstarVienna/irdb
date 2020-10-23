@@ -20,7 +20,7 @@ effects :
     description : Quantum efficiency curves for each detector
     class : QuantumEfficiencyCurve
     kwargs :
-        filename : QE_detector_H2RG.dat
+        filename : QE_detector_H2RG_METIS.dat
 
 -   name: dark_current
     description : METIS LMS dark current
