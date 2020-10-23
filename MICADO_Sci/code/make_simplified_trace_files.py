@@ -28,7 +28,7 @@ def make_waves_and_ys():
 
     ys = np.cumsum(np.array(dys))
 
-    plt.plot(ws[ws>=0.78], dys[ws>=0.78])
+    # plt.plot(ws[ws>=0.78], dys[ws>=0.78])
 
     return ws, ys
 
@@ -63,21 +63,33 @@ def make_hdulist_fits_file(width=3):
             "EDATA": 2}
     pri_hdu.header.update(meta)
 
+    # names = ["description", "extension_id", "aperture_id", "image_plane_id"]
+    # data = [["IJ", "HK"], [2, 3], [0, 0], [0, 0]]
+    # cat_tbl = Table(names=names, data=data)
+    # cat_hdu = fits.table_to_hdu(cat_tbl)
+    # cat_hdu.header["EXTNAME"] = "CAT_TRAC"
+
+    # ij_tbl = make_trace_table(0.75, 1.5, width)
+    # ij_hdu = fits.table_to_hdu(ij_tbl)
+    # ij_hdu.header["EXTNAME"] = "IJ_TRACE"
+    #
+    # hk_tbl = make_trace_table(1.40, 2.5, width)
+    # hk_hdu = fits.table_to_hdu(hk_tbl)
+    # hk_hdu.header["EXTNAME"] = "HK_TRACE"
+    #
+    # hdu_list = fits.HDUList([pri_hdu, cat_hdu, ij_hdu, hk_hdu])
+
     names = ["description", "extension_id", "aperture_id", "image_plane_id"]
-    data = [["IJ", "HK"], [2, 3], [0, 0], [0, 0]]
+    data = [["IJHK"], [2], [0], [0]]
     cat_tbl = Table(names=names, data=data)
     cat_hdu = fits.table_to_hdu(cat_tbl)
     cat_hdu.header["EXTNAME"] = "CAT_TRAC"
 
-    ij_tbl = make_trace_table(0.75, 1.5, width)
-    ij_hdu = fits.table_to_hdu(ij_tbl)
-    ij_hdu.header["EXTNAME"] = "IJ_TRACE"
+    ijhk_tbl = make_trace_table(0.75, 2.5, width)
+    ijhk_hdu = fits.table_to_hdu(ijhk_tbl)
+    ijhk_hdu.header["EXTNAME"] = "IJHK"
 
-    hk_tbl = make_trace_table(1.40, 2.5, width)
-    hk_hdu = fits.table_to_hdu(hk_tbl)
-    hk_hdu.header["EXTNAME"] = "HK_TRACE"
-
-    hdu_list = fits.HDUList([pri_hdu, cat_hdu, ij_hdu, hk_hdu])
+    hdu_list = fits.HDUList([pri_hdu, cat_hdu, ijhk_hdu])
 
     return hdu_list
 
