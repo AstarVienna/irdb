@@ -1,0 +1,51 @@
+### Vienna LT camera ProLine-PL16803
+object : detector
+alias : DET
+name : ViLT_PL16803_detector
+description : base configuration for ViLT camera (PL16803)
+
+properties :
+    temperature : -35
+    dit : "!OBS.dit"
+    ndit : "!OBS.ndit"
+
+effects :
+-   name: ViLT_detector
+    class: DetectorList
+    include: True
+    kwargs:
+      filename : FPA_ViLT_layout.dat
+
+-   name : qe_curve
+    description : Quantum efficiency curves for each detector
+    class : QuantumEfficiencyCurve
+    kwargs :
+        filename : QE_SBIG.dat     # TODO: should be changed to PL16803
+
+-   name: exposure_action
+    description: Summing up sky signal for all DITs and NDITs
+    class: SummedExposure
+
+-   name: dark_current
+    description : PL16803 dark current
+    class: DarkCurrent
+    # [e-/s] level of dark current for each detector
+    kwargs:
+        value: 0.005
+
+-   name: shot_noise
+    description : apply Poisson shot noise to images
+    class: ShotNoise
+
+-   name: detector_linearity
+    description : Linearity characteristics of PL16803
+    class: LinearityCurve
+    kwargs:
+        array_dict: {incident: [0, 100000, 999999999999],
+                     measured: [0, 100000, 100000]}
+
+-   name : readout_noise
+    description : Readout noise frames
+    class : BasicReadoutNoise
+    kwargs :
+        noise_std : 10.
