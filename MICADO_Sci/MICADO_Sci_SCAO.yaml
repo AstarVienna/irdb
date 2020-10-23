@@ -12,7 +12,7 @@ description : "MICADO SCAO mode effects"
 
 properties:
     psf:
-        strehl: 0.4
+        strehl: 0.8
         wavelength: "!INST.filter_name"
 
 effects:

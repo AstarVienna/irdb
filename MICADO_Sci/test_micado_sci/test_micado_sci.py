@@ -25,42 +25,41 @@ def test_elt_ter_curve_reads_in():
     assert isinstance(elt, sim.effects.TERCurve)
 
 
-def test_reads_in_default_yaml():
-    cmd = sim.UserCommands(use_instrument="MICADO_Sci")
-    isinstance(cmd, sim.UserCommands)
+class TestUserCommands:
+    def test_reads_in_default_yaml(self):
+        cmd = sim.UserCommands(use_instrument="MICADO_Sci")
+        isinstance(cmd, sim.UserCommands)
 
 
-def test_makes_mcao_4mas_optical_train():
-    cmd = sim.UserCommands(use_instrument="MICADO_Sci",
-                           set_modes=["MCAO", "4mas"])
-    opt = sim.OpticalTrain(cmd)
-    print(opt)
+class TestOpticalTrain:
+    def test_makes_mcao_4mas_optical_train(self):
+        cmd = sim.UserCommands(use_instrument="MICADO_Sci",
+                               set_modes=["MCAO", "4mas"])
+        opt = sim.OpticalTrain(cmd)
+        assert isinstance(opt, sim.OpticalTrain)
+        print(opt)
+
+    def test_makes_scao_1_5mas_optical_train(self):
+        cmd = sim.UserCommands(use_instrument="MICADO_Sci",
+                               set_modes=["SCAO", "1.5mas"])
+        opt = sim.OpticalTrain(cmd)
+        print(opt)
 
 
-def test_makes_scao_1_5mas_optical_train():
-    cmd = sim.UserCommands(use_instrument="MICADO_Sci",
-                           set_modes=["SCAO", "1.5mas"])
-    opt = sim.OpticalTrain(cmd)
-    print(opt)
+class TestObserve:
+    def test_empty_sky_with_mcao_4mas(self):
+        cmd = sim.UserCommands(use_instrument="MICADO_Sci",
+                               set_modes=["MCAO", "4mas"])
+        opt = sim.OpticalTrain(cmd)
+        src = sim.source.source_templates.empty_sky()
 
+        opt.observe(src)
 
-def test_empty_sky_with_mcao_4mas():
-    cmd = sim.UserCommands(use_instrument="MICADO_Sci",
-                           set_modes=["MCAO", "4mas"])
-    opt = sim.OpticalTrain(cmd)
-    src = sim.source.source_templates.empty_sky()
-
-    opt.observe(src)
-
-    plt.imshow(opt.image_planes[0].image)
-    plt.show()
+        plt.imshow(opt.image_planes[0].image)
+        plt.show()
 
 
 def test_scao_1_5mas_works():
-    pass
-
-
-def test_mcao_4mas_works():
     pass
 
 

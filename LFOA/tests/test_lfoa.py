@@ -11,7 +11,7 @@ from scopesim.source.source_templates import star_field
 import scopesim_templates as sim_tp
 
 
-PLOTS = False
+PLOTS = True
 PKGS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
 scopesim.rc.__config__["!SIM.file.local_packages_path"] = PKGS_DIR
 
