@@ -18,10 +18,10 @@ name           outer   inner   angle   temperature   action       filename
 IMG_M1         0.090   0.0     0.      -203.         reflection   TER_mirror_gold.dat
 IMG_M2         0.090   0.0     0.      -203.         reflection   TER_mirror_gold.dat
 IMG_M3         0.090   0.0     0.      -203.         reflection   TER_mirror_gold.dat
-IMG_dichroic   0.150   0.0     0.      -203          transmission TER_img_dichroic.dat
-IMG_dichroic   0.150   0.0     0.      -203          transmission TER_img_dichroic.dat
-IMG_LM_FM1     0.150   0.0     0.      -203          reflection   TER_mirror_gold.dat
-IMG_LM_FM2     0.150   0.0     0.      -203          reflection   TER_mirror_gold.dat
+IMG_dichroic   0.150   0.0     0.      -203.         transmission TER_img_dichroic.dat
+IMG_dichroic   0.150   0.0     0.      -203.         transmission TER_img_dichroic.dat
+IMG_LM_FM1     0.150   0.0     0.      -203.         reflection   TER_mirror_gold.dat
+IMG_LM_FM2     0.150   0.0     0.      -203.         reflection   TER_mirror_gold.dat
 IMG_LM_CM1     0.150   0.0     0.      -203.         reflection   TER_mirror_gold.dat
 IMG_LM_CM2     0.150   0.0     0.      -203.         reflection   TER_mirror_gold.dat
 IMG_LM_CM3     0.150   0.0     0.      -203.         reflection   TER_mirror_gold.dat

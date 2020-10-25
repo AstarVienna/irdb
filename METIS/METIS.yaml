@@ -1,4 +1,4 @@
-### METIS LM IMAGING MODE
+### METIS
 object : instrument
 alias : INST
 name : METIS
@@ -9,7 +9,7 @@ properties :
 
 effects :
   - name: metis_cfo_surfaces
-    description : surfaces list for common fore optics
+    description : surface list for common fore optics
     class : SurfaceList
     kwargs :
       filename : LIST_METIS_mirrors_cfo.dat
@@ -39,4 +39,3 @@ effects :
 #      efficiency: 1
 #      wave_mid: "!SIM.spectral.wave_mid"
 #      quick_adc: True
-
