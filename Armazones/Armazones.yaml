@@ -16,9 +16,9 @@ properties :
     pupil_angle :   "!OBS.pupil_angle"
     pixel_scale :   "!INST.pixel_scale"
     background :
-        filter_name : "Ks"
-        magnitude : 13.6
-
+        filter_name : "!OBS.filter_name"
+        value: 13.6
+        unit: mag
 
 effects :
 -   name : armazones_atmo_default_ter_curve
@@ -31,9 +31,8 @@ effects :
         rescale_emission:
             filter_name: "!ATMO.background.filter_name"
             filename_format: "!INST.filter_file_format"
-            value: "!ATMO.background.magnitude"
-            unit: mag
-
+            value: "!ATMO.background.value"
+            unit: "!ATMO.background.unit"
 
 -   name : armazones_atmo_dispersion
     description : atmospheric dispersion
