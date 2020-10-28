@@ -20,7 +20,7 @@ class TestInit:
         # slit_hdr = ho._short_micado_slit_header()
         wave_min = 0.8
         wave_max = 2.5
-        spt = SpectralTraceList(filename="../TRACE_SCI_3arcsec.fits")
+        spt = SpectralTraceList(filename="../TRACE_SCI_15arcsec.fits")
 
         params = {"wave_min": wave_min, "wave_max": wave_max,
                   "pixel_scale": 0.004, "plate_scale": 0.266666667}
