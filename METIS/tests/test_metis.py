@@ -36,14 +36,10 @@ class TestObserves:
         hdus = metis.readout()
 
         if not PLOTS:
-            plt.subplot(121)
-            wave = np.arange(3, 5, 0.001) * u.um
-            thru = metis.optics_manager.surfaces_table.throughput(wave)
-            plt.plot(wave, thru)
-
-            plt.subplot(122)
             im = hdus[0][1].data
-            plt.imshow(im, norm=LogNorm())
+            plt.imshow(im, norm=LogNorm(),
+                       vmin=0.7*np.median(im),
+                       vmax=1.3*np.median(im))
             plt.colorbar()
 
             plt.show()
