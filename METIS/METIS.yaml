@@ -15,16 +15,6 @@ effects :
     kwargs :
       filename : LIST_METIS_mirrors_cfo.dat
 
-  - name : metis_filter
-    description : transmission curve for filter
-    class : FilterCurve
-    kwargs:
-      filter_name : "!OBS.filter_name"
-      filename_format: "!INST.filter_file_format"
-      minimum_throughput: !!float 1.01E-4
-      outer : 0.2
-      outer_unit: "m"
-
 #  - name : metis_adc_residuals
 #    class : AtmosphericDispersionCorrection
 #    include : False

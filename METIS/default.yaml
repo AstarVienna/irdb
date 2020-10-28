@@ -34,6 +34,7 @@ mode_yamls :
       - METIS_DET_IMG_LM.yaml
     properties :
       filter_name : L
+      nd_filter_name : open
 
   - name: img_n
     yamls:
