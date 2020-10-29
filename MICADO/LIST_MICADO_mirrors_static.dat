@@ -2,16 +2,16 @@
 # source : Ric's SPIE 2018 PPT presentation
 # date_created  : 2018-11-19
 # date_modified : 2019-07-10
-# status : Design - pre PDR list of all static MICADO surfaces
+# status : Design, pre PDR list of all static MICADO surfaces
 # type : mirror:list
 # outer_unit : m
 # inner_unit : m
 # angle_unit : degree
 # temperature_unit  : deg_C
 # changes :
-# - 2019-01-28 : (KL) Changed column names and added units to header
-# - 2019-07-10 : (KL) Shortened the list to only the swappable mirrors
-# - 2020-08-25 : (KL) Updated angle_unit to degree from degrees (why has astropy not complained until now?)
+# - 2019-01-28 (KL) Changed column names and added units to header
+# - 2019-07-10 (KL) Shortened the list to only the swappable mirrors
+# - 2020-08-25 (KL) Updated angle_unit to degree from degrees (why has astropy not complained until now?)
 #
 name        outer   inner   angle   temperature     action         filename
 I00_EntrWin 0.5     0.0     0       0               transmission   TER_entrance_window.dat

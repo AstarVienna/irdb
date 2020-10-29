@@ -9,7 +9,7 @@
 # wavelength_unit : um
 #
 # changes :
-# - 2018-11-19 : (KL) updated meta data to new format
+# - 2018-11-19 (KL) updated meta data to new format
 #
 wavelength  transmission    reflection      emissivity
 0.5         0               1               0
