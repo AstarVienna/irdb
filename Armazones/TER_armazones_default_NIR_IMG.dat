@@ -15,9 +15,8 @@
 # - 2019-07-24 (KL) Created file
 # - 2019-08-09 (KL) Updated values for airmass 1.2, pwv 2.5
 # - 2020-10-28 (KL) Extended wavelength range from [0.7, 2.5] to [0.3, 25.0]um WITH DUMMY VALUES. CHANGE THIS AND DON'T FORGET!!!!!!
-#
+# - 2020-10-29 (MV) Removed dummy values as new tables for the full range are now available
 wavelength  transmission    emission
-0.300       0.9325          471.8
 0.700       0.9325          471.8
 0.701       0.9327          582.5
 0.702       0.9340          446.0
@@ -152,7 +151,7 @@ wavelength  transmission    emission
 0.831       0.9394          1002.8
 0.832       0.9306          563.0
 0.833       0.9556          514.3
-0.834       0.9481          564.6
+0.834       0.9481          564.60.300       0.9325          471.8
 0.835       0.9609          4307.4
 0.836       0.9540          1763.3
 0.837       0.9619          958.0
@@ -1819,4 +1818,3 @@ wavelength  transmission    emission
 2.498       0.6490          179833.0
 2.499       0.7497          123627.0
 2.500       0.7987          93103.9
-25.0        0.7987          93103.9

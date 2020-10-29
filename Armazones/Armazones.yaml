@@ -26,7 +26,7 @@ effects :
     class : AtmosphericTERCurve
     include : True
     kwargs :
-        filename: "TER_armazones_default_NIR_IMG.dat"
+        filename: "TER_armazones_default_FULL_IMG.dat"
         area: "!TEL.area"
         rescale_emission:
             filter_name: "!ATMO.background.filter_name"
