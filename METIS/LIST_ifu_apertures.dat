@@ -11,7 +11,7 @@
 # angle_unit : deg
 #
 # changes:
-# - 2019-16-10 : (KL) created first aperture list
+# - 2019-16-10 (KL) created first aperture list
 #
 id      left    right   top     bottom      angle   shape   conserve_image
 0       -3      3       0.3     0.1         0       rect    True

@@ -3,13 +3,13 @@
 # date_created  : 2016-01-01
 # date_modified : 2019-08-09
 # type : detector:quantum_efficiency
-# status : Design - guestimated by reading off the graph in Finger+ 2008
+# status : Design, guestimated by reading off the graph in Finger+ 2008
 # description : H2RG chip quantum efficiency
 # wavelength_unit : um
 # action : transmission
 # changes :
-# - 2018-11-19 : (KL) updated meta data to new format
-# - 2019-08-09 : (KL) Added action keyword to meta data
+# - 2018-11-19 (KL) updated meta data to new format
+# - 2019-08-09 (KL) Added action keyword to meta data
 #
 wavelength  transmission
 0.7         0.0

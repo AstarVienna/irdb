@@ -11,7 +11,7 @@
 # red_cutoff : 20.1
 # comment : for open positions of filter wheels
 # changes :
-#     - 2020-10-28 : (OC) add wavelength unit, change description
+#     - 2020-10-28 (OC) add wavelength unit, change description
 wavelength  transmission
 2.5   0.0
 2.6   1.0

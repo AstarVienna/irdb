@@ -9,7 +9,7 @@
 # angle_unit : degree
 # temperature_unit  : deg_C
 # changes :
-# - 2019-11-19 : (KL) Created file
+# - 2019-11-19 (KL) Created file
 #
 name            outer   inner   angle   temperature     action          filename
 POM             0.2     0.0     45      -85             reflection      wfc3_ir_mir1_001_syn.dat

@@ -2,13 +2,13 @@
 # source : Roy van Boekel
 # date_created : 2018-07
 # date_modified : 2020-02-25
-# status : Design - pre-PDR list of filters
+# status : Design, pre-PDR list of filters
 # type : filter:transmission
 # center : 4.775038
 # width : 0.56
 # blue_cutoff : 4.49
 # red_cutoff : 5.05
-# comment : "Mp" from Roys wish filter list, July 2018
+# comment : Mp from Roys wish filter list, July 2018
 #
 wavelength  transmission
 4.3867      0.0000

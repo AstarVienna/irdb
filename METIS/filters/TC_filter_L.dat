@@ -2,7 +2,7 @@
 # source : NN
 # date_created : 2018-07
 # date_modified : 2020-10-28
-# status : Design - pre-PDR list of filters
+# status : Design, pre-PDR list of filters
 # type : filter:transmission
 # wavelength_unit : um
 # center : 3.7875
@@ -11,7 +11,7 @@
 # red_cutoff : 4.084415
 # comment :
 # changes :
-#     - 2020-10-28 : (OC, KL, MV) add wavelength unit
+#     - 2020-10-28 (OC, KL, MV) add wavelength unit
 #
 wavelength  transmission
 3.38 0.00
