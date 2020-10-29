@@ -28,11 +28,15 @@ effects:
             - Mp
             - Br_alpha
             - Br_alpha_ref
+            - PAH_3.3
             - PAH_3.3_ref
+            - CO_1-0_ice
             - CO_ref
             - H2O-ice
-            - CO_1-0_ice
             - IB_4.05
+            - HCI_L_short
+            - HCI_L_long
+            - HCI_M
         filename_format : "!INST.filter_file_format"
         current_filter : "!OBS.filter_name"
         minimum_throughput : !!float 0.
