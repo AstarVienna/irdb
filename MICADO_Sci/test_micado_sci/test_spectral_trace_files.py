@@ -5,8 +5,7 @@ from matplotlib import pyplot as plt
 from scopesim.effects import SpectralTraceList
 from scopesim.tests.mocks.py_objects import header_objects as ho
 
-
-PLOTS = True
+PLOTS = False
 
 
 class TestInit:
@@ -29,7 +28,7 @@ class TestInit:
 
         print(len(hdrs))
 
-        if PLOTS:
+        if not PLOTS:
             spt.plot(wave_min, wave_max)
 
             # pixel coords

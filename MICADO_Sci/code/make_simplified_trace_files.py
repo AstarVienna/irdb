@@ -94,6 +94,10 @@ def make_hdulist_fits_file(width=3):
     return hdu_list
 
 
-for width in [3, 15]:
-    hdu_list = make_hdulist_fits_file(width)
-    hdu_list.writeto(f"TRACE_SCI_{width}arcsec.fits", overwrite=True)
+# for width in [3, 15]:
+#     hdu_list = make_hdulist_fits_file(width)
+#     hdu_list.writeto(f"TRACE_SCI_{width}arcsec.fits", overwrite=True)
+
+waves, ys = make_waves_and_ys()
+plt.plot(waves[1:], np.diff(ys))
+plt.show()

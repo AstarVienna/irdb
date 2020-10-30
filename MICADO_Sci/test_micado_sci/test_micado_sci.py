@@ -36,14 +36,22 @@ class TestOpticalTrain:
         cmd = sim.UserCommands(use_instrument="MICADO_Sci",
                                set_modes=["MCAO", "4mas"])
         opt = sim.OpticalTrain(cmd)
-        assert isinstance(opt, sim.OpticalTrain)
         print(opt)
+        assert isinstance(opt, sim.OpticalTrain)
 
     def test_makes_scao_1_5mas_optical_train(self):
         cmd = sim.UserCommands(use_instrument="MICADO_Sci",
                                set_modes=["SCAO", "1.5mas"])
         opt = sim.OpticalTrain(cmd)
         print(opt)
+        assert isinstance(opt, sim.OpticalTrain)
+
+    def test_makes_spec_3000x50_optical_train(self):
+        cmd = sim.UserCommands(use_instrument="MICADO_Sci",
+                               set_modes=["SPEC"])
+        opt = sim.OpticalTrain(cmd)
+        print(opt)
+        assert isinstance(opt, sim.OpticalTrain)
 
 
 class TestObserve:

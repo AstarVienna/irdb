@@ -12,3 +12,61 @@
 #* XiLamStrehlPSF (max SR JHK-40/60/80)
 #* BasicTraceMap
 #* AtmopshericDiffraction
+
+
+##### SCAO
+#* RO TER
+#* Detector Window
+#* PSF
+#    * SCAO FVPSF
+#    * SCAO AnisoCADO ConstPSF
+
+object : instrument
+alias : INST
+name : MICADO_SPEC
+description : "MICADO SPEC mode effects"
+
+properties:
+    psf:
+        strehl: 0.8
+        wavelength: "!INST.filter_name"
+
+effects:
+-   name: scao_relay_optics_ter
+    description: Combined TER curve for stand-alone relay optics module
+    class: TERCurve
+    kwargs:
+        filename: TER_MICADO_RO.dat
+
+-   name: scao_const_psf
+    description: field constant PSF as produced by stand-alone SCAO
+    class: AnisocadoConstPSF
+    kwargs:
+        filename: "MICADO_AnisoCADO_rms_map.fits"
+        strehl: "!INST.psf.strehl"
+        wavelength: "!INST.psf.wavelength"
+        psf_side_length: 256
+        offset: [0,0]
+        rounded_edges: True
+        convolve_mode: full
+
+-   name : slit_3000x50mas
+    class : ApertureMask
+    kwargs :
+        filename : "SLIT_3000x50mas.dat"
+
+-   name : spectral_trace_3000x50mas
+    class : SpectralTraceList
+    kwargs :
+        filename : "TRACE_SCI_3arcsec.fits"
+
+---
+
+object : detector
+alias : DET
+name : micado_sci_detector_window
+description : A settable window on the detector plane
+
+properties :
+    width : 1024
+    height : 1024
