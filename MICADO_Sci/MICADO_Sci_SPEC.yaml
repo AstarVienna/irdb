@@ -29,7 +29,7 @@ description : "MICADO SPEC mode effects"
 properties:
     psf:
         strehl: 0.8
-        wavelength: "!INST.filter_name"
+        wavelength: 2.15
 
 effects:
 -   name: scao_relay_optics_ter

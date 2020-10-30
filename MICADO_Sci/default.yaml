@@ -65,7 +65,7 @@ mode_yamls :
   name : SPEC
   description : "Spectroscopy"
   yamls :
-    MICADO_Sci_SPEC.yaml
+    - MICADO_Sci_SPEC.yaml
   properties :
     filter_name : Spec_HK
     pixel_scale : 0.004         # arcsec / pixel
