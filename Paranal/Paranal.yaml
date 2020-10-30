@@ -32,6 +32,7 @@ effects :
 -   name : paranal_atmo_dispersion
     description : atmospheric dispersion
     class : AtmosphericDispersion
+    include: False
 
 ####################### Alternative effects ####################################
 

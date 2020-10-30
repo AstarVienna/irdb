@@ -18,6 +18,7 @@ effects :
 -   name: micado_adc_3D_shift
     description : atmospheric disperson corrector
     class: AtmosphericDispersionCorrection
+    include: False
     kwargs:
         altitude : "!ATMO.altitude"
         longitude : "!ATMO.longitude"

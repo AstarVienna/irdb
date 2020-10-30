@@ -68,5 +68,3 @@ effects :
     kwargs :
         pixel_scale : "!INST.pixel_scale"
         filename : "INST_MICADO_wavefront_error_budget.dat"
-
-
