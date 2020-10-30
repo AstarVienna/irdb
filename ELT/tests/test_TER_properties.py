@@ -8,7 +8,7 @@ from scopesim import rc
 TOP_PATH = pth.abspath(pth.join(pth.dirname(__file__), "../"))
 rc.__search_path__ += [TOP_PATH]
 
-PLOTS = True
+PLOTS = False
 
 
 def test_eso_vs_scopesim_throughput():

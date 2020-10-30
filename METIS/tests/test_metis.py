@@ -10,7 +10,7 @@ import scopesim
 from scopesim.source.source_templates import star_field
 import scopesim_templates as sim_tp
 
-PLOTS = True
+PLOTS = False
 PKGS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
 scopesim.rc.__config__["!SIM.file.local_packages_path"] = PKGS_DIR
 
@@ -34,7 +34,7 @@ class TestObserves:
         metis.observe(src)
         hdus = metis.readout()
 
-        if not PLOTS:
+        if PLOTS:
             im = hdus[0][1].data
             plt.imshow(im, norm=LogNorm(),
                        vmin=0.7*np.median(im),

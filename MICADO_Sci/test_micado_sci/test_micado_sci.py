@@ -10,7 +10,7 @@ from scopesim import rc
 TOP_PATH = pth.abspath(pth.join(pth.dirname(__file__), "../../"))
 rc.__config__["!SIM.file.local_packages_path"] = TOP_PATH
 
-PLOTS = True
+PLOTS = False
 
 
 def test_elt_ter_curve_reads_in():
