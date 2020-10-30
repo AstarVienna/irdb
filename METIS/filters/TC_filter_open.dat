@@ -1,15 +1,17 @@
 # author : Rainer Koehler
 # source : Rainer Koehler
 # date_created : 2018-01-09
-# date_modified : 2020-02-25
-# status : Dummy filter for use with LMS simulator
+# date_modified : 2020-10-28
+# status : Open filter (100% transmission)
 # type : filter:transmission
+# wavelength_unit : um
 # center : 11.3
 # width : 17.5
 # blue_cutoff : 2.5
 # red_cutoff : 20.1
-# comment : Dummy filter for use with LMS simulator
-#
+# comment : for open positions of filter wheels
+# changes :
+#     - 2020-10-28 (OC) add wavelength unit, change description
 wavelength  transmission
 2.5   0.0
 2.6   1.0

@@ -1,0 +1,10 @@
+# name : mirror_list
+# outer_unit : m
+# inner_unit : m
+# angle_unit : degree
+# temperature_unit  : deg_C
+# description : A list of optical surfaces in the telescope and camera. M[1-3] are the telescope mirrors, FR[1-4] are the lenses of the focal reducer
+#
+name    outer   inner   angle   temperature action          filename
+M1      0.80    0.52    0       5           reflection      TER_mirror_aluminium.dat
+M2      0.10    0.0     0       5           reflection      TER_mirror_aluminium.dat

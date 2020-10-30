@@ -10,7 +10,6 @@ import scopesim
 from scopesim.source.source_templates import star_field
 import scopesim_templates as sim_tp
 
-
 PLOTS = False
 PKGS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
 scopesim.rc.__config__["!SIM.file.local_packages_path"] = PKGS_DIR
@@ -35,15 +34,11 @@ class TestObserves:
         metis.observe(src)
         hdus = metis.readout()
 
-        if not PLOTS:
-            plt.subplot(121)
-            wave = np.arange(3, 5, 0.001) * u.um
-            thru = metis.optics_manager.surfaces_table.throughput(wave)
-            plt.plot(wave, thru)
-
-            plt.subplot(122)
+        if PLOTS:
             im = hdus[0][1].data
-            plt.imshow(im, norm=LogNorm())
+            plt.imshow(im, norm=LogNorm(),
+                       vmin=0.7*np.median(im),
+                       vmax=1.3*np.median(im))
             plt.colorbar()
 
             plt.show()

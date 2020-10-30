@@ -5,15 +5,14 @@ from os import path as pth
 import numpy as np
 import matplotlib.pyplot as plt
 from astropy import units as u
-from astropy.table import Table
 
-from scopesim import rc
+from scopesim import rc, OpticalTrain
 from scopesim.effects import SurfaceList, TERCurve
 
 PLOTS = False
 
 DATA_DIR = pth.abspath(pth.join(pth.dirname(__file__), "../"))
-rc.__search_path__.insert(0, DATA_DIR)
+rc.__currsys__["!SIM.local_packages_path"] = DATA_DIR
 
 
 class TestSurfaceLists:
@@ -53,6 +52,11 @@ class TestSurfaceLists:
         assert np.max(thru) > 0.7
         assert np.max(flux) > 0.
 
-
     def test_plot_throughputs_of_all_surface_lists(self):
         pass
+
+
+class TestMicadoLoadsOpticalTrain:
+    def just_loads(self):
+        micado = OpticalTrain("MICADO")
+        assert isinstance(micado, OpticalTrain)

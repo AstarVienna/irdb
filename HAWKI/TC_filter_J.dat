@@ -9,7 +9,7 @@
 # wavelength_unit : um
 #
 # changes :
-# - 2019-08-13 : (KL) Reformatted for scopesim
+# - 2019-08-13 (KL) Reformatted for scopesim
 #
 wavelength  transmission
 1.1500      0.000000

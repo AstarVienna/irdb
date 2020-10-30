@@ -1,0 +1,49 @@
+### Vienna Little Telescope
+object : instrument
+alias : INST
+name : ViLT
+description : Vienna Little Telescope
+
+properties :
+    temperature : 5
+    pixel_scale : 0.278     # arcsec / pixel
+    plate_scale : 30.9    # arcsec / mm
+
+
+effects :
+-   name : seeing_psf
+    description : Sternwarte PSF
+    class : SeeingPSF
+    kwargs :
+      fwhm : 1.5       # [arcsec]
+
+-   name : skycalc_average_atmo
+    description : atmospheric properties for a default skycalc run
+    class : AtmosphericTERCurve
+    include : True
+    kwargs :
+        filename: "TER_atmosphere.dat"
+        rescale_emission:
+            filter_name: "!OBS.sky.filter_name"
+            filename_format: "filters/{}.dat"
+            value: "!OBS.sky.bg_mag"
+            unit: mag
+
+-   name: lfoa_static_surfaces
+    description : telescope and camera optical surfaces
+    class: SurfaceList
+    kwargs:
+        filename: LIST_ViLT_mirrors_static.dat
+
+-   name: filter_curve
+    description : transmission curve for filter
+    class: FilterCurve
+    kwargs:
+        filter_name: "!OBS.filter_name"
+        filename_format: "filters/{}.dat"
+        minimum_throughput: !!float 1.01E-4
+        outer: 0.032
+        outer_unit: "m"
+
+
+

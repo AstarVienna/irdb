@@ -1,0 +1,19 @@
+# author : Oliver Czoske
+# source : Polarion METIS-3781
+# date_created : 2020-10-29
+# date_modified : 2020-10-29
+# status : PLACEHOLDER
+# type : filter:transmission
+# wavelength_unit : um
+# center : 4.825
+# width : 0.25
+# blue_cutoff : 4.70
+# red_cutoff : 4.90
+# comment : METIS-2784, mitigate atmospheric dispersion in HCI
+# changes :
+#
+wavelength  transmission
+4.6700      0.0000
+4.7000      0.8500
+4.9500      0.8500
+4.9800      0.0000

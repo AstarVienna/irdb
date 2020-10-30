@@ -5,7 +5,7 @@
 # wavelength_unit : um
 # action : transmission
 # changes :
-# - 2020-06-22 : (KL) Added meta data
+# - 2020-06-23 (KL) Added meta data
 #
 wavelength   transmission
 0.5          0.0001

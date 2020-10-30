@@ -15,7 +15,7 @@
 # gain_unit : electron/adu
 #
 # changes:
-# - 2018-11-19 : (KL) updated meta data to new format
+# - 2018-11-19 (KL) updated meta data to new format
 #
 id    x_cen    y_cen    xhw    yhw  x_len  y_len  pixsize  angle   gain
  1  -11.390  -11.400  10.24  10.24   2048   2048    0.010   0.00  1.705

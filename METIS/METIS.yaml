@@ -1,4 +1,4 @@
-### METIS LM IMAGING MODE
+### METIS
 object : instrument
 alias : INST
 name : METIS
@@ -6,23 +6,14 @@ description : base configuration for METIS
 
 properties :
   temperature : -248
+  filter_file_format : "filters/TC_filter_{}.dat"
 
 effects :
   - name: metis_cfo_surfaces
-    description : surfaces list for common fore optics
+    description : surface list for common fore optics
     class : SurfaceList
     kwargs :
       filename : LIST_METIS_mirrors_cfo.dat
-
-  - name : metis_filter
-    description : transmission curve for filter
-    class : FilterCurve
-    kwargs:
-      filter_name : "!OBS.filter_name"
-      filename_format: "filters/TC_filter_{}.dat"
-      minimum_throughput: !!float 1.01E-4
-      outer : 0.2
-      outer_unit: "m"
 
 #  - name : metis_adc_residuals
 #    class : AtmosphericDispersionCorrection
@@ -39,4 +30,3 @@ effects :
 #      efficiency: 1
 #      wave_mid: "!SIM.spectral.wave_mid"
 #      quick_adc: True
-
