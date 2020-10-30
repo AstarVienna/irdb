@@ -96,3 +96,5 @@ properties:
     filter_name : "!OBS.filter_name"
     value: 4
     unit: mag
+  spectrum:
+    filename: "TER_armazones_default_MIR_IMG.dat"
