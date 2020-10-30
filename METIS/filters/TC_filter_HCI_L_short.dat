@@ -1,0 +1,19 @@
+# author : Oliver Czoske
+# source : Polarion METIS-3781
+# date_created : 2020-10-29
+# date_modified : 2020-10-29
+# status : Requirement, throughput guessed from shortL
+# type : filter:transmission
+# wavelength_unit : um
+# center : 3.60
+# width : 0.20
+# blue_cutoff : 3.50
+# red_cutoff : 3.70
+# comment : METIS-2784, mitigate atmospheric dispersion in HCI
+# changes :
+#
+wavelength  transmission
+3.4700      0.0000
+3.5000      0.8500
+3.7000      0.8500
+3.7300      0.0000

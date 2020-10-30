@@ -1,14 +1,17 @@
 # author : NN
 # source : Roy van Boekel
 # date_created : 2018-07
-# date_modified : 2020-02-25
+# date_modified : 2020-10-29
 # status : Design, pre-PDR list of filters
 # type : filter:transmission
+# wavelength_unit : um
 # center : 3.30
 # width : 0.07
 # blue_cutoff : 3.26
 # red_cutoff : 3.34
-# comment : "PAH 3.3" from Roys wish filter list, July 2018
+# comment : PAH_3.3 from Roys wish filter list, July 2018
+# changes :
+#     - 2020-10-29 : (OC) correct header syntax, wavelength_unit
 #
 wavelength  transmission
 3.2600      0.0000
