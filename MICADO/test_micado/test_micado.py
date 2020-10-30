@@ -5,11 +5,9 @@ from os import path as pth
 import numpy as np
 import matplotlib.pyplot as plt
 from astropy import units as u
-from astropy.table import Table
 
 from scopesim import rc, OpticalTrain
 from scopesim.effects import SurfaceList, TERCurve
-from scopesim.effects.data_container import DataContainer
 
 PLOTS = False
 
