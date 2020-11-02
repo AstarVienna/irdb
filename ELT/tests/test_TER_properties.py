@@ -33,11 +33,11 @@ def test_eso_vs_scopesim_emission():
     ter = sim.effects.TERCurve(filename="TER_ELT_System_20190611.dat",
                                temperature="!ATMO.temperature")
 
-    wave = np.linspace(0.3, 2.5, 100) * u.um
+    wave = np.linspace(0.3, 12.5, 100) * u.um
     sl_flux = sl.emission(wave)
     ter_flux = ter.surface.emission(wave)
 
-    if PLOTS:
+    if not PLOTS:
 
         plt.plot(wave, sl_flux, label="ScopeSim")
         plt.plot(wave, ter_flux, label="ESO-253082")
