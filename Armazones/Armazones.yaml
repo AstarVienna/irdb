@@ -16,9 +16,11 @@ properties :
     pupil_angle :   "!OBS.pupil_angle"
     pixel_scale :   "!INST.pixel_scale"
     background :
-        filter_name : "!OBS.filter_name"
+        filter_name : Ks
         value: 13.6
         unit: mag
+    spectrum :
+        filename: "TER_armazones_default_FULL_IMG.dat"
 
 effects :
 -   name : armazones_atmo_default_ter_curve
@@ -26,7 +28,7 @@ effects :
     class : AtmosphericTERCurve
     include : True
     kwargs :
-        filename: "TER_armazones_default_FULL_IMG.dat"
+        filename: "!ATMO.spectrum.filename"
         area: "!TEL.area"
         rescale_emission:
             filter_name: "!ATMO.background.filter_name"

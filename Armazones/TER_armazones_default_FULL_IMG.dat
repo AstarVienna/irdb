@@ -16,6 +16,7 @@
 # emission_unit : ph s-1 m-2 um-1 arcsec-2
 # changes :
 # - 2020-10-29 (MV) Created file
+wavelength  transmission    emission
 0.300      0.0187          12.1
 0.305      0.0870          70.8
 0.310      0.1953         149.2

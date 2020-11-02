@@ -51,3 +51,11 @@ effects :
     kwargs :
         noise_std : 12
         n_channels : 32
+
+
+---
+
+object : detector
+alias : SIM
+name : sim_range
+description : A single H2RG detector
