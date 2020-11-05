@@ -22,7 +22,6 @@ effects:
         filter_names :
             # 18 positions (E-REP-MPIA-MET-1008_1-0)
             - open
-            - L
             - Lp
             - short-L
             - Mp
