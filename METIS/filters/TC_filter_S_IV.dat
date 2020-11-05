@@ -7,7 +7,7 @@
 # wavelength_unit : um
 # center : 10.50
 # width : 0.19
-# blue_cutoff :10.39
+# blue_cutoff : 10.39
 # red_cutoff : 10.61
 # comment : S_IV from Roys wish filter list, July 2018
 # changes :
