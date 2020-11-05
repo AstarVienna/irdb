@@ -10,7 +10,7 @@ import scopesim
 from scopesim.source.source_templates import star_field
 import scopesim_templates as sim_tp
 
-PLOTS = False
+PLOTS = True
 PKGS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
 scopesim.rc.__config__["!SIM.file.local_packages_path"] = PKGS_DIR
 
@@ -22,7 +22,8 @@ class TestLoads:
 
 
 class TestObserves:
-    def test_something_comes_out(self):
+    def test_something_comes_out_img_lm(self):
+        '''Basic test for LM imaging'''
         src = star_field(100, 15, 25, width=10, use_grid=True)
 
         cmds = scopesim.UserCommands(use_instrument="METIS")
@@ -35,10 +36,34 @@ class TestObserves:
         hdus = metis.readout()
 
         if PLOTS:
-            im = hdus[0][1].data
-            plt.imshow(im, norm=LogNorm(),
-                       vmin=0.7*np.median(im),
-                       vmax=1.3*np.median(im))
+            img = hdus[0][1].data
+            plt.imshow(img, norm=LogNorm(),
+                       vmin=0.7*np.median(img),
+                       vmax=1.3*np.median(img))
+            plt.colorbar()
+
+            plt.show()
+
+
+    def test_something_comes_out_img_n(self):
+        '''Basic test for N imaging'''
+        src = star_field(100, 15, 25, width=10, use_grid=True)
+
+        cmds = scopesim.UserCommands(use_instrument="METIS")
+
+        metis = scopesim.OpticalTrain(cmds)
+        metis.cmds.set_modes("img_n")
+        metis['scope_vibration'].include = False
+        metis['detector_linearity'].include = False
+
+        metis.observe(src)
+        hdus = metis.readout()
+
+        if PLOTS:
+            img = hdus[0][1].data
+            plt.imshow(img, norm=LogNorm(),
+                       vmin=0.7*np.median(img),
+                       vmax=1.3*np.median(img))
             plt.colorbar()
 
             plt.show()
