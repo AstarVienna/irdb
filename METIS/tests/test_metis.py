@@ -27,7 +27,9 @@ class TestObserves:
         src = star_field(100, 15, 25, width=10, use_grid=True)
 
         cmds = scopesim.UserCommands(use_instrument="METIS")
-
+        #cmds = scopesim.UserCommands(yamls=[
+        #    "METIS.yaml", "METIS_IMG_LM.yaml", "METIS_DET_IMG_N_GeoSnap.yaml"])
+        #cmds.set_modes("img_lm")
         metis = scopesim.OpticalTrain(cmds)
         metis['scope_vibration'].include = False
         metis['detector_linearity'].include = False
@@ -40,6 +42,7 @@ class TestObserves:
             plt.imshow(img, norm=LogNorm(),
                        vmin=0.7*np.median(img),
                        vmax=1.3*np.median(img))
+            plt.title("LM Imaging Test")
             plt.colorbar()
 
             plt.show()
@@ -47,12 +50,13 @@ class TestObserves:
 
     def test_something_comes_out_img_n(self):
         '''Basic test for N imaging'''
-        src = star_field(100, 15, 25, width=10, use_grid=True)
+        src = star_field(100, 5, 15, width=10, use_grid=True)
 
-        cmds = scopesim.UserCommands(use_instrument="METIS")
+        cmds = scopesim.UserCommands(use_instrument="METIS",
+                                     set_modes=["img_n"])
 
         metis = scopesim.OpticalTrain(cmds)
-        metis.cmds.set_modes("img_n")
+        #metis.cmds.set_modes("img_n")
         metis['scope_vibration'].include = False
         metis['detector_linearity'].include = False
 
@@ -64,6 +68,7 @@ class TestObserves:
             plt.imshow(img, norm=LogNorm(),
                        vmin=0.7*np.median(img),
                        vmax=1.3*np.median(img))
+            plt.title("N Imaging Test")
             plt.colorbar()
 
             plt.show()
