@@ -1,0 +1,20 @@
+# name : ViLT ProLine-PL16803 FPA
+# author : Oliver Czoske
+# sources: https://astro.univie.ac.at/fileadmin/user_upload/i_astro/Bericht-Nordkuppel.pdf
+# date_created : 2020-10-23
+# date_modified : 2020-10-23
+# type : detector:chip_list
+# x_cen_unit : mm
+# y_cen_unit : mm
+# x_size_unit : mm
+# y_size_unit : mm
+# pixel_size_unit : mm
+# angle_unit : deg
+# gain_unit : electron/adu
+# image_plane_id : 0
+#
+# changes:
+# - 2020-10-23 (OC) initialised from FPA_metis_img_lm_layout.dat
+#
+id   x_cen    y_cen   x_size  y_size  pixel_size  angle    gain
+ 1    0.00     0.00     36.864   36.864    0.009    0.0     1.0

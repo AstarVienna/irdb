@@ -15,6 +15,48 @@ effects:
     kwargs:
         filename: LIST_METIS_mirrors_img_n.dat
 
+-   name : filter_wheel
+    class : FilterWheel
+    description : IMG_N science filters
+    kwargs :
+        filter_names :
+          # 18 positions (E-REP-MPIA-MET-1008_1-0)
+          - open
+          - N1
+          - N2
+          - N3
+          - PAH_8.6
+          - PAH_8.6_ref
+          - PAH_11.25
+          - PAH_11.25_ref
+          - Ne_II
+          - Ne_II_ref
+          - S_IV
+          - S_IV_ref
+        filename_format : "!INST.filter_file_format"
+        current_filter : "!OBS.filter_name"
+        minimum_throughput : !!float 0.
+        outer : 56                        # E-REP-MPIA-MET-1008_1-0
+        outer_unit : "mm"
+
+-   name : nd_filter_wheel
+    class : FilterWheel
+    description : IMG_N neutral density filters
+    kwargs :
+        filter_names :
+            # 11 positions (E-REP-MPIA-MET-1008_1-0)
+            # OD = optical density, transmissivity 10^{-OD}
+            - open
+            - ND_OD1
+            - ND_OD2
+            - ND_OD3
+            - ND_OD4
+        filename_format : "!INST.filter_file_format"
+        current_filter : "!OBS.nd_filter_name"
+        minimum_throughput : !!float 0.
+        outer : 56                  # E-REP-MPIA-MET-1008_1-0
+        outer_unit : "mm"
+
 -   name : metis_psf_img
     descriptions: field constant, wavelength dependent PSF images for imaging mode
     class: FieldConstantPSF

@@ -1,0 +1,46 @@
+#
+##### MCAO
+#* MAORY TER
+#* Detector Window
+#* PSF
+#    * MCAO StrehlPSF (max SR JHK-13/30/50)
+
+object : instrument
+alias : INST
+name : MICADO_MCAO
+description : "MICADO MCAO mode effects"
+
+properties:
+    psf:
+        strehl: 0.4
+        wavelength: "!INST.filter_name"
+
+effects:
+-   name: maory_mms_ter
+    description: Combined TER curve for MAORY MMS relay optics module
+    class: TERCurve
+    kwargs:
+        filename: TER_MAORY_MMS.dat
+
+-   name: maory_const_psf
+    description: field constant PSF as produced by MAORY
+    class: AnisocadoConstPSF
+    kwargs:
+        filename: "MICADO_AnisoCADO_rms_map.fits"
+        strehl: "!INST.psf.strehl"
+        wavelength: "!INST.psf.wavelength"
+        psf_side_length: 256
+        offset: [0,0]
+        rounded_edges: True
+        convolve_mode: full
+
+---
+
+object : detector
+alias : DET
+name : micado_sci_detector_window
+description : A settable window on the detector plane
+
+properties :
+    width : 4096
+    height : 4096

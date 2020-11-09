@@ -11,6 +11,7 @@ properties:
 effects:
 - name: entrance_aperture
   class: ApertureMask
+  include: False
   kwargs:
     array_dict:
       x: [-240,  240, 240, -240]

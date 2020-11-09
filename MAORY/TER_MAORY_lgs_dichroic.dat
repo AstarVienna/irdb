@@ -1,0 +1,13 @@
+# source : Carmelo Archidiacono
+# name : maory_silver_mirror_coating
+# date_created : 2020-06-21
+# date_modified : 2020-06-22
+# wavelength_unit : um
+# action : transmission
+# changes :
+# - 2020-06-23 (KL) Added meta data
+#
+wavelength   transmission
+0.5          0.0001
+0.6          1
+2.5          1

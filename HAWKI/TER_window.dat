@@ -9,8 +9,8 @@
 # wavelength_unit : um
 #
 # changes :
-# - 2018-11-19 : (KL) updated meta data to new format
-# - 2020-10-06 : (KL) dropped reflection from 0.95 to 0.90
+# - 2018-11-19 (KL) updated meta data to new format
+# - 2020-10-06 (KL) dropped reflection from 0.95 to 0.90
 #
 wavelength  transmission    reflection      emissivity
 0.5         0               1               0

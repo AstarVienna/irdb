@@ -1,0 +1,67 @@
+# name: micado_sci_detector
+# description: H4RG DETECTOR
+# author : Kieran Leschinski
+# date_created : 09.07.2020
+# date_modified : 09.07.2020
+#
+# contains:
+# - DetectorWindow
+# - QuantumEfficiencyCurve
+# - SummedExposure
+# - DarkCurrent
+# - LinearityCurve
+# - ShotNoise
+# - PoorMansHxRGReadoutNoise
+
+object : detector
+alias : DET
+name : micado_sci_detector
+description : List of MICADO detector effects relevant for astronomers
+
+properties :
+    image_plane_id : 0
+    temperature : -230
+    dit : "!OBS.dit"
+    ndit : "!OBS.ndit"
+    width : 1024
+    height : 1024
+
+effects:
+- name: detector_window
+  class: DetectorWindow
+  kwargs:
+      image_plane_id: 0
+      pixel_size: 0.015
+      x: 0.
+      y: 0.
+      width: "!DET.width"
+      height: "!DET.height"
+      units: pixel
+
+-   name : qe_curve
+    description : Quantum efficiency curves for each detector
+    class : QuantumEfficiencyCurve
+    kwargs :
+        filename : QE_detector_H2RG.dat
+
+-   name: exposure_action
+    description: Summing up sky signal for all DITs and NDITs
+    class: SummedExposure
+
+-   name: dark_current
+    description : MICADO dark current
+    class: DarkCurrent
+    # [e-/s] level of dark current for each detector
+    kwargs:
+        value: 0.1
+
+-   name: shot_noise
+    description : apply poisson shot noise to images
+    class: ShotNoise
+
+-   name : readout_noise
+    description : Readout noise frames
+    class : PoorMansHxRGReadoutNoise
+    kwargs :
+        noise_std : 12
+        n_channels : 64

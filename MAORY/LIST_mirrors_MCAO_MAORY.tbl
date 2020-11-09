@@ -2,7 +2,7 @@
 # source : Ciliegi+ 2018 SPIE, "MAORY for ELT - preliminary design overview"
 # date_created : 2018-11-19
 # date_modified : 2018-11-19
-# status : Design - pre PDR list of MAORY mirrors
+# status : Design, pre PDR list of MAORY mirrors
 # type : mirror:list
 # outer_unit : m
 # inner_unit : m
@@ -11,6 +11,7 @@
 # changes :
 # - 2018-11-19 (KL) Added meta data, changed Dichr. filename
 # - 2019-01-28 (KL) Fixed YAML format in meta data
+# - 2020-06-22 (KL) Obsolete. Use LIST_mirrors_maory_mms.tbl from now on.
 #
 name        outer   inner   angle   temperature     action         filename
 M6          1.1     0.      45.     0.              reflection     TER_MAORY_mirror_aluminium.dat

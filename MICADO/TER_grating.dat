@@ -8,7 +8,7 @@
 # wavelength_unit : um
 # action : reflection
 # changes :
-# - 2019-07-10 : (KL) Created the file
+# - 2019-07-10 (KL) Created the file
 #
 wavelength  reflection
 0.3         0.6

@@ -1,0 +1,17 @@
+# author : Kieran Leschinski
+# source : Ric Davies
+# description : Unprotected Silver
+# date_created : 2016-11-22
+# date_modified : 2020-08-25
+# status : Design, pre PDR list of MAORY mirrors
+# wavelength_unit : um
+#
+# notes:
+# - 2020-08-25 (KL) Simply copied the gold coating, as per the email from Carmelo (2020-06-20))
+#
+# changes :
+# - 2020-08-25 (KL) fixed wavelength_unit
+#
+wavelength  reflection
+0.3         0.985
+3.0         0.985

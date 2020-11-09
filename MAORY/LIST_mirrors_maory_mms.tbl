@@ -1,25 +1,26 @@
 # author : Kieran Leschinski
-# source : Carmelo Archidiacono
+# source : Carmelo Archidiacono private email
 # date_created : 2018-11-19
 # date_modified : 2020-06-22
-# status : Design - new MAORY MMS design
+# status : Design, new MAORY MMS design
 # outer_unit : m
 # inner_unit : m
 # angle_unit : degree
 # temperature_unit  : deg_C
 # changes :
-# - 2018-11-19 : (KL) Added meta data, changed Dichr. filename
-# - 2019-01-28 : (KL) Fixed YAML format in meta data
-# - 2020-06-22 : (KL) Updated file to match the MMS configuration from Carmelo
+# - 2018-11-19 (KL) Added meta data, changed Dichr. filename
+# - 2019-01-28 (KL) Fixed YAML format in meta data
+# - 2020-06-22 (KL) Updated file to match the MMS configuration from Carmelo
+# - 2020-08-17 (KL) Pegged temperature to atmosphere
 #
 name        outer   inner   angle   temperature     action          filename
-SchPlate    1.1     0.      0.      0.              transmission    TC_window.dat
-M6          1.1     0.      0.      0.              reflection      TC_mirror_silver.dat
-M7          0.7     0.      0.      0.              reflection      TC_mirror_silver.dat
-M8          0.85    0.      0.      0.              reflection      TC_mirror_silver.dat
-DM9         0.75    0.      0.      0.              reflection      TC_mirror_mgf2agal.dat
-DM10        0.75    0.      0.      0.              reflection      TC_mirror_mgf2agal.dat
-Dichr       0.6     0.      0.      0.              transmission    TC_lgs_dichroic.dat
-M10         0.6     0.      0.      0.              reflection      TC_mirror_silver.dat
-M11         0.8     0.      45.     0.              reflection      TC_mirror_silver.dat
-M12         0.8     0.      0.      0.              reflection      TC_mirror_silver.dat
+SchPlate    1.1     0.      0.      !ATMO.temperature   transmission    TER_entrance_window.dat
+M6          1.1     0.      0.      !ATMO.temperature   reflection      TER_MAORY_mirror_silver.dat
+M7          0.7     0.      0.      !ATMO.temperature   reflection      TER_MAORY_mirror_silver.dat
+M8          0.85    0.      0.      !ATMO.temperature   reflection      TER_MAORY_mirror_silver.dat
+DM9         0.75    0.      0.      !ATMO.temperature   reflection      TER_MAORY_mirror_mgf2agal.dat
+DM10        0.75    0.      0.      !ATMO.temperature   reflection      TER_MAORY_mirror_mgf2agal.dat
+Dichr       0.6     0.      0.      !ATMO.temperature   transmission    TER_MAORY_lgs_dichroic.dat
+M10         0.6     0.      0.      !ATMO.temperature   reflection      TER_MAORY_mirror_silver.dat
+M11         0.8     0.      45.     !ATMO.temperature   reflection      TER_MAORY_mirror_silver.dat
+M12         0.8     0.      0.      !ATMO.temperature   reflection      TER_MAORY_mirror_silver.dat

@@ -1,0 +1,14 @@
+# author : Kieran Leschinski
+# source : Ric Davies
+# date_created : 2020-10-09
+# date_modified : 2020-10-09
+# status : Design, pre FDR list of filters
+# type : filter:transmission
+#
+wavelength  transmission
+0.3         0.0
+1.149       0.0
+1.15        1.0
+2.45        1.0
+2.451       0.0
+3.0         0.0

@@ -1,0 +1,19 @@
+# author : Oliver Czoske
+# source : E-SPE-MPIA-MET-1055_1-0
+# date_created : 2020-10-28
+# date_modified : 2020-10-28
+# status : neutral density filter (0.001% transmission)
+# type : filter:transmission
+# wavelength_unit : um
+# center : 11.3
+# width : 17.5
+# blue_cutoff : 2.5
+# red_cutoff : 20.1
+# comment : defined over entire METIS wavelength range
+# changes :
+#
+wavelength  transmission
+2.5   0.0
+2.6   0.00001
+20.0  0.00001
+20.1  0.0

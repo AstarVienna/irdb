@@ -11,7 +11,7 @@ properties :
 
 effects :
 -   name: detector_array_list
-    description : METIS detector array list
+    description : METIS IMG-N detector array list
     class: DetectorList
     kwargs:
         filename : FPA_metis_img_n_geosnap_layout.dat

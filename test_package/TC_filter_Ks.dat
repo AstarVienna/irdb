@@ -5,7 +5,7 @@
 # sources : HAWK-I_Ks, SVO Filter service
 # wavelength_unit : um
 # changes :
-# - 2019-11-09 Added to the test package
+# - 2019-11-09 (KL) Added to the test package
 #
 wavelength transmission
 1.9244       0.004092

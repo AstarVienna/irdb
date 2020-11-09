@@ -1,19 +1,8 @@
-#### General
-#* System transmission
-#* AtmosphericTERCurve
-#* FilterCurve
-#* Detector Window
-#* RON
-#* Dark
-#* average stack
-#* Shot_noise
-
-
-### MICADO INSTRUMENT WIDE FIELD MODE
+### MICADO INSTRUMENT COMMON EFFECTS LIST
 object : instrument
 alias : INST
 name : MICADO
-description : base configuration for MICADO
+description : Effects from the MICADO common optics
 
 properties : 
     temperature : -190
@@ -25,28 +14,53 @@ effects :
     class: SurfaceList
     kwargs:
         filename: LIST_MICADO_mirrors_static.dat
-        
-#-   name: micado_filter
-#    description : transmission curve for filter
-#    class: FilterCurve
-#    kwargs:
-#        filter_name: "!OBS.filter_name"
-#        filename_format: "!INST.filter_file_format"
-#        minimum_throughput: !!float 1.01E-4
-#        outer: 0.2
-#        outer_unit: "m"
-#    include: False
 
--   name: filter_wheel
+-   name: filter_wheel_1
     class: FilterWheel
     kwargs:
-        filter_names: ["blank", "I"]
+        filter_names:
+            # Filter wheel 1
+            - I-long
+            - Y
+            - J
+            - H
+            - Ks
+            - J-short
+            - J-long
+            - H-short
+            - H-long
+            - K-short
+            - K-mid
+            - Spec_IJ
+            - Spec_HK
+            # Filter wheel 2
+            - xI1
+            - xI2
+            - xY1
+            - xY2
+            - xJ1
+            - xJ2
+            - xH1
+            - xH2
+            - xK1
+            - xK2
+            - blank
+            # Pupil wheel
+            - H-cont
+            - FeII
+            - H2_1-0S1
+            - Br-gamma
+            - K-cont
+            - K-long
+            - He-I
+            - Pa-beta
+            - ND1
+            - ND3
         filename_format: "!INST.filter_file_format"
         current_filter: "!OBS.filter_name"
         minimum_throughput: !!float 1.01E-4
         outer: 0.2
         outer_unit: "m"
-
 
 -   name : micado_ncpas_psf
     description : Effective NCPA induced PSF kernel
