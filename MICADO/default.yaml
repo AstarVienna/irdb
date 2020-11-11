@@ -47,7 +47,9 @@ mode_yamls :
   yamls :
   - MICADO_IMG_wide.yaml
   properties :
-    filter_name : Ks
+    filter_name_fw1: Ks
+    filter_name_fw2: blank
+    filter_name_pupil: blank
 
 - object : observation
   alias: OBS
@@ -56,7 +58,9 @@ mode_yamls :
   yamls :
   - MICADO_IMG_zoom.yaml
   properties :
-    filter_name  : Ks
+    filter_name_fw1: Ks
+    filter_name_fw2: blank
+    filter_name_pupil: blank
 
 - object : observation
   alias: OBS
@@ -74,7 +78,9 @@ mode_yamls :
   properties :
     trace_file : TRACE_15arcsec.fits
     slit_file : MASK_slit_15000x50.dat
-    filter_name : Spec_HK
+    filter_name_fw1: Spec_HK
+    filter_name_fw2: blank
+    filter_name_pupil: blank
 
 - object : observation
   alias: OBS
@@ -85,7 +91,9 @@ mode_yamls :
   properties :
     trace_file : TRACE_3arcsec.fits
     slit_file : MASK_slit_3000x50.dat
-    filter_name : Spec_HK
+    filter_name_fw1: Spec_HK
+    filter_name_fw2: blank
+    filter_name_pupil: blank
 
 - object : observation
   alias: OBS
@@ -96,7 +104,9 @@ mode_yamls :
   properties :
     trace_file : TRACE_3arcsec.fits
     slit_file : MASK_slit_3000x20.dat
-    filter_name : Spec_HK
+    filter_name_fw1: Spec_HK
+    filter_name_fw2: blank
+    filter_name_pupil: blank
 
 
 ---

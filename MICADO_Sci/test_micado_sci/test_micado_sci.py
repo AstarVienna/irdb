@@ -3,6 +3,7 @@ from os import path as pth
 import numpy as np
 import astropy.units as u
 import matplotlib.pyplot as plt
+from matplotlib.colors import LogNorm
 
 import scopesim as sim
 from scopesim import rc
@@ -59,11 +60,11 @@ class TestObserve:
         cmd = sim.UserCommands(use_instrument="MICADO_Sci",
                                set_modes=["MCAO", "4mas"])
         opt = sim.OpticalTrain(cmd)
-        src = sim.source.source_templates.empty_sky()
-
+        src = sim.source.source_templates.star_field(100, 15, 25, 4, use_grid=True)
+        opt.optics_manager.surface_list
         opt.observe(src)
 
-        plt.imshow(opt.image_planes[0].image)
+        plt.imshow(opt.image_planes[0].image, norm=LogNorm())
         plt.show()
 
 
@@ -72,7 +73,14 @@ def test_scao_1_5mas_works():
 
 
 def test_spec_for_a_specific_wavelength_range_works():
-    pass
+    src = sim.source.source_templates.empty_sky()
+    cmd = sim.UserCommands(use_instrument="MICADO_Sci",
+                           set_modes=["SCAO", "SPEC"])
+    opt = sim.OpticalTrain(cmd)
+    opt.observe(src)
+
+    plt.imshow(opt.image_planes[0].image)
+    plt.show()
 
 
 

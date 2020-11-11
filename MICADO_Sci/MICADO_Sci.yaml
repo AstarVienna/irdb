@@ -53,14 +53,23 @@ description : ELT system transmission
 
 properties :
     temperature : 0
+    area : 978
 
 effects:
 -   name : elt_system_transmission
     description : full 5 mirror transmission curve
-    class : TERCurve
+    class : SurfaceList
     kwargs :
-        filename : TER_ELT_System_20190611.dat
-
+        array_dict:
+            name: [ELT_full]
+            area: [978]
+            angle: [0]
+            temperature: ["!TEL.temperature"]
+            action: [reflection]
+            filename: [TER_ELT_System_20190611.dat]
+        area_unit : m2
+        angle_unit: degree
+        temperature_unit: deg_C
 
 ---
 
@@ -81,7 +90,7 @@ effects:
     kwargs:
         filename: TER_MICADO_IMG_common.dat
 
--   name: filter_wheel_1
+-   name: filter_wheel
     class: FilterWheel
     kwargs:
         filter_names:
@@ -123,7 +132,7 @@ effects:
             - ND1
             - ND3
         filename_format: "!INST.filter_file_format"
-        current_filter: "!OBS.filter_name"
+        current_filter: "!INST.filter_name"
         minimum_throughput: !!float 1.01E-4
         outer: 0.2
         outer_unit: "m"

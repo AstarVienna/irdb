@@ -1,3 +1,10 @@
+##### SCAO
+#* RO TER
+#* Detector Window
+#* PSF
+#    * SCAO FVPSF
+#    * SCAO AnisoCADO ConstPSF
+
 #### SPEC
 #* RO TER
 #* SPEC TER
@@ -14,13 +21,6 @@
 #* AtmopshericDiffraction
 
 
-##### SCAO
-#* RO TER
-#* Detector Window
-#* PSF
-#    * SCAO FVPSF
-#    * SCAO AnisoCADO ConstPSF
-
 object : instrument
 alias : INST
 name : MICADO_SPEC
@@ -32,28 +32,10 @@ properties:
         wavelength: 2.15
 
 effects:
--   name: scao_relay_optics_ter
-    description: Combined TER curve for stand-alone relay optics module
-    class: TERCurve
-    kwargs:
-        filename: TER_MICADO_RO.dat
-
--   name: scao_const_psf
-    description: field constant PSF as produced by stand-alone SCAO
-    class: AnisocadoConstPSF
-    kwargs:
-        filename: "MICADO_AnisoCADO_rms_map.fits"
-        strehl: "!INST.psf.strehl"
-        wavelength: "!INST.psf.wavelength"
-        psf_side_length: 256
-        offset: [0,0]
-        rounded_edges: True
-        convolve_mode: full
-
 -   name : slit_3000x50mas
     class : ApertureMask
     kwargs :
-        filename : "SLIT_3000x50mas.dat"
+        filename : "MASK_slit_3000x50.dat"
 
 -   name : spectral_trace_3000x50mas
     class : SpectralTraceList

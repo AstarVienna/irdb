@@ -1,0 +1,19 @@
+# name : scao_dichroic
+# description : Throughput of MICADO internal SCAO pick-off dichroic
+# author : Kieran Leschinski
+# sources: Random comment from CM17
+# date_created : 2020-11-11
+# date_modified : 2020-11-11
+# status : Idea - speculation during a consortium meeting
+# wavelength_unit : um
+#
+# changes :
+# - 2018-11-19 (KL) updated meta data to new format
+#
+wavelength  transmission    reflection      emissivity
+0.5         0.0             0               0
+0.51        0.98            0.02            0
+0.96        0.98            0.02            0
+0.961       0.08            0.92            0
+2.45        0.85            0.92            0
+2.46        0.0             0               0
