@@ -44,13 +44,3 @@ description : A settable window on the detector plane
 properties :
     width : 1024
     height : 1024
-
-
----
-
-object : simulation overrides
-alias : SIM
-
-properties:
-    computing:
-        preload_field_of_views: True
