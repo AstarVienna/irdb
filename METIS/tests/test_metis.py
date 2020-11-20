@@ -39,9 +39,9 @@ class TestObserves:
 
         if PLOTS:
             img = hdus[0][1].data
-            plt.imshow(img, norm=LogNorm(),
-                       vmin=0.7*np.median(img),
-                       vmax=1.3*np.median(img))
+            plt.imshow(img,
+                       norm=LogNorm(vmin=0.7*np.median(img),
+                                    vmax=1.3*np.median(img)))
             plt.title("LM Imaging Test")
             plt.colorbar()
 
@@ -65,9 +65,8 @@ class TestObserves:
 
         if PLOTS:
             img = hdus[0][1].data
-            plt.imshow(img, norm=LogNorm(),
-                       vmin=0.7*np.median(img),
-                       vmax=1.3*np.median(img))
+            plt.imshow(img, norm=LogNorm(vmin=0.7*np.median(img),
+                                         vmax=1.3*np.median(img)))
             plt.title("N Imaging Test")
             plt.colorbar()
 
