@@ -1,14 +1,17 @@
 # author : NN
 # source : Roy van Boekel
 # date_created : 2018-07
-# date_modified : 2020-02-25
+# date_modified : 2020-10-30
 # status : Design, pre-PDR list of filters
 # type : filter:transmission
+# wavelength_unit : um
 # center : 17.825
 # width : 0.91
 # blue_cutoff : 17.34
 # red_cutoff : 18.31
-# comment : "Q1" from Roys wish filter list, July 2018
+# comment : Q1 from Roys wish filter list, July 2018
+# changes :
+#     - 2020-10-30 : (OC) add wavelength unit
 #
 wavelength  transmission
 17.3400      0.0000
