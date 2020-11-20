@@ -29,19 +29,27 @@ properties :
     pixel_scale :   "!INST.pixel_scale"
     season: 0       # As per skycalc definition - 0=all year
     time: 0         # As per skycalc definition - 0=all night
+    background:
+        filter_name: Ks
+        value: 13.6
+        unit: mag
 
 effects :
 -   name: armazones_atmo_skycalc_ter_curve
     description: atmospheric spectra pulled from the skycalc server
     class: SkycalcTERCurve
-    include: False
+    include: True
     kwargs:
         observatory: "armazones"
         wmin: "!SIM.spectral.wave_min"
         wmax: "!SIM.spectral.wave_max"
         wunit: um
         wdelta: "!SIM.spectral.spectral_resolution"
-
+        rescale_emission:
+            filter_name: "!ATMO.background.filter_name"
+            filename_format: "!INST.filter_file_format"
+            value: "!ATMO.background.value"
+            unit: "!ATMO.background.unit"
 
 ---
 
