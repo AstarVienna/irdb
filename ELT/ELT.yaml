@@ -30,4 +30,4 @@ effects :
     include : False
     kwargs :
         filename : "TER_ELT_system_20190611.dat"
-        temperture : "!ATMO.temperature"
+        temperature : "!ATMO.temperature"
