@@ -1,13 +1,15 @@
 # source : Carmelo Archidiacono
-# name : maory_silver_mirror_coating
+# name : maory_lgs_dichroic_pickoff
 # date_created : 2020-06-21
 # date_modified : 2020-06-22
 # wavelength_unit : um
-# action : transmission
+#
 # changes :
 # - 2020-06-23 (KL) Added meta data
+# - 2020-12-03 (KL) Expanded to full TER columns
 #
-wavelength   transmission
-0.5          0.0001
-0.6          1
-2.5          1
+wavelength      reflection  emissivity  transmission
+0.3             0.0001      0.0         0.9999
+0.6             0.0001      0.0         0.9999
+0.601           0.9999      0.0         0.0001
+3.0             0.9999      0.0         0.0001

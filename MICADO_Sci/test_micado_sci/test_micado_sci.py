@@ -100,7 +100,7 @@ def test_spec_for_a_specific_wavelength_range_works():
     cmd["!INST.aperture.width"] = 3         # arcsec
     cmd["!INST.aperture.height"] = 0.05     # arcsec
     cmd["!DET.width"] = int((cmd["!INST.aperture.width"] / 0.004) * 1.1)    # pixel
-    cmd["!DET.height"] = 26000              # pixel
+    cmd["!DET.height"] = 128              # pixel
 
     opt = sim.OpticalTrain(cmd)
     opt.observe(src)

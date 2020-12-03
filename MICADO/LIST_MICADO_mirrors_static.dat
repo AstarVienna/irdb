@@ -16,7 +16,7 @@
 #
 name        outer   inner   angle   temperature     action         filename
 I00_EntrWin 0.5     0.0     0       0               transmission   TER_entrance_window.dat
-I09_SCAO_PO 0.5     0.0     45      -190            transmission   TER_SCAO_dichroic.dat
+I09_SCAO_PO 0.5     0.0     45      -190            reflection     TER_SCAO_dichroic.dat
 I01_Fold1   0.5     0.0     45      -190            reflection     TER_mirror_gold.dat
 I02_Coli1   0.4     0.0     10      -190            reflection     TER_mirror_gold.dat
 I03_Coli2   0.2     0.0     10      -190            reflection     TER_mirror_gold.dat

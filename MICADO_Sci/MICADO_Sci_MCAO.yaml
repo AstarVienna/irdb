@@ -38,7 +38,7 @@ effects:
 
 object : detector
 alias : DET
-name : micado_sci_detector_window
+name : MICADO_Sci_MCAO_detector_override
 description : A settable window on the detector plane
 
 properties :

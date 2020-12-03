@@ -72,7 +72,7 @@ mode_yamls :
 - object : observation
   alias: OBS
   name : SPEC_15000x50
-  description : "spectrograph  : slit size 15000x50mas"
+  description : "spectrograph : slit size 15000x50mas"
   yamls :
   - MICADO_SPEC.yaml
   properties :
@@ -85,7 +85,7 @@ mode_yamls :
 - object : observation
   alias: OBS
   name : SPEC_3000x50
-  description : "spectrograph  : slit size 3000x50mas"
+  description : "spectrograph : slit size 3000x50mas"
   yamls :
   - MICADO_SPEC.yaml
   properties :
@@ -98,7 +98,7 @@ mode_yamls :
 - object : observation
   alias: OBS
   name : SPEC_3000x20
-  description : "spectrograph  : slit size 3000x20mas"
+  description : "spectrograph : slit size 3000x20mas"
   yamls :
   - MICADO_SPEC.yaml
   properties :

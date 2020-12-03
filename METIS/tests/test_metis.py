@@ -7,7 +7,7 @@ from matplotlib import pyplot as plt
 from matplotlib.colors import LogNorm
 
 import scopesim
-from scopesim.source.source_templates import star_field, empty_sky
+from scopesim.source.source_templates import star_field
 import scopesim_templates as sim_tp
 
 PLOTS = True
@@ -59,37 +59,15 @@ class TestObserves:
         #metis.cmds.set_modes("img_n")
         metis['scope_vibration'].include = False
         metis['detector_linearity'].include = False
-        metis["armazones_atmo_default_ter_curve"].include = True
-        metis["!ATMO.background.value"] = 99
 
         metis.observe(src)
         hdus = metis.readout()
 
-<<<<<<< HEAD
-        if not PLOTS:
-            im = hdus[0][1].data
-            plt.imshow(im, norm=LogNorm(),
-                       vmin=0.7*np.median(im),
-                       vmax=1.3*np.median(im))
-=======
         if PLOTS:
             img = hdus[0][1].data
             plt.imshow(img, norm=LogNorm(vmin=0.7*np.median(img),
                                          vmax=1.3*np.median(img)))
             plt.title("N Imaging Test")
->>>>>>> master
             plt.colorbar()
 
             plt.show()
-
-
-class TestMETISBackground:
-    def test_Lp_background_is_300000_ph_s_pix(self):
-        src = empty_sky()
-        cmds = scopesim.UserCommands(use_instrument="METIS")
-        metis = scopesim.OpticalTrain(cmds)
-
-        elt = metis["metis_cfo_surfaces"]
-        x = np.arange(3, 5, 0.001)
-        plt.plot(x, elt.background_source.spectra[0](x))
-        # plt.show()

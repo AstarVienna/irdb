@@ -84,7 +84,7 @@ effects:
 ### Config file for common MICADO elements
 object : instrument
 alias : INST
-name : MICADO
+name : MICADO_Sci
 description : base configuration for MICADO
 
 properties :
