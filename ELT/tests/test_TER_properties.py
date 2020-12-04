@@ -37,7 +37,7 @@ def test_eso_vs_scopesim_emission():
     sl_flux = sl.emission(wave)
     ter_flux = ter.surface.emission(wave)
 
-    if not PLOTS:
+    if PLOTS:
 
         plt.plot(wave, sl_flux, label="ScopeSim")
         plt.plot(wave, ter_flux, label="ESO-253082")

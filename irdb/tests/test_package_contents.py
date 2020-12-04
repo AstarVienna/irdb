@@ -54,11 +54,14 @@ class TestFileStructureOfPackages:
 
                 for fname in fnames:
                     if fname is not None:
-                        if fname.lower() != "none" and fname[0] != "!":
-                            full_fname = pth.join(PKG_DICT[pkg_name], fname)
-                            if not pth.exists(full_fname):
-                                BADGES[pkg_name]["structure"][fname] = "missing"
-                                no_missing += 1
+                        if not isinstance(fname, (list, tuple)):
+                            fname = [fname]
+                        for fn in fname:
+                            if fn.lower() != "none" and fn[0] != "!":
+                                full_fname = pth.join(PKG_DICT[pkg_name], fn)
+                                if not pth.exists(full_fname):
+                                    BADGES[pkg_name]["structure"][fn] = "missing"
+                                    no_missing += 1
 
             if no_missing == 0:
                 BADGES[f"!{pkg_name}.structure.no_missing_files"] = True

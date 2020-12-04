@@ -105,9 +105,9 @@ def test_spec_for_a_specific_wavelength_range_works():
     opt = sim.OpticalTrain(cmd)
     opt.observe(src)
     hdu = opt.readout()[0]
-    hdu.writeto("test_spec_scao_massive.fits", overwrite=True)
+    # hdu.writeto("spec_scao_massive.TEST.fits", overwrite=True)
 
-    if not PLOTS:
+    if PLOTS:
         plt.imshow(hdu[1].data, norm=LogNorm())
         plt.show()
 
