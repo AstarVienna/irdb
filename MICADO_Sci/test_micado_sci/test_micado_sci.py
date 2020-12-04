@@ -87,6 +87,30 @@ class TestObserve:
                        vmin=0.99*np.average(im), vmax=1.1*np.average(im))
             plt.show()
 
+    def test_star_field_with_mcao_4mas(self):
+        cmd = sim.UserCommands(use_instrument="MICADO_Sci",
+                               set_modes=["SCAO", "4mas"])
+        opt = sim.OpticalTrain(cmd)
+
+        src = sim.source.source_templates.star_field(100, 20, 30, 3, use_grid=True)
+        opt.observe(src)
+
+        if PLOTS:
+            plt.imshow(opt.image_planes[0].image, norm=LogNorm())
+            plt.show()
+
+    def test_star_field_with_spec(self):
+        cmd = sim.UserCommands(use_instrument="MICADO_Sci",
+                               set_modes=["MCAO", "SPEC"])
+        opt = sim.OpticalTrain(cmd)
+
+        src = sim.source.source_templates.star_field(100, 20, 30, 3, use_grid=True)
+        opt.observe(src)
+
+        if PLOTS:
+            plt.imshow(opt.image_planes[0].image, norm=LogNorm())
+            plt.show()           
+            
 
 def test_spec_for_a_specific_wavelength_range_works():
     n = 11
