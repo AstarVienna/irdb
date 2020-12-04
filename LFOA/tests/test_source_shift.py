@@ -1,6 +1,7 @@
 """Test Source.shift by doing an integration test with LFAO."""
 import pytest
 import os
+from os import path as pth
 import shutil
 
 import numpy
@@ -19,40 +20,42 @@ from matplotlib.colors import LogNorm
 if rc.__config__["!SIM.tests.run_integration_tests"] is False:
     pytestmark = pytest.mark.skip("Ignoring LFAO integration tests")
 
-rc.__config__["!SIM.file.local_packages_path"] = "./lfoa_temp/"
+TOP_PATH = pth.abspath(pth.join(pth.dirname(__file__), "../../"))
+rc.__config__["!SIM.file.local_packages_path"] = TOP_PATH
 rc.__config__["!SIM.file.use_cached_downloads"] = False
 
 PKGS = {"LFOA": "telescopes/LFOA.zip"}
 
-CLEAN_UP = False
 PLOTS = False
-
-
-def setup_module():
-    """Download packages."""
-    rc_local_path = rc.__config__["!SIM.file.local_packages_path"]
-    if not os.path.exists(rc_local_path):
-        os.mkdir(rc_local_path)
-        rc.__config__["!SIM.file.local_packages_path"] = os.path.abspath(
-            rc_local_path)
-
-    for pkg_name in PKGS:
-        if not os.path.isdir(os.path.join(rc_local_path, pkg_name)) and \
-                "irdb" not in rc_local_path:
-            scopesim.download_package(PKGS[pkg_name])
-
-
-def teardown_module():
-    """Delete packages."""
-    rc_local_path = rc.__config__["!SIM.file.local_packages_path"]
-    if CLEAN_UP and "irdb" not in rc_local_path:
-        shutil.rmtree(rc_local_path)
+# rc.__config__["!SIM.file.local_packages_path"] = "./lfoa_temp/"
+# CLEAN_UP = False
+#
+#
+# def setup_module():
+#     """Download packages."""
+#     rc_local_path = rc.__config__["!SIM.file.local_packages_path"]
+#     if not os.path.exists(rc_local_path):
+#         os.mkdir(rc_local_path)
+#         rc.__config__["!SIM.file.local_packages_path"] = os.path.abspath(
+#             rc_local_path)
+#
+#     for pkg_name in PKGS:
+#         if not os.path.isdir(os.path.join(rc_local_path, pkg_name)) and \
+#                 "irdb" not in rc_local_path:
+#             scopesim.download_package(PKGS[pkg_name])
+#
+#
+# def teardown_module():
+#     """Delete packages."""
+#     rc_local_path = rc.__config__["!SIM.file.local_packages_path"]
+#     if CLEAN_UP and "irdb" not in rc_local_path:
+#         shutil.rmtree(rc_local_path)
 
 
 class TestShiftSource:
     def test_shift_lfao(self):
         # core_radius = 0.6 to ensure it fits the image after shifting
-        src = sim_tp.basic.stars.cluster(mass=10000, distance=2000,
+        src = sim_tp.basic.stars.cluster(mass=1000, distance=2000,
                                          core_radius=0.6,)
 
         lfoa = scopesim.OpticalTrain("LFOA")
