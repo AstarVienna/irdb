@@ -1,7 +1,7 @@
 ### METIS LM IMAGING MODE
 object : instrument
 alias : INST
-name : METIS
+name : METIS_IMG_LM
 description : base configuration for METIS
 
 properties :
