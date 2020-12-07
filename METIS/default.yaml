@@ -97,7 +97,7 @@ description : RC simulation parameters which need to change for a METIS run
 
 properties :
   random :
-    seed : 9001
+    seed : None                         # 9001
 
   spectral :
     wave_min : 3.0
