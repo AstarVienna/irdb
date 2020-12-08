@@ -104,17 +104,17 @@ properties :
     wave_mid : 10.5
     wave_max : 18.0
 
----
-### default simulation parameters needed for a METIS simulation
-object : atmosphere overrides
-alias : ATMO
-name : METIS_ATMO_overrides
-description : override atmospheric properties
-
-properties:
-  background :
-    filter_name : "!OBS.filter_name"
-    value: 99
-    unit: mag
-  spectrum:
-    filename: "TER_armazones_default_MIR_IMG.dat"
+#---
+#### default simulation parameters needed for a METIS simulation
+#object : atmosphere overrides
+#alias : ATMO
+#name : METIS_ATMO_overrides
+#description : override atmospheric properties
+#
+#properties:
+#  background :
+#    filter_name : "!OBS.filter_name"
+#    value: 99
+#    unit: mag
+#  spectrum:
+#    filename: "TER_armazones_default_MIR_IMG.dat"
