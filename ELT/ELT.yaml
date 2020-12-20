@@ -6,6 +6,8 @@ description : The extremely large telescope
 
 properties :
     temperature : "!ATMO.temperature"
+    ter_curve:
+        filename : "TER_ELT_system_20190611.dat"
 
 effects :
 -   name : scope_surface_list
@@ -29,5 +31,5 @@ effects :
     class : TERCurve
     include : False
     kwargs :
-        filename : "TER_ELT_system_20190611.dat"
+        filename : "!TEL.ter_curve.filename"
         temperature : "!ATMO.temperature"
