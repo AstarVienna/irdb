@@ -1,16 +1,22 @@
+# description : ELT lateral focus (6 mirrors), with spider emission
 # author : Oliver Czoske
-# source : ESO-333023_1, ESO-253082_4-0 (Sect. 4.12.2)
+# source : ESO-333023_1, ESO-253082_4-0
 # date_created  : 2021-02-04
-# date_modified : 2021-02-04
+# date_modified : 2021-02-05
 # type : TERCurve
 # status : design
-# description : ELT lateral focus (6 mirrors), with spider emission
 # action : reflection
+# outer : 37.3
+# outer_unit : m
+# inner : 11.1
+# inner_unit : m
 # wavelength_unit : um
 # changes :
+#  - 2021-02-05 (OC) Added inner and outer diameters
 #
 # notes :
 #  - derived from ESO-333023_1 (R. Holzloehner)
+#  - emissivity is calculated from ESO-253082_4, sect 4.12.2
 #  - script convert_ELT_throughput_budget.R
 #  - see ESO-306070 and ESO-293390 for background
 #  - includes M1, M2, M3, M4, M5, M6
