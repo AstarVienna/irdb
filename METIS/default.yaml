@@ -12,7 +12,7 @@ packages :
 
 yamls :
   - Armazones.yaml
-  - ELT.yaml
+  - ELT_6_mirrors.yaml
   - METIS.yaml
 
 properties :
