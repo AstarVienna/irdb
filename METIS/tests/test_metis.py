@@ -31,7 +31,7 @@ class TestObserves:
     '''Test basic observations for the main instrument modes'''
     def test_something_comes_out_img_lm(self):
         '''Basic test for LM imaging'''
-        src = star_field(100, 15, 25, width=10, use_grid=True)
+        src = star_field(100, 10, 20, width=10, use_grid=True)
 
         cmds = scopesim.UserCommands(use_instrument="METIS",
                                      set_modes=['img_lm'])
@@ -55,7 +55,7 @@ class TestObserves:
 
     def test_something_comes_out_img_n(self):
         '''Basic test for N imaging'''
-        src = star_field(100, 5, 15, width=10, use_grid=True)
+        src = star_field(100, 0, 10, width=10, use_grid=True)
 
         cmds = scopesim.UserCommands(use_instrument="METIS",
                                      set_modes=["img_n"])
