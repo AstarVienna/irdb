@@ -46,7 +46,7 @@ class TestMicadoSciRadiometry:
         cmd["!DET.width"] = 128
         cmd["!DET.height"] = 128
         cmd["!ATMO.background.value"] = bg
-        cmd["!INST.filter_name"] = filt
+        cmd["!OBS.filter_name"] = filt
         cmd["!INST.psf.strehl"] = 0.6
 
         opt = sim.OpticalTrain(cmd)
@@ -67,7 +67,7 @@ class TestMicadoSciRadiometry:
         cmd["!DET.width"] = 128
         cmd["!DET.height"] = 128
         cmd["!ATMO.background.value"] = bg
-        cmd["!INST.filter_name"] = filt
+        cmd["!OBS.filter_name"] = filt
         cmd["!INST.psf.strehl"] = 0.6
 
         opt = sim.OpticalTrain(cmd)

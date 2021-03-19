@@ -140,7 +140,7 @@ effects:
             - ND1
             - ND3
         filename_format: "!INST.filter_file_format"
-        current_filter: "!INST.filter_name"
+        current_filter: "!OBS.filter_name"
         minimum_throughput: !!float 1.01E-4
         outer: 0.2
         outer_unit: "m"

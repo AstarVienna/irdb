@@ -13,7 +13,7 @@ description : "MICADO MCAO mode effects"
 properties:
     psf:
         strehl: 0.4
-        wavelength: "!INST.filter_name"
+        wavelength: "!OBS.filter_name"
 
 effects:
 -   name: maory_mms_ter

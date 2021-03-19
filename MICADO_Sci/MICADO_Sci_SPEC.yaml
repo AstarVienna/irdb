@@ -61,3 +61,13 @@ description : A settable window on the detector plane
 properties :
     width : 800
     height : 1024
+
+---
+
+object : observation
+alias : OBS
+name : MICADO_Sci_SPEC_obs_override
+description : Setting the filter to spec_IJ filter
+
+properties :
+    filter_name: Spec_HK
