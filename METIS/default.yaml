@@ -12,7 +12,7 @@ packages :
 
 yamls :
   - Armazones.yaml
-  - ELT.yaml
+  - ELT_6_mirrors.yaml
   - METIS.yaml
 
 properties :
@@ -52,6 +52,7 @@ mode_yamls :
     name: lss_lm
     description : "METIS LM-band slit spectroscopy"
     yamls:
+      - METIS_IMG_LM.yaml
       - METIS_LSS_LM.yaml
       - METIS_DET_IMG_LM.yaml
 
@@ -60,6 +61,7 @@ mode_yamls :
     name: lss_n
     description : "METIS N-band slit spectroscopy"
     yamls:
+      - METIS_IMG_N.yaml
       - METIS_LSS_N.yaml
       - METIS_DET_IMG_N_GeoSnap.yaml
 
@@ -76,7 +78,7 @@ mode_yamls :
     name: lms_extended
     description : "METIS LM-band integral-field spectroscopy, extended mode"
     yamls:
-      - METIS_LMS_ext.yaml
+      - METIS_LMS_EXT.yaml
       - METIS_DET_IFU.yaml
 
 ignore_effects :
@@ -95,24 +97,24 @@ description : RC simulation parameters which need to change for a METIS run
 
 properties :
   random :
-    seed : 9001
+    seed : None                         # 9001
 
   spectral :
     wave_min : 3.0
     wave_mid : 10.5
     wave_max : 18.0
 
----
-### default simulation parameters needed for a METIS simulation
-object : atmosphere overrides
-alias : ATMO
-name : METIS_ATMO_overrides
-description : override atmospheric properties
-
-properties:
-  background :
-    filter_name : "!OBS.filter_name"
-    value: 6
-    unit: mag
-  spectrum:
-    filename: "TER_armazones_default_MIR_IMG.dat"
+#---
+#### default simulation parameters needed for a METIS simulation
+#object : atmosphere overrides
+#alias : ATMO
+#name : METIS_ATMO_overrides
+#description : override atmospheric properties
+#
+#properties:
+#  background :
+#    filter_name : "!OBS.filter_name"
+#    value: 99
+#    unit: mag
+#  spectrum:
+#    filename: "TER_armazones_default_MIR_IMG.dat"
