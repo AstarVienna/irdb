@@ -40,7 +40,7 @@ class TestMicadoSciRadiometry:
                              [("Ks", 13, 12), ("H", 14, 8), ("J", 16, 1)])
     def test_scao_zoom_bg_levels_are_similar_to_ETC(self, filt, bg, ph):
         cmd = sim.UserCommands(use_instrument="MICADO_Sci",
-                               set_modes=["SCAO", "1.5mas"])
+                               set_modes=["SCAO", "IMG_1.5mas"])
         cmd["!OBS.dit"] = 1
         cmd["!OBS.ndit"] = 1
         cmd["!DET.width"] = 128
@@ -61,7 +61,7 @@ class TestMicadoSciRadiometry:
                              [("Ks", 13, 12), ("H", 14, 8), ("J", 16, 1)])
     def test_mcao_wide_bg_levels_are_similar_to_ETC(self, filt, bg, ph):
         cmd = sim.UserCommands(use_instrument="MICADO_Sci",
-                               set_modes=["MCAO", "1.5mas"])
+                               set_modes=["MCAO", "IMG_1.5mas"])
         cmd["!OBS.dit"] = 1
         cmd["!OBS.ndit"] = 1
         cmd["!DET.width"] = 128

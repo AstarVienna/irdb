@@ -16,7 +16,7 @@ yamls :
 - MICADO_ETC.yaml
 
 properties :
-  modes : ["SCAO", "4mas"]
+  modes : ["SCAO", "IMG_4mas"]
   dit : 60
   ndit : 1
   airmass : 1.2

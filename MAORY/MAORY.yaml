@@ -6,7 +6,7 @@ description : MAORY AO relay module
 
 properties :
     temperature : "!ATMO.temperature"
-    psf_filename :
+
 
 effects :
 -   name: maory_surface_list

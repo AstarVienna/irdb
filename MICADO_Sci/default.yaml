@@ -21,7 +21,7 @@ yamls :
 - MICADO_Sci_detector.yaml
 
 properties :
-  modes : ["SCAO", "4mas"]
+  modes : ["SCAO", "IMG_4mas"]
   dit : 60
   ndit : 1
   airmass : 1.2
@@ -44,7 +44,7 @@ mode_yamls :
 
 - object : instrument
   alias : INST
-  name : 4mas
+  name : IMG_4mas
   description : "wide-field imager  : 4mas/pix"
   properties :
     filter_name : Ks
@@ -53,7 +53,7 @@ mode_yamls :
 
 - object : instrument
   alias : INST
-  name : 1.5mas
+  name : IMG_1.5mas
   description : "zoom imager : 1.5mas/pix"
   properties :
     filter_name : Ks

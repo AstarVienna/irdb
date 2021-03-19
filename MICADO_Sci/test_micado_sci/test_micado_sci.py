@@ -36,14 +36,14 @@ class TestUserCommands:
 class TestOpticalTrain:
     def test_makes_mcao_4mas_optical_train(self):
         cmd = sim.UserCommands(use_instrument="MICADO_Sci",
-                               set_modes=["MCAO", "4mas"])
+                               set_modes=["MCAO", "IMG_4mas"])
         opt = sim.OpticalTrain(cmd)
         print(opt)
         assert isinstance(opt, sim.OpticalTrain)
 
     def test_makes_scao_1_5mas_optical_train(self):
         cmd = sim.UserCommands(use_instrument="MICADO_Sci",
-                               set_modes=["SCAO", "1.5mas"])
+                               set_modes=["SCAO", "IMG_1.5mas"])
         opt = sim.OpticalTrain(cmd)
         print(opt)
         assert isinstance(opt, sim.OpticalTrain)
@@ -59,7 +59,7 @@ class TestOpticalTrain:
 class TestObserve:
     def test_grid_with_scao_4mas(self):
         cmd = sim.UserCommands(use_instrument="MICADO_Sci",
-                               set_modes=["SCAO", "4mas"])
+                               set_modes=["SCAO", "IMG_4mas"])
         cmd["!OBS.dit"] = 3600
         cmd["!OBS.ndit"] = 5
 
@@ -89,7 +89,7 @@ class TestObserve:
 
     def test_star_field_with_mcao_4mas(self):
         cmd = sim.UserCommands(use_instrument="MICADO_Sci",
-                               set_modes=["SCAO", "4mas"])
+                               set_modes=["SCAO", "IMG_4mas"])
         opt = sim.OpticalTrain(cmd)
 
         src = sim.source.source_templates.star_field(100, 20, 30, 3, use_grid=True)
