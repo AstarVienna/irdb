@@ -16,7 +16,7 @@ def test_eso_vs_scopesim_throughput():
     wave = np.linspace(0.3, 2.5, 100) * u.um
     plt.plot(wave, sl.throughput(wave), label="ScopeSim")
 
-    ter = sim.effects.TERCurve(filename="TER_ELT_System_20190611.dat")
+    ter = sim.effects.TERCurve(filename="TER_ELT_system_20190611.dat")
 
     if PLOTS:
         plt.plot(wave, ter.surface.reflection(wave), label="ESO-253082")
@@ -30,7 +30,7 @@ def test_eso_vs_scopesim_emission():
     rc.__currsys__["!TEL.etendue"] = (1 * u.m * u.arcsec)**2
 
     sl = sim.effects.SurfaceList(filename="LIST_mirrors_ELT.tbl")
-    ter = sim.effects.TERCurve(filename="TER_ELT_System_20190611.dat",
+    ter = sim.effects.TERCurve(filename="TER_ELT_system_20190611.dat",
                                temperature="!ATMO.temperature")
 
     wave = np.linspace(0.3, 2.5, 100) * u.um

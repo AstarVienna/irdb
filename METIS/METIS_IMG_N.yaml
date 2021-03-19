@@ -1,7 +1,7 @@
 ### METIS N-band IMAGING MODE
 object : instrument
 alias : INST
-name : METIS
+name : METIS_IMG_N
 description : base configuration for METIS
 
 properties :
@@ -63,3 +63,4 @@ effects:
     kwargs:
       filename: PSF_SCAO_9mag_06seeing.fits
       wave_key: "WAVELENG"
+      bkg_width: -1

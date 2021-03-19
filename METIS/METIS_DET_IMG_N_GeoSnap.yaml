@@ -8,6 +8,8 @@ properties :
     temperature : -240
     dit : "!OBS.dit"
     ndit : "!OBS.ndit"
+    qe_curve:
+        file_name: "QE_detector_geosnap.dat"
 
 effects :
 -   name: detector_array_list
@@ -20,7 +22,7 @@ effects :
     description : Quantum efficiency curves for each detector
     class : QuantumEfficiencyCurve
     kwargs :
-        file_name : QE_detector_geosnap.dat
+        file_name : "!DET.qe_curve.file_name"
 
 -   name: exposure_action
     description: Summing up sky signal for all DITs and NDITs

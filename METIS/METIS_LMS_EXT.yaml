@@ -1,7 +1,7 @@
 ### METIS LMS NOMINAL MODE
 object : instrument
 alias : INST
-name : METIS
+name : METIS_LMS_EXT
 description : base configuration for METIS
 
 properties :
