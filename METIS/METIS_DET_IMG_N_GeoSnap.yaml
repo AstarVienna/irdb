@@ -1,55 +1,56 @@
+---
 ### GeoSnap DETECTOR
-object : detector
-alias : DET
-name : metis_detector_array
-description : Teledyne GeoSnap Detector
+object: detector
+alias: DET
+name: metis_detector_array
+description: Teledyne GeoSnap Detector
 
-properties :
-    temperature : -240
-    dit : "!OBS.dit"
-    ndit : "!OBS.ndit"
+properties:
+    temperature: -240
+    dit: "!OBS.dit"
+    ndit: "!OBS.ndit"
     qe_curve:
         file_name: "QE_detector_geosnap.dat"
 
-effects :
--   name: detector_array_list
-    description : METIS IMG-N detector array list
-    class: DetectorList
-    kwargs:
-        filename : FPA_metis_img_n_geosnap_layout.dat
+effects:
+    - name: detector_array_list
+      description: METIS IMG-N detector array list
+      class: DetectorList
+      kwargs:
+          filename: FPA_metis_img_n_geosnap_layout.dat
 
--   name : qe_curve
-    description : Quantum efficiency curves for each detector
-    class : QuantumEfficiencyCurve
-    kwargs :
-        file_name : "!DET.qe_curve.file_name"
+    - name: qe_curve
+      description: Quantum efficiency curves for each detector
+      class: QuantumEfficiencyCurve
+      kwargs:
+          file_name: "!DET.qe_curve.file_name"
 
--   name: exposure_action
-    description: Summing up sky signal for all DITs and NDITs
-    class: SummedExposure
+    - name: exposure_action
+      description: Summing up sky signal for all DITs and NDITs
+      class: SummedExposure
 
--   name: dark_current
-    description : METIS GeoSnap dark current
-    class: DarkCurrent
-    # [e-/s] level of dark current for each detector
-    kwargs:
-        value: 100.
+    - name: dark_current
+      description: METIS GeoSnap dark current
+      class: DarkCurrent
+      # [e-/s] level of dark current for each detector
+      kwargs:
+          value: 100.
 
--   name: detector_linearity
-    description : Linearity characteristics of GeoSnap chip
-    class: LinearityCurve
-    kwargs:
-        array_dict:
-            incident: [0., !!float 2.7e6, !!float 1e99]
-            measured: [0., !!float 2.7e6, !!float 2.7e6]
+    - name: detector_linearity
+      description: Linearity characteristics of GeoSnap chip
+      class: LinearityCurve
+      kwargs:
+          array_dict:
+              incident: [0., !!float 2.7e6, !!float 1e99]
+              measured: [0., !!float 2.7e6, !!float 2.7e6]
 
--   name: shot_noise
-    description : apply poisson shot noise to images
-    class: ShotNoise
+    - name: shot_noise
+      description: apply poisson shot noise to images
+      class: ShotNoise
 
--   name : readout_noise
-    description : Readout noise frames
-    class : BasicReadoutNoise
-    kwargs :
-        noise_std : 12
-        n_channels : 64
+    - name: readout_noise
+      description: Readout noise frames
+      class: BasicReadoutNoise
+      kwargs:
+          noise_std: 12
+          n_channels: 64

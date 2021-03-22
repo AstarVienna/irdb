@@ -1,117 +1,116 @@
+---
 ### default observation parameters needed for a METIS simulation
 
-object : configuration
-alias : OBS
-name : METIS_default_configuration
-description : default parameters needed for a METIS simulation
+object: configuration
+alias: OBS
+name: METIS_default_configuration
+description: default parameters needed for a METIS simulation
 
-packages :
+packages:
   - Armazones
   - ELT
   - METIS
 
-yamls :
+yamls:
   - Armazones.yaml
   - ELT_6_mirrors.yaml
   - METIS.yaml
 
-properties :
-  modes : ["img_lm"]
-  airmass : 1.2
-  declination : -30
-  hour_angle : 0
-  pupil_angle : 0
-  dit : 1
-  ndit : 1
+properties:
+  modes: ["img_lm"]
+  airmass: 1.2
+  declination: -30
+  hour_angle: 0
+  pupil_angle: 0
+  dit: 1
+  ndit: 1
 
-mode_yamls :
-  - object : observation
-    alias : OBS
+mode_yamls:
+  - object: observation
+    alias: OBS
     name: img_lm
-    description : "METIS LM-band imaging"
+    description: "METIS LM-band imaging"
     yamls:
       - METIS_IMG_LM.yaml
       - METIS_DET_IMG_LM.yaml
-    properties :
-      filter_name : Lp
-      nd_filter_name : open
+    properties:
+      filter_name: Lp
+      nd_filter_name: open
 
-  - object : observation
-    alias : OBS
+  - object: observation
+    alias: OBS
     name: img_n
-    description : "METIS N-band imaging"
+    description: "METIS N-band imaging"
     yamls:
       - METIS_IMG_N.yaml
       - METIS_DET_IMG_N_GeoSnap.yaml
-    properties :
-      filter_name : N2
-      nd_filter_name : open
+    properties:
+      filter_name: N2
+      nd_filter_name: open
 
-  - object : observation
-    alias : OBS
+  - object: observation
+    alias: OBS
     name: lss_lm
-    description : "METIS LM-band slit spectroscopy"
+    description: "METIS LM-band slit spectroscopy"
     yamls:
       - METIS_IMG_LM.yaml
       - METIS_LSS_LM.yaml
       - METIS_DET_IMG_LM.yaml
 
-  - object : observation
-    alias : OBS
+  - object: observation
+    alias: OBS
     name: lss_n
-    description : "METIS N-band slit spectroscopy"
+    description: "METIS N-band slit spectroscopy"
     yamls:
       - METIS_IMG_N.yaml
       - METIS_LSS_N.yaml
       - METIS_DET_IMG_N_GeoSnap.yaml
 
-  - object : observation
-    alias : OBS
+  - object: observation
+    alias: OBS
     name: lms
-    description : "METIS LM-band integral-field spectroscopy, nominal mode"
+    description: "METIS LM-band integral-field spectroscopy, nominal mode"
     yamls:
       - METIS_LMS.yaml
       - METIS_DET_IFU.yaml
 
-  - object : observation     # is this a separate mode from nominal LMS?
-    alias : OBS
+  - object: observation     # is this a separate mode from nominal LMS?
+    alias: OBS
     name: lms_extended
-    description : "METIS LM-band integral-field spectroscopy, extended mode"
+    description: "METIS LM-band integral-field spectroscopy, extended mode"
     yamls:
       - METIS_LMS_EXT.yaml
       - METIS_DET_IFU.yaml
 
-ignore_effects :
+ignore_effects:
   - armazones_atmo_dispersion
   - scope_vibration
   - detector_linearity
 
-
-
 ---
 ### default simulation parameters needed for a METIS simulation
-object : simulation
-alias : SIM
-name : METIS_simulation_parameters
-description : RC simulation parameters which need to change for a METIS run
+object: simulation
+alias: SIM
+name: METIS_simulation_parameters
+description: RC simulation parameters which need to change for a METIS run
 
-properties :
-  random :
-    seed : None                         # 9001
+properties:
+  random:
+    seed: None                         # 9001
 
-  spectral :
-    wave_min : 3.0
-    wave_mid : 10.5
-    wave_max : 18.0
+  spectral:
+    wave_min: 3.0
+    wave_mid: 10.5
+    wave_max: 18.0
 
-#---
+###---
 #### default simulation parameters needed for a METIS simulation
-#object : atmosphere overrides
-#alias : ATMO
-#name : METIS_ATMO_overrides
-#description : override atmospheric properties
+# object : atmosphere overrides
+# alias : ATMO
+# name : METIS_ATMO_overrides
+# description : override atmospheric properties
 #
-#properties:
+# properties:
 #  background :
 #    filter_name : "!OBS.filter_name"
 #    value: 99

@@ -1,53 +1,54 @@
+---
 ### H2RG DETECTOR
-object : detector
-alias : DET
-name : metis_img_lm_detector_array
-description : A single H2RG detector
+object: detector
+alias: DET
+name: metis_img_lm_detector_array
+description: A single H2RG detector
 
-properties :
-    temperature : -230
-    dit : "!OBS.dit"
-    ndit : "!OBS.ndit"
+properties:
+    temperature: -230
+    dit: "!OBS.dit"
+    ndit: "!OBS.ndit"
 
-effects :
--   name: detector_array_list
-    description : METIS IMG-LM detector array list
-    class: DetectorList
-    kwargs:
-        filename : FPA_metis_img_lm_layout.dat
+effects:
+    - name: detector_array_list
+      description: METIS IMG-LM detector array list
+      class: DetectorList
+      kwargs:
+          filename: FPA_metis_img_lm_layout.dat
 
--   name : qe_curve
-    description : Quantum efficiency curves for each detector
-    class : QuantumEfficiencyCurve
-    kwargs :
-        filename : QE_detector_H2RG_METIS.dat
+    - name: qe_curve
+      description: Quantum efficiency curves for each detector
+      class: QuantumEfficiencyCurve
+      kwargs:
+          filename: QE_detector_H2RG_METIS.dat
 
--   name: exposure_action
-    description: Summing up sky signal for all DITs and NDITs
-    class: SummedExposure
+    - name: exposure_action
+      description: Summing up sky signal for all DITs and NDITs
+      class: SummedExposure
 
--   name: dark_current
-    description : METIS LM dark current
-    class: DarkCurrent
-    # [e-/s] level of dark current for each detector
-    kwargs:
-        value: 0.1
+    - name: dark_current
+      description: METIS LM dark current
+      class: DarkCurrent
+      # [e-/s] level of dark current for each detector
+      kwargs:
+          value: 0.1
 
--   name: detector_linearity
-    description : Linearity characteristics of H2RG_1-5 chips
-    class: LinearityCurve
-    kwargs:
-        array_dict:
-            incident: [0, !!float 1e5, !!float 1e99]
-            measured: [0, !!float 1e5, !!float 1e5]
+    - name: detector_linearity
+      description: Linearity characteristics of H2RG_1-5 chips
+      class: LinearityCurve
+      kwargs:
+          array_dict:
+              incident: [0, !!float 1e5, !!float 1e99]
+              measured: [0, !!float 1e5, !!float 1e5]
 
--   name: shot_noise
-    description : apply poisson shot noise to images
-    class: ShotNoise
+    - name: shot_noise
+      description: apply poisson shot noise to images
+      class: ShotNoise
 
--   name : readout_noise
-    description : Readout noise frames
-    class : BasicReadoutNoise
-    kwargs :
-        noise_std : 12
-        n_channels : 32
+    - name: readout_noise
+      description: Readout noise frames
+      class: BasicReadoutNoise
+      kwargs:
+          noise_std: 12
+          n_channels: 32
