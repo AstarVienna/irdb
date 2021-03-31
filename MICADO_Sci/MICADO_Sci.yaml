@@ -72,6 +72,7 @@ description : base configuration for MICADO
 
 properties :
     temperature : -190
+    filter_file_format : "filters/TC_filter_{}.dat"
 
 effects:
 -   name: micado_common_optics
