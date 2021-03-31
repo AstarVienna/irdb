@@ -1,16 +1,17 @@
+---
 ### METIS LMS NOMINAL MODE
-object : instrument
-alias : INST
-name : METIS_LMS_EXT
-description : base configuration for METIS
+object: instrument
+alias: INST
+name: METIS_LMS_EXT
+description: base configuration for METIS
 
-properties :
-  pixel_scale : 0.0082          # arcsec / pixel
-  plate_scale : 0.455555555556  # arcsec / mm
+properties:
+    pixel_scale: 0.0082          # arcsec / pixel
+    plate_scale: 0.455555555556  # arcsec / mm
 
 effects:
--   name: metis_spec_lms_mirror_list
-    description: list of extra mirrors needed for the SPEC LMS mode
-    class: SurfaceList
-    kwargs:
-        filename: LIST_METIS_mirrors_lms.dat
+    - name: metis_spec_lms_mirror_list
+      description: list of extra mirrors needed for the SPEC LMS mode
+      class: SurfaceList
+      kwargs:
+          filename: LIST_METIS_mirrors_lms.dat

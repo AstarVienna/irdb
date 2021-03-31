@@ -2,10 +2,13 @@
 # pylint: disable=R0201
 
 import os
-#import pytest
+from glob import glob
+
+import pytest
+
 import numpy as np
 #from astropy.io.fits import HDUList
-#from astropy import units as u
+from astropy import units as u
 from matplotlib import pyplot as plt
 from matplotlib.colors import LogNorm
 
@@ -25,6 +28,143 @@ class TestLoads:
         the default are not tested.'''
         metis = scopesim.OpticalTrain("METIS")
         assert isinstance(metis, scopesim.OpticalTrain)
+
+
+YAML_LIST = glob(os.path.join(PKGS_DIR, "METIS/*.yaml"))
+@pytest.fixture(scope="class", params=YAML_LIST)
+def yaml_list(request):
+    return scopesim.commands.user_commands.load_yaml_dicts(request.param)
+
+class TestYAML:
+    '''Test that yaml files result in correct lists'''
+
+    def test_yaml_read_okay(self, yaml_list):
+        '''yaml file is read correctly and gives list'''
+        assert isinstance(yaml_list, list)
+
+    def test_yaml_length_not_zero(self, yaml_list):
+        '''yaml_list has entries'''
+        assert len(yaml_list) > 0
+
+    def test_yaml_entries_are_dicts(self, yaml_list):
+        '''yaml list entries are dictionaries'''
+        for yaml_entry in yaml_list:
+            assert isinstance(yaml_entry, dict)
+
+
+FILTER_LIST = glob(os.path.join(PKGS_DIR, "METIS/filters/TC_filter_*.dat"))
+@pytest.fixture(scope="class", params=FILTER_LIST)
+def filter_ter(request):
+    return scopesim.effects.FilterCurve(filename=request.param)
+
+class TestFilters:
+    '''Test that filter files result in correct FilterCurves'''
+
+    def test_filters_read_okay(self, filter_ter):
+        '''filter file is read correctly and gives FilterCurve'''
+        assert isinstance(filter_ter, scopesim.effects.FilterCurve)
+
+    def test_filters_table_not_zero(self, filter_ter):
+        '''Table attribute shall not be empty'''
+        assert len(filter_ter.table) > 0
+
+    def test_filters_has_wavelength_unit(self, filter_ter):
+        '''filter file specifies a wavelength unit'''
+        assert 'wavelength_unit' in filter_ter.meta
+
+    def test_filter_wavelength_parses_correctly(self, filter_ter):
+        '''wavelength unit is parsed by astropy.units'''
+        wunit = filter_ter.meta['wavelength_unit']
+        assert isinstance(u.Unit(wunit), u.Unit)
+
+
+QE_LIST = glob(os.path.join(PKGS_DIR, "METIS/QE_detector_*.dat"))
+@pytest.fixture(scope="class", params=QE_LIST)
+def qe_curve(request):
+    return scopesim.effects.QuantumEfficiencyCurve(filename=request.param)
+
+class TestQuantumEfficiency:
+    '''Test that QE files result in correct QuantumEfficiencyCurves'''
+
+    def test_qe_read_okay(self, qe_curve):
+        '''qe file is read correctly and gives QuantumEfficiencyCurve'''
+        assert isinstance(qe_curve, scopesim.effects.QuantumEfficiencyCurve)
+
+    def test_qe_table_not_zero(self, qe_curve):
+        '''Table attribute shall not be empty'''
+        assert len(qe_curve.table) > 0
+
+    def test_qe_has_wavelength_unit(self, qe_curve):
+        '''qe file specifies a wavelength unit'''
+        assert 'wavelength_unit' in qe_curve.meta
+
+    def test_qe_wavelength_parses_correctly(self, qe_curve):
+        '''wavelength unit is parsed by astropy.units'''
+        wunit = qe_curve.meta['wavelength_unit']
+        assert isinstance(u.Unit(wunit), u.Unit)
+
+
+TER_LIST = glob(os.path.join(PKGS_DIR, "METIS/TER_*.dat"))
+@pytest.fixture(scope="class", params=TER_LIST)
+def ter_curve(request):
+    return scopesim.effects.TERCurve(filename=request.param)
+
+class TestTERCurve:
+    '''Test that TER files result in correct TERCurves'''
+
+    def test_ter_read_okay(self, ter_curve):
+        '''ter file is read correctly and gives TERCurve'''
+        assert isinstance(ter_curve, scopesim.effects.TERCurve)
+
+    def test_ter_table_not_zero(self, ter_curve):
+        '''Table attribute shall not be empty'''
+        assert len(ter_curve.table) > 0
+
+    def test_ter_has_wavelength_unit(self, ter_curve):
+        '''ter file specifies a wavelength unit'''
+        assert 'wavelength_unit' in ter_curve.meta
+
+    def test_ter_wavelength_parses_correctly(self, ter_curve):
+        '''wavelength unit is parsed by astropy.units'''
+        wunit = ter_curve.meta['wavelength_unit']
+        assert isinstance(u.Unit(wunit), u.Unit)
+
+
+FPA_LIST = glob(os.path.join(PKGS_DIR, "METIS/FPA_*_layout.dat"))
+@pytest.fixture(scope="class", params=FPA_LIST)
+def det_list(request):
+    return scopesim.effects.DetectorList(filename=request.param)
+
+class TestFPALayout:
+    '''Test that FPA files result in correct DetectorLists'''
+    # Do we need explicit tests for units?
+    def test_fpa_read_okay(self, det_list):
+        '''fpa layout is read correctly and gives DetectorList'''
+        assert isinstance(det_list, scopesim.effects.DetectorList)
+
+    def test_fpa_table_not_zero(self, det_list):
+        '''Table attribute shall not be empty'''
+        assert len(det_list.table) > 0
+
+
+#### linearity files are currently empty, hence tests xfail
+LIN_LIST = glob(os.path.join(PKGS_DIR, "METIS/FPA_linearity_*.dat"))
+@pytest.fixture(scope="class", params=LIN_LIST)
+def lin_curve(request):
+    return scopesim.effects.LinearityCurve(filename=request.param)
+
+class TestLinearityCurve:
+    '''Test that linearity files result in correct LinearityCurves'''
+
+    @pytest.mark.xfail
+    def test_lin_read_okay(self, lin_curve):
+        '''linearity curve is read correctly and gives LinearityCurve'''
+        assert isinstance(lin_curve, scopesim.effects.LinearityCurve)
+
+    @pytest.mark.xfail
+    def test_lin_table_not_zero(self, lin_curve):
+        '''Table attribute shall not be empty'''
+        assert len(lin_curve.table) > 0
 
 
 class TestObserves:
