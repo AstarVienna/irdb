@@ -1,0 +1,29 @@
+# yaml extension for METIS long-slit spectroscopy
+---
+object: instrument
+alias: INST
+name: METIS_LSS
+description: additional effects for METIS long-slit spectroscopy
+
+effects:
+  #  - name: lss_mode_optics
+  #    description: list of extra optical elements for LSS
+  #    class: SurfaceList
+  #    kwargs:
+  #      filename: LIST_METIS_mirrors_lss_lm.dat
+  #
+  - name: spectroscopic_slit_aperture
+    description: slit mask definition
+    class: ApertureMask
+    kwargs:
+      filename: "!OBS.slit_file"
+
+  - name: lss_spectral_traces
+    description: list of spectral order trace geometry on the focal plane
+    class: SpectralTraceList
+    kwargs:
+      filename: "!OBS.trace_file"
+      wave_colname: "lam"
+      s_colname: "xi"
+      col_number_start: 1
+      invalid_value: 0
