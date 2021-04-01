@@ -40,9 +40,7 @@ effects:
       description: Linearity characteristics of GeoSnap chip
       class: LinearityCurve
       kwargs:
-          array_dict:
-              incident: [0., !!float 2.7e6, !!float 1e99]
-              measured: [0., !!float 2.7e6, !!float 2.7e6]
+          filename: FPA_linearity_GeoSnap.dat
 
     - name: shot_noise
       description: apply poisson shot noise to images

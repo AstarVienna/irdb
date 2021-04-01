@@ -156,12 +156,10 @@ def lin_curve(request):
 class TestLinearityCurve:
     '''Test that linearity files result in correct LinearityCurves'''
 
-    @pytest.mark.xfail
     def test_lin_read_okay(self, lin_curve):
         '''linearity curve is read correctly and gives LinearityCurve'''
         assert isinstance(lin_curve, scopesim.effects.LinearityCurve)
 
-    @pytest.mark.xfail
     def test_lin_table_not_zero(self, lin_curve):
         '''Table attribute shall not be empty'''
         assert len(lin_curve.table) > 0
