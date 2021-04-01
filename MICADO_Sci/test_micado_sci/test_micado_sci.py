@@ -47,20 +47,39 @@ class TestOpticalTrain:
 
 
 class TestObserve:
-    def test_empty_sky_with_mcao_4mas(self):
+    def observe_with_micado_sci(self, modes):
         cmd = sim.UserCommands(use_instrument="MICADO_Sci",
-                               set_modes=["MCAO", "4mas"])
+                               set_modes=modes)
+
         opt = sim.OpticalTrain(cmd)
         src = sim.source.source_templates.empty_sky()
 
         opt.observe(src)
+        hdus = opt.readout()
 
-        plt.imshow(opt.image_planes[0].image)
-        plt.show()
+        return hdus
 
+    def test_empty_sky_with_mcao_4mas(self):
+        hdus = self.observe_with_micado_sci(modes=["MCAO", "IMG_4mas"])
+        im = hdus[0][1].data
 
-def test_scao_1_5mas_works():
-    pass
+        assert im.shape == (4096, 4096)
+        assert np.median(im) > 0
+
+        if PLOTS:
+            plt.imshow(im)
+            plt.show()
+
+    def test_scao_1_5mas_works(self):
+        hdus = self.observe_with_micado_sci(modes=["SCAO", "IMG_1.5mas"])
+        im = hdus[0][1].data
+
+        assert im.shape == (4096, 4096)
+        assert np.median(im) > 0
+
+        if PLOTS:
+            plt.imshow(im)
+            plt.show()
 
 
 def test_spec_for_a_specific_wavelength_range_works():
