@@ -167,6 +167,28 @@ class TestLinearityCurve:
         assert len(lin_curve.table) > 0
 
 
+MASK_LIST = glob(os.path.join(PKGS_DIR, "METIS/MASK_slit_*.dat"))
+@pytest.fixture(scope="class", params=MASK_LIST)
+def slit_mask(request):
+    return scopesim.effects.ApertureMask(filename=request.param)
+
+class TestSlitMask:
+    '''Test that mask files result in correct ApertureMasks'''
+
+    def test_mask_read_okay(self, slit_mask):
+        '''Mask file is read correctly and gives ApertureMask'''
+        assert isinstance(slit_mask, scopesim.effects.ApertureMask)
+
+    def test_mask_table_not_zero(self, slit_mask):
+        '''Table attribute shall not be empty'''
+        assert len(slit_mask.table) > 0
+
+    @pytest.mark.parametrize("theunit", ["x_unit", "y_unit"])
+    def test_mask_units_parsed_correctly(self, slit_mask, theunit):
+        '''units are defined and parsed by astropy'''
+        assert isinstance(u.Unit(slit_mask.meta[theunit]), u.Unit)
+
+
 class TestObserves:
     '''Test basic observations for the main instrument modes'''
     def test_something_comes_out_img_lm(self):
