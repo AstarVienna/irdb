@@ -1,0 +1,15 @@
+# author : Oliver Czoske
+# source : Roy van Boekel, email 2021-03-31
+# date_created : 2021-04-01
+# date_modified : 2021-04-01
+# status : guess
+# type : filter:transmission
+# wavelength_unit : um
+# comment : order sorting filter for METIS LSS, M band
+# changes :
+#
+wavelength  transmission
+4.4         0.
+4.5         0.85
+5.2         0.85
+5.3         0.
