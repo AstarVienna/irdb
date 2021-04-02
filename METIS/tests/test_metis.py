@@ -187,6 +187,27 @@ class TestSlitMask:
         assert isinstance(u.Unit(slit_mask.meta[theunit]), u.Unit)
 
 
+TRACE_LIST = glob(os.path.join(PKGS_DIR, "METIS/TRACE*.fits"))
+@pytest.fixture(scope="class", params=TRACE_LIST)
+def trace_list(request):
+    return scopesim.effects.SpectralTraceList(filename=request.param)
+
+class TestTraceFile:
+    '''Test that trace files result in correct SpectralTraces'''
+
+    def test_tracelist_read_okay(self, trace_list):
+        '''Trace file is read correctly and gives SpectralTrace'''
+        assert isinstance(trace_list, scopesim.effects.SpectralTraceList)
+
+    def test_tracelist_has_table(self, trace_list):
+        '''Trace list has a table with at least one entry'''
+        assert len(trace_list.data) > 0
+
+    def test_tracelist_has_traces(self, trace_list):
+        '''SpectralTraceList contains at least one SpectralTrace'''
+        for trace in trace_list.spectral_traces:
+            assert isinstance(trace, scopesim.effects.SpectralTrace)
+
 class TestObserves:
     '''Test basic observations for the main instrument modes'''
     def test_something_comes_out_img_lm(self):
