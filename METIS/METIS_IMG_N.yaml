@@ -26,6 +26,7 @@ effects:
               - N1
               - N2
               - N3
+              - N_spec
               - PAH_8.6
               - PAH_8.6_ref
               - PAH_11.25
