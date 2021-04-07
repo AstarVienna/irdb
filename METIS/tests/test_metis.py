@@ -156,12 +156,10 @@ def lin_curve(request):
 class TestLinearityCurve:
     '''Test that linearity files result in correct LinearityCurves'''
 
-    @pytest.mark.xfail
     def test_lin_read_okay(self, lin_curve):
         '''linearity curve is read correctly and gives LinearityCurve'''
         assert isinstance(lin_curve, scopesim.effects.LinearityCurve)
 
-    @pytest.mark.xfail
     def test_lin_table_not_zero(self, lin_curve):
         '''Table attribute shall not be empty'''
         assert len(lin_curve.table) > 0
@@ -188,6 +186,27 @@ class TestSlitMask:
         '''units are defined and parsed by astropy'''
         assert isinstance(u.Unit(slit_mask.meta[theunit]), u.Unit)
 
+
+TRACE_LIST = glob(os.path.join(PKGS_DIR, "METIS/TRACE*.fits"))
+@pytest.fixture(scope="class", params=TRACE_LIST)
+def trace_list(request):
+    return scopesim.effects.SpectralTraceList(filename=request.param)
+
+class TestTraceFile:
+    '''Test that trace files result in correct SpectralTraces'''
+
+    def test_tracelist_read_okay(self, trace_list):
+        '''Trace file is read correctly and gives SpectralTrace'''
+        assert isinstance(trace_list, scopesim.effects.SpectralTraceList)
+
+    def test_tracelist_has_table(self, trace_list):
+        '''Trace list has a table with at least one entry'''
+        assert len(trace_list.data) > 0
+
+    def test_tracelist_has_traces(self, trace_list):
+        '''SpectralTraceList contains at least one SpectralTrace'''
+        for trace in trace_list.spectral_traces:
+            assert isinstance(trace, scopesim.effects.SpectralTrace)
 
 class TestObserves:
     '''Test basic observations for the main instrument modes'''
