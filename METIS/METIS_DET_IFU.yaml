@@ -34,7 +34,7 @@ effects:
       description: Linearity characteristics of H2RG chips
       class: LinearityCurve
       kwargs:
-          filename: FPA_linearity.dat
+          filename: FPA_linearity_HxRG.dat
 
     - name: shot_noise
       description: apply poisson shot noise to images

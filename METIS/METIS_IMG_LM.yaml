@@ -25,7 +25,9 @@ effects:
               - open
               - Lp
               - short-L
+              - L_spec
               - Mp
+              - M_spec
               - Br_alpha
               - Br_alpha_ref
               - PAH_3.3
