@@ -24,6 +24,7 @@ effects:
     kwargs:
       filename: "!OBS.trace_file"
       wave_colname: "wavelength"
+      dwave: 0.0005
       s_colname: "xi"
       col_number_start: 1
-      invalid_value: 0
+      #invalid_value: None
