@@ -129,4 +129,4 @@ properties :
     preload_field_of_view : True
 
   reports:
-    preamble_file: "../docs/preamble.rst"
+    preamble_file: "../docs/micado.rst"
