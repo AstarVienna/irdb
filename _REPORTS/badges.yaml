@@ -80,6 +80,7 @@ MICADO_Sci:
     MICADO_AnisoCADO_rms_map.fits: missing
     QE_detector_H2RG.dat: missing
     TER_ELT_System_20190611.dat: missing
+    TER_armazones_default_NIR_IMG.dat: missing
     default_yaml: true
     self_named_yaml: true
 Paranal:

@@ -17,7 +17,7 @@ use_instrument : MICADO
 yamls :
 - my_new_effects.yaml
 
-add_effects :
+effects :
 - name : my_new_filter
   description : a 1 um bandpass filter
   class : TERCurve

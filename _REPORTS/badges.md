@@ -81,6 +81,7 @@
     * [![](https://img.shields.io/badge/MICADO_AnisoCADO_rms_map.fits-missing-red)]()
     * [![](https://img.shields.io/badge/QE_detector_H2RG.dat-missing-red)]()
     * [![](https://img.shields.io/badge/TER_ELT_System_20190611.dat-missing-red)]()
+    * [![](https://img.shields.io/badge/TER_armazones_default_NIR_IMG.dat-missing-red)]()
     * [![](https://img.shields.io/badge/default_yaml-True-green)]()
     * [![](https://img.shields.io/badge/self_named_yaml-True-green)]()
 ## Paranal: 
