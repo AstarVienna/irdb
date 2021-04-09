@@ -15,6 +15,13 @@ effects :
     kwargs:
         filename: LIST_MICADO_mirrors_static.dat
 
+-   name : micado_ncpas_psf
+    description : Effective NCPA induced PSF kernel
+    class : NonCommonPathAberration
+    kwargs :
+        pixel_scale : "!INST.pixel_scale"
+        filename : "INST_MICADO_wavefront_error_budget.dat"
+
 -   name: filter_wheel_1
     class: FilterWheel
     kwargs:
@@ -33,7 +40,17 @@ effects :
             - K-mid
             - Spec_IJ
             - Spec_HK
-            # Filter wheel 2
+            - blank
+        filename_format: "!INST.filter_file_format"
+        current_filter: "!OBS.filter_name_fw1"
+        minimum_throughput: !!float 1.01E-4
+        outer: 0.2
+        outer_unit: "m"
+
+-   name: filter_wheel_2
+    class: FilterWheel
+    kwargs:
+        filter_names:
             - xI1
             - xI2
             - xY1
@@ -45,7 +62,16 @@ effects :
             - xK1
             - xK2
             - blank
-            # Pupil wheel
+        filename_format: "!INST.filter_file_format"
+        current_filter: "!OBS.filter_name_fw2"
+        minimum_throughput: !!float 1.01E-4
+        outer: 0.2
+        outer_unit: "m"
+
+-   name: pupil_wheel
+    class: FilterWheel
+    kwargs:
+        filter_names:
             - H-cont
             - FeII
             - H2_1-0S1
@@ -56,15 +82,9 @@ effects :
             - Pa-beta
             - ND1
             - ND3
+            - blank
         filename_format: "!INST.filter_file_format"
-        current_filter: "!OBS.filter_name"
+        current_filter: "!OBS.filter_name_pupil"
         minimum_throughput: !!float 1.01E-4
         outer: 0.2
         outer_unit: "m"
-
--   name : micado_ncpas_psf
-    description : Effective NCPA induced PSF kernel
-    class : NonCommonPathAberration
-    kwargs :
-        pixel_scale : "!INST.pixel_scale"
-        filename : "INST_MICADO_wavefront_error_budget.dat"

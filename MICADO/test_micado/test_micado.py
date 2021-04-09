@@ -12,7 +12,7 @@ from scopesim.effects import SurfaceList, TERCurve
 PLOTS = False
 
 DATA_DIR = pth.abspath(pth.join(pth.dirname(__file__), "../"))
-rc.__currsys__["!SIM.local_packages_path"] = DATA_DIR
+rc.__search_path__.insert(0, DATA_DIR)
 
 
 class TestSurfaceLists:
@@ -33,7 +33,7 @@ class TestSurfaceLists:
             plt.show()
 
         assert end - start < 0.5
-        assert np.max(thru) > 0.7
+        assert np.max(thru) > 0.6
         assert np.max(flux) > 0.
 
     def test_speed_of_single_tercurve_for_micado_common_optics(self):

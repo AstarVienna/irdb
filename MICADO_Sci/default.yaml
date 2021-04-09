@@ -21,11 +21,12 @@ yamls :
 - MICADO_Sci_detector.yaml
 
 properties :
-  modes : ["SCAO", "4mas"]
+  modes : ["SCAO", "IMG_4mas"]
   dit : 60
   ndit : 1
   airmass : 1.2
   pupil_angle : 0
+  filter_name : Ks
 
 mode_yamls :
 - object : instrument
@@ -44,19 +45,17 @@ mode_yamls :
 
 - object : instrument
   alias : INST
-  name : 4mas
+  name : IMG_4mas
   description : "wide-field imager  : 4mas/pix"
   properties :
-    filter_name : Ks
     pixel_scale : 0.004         # arcsec / pixel
     plate_scale : 0.26666666666 # arcsec / mm
 
 - object : instrument
   alias : INST
-  name : 1.5mas
+  name : IMG_1.5mas
   description : "zoom imager : 1.5mas/pix"
   properties :
-    filter_name : Ks
     pixel_scale : 0.0015    # arcsec / pixel
     plate_scale : 0.1       # arcsec / mm
 
@@ -65,9 +64,8 @@ mode_yamls :
   name : SPEC
   description : "Spectroscopy"
   yamls :
-    MICADO_Sci_SPEC.yaml
+    - MICADO_Sci_SPEC.yaml
   properties :
-    filter_name : Spec_HK
     pixel_scale : 0.004         # arcsec / pixel
     plate_scale : 0.26666666666 # arcsec / mm
 

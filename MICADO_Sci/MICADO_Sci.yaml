@@ -29,18 +29,35 @@ properties :
     pixel_scale :   "!INST.pixel_scale"
     season: 0       # As per skycalc definition - 0=all year
     time: 0         # As per skycalc definition - 0=all night
+    background:
+        filter_name: Ks
+        value: 13.6
+        unit: mag
 
 effects :
--   name: armazones_atmo_skycalc_ter_curve
-    description: atmospheric spectra pulled from the skycalc server
-    class: SkycalcTERCurve
-    include: False
-    kwargs:
-        observatory: "armazones"
-        wmin: "!SIM.spectral.wave_min"
-        wmax: "!SIM.spectral.wave_max"
-        wunit: um
-        wdelta: "!SIM.spectral.spectral_resolution"
+-   name : armazones_atmo_default_ter_curve
+    description : atmospheric emission and transmission
+    class : AtmosphericTERCurve
+    include : True
+    kwargs :
+        filename: "TER_armazones_default_NIR_IMG.dat"
+        area: "!TEL.area"
+        rescale_emission:
+            filter_name: "Ks"
+            filename_format: "!INST.filter_file_format"
+            value: 13.6
+            unit: mag
+
+#-   name: armazones_atmo_skycalc_ter_curve
+#    description: atmospheric spectra pulled from the skycalc server
+#    class: SkycalcTERCurve
+#    include: False
+#    kwargs:
+#        observatory: "armazones"
+#        wmin: "!SIM.spectral.wave_min"
+#        wmax: "!SIM.spectral.wave_max"
+#        wunit: um
+#        wdelta: "!SIM.spectral.spectral_resolution"
 
 
 ---
@@ -53,21 +70,30 @@ description : ELT system transmission
 
 properties :
     temperature : 0
+    area : 978
 
 effects:
 -   name : elt_system_transmission
     description : full 5 mirror transmission curve
-    class : TERCurve
+    class : SurfaceList
     kwargs :
-        filename : TER_ELT_System_20190611.dat
-
+        array_dict:
+            name: [ELT_full]
+            area: [978]
+            angle: [0]
+            temperature: ["!TEL.temperature"]
+            action: [reflection]
+            filename: [TER_ELT_System_20190611.dat]
+        area_unit : m2
+        angle_unit: degree
+        temperature_unit: deg_C
 
 ---
 
 ### Config file for common MICADO elements
 object : instrument
 alias : INST
-name : MICADO
+name : MICADO_Sci
 description : base configuration for MICADO
 
 properties :
@@ -81,7 +107,7 @@ effects:
     kwargs:
         filename: TER_MICADO_IMG_common.dat
 
--   name: filter_wheel_1
+-   name: filter_wheel
     class: FilterWheel
     kwargs:
         filter_names:

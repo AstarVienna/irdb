@@ -13,7 +13,7 @@ description : "MICADO SCAO mode effects"
 properties:
     psf:
         strehl: 0.8
-        wavelength: "!INST.filter_name"
+        wavelength: 2.15
 
 effects:
 -   name: scao_relay_optics_ter
@@ -38,7 +38,7 @@ effects:
 
 object : detector
 alias : DET
-name : micado_sci_detector_window
+name : MICADO_Sci_SCAO_detector_override
 description : A settable window on the detector plane
 
 properties :
