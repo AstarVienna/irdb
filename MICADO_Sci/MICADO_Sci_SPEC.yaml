@@ -1,3 +1,10 @@
+##### SCAO
+#* RO TER
+#* Detector Window
+#* PSF
+#    * SCAO FVPSF
+#    * SCAO AnisoCADO ConstPSF
+
 #### SPEC
 #* RO TER
 #* SPEC TER
@@ -12,3 +19,55 @@
 #* XiLamStrehlPSF (max SR JHK-40/60/80)
 #* BasicTraceMap
 #* AtmopshericDiffraction
+
+
+object : instrument
+alias : INST
+name : MICADO_SPEC
+description : "MICADO SPEC mode effects"
+
+properties:
+  psf:
+    wavelength: "!SIM.spectral.wave_mid"
+    strehl: 0.6
+  aperture:
+    x: 0
+    y: 0
+    width: 3
+    height: 0.05
+
+effects:
+-   name : micado_adjustable_slit
+    class : RectangularApertureMask
+    kwargs :
+        width: "!INST.aperture.width"
+        height: "!INST.aperture.height"
+        x: "!INST.aperture.x"
+        y: "!INST.aperture.y"
+
+-   name : spectral_trace_3000x50mas
+    class : SpectralTraceList
+    kwargs :
+        filename : "TRACE_SCI_3arcsec.fits"
+        center_on_wave_mid: True
+
+---
+
+object : detector
+alias : DET
+name : MICADO_Sci_SPEC_detector_override
+description : A settable window on the detector plane
+
+properties :
+    width : 800
+    height : 1024
+
+---
+
+object : observation
+alias : OBS
+name : MICADO_Sci_SPEC_obs_override
+description : Setting the filter to spec_IJ filter
+
+properties :
+    filter_name: Spec_HK

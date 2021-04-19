@@ -53,6 +53,7 @@
     * [![](https://img.shields.io/badge/QE_detector_Aquarius.dat-missing-red)]()
     * [![](https://img.shields.io/badge/QE_detector_H2RG.dat-missing-red)]()
     * [![](https://img.shields.io/badge/QE_detector_geosnap.dat-missing-red)]()
+    * [![](https://img.shields.io/badge/TER_armazones_default_MIR_IMG.dat-missing-red)]()
     * [![](https://img.shields.io/badge/default_yaml-True-green)]()
     * [![](https://img.shields.io/badge/self_named_yaml-True-green)]()
 ## MICADO: 
@@ -63,14 +64,24 @@
     * [![](https://img.shields.io/badge/default_yaml-True-green)]()
     * [![](https://img.shields.io/badge/no_missing_files-True-green)]()
     * [![](https://img.shields.io/badge/self_named_yaml-True-green)]()
-## MICADO_Sci: 
+## MICADO_ETC: 
   * contents: 
     * [![](https://img.shields.io/badge/all_yamls_readable-True-green)]()
   * [![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
   * structure: 
     * [![](https://img.shields.io/badge/MICADO_AnisoCADO_rms_map.fits-missing-red)]()
+    * [![](https://img.shields.io/badge/default_yaml-True-green)]()
+    * [![](https://img.shields.io/badge/self_named_yaml-True-green)]()
+## MICADO_Sci: 
+  * contents: 
+    * [![](https://img.shields.io/badge/all_yamls_readable-True-green)]()
+  * [![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
+  * structure: 
+    * [![](https://img.shields.io/badge/FPA_linearity.dat-missing-red)]()
+    * [![](https://img.shields.io/badge/MICADO_AnisoCADO_rms_map.fits-missing-red)]()
     * [![](https://img.shields.io/badge/QE_detector_H2RG.dat-missing-red)]()
     * [![](https://img.shields.io/badge/TER_ELT_System_20190611.dat-missing-red)]()
+    * [![](https://img.shields.io/badge/TER_armazones_default_NIR_IMG.dat-missing-red)]()
     * [![](https://img.shields.io/badge/default_yaml-True-green)]()
     * [![](https://img.shields.io/badge/self_named_yaml-True-green)]()
 ## Paranal: 

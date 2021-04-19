@@ -47,7 +47,9 @@ mode_yamls :
   yamls :
   - MICADO_IMG_wide.yaml
   properties :
-    filter_name : Ks
+    filter_name_fw1: Ks
+    filter_name_fw2: blank
+    filter_name_pupil: blank
 
 - object : observation
   alias: OBS
@@ -56,7 +58,9 @@ mode_yamls :
   yamls :
   - MICADO_IMG_zoom.yaml
   properties :
-    filter_name  : Ks
+    filter_name_fw1: Ks
+    filter_name_fw2: blank
+    filter_name_pupil: blank
 
 - object : observation
   alias: OBS
@@ -68,35 +72,41 @@ mode_yamls :
 - object : observation
   alias: OBS
   name : SPEC_15000x50
-  description : "spectrograph  : slit size 15000x50mas"
+  description : "spectrograph : slit size 15000x50mas"
   yamls :
   - MICADO_SPEC.yaml
   properties :
     trace_file : TRACE_15arcsec.fits
     slit_file : MASK_slit_15000x50.dat
-    filter_name : Spec_HK
+    filter_name_fw1: Spec_HK
+    filter_name_fw2: blank
+    filter_name_pupil: blank
 
 - object : observation
   alias: OBS
   name : SPEC_3000x50
-  description : "spectrograph  : slit size 3000x50mas"
+  description : "spectrograph : slit size 3000x50mas"
   yamls :
   - MICADO_SPEC.yaml
   properties :
     trace_file : TRACE_3arcsec.fits
     slit_file : MASK_slit_3000x50.dat
-    filter_name : Spec_HK
+    filter_name_fw1: Spec_HK
+    filter_name_fw2: blank
+    filter_name_pupil: blank
 
 - object : observation
   alias: OBS
   name : SPEC_3000x20
-  description : "spectrograph  : slit size 3000x20mas"
+  description : "spectrograph : slit size 3000x20mas"
   yamls :
   - MICADO_SPEC.yaml
   properties :
     trace_file : TRACE_3arcsec.fits
     slit_file : MASK_slit_3000x20.dat
-    filter_name : Spec_HK
+    filter_name_fw1: Spec_HK
+    filter_name_fw2: blank
+    filter_name_pupil: blank
 
 
 ---
@@ -119,4 +129,4 @@ properties :
     preload_field_of_view : True
 
   reports:
-    preamble_file: "../docs/preamble.rst"
+    preamble_file: "../docs/micado.rst"

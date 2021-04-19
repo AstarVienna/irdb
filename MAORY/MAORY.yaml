@@ -6,14 +6,15 @@ description : MAORY AO relay module
 
 properties :
     temperature : "!ATMO.temperature"
-    psf_filename :
+
 
 effects :
 -   name: maory_surface_list
     description : list of surfaces in MAORY
     class: SurfaceList
     kwargs:
-        filename: LIST_mirrors_MCAO_MAORY.tbl
+        # filename: LIST_mirrors_MCAO_MAORY.tbl     # 2020-06-30 (KL) File obsolete
+        filename: LIST_mirrors_maory_mms.tbl
 
 -   name : maory_generic_psf
     description : MAORY field varying MCAO PSF

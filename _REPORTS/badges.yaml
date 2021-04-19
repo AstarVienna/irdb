@@ -52,6 +52,7 @@ METIS:
     QE_detector_Aquarius.dat: missing
     QE_detector_H2RG.dat: missing
     QE_detector_geosnap.dat: missing
+    TER_armazones_default_MIR_IMG.dat: missing
     default_yaml: true
     self_named_yaml: true
 MICADO:
@@ -62,14 +63,24 @@ MICADO:
     default_yaml: true
     no_missing_files: true
     self_named_yaml: true
-MICADO_Sci:
+MICADO_ETC:
   contents:
     all_yamls_readable: true
   package_type: observation
   structure:
     MICADO_AnisoCADO_rms_map.fits: missing
+    default_yaml: true
+    self_named_yaml: true
+MICADO_Sci:
+  contents:
+    all_yamls_readable: true
+  package_type: observation
+  structure:
+    FPA_linearity.dat: missing
+    MICADO_AnisoCADO_rms_map.fits: missing
     QE_detector_H2RG.dat: missing
     TER_ELT_System_20190611.dat: missing
+    TER_armazones_default_NIR_IMG.dat: missing
     default_yaml: true
     self_named_yaml: true
 Paranal:
