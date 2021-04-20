@@ -123,7 +123,7 @@ properties:
     seed: None                         # 9001
 
   spectral:
-    wave_min: 3.0
+    wave_min: 2.85
     wave_mid: 10.5
     wave_max: 18.0
 
