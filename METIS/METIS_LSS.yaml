@@ -12,11 +12,6 @@ effects:
   #    kwargs:
   #      filename: LIST_METIS_mirrors_lss_lm.dat
   #
-  - name: spectroscopic_slit_aperture
-    description: slit mask definition
-    class: ApertureMask
-    kwargs:
-      filename: "!OBS.slit_file"
 
   - name: lss_spectral_traces
     description: list of spectral order trace geometry on the focal plane
