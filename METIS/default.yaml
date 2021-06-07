@@ -49,6 +49,8 @@ mode_yamls:
       filter_name: N2
       nd_filter_name: open
       slit: false
+      chop_offsets: [3, 0]
+      nod_offsets: [-3, 0]
 
   - object: observation
     alias: OBS

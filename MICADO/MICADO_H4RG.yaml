@@ -59,6 +59,12 @@ effects :
     kwargs:
         filename : FPA_linearity.dat
 
+-   name: border_reference_pixels
+    description: Blanks the signal on N edge row and column pixels
+    class: ReferencePixelBorder
+    kwargs:
+        all: 4
+
 -   name: shot_noise
     description : apply poisson shot noise to images
     class: ShotNoise
@@ -69,3 +75,4 @@ effects :
     kwargs :
         noise_std : 12
         n_channels : 64
+

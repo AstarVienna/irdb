@@ -57,6 +57,6 @@ effects:
       descriptions: chopping and nodding
       class: ChopNodCombiner
       kwargs:
-          chop_offsets: [3, 0]
-          nod_offsets: [-3, 0]
+          chop_offsets: "!OBS.chop_offsets"
+          nod_offsets: "!OBS.nod_offsets"
           pixel_scale: "!INST.pixel_scale"
