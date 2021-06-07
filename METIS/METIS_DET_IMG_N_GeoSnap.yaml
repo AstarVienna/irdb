@@ -52,3 +52,11 @@ effects:
       kwargs:
           noise_std: 12
           n_channels: 64
+
+    - name: chopnod
+      descriptions: chopping and nodding
+      class: ChopNodCombiner
+      kwargs:
+          chop_offsets: [3, 0]
+          nod_offsets: [-3, 0]
+          pixel_scale: "!INST.pixel_scale"
