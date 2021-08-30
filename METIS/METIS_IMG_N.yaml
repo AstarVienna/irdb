@@ -6,7 +6,7 @@ name: METIS_IMG_N
 description: base configuration for METIS
 
 properties:
-    pixel_scale: 0.00679         # arcsec / pixel
+    pixel_scale: 0.00679         # arcsec / pixel, METIS-1097
     plate_scale: 0.377222222222  # arcsec / mm
 
 effects:

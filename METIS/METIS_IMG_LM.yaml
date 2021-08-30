@@ -7,8 +7,8 @@ name: METIS_IMG_LM
 description: base configuration for METIS
 
 properties:
-  pixel_scale: 0.00525         # arcsec / pixel
-  plate_scale: 0.291666666667  # arcsec / mm
+  pixel_scale: 0.00547         # arcsec / pixel, METIS_1097
+  plate_scale: 0.30389         # arcsec / mm
 
 effects:
   - name: metis_img_lm_mirror_list
