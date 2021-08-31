@@ -6,16 +6,35 @@ name: metis_img_lm_detector_array
 description: A single H2RG detector
 
 properties:
-    temperature: -230
-    dit: "!OBS.dit"
-    ndit: "!OBS.ndit"
+  image_plane_id: 0
+  temperature: -230
+  dit: "!OBS.dit"
+  ndit: "!OBS.ndit"
+  width: 2048
+  height: 2048
+  x: 0
+  y: 0
 
 effects:
     - name: detector_array_list
       description: METIS IMG-LM detector array list
       class: DetectorList
+      include: True
       kwargs:
-          filename: FPA_metis_img_lm_layout.dat
+        filename: FPA_metis_img_lm_layout.dat
+
+    - name: detector_window
+      description: detector window
+      class: DetectorWindow
+      include: False
+      kwargs:
+        image_plane_id: 0
+        pixel_size: 0.018
+        x: "!DET.x"
+        y: "!DET.y"
+        width: "!DET.width"
+        height: "!DET.height"
+        units: pixel
 
     - name: qe_curve
       description: Quantum efficiency curves for each detector
