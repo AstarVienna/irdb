@@ -5,7 +5,7 @@
     "codeRepository": "https://github.com/AstarVienna/irdb.git",
     "dateCreated": "2018-05-29",
     "issueTracker": "https://github.com/AstarVienna/irdb/issues",
-    "name": "ScopeSim Instrument Reference Database",
+    "name": "Instrument Reference Database",
     "description": "A reference database for astronomical instrument and telescope characteristics for all types of visual and infrared systems. Instrument packages are used in conjunction with the ScopeSim instrument data simulator.",
     "applicationCategory": "Astronomy",
     "funding": "IS538004",
