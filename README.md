@@ -4,7 +4,7 @@
 
 [![Python Version Support](http://github-actions.40ants.com/AstarVienna/irdb/matrix.svg)](https://github.com/AstarVienna/irdb)
 
-[![Documentation Status](https://readthedocs.org/projects/scopesim-templates/badge/?version=latest)](https://scopesim-templates.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/irdb/badge/?version=latest)](https://irdb.readthedocs.io/en/latest/?badge=latest)
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
