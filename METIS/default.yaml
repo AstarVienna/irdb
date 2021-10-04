@@ -103,6 +103,7 @@ mode_yamls:
       - METIS_DET_IFU.yaml
     properties:
       slit: false
+      trace_file: TRACE_LMS.fits
 
   - object: observation     # is this a separate mode from nominal LMS?
     alias: OBS
