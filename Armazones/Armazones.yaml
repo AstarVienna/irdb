@@ -23,18 +23,17 @@ properties :
         filename: "TER_armazones_default_FULL_IMG.dat"
 
 effects :
--   name : armazones_atmo_default_ter_curve
-    description : atmospheric emission and transmission
-    class : AtmosphericTERCurve
+-   name : armazones_atmo_skycalc_ter_curve
+    description : atmospheric spectra pulled from the skycalc server
+    class : SkycalcTERCurve
     include : True
     kwargs :
-        filename: "!ATMO.spectrum.filename"
-        area: "!TEL.area"
-        rescale_emission:
-            filter_name: "!ATMO.background.filter_name"
-            filename_format: "!INST.filter_file_format"
-            value: "!ATMO.background.value"
-            unit: "!ATMO.background.unit"
+        observatory : armazones
+        wmin : "!SIM.spectral.wave_min"
+        wmax : "!SIM.spectral.wave_max"
+        wunit : um
+        wdelta : "!SIM.spectral.spectral_resolution"
+
 
 -   name : armazones_atmo_dispersion
     description : atmospheric dispersion
@@ -43,14 +42,15 @@ effects :
 
 
 ####################### Alternative effects ####################################
-
--   name : armazones_atmo_skycalc_ter_curve
-    description : atmospheric spectra pulled from the skycalc server
-    class : SkycalcTERCurve
+-   name : armazones_atmo_default_ter_curve
+    description : atmospheric emission and transmission
+    class : AtmosphericTERCurve
     include : False
     kwargs :
-        observatory : armazones
-        wmin : "!SIM.spectral.wave_min"
-        wmax : "!SIM.spectral.wave_max"
-        wunit : um
-        wdelta : "!SIM.spectral.spectral_resolution"
+        filename: "!ATMO.spectrum.filename"
+        area: "!TEL.area"
+        rescale_emission:
+            filter_name: "!ATMO.background.filter_name"
+            filename_format: "!INST.filter_file_format"
+            value: "!ATMO.background.value"
+            unit: "!ATMO.background.unit"
