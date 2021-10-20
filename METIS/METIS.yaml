@@ -1,5 +1,5 @@
 ---
-### METIS
+### METIS Instrument common effects
 
 object: instrument
 alias: INST
@@ -35,9 +35,11 @@ effects:
   - name: cold_stop
     description: pupil transmission with respect to full aperture
     class: PupilTransmission
+    include: True
     kwargs:
       throughput: "!INST.pupil_transmission"
-      include: True
+      minimum_throughput: !!float 0.
+
 
 
 #  - name : metis_adc_residuals
