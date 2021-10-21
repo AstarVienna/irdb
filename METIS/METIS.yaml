@@ -37,7 +37,7 @@ effects:
     class: PupilTransmission
     include: True
     kwargs:
-      throughput: "!INST.pupil_transmission"
+      transmission: "!INST.pupil_transmission"
       minimum_throughput: !!float 0.
 
 

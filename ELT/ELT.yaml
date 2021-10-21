@@ -12,11 +12,10 @@ properties :
 effects :
 -   name : eso_combined_reflection
     description : single combined reflection curve (ESO-333023)
-    class : TERCurve
+    class : SurfaceList
     include : True
     kwargs :
-        filename : "!TEL.ter_curve.filename"
-        temperature : "!ATMO.temperature"
+        filename : LIST_ELT_combined.tbl
 
 -   name : scope_vibration
     description : residual vibration of telescope
