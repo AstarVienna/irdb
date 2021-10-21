@@ -46,7 +46,7 @@ def load_badge_yaml(filename=None):
 
     badges = SystemDict()
     with open(pth.join(PKG_DIR, "_REPORTS", filename)) as f:
-        badges.update(yaml.load(f))
+        badges.update(yaml.full_load(f))
 
     return badges
 

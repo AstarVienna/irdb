@@ -17,7 +17,7 @@ HOME = os.path.abspath(os.path.join(cur_frame, "../"))
 REPORTS = os.path.abspath(os.path.join(HOME, "_REPORTS"))
 
 with open(os.path.join(HOME, "packages.yaml")) as f:
-    PKGS_DICT = yaml.load(f)
+    PKGS_DICT = yaml.full_load(f)
 
 
 def get_ascii_files_in_package(pkg_dir):
@@ -37,7 +37,7 @@ def convert_table_comments_to_dict(tbl):
     comments_dict = None
     if "comments" in tbl.meta:
         try:
-            comments_dict = yaml.load("\n".join(tbl.meta["comments"]))
+            comments_dict = yaml.full_load("\n".join(tbl.meta["comments"]))
         except:
             warnings.warn("Couldn't convert <table>.meta['comments'] to dict")
             comments_dict = tbl.meta["comments"]

@@ -25,7 +25,7 @@ class TestFileStructureOfPackages:
             default_yaml = pth.join(PKG_DICT[pkg_name], "default.yaml")
             if pth.exists(default_yaml):
                 with open(default_yaml) as f:
-                    yaml_dicts = [dic for dic in yaml.load_all(f)]
+                    yaml_dicts = [dic for dic in yaml.full_load_all(f)]
 
                 result = "packages" in yaml_dicts[0] and \
                          "yamls" in yaml_dicts[0] and \
@@ -44,7 +44,7 @@ class TestFileStructureOfPackages:
             for yaml_file in yaml_files:
                 with open(yaml_file) as f:
                     try:
-                        yaml_dicts = [dic for dic in yaml.load_all(f)]
+                        yaml_dicts = [dic for dic in yaml.full_load_all(f)]
                     except:
                         yaml_dicts = []
 
@@ -74,7 +74,7 @@ class TestFileStructureOfPackages:
             for yaml_file in yaml_files:
                 with open(yaml_file) as f:
                     try:
-                        yaml_dicts = [dic for dic in yaml.load_all(f)]
+                        yaml_dicts = [dic for dic in yaml.full_load_all(f)]
                     except:
                         no_errors += 1
                         BADGES[f"!{pkg_name}.contents"][pth.basename(yaml_file)] = "error"

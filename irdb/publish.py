@@ -13,7 +13,7 @@ ZIPPED_DIR = pth.join(PKGS_DIR, "_ZIPPED_PACKAGES")
 
 SERVER_DIR = "./InstPkgSvr"
 with open(pth.join(pth.dirname(__file__), "packages.yaml"), "r") as f:
-    PKGS = yaml.load(f)
+    PKGS = yaml.full_load(f)
 
 
 def publish(pkg_names=None, compile=True, upload=True):
