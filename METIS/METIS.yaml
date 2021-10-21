@@ -1,5 +1,5 @@
 ---
-### METIS
+### METIS Instrument common effects
 
 object: instrument
 alias: INST
@@ -9,6 +9,7 @@ description: base configuration for METIS
 properties:
   temperature: -248
   filter_file_format: "filters/TC_filter_{}.dat"
+  pupil_transmission: 1.0
 
 effects:
   - name: metis_cfo_surfaces
@@ -30,6 +31,16 @@ effects:
       filename_format: MASK_slit_{}.dat
       current_slit: "!OBS.slit"
       include: "!OBS.slit"
+
+  - name: cold_stop
+    description: pupil transmission with respect to full aperture
+    class: PupilTransmission
+    include: True
+    kwargs:
+      transmission: "!INST.pupil_transmission"
+      minimum_throughput: !!float 0.
+
+
 
 #  - name : metis_adc_residuals
 #    class : AtmosphericDispersionCorrection

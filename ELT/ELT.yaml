@@ -7,18 +7,20 @@ description : The extremely large telescope
 properties :
     temperature : "!ATMO.temperature"
     ter_curve:
-        filename : "TER_ELT_system_20190611.dat"
+        filename : "TER_ELT_5_mirror.dat"
 
 effects :
--   name : scope_surface_list
-    description : list of ELT surfaces
+-   name : eso_combined_reflection
+    description : single combined reflection curve (ESO-333023)
     class : SurfaceList
+    include : True
     kwargs :
-        filename : LIST_mirrors_ELT.tbl
+        filename : LIST_ELT_combined.tbl
 
 -   name : scope_vibration
     description : residual vibration of telescope
     class : Vibration
+    include : False
     kwargs :
         fwhm : 0.001    # [arcsec] FWHM of Gaussian kernel
         pixel_scale : "!INST.pixel_scale"
@@ -26,10 +28,11 @@ effects :
 
 ####################### Alternative effects ####################################
 
--   name : eso_combined_reflection
-    description : single combined reflection curve for clean ELT 5 mirror combination
-    class : TERCurve
+## scope_surface_list builds the telescope one by one. This should give
+## about the same throughput as eso_combined_throughput
+-   name : scope_surface_list
+    description : list of ELT surfaces
+    class : SurfaceList
     include : False
     kwargs :
-        filename : "!TEL.ter_curve.filename"
-        temperature : "!ATMO.temperature"
+        filename : LIST_mirrors_ELT.tbl
