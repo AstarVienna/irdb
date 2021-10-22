@@ -1,22 +1,27 @@
-from os import path as pth
+"""Unit tests for irdb/ELT"""
+# pylint: disable=no-self-use, missing-class-docstring
+# pylint: disable=missing-function-docstring
+
+import os
+import pytest
 import numpy as np
 import astropy.units as u
 import matplotlib.pyplot as plt
 import scopesim as sim
 from scopesim import rc
 
-TOP_PATH = pth.abspath(pth.join(pth.dirname(__file__), "../"))
+TOP_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "../"))
 rc.__search_path__ += [TOP_PATH]
 
 PLOTS = False
 
-
 def test_eso_vs_scopesim_throughput():
-    sl = sim.effects.SurfaceList(filename="LIST_mirrors_ELT.tbl")
+    slist = sim.effects.SurfaceList(filename="LIST_mirrors_ELT.tbl")
     wave = np.linspace(0.3, 2.5, 100) * u.um
-    plt.plot(wave, sl.throughput(wave), label="ScopeSim")
+    if PLOTS:
+        plt.plot(wave, slist.throughput(wave), label="ScopeSim")
 
-    ter = sim.effects.TERCurve(filename="TER_ELT_system_20190611.dat")
+    ter = sim.effects.TERCurve(filename="TER_ELT_5_mirror.dat")
 
     if PLOTS:
         plt.plot(wave, ter.surface.reflection(wave), label="ESO-253082")
@@ -25,16 +30,17 @@ def test_eso_vs_scopesim_throughput():
         plt.show()
 
 
+## .todo: the values are not correct
 def test_eso_vs_scopesim_emission():
     rc.__currsys__["!ATMO.temperature"] = 0.
     rc.__currsys__["!TEL.etendue"] = (1 * u.m * u.arcsec)**2
 
-    sl = sim.effects.SurfaceList(filename="LIST_mirrors_ELT.tbl")
-    ter = sim.effects.TERCurve(filename="TER_ELT_system_20190611.dat",
+    slist = sim.effects.SurfaceList(filename="LIST_mirrors_ELT.tbl")
+    ter = sim.effects.TERCurve(filename="TER_ELT_5_mirror.dat",
                                temperature="!ATMO.temperature")
 
     wave = np.linspace(0.3, 12.5, 100) * u.um
-    sl_flux = sl.emission(wave)
+    sl_flux = slist.emission(wave)
     ter_flux = ter.surface.emission(wave)
 
     if PLOTS:
@@ -46,3 +52,56 @@ def test_eso_vs_scopesim_emission():
         plt.legend(loc=2)
         plt.ylim(ymin=1e-10)
         plt.show()
+
+
+@pytest.fixture(name="elt_configs", scope="class")
+def fixture_elt_configs():
+    """Instantiate ELT combined surface lists"""
+    rc.__currsys__["!ATMO.temperature"] = 0.
+    rc.__currsys__["!TEL.etendue"] = (1 * u.m * u.arcsec)**2
+
+    rc.__currsys__["!TEL.ter_curve.filename"] = "TER_ELT_5_mirror.dat"
+    slist_5 = sim.effects.SurfaceList(filename="LIST_ELT_combined.tbl")
+
+    rc.__currsys__["!TEL.ter_curve.filename"] =\
+        "TER_ELT_6_mirror_pupil_track.dat"
+    slist_6p = sim.effects.SurfaceList(filename="LIST_ELT_combined.tbl")
+
+    rc.__currsys__["!TEL.ter_curve.filename"] = \
+        "TER_ELT_6_mirror_field_track.dat"
+    slist_6f = sim.effects.SurfaceList(filename="LIST_ELT_combined.tbl")
+
+    return {'5 mirror': slist_5,
+            '6 mirror pupil': slist_6p,
+            '6 mirror field': slist_6f}
+
+class TestELTConfigurations:
+    refwave = 2. * u.um
+
+    def test_5_mirror_emits_less_than_6_mirror(self, elt_configs):
+        slist_5 = elt_configs['5 mirror']
+        slist_6p = elt_configs['6 mirror pupil']
+        assert (slist_5.emission(self.refwave)
+                <
+                slist_6p.emission(self.refwave))
+
+    def test_pupil_track_emits_less_than_field_track(self, elt_configs):
+        slist_6p = elt_configs['6 mirror pupil']
+        slist_6f = elt_configs['6 mirror field']
+        assert (slist_6p.emission(self.refwave)
+                <
+                slist_6f.emission(self.refwave))
+
+    def test_5_mirror_absorbs_less_than_6_mirror(self, elt_configs):
+        slist_5 = elt_configs['5 mirror']
+        slist_6p = elt_configs['6 mirror pupil']
+        assert (slist_5.throughput(self.refwave)
+                >
+                slist_6p.throughput(self.refwave))
+
+    def test_pupil_track_absorbs_same_as_field_track(self, elt_configs):
+        slist_6p = elt_configs['6 mirror pupil']
+        slist_6f = elt_configs['6 mirror field']
+        assert (slist_6p.throughput(self.refwave)
+                ==
+                slist_6f.throughput(self.refwave))
