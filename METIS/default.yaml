@@ -136,6 +136,9 @@ properties:
     wave_mid: 10.5
     wave_max: 18.0
 
+  computing:
+    spline_order: 3
+
 ---
 ### override for the ELT configuration
 object : telescope
