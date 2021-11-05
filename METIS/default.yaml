@@ -104,6 +104,7 @@ mode_yamls:
     properties:
       slit: false
       trace_file: TRACE_LMS.fits
+      wavelen: 4.2
 
   - object: observation     # is this a separate mode from nominal LMS?
     alias: OBS

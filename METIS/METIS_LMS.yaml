@@ -10,8 +10,20 @@ properties:
     plate_scale: 0.455555555556  # arcsec / mm
 
 effects:
-    - name: metis_spec_lms_mirror_list
+    - name: metis_lms_surfaces
       description: list of extra mirrors needed for the SPEC LMS mode
       class: SurfaceList
       kwargs:
           filename: LIST_METIS_mirrors_lms.dat
+
+    - name: lms_spectral_traces
+      description: list of spectral order trace geometry on the focal plane
+      class: MetisLMSSpectralTraceList
+      kwargs:
+        filename: "!OBS.trace_file"
+        wave_colname: "wavelength"
+        wavelen: "!OBS.wavelen"
+        dwave: 0.0005
+        s_colname: "xi"
+        col_number_start: 1
+        #invalid_value: None
