@@ -1,8 +1,0 @@
-numpy
-matplotlib
-astropy
-pyyaml
-pysftp
-photutils
-scopesim
-scopesim_templates

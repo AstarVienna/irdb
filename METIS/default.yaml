@@ -139,6 +139,7 @@ properties:
 
   computing:
     spline_order: 3
+    preload_field_of_views: True
 
 ---
 ### override for the ELT configuration

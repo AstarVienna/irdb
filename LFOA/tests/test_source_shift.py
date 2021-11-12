@@ -55,7 +55,7 @@ PLOTS = False
 class TestShiftSource:
     def test_shift_lfao(self):
         # core_radius = 0.6 to ensure it fits the image after shifting
-        src = sim_tp.basic.stars.cluster(mass=1000, distance=2000,
+        src = sim_tp.stellar.cluster(mass=1000, distance=2000,
                                          core_radius=0.6,)
 
         lfoa = scopesim.OpticalTrain("LFOA")
@@ -68,11 +68,10 @@ class TestShiftSource:
         cm1y, cm1x = scipy.ndimage.center_of_mass(data1)
         print(cm1y, cm1x)
 
-        if PLOTS:
-            fig, ax = plt.subplots()
-            im = ax.imshow(data, norm=LogNorm(vmin=dmed, vmax=dmed + 0.1 * dstd))
-            fig.colorbar(im)
-            fig.show()
+        # if not PLOTS:
+        plt.imshow(data, norm=LogNorm(vmin=dmed, vmax=dmed + 0.1 * dstd))
+        plt.colorbar()
+        plt.show()
 
         # Shift the cluster.
         dx = 10 * u.arcsec
@@ -86,12 +85,12 @@ class TestShiftSource:
         data2 = hdulists2[0][1].data
         data = data2
         dmin, dmax, dmean, dmed, dstd = data.min(), data.max(), data.mean(), numpy.median(data), data.std()
-        if PLOTS:
-            fig, ax = plt.subplots()
-            im = ax.imshow(data, norm=LogNorm(vmin=dmed, vmax=dmed + 0.1 * dstd))
-            # im = ax.imshow(data)
-            fig.colorbar(im)
-            fig.show()
+
+        # if not PLOTS:
+        plt.imshow(data, norm=LogNorm(vmin=dmed, vmax=dmed + 0.1 * dstd))
+        # im = ax.imshow(data)
+        plt.colorbar()
+        plt.show()
 
         cm2y, cm2x = scipy.ndimage.center_of_mass(data2)
         print(cm2y, cm2x)

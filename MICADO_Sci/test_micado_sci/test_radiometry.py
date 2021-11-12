@@ -5,16 +5,24 @@
 1100m2, 5mas/pix -->  978m2 METIS N @ 6.8mas = 165% of ESO ETC
 
 ESO ETC
-N (-3.7mag/arcsec2): BG = 140093628  ph/s --> 231.000.000 (MET@6.8mas)
-M (1.3 mag/arcsec2): BG = 920959 ph/s --> 903.000 (MET@5.25mas)
-L (5.3 mag): BG = 41052 ph/s --> 40.000 (MET@5.25mas)
-K (13 mag): BG = 147 ph/s --> 84 (MIC@4mas), 12 (MIC@1.5mas)    (Ohio: 82 @4mas, 12 @1.5mas)
-H (14 mag): BG = 107 ph/s --> 61 (MIC@4mas), 9 (MIC@1.5mas)     (Ohio: 54 @4mas, 8 @1.5mas)
-J (16 mag): BG = 27 ph/s --> 15 (MIC@4mas), 2 (MIC@1.5mas)      (Ohio: 11 @4mas, 2 @1.5mas)
 I (19 mag): BG = 3 ph/s --> 1.7 (MIC@4mas), 0.2 (MIC@1.5mas)    (Ohio: 0.8 @4mas, 0.1 @1.5mas)
+J (16 mag): BG = 27 ph/s --> 15 (MIC@4mas), 2 (MIC@1.5mas)      (Ohio: 11 @4mas, 2 @1.5mas)
+H (14 mag): BG = 107 ph/s --> 61 (MIC@4mas), 9 (MIC@1.5mas)     (Ohio: 54 @4mas, 8 @1.5mas)
+K (13 mag): BG = 147 ph/s --> 84 (MIC@4mas), 12 (MIC@1.5mas)    (Ohio: 82 @4mas, 12 @1.5mas)
+L (5.3 mag): BG = 41052 ph/s --> 40.000 (MET@5.25mas)
+M (1.3 mag/arcsec2): BG = 920959 ph/s --> 903.000 (MET@5.25mas)
+N (-3.7mag/arcsec2): BG = 140093628  ph/s --> 231.000.000 (MET@6.8mas)
 
 * ESO assumes 50% throughput, Ohio adjusted to use 50%
 * Ohio using the MICADO filter widths from Ric and the ESO ETC sky backgrounds
+
+# Cuby et al from https://www.eso.org/sci/facilities/eelt/science/drm/tech_data/background/
+# J (18 mag) 8 (MIC@4mas), 1 (MIC@1.5mas) based on 1200 ph s-1 m-2 um-1 arcsec-2
+# H == K
+# H, K (16.5, 15.7 mag) 15 (MIC@4mas), 2 (MIC@1.5mas) based on 2300 ph s-1 m-2 um-1 arcsec-2
+# H, K (14.4, 13.6 mag) 103 (MIC@4mas), 14 (MIC@1.5mas) based on 2300 ph s-1 m-2 um-1 arcsec-2
+
+
 """
 
 import pytest

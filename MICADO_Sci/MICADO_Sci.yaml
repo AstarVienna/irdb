@@ -83,7 +83,7 @@ effects:
             angle: [0]
             temperature: ["!TEL.temperature"]
             action: [reflection]
-            filename: [TER_ELT_System_20190611.dat]
+            filename: [TER_ELT_5_mirror.dat]
         area_unit : m2
         angle_unit: degree
         temperature_unit: deg_C
