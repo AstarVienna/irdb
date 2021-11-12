@@ -23,4 +23,7 @@ class TestMetisLss:
         plt.imshow(hdus[0][1].data, origin="lower")
         plt.show()
 
-# r"F:\Work\irdb\METIS\TRACE_LSS_L.fits"
+
+def test_misc():
+    from astropy.io import fits
+    print(fits.info(r"F:\Work\irdb\METIS\TRACE_LSS_L.fits"))
