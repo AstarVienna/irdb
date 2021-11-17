@@ -5,13 +5,15 @@ alias: INST
 name: METIS_LSS
 description: additional effects for METIS long-slit spectroscopy
 
+properties:
+    decouple_detector_from_sky_headers: True
+
 effects:
   #  - name: lss_mode_optics
   #    description: list of extra optical elements for LSS
   #    class: SurfaceList
   #    kwargs:
   #      filename: LIST_METIS_mirrors_lss_lm.dat
-  #
 
   - name: lss_spectral_traces
     description: list of spectral order trace geometry on the focal plane
@@ -22,4 +24,16 @@ effects:
       dwave: 0.0005
       s_colname: "xi"
       col_number_start: 1
+      decouple_sky_detector_headers: True
       #invalid_value: None
+
+---
+### default simulation parameters needed for a METIS simulation
+object: simulation
+alias: SIM
+name: METIS_simulation_parameters
+description: RC simulation parameters which need to change for a METIS run
+
+properties:
+  spectral:
+    spectral_resolution: !!float 5E-4
