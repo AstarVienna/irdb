@@ -26,7 +26,7 @@ PLOTS = False
 class TestImgL:
     def test_basic_run_makes_image(self):
         src = star(mag=0)
-        src = star_field(100, 10, 20, 10, use_grid=True)
+        src = star_field(100, 0, 20, 10, use_grid=True)
         cmd = sim.UserCommands(use_instrument="METIS", set_modes=["img_lm"])
         metis = sim.OpticalTrain(cmd)
         metis['detector_linearity'].include = False
