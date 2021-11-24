@@ -10,8 +10,8 @@ properties:
   temperature: -230
   dit: "!OBS.dit"
   ndit: "!OBS.ndit"
-  width: 2048
-  height: 2048
+  width: 256
+  height: 256
   x: 0
   y: 0
 

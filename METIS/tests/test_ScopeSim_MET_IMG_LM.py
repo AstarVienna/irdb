@@ -2,6 +2,7 @@
 imaging observation with METIS. We demonstrate how to change
 observational parameters.'''
 
+import pytest
 import numpy as np
 
 from astropy import units as u
@@ -9,14 +10,85 @@ from astropy.table import Table
 from astropy.io import fits
 from photutils import CircularAperture, aperture_photometry
 from matplotlib import pyplot as plt
+from matplotlib.colors import LogNorm
 
-import scopesim
-import scopesim_templates as sim_tp
+import scopesim as sim
+from scopesim.source.source_templates import star, empty_sky, star_field
 
 # Set the path to the local irdb.
 from scopesim import rc
 rc.__currsys__['!SIM.file.local_packages_path'] = \
     "../../"
+
+PLOTS = False
+
+
+class TestImgL:
+    def test_basic_run_makes_image(self):
+        src = star(mag=0)
+        src = star_field(100, 10, 20, 10, use_grid=True)
+        cmd = sim.UserCommands(use_instrument="METIS", set_modes=["img_lm"])
+        metis = sim.OpticalTrain(cmd)
+        metis['detector_linearity'].include = False
+        # metis['metis_psf_img'].include = False
+
+        metis.observe(src)
+        img = metis.image_planes[0].data
+        hdus = metis.readout()
+        img = hdus[0][1].data
+
+        assert np.median(img) > 0
+
+        if not PLOTS:
+            plt.imshow(img, norm=LogNorm())
+            plt.show()
+
+    @pytest.mark.parametrize("mode_name, filter_name, fmin, fmax",
+                             [("img_lm", "Lp", 93e3, 660e3),
+                              ("img_lm", "Mp", 1200e3, 4700e3),
+                              ("img_n", "N1", 67e3, 270e3),
+                              ("img_n", "N2", 250e3, 850e3),
+                              ("img_lm", "Br_alpha", 5e3, 33e3)])
+    def test_background_level_is_around_roys_level(self, mode_name, filter_name,
+                                                   fmin, fmax):
+        src = empty_sky()
+        cmd = sim.UserCommands(use_instrument="METIS", set_modes=[mode_name])
+        cmd["!OBS.filter_name"] = filter_name
+        metis = sim.OpticalTrain(cmd)
+        metis['detector_linearity'].include = False
+
+        metis.observe(src)
+        img = metis.image_planes[0].data
+
+        assert fmin < np.median(img) < fmax
+
+    def test_instrument_throughput_level_is_around_50_percent(self):
+        cmd = sim.UserCommands(use_instrument="METIS", set_modes=["img_lm"])
+        metis = sim.OpticalTrain(cmd)
+
+        for filter_name in ["Lp", "Mp"]:
+            metis.cmds["!OBS.filter_name"] = filter_name
+            wave = np.arange(3.4, 5.3, 0.001) * u.um
+            sys_trans = metis.optics_manager.system_transmission(wave)
+            print(np.average(sys_trans))
+
+            assert 0.4 < np.max(sys_trans) < 0.5
+
+        if PLOTS:
+            plt.plot(wave, sys_trans)
+            plt.show()
+
+    def test_instrument_throughput_without_atmospheric_bg(self):
+        cmd = sim.UserCommands(use_instrument="METIS", set_modes=["img_lm"])
+        metis = sim.OpticalTrain(cmd)
+        metis["armazones_atmo_skycalc_ter_curve"].include = True
+
+        src = empty_sky()
+        metis.observe(src)
+        img = metis.image_planes[0].data
+
+        plt.imshow(img)
+        plt.show()
 
 
 def simulate_point_source(plot=False):
@@ -48,17 +120,17 @@ def simulate_point_source(plot=False):
 
     # Create two source objects for two dither positions
     dither_offset = 1
-    src = scopesim.Source(lam=lam * u.um, spectra=np.array([spec]),
+    src = sim.Source(lam=lam * u.um, spectra=np.array([spec]),
                           ref=[0], x=[0], y=[0])
-    src_dither = scopesim.Source(lam=lam * u.um, spectra=np.array([spec]),
+    src_dither = sim.Source(lam=lam * u.um, spectra=np.array([spec]),
                                  ref=[0], x=[0], y=[dither_offset])
 
     # Load the configuration for the METIS LM-band imaging mode.
-    cmd = scopesim.UserCommands(use_instrument="METIS",
+    cmd = sim.UserCommands(use_instrument="METIS",
                                 set_modes=["img_lm"])
 
     # build the optical train and adjust
-    metis = scopesim.OpticalTrain(cmd)
+    metis = sim.OpticalTrain(cmd)
     metis['scope_vibration'].include = False
     metis['detector_linearity'].include = False
 
@@ -115,15 +187,15 @@ def vary_exposure_times(plot=False):
     lam = np.arange(1, 20, 0.001)
     spec = np.ones(len(lam)) * 1e7 * 2.5*np.log10(-30)     # 0 mag spectrum
 
-    src = scopesim.Source(lam=lam * u.um, spectra=np.array([spec]),
+    src = sim.Source(lam=lam * u.um, spectra=np.array([spec]),
                           ref=[0], x=[0], y=[0])
 
     # Load the configuration for the METIS LM-band imaging mode.
-    cmd = scopesim.UserCommands(use_instrument="METIS",
+    cmd = sim.UserCommands(use_instrument="METIS",
                                 set_modes=["img_lm"])
 
     # build the optical train and adjust
-    metis = scopesim.OpticalTrain(cmd)
+    metis = sim.OpticalTrain(cmd)
     metis['scope_vibration'].include = False
     metis['detector_linearity'].include = False
 
