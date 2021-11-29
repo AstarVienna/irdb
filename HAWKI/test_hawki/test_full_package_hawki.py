@@ -1,3 +1,13 @@
+"""
+0-mag photon fluxes from Vega Spectrum
+--------------------------------------
+J band (J=0mag)   --> 3505e6 ph/s/m2
+H band (H=0mag)   --> 2416e6 ph/s/m2
+Ks band (Ks=0mag) --> 1211e6 ph/s/m2
+Lp band (Lp=0mag) -->  576e6 ph/s/m2
+Mp band (Mp=0mag) -->  268e6 ph/s/m2
+"""
+
 # integration test using everything and the HAWKI package
 import pytest
 from pytest import approx
@@ -31,30 +41,6 @@ PLOTS = False
 PKGS = {"Paranal": "locations/Paranal.zip",
         "VLT": "telescopes/VLT.zip",
         "HAWKI": "instruments/HAWKI.zip"}
-
-# CLEAN_UP = True
-#
-#
-# def setup_module():
-#     rc.__config__["!SIM.file.use_cached_downloads"] = False
-#     rc_local_path = "./TEMP_HAWKI/"
-#     rc.__config__["!SIM.file.local_packages_path"] = rc_local_path
-#
-#     if not os.path.exists(rc_local_path):
-#         os.mkdir(rc_local_path)
-#         rc.__config__["!SIM.file.local_packages_path"] = os.path.abspath(
-#             rc_local_path)
-#
-#     for pkg_name in PKGS:
-#         if not os.path.isdir(os.path.join(rc_local_path, pkg_name)) and \
-#                 "irdb" not in rc_local_path:
-#             scopesim.download_package(PKGS[pkg_name])
-#
-#
-# def teardown_module():
-#     rc_local_path = rc.__config__["!SIM.file.local_packages_path"]
-#     if CLEAN_UP and "irdb" not in rc_local_path:
-#         shutil.rmtree(rc.__config__["!SIM.file.local_packages_path"])
 
 
 class TestInit:
@@ -108,7 +94,7 @@ class TestMakeOpticalTrain:
             plt.show()
 
         # test that we have the correct number of FOVs for Ks band
-        assert len(opt.fov_manager.fovs) == 9
+        assert len(opt.fov_manager.fovs) == 18
 
         if PLOTS:
             fovs = opt.fov_manager.fovs
@@ -186,73 +172,88 @@ class TestMakeOpticalTrain:
 
 
 class TestObserveOpticalTrain:
-    def test_background_is_similar_to_online_etc(self):
-        """
-        Based on mocks/photometry/check_photometry.py
+    """
+    Based on mocks/photometry/check_photometry.py
 
-        Sky BG from my HAWKI archive data (ph s-1 pixel-1)
-        J 170
-        H 958
-        Ks 1204
-        BrG 213
+    Sky BG from my HAWKI archive data (ph s-1 pixel-1)
+    J 170
+    H 958
+    Ks 1204
+    BrG 213
 
-        K filter
-        --------
-        Skycalc BG ph flux for K: 0.08654 ph / (cm2 s arcsec2)
-        -> HAWKI sky BG = 510 ph / s / pixel
-                        = 0.08654252 * (410**2 * np.pi) * (0.106**2)
+    K filter
+    --------
+    Skycalc BG ph flux for K: 0.08654 ph / (cm2 s arcsec2)
+    -> HAWKI sky BG = 510 ph / s / pixel
+                    = 0.08654252 * (410**2 * np.pi) * (0.106**2)
 
-        ETC gives 2550 e-/DIT/pixel for a 1s DET at airmass=1.0, pwv=2.5
-        (HAWKI archive average 1204 e-/s-1/pixel)
-        Remaining must come from VLT or entrance window
+    ETC gives 2550 e-/DIT/pixel for a 1s DET at airmass=1.0, pwv=2.5
+    (HAWKI archive average 1204 e-/s-1/pixel)
+    Remaining must come from VLT or entrance window
 
-        ScopeSim Flux contributors to final BG count
-        - all : 1360
-        - minus "paranal_atmo_default_ter_curve" : 850
-        - minus "vlt_mirror_list" : 780
-        - minus entrance window from "hawki_mirror_list" : 0
+    H BG (based on skycalc and 0 mag vega): 1000 ph/s/m2/arcsec2
+    HAWKI --> 600 ph/s/pixel
 
-        H filter
-        --------
-        Skycalc BG ph flux for K: 0.39862 ph / (cm2 s arcsec2)
-        -> HAWKI sky BG = 2365 ph / s / pixel
+    ScopeSim Flux contributors to final BG count
+    - all : 1360
+    - minus "paranal_atmo_default_ter_curve" : 850
+    - minus "vlt_mirror_list" : 780
+    - minus entrance window from "hawki_mirror_list" : 0
 
-        ETC gives 1625 e-/DIT/pixel for a 1s DET at airmass=1.0, pwv=2.5
-        (HAWKI archive average 958 e-/s-1/pixel)
-        Remaining must come from VLT or entrance window
+    H filter
+    --------
+    Skycalc BG ph flux for K: 0.39862 ph / (cm2 s arcsec2)
+    -> HAWKI sky BG = 2365 ph / s / pixel
 
-        ScopeSim Flux contributors to final BG count
-        - all : 2370
-        - minus "paranal_atmo_default_ter_curve" : 2
-        - minus "vlt_mirror_list" : 1.8
-        - minus entrance window from "hawki_mirror_list" : 0
+    ETC gives 1625 e-/DIT/pixel for a 1s DET at airmass=1.0, pwv=2.5
+    (HAWKI archive average 958 e-/s-1/pixel)
+    Remaining must come from VLT or entrance window
 
-        J filter
-        --------
-        Skycalc BG ph flux for K: 0.39862 ph / (cm2 s arcsec2)
-        -> HAWKI sky BG = 444 ph / s / pixel
+    H BG (based on skycalc and 0 mag vega): 4000 ph/s/m2/arcsec2
+    HAWKI --> 2400 ph/s/pixel
 
-        ETC gives 225 e-/DIT/pixel for a 1s DET at airmass=1.0, pwv=2.5
-        (HAWKI archive average 170 e-/s-1/pixel)
-        Remaining must come from VLT or entrance window
+    ScopeSim Flux contributors to final BG count
+    - all : 2370
+    - minus "paranal_atmo_default_ter_curve" : 2
+    - minus "vlt_mirror_list" : 1.8
+    - minus entrance window from "hawki_mirror_list" : 0
 
-        ScopeSim Flux contributors to final BG count
-        - all : 290
-        - minus "paranal_atmo_default_ter_curve" : 0
-        - minus "vlt_mirror_list" : 0
-        - minus entrance window from "hawki_mirror_list" : 0
+    J filter
+    --------
+    Skycalc BG ph flux for K: 0.39862 ph / (cm2 s arcsec2)
+    -> HAWKI sky BG = 444 ph / s / pixel
 
-        Given the variability of the backgrounds, ScopeSim is doing a pretty
-        good job of making the background contributions
+    ETC gives 225 e-/DIT/pixel for a 1s DET at airmass=1.0, pwv=2.5
+    (HAWKI archive average 170 e-/s-1/pixel)
+    Remaining must come from VLT or entrance window
 
+    J BG (based on skycalc and 0 mag vega): 688 ph/s/m2/arcsec2
+    HAWKI --> 400 ph/s/pixel
 
-        """
+    ScopeSim Flux contributors to final BG count
+    - all : 290
+    - minus "paranal_atmo_default_ter_curve" : 0
+    - minus "vlt_mirror_list" : 0
+    - minus entrance window from "hawki_mirror_list" : 0
+
+    Given the variability of the backgrounds, ScopeSim is doing a pretty
+    good job of making the background contributions
+
+    """
+
+    @pytest.mark.parametrize("filter_name, bg_level",
+                             [("J", 400), ("H", 2400), ("Ks", 1000)])
+    def test_background_is_similar_to_online_etc(self, filter_name, bg_level):
+
         cmd = scopesim.UserCommands(use_instrument="HAWKI")
-        cmd["!OBS.filter_name"] = "J"
+        cmd["!OBS.filter_name"] = filter_name
         opt = scopesim.OpticalTrain(cmd)
-        opt["paranal_atmo_default_ter_curve"].include = True
-        opt["vlt_mirror_list"].include = True
-        opt["hawki_mirror_list"].include = True
+
+        effects = {"paranal_atmo_default_ter_curve": True,
+                   "vlt_mirror_list": False,
+                   "hawki_mirror_list": False}
+        for key, val in effects.items():
+            opt[key].include = val
 
         src = scopesim.source.source_templates.empty_sky()
         opt.observe(src)
@@ -265,7 +266,7 @@ class TestObserveOpticalTrain:
                 plt.plot(wave, flux)
             plt.show()
 
-        assert np.average(opt.image_planes[0].data) == approx(2400, rel=0.2)
+        assert np.average(opt.image_planes[0].data) == approx(bg_level, rel=0.2)
 
     def test_actually_produces_stars(self):
         cmd = scopesim.UserCommands(use_instrument="HAWKI",

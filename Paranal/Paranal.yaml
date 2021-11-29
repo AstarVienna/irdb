@@ -17,9 +17,29 @@ properties :
     pixel_scale :   "!INST.pixel_scale"
 
 effects :
+    - name: paranal_atmo_skycalc_ter_curve
+      description: atmospheric spectra pulled from the skycalc server
+      class: SkycalcTERCurve
+      include: False
+      kwargs:
+          observatory: paranal
+          wmin: "!SIM.spectral.wave_min"
+          wmax: "!SIM.spectral.wave_max"
+          wunit: um
+          wdelta: "!SIM.spectral.spectral_resolution"
+
+
+####################### Alternative effects ####################################
+
+-   name : paranal_atmo_dispersion
+    description : atmospheric dispersion
+    class : AtmosphericDispersion
+    include: False
+
 -   name : paranal_atmo_default_ter_curve
     description : atmospheric emission and transmission
     class : AtmosphericTERCurve
+    include : False
     kwargs :
         filename: "TER_paranal_default_NIR_IMG.dat"
         area: "!TEL.area"
@@ -28,21 +48,3 @@ effects :
             filename_format: "!INST.filter_file_format"
             value: 13.6
             unit: mag
-
--   name : paranal_atmo_dispersion
-    description : atmospheric dispersion
-    class : AtmosphericDispersion
-    include: False
-
-####################### Alternative effects ####################################
-
--   name : paranal_atmo_skycalc_ter_curve
-    description : atmospheric spectra pulled from the skycalc server
-    class : SkycalcTERCurve
-    include : False
-    kwargs :
-        observatory : paranal
-        wmin : "!SIM.spectral.wave_min"
-        wmax : "!SIM.spectral.wave_max"
-        wunit : um
-        wdelta : "!SIM.spectral.spectral_resolution"

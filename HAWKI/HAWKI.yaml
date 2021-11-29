@@ -28,8 +28,24 @@ effects:
   kwargs:
     filename: LIST_HAWKI_mirrors.dat
 
-- name: filter_curve
-  class: FilterCurve
-  kwargs:
-    filter_name: "!OBS.filter_name"
-    filename_format: "!INST.filter_file_format"
+ - name: filter_wheel
+      class: FilterWheel
+      description: IMG_N science filters
+      kwargs:
+          filter_names:
+              - open
+              - Y
+              - J
+              - H
+              - Ks
+              - BrGamma
+              - CH4
+              - H2
+              - NB1060
+              - NB1190
+              - NB2090
+          filename_format: "!INST.filter_file_format"
+          current_filter: "!OBS.filter_name"
+          minimum_throughput: !!float 0.
+          outer: 56                        # Based on MICADO filter sizes
+          outer_unit: "mm"

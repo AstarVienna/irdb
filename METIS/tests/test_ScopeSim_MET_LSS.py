@@ -31,9 +31,10 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import LogNorm
 
 import scopesim as sim
-from scopesim.source.source_templates import star, empty_sky, star_field
-from scopesim.source.spectrum_templates import ab_spectrum
+from scopesim.source.source_templates import star, empty_sky
 from scopesim import rc
+
+import hmbp
 
 rc.__currsys__['!SIM.file.local_packages_path'] = "../../"
 
@@ -76,12 +77,16 @@ class TestMetisLss:
         src = empty_sky()
 
         cmds_img = sim.UserCommands(use_instrument="METIS", set_modes=["img_lm"])
+        cmds_img["!SIM.spectral.wave_min"] = 3.5
+        cmds_img["!SIM.spectral.wave_max"] = 4.0
         metis_img = sim.OpticalTrain(cmds_img)
         metis_img["metis_psf_img"].include = False
         metis_img.observe(src)
         img = metis_img.image_planes[0].data
 
         cmds_lss = sim.UserCommands(use_instrument="METIS", set_modes=["lss_l"])
+        cmds_lss["!SIM.spectral.wave_min"] = 3.5
+        cmds_lss["!SIM.spectral.wave_max"] = 4.0
         metis_lss = sim.OpticalTrain(cmds_lss)
         metis_lss["metis_psf_img"].include = False
         metis_lss.observe(src)
@@ -90,4 +95,32 @@ class TestMetisLss:
         img_med = np.median(img)
         lss_med = np.median(np.sum(lss, axis=0))
 
-        assert img_med, lss_med
+        assert img_med == approx(lss_med, rel=0.2)
+
+    def test_integrated_vega_flux_is_what_is_expected(self):
+        src = star(mag=0, x=0, y=0)
+
+        cmds = sim.UserCommands(use_instrument="METIS", set_modes=["lss_l"])
+        metis = sim.OpticalTrain(cmds)
+
+        for eff in ["metis_psf_img",
+                    "armazones_atmo_skycalc_ter_curve",
+                    "eso_combined_reflection",
+                    "metis_cfo_surfaces",
+                    "metis_img_lm_mirror_list",
+                    "qe_curve"
+                    ]:
+            metis[eff].include = False
+
+        metis.observe(src)
+
+        img = metis.image_planes[0].data
+        plt.imshow(img, origin="lower", norm=LogNorm(), vmin=1e-8)
+        plt.show()
+
+    def test_print_metis_effects(self):
+        cmds = sim.UserCommands(use_instrument="METIS", set_modes=["img_lm"])
+        metis = sim.OpticalTrain(cmds)
+        print(metis.effects)
+
+

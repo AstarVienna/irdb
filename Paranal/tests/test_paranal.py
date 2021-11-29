@@ -76,7 +76,7 @@ properties :
     wave_min : %s
     wave_max : %s
     spectral_resolution : 0.005
-    
+
   file:
     local_packages_path: "./"
 
@@ -105,7 +105,7 @@ effects :
   class: SpanishVOFilterCurve
   kwargs:
     observatory: Paranal
-    instrument: NACO
+    instrument: HAWKI
     filter_name: %s
 
 - name: detector array list
@@ -121,36 +121,53 @@ effects :
     pixsize_unit : mm
     angle_unit : deg
     gain_unit : electron/adu
-    
+
 """
 
-wave_min = 1.8
-wave_max = 2.4
-filter_name = "Ks"
-pixel_scale = 0.01
+WAVE_MIN = 0.8
+WAVE_MAX = 2.5
+FILTER_NAME = "Ks"
+PIXEL_SCALE = 1
 
 
-class TestArmazones:
+class TestParanal:
     @pytest.mark.parametrize("pixel_scale", [1, 0.1, 10])
     def test_flux_scales_with_pixel_scale(self, pixel_scale):
-        yaml_text = YAML_TEXT % (wave_min, wave_max, pixel_scale,
-                                 pixel_scale, filter_name)
+        yaml_text = YAML_TEXT % (WAVE_MIN, WAVE_MAX,
+                                 pixel_scale, pixel_scale,
+                                 FILTER_NAME)
         yamls = [yml for yml in yaml.full_load_all(yaml_text)]
 
         cmd = sim.UserCommands(yamls=yamls)
         opt = sim.OpticalTrain(cmd)
-        opt.cmds["!TEL.area"] = 1 * u.m**2
+        opt.cmds["!TEL.area"] = 1 * u.m ** 2
 
         src = empty_sky()
         opt.observe(src)
         img = opt.image_planes[0].data
 
-        # Ks band photon flux is 1014 ph/s/m2/arcsec2
-        assert np.median(img) == pytest.approx(1014 * pixel_scale**2, rel=0.01)
+        # Ks band photon flux is 1026 ph/s/m2/arcsec2
+        assert np.median(img) == pytest.approx(1026 * pixel_scale ** 2,
+                                               rel=0.01)
 
-        if PLOTS:
-            plt.imshow(img)
-            plt.show()
+    @pytest.mark.parametrize("filter_name, bg_level",
+                             [("J", 674), ("H", 4693), ("Ks", 1026)])
+    def test_flux_scales_with_pixel_scale(self, filter_name, bg_level):
+        yaml_text = YAML_TEXT % (WAVE_MIN, WAVE_MAX,
+                                 PIXEL_SCALE, PIXEL_SCALE,
+                                 filter_name)
+        yamls = [yml for yml in yaml.full_load_all(yaml_text)]
+
+        cmd = sim.UserCommands(yamls=yamls)
+        opt = sim.OpticalTrain(cmd)
+        opt.cmds["!TEL.area"] = 1 * u.m ** 2
+
+        src = empty_sky()
+        opt.observe(src)
+        img = opt.image_planes[0].data
+
+        # Ks band photon flux is 1026 ph/s/m2/arcsec2
+        assert np.median(img) == pytest.approx(bg_level, rel=0.01)
 
     def photons_in_vega_spectrum(self):
         for filter_name in ["J", "H", "Ks", "Lp", "Mp"]:
@@ -163,10 +180,10 @@ class TestArmazones:
             dwave = 0.5 * (np.r_[[0], np.diff(wave)] +
                            np.r_[np.diff(wave), [0]]) * u.AA
 
-            flux = vega(wave)                   # ph/s/cm2/AA
-            flux *= trans * dwave    # ph/s
-            sum_flux = np.sum(flux.to(u.ph/u.s/u.m**2).value)
+            flux = vega(wave)  # ph/s/cm2/AA
+            flux *= trans * dwave  # ph/s
+            sum_flux = np.sum(flux.to(u.ph / u.s / u.m ** 2).value)
 
             print(f"\nVega spectrum over the {filter_name} band "
                   f"({filter_name}=0mag) has a flux of "
-                  f"{int(sum_flux*1e-6)}e6 ph/s/m2")
+                  f"{int(sum_flux * 1e-6)}e6 ph/s/m2")
