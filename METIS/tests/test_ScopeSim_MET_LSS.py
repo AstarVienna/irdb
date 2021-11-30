@@ -29,6 +29,7 @@ from pytest import approx
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.colors import LogNorm
+from astropy import units as u
 
 import scopesim as sim
 from scopesim.source.source_templates import star, empty_sky
@@ -78,11 +79,11 @@ class TestMetisLss:
 
         toggle_effects = [
                           # "armazones_atmo_skycalc_ter_curve",
-                          "eso_combined_reflection",
-                          "metis_cfo_surfaces",
-                          "metis_img_lm_mirror_list",
-                          "qe_curve",
-                          "metis_psf_img",
+                          # "eso_combined_reflection",
+                          # "metis_cfo_surfaces",
+                          # "metis_img_lm_mirror_list",
+                          # "qe_curve",
+                          # "metis_psf_img",
                           ]
 
         cmds_img = sim.UserCommands(use_instrument="METIS", set_modes=["img_lm"])
@@ -108,32 +109,39 @@ class TestMetisLss:
         img_med = np.median(img)
         lss_med = np.median(np.sum(lss, axis=0))
 
-        print(lss_med/img_med)
-
         # 7x because we need to sum up the overlapping slice images
         # and the slit is 7 pixels wide
-        assert 7 * img_med == approx(lss_med, rel=0.2)
+        assert 7 * img_med == approx(lss_med, rel=0.05)
 
     def test_integrated_vega_flux_is_what_is_expected(self):
-        src = star(flux=0, x=0, y=0)
-
         cmds = sim.UserCommands(use_instrument="METIS", set_modes=["lss_l"])
         metis = sim.OpticalTrain(cmds)
 
-        for eff in ["metis_psf_img",
-                    "armazones_atmo_skycalc_ter_curve",
-                    "eso_combined_reflection",
-                    "metis_cfo_surfaces",
-                    "metis_img_lm_mirror_list",
-                    "qe_curve"
-                    ]:
+        toggle_effects = [
+                          "armazones_atmo_skycalc_ter_curve",
+                          "eso_combined_reflection",
+                          "metis_cfo_surfaces",
+                          # "metis_img_lm_mirror_list",
+                          # "qe_curve",
+                          #"metis_psf_img"
+                          ]
+        for eff in toggle_effects:
             metis[eff].include = False
 
+        src = star(flux=1 * u.Jy)
         metis.observe(src)
 
         img = metis.image_planes[0].data
-        plt.imshow(img, origin="lower", norm=LogNorm(), vmin=1e-8)
-        plt.show()
+        metis_phs = img.sum()
+
+        sys_trans = metis.optics_manager.system_transmission
+        one_jy_phs = hmbp.in_one_jansky(sys_trans).value * 978
+
+        if PLOTS:
+            plt.imshow(img, origin="lower", norm=LogNorm(), vmin=1e-8)
+            plt.show()
+
+        assert metis_phs == approx(one_jy_phs, rel=0.1)
 
     def test_print_metis_effects(self):
         cmds = sim.UserCommands(use_instrument="METIS", set_modes=["img_lm"])
