@@ -43,12 +43,12 @@ PLOTS = False
 
 class TestMetisLss:
     def test_works(self):
-        src = star(mag=0, x=0, y=0) + \
-              star(mag=2, x=-2, y=0) + \
-              star(mag=4, x=2, y=0)
+        src = star(flux=0, x=0, y=0) + \
+              star(flux=2, x=-2, y=0) + \
+              star(flux=4, x=2, y=0)
         # src = empty_sky()
 
-        cmds = sim.UserCommands(use_instrument="METIS", set_modes=["lss_l"])
+        cmds = sim.UserCommands(use_instrument="METIS", set_modes=["lss_m"])
         cmds["!OBS.dit"] = 1
         metis = sim.OpticalTrain(cmds)
         metis["metis_psf_img"].include = False
@@ -76,11 +76,22 @@ class TestMetisLss:
     def test_integrated_spec_bg_equals_img_bg(self):
         src = empty_sky()
 
+        toggle_effects = [
+                          # "armazones_atmo_skycalc_ter_curve",
+                          "eso_combined_reflection",
+                          "metis_cfo_surfaces",
+                          "metis_img_lm_mirror_list",
+                          "qe_curve",
+                          "metis_psf_img",
+                          ]
+
         cmds_img = sim.UserCommands(use_instrument="METIS", set_modes=["img_lm"])
         cmds_img["!SIM.spectral.wave_min"] = 3.5
         cmds_img["!SIM.spectral.wave_max"] = 4.0
         metis_img = sim.OpticalTrain(cmds_img)
-        metis_img["metis_psf_img"].include = False
+        for eff in toggle_effects:
+            metis_img[eff].include = False
+
         metis_img.observe(src)
         img = metis_img.image_planes[0].data
 
@@ -88,17 +99,23 @@ class TestMetisLss:
         cmds_lss["!SIM.spectral.wave_min"] = 3.5
         cmds_lss["!SIM.spectral.wave_max"] = 4.0
         metis_lss = sim.OpticalTrain(cmds_lss)
-        metis_lss["metis_psf_img"].include = False
+        for eff in toggle_effects:
+            metis_lss[eff].include = False
+
         metis_lss.observe(src)
         lss = metis_lss.image_planes[0].data
 
         img_med = np.median(img)
         lss_med = np.median(np.sum(lss, axis=0))
 
-        assert img_med == approx(lss_med, rel=0.2)
+        print(lss_med/img_med)
+
+        # 7x because we need to sum up the overlapping slice images
+        # and the slit is 7 pixels wide
+        assert 7 * img_med == approx(lss_med, rel=0.2)
 
     def test_integrated_vega_flux_is_what_is_expected(self):
-        src = star(mag=0, x=0, y=0)
+        src = star(flux=0, x=0, y=0)
 
         cmds = sim.UserCommands(use_instrument="METIS", set_modes=["lss_l"])
         metis = sim.OpticalTrain(cmds)

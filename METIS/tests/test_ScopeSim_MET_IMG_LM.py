@@ -1,8 +1,15 @@
-'''The purpose of this notebook is to simulate a simple L or M band
-imaging observation with METIS. We demonstrate how to change
-observational parameters.'''
+"""
+To do
+-----
+Sky background fluxes don't match with Roy's flux document
+- test_sky_phs_with_full_system_transmission
 
+Work out whether the flux components are realistic
+- TestSourceFlux
+
+"""
 import pytest
+from pytest import approx
 import numpy as np
 
 from astropy import units as u
@@ -12,7 +19,10 @@ from photutils import CircularAperture, aperture_photometry
 from matplotlib import pyplot as plt
 from matplotlib.colors import LogNorm
 
+import skycalc_ipy
+import hmbp
 import scopesim as sim
+from scopesim.effects import FilterCurve
 from scopesim.source.source_templates import star, empty_sky, star_field
 
 # Set the path to the local irdb.
@@ -23,9 +33,9 @@ rc.__currsys__['!SIM.file.local_packages_path'] = \
 PLOTS = False
 
 
-class TestImgL:
+class TestRunsStartToFinish:
     def test_basic_run_makes_image(self):
-        src = star(mag=0)
+        src = star(flux=0)
         src = star_field(100, 0, 20, 10, use_grid=True)
         cmd = sim.UserCommands(use_instrument="METIS", set_modes=["img_lm"])
         metis = sim.OpticalTrain(cmd)
@@ -43,16 +53,37 @@ class TestImgL:
             plt.imshow(img, norm=LogNorm())
             plt.show()
 
-    @pytest.mark.parametrize("mode_name, filter_name, fmin, fmax",
-                             [("img_lm", "Lp", 93e3, 660e3),
-                              ("img_lm", "Mp", 1200e3, 4700e3),
-                              ("img_n", "N1", 67e3, 270e3),
-                              ("img_n", "N2", 250e3, 850e3),
-                              ("img_lm", "Br_alpha", 5e3, 33e3)])
-    def test_background_level_is_around_roys_level(self, mode_name, filter_name,
-                                                   fmin, fmax):
+
+class TestImgLMBackgroundLevels:
+    @pytest.mark.parametrize("filter_name, expected_phs",
+                             [("Lp", 100e3), ("Mp", 1500e3)])
+    def test_how_many_bg_photons_in_METIS(self, filter_name, expected_phs):
+        eff = FilterCurve(filename=f"../filters/TC_filter_{filter_name}.dat")
+        phs = hmbp.in_skycalc_background(eff.throughput)     # ph/s/m2/[arcsec2]
+        phs *= 978 * u.m**2 * 0.00547**2 * 0.5
+
+        assert phs.value == approx(expected_phs, rel=0.03)
+
+    @pytest.mark.parametrize("filter_name, expected_phs",
+                             [("Lp", 100e3), ("Mp", 1500e3)])
+    def test_sky_phs_with_full_system_transmission(self, filter_name, expected_phs):
+        cmd = sim.UserCommands(use_instrument="METIS", set_modes=["img_lm"])
+        cmd["!OBS.filter_name"] = filter_name
+        metis = sim.OpticalTrain(cmd)
+        metis['detector_linearity'].include = False
+        sys_trans = metis.optics_manager.system_transmission
+
+        phs = hmbp.in_skycalc_background(sys_trans)  # ph/s/m2/[arcsec2]
+        phs *= metis.cmds["!TEL.area"] * u.m**2 * \
+               metis.cmds["!INST.pixel_scale"] ** 2
+
+        assert phs.value == approx(expected_phs, rel=0.1)   # ph/s/pixel
+
+    @pytest.mark.parametrize("filter_name, expected_phs",
+                             [("Lp", 100e3), ("Mp", 1300e3)])
+    def test_background_level_is_around_roys_level(self, filter_name, expected_phs):
         src = empty_sky()
-        cmd = sim.UserCommands(use_instrument="METIS", set_modes=[mode_name])
+        cmd = sim.UserCommands(use_instrument="METIS", set_modes=["img_lm"])
         cmd["!OBS.filter_name"] = filter_name
         metis = sim.OpticalTrain(cmd)
         metis['detector_linearity'].include = False
@@ -60,7 +91,7 @@ class TestImgL:
         metis.observe(src)
         img = metis.image_planes[0].data
 
-        assert fmin < np.median(img) < fmax
+        assert np.median(img) == approx(expected_phs, rel=0.1)
 
     def test_instrument_throughput_level_is_around_50_percent(self):
         cmd = sim.UserCommands(use_instrument="METIS", set_modes=["img_lm"])
@@ -89,6 +120,44 @@ class TestImgL:
 
         plt.imshow(img)
         plt.show()
+
+
+class TestSourceFlux:
+    def test_one_jansky_flux_is_as_expected(self):
+        """
+        hmbp.in_one_jansky(metis.system_transmission) --> 2.35e6 ph / (m2 s)
+        in metis (*978m2) --> 2300e6 ph / s
+        """
+
+        cmd = sim.UserCommands(use_instrument="METIS", set_modes=["img_lm"])
+        metis = sim.OpticalTrain(cmd)
+
+        for eff in ["armazones_atmo_skycalc_ter_curve",   # Adds ~58000 ph/s/pix
+                    "eso_combined_reflection",            # Adds ~20 ph/s/pix
+                    "metis_cfo_surfaces",                 # EntrWindow alone adds ~14700 ph/s/pix
+                    # "metis_img_lm_mirror_list",           # Adds ~0 ph/s/pix
+                    # "qe_curve",
+                    # "metis_psf_img"
+                    ]:
+            metis[eff].include = False
+
+        src = star(flux=1*u.Jy)
+        metis.observe(src)
+
+        n = 256
+        img = metis.image_planes[0].data
+        img_sum = np.sum(img[1024-n:1024+n, 1024-n:1024+n])
+        img_med = np.median(img[:2*n, :2*n])
+        print(f"Sum star: {img_sum}, Median top-left: {img_med}")
+
+        sys_trans = metis.optics_manager.system_transmission
+        one_jy_phs = hmbp.in_one_jansky(sys_trans).value * 978
+
+        if not PLOTS:
+            plt.imshow(img[1024-n:1024+n, 1024-n:1024+n], norm=LogNorm())
+            plt.show()
+
+        assert img_sum == approx(one_jy_phs, rel=0.05)
 
 
 def simulate_point_source(plot=False):
