@@ -61,7 +61,7 @@ class TestMetisLss:
         det_img = hdus[0][1].data
         assert 0 < np.sum(implane) < np.sum(det_img)
 
-        if not PLOTS:
+        if PLOTS:
             plt.subplot(122)
             plt.imshow(hdus[0][1].data, origin="lower", norm=LogNorm(), vmin=1)
             plt.title("Detctor Plane (with noise)")
