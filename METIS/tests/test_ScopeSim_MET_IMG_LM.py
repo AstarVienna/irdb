@@ -150,7 +150,7 @@ class TestSourceFlux:
         in metis (*978m2) --> 2300e6 ph / s
         """
 
-        cmd = sim.UserCommands(use_instrument="METIS", set_modes=["img_lm"])
+        cmd = sim.UserCommands(use_instrument="METIS", set_modes=["img_n"])
         metis = sim.OpticalTrain(cmd)
 
         for eff in ["armazones_atmo_skycalc_ter_curve",   # Adds ~58000 ph/s/pix
@@ -158,7 +158,7 @@ class TestSourceFlux:
                     "metis_cfo_surfaces",                 # EntrWindow alone adds ~14700 ph/s/pix
                     # "metis_img_lm_mirror_list",           # Adds ~0 ph/s/pix
                     # "qe_curve",
-                    # "metis_psf_img"
+                    "metis_psf_img"
                     ]:
             metis[eff].include = False
 
@@ -179,6 +179,35 @@ class TestSourceFlux:
             plt.show()
 
         assert img_sum == approx(one_jy_phs, rel=0.05)
+
+    def test_image_is_visible(self):
+        cmd = sim.UserCommands(use_instrument="METIS", set_modes=["img_n"])
+        metis = sim.OpticalTrain(cmd)
+        for eff in ["armazones_atmo_skycalc_ter_curve",   # Adds ~58000 ph/s/pix
+                    "eso_combined_reflection",            # Adds ~20 ph/s/pix
+                    "metis_cfo_surfaces",                 # EntrWindow alone adds ~14700 ph/s/pix
+                    "chopnod",
+                    # "metis_img_lm_mirror_list",           # Adds ~0 ph/s/pix
+                    # "qe_curve",
+                    "metis_psf_img"
+                    ]:
+            metis[eff].include = False
+
+        hdu = fits.open(r"F:\temp\scopesim_metis_workshop\data\sd0490_image_l12_i090_p000.fits")
+        hdu[0].header["CDELT1"] *= 10
+        hdu[0].header["CDELT2"] *= 10
+        hdu[0].header["CUNIT1"] = "DEGREE"
+        hdu[0].header["CUNIT2"] = "DEGREE"
+        hdu[0].header["CRVAL1"] = 0
+        hdu[0].header["CRVAL2"] = 0
+        src = sim.Source(image_hdu=hdu[0], flux=1*u.Jy)
+        # src = empty_sky()
+
+        metis.observe(src)
+        img = metis.image_planes[0].data
+
+        plt.imshow(img)
+        plt.show()
 
 
 def simulate_point_source(plot=False):

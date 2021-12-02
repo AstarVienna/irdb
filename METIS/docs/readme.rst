@@ -29,8 +29,10 @@ Documentation and useful references
 -----------------------------------
 - `ScopeSim documentation <https://scopesim.readthedocs.io/en/latest/>`_
 - For experts only: GitHub repositories of the
-    - `simulator package ScopeSim <https://github.com/AstarVienna/scopesim>`_
-    - `instrument-specific packages irdb <https://github.com/AstarVienna/irdb>`_.
+
+  - `simulator package ScopeSim <https://github.com/AstarVienna/scopesim>`_
+  - `instrument-specific packages irdb <https://github.com/AstarVienna/irdb>`_.
+
 - Jupyter notebook interface
 - `METIS homepage <https://metis.strw.leidenuniv.nl/>`_
 
