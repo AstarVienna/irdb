@@ -134,8 +134,8 @@ properties:
 
   spectral:
     wave_min: 2.85
-    wave_mid: 10.5
-    wave_max: 18.0
+    wave_mid: 8.425
+    wave_max: 14.0
 
   computing:
     spline_order: 3
