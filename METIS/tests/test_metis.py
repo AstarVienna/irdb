@@ -194,13 +194,18 @@ class TestSlitMask:
         assert isinstance(u.Unit(slit_mask.meta[theunit]), u.Unit)
 
 
-TRACE_LIST = glob(os.path.join(PKGS_DIR, "METIS/TRACE*.fits"))
+TRACE_LIST = glob(os.path.join(PKGS_DIR, "METIS/TRACE*LSS*.fits"))
 @pytest.fixture(name="trace_list", scope="class", params=TRACE_LIST)
 def fixture_trace_list(request):
-    return scopesim.effects.SpectralTraceList(filename=request.param)
+    return scopesim.effects.SpectralTraceList(filename=request.param,
+                                              s_colname='xi',
+                                              wave_colname='wavelength')
 
 class TestTraceFile:
-    """Test that trace files result in correct SpectralTraces"""
+    """Test that trace files result in correct SpectralTraces
+
+    This only tests LSS trace files.
+    """
 
     def test_tracelist_read_okay(self, trace_list):
         """Trace file is read correctly and gives SpectralTrace"""
@@ -213,7 +218,8 @@ class TestTraceFile:
     def test_tracelist_has_traces(self, trace_list):
         """SpectralTraceList contains at least one SpectralTrace"""
         for trace in trace_list.spectral_traces:
-            assert isinstance(trace, scopesim.effects.SpectralTrace)
+            assert isinstance(trace_list.spectral_traces[trace],
+                              scopesim.effects.SpectralTrace)
 
 
 class TestObserves:
@@ -234,7 +240,7 @@ class TestObserves:
         im = metis.image_planes[0].data
         mx, med, std = np.max(im), np.median(im), np.std(im)
 
-        if not PLOTS:
+        if PLOTS:
             for i, img in enumerate([metis.image_planes[0].data,
                                      hdus[0][1].data]):
                 plt.subplot(1, 2, i+1)
@@ -254,7 +260,7 @@ class TestObserves:
                                      set_modes=["img_n"])
 
         metis = scopesim.OpticalTrain(cmds)
-        metis['scope_vibration'].include = False
+        metis['chopnod'].include = False
         metis['detector_linearity'].include = False
 
         metis.observe(src)
@@ -263,7 +269,7 @@ class TestObserves:
         im = metis.image_planes[0].data
         mx, med, std = np.max(im), np.median(im), np.std(im)
 
-        if not PLOTS:
+        if PLOTS:
             for i, img in enumerate([metis.image_planes[0].data,
                                      hdus[0][1].data]):
                 plt.subplot(1, 2, i+1)
