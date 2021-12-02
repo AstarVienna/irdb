@@ -69,6 +69,10 @@ class TestImgLMBackgroundLevels:
     def test_sky_phs_with_full_system_transmission(self, filter_name, expected_phs):
         cmd = sim.UserCommands(use_instrument="METIS", set_modes=["img_lm"])
         cmd["!OBS.filter_name"] = filter_name
+        cmd["!AMTO.pwv"] = 1.0
+        cmd["!AMTO.airmass"] = 1.0
+        cmd["!AMTO.temperature"] = 258
+
         metis = sim.OpticalTrain(cmd)
         metis['detector_linearity'].include = False
         sys_trans = metis.optics_manager.system_transmission
@@ -120,6 +124,23 @@ class TestImgLMBackgroundLevels:
 
         plt.imshow(img)
         plt.show()
+
+    def test_print_background_contributions(self):
+        cmd = sim.UserCommands(use_instrument="METIS", set_modes=["img_lm"])
+        metis = sim.OpticalTrain(cmd)
+        metis["metis_psf_img"].include = False
+
+        metis.observe(empty_sky())
+
+        if not PLOTS:
+            plt.figure(figsize=(10, 5))
+            fov = metis.fov_manager.fovs[0]
+            for field in fov.fields[1:]:
+                spec = fov.spectra[field.header["SPEC_REF"]]
+                wave = spec.waveset
+                plt.plot(wave, spec(wave), label=field.header["BG_SURF"])
+            plt.legend()
+            plt.show()
 
 
 class TestSourceFlux:
