@@ -13,3 +13,6 @@ _TO_BE_PROCESSED/
 
 *TEST.fits
 *skycalc_temp.fits
+
+build/
+docs/build/
