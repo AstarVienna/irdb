@@ -136,6 +136,7 @@ properties:
     wave_min: 2.85
     wave_mid: 10.5
     wave_max: 18.0
+    spectral_resolution: !!float 1e-3
 
   computing:
     spline_order: 3

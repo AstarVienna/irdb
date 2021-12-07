@@ -63,6 +63,6 @@ effects:
       descriptions: field constant, wavelength dependent PSF for imaging mode
       class: FieldConstantPSF
       kwargs:
-          filename: PSF_SCAO_9mag_06seeing.fits
+          filename: PSF_SCAO_9mag_06seeing_rescaled.fits
           wave_key: "WAVELENG"
           bkg_width: -1
