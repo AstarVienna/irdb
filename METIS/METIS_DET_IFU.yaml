@@ -9,6 +9,9 @@ properties:
     temperature: -233
     dit: "!OBS.dit"
     ndit: "!OBS.ndit"
+    mindit: 0.04              # seconds, E-TNT-MPIA-1004, v1-0
+    full_well: !!float 1.E5   # electrons, E-TNT-MPIA-1004, v1-0
+
 
 effects:
     - name: detector_array_list
@@ -23,12 +26,23 @@ effects:
       kwargs:
           filename: QE_detector_H2RG_METIS.dat
 
+    - name: auto_exposure
+      description: automatic determination of DIT and NDIT
+      class: AutoExposure
+      include: True
+      kwargs:
+        fill_frac: "!OBS.auto_exposure.fill_frac"
+        exptime: "!OBS.auto_exposure.exptime"
+
+    - name: exposure_action
+      description: Summing up sky signal for all DITs and NDITs
+      class: SummedExposure
+
     - name: dark_current
       description: METIS LMS dark current
       class: DarkCurrent
-      # [e-/s] level of dark current for each detector
       kwargs:
-          value: 0.1
+          value: 0.1  # [e-/s]
 
     - name: detector_linearity
       description: Linearity characteristics of H2RG chips

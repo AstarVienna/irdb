@@ -10,10 +10,8 @@ properties:
   temperature: -230
   dit: "!OBS.dit"
   ndit: "!OBS.ndit"
-  width: 256
-  height: 256
-  x: 0
-  y: 0
+  mindit: 0.04              # seconds, E-TNT-MPIA-1004, v1-0
+  full_well: !!float 1.E5   # electrons, E-TNT-MPIA-1004, v1-0
 
 effects:
     - name: detector_array_list
@@ -23,24 +21,19 @@ effects:
       kwargs:
         filename: FPA_metis_img_lm_layout.dat
 
-    - name: detector_window
-      description: detector window
-      class: DetectorWindow
-      include: False
-      kwargs:
-        image_plane_id: 0
-        pixel_size: 0.018
-        x: "!DET.x"
-        y: "!DET.y"
-        width: "!DET.width"
-        height: "!DET.height"
-        units: pixel
-
     - name: qe_curve
       description: Quantum efficiency curves for each detector
       class: QuantumEfficiencyCurve
       kwargs:
-          filename: QE_detector_H2RG_METIS.dat
+        filename: QE_detector_H2RG_METIS.dat
+
+    - name: auto_exposure
+      description: automatic determination of DIT and NDIT
+      class: AutoExposure
+      include: True
+      kwargs:
+        fill_frac: "!OBS.auto_exposure.fill_frac"
+        exptime: "!OBS.auto_exposure.exptime"
 
     - name: exposure_action
       description: Summing up sky signal for all DITs and NDITs
@@ -49,9 +42,8 @@ effects:
     - name: dark_current
       description: METIS LM dark current
       class: DarkCurrent
-      # [e-/s] level of dark current for each detector
       kwargs:
-          value: 0.1
+          value: 0.1   # [e-/s]
 
     - name: detector_linearity
       description: Linearity characteristics of H2RG_1-5 chips

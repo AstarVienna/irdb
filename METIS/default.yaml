@@ -24,6 +24,9 @@ properties:
   pupil_angle: 0
   dit: 1
   ndit: 1
+  auto_exposure:
+    exptime: None     # seconds, overrides !OBS.dit and !OBS.ndit
+    fill_frac: 0.75   # fraction to which full well is filled in one DIT
 
 mode_yamls:
   - object: observation
