@@ -43,7 +43,7 @@ effects:
       description: METIS GeoSnap dark current
       class: DarkCurrent
       kwargs:
-          value: 1.e5   # [e-/s], E-REP-NOVA-MET-1191, v2-0
+          value: !!float 1.e5   # [e-/s], E-REP-NOVA-MET-1191, v2-0
 
     - name: detector_linearity
       description: Linearity characteristics of GeoSnap chip
