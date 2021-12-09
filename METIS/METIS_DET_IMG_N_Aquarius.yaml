@@ -6,9 +6,12 @@ name: metis_detector_array
 description: Aquarius detector for METIS IMG-NQ
 
 properties:
-    temperature: -265
-    dit: "!OBS.dit"
-    ndit: "!OBS.ndit"
+  image_plane_id: 0
+  temperature: -265
+  dit: "!OBS.dit"
+  ndit: "!OBS.ndit"
+  mindit: 0.008            # seconds, E-REP-NOVA-MET-1191, v2-0
+  full_well: !!float 1.e7  # electrons, E-REP-NOVA-MET-1191, v2-0
 
 effects:
     - name: detector_array_list
@@ -20,15 +23,27 @@ effects:
     - name: qe_curve
       description: Quantum efficiency curves for each detector
       class: QuantumEfficiencyCurve
+      include: False    # QE file does not exist
       kwargs:
           file_name: QE_detector_Aquarius.dat
+
+    - name: auto_exposure
+      description: automatic determination of DIT and NDIT
+      class: AutoExposure
+      include: True
+      kwargs:
+        fill_frac: "!OBS.auto_exposure.fill_frac"
+        exptime: "!OBS.auto_exposure.exptime"
+
+    - name: exposure_action
+      description: Summing up sky signal for all DITs and NDITs
+      class: SummedExposure
 
     - name: dark_current
       description: METIS Aquarius dark current
       class: DarkCurrent
-      # [e-/s] level of dark current for each detector
       kwargs:
-          value: 0.1
+          value: 13  # [e-/s] E-REP-NOVA-MET-1191, v2-0
 
     - name: detector_linearity
       description: Linearity characteristics of Aquarius chip
@@ -46,3 +61,11 @@ effects:
       kwargs:
           noise_std: 12
           n_channels: 64
+
+    - name: chopnod
+      descriptions: chopping and nodding
+      class: ChopNodCombiner
+      kwargs:
+          chop_offsets: "!OBS.chop_offsets"
+          nod_offsets: "!OBS.nod_offsets"
+          pixel_scale: "!INST.pixel_scale"

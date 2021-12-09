@@ -9,6 +9,8 @@ properties:
     temperature: -240
     dit: "!OBS.dit"
     ndit: "!OBS.ndit"
+    mindit: 0.011             # seconds, E-REP-NOVA-MET-1191, v2-0
+    full_well: !!float 2.8e6  # electrons, E-REP-NOVA-MET-1191, v2-0
     qe_curve:
         file_name: "QE_detector_geosnap.dat"
 
@@ -25,6 +27,14 @@ effects:
       kwargs:
           file_name: "!DET.qe_curve.file_name"
 
+    - name: auto_exposure
+      description: automatic determination of DIT and NDIT
+      class: AutoExposure
+      include: True
+      kwargs:
+        fill_frac: "!OBS.auto_exposure.fill_frac"
+        exptime: "!OBS.auto_exposure.exptime"
+
     - name: exposure_action
       description: Summing up sky signal for all DITs and NDITs
       class: SummedExposure
@@ -32,9 +42,8 @@ effects:
     - name: dark_current
       description: METIS GeoSnap dark current
       class: DarkCurrent
-      # [e-/s] level of dark current for each detector
       kwargs:
-          value: 100.
+          value: !!float 1.e5   # [e-/s], E-REP-NOVA-MET-1191, v2-0
 
     - name: detector_linearity
       description: Linearity characteristics of GeoSnap chip
