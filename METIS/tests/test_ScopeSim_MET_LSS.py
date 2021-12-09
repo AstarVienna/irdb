@@ -275,27 +275,41 @@ class TestMetisLss:
 
     def test_compare_anisocado_psf_to_metis_psf(self):
         import anisocado
+        from time import time
+        start = time()
         psf = anisocado.AnalyticalScaoPsf(N=512, wavelength=3.8,
                                           pixelSize=0.00765457,
                                           profile_name="EsoQ1")
         psf_an = psf.make_psf()
+        print(time()-start)
         psf_an /= psf_an.sum()
 
         from astropy.io import fits
         psf_im = fits.getdata("../PSF_SCAO_9mag_06seeing.fits", ext=2)[256:768, 256:768]
         psf_im /= psf_im.sum()
 
-        plt.subplot(131)
+        plt.subplot(221)
         plt.imshow(psf_an, norm=LogNorm(vmin=1e-7))
+        plt.title("AnisoCADO SCAO PSF")
         plt.colorbar()
 
-        plt.subplot(132)
+        plt.subplot(222)
         plt.imshow(psf_im, norm=LogNorm(vmin=1e-7))
+        plt.title("METIS example PSF")
         plt.colorbar()
 
-        plt.subplot(133)
-        plt.imshow(np.abs(psf_im / psf_an - 1), vmax=1)
+        plt.subplot(223)
+        plt.imshow(psf_an[256-32:256+32, 256-32:256+32], norm=LogNorm(vmin=1e-7))
         plt.colorbar()
+
+        plt.subplot(224)
+        plt.imshow(psf_im[256-32:256+32, 256-32:256+32], norm=LogNorm(vmin=1e-7))
+        plt.colorbar()
+
+        #
+        # plt.subplot(133)
+        # plt.imshow(np.abs(psf_im / psf_an - 1), vmax=1)
+        # plt.colorbar()
 
         plt.show()
 
