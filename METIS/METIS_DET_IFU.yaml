@@ -9,7 +9,7 @@ properties:
     temperature: -233
     dit: "!OBS.dit"
     ndit: "!OBS.ndit"
-    mindit: 0.04              # seconds, E-TNT-MPIA-1004, v1-0
+    mindit: 1.3               # seconds, Roy van Boekel, pers. communication
     full_well: !!float 1.E5   # electrons, E-TNT-MPIA-1004, v1-0
 
 
