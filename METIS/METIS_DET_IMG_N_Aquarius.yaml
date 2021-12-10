@@ -11,7 +11,7 @@ properties:
   dit: "!OBS.dit"
   ndit: "!OBS.ndit"
   mindit: 0.008            # seconds, E-REP-NOVA-MET-1191, v2-0
-  full_well: !!float 1.e7  # electrons, E-REP-NOVA-MET-1191, v2-0
+  full_well: !!float 1.e6  # electrons, low-capacity mode
 
 effects:
     - name: detector_array_list
