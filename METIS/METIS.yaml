@@ -7,7 +7,7 @@ name: METIS
 description: base configuration for METIS
 
 properties:
-  temperature: -248       # ..todo: -217 ? Check!
+  temperature: -206
   filter_file_format: "filters/TC_filter_{}.dat"
   pupil_transmission: 1.0
 
