@@ -4,10 +4,14 @@ object: instrument
 alias: INST
 name: METIS_IMG_N
 description: base configuration for METIS
+date_modified: 2021-12-16
+changes:
+  - 2021-12-16 (OC) filter_file_format moved here
 
 properties:
     pixel_scale: 0.00679         # arcsec / pixel, METIS-1097
     plate_scale: 0.377222222222  # arcsec / mm
+    filter_file_format: "filters/TC_filter_{}.dat"
 
 effects:
     - name: metis_img_n_mirror_list
