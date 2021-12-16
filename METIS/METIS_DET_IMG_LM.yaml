@@ -4,6 +4,9 @@ object: detector
 alias: DET
 name: metis_img_lm_detector_array
 description: A single H2RG detector
+date_modified: 2021-12-16
+changes:
+  - 2021-12-16 (OC) some rearrangements
 
 properties:
   image_plane_id: 0
@@ -12,52 +15,59 @@ properties:
   ndit: "!OBS.ndit"
   mindit: 0.04              # seconds, E-TNT-MPIA-1004, v1-0
   full_well: !!float 1.E5   # electrons, E-TNT-MPIA-1004, v1-0
+  dark_current: 0.1         # [e-/s]
+  readout_noise: 12
+  layout:
+    file_name: "FPA_metis_img_lm_layout.dat"
+  qe_curve:
+    file_name: "QE_detector_H2RG_METIS.dat"
+  detector_linearity:
+    file_name: "FPA_linearity_HxRG.dat"
 
 effects:
-    - name: detector_array_list
-      description: METIS IMG-LM detector array list
-      class: DetectorList
-      include: True
-      kwargs:
-        filename: FPA_metis_img_lm_layout.dat
+  - name: detector_array_list
+    description: METIS IMG-LM detector array list
+    class: DetectorList
+    include: true
+    kwargs:
+      file_name: "!DET.layout.file_name"
 
-    - name: qe_curve
-      description: Quantum efficiency curves for each detector
-      class: QuantumEfficiencyCurve
-      kwargs:
-        filename: QE_detector_H2RG_METIS.dat
+  - name: qe_curve
+    description: Quantum efficiency curves for each detector
+    class: QuantumEfficiencyCurve
+    kwargs:
+      filename: "!DET.qe_curve.file_name"
 
-    - name: auto_exposure
-      description: automatic determination of DIT and NDIT
-      class: AutoExposure
-      include: True
-      kwargs:
-        fill_frac: "!OBS.auto_exposure.fill_frac"
-        exptime: "!OBS.auto_exposure.exptime"
+  - name: auto_exposure
+    description: automatic determination of DIT and NDIT
+    class: AutoExposure
+    include: true
+    kwargs:
+      fill_frac: "!OBS.auto_exposure.fill_frac"
 
-    - name: exposure_action
-      description: Summing up sky signal for all DITs and NDITs
-      class: SummedExposure
+  - name: exposure_action
+    description: Summing up sky signal for all DITs and NDITs
+    class: SummedExposure
 
-    - name: dark_current
-      description: METIS LM dark current
-      class: DarkCurrent
-      kwargs:
-          value: 0.1   # [e-/s]
+  - name: dark_current
+    description: METIS LM dark current
+    class: DarkCurrent
+    kwargs:
+      value: "!DET.dark_current"
 
-    - name: detector_linearity
-      description: Linearity characteristics of H2RG_1-5 chips
-      class: LinearityCurve
-      kwargs:
-          filename: FPA_linearity_HxRG.dat
+  - name: shot_noise
+    description: apply poisson shot noise to images
+    class: ShotNoise
 
-    - name: shot_noise
-      description: apply poisson shot noise to images
-      class: ShotNoise
+  - name: detector_linearity
+    description: Linearity characteristics of H2RG_1-5 chips
+    class: LinearityCurve
+    kwargs:
+      filename: "!DET.linearity.file_name"
 
-    - name: readout_noise
-      description: Readout noise frames
-      class: BasicReadoutNoise
-      kwargs:
-          noise_std: 12
-          n_channels: 32
+  - name: readout_noise
+    description: Readout noise frames
+    class: BasicReadoutNoise
+    kwargs:
+      noise_std: "!DET.readout_noise"
+      n_channels: 32
