@@ -21,7 +21,7 @@ properties:
     file_name: "FPA_metis_img_lm_layout.dat"
   qe_curve:
     file_name: "QE_detector_H2RG_METIS.dat"
-  detector_linearity:
+  linearity:
     file_name: "FPA_linearity_HxRG.dat"
 
 effects:
