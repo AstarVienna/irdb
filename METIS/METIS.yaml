@@ -5,10 +5,13 @@ object: instrument
 alias: INST
 name: METIS
 description: base configuration for METIS
+date_modified: 2021-12-16
+changes:
+  - 2021-12-16 (OC) temperature changed to align with cfo
+  - 2021-12-16 (OC) slit files renamed to include slit width
 
 properties:
   temperature: -206
-  filter_file_format: "filters/TC_filter_{}.dat"
   pupil_transmission: 1.0
 
 effects:

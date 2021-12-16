@@ -5,6 +5,10 @@ object: configuration
 alias: OBS
 name: METIS_default_configuration
 description: default parameters needed for a METIS simulation
+date_modified: 2021-12-16
+changes:
+  - 2021-12-16 (OC) chopnod defaults to perpendicular
+  - 2021-12-16 (OC) default slits renamed
 
 packages:
   - Armazones
@@ -22,10 +26,10 @@ properties:
   declination: -30
   hour_angle: 0
   pupil_angle: 0
-  dit: 1
-  ndit: 1
+  exptime: 1.
+  dit: 1              # when exptime is given and auto_exposure is on,
+  ndit: 1             # these values are ignored
   auto_exposure:
-    exptime: None     # seconds, overrides !OBS.dit and !OBS.ndit
     fill_frac: 0.75   # fraction to which full well is filled in one DIT
 
 mode_yamls:
@@ -52,8 +56,8 @@ mode_yamls:
       filter_name: N2
       nd_filter_name: open
       slit: false
-      chop_offsets: [3, 0]
-      nod_offsets: [-3, 0]
+      chop_offsets: [3, 0]  # perpendicular chopping and nodding
+      nod_offsets: [0, 3]
 
   - object: observation
     alias: OBS
@@ -65,7 +69,7 @@ mode_yamls:
       - METIS_DET_IMG_LM.yaml
     properties:
       trace_file: TRACE_LSS_L.fits
-      slit: C
+      slit: C-38_1
       filter_name: L_spec
       nd_filter_name: open
 
@@ -79,7 +83,7 @@ mode_yamls:
       - METIS_DET_IMG_LM.yaml
     properties:
       trace_file: TRACE_LSS_M.fits
-      slit: C
+      slit: C-38_1
       filter_name: M_spec
       nd_filter_name: open
 
@@ -93,7 +97,7 @@ mode_yamls:
       - METIS_DET_IMG_N_GeoSnap.yaml
     properties:
       trace_file: TRACE_LSS_N.fits
-      slit: C
+      slit: D-57_1
       filter_name: N_spec
       nd_filter_name: open
 
@@ -119,11 +123,6 @@ mode_yamls:
     properties:
       slit: false
 
-ignore_effects:
-  - armazones_atmo_dispersion
-  - scope_vibration
-  - detector_linearity
-
 ---
 ### default simulation parameters needed for a METIS simulation
 object: simulation
@@ -137,8 +136,8 @@ properties:
 
   spectral:
     wave_min: 2.85
-    wave_mid: 10.5
-    wave_max: 18.0
+    wave_mid: 8.425
+    wave_max: 14.0
 
   computing:
     spline_order: 3
