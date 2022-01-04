@@ -41,6 +41,7 @@ mode_yamls:
       - METIS_IMG_LM.yaml
       - METIS_DET_IMG_LM.yaml
     properties:
+      psf_file: PSF_SCAO_9mag_06seeing.fits
       filter_name: Lp
       nd_filter_name: open
       slit: false
@@ -53,6 +54,7 @@ mode_yamls:
       - METIS_IMG_N.yaml
       - METIS_DET_IMG_N_GeoSnap.yaml
     properties:
+      psf_file: PSF_SCAO_9mag_06seeing.fits
       filter_name: N2
       nd_filter_name: open
       slit: false
@@ -68,6 +70,7 @@ mode_yamls:
       - METIS_LSS.yaml
       - METIS_DET_IMG_LM.yaml
     properties:
+      psf_file: PSF_LM_9mag_06seeing.fits
       trace_file: TRACE_LSS_L.fits
       slit: C-38_1
       filter_name: L_spec
@@ -82,6 +85,7 @@ mode_yamls:
       - METIS_LSS.yaml
       - METIS_DET_IMG_LM.yaml
     properties:
+      psf_file: PSF_LM_9mag_06seeing.fits
       trace_file: TRACE_LSS_M.fits
       slit: C-38_1
       filter_name: M_spec
@@ -96,6 +100,7 @@ mode_yamls:
       - METIS_LSS.yaml
       - METIS_DET_IMG_N_GeoSnap.yaml
     properties:
+      psf_file: PSF_N_9mag_06seeing.fits
       trace_file: TRACE_LSS_N.fits
       slit: D-57_1
       filter_name: N_spec
@@ -109,6 +114,7 @@ mode_yamls:
       - METIS_LMS.yaml
       - METIS_DET_IFU.yaml
     properties:
+      psf_file: PSF_SCAO_9mag_06seeing.fits
       slit: false
       trace_file: TRACE_LMS.fits
       wavelen: 4.2
