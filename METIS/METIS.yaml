@@ -21,6 +21,16 @@ effects:
     kwargs:
       filename: LIST_METIS_mirrors_cfo.dat
 
+  - name: adc_wheel
+    description: collection of atmospheric dispersion correctors
+    class: ADCWheel
+    kwargs:
+      adc_names:
+        - const_90
+      filename_format: TER_ADC_{}.dat
+      current_adc: "!OBS.adc"
+      include: "!OBS.adc"
+
   - name: slit_wheel
     description: collection of field masks and slits
     class: SlitWheel

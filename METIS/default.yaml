@@ -45,6 +45,7 @@ mode_yamls:
       filter_name: Lp
       nd_filter_name: open
       slit: false
+      adc: const_90
 
   - object: observation
     alias: OBS
@@ -58,6 +59,7 @@ mode_yamls:
       filter_name: N2
       nd_filter_name: open
       slit: false
+      adc: const_90
       chop_offsets: [3, 0]  # perpendicular chopping and nodding
       nod_offsets: [0, 3]
 
@@ -73,6 +75,7 @@ mode_yamls:
       psf_file: PSF_LM_9mag_06seeing.fits
       trace_file: TRACE_LSS_L.fits
       slit: C-38_1
+      adc: const_90
       filter_name: L_spec
       nd_filter_name: open
 
@@ -88,6 +91,7 @@ mode_yamls:
       psf_file: PSF_LM_9mag_06seeing.fits
       trace_file: TRACE_LSS_M.fits
       slit: C-38_1
+      adc: const_90
       filter_name: M_spec
       nd_filter_name: open
 
@@ -103,6 +107,7 @@ mode_yamls:
       psf_file: PSF_N_9mag_06seeing.fits
       trace_file: TRACE_LSS_N.fits
       slit: D-57_1
+      adc: const_90
       filter_name: N_spec
       nd_filter_name: open
 
@@ -116,6 +121,7 @@ mode_yamls:
     properties:
       psf_file: PSF_SCAO_9mag_06seeing.fits
       slit: false
+      adc: false
       trace_file: TRACE_LMS.fits
       wavelen: 4.2
 
@@ -128,6 +134,7 @@ mode_yamls:
       - METIS_DET_IFU.yaml
     properties:
       slit: false
+      adc: false
 
 ---
 ### default simulation parameters needed for a METIS simulation
