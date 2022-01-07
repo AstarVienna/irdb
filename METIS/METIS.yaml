@@ -5,10 +5,11 @@ object: instrument
 alias: INST
 name: METIS
 description: base configuration for METIS
-date_modified: 2021-12-16
+date_modified: 2022-01-05
 changes:
   - 2021-12-16 (OC) temperature changed to align with cfo
   - 2021-12-16 (OC) slit files renamed to include slit width
+  - 2022-01-05 (OC) add ADC wheel
 
 properties:
   temperature: -206

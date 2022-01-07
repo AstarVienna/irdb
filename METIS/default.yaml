@@ -5,10 +5,11 @@ object: configuration
 alias: OBS
 name: METIS_default_configuration
 description: default parameters needed for a METIS simulation
-date_modified: 2021-12-16
+date_modified: 2022-01-07
 changes:
   - 2021-12-16 (OC) chopnod defaults to perpendicular
   - 2021-12-16 (OC) default slits renamed
+  - 2022-01-07 (OC) trace files default to science version
 
 packages:
   - Armazones
