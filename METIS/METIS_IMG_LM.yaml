@@ -5,9 +5,10 @@ object: instrument
 alias: INST
 name: METIS_IMG_LM
 description: base configuration for METIS
-date_modified: 2021-12-16
+date_modified: 2022-01-11
 changes:
   - 2021-12-16 (OC) filter_file_format moved here
+  - 2022-01-11 (OC) change default bkg_width to 0
 
 properties:
   pixel_scale: 0.00547         # arcsec / pixel, METIS_1097
@@ -75,4 +76,4 @@ effects:
     kwargs:
       filename: "!OBS.psf_file"
       wave_key: "WAVELENG"
-      bkg_width: -1
+      bkg_width: 0
