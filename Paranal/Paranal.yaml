@@ -3,6 +3,9 @@ object : atmosphere
 alias : ATMO
 name : paranal
 description : Atmosphere and location details for Paranal
+date-modified: 2022-01-12
+changes:
+  - 2022-01-12 (OC) changed spectral_resolution to _bin_width
 
 properties :
     altitude :      2635        # m
@@ -26,7 +29,7 @@ effects :
           wmin: "!SIM.spectral.wave_min"
           wmax: "!SIM.spectral.wave_max"
           wunit: um
-          wdelta: "!SIM.spectral.spectral_resolution"
+          wdelta: "!SIM.spectral.spectral_bin_width"
 
 
 ####################### Alternative effects ####################################

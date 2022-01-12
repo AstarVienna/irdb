@@ -3,6 +3,9 @@ object : atmosphere
 alias : ATMO
 name : armazones
 description : Atmosphere and location details for Cerro Armazones
+date-modified: 2022-01-12
+changes:
+  - 2022-01-12 (OC) changed spectral_resolution to _bin_width
 
 properties :
     altitude :      3060        # m
@@ -32,8 +35,8 @@ effects :
         wmin : "!SIM.spectral.wave_min"
         wmax : "!SIM.spectral.wave_max"
         wunit : um
-        wdelta : "!SIM.spectral.spectral_resolution"
-
+        wres : "!SIM.spectral.spectral_resolution"
+        wdelta: "!SIM.spectral.spectral_bin_width"
 
 -   name : armazones_atmo_dispersion
     description : atmospheric dispersion

@@ -2,7 +2,9 @@
 # description: effects for MICADO etc
 # author : Kieran Leschinski
 # date_created : 2020-11-02
-# date_modified : 2020-11-02
+# date_modified : 2022-01-12
+# changes:
+#   - 2022-01-12 (OC) changed spectral_resolution to _bin_width
 
 object : configuration
 alias : OBS
@@ -30,7 +32,7 @@ effects:
         wmin : "!SIM.spectral.wave_min"
         wmax : "!SIM.spectral.wave_max"
         wunit : um
-        wdelta : "!SIM.spectral.spectral_resolution"
+        wdelta : "!SIM.spectral.spectral_bin_width"
 
 -   name : micado_system_ter_curve
     class : TERCurve

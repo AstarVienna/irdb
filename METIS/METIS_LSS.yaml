@@ -4,7 +4,9 @@ object: instrument
 alias: INST
 name: METIS_LSS
 description: additional effects for METIS long-slit spectroscopy
-
+date_modified: 2022-01-12
+changes:
+  - 2022-01-12 (OC) changed spectral_resolution to _bin_width
 properties:
     decouple_detector_from_sky_headers: True
 
@@ -40,4 +42,5 @@ description: RC simulation parameters which need to change for a METIS run
 
 properties:
   spectral:
-    spectral_resolution: !!float 5E-4   # microns (spectral bin width)
+    spectral_bin_width: !!float 5E-4   # microns (spectral bin width)
+    spectral_resolution: 5000

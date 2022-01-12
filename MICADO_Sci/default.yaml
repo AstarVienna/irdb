@@ -2,8 +2,9 @@
 # description: default observation parameters for MICADO-Sci
 # author : Kieran Leschinski
 # date_created : 2020-07-09
-# date_modified : 2020-08-17
-
+# date_modified : 2022-01-12
+# changes:
+#   - 2022-01-12 (OC) changed spectral_resolution to _bin_width
 object : configuration
 alias : OBS
 name : MICADO_sci_default_configuration
@@ -85,7 +86,7 @@ properties :
     wave_min : 0.7
     wave_mid : 1.6
     wave_max : 2.5
-    spectral_resolution : 0.001
+    spectral_bin_width : 0.001
 
   computing :
     preload_field_of_view : True
