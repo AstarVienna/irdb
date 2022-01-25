@@ -7,6 +7,7 @@ description: A single H2RG detector
 date_modified: 2021-12-16
 changes:
   - 2021-12-16 (OC) some rearrangements
+  - 2022-01-25 (KL, OC) added DetectorModePropertiesSetter effect
 
 properties:
   image_plane_id: 0
@@ -35,17 +36,18 @@ effects:
 
 ################################## TBD
   - name: detector_readout_parameters
-      class: DetectorModePropertiesSetter
-  - kwargs:
+    desription:
+    class: DetectorModePropertiesSetter
+    kwargs:
       mode_properties:
         fast:
           min_dit: 0.04
           full_well: !!float 1e5
           ron: 70
         slow:
-          min_dit: 0.04
+          min_dit: 1.3
           full_well: !!float 1e5
-          ron: 70
+          ron: 14
 
 
   - name: qe_curve

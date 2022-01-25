@@ -7,6 +7,7 @@ description: Teledyne GeoSnap Detector
 date_modified: 2021-12-16
 changes:
   - 2021-12-16 (OC) some rearrangements, chopnod off by default
+  - 2022-01-25 (KL, OC) added DetectorModePropertiesSetter effect
 
 properties:
   temperature: -240
@@ -34,19 +35,18 @@ effects:
 
 ################################## TBD
   - name: detector_readout_parameters
-      class: DetectorModePropertiesSetter
-  - kwargs:
+    desription:
+    class: DetectorModePropertiesSetter
+    kwargs:
       mode_properties:
         high:
           min_dit: 0.04
           full_well: !!float 1e5
           ron: 70
         low:
-          "!DET.min_dit": 0.04
+          "!DET.min_dit": 1.3
           "!DET.full_well": !!float 1e5
-          ron: 70
-
-
+          ron: 14
 
 
   - name: qe_curve

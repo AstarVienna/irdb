@@ -7,6 +7,7 @@ description: additional effects for METIS long-slit spectroscopy
 date_modified: 2022-01-12
 changes:
   - 2022-01-12 (OC) changed spectral_resolution to _bin_width
+
 properties:
     decouple_detector_from_sky_headers: True
 
@@ -32,13 +33,6 @@ effects:
       s_colname: "xi"
       col_number_start: 1
       decouple_sky_detector_headers: True
-
-########################## TBD
-    - name: lms_detector_properties
-      class: DetectorModePropertiesSetter
-      kwargs:
-        set_mode: "!OBS.detector_readout_mode"
-
 
 ---
 ### default simulation parameters needed for a METIS simulation

@@ -48,6 +48,7 @@ mode_yamls:
       nd_filter_name: open
       slit: false
       adc: const_90
+      detector_readout_mode: fast
 
   - object: observation
     alias: OBS
@@ -64,6 +65,7 @@ mode_yamls:
       adc: false
       chop_offsets: [3, 0]  # perpendicular chopping and nodding
       nod_offsets: [0, 3]
+      detector_readout_mode: high
 
   - object: observation
     alias: OBS
@@ -80,7 +82,7 @@ mode_yamls:
       adc: const_90
       filter_name: L_spec
       nd_filter_name: open
-      detector_readout_mode: hawaii_slow   # ######## TBD   !OBS.detector_mode_name
+      detector_readout_mode: slow
 
   - object: observation
     alias: OBS
@@ -97,6 +99,7 @@ mode_yamls:
       adc: const_90
       filter_name: M_spec
       nd_filter_name: open
+      detector_readout_mode: slow
 
   - object: observation
     alias: OBS
@@ -113,6 +116,7 @@ mode_yamls:
       adc: false
       filter_name: N_spec
       nd_filter_name: open
+      detector_readout_mode: low
 
   - object: observation
     alias: OBS
@@ -127,6 +131,7 @@ mode_yamls:
       adc: false
       trace_file: TRACE_LMS.fits
       wavelen: 4.2
+      detector_readout_mode: slow
 
   - object: observation     # is this a separate mode from nominal LMS?
     alias: OBS
@@ -138,6 +143,7 @@ mode_yamls:
     properties:
       slit: false
       adc: false
+      detector_readout_mode: slow
 
 ---
 ### default simulation parameters needed for a METIS simulation
