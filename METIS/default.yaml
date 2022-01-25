@@ -80,6 +80,7 @@ mode_yamls:
       adc: const_90
       filter_name: L_spec
       nd_filter_name: open
+      detector_readout_mode: hawaii_slow   # ######## TBD   !OBS.detector_mode_name
 
   - object: observation
     alias: OBS

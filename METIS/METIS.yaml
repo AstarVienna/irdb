@@ -55,7 +55,6 @@ effects:
       minimum_throughput: !!float 0.
 
 
-
 #  - name : metis_adc_residuals
 #    class : AtmosphericDispersionCorrection
 #    include : False

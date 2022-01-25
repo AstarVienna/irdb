@@ -33,6 +33,13 @@ effects:
       col_number_start: 1
       decouple_sky_detector_headers: True
 
+########################## TBD
+    - name: lms_detector_properties
+      class: DetectorModePropertiesSetter
+      kwargs:
+        set_mode: "!OBS.detector_readout_mode"
+
+
 ---
 ### default simulation parameters needed for a METIS simulation
 object: simulation

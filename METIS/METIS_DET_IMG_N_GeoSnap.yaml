@@ -30,6 +30,25 @@ effects:
     kwargs:
       file_name: "!DET.layout.file_name"
 
+
+
+################################## TBD
+  - name: detector_readout_parameters
+      class: DetectorModePropertiesSetter
+  - kwargs:
+      mode_properties:
+        high:
+          min_dit: 0.04
+          full_well: !!float 1e5
+          ron: 70
+        low:
+          "!DET.min_dit": 0.04
+          "!DET.full_well": !!float 1e5
+          ron: 70
+
+
+
+
   - name: qe_curve
     description: Quantum efficiency curves for each detector
     class: QuantumEfficiencyCurve
