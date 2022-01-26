@@ -6,8 +6,10 @@ name: metis_detector_array
 description: Aquarius detector for METIS IMG-NQ
 changes:
   - 2021-12-16 (OC) some rearrangements
+  - 2022-12-26 (OC) added DetectorModePropertiesSetter and DET.detector
 
 properties:
+  detector: Raytheon Aquarius
   temperature: -265
   dit: "!OBS.dit"
   ndit: "!OBS.ndit"
@@ -28,6 +30,22 @@ effects:
     class: DetectorList
     kwargs:
       file_name: "!DET.layout.file_name"
+
+  - name: detector_readout_parameters
+    description: Readout modes for Aquarius detector
+    class: DetectorModePropertiesSetter
+    kwargs:
+      mode_properties:
+        low_gain:
+          "!DET.mindit":    0.008        # seconds
+          "!DET.full_well": !!float 9e6  # electrons
+          "!DET.readout_noise": 1400     # electrons (DCS)
+          "!DET.dark_current":  13       # electrons/second
+        high_gain:
+          "!DET.mindit":    0.008        # seconds
+          "!DET.full_well": !!float 1e6  # electrons
+          "!DET.readout_noise": 150      # electrons (DCS)
+          "!DET.dark_current": 13        # electrons/second
 
   - name: qe_curve
     description: Quantum efficiency curves for each detector

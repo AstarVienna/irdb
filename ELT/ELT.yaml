@@ -5,6 +5,7 @@ name : ELT
 description : The extremely large telescope
 
 properties :
+    telescope :   ELT
     temperature : "!ATMO.temperature"
     ter_curve:
         filename : "TER_ELT_5_mirror.dat"

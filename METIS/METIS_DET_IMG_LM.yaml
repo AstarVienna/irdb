@@ -4,20 +4,18 @@ object: detector
 alias: DET
 name: metis_img_lm_detector_array
 description: A single H2RG detector
-date_modified: 2021-12-16
+date_modified: 2021-12-26
 changes:
   - 2021-12-16 (OC) some rearrangements
   - 2022-01-25 (KL, OC) added DetectorModePropertiesSetter effect
+  - 2022-01-26 (OC) added DET.detector
 
 properties:
+  detector:  HAWAII2RG
   image_plane_id: 0
   temperature: -230
   dit: "!OBS.dit"
   ndit: "!OBS.ndit"
-  mindit: 0.04              # seconds, E-TNT-MPIA-1004, v1-0
-  full_well: !!float 1.E5   # electrons, E-TNT-MPIA-1004, v1-0
-  dark_current: 0.1         # [e-/s]
-  readout_noise: 12
   layout:
     file_name: "FPA_metis_img_lm_layout.dat"
   qe_curve:
@@ -29,26 +27,26 @@ effects:
   - name: detector_array_list
     description: METIS IMG-LM detector array list
     class: DetectorList
-    include: true
     kwargs:
       file_name: "!DET.layout.file_name"
 
-
-################################## TBD
   - name: detector_readout_parameters
-    desription:
+    description: Readout modes for H2RG detector
     class: DetectorModePropertiesSetter
     kwargs:
       mode_properties:
         fast:
-          min_dit: 0.04
-          full_well: !!float 1e5
-          ron: 70
+          description: "HAWAII2RG, fast mode"
+          "!DET.mindit": 0.04
+          "!DET.full_well": !!float 1e5
+          "!DET.readout_noise": 70
+          "!DET.dark_current": 0.05
         slow:
-          min_dit: 1.3
-          full_well: !!float 1e5
-          ron: 14
-
+          description: "HAWAII2RG, slow mode"
+          "!DET.mindit": 1.3
+          "!DET.full_well": !!float 1e5
+          "!DET.readout_noise": 15
+          "!DET.dark_current": 0.05
 
   - name: qe_curve
     description: Quantum efficiency curves for each detector
@@ -62,6 +60,8 @@ effects:
     include: true
     kwargs:
       fill_frac: "!OBS.auto_exposure.fill_frac"
+      full_well: "!DET.full_well"
+      mindit: "!DET.mindit"
 
   - name: exposure_action
     description: Summing up sky signal for all DITs and NDITs
