@@ -8,6 +8,7 @@ changes:
   - 2022-01-12 (OC) changed spectral_resolution to _bin_width
 
 properties :
+    location :      Armazones
     altitude :      3060        # m
     longitude :     -70.1918    # deg
     latitude :      -24.5899    # deg
