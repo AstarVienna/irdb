@@ -1,0 +1,19 @@
+# name : Geosnap high_capacity linearity curve
+# author : Oliver Czoske
+# sources: E-REP-NOVA-MET-1191_2-0
+# date_created : 2021-04-01
+# date_modified : 2022-01-26
+# type : detector:linearity
+# status : Teledyne specs, high-capacity mode
+# incident_unit : e
+# measured_unit : e
+# ndit : 1
+#
+# changes :
+#    - 2021-12-13 (OC) units converted to electrons
+#    - 2022-01-26 (OC) modified name
+#
+incident    measured
+0           0
+2.8e6       2.8e6
+1e99        2.8e6

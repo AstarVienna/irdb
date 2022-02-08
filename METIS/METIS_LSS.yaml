@@ -4,6 +4,9 @@ object: instrument
 alias: INST
 name: METIS_LSS
 description: additional effects for METIS long-slit spectroscopy
+date_modified: 2022-01-12
+changes:
+  - 2022-01-12 (OC) changed spectral_resolution to _bin_width
 
 properties:
     decouple_detector_from_sky_headers: True
@@ -15,17 +18,21 @@ effects:
   #    kwargs:
   #      filename: LIST_METIS_mirrors_lss_lm.dat
 
+  #  - name: blaze_function
+  #    description: grating efficiency
+  #    class: TERCurve
+  #    kwargs:
+  #      filename: TER_blaze_L.dat
+
   - name: lss_spectral_traces
     description: list of spectral order trace geometry on the focal plane
     class: SpectralTraceList
     kwargs:
       filename: "!OBS.trace_file"
       wave_colname: "wavelength"
-      dwave: 0.0005
       s_colname: "xi"
       col_number_start: 1
       decouple_sky_detector_headers: True
-      #invalid_value: None
 
 ---
 ### default simulation parameters needed for a METIS simulation
@@ -36,4 +43,5 @@ description: RC simulation parameters which need to change for a METIS run
 
 properties:
   spectral:
-    spectral_resolution: !!float 5E-4
+    spectral_bin_width: !!float 5E-4   # microns (spectral bin width)
+    spectral_resolution: 5000

@@ -5,6 +5,13 @@ object: configuration
 alias: OBS
 name: METIS_default_configuration
 description: default parameters needed for a METIS simulation
+date_modified: 2022-01-25
+changes:
+  - 2021-12-16 (OC) chopnod defaults to perpendicular
+  - 2021-12-16 (OC) default slits renamed
+  - 2022-01-07 (OC) trace files default to science version
+  - 2022-01-10 (OC) adc defaults to false for N band
+  - 2022-01-25 (OC, KL) add detector modes
 
 packages:
   - Armazones
@@ -17,13 +24,17 @@ yamls:
   - METIS.yaml
 
 properties:
+  instrument: "METIS"
   modes: ["img_lm"]
   airmass: 1.2
   declination: -30
   hour_angle: 0
   pupil_angle: 0
-  dit: 1
-  ndit: 1
+  exptime: 1.
+  dit: 1              # when exptime is given and auto_exposure is on,
+  ndit: 1             # these values are ignored
+  auto_exposure:
+    fill_frac: 0.75   # fraction to which full well is filled in one DIT
 
 mode_yamls:
   - object: observation
@@ -34,9 +45,12 @@ mode_yamls:
       - METIS_IMG_LM.yaml
       - METIS_DET_IMG_LM.yaml
     properties:
+      psf_file: PSF_SCAO_9mag_06seeing.fits
       filter_name: Lp
       nd_filter_name: open
       slit: false
+      adc: const_90
+      detector_readout_mode: fast
 
   - object: observation
     alias: OBS
@@ -46,11 +60,14 @@ mode_yamls:
       - METIS_IMG_N.yaml
       - METIS_DET_IMG_N_GeoSnap.yaml
     properties:
+      psf_file: PSF_SCAO_9mag_06seeing.fits
       filter_name: N2
       nd_filter_name: open
       slit: false
-      chop_offsets: [3, 0]
-      nod_offsets: [-3, 0]
+      adc: false
+      chop_offsets: [3, 0]  # perpendicular chopping and nodding
+      nod_offsets: [0, 3]
+      detector_readout_mode: high_capacity
 
   - object: observation
     alias: OBS
@@ -61,10 +78,13 @@ mode_yamls:
       - METIS_LSS.yaml
       - METIS_DET_IMG_LM.yaml
     properties:
-      trace_file: TRACE_LSS_L.fits
-      slit: C
+      psf_file: PSF_LM_9mag_06seeing.fits
+      trace_file: TRACE_LSS_L_sci.fits
+      slit: C-38_1
+      adc: const_90
       filter_name: L_spec
       nd_filter_name: open
+      detector_readout_mode: slow
 
   - object: observation
     alias: OBS
@@ -75,10 +95,13 @@ mode_yamls:
       - METIS_LSS.yaml
       - METIS_DET_IMG_LM.yaml
     properties:
-      trace_file: TRACE_LSS_M.fits
-      slit: C
+      psf_file: PSF_LM_9mag_06seeing.fits
+      trace_file: TRACE_LSS_M_sci.fits
+      slit: C-38_1
+      adc: const_90
       filter_name: M_spec
       nd_filter_name: open
+      detector_readout_mode: slow
 
   - object: observation
     alias: OBS
@@ -89,10 +112,13 @@ mode_yamls:
       - METIS_LSS.yaml
       - METIS_DET_IMG_N_GeoSnap.yaml
     properties:
-      trace_file: TRACE_LSS_N.fits
-      slit: C
+      psf_file: PSF_N_9mag_06seeing.fits
+      trace_file: TRACE_LSS_N_sci.fits
+      slit: D-57_1
+      adc: false
       filter_name: N_spec
       nd_filter_name: open
+      detector_readout_mode: low_capacity
 
   - object: observation
     alias: OBS
@@ -102,9 +128,12 @@ mode_yamls:
       - METIS_LMS.yaml
       - METIS_DET_IFU.yaml
     properties:
+      psf_file: PSF_SCAO_9mag_06seeing.fits
       slit: false
+      adc: false
       trace_file: TRACE_LMS.fits
       wavelen: 4.2
+      detector_readout_mode: slow
 
   - object: observation     # is this a separate mode from nominal LMS?
     alias: OBS
@@ -115,11 +144,8 @@ mode_yamls:
       - METIS_DET_IFU.yaml
     properties:
       slit: false
-
-ignore_effects:
-  - armazones_atmo_dispersion
-  - scope_vibration
-  - detector_linearity
+      adc: false
+      detector_readout_mode: slow
 
 ---
 ### default simulation parameters needed for a METIS simulation

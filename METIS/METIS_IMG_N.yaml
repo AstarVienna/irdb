@@ -4,10 +4,16 @@ object: instrument
 alias: INST
 name: METIS_IMG_N
 description: base configuration for METIS
+date_modified: 2022-01-12
+changes:
+  - 2021-12-16 (OC) filter_file_format moved here
+  - 2022-01-11 (OC) change default bkg_width to 0
+  - 2022-01-12 (OC) change default bkg_width to -1
 
 properties:
     pixel_scale: 0.00679         # arcsec / pixel, METIS-1097
     plate_scale: 0.377222222222  # arcsec / mm
+    filter_file_format: "filters/TC_filter_{}.dat"
 
 effects:
     - name: metis_img_n_mirror_list
@@ -63,6 +69,6 @@ effects:
       descriptions: field constant, wavelength dependent PSF for imaging mode
       class: FieldConstantPSF
       kwargs:
-          filename: PSF_SCAO_9mag_06seeing.fits
-          wave_key: "WAVELENG"
-          bkg_width: -1
+        filename: "!OBS.psf_file"
+        wave_key: "WAVELENG"
+        bkg_width: -1

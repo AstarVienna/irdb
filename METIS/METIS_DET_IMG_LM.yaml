@@ -4,68 +4,88 @@ object: detector
 alias: DET
 name: metis_img_lm_detector_array
 description: A single H2RG detector
+date_modified: 2021-12-26
+changes:
+  - 2021-12-16 (OC) some rearrangements
+  - 2022-01-25 (KL, OC) added DetectorModePropertiesSetter effect
+  - 2022-01-26 (OC) added DET.detector
 
 properties:
+  detector:  HAWAII2RG
   image_plane_id: 0
   temperature: -230
   dit: "!OBS.dit"
   ndit: "!OBS.ndit"
-  width: 256
-  height: 256
-  x: 0
-  y: 0
+  layout:
+    file_name: "FPA_metis_img_lm_layout.dat"
+  qe_curve:
+    file_name: "QE_detector_H2RG_METIS.dat"
+  linearity:
+    file_name: "FPA_linearity_HxRG.dat"
 
 effects:
-    - name: detector_array_list
-      description: METIS IMG-LM detector array list
-      class: DetectorList
-      include: True
-      kwargs:
-        filename: FPA_metis_img_lm_layout.dat
+  - name: detector_array_list
+    description: METIS IMG-LM detector array list
+    class: DetectorList
+    kwargs:
+      file_name: "!DET.layout.file_name"
 
-    - name: detector_window
-      description: detector window
-      class: DetectorWindow
-      include: False
-      kwargs:
-        image_plane_id: 0
-        pixel_size: 0.018
-        x: "!DET.x"
-        y: "!DET.y"
-        width: "!DET.width"
-        height: "!DET.height"
-        units: pixel
+  - name: detector_readout_parameters
+    description: Readout modes for H2RG detector
+    class: DetectorModePropertiesSetter
+    kwargs:
+      mode_properties:
+        fast:
+          description: "HAWAII2RG, fast mode"
+          "!DET.mindit": 0.04
+          "!DET.full_well": !!float 1e5
+          "!DET.readout_noise": 70
+          "!DET.dark_current": 0.05
+        slow:
+          description: "HAWAII2RG, slow mode"
+          "!DET.mindit": 1.3
+          "!DET.full_well": !!float 1e5
+          "!DET.readout_noise": 15
+          "!DET.dark_current": 0.05
 
-    - name: qe_curve
-      description: Quantum efficiency curves for each detector
-      class: QuantumEfficiencyCurve
-      kwargs:
-          filename: QE_detector_H2RG_METIS.dat
+  - name: qe_curve
+    description: Quantum efficiency curves for each detector
+    class: QuantumEfficiencyCurve
+    kwargs:
+      filename: "!DET.qe_curve.file_name"
 
-    - name: exposure_action
-      description: Summing up sky signal for all DITs and NDITs
-      class: SummedExposure
+  - name: auto_exposure
+    description: automatic determination of DIT and NDIT
+    class: AutoExposure
+    include: true
+    kwargs:
+      fill_frac: "!OBS.auto_exposure.fill_frac"
+      full_well: "!DET.full_well"
+      mindit: "!DET.mindit"
 
-    - name: dark_current
-      description: METIS LM dark current
-      class: DarkCurrent
-      # [e-/s] level of dark current for each detector
-      kwargs:
-          value: 0.1
+  - name: exposure_action
+    description: Summing up sky signal for all DITs and NDITs
+    class: SummedExposure
 
-    - name: detector_linearity
-      description: Linearity characteristics of H2RG_1-5 chips
-      class: LinearityCurve
-      kwargs:
-          filename: FPA_linearity_HxRG.dat
+  - name: dark_current
+    description: METIS LM dark current
+    class: DarkCurrent
+    kwargs:
+      value: "!DET.dark_current"
 
-    - name: shot_noise
-      description: apply poisson shot noise to images
-      class: ShotNoise
+  - name: shot_noise
+    description: apply poisson shot noise to images
+    class: ShotNoise
 
-    - name: readout_noise
-      description: Readout noise frames
-      class: BasicReadoutNoise
-      kwargs:
-          noise_std: 12
-          n_channels: 32
+  - name: detector_linearity
+    description: Linearity characteristics of H2RG_1-5 chips
+    class: LinearityCurve
+    kwargs:
+      filename: "!DET.linearity.file_name"
+
+  - name: readout_noise
+    description: Readout noise frames
+    class: BasicReadoutNoise
+    kwargs:
+      noise_std: "!DET.readout_noise"
+      n_channels: 32
