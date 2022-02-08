@@ -27,11 +27,12 @@ Installation & setup
 
 Documentation and useful references
 -----------------------------------
+- `Example Jupyter notebooks <https://github.com/AstarVienna/irdb/tree/master/METIS/docs/example_notebooks>`_
 - `ScopeSim documentation <https://scopesim.readthedocs.io/en/latest/>`_
 - For experts only: GitHub repositories of the
     - `simulator package ScopeSim <https://github.com/AstarVienna/scopesim>`_
     - `instrument-specific packages irdb <https://github.com/AstarVienna/irdb>`_.
-- Jupyter notebook interface
+
 - `METIS homepage <https://metis.strw.leidenuniv.nl/>`_
 
 
