@@ -8,7 +8,7 @@ The new METIS data simulator currently supports the imaging and long-slit modes 
 The old data simulator, SimMETIS v0.3, can still be used for simulating LMS observations.
 
 Prerequisites
-------------
+-------------
 
 - A working installation of Python 3.6 or newer
 - A working installation of Jupyter notebooks if you want to run the simulator from notebooks, i.e. using a graphical interactive interface, rather than just the terminal or scripts (highly recommended)

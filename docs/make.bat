@@ -7,7 +7,9 @@ REM Command file for Sphinx documentation
 if "%SPHINXBUILD%" == "" (
 	set SPHINXBUILD=sphinx-build
 )
-set SOURCEDIR=source
+
+REM originally SOURCEDIR=source references docs/source and looks for conf.py
+set SOURCEDIR=..
 set BUILDDIR=build
 set SPHINXPROJ=InstrumentReferenceDatabase
 
