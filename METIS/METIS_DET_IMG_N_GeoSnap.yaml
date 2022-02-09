@@ -4,59 +4,100 @@ object: detector
 alias: DET
 name: metis_detector_array
 description: Teledyne GeoSnap Detector
+date_modified: 2021-12-26
+changes:
+  - 2021-12-16 (OC) some rearrangements, chopnod off by default
+  - 2022-01-25 (KL, OC) added DetectorModePropertiesSetter effect
+  - 2022-01-26 (OC) added DET.detector, linearity set explicitely
 
 properties:
-    temperature: -240
-    dit: "!OBS.dit"
-    ndit: "!OBS.ndit"
-    qe_curve:
-        file_name: "QE_detector_geosnap.dat"
+  detector: Teledyne GeoSnap
+  image_plane_id: 0
+  temperature: -240
+  dit: "!OBS.dit"
+  ndit: "!OBS.ndit"
+  layout:
+    file_name: "FPA_metis_img_n_geosnap_layout.dat"
+  qe_curve:
+    file_name: "QE_detector_geosnap.dat"
 
 effects:
-    - name: detector_array_list
-      description: METIS IMG-N detector array list
-      class: DetectorList
-      kwargs:
-          filename: FPA_metis_img_n_geosnap_layout.dat
+  - name: detector_array_list
+    description: METIS IMG-N detector array list
+    class: DetectorList
+    kwargs:
+      file_name: "!DET.layout.file_name"
 
-    - name: qe_curve
-      description: Quantum efficiency curves for each detector
-      class: QuantumEfficiencyCurve
-      kwargs:
-          file_name: "!DET.qe_curve.file_name"
+  - name: detector_readout_parameters
+    description: Readout modes for Geosnap detector
+    class: DetectorModePropertiesSetter
+    kwargs:
+      mode_properties:
+        high_capacity:
+          description:               "Geosnap, high-capacity mode"
+          "!DET.mindit":             0.011          # seconds
+          "!DET.full_well":          !!float 2.8e6  # electrons
+          "!DET.readout_noise":      300            # electrons (DCS)
+          "!DET.dark_current":       !!float 1e5    # electrons/second
+          "!DET.linearity.incident": [0, !!float 2.8e6, !!float 1e99]
+          "!DET.linearity.measured": [0, !!float 2.8e6, !!float 2.8e6]
+        low_capacity:
+          description:               "Geosnap, low-capacity mode"
+          "!DET.mindit":             0.011          # seconds
+          "!DET.full_well":          !!float 1.8e5  # electrons
+          "!DET.readout_noise":      35             # electrons (DCS)
+          "!DET.dark_current":       !!float 1e5    # electrons/second
+          "!DET.linearity.incident": [0, !!float 1.8e5, !!float 1e99]
+          "!DET.linearity.measured": [0, !!float 1.8e5, !!float 1.8e5]
 
-    - name: exposure_action
-      description: Summing up sky signal for all DITs and NDITs
-      class: SummedExposure
+  - name: qe_curve
+    description: Quantum efficiency curves for each detector
+    class: QuantumEfficiencyCurve
+    kwargs:
+      file_name: "!DET.qe_curve.file_name"
 
-    - name: dark_current
-      description: METIS GeoSnap dark current
-      class: DarkCurrent
-      # [e-/s] level of dark current for each detector
-      kwargs:
-          value: 100.
+  - name: auto_exposure
+    description: automatic determination of DIT and NDIT
+    class: AutoExposure
+    include: true
+    kwargs:
+      fill_frac: "!OBS.auto_exposure.fill_frac"
+      full_well: "!DET.full_well"
+      mindit: "!DET.mindit"
 
-    - name: detector_linearity
-      description: Linearity characteristics of GeoSnap chip
-      class: LinearityCurve
-      kwargs:
-          filename: FPA_linearity_GeoSnap.dat
+  - name: exposure_action
+    description: Summing up sky signal for all DITs and NDITs
+    class: SummedExposure
 
-    - name: shot_noise
-      description: apply poisson shot noise to images
-      class: ShotNoise
+  - name: dark_current
+    description: METIS GeoSnap dark current
+    class: DarkCurrent
+    kwargs:
+      value: "!DET.dark_current"
 
-    - name: readout_noise
-      description: Readout noise frames
-      class: BasicReadoutNoise
-      kwargs:
-          noise_std: 12
-          n_channels: 64
+  - name: shot_noise
+    description: apply poisson shot noise to images
+    class: ShotNoise
 
-    - name: chopnod
-      descriptions: chopping and nodding
-      class: ChopNodCombiner
-      kwargs:
-          chop_offsets: "!OBS.chop_offsets"
-          nod_offsets: "!OBS.nod_offsets"
-          pixel_scale: "!INST.pixel_scale"
+  - name: detector_linearity
+    description: Linearity characteristics of GeoSnap chip
+    class: LinearityCurve
+    kwargs:
+      incident: "!DET.linearity.incident"
+      measured: "!DET.linearity.measured"
+
+  - name: readout_noise
+    description: Readout noise frames
+    class: BasicReadoutNoise
+    kwargs:
+      noise_std: "!DET.readout_noise"
+      n_channels: 8
+
+  - name: chopnod
+    descriptions: chopping and nodding
+    class: ChopNodCombiner
+    include: false
+    kwargs:
+      chop_offsets: "!OBS.chop_offsets"
+      nod_offsets: "!OBS.nod_offsets"
+      pixel_scale: "!INST.pixel_scale"

@@ -11,6 +11,7 @@ Work out whether the flux components are realistic
 import pytest
 from pytest import approx
 import numpy as np
+from scipy.misc import face
 
 from astropy import units as u
 from astropy.table import Table
@@ -144,20 +145,21 @@ class TestImgLMBackgroundLevels:
 
 
 class TestSourceFlux:
-    def test_one_jansky_flux_is_as_expected(self):
+    @pytest.mark.parametrize("mode_name", ["img_lm", "img_n"])
+    def test_one_jansky_flux_is_as_expected(self, mode_name):
         """
         hmbp.in_one_jansky(metis.system_transmission) --> 2.35e6 ph / (m2 s)
         in metis (*978m2) --> 2300e6 ph / s
         """
 
-        cmd = sim.UserCommands(use_instrument="METIS", set_modes=["img_n"])
+        cmd = sim.UserCommands(use_instrument="METIS", set_modes=[mode_name])
         metis = sim.OpticalTrain(cmd)
 
         for eff in ["armazones_atmo_skycalc_ter_curve",   # Adds ~58000 ph/s/pix
                     "eso_combined_reflection",            # Adds ~20 ph/s/pix
                     "metis_cfo_surfaces",                 # EntrWindow alone adds ~14700 ph/s/pix
-                    # "metis_img_lm_mirror_list",           # Adds ~0 ph/s/pix
-                    # "qe_curve",
+                    #"metis_img_lm_mirror_list",           # Adds ~0 ph/s/pix
+                    "qe_curve",
                     "metis_psf_img"
                     ]:
             metis[eff].include = False
@@ -165,17 +167,56 @@ class TestSourceFlux:
         src = star(flux=1*u.Jy)
         metis.observe(src)
 
-        n = 256
+        n = 32
         img = metis.image_planes[0].data
         img_sum = np.sum(img[1024-n:1024+n, 1024-n:1024+n])
-        img_med = np.median(img[:2*n, :2*n])
+        img_med = np.median(img[n:3*n, n:3*n])
+        print(f"Sum star: {img_sum}, Median top-left: {img_med}")
+
+        sys_trans = metis.optics_manager.system_transmission
+        one_jy_phs = hmbp.in_one_jansky(sys_trans).value * 978
+
+        if PLOTS:
+            plt.imshow(img[1024-n:1024+n, 1024-n:1024+n], norm=LogNorm())
+            plt.show()
+
+        assert img_sum == approx(one_jy_phs, rel=0.05)
+
+    def test_image_source_is_as_expected(self):
+        im = face(True).astype(float)
+        hdu = fits.ImageHDU(data=im)
+        hdu.header.update({"CDELT1": 0.00547, "CDELT2": 0.00547,
+                           "CUNIT1": "arcsec", "CUNIT2": "arcsec"})
+        src = sim.Source(image_hdu=hdu, flux=1*u.mJy)
+
+        cmd = sim.UserCommands(use_instrument="METIS", set_modes=["img_n"])
+        metis = sim.OpticalTrain(cmd)
+        metis["detector_linearity"].include = False
+
+        # for eff in ["armazones_atmo_skycalc_ter_curve",  # Adds ~58000 ph/s/pix
+        #             "eso_combined_reflection",  # Adds ~20 ph/s/pix
+        #             "metis_cfo_surfaces",  # EntrWindow alone adds ~14700 ph/s/pix
+        #             "metis_img_lm_mirror_list",  # Adds ~0 ph/s/pix
+        #             "qe_curve",
+        #             "metis_psf_img"
+        #             ]:
+        #     metis[eff].include = False
+
+        metis.observe(src)
+        hdus = metis.readout()
+
+        n = 1024
+        img = metis.image_planes[0].data
+        img = hdus[0][1].data
+        img_sum = np.sum(img[1024 - n:1024 + n, 1024 - n:1024 + n])
+        img_med = np.median(img[n:3 * n, n:3 * n])
         print(f"Sum star: {img_sum}, Median top-left: {img_med}")
 
         sys_trans = metis.optics_manager.system_transmission
         one_jy_phs = hmbp.in_one_jansky(sys_trans).value * 978
 
         if not PLOTS:
-            plt.imshow(img[1024-n:1024+n, 1024-n:1024+n], norm=LogNorm())
+            plt.imshow(img[1024 - n:1024 + n, 1024 - n:1024 + n])  # norm=LogNorm()
             plt.show()
 
         assert img_sum == approx(one_jy_phs, rel=0.05)

@@ -1,20 +1,21 @@
 # author : NN
 # source : Roy van Boekel
 # date_created : 2018-07
-# date_modified : 2020-10-30
-# status : Design, pre-PDR list of filters
+# date_modified : 2021-12-02
+# status : Design, pre-FDR list of filters
 # type : filter:transmission
 # wavelength_unit : um
-# center : 11.625
-# width : 3.01
-# blue_cutoff : 10.09
-# red_cutoff : 13.16
-# comment : N2 from Roys wish filter list, July 2018
+# center : 11.25
+# width : 2.36
+# blue_cutoff : 10.04
+# red_cutoff : 12.46
+# comment : N2 FDR design
 # changes :
 #     - 2020-10-30 : (OC) add wavelength unit
+#     - 2021-12-02 : (OC, RvB) update wavelength range to FDR
 #
 wavelength  transmission
-10.0900      0.0000
-10.1500      0.8500
-13.1000      0.8500
-13.1600      0.0000
+10.0400      0.0000
+10.1000      0.8500
+12.4000      0.8500
+12.4600      0.0000
