@@ -8,7 +8,8 @@ requests
 beautifulsoup4
 pyyaml
 
-scopesim
+git+https://github.com/AstarVienna/ScopeSim.git@dev_master
+# scopesim
 
 jupyter_sphinx==0.2.3
 numpydoc

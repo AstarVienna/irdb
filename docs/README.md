@@ -50,10 +50,14 @@ The current `conf.py` entry looks like this:
 
 ## Python notebooks
 
-Python notebooks are by nature static files.
-However they can be rendered by sphinx using the nbsphinx extension.
-`.ipynb` files must be contained in a folder that exists in the `conf.py` 
-static path list.
-These files are referenced like normal RST files
+We use the ``nbsphinx`` package to render iPython notebooks just like RST files.
+Notebooks must be added to a ``.. toctree`` command to be found and rendered.
+
+    .. toctree::
+       docs/notebooks/example_notebook      #.ipynb
+
+For testing purposes notebooks are not executed when the sphinx build occurs.
+This can be changed (and should be for pushes to Github --> RTFD) by changing 
+``conf.py`` line from ``nbsphinx_execute = "never"`` to ``"always"``.
 
 

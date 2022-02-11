@@ -19,7 +19,7 @@ Installation & setup
 
 ``pip install scopesim``
 
-1. Create a directory where your simulation notebooks will live, e.g. `~/ScopeSim`
+1. Create a directory where your simulation notebooks will live, e.g. ``~/ScopeSim``
 2. install relevant irdb packages & download example notebooks into this directory
 3. in a Terminal, cd to ~/ScopeSim and execute jupyter notebook METIS_IMG_N.ipynb
 4. follow instruction and explanations in the notebook.
@@ -28,7 +28,7 @@ Installation & setup
 Python notebooks
 ----------------
 
-The example Python (Jupyter) notebooks can be `downloaded from the Github
+The example Python (Jupyter) notebooks can be `downloaded from the Github repo
 <https://github.com/AstarVienna/irdb/tree/master/METIS/docs/example_notebooks>`_
 
 .. toctree::
