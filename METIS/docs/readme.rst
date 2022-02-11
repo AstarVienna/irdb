@@ -25,9 +25,22 @@ Installation & setup
 4. follow instruction and explanations in the notebook.
 
 
+Python notebooks
+----------------
+
+The example Python (Jupyter) notebooks can be `downloaded from the Github
+<https://github.com/AstarVienna/irdb/tree/master/METIS/docs/example_notebooks>`_
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   example_notebooks/IMG-HL_Tau
+
+
 Documentation and useful references
 -----------------------------------
-- `Example Jupyter notebooks <https://github.com/AstarVienna/irdb/tree/master/METIS/docs/example_notebooks>`_
+
 - `ScopeSim documentation <https://scopesim.readthedocs.io/en/latest/>`_
 - For experts only: GitHub repositories of the
     - `simulator package ScopeSim <https://github.com/AstarVienna/scopesim>`_

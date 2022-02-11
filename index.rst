@@ -18,9 +18,6 @@ Instrument-Specific "Getting Started" Guides
    :caption: Contents:
 
    METIS/docs/readme
-   METIS/docs/misc
-   METIS/docs/example_notebooks/IMG-HL_Tau
-   METIS/docs/IMG-HL_Tau
    MICADO/docs/readme
 
 
