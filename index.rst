@@ -19,7 +19,9 @@ Instrument-Specific "Getting Started" Guides
 
    METIS/docs/readme
    METIS/docs/misc
-   MICADO/docs/readme.rst
+   METIS/docs/example_notebooks/IMG-HL_Tau
+   METIS/docs/IMG-HL_Tau
+   MICADO/docs/readme
 
 
 Instrument Packages in the IRDB
