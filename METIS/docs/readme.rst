@@ -37,7 +37,7 @@ Installation & setup
 Python notebooks
 ----------------
 
-The example Python (Jupyter) notebooks can be `downloaded from the Github repo
+Downloaded these example notebooks `from the Github repo
 <https://github.com/AstarVienna/irdb/tree/master/METIS/docs/example_notebooks>`_
 
 .. toctree::
@@ -51,13 +51,9 @@ Documentation and useful references
 -----------------------------------
 
 - `ScopeSim documentation <https://scopesim.readthedocs.io/en/latest/>`_
-
 - `Sky Object Templates documentation <https://scopesim-templates.readthedocs.io/en/latest/>`_
-
 - `METIS homepage <https://metis.strw.leidenuniv.nl/>`_
-
 - For experts: GitHub repositories:
-
   - `simulator package ScopeSim <https://github.com/AstarVienna/scopesim>`_
   - `instrument-specific packages irdb <https://github.com/AstarVienna/irdb>`_.
 
