@@ -14,6 +14,15 @@ Prerequisites
 - A working installation of Jupyter notebooks if you want to run the simulator from notebooks, i.e. using a graphical interactive interface, rather than just the terminal or scripts (highly recommended)
 - A working installation of the Python package installer pip
 
+.. note:: Bug reports and help-desk
+
+   If you come across a bug or get stuck with a certain aspect of ScopeSim or
+   the METIS package, please get in touch with us (emails addresses below).
+
+   **Your feedback is the only way we know** what needs to be changed/improved
+   with the package and the simulator
+
+
 Installation & setup
 --------------------
 
@@ -42,14 +51,21 @@ Documentation and useful references
 -----------------------------------
 
 - `ScopeSim documentation <https://scopesim.readthedocs.io/en/latest/>`_
-- For experts only: GitHub repositories of the
-    - `simulator package ScopeSim <https://github.com/AstarVienna/scopesim>`_
-    - `instrument-specific packages irdb <https://github.com/AstarVienna/irdb>`_.
+
+- `Sky Object Templates documentation <https://scopesim-templates.readthedocs.io/en/latest/>`_
 
 - `METIS homepage <https://metis.strw.leidenuniv.nl/>`_
+
+- For experts: GitHub repositories:
+
+  - `simulator package ScopeSim <https://github.com/AstarVienna/scopesim>`_
+  - `instrument-specific packages irdb <https://github.com/AstarVienna/irdb>`_.
+
+
 
 
 Contact points
 --------------
+
 - simmetis.astro@univie.ac.at
 - kieran.leschinski@univie.ac.at
