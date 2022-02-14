@@ -101,8 +101,9 @@ def push_to_server(pkg_name, password=None):
 def print_help_menu():
     str = """Publish IRDB packages from the IRDB root directory:
 
-python irdb/publish.py -cu <PKG_NAME> ... <PKG_NAME_N>
+    $ python irdb/publish.py -cu <PKG_NAME> ... <PKG_NAME_N> -p <PASSWORD>
 
+    -p <password> : pass the univie server password for uploading zip files
     -c, --compile : adds all files in a PKG folder to a .zip archive
     -u, --upload : uploads the PKG .zip archive to the server
     -h, --help : prints this statement 
