@@ -4,8 +4,9 @@ METIS + ScopeSim
 Introduction
 ------------
 For the preparation of FDR documentation, a new METIS data simulator is being developed that is technically an instrument-package for the generic simulator ScopeSim, a descendant of the older SimCado/SimMETIS interface.
-The new METIS data simulator currently supports the imaging and long-slit modes (tbc) and the LMS mode is planned to be offered soon, too.
-The old data simulator, SimMETIS v0.3, can still be used for simulating LMS observations.
+The new METIS data simulator currently supports the imaging and long-slit modes and the LM-band high-resolution IFU (LMS) mode is planned to be offered soon, too.
+The old data simulator, `SimMETIS v0.3 <https://metis.strw.leidenuniv.nl/simmetis/>`_, can still be used for simulating LMS observations.
+
 
 Prerequisites
 -------------
@@ -30,7 +31,7 @@ Installation & setup
 
 1. Create a directory where your simulation notebooks will live, e.g. ``~/ScopeSim``
 2. install relevant irdb packages & download example notebooks into this directory
-3. in a Terminal, cd to ~/ScopeSim and execute jupyter notebook METIS_IMG_N.ipynb
+3. in a Terminal, cd to ~/ScopeSim and execute the notebook by calling ``jupyter notebook filename.ipynb``
 4. follow instruction and explanations in the notebook.
 
 
@@ -39,6 +40,9 @@ Python notebooks
 
 Download the example notebooks `from the Github repo
 <https://github.com/AstarVienna/irdb/tree/master/METIS/docs/example_notebooks>`_
+
+Input image and cube files for the notebooks can be `found on our google drive
+<https://drive.google.com/drive/folders/1Lqux93ymgMM_ZXSSUUPMBnow5sgbo-bb?usp=sharing>`_
 
 .. note::
    To download a notebook from Github, either:
@@ -58,7 +62,7 @@ Download the example notebooks `from the Github repo
    * - Imaging with HL Tau
      - <add description>
      - `Notebook Link <https://raw.githubusercontent.com/AstarVienna/irdb/master/METIS/docs/example_notebooks/IMG-HL_Tau.ipynb>`_
-     - `HL Tau FITS image <https://github.com/AstarVienna/irdb/blob/master/METIS/docs/example_notebooks/HL_Tau_prep_for_Scopesim.fits>`_
+     - `HL Tau FITS image <https://drive.google.com/file/d/1LmKUw8wZkpTw2ZSAOn2ykui0q2RGZ2sA/view?usp=sharing>`_
    * - <add title>
      - <add description>
      - <add notebook link>
@@ -79,14 +83,17 @@ Documentation and useful references
 - `Sky Object Templates documentation <https://scopesim-templates.readthedocs.io/en/latest/>`_
 - `METIS homepage <https://metis.strw.leidenuniv.nl/>`_
 - For experts: GitHub repositories:
-  - `simulator package ScopeSim <https://github.com/AstarVienna/scopesim>`_
-  - `instrument-specific packages irdb <https://github.com/AstarVienna/irdb>`_.
 
-
+  + `simulator package ScopeSim <https://github.com/AstarVienna/scopesim>`_
+  + `instrument-specific packages irdb <https://github.com/AstarVienna/irdb>`_.
 
 
 Contact points
 --------------
 
-- simmetis.astro@univie.ac.at
-- kieran.leschinski@univie.ac.at
+.. list-table:: Python Notebooks
+   :widths: 33 33 33
+   :header-rows: 1
+* - simmetis.astro@univie.ac.at
+  - oliver.czoske@univie.ac.at
+  - kieran.leschinski@univie.ac.at
