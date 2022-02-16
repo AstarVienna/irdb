@@ -37,7 +37,7 @@ Installation & setup
 Python notebooks
 ----------------
 
-Downloaded these example notebooks `from the Github repo
+Download the example notebooks `from the Github repo
 <https://github.com/AstarVienna/irdb/tree/master/METIS/docs/example_notebooks>`_
 
 .. list-table:: Python Notebooks
