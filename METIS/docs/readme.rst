@@ -40,6 +40,24 @@ Python notebooks
 Downloaded these example notebooks `from the Github repo
 <https://github.com/AstarVienna/irdb/tree/master/METIS/docs/example_notebooks>`_
 
+.. list-table:: Python Notebooks
+   :widths: 25 25 25 25
+   :header-rows: 1
+
+   * - Name
+     - Description
+     - Download Link
+     - Required Data Files
+   * - Imaging with HL Tau
+     - <add description>
+     - `Notebook Link <https://github.com/AstarVienna/irdb/blob/master/METIS/docs/example_notebooks/IMG-HL_Tau.ipynb>`_
+     - `HL Tau FITS image <https://github.com/AstarVienna/irdb/blob/master/METIS/docs/example_notebooks/HL_Tau_prep_for_Scopesim.fits>`_
+   * - <add title>
+     - <add description>
+     - <add notebook link>
+     - <add data files links>
+
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
