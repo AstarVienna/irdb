@@ -3,6 +3,7 @@
    :alt: METIS + ScopeSim
 
 |pic1|
+======
 
 Introduction
 ------------
