@@ -2,7 +2,8 @@
    :width: 600px
    :alt: METIS + ScopeSim
 
-================
+|pic1|
+======
 
 Introduction
 ------------
