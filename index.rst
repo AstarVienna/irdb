@@ -17,8 +17,8 @@ Instrument-Specific "Getting Started" Guides
    :maxdepth: 2
    :caption: Contents:
 
-   METIS/docs/readme
-   MICADO/docs/readme
+   METIS + ScopeSim <METIS/docs/readme>
+   MICADO + ScopeSim <MICADO/docs/readme>
 
 
 Instrument Packages in the IRDB

@@ -1,26 +1,8 @@
-.. image:: metis_logo.png
-    :width: 45%
-    :alt: METIS
-    :align: center
+.. |pic1| image:: metis_scopesim_logo.png
+   :width: 600px
+   :alt: METIS + ScopeSim
 
-.. image:: https://scopesim.readthedocs.io/en/latest/_images/banner_red_transparent.png
-    :width: 45%
-    :alt: ScopeSim
-    :align: center
-
-
-
-.. |pic1| image:: metis_logo.png
-   :width: 40%
-
-.. |pic2| image:: https://scopesim.readthedocs.io/en/latest/_images/banner_red_transparent.png
-   :width: 40%
-
-.. |pic3| image:: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShqBV8dHCoTOL_b-HdCAgzQltBH5cM_l5bsOG_QiYkBLmNvNvti_a4hz3B8MrVE4bcxhA&usqp=CAU
-   :width: 10%
-
-|pic1| |pic3| |pic2|
-
+================
 
 Introduction
 ------------
