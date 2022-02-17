@@ -1,0 +1,51 @@
+---
+### default parameters needed for an Armazones report
+
+object: configuration
+alias: OBS
+name: Armazones_report
+description: default parameters needed for stand alone Armazones report
+date_modified: 2022-01-25
+changes:
+  - 2022-02-14 (KL) first commit
+
+packages:
+  - Armazones
+
+yamls:
+  - Armazones.yaml
+
+properties:
+  instrument: "Armazones"
+  airmass: 1.2
+  pupil_angle : 0
+  pixel_scale : 0.000277777
+
+---
+
+alias: SIM
+name: Armazones_standalone_simulation_parameters
+
+properties:
+  spectral:
+    wave_min: 0.3
+
+    wave_max: 30.
+    spectral_resolution: 1000
+    spectral_bin_width: 0.001   # um
+
+---
+
+alias: TEL
+name: Armazones_standalone_telescope_parameters
+
+properties:
+  area: 1
+
+---
+
+alias: INST
+name: Armazones_standalone_instrument_parameters
+
+properties:
+  area: 1
