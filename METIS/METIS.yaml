@@ -5,15 +5,15 @@ object: instrument
 alias: INST
 name: METIS
 description: base configuration for METIS
-date_modified: 2022-01-05
+date_modified: 2022-02-20
 changes:
   - 2021-12-16 (OC) temperature changed to align with cfo
   - 2021-12-16 (OC) slit files renamed to include slit width
   - 2022-01-05 (OC) add ADC wheel
+  - 2022-02-20 (OC) pupil_transmission now an OBS parameter
 
 properties:
   temperature: -206
-  pupil_transmission: 1.0
 
 effects:
   - name: metis_cfo_surfaces
@@ -51,7 +51,7 @@ effects:
     class: PupilTransmission
     include: True
     kwargs:
-      transmission: "!INST.pupil_transmission"
+      transmission: "!OBS.pupil_transmission"
       minimum_throughput: !!float 0.
 
 

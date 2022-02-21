@@ -5,13 +5,14 @@ object: configuration
 alias: OBS
 name: METIS_default_configuration
 description: default parameters needed for a METIS simulation
-date_modified: 2022-01-25
+date_modified: 2022-02-20
 changes:
   - 2021-12-16 (OC) chopnod defaults to perpendicular
   - 2021-12-16 (OC) default slits renamed
   - 2022-01-07 (OC) trace files default to science version
   - 2022-01-10 (OC) adc defaults to false for N band
   - 2022-01-25 (OC, KL) add detector modes
+  - 2022-02-20 (OC) pupil_transmission now an OBS parameter
 
 packages:
   - Armazones
@@ -33,6 +34,7 @@ properties:
   exptime: 1.
   dit: 1              # when exptime is given and auto_exposure is on,
   ndit: 1             # these values are ignored
+  pupil_transmission: 1.0
   auto_exposure:
     fill_frac: 0.75   # fraction to which full well is filled in one DIT
 
