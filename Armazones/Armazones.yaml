@@ -7,6 +7,7 @@ date-modified: 2022-02-21
 changes:
   - 2022-01-12 (OC) changed spectral_resolution to _bin_width
   - 2022-02-21 (OC) commented out unused effects for the time being
+  - 2022-02-21 (OC) set skycalc grid mode to logarithmic
 
 properties :
     location :      Armazones
@@ -37,6 +38,7 @@ effects :
         wmin : "!SIM.spectral.wave_min"
         wmax : "!SIM.spectral.wave_max"
         wunit : um
+        wgrid_mode: fixed_spectral_resolution   # ['fixed_spectral_resolution','fixed_wavelength_step']
         wres : "!SIM.spectral.spectral_resolution"
         wdelta: "!SIM.spectral.spectral_bin_width"
 
