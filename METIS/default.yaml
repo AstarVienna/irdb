@@ -1,11 +1,11 @@
 ---
-### default observation parameters needed for a METIS simulation
+### default configuration for METIS simulations
 
 object: configuration
 alias: OBS
 name: METIS_default_configuration
 description: default parameters needed for a METIS simulation
-date_modified: 2022-02-20
+date_modified: 2022-02-21
 changes:
   - 2021-12-16 (OC) chopnod defaults to perpendicular
   - 2021-12-16 (OC) default slits renamed
@@ -13,6 +13,7 @@ changes:
   - 2022-01-10 (OC) adc defaults to false for N band
   - 2022-01-25 (OC, KL) add detector modes
   - 2022-02-20 (OC) pupil_transmission now an OBS parameter
+  - 2022-02-21 (OC) linear interpolation, cosmetics
 
 packages:
   - Armazones
@@ -91,7 +92,7 @@ mode_yamls:
   - object: observation
     alias: OBS
     name: lss_m
-    description: "METIS LM-band slit spectroscopy"
+    description: "METIS M-band slit spectroscopy"
     yamls:
       - METIS_IMG_LM.yaml
       - METIS_LSS.yaml
@@ -166,7 +167,7 @@ properties:
     wave_max: 14.0
 
   computing:
-    spline_order: 3
+    spline_order: 1
     preload_field_of_views: True
 
 ---
