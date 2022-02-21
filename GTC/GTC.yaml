@@ -1,0 +1,32 @@
+### GTC telescope
+object: telescope
+alias: TEL
+name: GTC
+description : The 10.4m Gran Telescopio Canarias
+
+properties:
+  temperture: "!ATMO.temperature"
+
+effects:
+- name: Telescope Surface List
+  description: combined reflection of all GTC mirrors
+  class: SurfaceList
+  kwargs:
+    array_dict: {"name": ["combined_GTC"],
+                 "outer": [10.4],
+                 "inner": [1.5],
+                 "angle": [0.],
+                 "temperature": [0.],
+                 "action": ["reflection"],
+                 "filename": ["reflectivity_GTC.dat"]}
+    outer_unit: m
+    inner_unit: m
+    angle_unit: deg
+    temperature_unit: deg_C
+
+- name: gtc_psf
+  description: Generic GTC PSF
+  class: FieldConstantPSF
+  kwargs:
+    filename: GTC_poppy_PSF.fits
+    warning: "Default PSF was generated Poppy for a basic GTC optical system"
