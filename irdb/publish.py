@@ -150,7 +150,7 @@ if __name__ == "__main__":
                 if "c" in arg:
                     kwargs["compile_pkg"] = True
                 if "u" in arg:
-                    kwargs["upload"] = True
+                    kwargs["upload_pkg"] = True
                 if "h" in arg:
                     print(HELPSTR)
             else:
