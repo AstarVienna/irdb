@@ -1,7 +1,9 @@
+"""Publish and upload irdb packages"""
 import sys
 import os
 from os import path as pth
 import shutil
+from tempfile import TemporaryDirectory
 from datetime import datetime as dt
 import yaml
 import pysftp
@@ -11,11 +13,25 @@ OLD_FILES = pth.join(PKGS_DIR, "_OLD_FILES")
 ZIPPED_DIR = pth.join(PKGS_DIR, "_ZIPPED_PACKAGES")
 
 SERVER_DIR = "./InstPkgSvr"
-with open(pth.join(pth.dirname(__file__), "packages.yaml"), "r") as f:
+
+HELPSTR = """
+Publish IRDB packages from the IRDB root directory:
+
+$ python irdb/publish.py -cu <PKG_NAME> ... <PKG_NAME_N> -p <PASSWORD>
+
+-p <password> : pass the univie server password for uploading zip files
+-c, --compile : adds all files in a PKG folder to a .zip archive
+-u, --upload : uploads the PKG .zip archive to the server
+-h, --help : prints this statement
+"""
+
+
+with open(pth.join(pth.dirname(__file__), "packages.yaml"), "r",
+          encoding="utf8") as f:
     PKGS = yaml.full_load(f)
 
 
-def publish(pkg_names=None, compile=True, upload=True, password=None):
+def publish(pkg_names=None, compile_pkg=True, upload_pkg=True, password=None):
     """
     Should be as easy as just calling this function to republish all packages
 
@@ -24,7 +40,7 @@ def publish(pkg_names=None, compile=True, upload=True, password=None):
     Parameters
     ----------
     pkg_names : list
-    compile : bool
+    compile_pkg : bool
     upload : bool
     password : str
 
@@ -33,11 +49,14 @@ def publish(pkg_names=None, compile=True, upload=True, password=None):
         pkg_names = PKGS.keys()
 
     for pkg_name in pkg_names:
-        if compile: make_packages(pkg_name)
-        if upload: push_to_server(pkg_name, password=password)
+        if compile_pkg:
+            make_packages(pkg_name)
+        if upload_pkg:
+            push_to_server(pkg_name, password=password)
 
 
 def make_packages(pkg_names=()):
+    """Create packages"""
     if isinstance(pkg_names, str):
         pkg_names = [pkg_names]
 
@@ -54,6 +73,11 @@ def make_packages(pkg_names=()):
 
 
 def rename_package(pkg_path):
+    """
+    Rename an existing package
+
+    The new file name includes the current date.
+    """
     suffix = "." + str(dt.now().date())
     new_path = pkg_path.replace(".zip", suffix + ".zip")
     if pth.exists(new_path):
@@ -64,6 +88,9 @@ def rename_package(pkg_path):
 
 
 def move_package(pkg_path, dir_name):
+    """
+    Move a package to a new location
+    """
     new_path = pth.join(dir_name, pth.basename(pkg_path))
     if pth.exists(new_path):
         os.remove(new_path)
@@ -71,14 +98,27 @@ def move_package(pkg_path, dir_name):
 
 
 def zip_package_folder(pkg_name):
-    pkg_dir = pth.join(PKGS_DIR, pkg_name)
-    # new_pkg_path = shutil.make_archive(pkg_name, "zip", pkg_dir, pkg_name)
-    new_pkg_path = shutil.make_archive(pkg_name, "zip", PKGS_DIR, pkg_name)
+    """
+    Create a zip file of packages in `pkg_names`
+
+    Directories `__pycache__` and hidden files (starting with `.`) are
+    ignored.
+    """
+    ignore_patterns = shutil.ignore_patterns("__pycache__", ".*")
+    with TemporaryDirectory() as tmpdir:
+        shutil.copytree(pth.join(PKGS_DIR, pkg_name),
+                        pth.join(tmpdir, pkg_name),
+                        ignore=ignore_patterns)
+        new_pkg_path = shutil.make_archive(pkg_name, "zip",
+                                           tmpdir, pkg_name)
 
     return new_pkg_path
 
 
 def push_to_server(pkg_name, password=None):
+    """
+    Upload a package to the univie server
+    """
     if password is None:
         raise ValueError("Password is None. Check email for password")
 
@@ -98,30 +138,21 @@ def push_to_server(pkg_name, password=None):
         print(f"[{str(dt.now())[:19]}]: Pushed to server: {pkg_name}")
 
 
-def print_help_menu():
-    str = """Publish IRDB packages from the IRDB root directory:
-
-    $ python irdb/publish.py -cu <PKG_NAME> ... <PKG_NAME_N> -p <PASSWORD>
-
-    -p <password> : pass the univie server password for uploading zip files
-    -c, --compile : adds all files in a PKG folder to a .zip archive
-    -u, --upload : uploads the PKG .zip archive to the server
-    -h, --help : prints this statement 
-    """
-    print(str)
-
-
 if __name__ == "__main__":
     _pkg_names = []
     if len(sys.argv) > 1:
-        kwargs = {"compile": False, "upload": False}
+        kwargs = {"compile_pkg": False, "upload_pkg": False}
         argv_iter = iter(sys.argv[1:])
         for arg in argv_iter:
             if "-" in arg:
-                if "p" in arg: kwargs["password"] = next(argv_iter)
-                if "c" in arg: kwargs["compile"] = True
-                if "u" in arg: kwargs["upload"] = True
-                if "h" in arg: print_help_menu()
+                if "p" in arg:
+                    kwargs["password"] = next(argv_iter)
+                if "c" in arg:
+                    kwargs["compile_pkg"] = True
+                if "u" in arg:
+                    kwargs["upload"] = True
+                if "h" in arg:
+                    print(HELPSTR)
             else:
                 if arg.lower() == "all":
                     _pkg_names = PKGS.keys()
