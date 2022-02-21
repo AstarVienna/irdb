@@ -5,12 +5,13 @@ object: instrument
 alias: INST
 name: METIS_IMG_LM
 description: base configuration for METIS
-date_modified: 2022-01-17
+date_modified: 2022-02-21
 changes:
   - 2021-12-16 (OC) filter_file_format moved here
   - 2022-01-11 (OC) change default bkg_width to 0
   - 2022-01-12 (OC) change default bkg_width to -1
   - 2022-02-17 (OC) increase spectral_bin_width for imaging
+  - 2022-02-21 (OC) renamed effects
 
 properties:
   pixel_scale: 0.00547         # arcsec / pixel, METIS_1097
@@ -18,14 +19,14 @@ properties:
   filter_file_format: "filters/TC_filter_{}.dat"
 
 effects:
-  - name: metis_img_lm_mirror_list
-    description: list of extra mirrors needed for the LM IMG mode
+  - name: img_lm_optics
+    description: list of extra mirrors in METIS LM imager
     class: SurfaceList
     kwargs:
       filename: LIST_METIS_mirrors_img_lm.dat
 
   - name: filter_wheel
-    description: IMG_LM science filters
+    description: IMG_LM science filters (E-REP-MPIA-MET-1008_1-0)
     class: FilterWheel
     kwargs:
       filter_names:
@@ -55,7 +56,7 @@ effects:
 
   - name: nd_filter_wheel
     class: FilterWheel
-    description: IMG_LM neutral density filters
+    description: IMG_LM neutral density filters (E-REP-MPIA-MET-1008_1-0)
     kwargs:
       filter_names:
         # 11 positions (E-REP-MPIA-MET-1008_1-0)
@@ -72,7 +73,7 @@ effects:
       outer: 56                                # E-REP-MPIA-MET-1008_1-0
       outer_unit: "mm"
 
-  - name: metis_psf_img
+  - name: psf
     description: field constant, wavelength dependent PSF for imaging mode
     class: FieldConstantPSF
     kwargs:
@@ -89,5 +90,5 @@ description: RC simulation parameters which need to change for a METIS run
 
 properties:
   spectral:
-    spectral_bin_width: !!float 1E-3   # microns (spectral bin width)
-    spectral_resolution: 5000
+    spectral_bin_width: !!float 1E-3   # microns, defines fov wavelengths
+    spectral_resolution: 5000          # defines skycalc resolution
