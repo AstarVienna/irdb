@@ -4,7 +4,7 @@
 object: instrument
 alias: INST
 name: METIS_IMG_LM
-description: base configuration for METIS
+description: base configuration for METIS LM band imager
 date_modified: 2022-02-21
 changes:
   - 2021-12-16 (OC) filter_file_format moved here
