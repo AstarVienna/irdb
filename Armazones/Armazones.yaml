@@ -3,9 +3,10 @@ object : atmosphere
 alias : ATMO
 name : armazones
 description : Atmosphere and location details for Cerro Armazones
-date-modified: 2022-01-12
+date-modified: 2022-02-21
 changes:
   - 2022-01-12 (OC) changed spectral_resolution to _bin_width
+  - 2022-02-21 (OC) commented out unused effects for the time being
 
 properties :
     location :      Armazones
@@ -27,7 +28,7 @@ properties :
         filename: "TER_armazones_default_FULL_IMG.dat"
 
 effects :
--   name : armazones_atmo_skycalc_ter_curve
+-   name : skycalc_atmosphere
     description : atmospheric spectra pulled from the skycalc server
     class : SkycalcTERCurve
     include : True
@@ -39,22 +40,22 @@ effects :
         wres : "!SIM.spectral.spectral_resolution"
         wdelta: "!SIM.spectral.spectral_bin_width"
 
--   name : armazones_atmo_dispersion
-    description : atmospheric dispersion
-    class : AtmosphericDispersion
-    include : False
+#-   name : armazones_atmo_dispersion
+#    description : atmospheric dispersion
+#    class : AtmosphericDispersion
+#    include : False
 
 
 ####################### Alternative effects ####################################
--   name : armazones_atmo_default_ter_curve
-    description : atmospheric emission and transmission
-    class : AtmosphericTERCurve
-    include : False
-    kwargs :
-        filename: "!ATMO.spectrum.filename"
-        area: "!TEL.area"
-        rescale_emission:
-            filter_name: "!ATMO.background.filter_name"
-            filename_format: "!INST.filter_file_format"
-            value: "!ATMO.background.value"
-            unit: "!ATMO.background.unit"
+#-   name : armazones_atmo_default_ter_curve
+#    description : atmospheric emission and transmission
+#    class : AtmosphericTERCurve
+#    include : False
+#    kwargs :
+#        filename: "!ATMO.spectrum.filename"
+#        area: "!TEL.area"
+#        rescale_emission:
+#            filter_name: "!ATMO.background.filter_name"
+#            filename_format: "!INST.filter_file_format"
+#            value: "!ATMO.background.value"
+#            unit: "!ATMO.background.unit"
