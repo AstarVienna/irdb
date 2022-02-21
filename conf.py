@@ -1,3 +1,12 @@
+"""
+Configuration file for Sphinx and ReadTheDocs
+
+This file originally lived in docs/source.
+It has been moved into the top level so that all package docs are accessible to
+sphinx
+"""
+
+
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
@@ -22,7 +31,8 @@
 import sys
 import os
 
-sys.path.insert(0, os.path.abspath('../../'))
+sys.path.insert(0, os.path.abspath('/'))
+sys.path.insert(0, os.path.abspath('docs'))
 
 # -- General configuration ------------------------------------------------
 
@@ -34,6 +44,7 @@ sys.path.insert(0, os.path.abspath('../../'))
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'nbsphinx',
     'sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
@@ -48,10 +59,14 @@ extensions = [
 
 # apidoc settings
 numpydoc_show_class_members = False
-apidoc_module_dir = os.path.abspath('../../irdb/')
-apidoc_output_dir = 'reference'
+apidoc_module_dir = os.path.abspath('irdb/')
+apidoc_output_dir = 'docs/source/reference'
 apidoc_separate_modules = True
 apidoc_excluded_paths = ["tests/", "docs/"]
+
+# nbsphinx settings
+nbsphinx_allow_errors = True
+nbsphinx_execute = 'auto'      # auto, never, always
 
 # Matplotlib plot directive config parameters
 plot_html_show_source_link = False
@@ -114,8 +129,8 @@ pygments_style = 'sphinx'
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static', '../../METIS/docs/example_notebooks']
-html_favicon = '_static/logos/T_favicon.png'
+html_static_path = ['docs/source/_static']      # 'METIS/docs/example_notebooks'
+html_favicon = 'docs/source/_static/logos/T_favicon.png'
 
 
 # Custom sidebar templates, must be a dictionary that maps document names
