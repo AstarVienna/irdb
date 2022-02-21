@@ -5,19 +5,20 @@ object: instrument
 alias: INST
 name: METIS
 description: base configuration for METIS
-date_modified: 2022-02-20
+date_modified: 2022-02-21
 changes:
   - 2021-12-16 (OC) temperature changed to align with cfo
   - 2021-12-16 (OC) slit files renamed to include slit width
   - 2022-01-05 (OC) add ADC wheel
   - 2022-02-20 (OC) pupil_transmission now an OBS parameter
+  - 2022-02-21 (OC) name change cfo effect
 
 properties:
   temperature: -206
 
 effects:
-  - name: metis_cfo_surfaces
-    description: surface list for common fore optics
+  - name: common_fore_optics
+    description: surface list for METIS common fore optics
     class: SurfaceList
     kwargs:
       filename: LIST_METIS_mirrors_cfo.dat
@@ -53,7 +54,6 @@ effects:
     kwargs:
       transmission: "!OBS.pupil_transmission"
       minimum_throughput: !!float 0.
-
 
 #  - name : metis_adc_residuals
 #    class : AtmosphericDispersionCorrection
