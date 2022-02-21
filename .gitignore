@@ -10,9 +10,9 @@ _Legacy_packages/
 to_be_processed/
 _TO_BE_PROCESSED/
 
-
 *TEST.fits
 *skycalc_temp.fits
 
 build/
 docs/build/
+inst_pkgs/

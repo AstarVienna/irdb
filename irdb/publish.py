@@ -6,7 +6,6 @@ from datetime import datetime as dt
 import yaml
 import pysftp
 
-
 PKGS_DIR = pth.abspath(pth.join(pth.dirname(__file__), "../"))
 OLD_FILES = pth.join(PKGS_DIR, "_OLD_FILES")
 ZIPPED_DIR = pth.join(PKGS_DIR, "_ZIPPED_PACKAGES")
@@ -16,7 +15,7 @@ with open(pth.join(pth.dirname(__file__), "packages.yaml"), "r") as f:
     PKGS = yaml.full_load(f)
 
 
-def publish(pkg_names=None, compile=True, upload=True):
+def publish(pkg_names=None, compile=True, upload=True, password=None):
     """
     Should be as easy as just calling this function to republish all packages
 
@@ -27,6 +26,7 @@ def publish(pkg_names=None, compile=True, upload=True):
     pkg_names : list
     compile : bool
     upload : bool
+    password : str
 
     """
     if pkg_names is None:
@@ -34,7 +34,7 @@ def publish(pkg_names=None, compile=True, upload=True):
 
     for pkg_name in pkg_names:
         if compile: make_packages(pkg_name)
-        if upload: push_to_server(pkg_name)
+        if upload: push_to_server(pkg_name, password=password)
 
 
 def make_packages(pkg_names=()):
@@ -78,8 +78,11 @@ def zip_package_folder(pkg_name):
     return new_pkg_path
 
 
-def push_to_server(pkg_name):
-    local_path = pth.join(ZIPPED_DIR, pkg_name+".zip")
+def push_to_server(pkg_name, password=None):
+    if password is None:
+        raise ValueError("Password is None. Check email for password")
+
+    local_path = pth.join(ZIPPED_DIR, pkg_name + ".zip")
 
     if pkg_name not in PKGS:
         raise ValueError(f"{pkg_name} was not found in 'irdb/packages.yaml'")
@@ -87,7 +90,7 @@ def push_to_server(pkg_name):
     cnopts = pysftp.CnOpts()
     cnopts.hostkeys = None
     sftp = pysftp.Connection(host="upload.univie.ac.at", username="simcado",
-                             password="M1(aDo(aM", cnopts=cnopts)
+                             password=password, cnopts=cnopts)
     with sftp.cd("html/InstPkgSvr/"):
         if sftp.exists(PKGS[pkg_name]):
             sftp.remove(PKGS[pkg_name])
@@ -97,9 +100,10 @@ def push_to_server(pkg_name):
 
 def print_help_menu():
     str = """Publish IRDB packages from the IRDB root directory:
-    
-python irdb/publish.py -cu <PKG_NAME> ... <PKG_NAME_N>
-    
+
+    $ python irdb/publish.py -cu <PKG_NAME> ... <PKG_NAME_N> -p <PASSWORD>
+
+    -p <password> : pass the univie server password for uploading zip files
     -c, --compile : adds all files in a PKG folder to a .zip archive
     -u, --upload : uploads the PKG .zip archive to the server
     -h, --help : prints this statement 
@@ -111,8 +115,10 @@ if __name__ == "__main__":
     _pkg_names = []
     if len(sys.argv) > 1:
         kwargs = {"compile": False, "upload": False}
-        for arg in sys.argv[1:]:
+        argv_iter = iter(sys.argv[1:])
+        for arg in argv_iter:
             if "-" in arg:
+                if "p" in arg: kwargs["password"] = next(argv_iter)
                 if "c" in arg: kwargs["compile"] = True
                 if "u" in arg: kwargs["upload"] = True
                 if "h" in arg: print_help_menu()
