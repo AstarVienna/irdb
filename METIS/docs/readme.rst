@@ -31,53 +31,81 @@ Prerequisites
 Installation & setup
 --------------------
 
-``pip install scopesim``
+1. Install ``scopesim`` in your python environment::
 
-1. Create a directory where your simulation notebooks will live, e.g. ``~/ScopeSim``
-2. install relevant irdb packages & download example notebooks into this directory
-3. in a Terminal, cd to ~/ScopeSim and execute the notebook by calling ``jupyter notebook filename.ipynb``
-4. follow instruction and explanations in the notebook.
+    $ pip install scopesim
+
+2. Create a directory where your simulation notebooks will live, e.g. ``~/path/to/playing_with_scopesim/``
+3. Install relevant irdb packages & download example notebooks into this directory::
+
+    $ python
+    >> import scopesim
+    >> scopesim.download_packages(["Armazones", "ELT", "METIS"])
+
+4. Download one of the tutorial notebooks (see `Python notebooks`_)
+5. In a Terminal, cd to ~/ScopeSim and execute the notebook by calling::
+
+    $ cd ~/path/to/playing_with_scopesim/
+    $ jupyter notebook filename.ipynb
+
+6. Follow instruction and explanations in the notebook.
 
 
 Python notebooks
 ----------------
 
-Download the example notebooks `from the Github repo
-<https://github.com/AstarVienna/irdb/tree/master/METIS/docs/example_notebooks>`_
-
-Input image and cube files for the notebooks can be `found on our google drive
-<https://drive.google.com/drive/folders/1Lqux93ymgMM_ZXSSUUPMBnow5sgbo-bb?usp=sharing>`_
-
 .. note::
    To download a notebook from Github, either:
-   
+
    - view the raw file and save this disk from the browser, or
    - navigate up one level, then right click the file and save as
 
 
-.. list-table:: Python Notebooks
-   :widths: 25 25 25 25
+**Download the example notebooks** `from the Github repo
+<https://github.com/AstarVienna/irdb/tree/master/METIS/docs/example_notebooks>`_
+
+**Input image and cube files for the notebooks** `can be found here
+<https://www.univie.ac.at/simcado/InstPkgSvr/example_data/>`_
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: List of notebooks for METIS
+
+   example_notebooks/IMG-HL_Tau
+   example_notebooks/Introduction_to_Scopesim_for_METIS
+
+
+
+Scientific use-case notebooks
++++++++++++++++++++++++++++++
+
+.. list-table:: Science case notebooks
+   :widths: 25 75
    :header-rows: 1
 
    * - Name
      - Description
-     - Download Link
-     - Required Data Files
-   * - Imaging with HL Tau
+   * - `Imaging with HL Tau
+       <https://raw.githubusercontent.com/AstarVienna/irdb/master/METIS/docs/example_notebooks/IMG-HL_Tau.ipynb>`_
      - <add description>
-     - `Notebook Link <https://raw.githubusercontent.com/AstarVienna/irdb/master/METIS/docs/example_notebooks/IMG-HL_Tau.ipynb>`_
-     - `HL Tau FITS image <https://drive.google.com/file/d/1LmKUw8wZkpTw2ZSAOn2ykui0q2RGZ2sA/view?usp=sharing>`_
    * - <add title>
      - <add description>
-     - <add notebook link>
-     - <add data files links>
 
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+ScopeSim background notebooks
++++++++++++++++++++++++++++++
 
-   example_notebooks/IMG-HL_Tau
+.. list-table:: Background notebooks
+   :widths: 25 75
+   :header-rows: 1
+
+   * - Name
+     - Description
+   * - `Introduction to ScopeSim
+       <https://raw.githubusercontent.com/AstarVienna/irdb/master/METIS/docs/example_notebooks/Introduction_to_Scopesim_for_METIS.ipynb>`_
+     - <add description>
+
 
 
 Documentation and useful references

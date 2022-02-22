@@ -66,7 +66,11 @@ apidoc_excluded_paths = ["tests/", "docs/"]
 
 # nbsphinx settings
 nbsphinx_allow_errors = True
-nbsphinx_execute = 'auto'      # auto, never, always
+if "F:" in os.getcwd():
+    nbsphinx_execute = "never"
+else:
+    nbsphinx_execute = "always"
+
 
 # Matplotlib plot directive config parameters
 plot_html_show_source_link = False
