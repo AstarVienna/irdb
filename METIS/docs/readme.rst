@@ -54,42 +54,53 @@ Installation & setup
 Python notebooks
 ----------------
 
-Download the example notebooks `from the Github repo
-<https://github.com/AstarVienna/irdb/tree/master/METIS/docs/example_notebooks>`_
-
-Input image and cube files for the notebooks `can be found here
-<https://www.univie.ac.at/simcado/InstPkgSvr/example_data/>`_
-
 .. note::
    To download a notebook from Github, either:
-   
+
    - view the raw file and save this disk from the browser, or
    - navigate up one level, then right click the file and save as
 
+.. toctree::
+   :maxdepth: 2
+   :caption: List of notebooks for METIS
+   :glob:
+   example_notebooks/*.ipynb
 
-.. list-table:: Python Notebooks
-   :widths: 25 25 25 25
+
+Scientific use-case notebooks
++++++++++++++++++++++++++++++
+
+.. list-table:: Science case notebooks
+   :widths: 25 75
    :header-rows: 1
 
    * - Name
      - Description
-     - Download Link
-     - Required Data Files
-   * - Imaging with HL Tau
+   * - `Imaging with HL Tau
+       <https://raw.githubusercontent.com/AstarVienna/irdb/master/METIS/docs/example_notebooks/IMG-HL_Tau.ipynb>`_
      - <add description>
-     - `Notebook Link <https://raw.githubusercontent.com/AstarVienna/irdb/master/METIS/docs/example_notebooks/IMG-HL_Tau.ipynb>`_
-     - `HL Tau FITS image <https://drive.google.com/file/d/1LmKUw8wZkpTw2ZSAOn2ykui0q2RGZ2sA/view?usp=sharing>`_
    * - <add title>
      - <add description>
-     - <add notebook link>
-     - <add data files links>
+
+**Download the example notebooks** `from the Github repo
+<https://github.com/AstarVienna/irdb/tree/master/METIS/docs/example_notebooks>`_
+
+**Input image and cube files for the notebooks** `can be found here
+<https://www.univie.ac.at/simcado/InstPkgSvr/example_data/>`_
 
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
-   :glob:
-   example_notebooks/*.ipynb
+ScopeSim background notebooks
++++++++++++++++++++++++++++++
+
+.. list-table:: Background notebooks
+   :widths: 25 75
+   :header-rows: 1
+
+   * - Name
+     - Description
+   * - `Introduction to ScopeSim
+       <https://raw.githubusercontent.com/AstarVienna/irdb/master/METIS/docs/example_notebooks/Introduction_to_Scopesim_for_METIS.ipynb>`_
+     - <add description>
 
 
 
