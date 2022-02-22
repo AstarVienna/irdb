@@ -60,10 +60,19 @@ Python notebooks
    - view the raw file and save this disk from the browser, or
    - navigate up one level, then right click the file and save as
 
+
+**Download the example notebooks** `from the Github repo
+<https://github.com/AstarVienna/irdb/tree/master/METIS/docs/example_notebooks>`_
+
+**Input image and cube files for the notebooks** `can be found here
+<https://www.univie.ac.at/simcado/InstPkgSvr/example_data/>`_
+
+
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: List of notebooks for METIS
    :glob:
+
    example_notebooks/*.ipynb
 
 
@@ -81,12 +90,6 @@ Scientific use-case notebooks
      - <add description>
    * - <add title>
      - <add description>
-
-**Download the example notebooks** `from the Github repo
-<https://github.com/AstarVienna/irdb/tree/master/METIS/docs/example_notebooks>`_
-
-**Input image and cube files for the notebooks** `can be found here
-<https://www.univie.ac.at/simcado/InstPkgSvr/example_data/>`_
 
 
 ScopeSim background notebooks
