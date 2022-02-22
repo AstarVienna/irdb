@@ -76,8 +76,8 @@ Introductory notebooks
 
    * - Name
      - Description
-   * - _Introduction_to_Scopesim_for_METIS.ipynb: example_notebooks/Introduction_to_Scopesim_for_METIS.ipynb
-       ``Introduction_to_Scopesim_for_METIS.pdf``
+   * - | `Introduction_to_Scopesim_for_METIS.ipynb <example_notebooks/Introduction_to_Scopesim_for_METIS.ipynb>`_
+       | `Introduction_to_Scopesim_for_METIS.pdf <example_notebooks/Introduction_to_Scopesim_for_METIS.pdf>`_
      - Introductory overview of how to run simulations in Scopesim
 
 Scientific use-case notebooks
@@ -89,13 +89,14 @@ Scientific use-case notebooks
 
    * - Name
      - Description
-   * - ``IMG_L_N-examples.ipynb``
+   * - `IMG_L_N-examples.ipynb <example_notebooks/IMG_L_N-examples.ipynb>`_
      - Imaging observations of HL Tau and an AGN model in the L and N band
-   * - ``LSS-YSO_model_simulation.ipynb``
+   * - `LSS-YSO_model_simulation.ipynb <example_notebooks/LSS-YSO_model_simulation.ipynb>`_
      - Long-slit spectroscopy in the L-band of three models of a young stellar object
-   * - ``LSS_AGN-01_preparation.ipynb``
-       ``LSS_AGN-02_simulation.ipynb``
-     - Long-slit spectroscopy in the N-band of an AGN model. The first notebook describes how the input data are prepared for Scopesim, the second runs the simulation.
+   * - | `LSS_AGN-01_preparation.ipynb <example_notebooks/LSS_AGN-01_preparation.ipynb>`_
+       | `LSS_AGN-02_simulation.ipynb <example_notebooks/LSS_AGN-02-simulation.ipynb>`_
+     - | Long-slit spectroscopy in the N-band of an AGN model. The first notebook describes
+       | how the input data are prepared for Scopesim, the second runs the simulation.
 
 Notebooks on individual effects
 +++++++++++++++++++++++++++++++
@@ -108,20 +109,19 @@ These notebooks can be found in ``docs/example_notebooks/demos``.
 
    * - Name
      - Description
-   * - ``demo_adc_wheel.ipynb``
-       example_notebooks/demo_adc_wheel.ipynb
+   * - `demo_adc_wheel.ipynb <example_notebooks/demos/demo_adc_wheel.ipynb>`_
      - How to use the atmospheric dispersion correctors.
-   * - ``demo_auto_exposure.ipynb``
+   * - `demo_auto_exposure.ipynb <example_notebooks/demos/demo_auto_exposure.ipynb>`_
      - How to select `dit`/`ndit` automatically.
-   * - ``demo_chopping_and_nodding.ipynb``
+   * - `demo_chopping_and_nodding.ipynb <example_notebooks/demos/demo_chopping_and_nodding.ipynb>`_
      - How to produce chop-nod difference images in the N band.
-   * - ``demo_detector_modes.ipynb``
+   * - `demo_detector_modes.ipynb <example_notebooks/demos/demo_detector_modes.ipynb>`_
      - How to set detector readout modes.
-   * - ``demo_filter_wheel.ipynb``
+   * - `demo_filter_wheel.ipynb <example_notebooks/demos/demo_filter_wheel.ipynb>`_
      - How to use the filter wheel(s).
-   * - ``demo_lss_simple.ipynb``
+   * - `demo_lss_simple.ipynb <example_notebooks/demos/demo_lss_simple.ipynb>`_
      - Basic procedure for long-slit spectroscopy.
-   * - ``demo_slit_wheel.ipynb``
+   * - `demo_slit_wheel.ipynb <example_notebooks/demos/demo_slit_wheel.ipynb>`_
      - How to use the slit wheel for spectroscopy (and imaging)
 
 Documentation and useful references
