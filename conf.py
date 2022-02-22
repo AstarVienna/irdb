@@ -69,7 +69,7 @@ nbsphinx_allow_errors = True
 if "F:" in os.getcwd():
     nbsphinx_execute = "never"
 else:
-    nbsphinx_execute = "always"
+    nbsphinx_execute = "never"
 
 
 # Matplotlib plot directive config parameters
@@ -128,7 +128,7 @@ pygments_style = 'sphinx'
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
-# html_theme_options = {}
+html_theme_options = {"body_max_width": "900px"}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
