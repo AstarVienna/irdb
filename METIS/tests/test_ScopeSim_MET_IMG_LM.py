@@ -133,7 +133,7 @@ class TestImgLMBackgroundLevels:
 
         metis.observe(empty_sky())
 
-        if not PLOTS:
+        if PLOTS:
             plt.figure(figsize=(10, 5))
             fov = metis.fov_manager.fovs[0]
             for field in fov.fields[1:]:
@@ -215,7 +215,7 @@ class TestSourceFlux:
         sys_trans = metis.optics_manager.system_transmission
         one_jy_phs = hmbp.in_one_jansky(sys_trans).value * 978
 
-        if not PLOTS:
+        if PLOTS:
             plt.imshow(img[1024 - n:1024 + n, 1024 - n:1024 + n])  # norm=LogNorm()
             plt.show()
 
@@ -247,8 +247,9 @@ class TestSourceFlux:
         metis.observe(src)
         img = metis.image_planes[0].data
 
-        plt.imshow(img)
-        plt.show()
+        if PLOTS:
+            plt.imshow(img)
+            plt.show()
 
 
 def simulate_point_source(plot=False):
