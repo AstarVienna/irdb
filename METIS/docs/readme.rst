@@ -71,9 +71,10 @@ Python notebooks
 .. toctree::
    :maxdepth: 1
    :caption: List of notebooks for METIS
-   :glob:
 
-   example_notebooks/*.ipynb
+   example_notebooks/IMG-HL_Tau
+   example_notebooks/Introduction_to_Scopesim_for_METIS
+
 
 
 Scientific use-case notebooks
