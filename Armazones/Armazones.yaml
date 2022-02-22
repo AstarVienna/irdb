@@ -36,6 +36,7 @@ effects :
         wmin : "!SIM.spectral.wave_min"
         wmax : "!SIM.spectral.wave_max"
         wunit : um
+        wgrid_mode: fixed_spectral_resolution         # ['fixed_spectral_resolution','fixed_wavelength_step']
         wres : "!SIM.spectral.spectral_resolution"
         wdelta: "!SIM.spectral.spectral_bin_width"
 
