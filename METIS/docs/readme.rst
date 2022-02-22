@@ -31,12 +31,24 @@ Prerequisites
 Installation & setup
 --------------------
 
-``pip install scopesim``
+1. Install ``scopesim`` in your python environment::
 
-1. Create a directory where your simulation notebooks will live, e.g. ``~/ScopeSim``
-2. install relevant irdb packages & download example notebooks into this directory
-3. in a Terminal, cd to ~/ScopeSim and execute the notebook by calling ``jupyter notebook filename.ipynb``
-4. follow instruction and explanations in the notebook.
+    $ pip install scopesim
+
+2. Create a directory where your simulation notebooks will live, e.g. ``~/path/to/playing_with_scopesim/``
+3. Install relevant irdb packages & download example notebooks into this directory::
+
+    $ python
+    >> import scopesim
+    >> scopesim.download_packages(["Armazones", "ELT", "METIS"])
+
+4. Download one of the tutorial notebooks (see `Python notebooks`_)
+5. In a Terminal, cd to ~/ScopeSim and execute the notebook by calling::
+
+    $ cd ~/path/to/playing_with_scopesim/
+    $ jupyter notebook filename.ipynb
+
+6. Follow instruction and explanations in the notebook.
 
 
 Python notebooks
@@ -46,7 +58,7 @@ Download the example notebooks `from the Github repo
 <https://github.com/AstarVienna/irdb/tree/master/METIS/docs/example_notebooks>`_
 
 Input image and cube files for the notebooks `can be found here
-<https://drive.google.com/drive/folders/1Lqux93ymgMM_ZXSSUUPMBnow5sgbo-bb?usp=sharing>`_
+<https://www.univie.ac.at/simcado/InstPkgSvr/example_data/>`_
 
 .. note::
    To download a notebook from Github, either:
@@ -76,8 +88,9 @@ Input image and cube files for the notebooks `can be found here
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+   :glob:
+   example_notebooks/*.ipynb
 
-   example_notebooks/IMG-HL_Tau
 
 
 Documentation and useful references
