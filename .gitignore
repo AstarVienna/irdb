@@ -9,6 +9,7 @@ _Legacy_packages/
 *ezphp.exe
 to_be_processed/
 _TO_BE_PROCESSED/
+_REPORTS/
 .ipynb_checkpoints/
 
 *TEST.fits
