@@ -45,7 +45,7 @@ Python notebooks
 Download the example notebooks `from the Github repo
 <https://github.com/AstarVienna/irdb/tree/master/METIS/docs/example_notebooks>`_
 
-Input image and cube files for the notebooks can be `found on our google drive
+Input image and cube files for the notebooks `can be found here
 <https://drive.google.com/drive/folders/1Lqux93ymgMM_ZXSSUUPMBnow5sgbo-bb?usp=sharing>`_
 
 .. note::
