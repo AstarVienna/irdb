@@ -72,6 +72,7 @@ Introductory notebooks
 
 .. list-table::
    :widths: 25 75
+   :width: 900px
    :header-rows: 1
 
    * - Name
@@ -85,6 +86,7 @@ Scientific use-case notebooks
 
 .. list-table::
    :widths: 25 75
+   :width: 900px
    :header-rows: 1
 
    * - Name
@@ -105,6 +107,7 @@ These notebooks can be found in ``docs/example_notebooks/demos``.
 
 .. list-table::
    :widths: 25 75
+   :width: 900px
    :header-rows: 1
 
    * - Name
