@@ -69,7 +69,7 @@ nbsphinx_allow_errors = True
 if "F:" in os.getcwd():
     nbsphinx_execute = "never"
 else:
-    nbsphinx_execute = "never"
+    nbsphinx_execute = "always"
 
 
 # Matplotlib plot directive config parameters
