@@ -1,5 +1,6 @@
-# yaml extension for METIS long-slit spectroscopy
 ---
+## METIS long-slit spectroscopy
+
 object: instrument
 alias: INST
 name: METIS_LSS
@@ -9,22 +10,16 @@ changes:
   - 2022-01-12 (OC) changed spectral_resolution to _bin_width
 
 properties:
-    decouple_detector_from_sky_headers: True
+  decouple_detector_from_sky_headers: True  # needed for slit spectroscopy
 
 effects:
-  #  - name: lss_mode_optics
-  #    description: list of extra optical elements for LSS
-  #    class: SurfaceList
-  #    kwargs:
-  #      filename: LIST_METIS_mirrors_lss_lm.dat
-
   #  - name: blaze_function
   #    description: grating efficiency
   #    class: TERCurve
   #    kwargs:
   #      filename: TER_blaze_L.dat
 
-  - name: lss_spectral_traces
+  - name: spectral_traces
     description: list of spectral order trace geometry on the focal plane
     class: SpectralTraceList
     kwargs:
@@ -32,7 +27,6 @@ effects:
       wave_colname: "wavelength"
       s_colname: "xi"
       col_number_start: 1
-      decouple_sky_detector_headers: True
 
 ---
 ### default simulation parameters needed for a METIS simulation
@@ -43,5 +37,5 @@ description: RC simulation parameters which need to change for a METIS run
 
 properties:
   spectral:
-    spectral_bin_width: !!float 5E-4   # microns (spectral bin width)
-    spectral_resolution: 5000
+    spectral_bin_width: !!float 5E-4   # microns, defines fov wavelengths
+    spectral_resolution: 5000          # defines skycalc resolution
