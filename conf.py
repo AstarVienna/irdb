@@ -89,8 +89,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Instrument Reference Database'
-copyright = '2019, Kieran Leschinski'
-author = 'Kieran Leschinski'
+copyright = '2019, A*Vienna Software Team'
+author = 'Kieran Leschinski, Oliver Czoske'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -181,7 +181,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'InstrumentReferenceDatabase.tex', 'Instrument Reference Database Documentation',
-     'Kieran Leschinski', 'manual'),
+     'Kieran Leschinski, Oliver Czoske', 'manual'),
 ]
 
 
