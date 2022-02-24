@@ -53,23 +53,54 @@ extensions = [
     'sphinx.ext.viewcode',
     # 'jupyter_sphinx.execute',
     'numpydoc',
-    'sphinxcontrib.apidoc',
+    # 'sphinxcontrib.apidoc',
     'matplotlib.sphinxext.plot_directive',
 ]
 
-# apidoc settings
+# numpydoc settings
 numpydoc_show_class_members = False
-apidoc_module_dir = os.path.abspath('irdb/')
-apidoc_output_dir = 'docs/source/reference'
-apidoc_separate_modules = True
-apidoc_excluded_paths = ["tests/", "docs/"]
+
+# apidoc settings
+# apidoc_module_dir = os.path.abspath('irdb/')
+# apidoc_output_dir = 'docs/source/reference'
+# apidoc_separate_modules = True
+# apidoc_excluded_paths = ["tests/", "docs/"]
 
 # nbsphinx settings
 nbsphinx_allow_errors = True
 if "F:" in os.getcwd():
-    nbsphinx_execute = "never"
+    nbsphinx_execute = "always"
 else:
     nbsphinx_execute = "always"
+
+
+def add_hidden_cell_to_ipynb_files():
+    import glob
+    old_string = '''"cells": ['''
+    new_string = '''"cells": [
+  {
+    "cell_type": "code",
+    "execution_count": null,
+    "metadata": { "nbsphinx": "hidden" },
+    "outputs": [],
+    "source": [
+      "import os",
+      "import scopesim as sim",
+      "if os.environ.get(\"READTHEDOCS\") == \"True\" or \"F:\" in os.getcwd():",
+      "    sim.rc.__currsys__[\"!SIM.file.local_packages_path\"] = os.path.abspath(\"../../../\")",
+    ]
+  },'''
+    paths = glob.glob("./**/*.ipynb", recursive=True)
+    for path in paths[:1]:
+        with open(path, "r+") as f:
+            contents = f.read()
+            if 'os.environ.get("READTHEDOCS")' not in contents:
+                contents = contents.replace(old_string, new_string)
+                f.seek(0)
+                f.write(contents)
+
+
+add_hidden_cell_to_ipynb_files()
 
 
 # Matplotlib plot directive config parameters
