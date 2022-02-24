@@ -66,7 +66,11 @@ apidoc_excluded_paths = ["tests/", "docs/"]
 
 # nbsphinx settings
 nbsphinx_allow_errors = True
-nbsphinx_execute = 'auto'      # auto, never, always
+if "F:" in os.getcwd():
+    nbsphinx_execute = "never"
+else:
+    nbsphinx_execute = "always"
+
 
 # Matplotlib plot directive config parameters
 plot_html_show_source_link = False
@@ -85,8 +89,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Instrument Reference Database'
-copyright = '2019, Kieran Leschinski'
-author = 'Kieran Leschinski'
+copyright = '2019, A*Vienna Software Team'
+author = 'Kieran Leschinski, Oliver Czoske'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -124,7 +128,7 @@ pygments_style = 'sphinx'
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
-# html_theme_options = {}
+html_theme_options = {"body_max_width": "900px"}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -177,7 +181,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'InstrumentReferenceDatabase.tex', 'Instrument Reference Database Documentation',
-     'Kieran Leschinski', 'manual'),
+     'Kieran Leschinski, Oliver Czoske', 'manual'),
 ]
 
 
