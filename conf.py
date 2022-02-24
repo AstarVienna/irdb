@@ -71,7 +71,7 @@ nbsphinx_allow_errors = True
 if "F:" in os.getcwd():
     nbsphinx_execute = "always"
 else:
-    nbsphinx_execute = "always"
+    nbsphinx_execute = "never"
 
 
 def add_hidden_cell_to_ipynb_files():
@@ -81,7 +81,7 @@ def add_hidden_cell_to_ipynb_files():
   {
     "cell_type": "code",
     "execution_count": null,
-    "metadata": { "nbsphinx": "hidden" },
+    "metadata": {},
     "outputs": [],
     "source": [
       "import os",
