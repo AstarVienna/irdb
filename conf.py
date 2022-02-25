@@ -69,7 +69,7 @@ numpydoc_show_class_members = False
 # nbsphinx settings
 nbsphinx_allow_errors = True
 if "F:" in os.getcwd():
-    nbsphinx_execute = "always"
+    nbsphinx_execute = "never"
 else:
     nbsphinx_execute = "never"
 
@@ -81,7 +81,7 @@ def add_hidden_cell_to_ipynb_files():
   {
     "cell_type": "code",
     "execution_count": null,
-    "metadata": {},
+    "metadata": { "nbsphinx": "hidden" },
     "outputs": [],
     "source": [
       "import os",
