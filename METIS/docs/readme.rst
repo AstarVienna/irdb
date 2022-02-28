@@ -56,7 +56,7 @@ Installation & setup
 
 4. The METIS package includes a number of tutorial notebooks in the directory ``./inst_pkgs/METIS/docs/example_notebooks/`` (see `Python notebooks`_).
 
-   **Copy notebooks to the working directory to run them. I.e. to ``./`` **::
+   Copy notebooks to the working directory (i.e. ``./``) to run them.::
 
     $ cp ./inst_pkgs/METIS/docs/example_notebooks/<Notebook-Name.ipynb> .
 
@@ -65,6 +65,8 @@ Installation & setup
     $ jupyter notebook <filename.ipynb>
 
 6. Follow instructions and explanations in the notebook. Some notebooks use example data; the commands to download these data from the scopesim server are included in the notebooks.
+
+You can then edit the notebooks and use them as a starting point for your own simulations.
 
 
 Python notebooks
