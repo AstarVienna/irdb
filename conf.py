@@ -101,7 +101,7 @@ def add_hidden_cell_to_ipynb_files():
                 f.seek(0)
                 f.write(contents)
 
-add_hidden_cell_to_ipynb_files()
+# add_hidden_cell_to_ipynb_files()
 
 # Matplotlib plot directive config parameters
 plot_html_show_source_link = False
