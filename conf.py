@@ -68,6 +68,8 @@ numpydoc_show_class_members = False
 
 # nbsphinx settings
 nbsphinx_allow_errors = True
+nbsphinx_execute = "never"
+
 if "F:" in os.getcwd():
     nbsphinx_execute = "never"
 else:
@@ -84,24 +86,22 @@ def add_hidden_cell_to_ipynb_files():
     "metadata": { "nbsphinx": "hidden" },
     "outputs": [],
     "source": [
-      "import os",
-      "import scopesim as sim",
+      "import os, scopesim as sim",
       "if os.environ.get(\"READTHEDOCS\") == \"True\" or \"F:\" in os.getcwd():",
-      "    sim.rc.__currsys__[\"!SIM.file.local_packages_path\"] = os.path.abspath(\"../../../\")",
+      "    sim.rc.__config__[\"!SIM.file.local_packages_path\"] = os.path.abspath(\"../../../\")",
     ]
   },'''
     paths = glob.glob("./**/*.ipynb", recursive=True)
-    for path in paths[:1]:
+    for path in paths:
         with open(path, "r+") as f:
             contents = f.read()
+            # check if the hidden cell has already been added to notebook
             if 'os.environ.get("READTHEDOCS")' not in contents:
                 contents = contents.replace(old_string, new_string)
                 f.seek(0)
                 f.write(contents)
 
-
-add_hidden_cell_to_ipynb_files()
-
+# add_hidden_cell_to_ipynb_files()
 
 # Matplotlib plot directive config parameters
 plot_html_show_source_link = False
