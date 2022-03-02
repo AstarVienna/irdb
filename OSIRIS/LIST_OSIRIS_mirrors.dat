@@ -1,0 +1,14 @@
+# author : Kieran Leschinski
+# date_created : 2022-03-02
+# date_modified : 2022-03-02
+# status : unknown
+# type : mirror:list
+# outer_unit : m
+# inner_unit : m
+# angle_unit : degree
+# temperature_unit : deg_C
+# changes:
+#    - 2022-03-02 (KL) intial commit
+#
+name                        outer inner angle temperature        action       filename
+OSIRIS_total_transmission   0.0   0.0   15    !ATMO.temperature  transmission unity.dat

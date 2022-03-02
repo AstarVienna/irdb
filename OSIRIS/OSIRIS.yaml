@@ -13,4 +13,27 @@ changes:
 properties: {}
 
 
-effects: []
+effects:
+  - name: grating_efficiency
+    description: OSIRIS grating efficiency curve
+    class: SurfaceList
+    kwargs:
+      filename: LIST_OSIRIS_mirrors.dat
+
+  - name: filter
+    description: OSIRIS filter curve from the Spanish VO
+    class: SpanishVOFilterCurve
+    kwargs:
+      observatory: GTC
+      instrument: OSIRIS
+      filter_name: "!OBS.filter_name"
+      include: False
+
+  - name: OSIRIS_detector_qe
+    class: QuantumEfficiencyCurve
+    kwargs:
+      filename: QE_OSIRIS_new_detector.dat          # fix formatting in file
+
+
+
+

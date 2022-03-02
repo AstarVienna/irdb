@@ -19,7 +19,7 @@ packages :
 yamls :
 - LaPalma.yaml
 - GTC.yaml
-- default.yaml.yaml
+- MAAT.yaml
 - OSIRIS.yaml
 
 properties :
@@ -30,6 +30,7 @@ properties :
   pupil_angle : 0
   dit : 60
   ndit : 1
+  filter_name : None
 
 mode_yamls :
 - object : instrument
