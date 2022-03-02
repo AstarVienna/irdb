@@ -1,12 +1,14 @@
-### Config file for the Armazones optical element
+### Config file for the La Palma optical element
+
 object : atmosphere
 alias : ATMO
 name : LaPalma
-description : Atmosphere and location details for La Palma
-date-created: 2022-02-17
-date-modified: 2022-02-17
+description : Atmospheric characteristics and location details for La Palma
+date_created: 2022-02-17
+date_modified: 2022-02-17
 changes:
   - 2022-02-17 (KL) Created file based on Armazones.yaml
+
 
 properties :
     location :      lasilla
@@ -38,7 +40,7 @@ effects :
         wres : "!SIM.spectral.spectral_resolution"
         wdelta: "!SIM.spectral.spectral_bin_width"
 
--   name : lapalma_atmo_dispersion
-    description : atmospheric dispersion
-    class : AtmosphericDispersion
-    include : False
+#-   name : lapalma_atmo_dispersion
+#    description : atmospheric dispersion
+#    class : AtmosphericDispersion
+#    include : False

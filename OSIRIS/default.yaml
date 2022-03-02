@@ -1,0 +1,63 @@
+### default observation parameters needed for an OSIRIS simulation
+
+object : configuration
+alias : OBS
+name : OSIRIS_default_configuration
+description : default parameters needed for a OSIRIS simulation
+date_created: 2022-03-02
+date_modified: 2022-03-02
+changes:
+  - 2022-03-02 (KL) Created file based on METIS default.yaml
+
+
+packages :
+- LaPalma
+- GTC
+- MAAT
+- OSIRIS
+
+yamls :
+- LaPalma.yaml
+- GTC.yaml
+- default.yaml.yaml
+- OSIRIS.yaml
+
+properties :
+  modes : ["IMG"]
+  airmass : 1.2
+  declination : -30
+  hour_angle : 0
+  pupil_angle : 0
+  dit : 60
+  ndit : 1
+
+mode_yamls :
+- object : instrument
+  alias: OBS
+  name : IMG
+  description : "OSIRIS imaging mode system"
+  yamls :
+  - OSIRIS_IMG.yaml
+
+
+
+---
+### default simulation parameters needed for a METIS simulation
+object: simulation
+alias: SIM
+name: OSIRIS_simulation_parameters
+description: RC simulation parameters which need to change for a OSIRIS run
+
+properties:
+  random:
+    seed: None                         # 9001
+
+  spectral:
+    wave_min: 0.3
+    wave_mid: 0.6
+    wave_max: 1.0
+
+  computing:
+    spline_order: 1
+    preload_field_of_views: True
+

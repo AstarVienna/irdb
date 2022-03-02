@@ -1,0 +1,16 @@
+### OSIRIS instrument
+
+object: instrument
+alias: INST
+name: OSIRIS
+description : The OSIRIS common optics
+date_created: 2022-03-02
+date_modified: 2022-03-02
+changes:
+  - 2022-03-02 (KL) Created file based on METIS.yaml
+
+
+properties: {}
+
+
+effects: []

@@ -1,8 +1,14 @@
 ### GTC telescope
+
 object: telescope
 alias: TEL
 name: GTC
-description : The 10.4m Gran Telescopio Canarias
+description : The 10.4m Gran Telescopio Canarias optical system
+date_created: 2022-03-02
+date_modified: 2022-03-02
+changes:
+  - 2022-02-17 (KL) Created file based on ELT.yaml
+
 
 properties:
   temperture: "!ATMO.temperature"
@@ -28,5 +34,5 @@ effects:
   description: Generic GTC PSF
   class: FieldConstantPSF
   kwargs:
-    filename: GTC_poppy_PSF.fits
-    warning: "Default PSF was generated Poppy for a basic GTC optical system"
+    filename: PSF_GTC_OSIRIS.fits
+    warning: "Default PSF for r-band from GTC website"

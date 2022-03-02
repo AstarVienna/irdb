@@ -1,0 +1,16 @@
+### GTC telescope
+
+object: relay_optics
+alias: RO
+name: MAAT
+description : The MAAT image slicer module
+date_created: 2022-03-02
+date_modified: 2022-03-02
+changes:
+  - 2022-03-02 (KL) Created file based on MAORY.yaml
+
+
+properties: {}
+
+
+effects: []
