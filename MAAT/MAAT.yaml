@@ -11,8 +11,15 @@ changes:
 
 
 effects:
-  name:
-  description:
-  class: TERCurve
-  kwargs:
-    filename: MAAT_transtx
+  - name: maat_transmission
+    description: Optimistic transmission curve for MAAT
+    class: TERCurve
+    kwargs:
+      filename: MAAT_trans.txt
+
+  - name: spectral_traces
+    description: MAAT spectral trace geometry on the detector
+    class: SpectralTraceList
+    include: False
+    kwargs:
+      filename: None

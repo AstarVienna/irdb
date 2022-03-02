@@ -16,10 +16,24 @@ properties:
 
 effects:
   - name: grating_efficiency
-    description: OSIRIS grating efficiency curve
-    class: SurfaceList
-    kwargs:
-      filename: LIST_OSIRIS_mirrors.dat
+    description: OSIRIS grating efficiency curves, piggybacking on FilterWheel
+    class: FilterWheel
+      kwargs:
+        filter_names:
+          - R300B
+          - R300R
+          - R500B
+          - R500R
+          - R1000B
+          - R1000R
+          - R2000B
+          - R2500I
+          - R2500R
+          - R2500U
+          - R2500V
+        filename_format: "gratings/{}.txt"
+        current_filter: "!OBS.grating_name"
+        minimum_throughput: !!float 0.
 
   - name: filter
     description: OSIRIS filter curve from the Spanish VO
