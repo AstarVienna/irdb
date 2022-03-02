@@ -1,4 +1,4 @@
-### GTC telescope
+### MAAT image slicer
 
 object: relay_optics
 alias: RO
@@ -11,3 +11,8 @@ changes:
 
 
 effects:
+  name:
+  description:
+  class: TERCurve
+  kwargs:
+    filename: MAAT_transtx

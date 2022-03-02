@@ -1,3 +1,14 @@
+# author : NN
+# source : Roy van Boekel
+# date_created : 2018-07
+# date_modified : 2020-10-29
+# status :
+# wavelength_unit : angstrom
+# comment : CO_ref from Roys wish filter list, July 2018
+# changes :
+#     - 2020-10-29 : (OC) correct header syntax, wavelength_unit
+#
+wavelength               transmission
 3.600000000000000000e+03 8.788919592031335659e-01
 3.610000000000000000e+03 8.812589257952022637e-01
 3.620000000000000000e+03 8.835738565884634355e-01

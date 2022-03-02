@@ -38,7 +38,9 @@ mode_yamls :
   name : IMG
   description : "OSIRIS imaging mode system"
   yamls :
-  - OSIRIS_IMG.yaml
+    - OSIRIS_IMG.yaml
+  properties:
+
 
 
 
@@ -53,10 +55,11 @@ properties:
   random:
     seed: None                         # 9001
 
-  spectral:
+  spectral:   # in [um]
     wave_min: 0.3
     wave_mid: 0.6
     wave_max: 1.0
+    spectral_bin_width: 0.00001       # 0.1 Angstrom
 
   computing:
     spline_order: 1

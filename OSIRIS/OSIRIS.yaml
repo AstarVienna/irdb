@@ -10,7 +10,8 @@ changes:
   - 2022-03-02 (KL) Created file based on METIS.yaml
 
 
-properties: {}
+properties:
+  pixel_scale: 0.254     # [arcsec / pixel]
 
 
 effects:

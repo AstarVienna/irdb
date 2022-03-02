@@ -24,7 +24,7 @@ properties :
     pixel_scale :   "!INST.pixel_scale"
     background :
         filter_name : V
-        value: 20.
+        value: 21.9
         unit: mag
 
 effects :

@@ -20,11 +20,11 @@ effects:
   kwargs:
     array_dict: {"name": ["combined_GTC"],
                  "outer": [10.4],
-                 "inner": [1.5],
+                 "inner": [0.],
                  "angle": [0.],
                  "temperature": [0.],
                  "action": ["reflection"],
-                 "filename": ["reflectivity_GTC.dat"]}
+                 "filename": ["unity.dat"]}       # add this file
     outer_unit: m
     inner_unit: m
     angle_unit: deg
