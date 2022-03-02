@@ -12,28 +12,31 @@ changes:
 
 properties:
   pixel_scale: 0.254     # [arcsec / pixel]
+  plate_scale: 16.93333  # [arcsec / mm]
 
 
 effects:
   - name: grating_efficiency
     description: OSIRIS grating efficiency curves, piggybacking on FilterWheel
     class: FilterWheel
-      kwargs:
-        filter_names:
-          - R300B
-          - R300R
-          - R500B
-          - R500R
-          - R1000B
-          - R1000R
-          - R2000B
-          - R2500I
-          - R2500R
-          - R2500U
-          - R2500V
-        filename_format: "gratings/{}.txt"
-        current_filter: "!OBS.grating_name"
-        minimum_throughput: !!float 0.
+    include: True
+    kwargs:
+      filter_names:
+        - unity
+        - R300B
+        - R300R
+        - R500B
+        - R500R
+        - R1000B
+        - R1000R
+        - R2000B
+        - R2500I
+        - R2500R
+        - R2500U
+        - R2500V
+      filename_format: "gratings/{}.txt"
+      current_filter: "!OBS.grating_name"
+      minimum_throughput: !!float 0.
 
   - name: filter
     description: OSIRIS filter curve from the Spanish VO
@@ -49,6 +52,22 @@ effects:
     kwargs:
       filename: QE_OSIRIS_new_detector.dat          # fix formatting in file
 
-
-
-
+  - name: osiris_4k_detector
+    class: DetectorList
+    kwargs:
+      array_dict:
+        id: [1]
+        x_cen: [0]
+        y_cen: [0]
+        x_size: [4096]
+        y_size: [4096]
+        pixel_size: [0.015]
+        angle: [0.]
+        gain: [1.0]
+      x_cen_unit : mm
+      y_cen_unit : mm
+      x_len_unit : mm
+      y_len_unit : mm
+      pixsize_unit : mm
+      angle_unit : deg
+      gain_unit : electron/adu

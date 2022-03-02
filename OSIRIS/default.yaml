@@ -19,7 +19,6 @@ packages :
 yamls :
 - LaPalma.yaml
 - GTC.yaml
-- MAAT.yaml
 - OSIRIS.yaml
 
 properties :
@@ -30,18 +29,34 @@ properties :
   pupil_angle : 0
   dit : 60
   ndit : 1
-  filter_name : None
+  grating_name : None
 
 mode_yamls :
 - object : instrument
   alias: OBS
   name : IMG
-  description : "OSIRIS imaging mode system"
-  yamls :
-    - OSIRIS_IMG.yaml
+  description : "OSIRIS imaging mode"
   properties:
+    filter_name : sdss_r
+    grating_name : unity
 
+- object : instrument
+  alias: OBS
+  name : LSS
+  description : "OSIRIS Long-Slit mode"
+  properties:
+    filter_name : None
+    grating_name : None
 
+- object : instrument
+  alias: OBS
+  name : MAAT
+  description : "OSIRIS IFU (MAAT) mode"
+  yamls :
+    - MAAT.yaml
+  properties:
+    filter_name : None
+    grating_name : None
 
 
 ---
@@ -56,7 +71,7 @@ properties:
     seed: None                         # 9001
 
   spectral:   # in [um]
-    wave_min: 0.3
+    wave_min: 0.3001
     wave_mid: 0.6
     wave_max: 1.0
     spectral_bin_width: 0.00001       # 0.1 Angstrom
