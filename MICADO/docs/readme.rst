@@ -107,6 +107,7 @@ Contact points
 .. list-table:: Python Notebooks
    :widths: 33 33 33
    :header-rows: 1
+
 * - simmetis.astro@univie.ac.at
   - oliver.czoske@univie.ac.at
   - kieran.leschinski@univie.ac.at

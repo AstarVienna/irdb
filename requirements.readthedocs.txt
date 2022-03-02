@@ -9,9 +9,8 @@ beautifulsoup4
 pyyaml
 pysftp
 
-git+https://github.com/AstarVienna/ScopeSim.git@master_rtd
-
-# scopesim
+# git+https://github.com/AstarVienna/ScopeSim.git@master_rtd
+scopesim
 
 sphinx>=4.3.0
 sphinx-rtd-theme>=0.5.1

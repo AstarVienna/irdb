@@ -52,13 +52,21 @@ Installation & setup
     >> import scopesim
     >> scopesim.download_package(["instruments/METIS", "telescopes/ELT", "locations/Armazones"])
 
-   This will install the packages in the subdirectory ``inst_pkgs``.
-4. The METIS package includes a number of tutorial notebooks in the directory        ``inst_pkgs/METIS/docs/example_notebooks/`` (see `Python notebooks`_). Copy notebooks to the working directory to run them.
+   This will install the packages in the subdirectory ``./inst_pkgs``.
+
+4. The METIS package includes a number of tutorial notebooks in the directory ``./inst_pkgs/METIS/docs/example_notebooks/`` (see `Python notebooks`_).
+
+   Copy notebooks to the working directory (i.e. ``./``) to run them.::
+
+    $ cp ./inst_pkgs/METIS/docs/example_notebooks/<Notebook-Name.ipynb> .
+
 5. In a terminal, execute the notebook by calling::
 
     $ jupyter notebook <filename.ipynb>
 
 6. Follow instructions and explanations in the notebook. Some notebooks use example data; the commands to download these data from the scopesim server are included in the notebooks.
+
+You can then edit the notebooks and use them as a starting point for your own simulations.
 
 
 Python notebooks
