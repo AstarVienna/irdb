@@ -73,7 +73,7 @@ nbsphinx_execute = "never"
 if "F:" in os.getcwd():
     nbsphinx_execute = "never"
 else:
-    nbsphinx_execute = "always"
+    nbsphinx_execute = "never"
 
 
 def add_hidden_cell_to_ipynb_files():
