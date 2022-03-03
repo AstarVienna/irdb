@@ -9,7 +9,6 @@ Introduction
 ------------
 The new METIS data simulator is based on the generic simulator software Scopesim, a descendant of the older SimCado/SimMETIS interface. METIS itself is handled as an instrument package that contains configuration files for the various instrument modes as well as data files describing the components of the instruments.
 The new METIS data simulator currently supports the imaging and long-slit modes. The LM-band high-resolution IFU (LMS) mode will be offered soon.
-The old data simulator, `SimMETIS v0.3 <https://metis.strw.leidenuniv.nl/simmetis/>`_, can still be used for simulating LMS observations.
 
 
 Prerequisites
