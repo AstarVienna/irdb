@@ -149,6 +149,7 @@ Documentation and useful references
 
 Contact points
 --------------
+Slack channel: `#simulator_support <https://elt-metis.slack.com/archives/C02SZUL1ME1>`_
 
 - simmetis.astro@univie.ac.at
 
