@@ -71,7 +71,10 @@ You can then edit the notebooks and use them as a starting point for your own si
 Python notebooks
 ----------------
 
-These notebooks can be found in the METIS instrument package in ``docs/example_notebooks``.
+These notebooks can be found either:
+
+- [locally] in the METIS instrument package in ``docs/example_notebooks``, or
+- [download] in the <METIS/docs section of the IRDB Github repository <https://github.com/AstarVienna/irdb/tree/master/METIS/docs/example_notebooks>`_ 
 
 
 Introductory notebooks
