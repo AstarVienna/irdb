@@ -74,7 +74,7 @@ if "F:" in os.getcwd():
     nbsphinx_execute = "never"
 else:
     nbsphinx_execute = "never"
-
+# add_hidden_cell_to_ipynb_files()
 
 def add_hidden_cell_to_ipynb_files():
     import glob
