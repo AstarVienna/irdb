@@ -77,6 +77,25 @@ These notebooks can be found either:
 - [download] in the `METIS/docs section of the IRDB Github repository <https://github.com/AstarVienna/irdb/tree/master/METIS/docs/example_notebooks>`_ 
 
 
+.. warning::
+   Notebooks should be run in your working directory, **NOT** directly in the
+   ``docs/example_notebooks`` folder. Please copy the desired notebook out of
+   this folder.
+
+Ideally your folder structure should look like this::
+
+    working-dir
+    |- <desired notebook>.iypnb
+    |
+    |- inst_pkgs
+      |- METIS
+      |  |- docs
+      |     |- example_notebooks
+      |        |- <desired notebook>.iypnb      # copy out to working-dir
+      |- ELT
+      |- Armazones
+
+
 Introductory notebooks
 ++++++++++++++++++++++
 
