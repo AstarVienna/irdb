@@ -32,6 +32,8 @@ Prerequisites
 Installation & setup
 --------------------
 
+This is a short overview of the installation and setup procedure; for a more detailed presentation see `Introduction_to_Scopesim_for_METIS <example_notebooks/Introduction_to_Scopesim_for_METIS.ipynb>`_.
+
 1. Install ``scopesim`` in your python environment::
 
     $ pip install scopesim
