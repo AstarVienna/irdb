@@ -51,10 +51,10 @@ extensions = [
     'sphinx.ext.coverage',
     'sphinx.ext.mathjax',
     'sphinx.ext.viewcode',
-    # 'jupyter_sphinx.execute',
     'numpydoc',
-    # 'sphinxcontrib.apidoc',
     'matplotlib.sphinxext.plot_directive',
+    # 'jupyter_sphinx.execute',
+    # 'sphinxcontrib.apidoc',
 ]
 
 # numpydoc settings
@@ -74,7 +74,7 @@ if "F:" in os.getcwd():
     nbsphinx_execute = "never"
 else:
     nbsphinx_execute = "never"
-
+# add_hidden_cell_to_ipynb_files()
 
 def add_hidden_cell_to_ipynb_files():
     import glob
