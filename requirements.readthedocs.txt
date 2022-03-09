@@ -18,6 +18,3 @@ jupyter_sphinx==0.2.3
 sphinxcontrib-apidoc
 nbsphinx
 numpydoc
-
-# See https://github.com/sphinx-doc/sphinx/issues/7659 for why sphinx==2.4
-#

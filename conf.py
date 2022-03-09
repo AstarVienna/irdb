@@ -45,14 +45,14 @@ sys.path.insert(0, os.path.abspath('docs'))
 # ones.
 extensions = [
     'nbsphinx',
-    'sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
     'sphinx.ext.coverage',
     'sphinx.ext.mathjax',
     'sphinx.ext.viewcode',
-    'numpydoc',
-    'matplotlib.sphinxext.plot_directive',
+    # 'matplotlib.sphinxext.plot_directive',
+    # 'numpydoc',
+    # 'sphinx.ext.autodoc',
     # 'jupyter_sphinx.execute',
     # 'sphinxcontrib.apidoc',
 ]
