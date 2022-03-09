@@ -1,6 +1,6 @@
 numpy>=1.16
 scipy
-# matplotlib
+matplotlib
 astropy
 
 docutils
