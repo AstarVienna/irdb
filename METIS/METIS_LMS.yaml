@@ -3,27 +3,31 @@
 object: instrument
 alias: INST
 name: METIS_LMS
-description: base configuration for METIS
+description: base configuration for METIS LMS
+date_modified: 2022-03-04
+changes:
+  - 2022-03-04 (OC) introduce decouple_detector_from_sky_headers
 
 properties:
-    pixel_scale: 0.0082          # arcsec / pixel
-    plate_scale: 0.455555555556  # arcsec / mm
+  pixel_scale: 0.0082          # arcsec / pixel
+  plate_scale: 0.455555555556  # arcsec / mm
+  decouple_detector_from_sky_headers: True  # needed for spectroscopy
 
 effects:
-    - name: metis_lms_surfaces
-      description: list of extra mirrors needed for the SPEC LMS mode
-      class: SurfaceList
-      kwargs:
-          filename: LIST_METIS_mirrors_lms.dat
+  - name: metis_lms_surfaces
+    description: list of extra mirrors needed for the SPEC LMS mode
+    class: SurfaceList
+    kwargs:
+      filename: LIST_METIS_mirrors_lms.dat
 
-    - name: lms_spectral_traces
-      description: list of spectral order trace geometry on the focal plane
-      class: MetisLMSSpectralTraceList
-      kwargs:
-        filename: "!OBS.trace_file"
-        wave_colname: "wavelength"
-        wavelen: "!OBS.wavelen"
-        dwave: 0.0005
-        s_colname: "xi"
-        col_number_start: 1
-        #invalid_value: None
+  - name: lms_spectral_traces
+    description: list of spectral order trace geometry on the focal plane
+    class: MetisLMSSpectralTraceList
+    kwargs:
+      filename: "!OBS.trace_file"
+      wave_colname: "wavelength"
+      wavelen: "!OBS.wavelen"
+      dwave: 0.0005
+      s_colname: "xi"
+      col_number_start: 1
+      #invalid_value: None

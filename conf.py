@@ -45,16 +45,16 @@ sys.path.insert(0, os.path.abspath('docs'))
 # ones.
 extensions = [
     'nbsphinx',
-    'sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
     'sphinx.ext.coverage',
     'sphinx.ext.mathjax',
     'sphinx.ext.viewcode',
+    # 'matplotlib.sphinxext.plot_directive',
+    # 'numpydoc',
+    # 'sphinx.ext.autodoc',
     # 'jupyter_sphinx.execute',
-    'numpydoc',
     # 'sphinxcontrib.apidoc',
-    'matplotlib.sphinxext.plot_directive',
 ]
 
 # numpydoc settings
@@ -73,8 +73,8 @@ nbsphinx_execute = "never"
 if "F:" in os.getcwd():
     nbsphinx_execute = "never"
 else:
-    nbsphinx_execute = "always"
-
+    nbsphinx_execute = "never"
+# add_hidden_cell_to_ipynb_files()
 
 def add_hidden_cell_to_ipynb_files():
     import glob

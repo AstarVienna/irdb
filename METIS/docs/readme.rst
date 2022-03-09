@@ -9,7 +9,6 @@ Introduction
 ------------
 The new METIS data simulator is based on the generic simulator software Scopesim, a descendant of the older SimCado/SimMETIS interface. METIS itself is handled as an instrument package that contains configuration files for the various instrument modes as well as data files describing the components of the instruments.
 The new METIS data simulator currently supports the imaging and long-slit modes. The LM-band high-resolution IFU (LMS) mode will be offered soon.
-The old data simulator, `SimMETIS v0.3 <https://metis.strw.leidenuniv.nl/simmetis/>`_, can still be used for simulating LMS observations.
 
 
 Prerequisites
@@ -32,6 +31,8 @@ Prerequisites
 
 Installation & setup
 --------------------
+
+This is a short overview of the installation and setup procedure; for a more detailed presentation see `Introduction_to_Scopesim_for_METIS <example_notebooks/Introduction_to_Scopesim_for_METIS.ipynb>`_.
 
 1. Install ``scopesim`` in your python environment::
 
@@ -72,7 +73,29 @@ You can then edit the notebooks and use them as a starting point for your own si
 Python notebooks
 ----------------
 
-These notebooks can be found in the METIS instrument package in ``docs/example_notebooks``.
+These notebooks can be found either:
+
+- [locally] in the METIS instrument package in ``docs/example_notebooks``, or
+- [download] in the `METIS/docs section of the IRDB Github repository <https://github.com/AstarVienna/irdb/tree/master/METIS/docs/example_notebooks>`_ 
+
+
+.. warning::
+   Notebooks should be run in your working directory, **NOT** directly in the
+   ``docs/example_notebooks`` folder. Please copy the desired notebook out of
+   this folder.
+
+Ideally your folder structure should look like this::
+
+    working-dir
+    |- <desired notebook>.iypnb
+    |
+    |- inst_pkgs
+      |- METIS
+      |  |- docs
+      |     |- example_notebooks
+      |        |- <desired notebook>.iypnb      # copy out to working-dir
+      |- ELT
+      |- Armazones
 
 
 Introductory notebooks
@@ -149,6 +172,7 @@ Documentation and useful references
 
 Contact points
 --------------
+Slack channel: `#simulator_support <https://elt-metis.slack.com/archives/C02SZUL1ME1>`_
 
 - simmetis.astro@univie.ac.at
 
