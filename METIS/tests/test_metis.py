@@ -231,7 +231,6 @@ class TestObserves:
         cmds = scopesim.UserCommands(use_instrument="METIS",
                                      set_modes=['img_lm'])
         metis = scopesim.OpticalTrain(cmds)
-        metis['scope_vibration'].include = False
         metis['detector_linearity'].include = False
 
         metis.observe(src)
@@ -260,8 +259,8 @@ class TestObserves:
                                      set_modes=["img_n"])
 
         metis = scopesim.OpticalTrain(cmds)
-        metis['chopnod'].include = False
-        metis['detector_linearity'].include = False
+        metis['chop_nod'].include = False
+        #metis['detector_linearity'].include = False
 
         metis.observe(src)
         hdus = metis.readout()
