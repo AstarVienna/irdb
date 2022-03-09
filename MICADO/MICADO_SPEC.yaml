@@ -25,7 +25,7 @@ effects :
   class : SpectralTraceList
   kwargs :
     filename : "!OBS.trace_file"
-    wave_colname : "lam"
+    wave_colname : "wavelength"
     s_colname : "xi"
     col_number_start : 1
     invalid_value : 0
