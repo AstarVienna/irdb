@@ -11,8 +11,8 @@ changes:
 
 
 properties:
-  pixel_scale: 0.127     # [arcsec / pixel]
-  plate_scale: 8.46666667  # [arcsec / mm]
+  pixel_scale: 0.127        # [arcsec / pixel]
+  plate_scale: 8.46666667   # [arcsec / mm]
 
 
 effects:
@@ -23,6 +23,7 @@ effects:
     filename_format: "gratings/{}.txt"
     minimum_throughput: !!float 0.
     grating_name: "!OBS.grating_name"
+    current_filter: "unity"
     kwargs:
       filter_names:
         - unity
@@ -38,12 +39,11 @@ effects:
         - R2500U
         - R2500V
 
-
   - name: slit_wheel
     description: collection of LSS slits
     class: SlitWheel
     filename_format: "longslits/{}.txt"
-    longslit_name: "!OBS.longslit_name"
+    current_slit: "!OBS.longslit_name"
     include: False
     kwargs:
       slit_names:
@@ -58,16 +58,15 @@ effects:
         - LongSlits3.0Arcsec
         - LongSlits5.0Arcsec
 
-
-
   - name: filter
     description: OSIRIS filter curve from the Spanish VO
-    class: SpanishVOFilterCurve
+    class: SpanishVOFilterWheel
+    include: True
     kwargs:
       observatory: GTC
       instrument: OSIRIS
-      filter_name: "!OBS.filter_name"
-      include: False
+      current_filter: "!OBS.filter_name"
+      include_str: "_filter"                        # only include SVO entries with _filter in the name
 
   - name: OSIRIS_detector_qe
     class: QuantumEfficiencyCurve
@@ -88,8 +87,9 @@ effects:
         gain: [1.0]
       x_cen_unit : mm
       y_cen_unit : mm
-      x_len_unit : mm
-      y_len_unit : mm
-      pixsize_unit : mm
+      x_size_unit : pixel
+      y_size_unit : pixel
+      pixel_size_unit : mm
       angle_unit : deg
       gain_unit : electron/adu
+      image_plane_id : 0

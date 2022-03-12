@@ -22,6 +22,7 @@ yamls :
 - OSIRIS.yaml
 
 properties :
+  instrument: OSIRIS
   modes : ["IMG"]
   airmass : 1.2
   declination : -30
@@ -37,7 +38,7 @@ mode_yamls :
   name : IMG
   description : "OSIRIS imaging mode"
   properties:
-    filter_name : sdss_r
+    filter_name : sdss_r_filter
     grating_name : unity
 
 - object : instrument
