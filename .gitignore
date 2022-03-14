@@ -18,3 +18,7 @@ _REPORTS/
 build/
 docs/build/
 inst_pkgs/
+
+# instrument specfic ignores
+/GTC/code/*.fits
+

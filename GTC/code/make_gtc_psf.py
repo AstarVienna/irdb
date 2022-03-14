@@ -85,8 +85,9 @@ def shrink_osiris_psf():
     # poppy.display_profiles(hdu)
     # plt.plot([1, 1])
     # plt.show()
-
-    # "http://www.gtc.iac.es/instruments/osiris/media/psf_osiris_r.fits.gz"
+    #
+    # Source file
+    # http://www.gtc.iac.es/instruments/osiris/media/psf_osiris_r.fits.gz
     import numpy as np
     hdu_orig = fits.open("psf_osiris_r.fits")
 
@@ -98,14 +99,16 @@ def shrink_osiris_psf():
     hdr = hdu_orig[0].header
     x, y = np.divmod(np.argmax(data), data.shape[0])
     r = 512
-
     data = data[y-r:y+r, x-r:x+r]
+
+    cdelt1 = np.sqrt(hdr["CD1_1"]**2 + hdr["CD2_1"]**2)
+    cdelt2 = np.sqrt(hdr["CD1_2"]**2 + hdr["CD2_2"]**2)
 
     hdu = fits.ImageHDU(data=data)
     hdu.header["WAVE0"] = (0.65, "Wavelength [um]")
     hdu.header["WAVEUNIT"] = "um"
-    hdu.header["CDELT1"] = (-hdr["CD1_1"], "Pixel scale [deg]")
-    hdu.header["CDELT2"] = (-hdr["CD1_2"], "Pixel scale [deg]")
+    hdu.header["CDELT1"] = (cdelt1, "Pixel scale [deg]")
+    hdu.header["CDELT2"] = (cdelt2, "Pixel scale [deg]")
     hdu.header["CUNIT1"] = "DEGREE"
     hdu.header["CUNIT2"] = "DEGREE"
     hdu.header["CRVAL1"] = 0

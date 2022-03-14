@@ -11,7 +11,7 @@ import scopesim as sim
 
 sim.rc.__config__["!SIM.file.local_packages_path"] = os.path.abspath("../../")
 
-PLOTS = True
+PLOTS = False
 
 
 class TestOsirisCompiles:
