@@ -32,3 +32,6 @@ class TestSpecTraceVsDetectors:
         plt.title("SimCADO detector layout (May 2021)\nLooking through the bottom of the detector towards the sky")
 
         plt.show()
+
+
+    def test_plot_trace_file

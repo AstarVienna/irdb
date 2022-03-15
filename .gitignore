@@ -71,3 +71,5 @@ MANIFEST
 # Per-project virtualenvs
 .venv*/
 
+/GTC/code/psf_osiris_r.fits
+/OSIRIS/tests/osiris_test.fits

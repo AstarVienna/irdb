@@ -29,27 +29,6 @@ PKGS = {"Armazones": "locations/Armazones.zip",
         "MICADO": "instruments/MICADO.zip"}
 
 PLOTS = False
-# CLEAN_UP = True
-#
-#
-# def setup_module():
-#     rc_local_path = "./TEMP_MICADO/"
-#     rc.__config__["!SIM.file.local_packages_path"] = rc_local_path
-#     if not os.path.exists(rc_local_path):
-#         os.mkdir(rc_local_path)
-#         rc.__config__["!SIM.file.local_packages_path"] = os.path.abspath(
-#             rc_local_path)
-#
-#     for pkg_name in PKGS:
-#         if not os.path.isdir(os.path.join(rc_local_path, pkg_name)) and \
-#                 "irdb" not in rc_local_path:
-#             scopesim.download_package(PKGS[pkg_name])
-#
-#
-# def teardown_module():
-#     rc_local_path = rc.__config__["!SIM.file.local_packages_path"]
-#     if CLEAN_UP and "irdb" not in rc_local_path:
-#         shutil.rmtree(rc.__config__["!SIM.file.local_packages_path"])
 
 
 class TestInit:
