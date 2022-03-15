@@ -1,0 +1,54 @@
+### OSIRIS LSS config
+
+object: instrument
+alias: INST
+name: OSIRIS_LSS
+description : The OSIRIS long-slit optics
+date_created: 2022-03-15
+date_modified: 2022-03-15
+changes:
+  - 2022-03-15 (KL) Created file
+
+properties: {}
+
+effects:
+  - name: grating_efficiency
+    description: OSIRIS grating efficiency curves, piggybacking on FilterWheel
+    class: FilterWheel
+    include: True
+    filename_format: "gratings/{}.txt"
+    minimum_throughput: !!float 0.
+    current_filter: "!OBS.grating_name"
+    kwargs:
+      filter_names:
+        - unity
+        - R300B
+        - R300R
+        - R500B
+        - R500R
+        - R1000B
+        - R1000R
+        - R2000B
+        - R2500I
+        - R2500R
+        - R2500U
+        - R2500V
+
+  - name: slit_wheel
+    description: collection of LSS slits
+    class: SlitWheel
+    filename_format: "longslits/LongSlits{}Arcsec.txt"
+    current_slit: "!OBS.longslit_name"
+    include: False
+    kwargs:
+      slit_names:
+        - "0.4"
+        - "0.6"
+        - "0.8"
+        - "1.0"
+        - "1.2"
+        - "1.5"
+        - "1.8"
+        - "2.5"
+        - "3.0"
+        - "5.0"

@@ -30,7 +30,6 @@ properties :
   pupil_angle : 0
   dit : 60
   ndit : 1
-  grating_name : None
 
 mode_yamls :
 - object : instrument
@@ -39,26 +38,29 @@ mode_yamls :
   description : "OSIRIS imaging mode"
   properties:
     filter_name : sdss_r_filter
-    grating_name : unity
 
 - object : instrument
   alias: OBS
   name : LSS
   description : "OSIRIS Long-Slit mode"
   properties:
-    filter_name : None
-    grating_name : None
-    longslit_name: None
+    filter_name : open
+    grating_name : R1000B
+    longslit_name: "1.0"
 
-- object : instrument
-  alias: OBS
-  name : MAAT
-  description : "OSIRIS IFU (MAAT) mode"
-  yamls :
-    - MAAT.yaml
-  properties:
-    filter_name : None
-    grating_name : None
+  yamls:
+    - OSIRIS_LSS.yaml
+
+
+#- object : instrument
+#  alias: OBS
+#  name : MAAT
+#  description : "OSIRIS IFU (MAAT) mode"
+#  yamls :
+#    - MAAT.yaml
+#  properties:
+#    filter_name : None
+#    grating_name : None
 
 
 ---

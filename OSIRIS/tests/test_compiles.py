@@ -14,7 +14,7 @@ sim.rc.__config__["!SIM.file.local_packages_path"] = os.path.abspath("../../")
 PLOTS = False
 
 
-class TestOsirisCompiles:
+class TestOsirisImagingCompiles:
     def test_everything_is_read_in_nicely(self):
         cmds = sim.UserCommands(use_instrument="OSIRIS")
 
@@ -52,3 +52,11 @@ class TestOsirisCompiles:
             plt.imshow(hdulist[1].data, norm=LogNorm())
             plt.colorbar()
             plt.show()
+
+
+class TestOsirisLongSlitCompiles:
+    def test_everything_is_read_in_nicely(self):
+        cmds = sim.UserCommands(use_instrument="OSIRIS", set_modes=["LSS"])
+
+        assert isinstance(cmds, sim.UserCommands)
+        assert len(cmds.yaml_dicts) > 2
