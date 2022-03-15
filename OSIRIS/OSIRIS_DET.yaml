@@ -37,7 +37,7 @@ effects :
     class: SummedExposure
 
   - name: dark_current
-    description : MICADO dark current
+    description : OSIRIS dark current
     class: DarkCurrent
     # [e-/s] level of dark current for each detector
     kwargs:
@@ -48,7 +48,7 @@ effects :
     class: ShotNoise
 
   - name: detector_linearity
-    description : Linearity characteristics of H4RG chips
+    description : Linearity characteristics of OSIRIS chip
     class: LinearityCurve
     include: False
     kwargs:
@@ -60,7 +60,7 @@ effects :
     description: Blanks the signal on N edge row and column pixels
     class: ReferencePixelBorder
     kwargs:
-        all: 0
+        all: 25
 
   - name : readout_noise
     description : Readout noise frames
