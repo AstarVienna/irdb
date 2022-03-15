@@ -60,7 +60,13 @@ effects :
     description: Blanks the signal on N edge row and column pixels
     class: ReferencePixelBorder
     kwargs:
-        all: 25
+        all: 50
+
+  - name: binning_2x2
+    description: Applies 2x2 binning
+    class: BinnedImage
+    kwargs:
+        bin_size: 2
 
   - name : readout_noise
     description : Readout noise frames
