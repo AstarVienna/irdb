@@ -7,78 +7,156 @@
 
 Introduction
 ------------
-For the preparation of FDR documentation, a new METIS data simulator is being developed that is technically an instrument-package for the generic simulator ScopeSim, a descendant of the older SimCado/SimMETIS interface.
-The new METIS data simulator currently supports the imaging and long-slit modes and the LM-band high-resolution IFU (LMS) mode is planned to be offered soon, too.
-The old data simulator, `SimMETIS v0.3 <https://metis.strw.leidenuniv.nl/simmetis/>`_, can still be used for simulating LMS observations.
+The new METIS data simulator is based on the generic simulator software Scopesim, a descendant of the older SimCado/SimMETIS interface. METIS itself is handled as an instrument package that contains configuration files for the various instrument modes as well as data files describing the components of the instruments.
+The new METIS data simulator currently supports the imaging and long-slit modes. The LM-band high-resolution IFU (LMS) mode will be offered soon.
 
 
 Prerequisites
 -------------
 
 - A working installation of Python 3.6 or newer
-- A working installation of Jupyter notebooks if you want to run the simulator from notebooks, i.e. using a graphical interactive interface, rather than just the terminal or scripts (highly recommended)
+- A working installation of Jupyter if you want to run the simulator from notebooks. This is necessary to run the example notebooks contained in the instrument package.
 - A working installation of the Python package installer pip
 
-.. note:: Bug reports and help-desk
+.. note::
 
    If you come across a bug or get stuck with a certain aspect of ScopeSim or
-   the METIS package, please get in touch with us (emails addresses below).
+   the METIS package, please get in touch with us (email addresses below).
 
    **Your feedback is the only way we know** what needs to be changed/improved
-   with the package and the simulator
+   with the package and the simulator.
+
+   Please always provide the output of the command ``scopesim.bug_report()`` run on your installation.
 
 
 Installation & setup
 --------------------
 
-``pip install scopesim``
+This is a short overview of the installation and setup procedure; for a more detailed presentation see `Introduction_to_Scopesim_for_METIS <example_notebooks/Introduction_to_Scopesim_for_METIS.ipynb>`_.
 
-1. Create a directory where your simulation notebooks will live, e.g. ``~/ScopeSim``
-2. install relevant irdb packages & download example notebooks into this directory
-3. in a Terminal, cd to ~/ScopeSim and execute the notebook by calling ``jupyter notebook filename.ipynb``
-4. follow instruction and explanations in the notebook.
+1. Install ``scopesim`` in your python environment::
+
+    $ pip install scopesim
+
+   To upgrade an existing installation do::
+
+    $ pip install -U scopesim
+
+2. Create a working directory where you want to run simulations, e.g.::
+
+    $ mkdir ~/path/to/playing_with_scopesim/
+    $ cd ~/path/to/playing_with_scopesim
+
+3. Install relevant irdb packages into this directory::
+
+    $ python
+    >> import scopesim
+    >> scopesim.download_package(["instruments/METIS", "telescopes/ELT", "locations/Armazones"])
+
+   This will install the packages in the subdirectory ``./inst_pkgs``.
+
+4. The METIS package includes a number of tutorial notebooks in the directory ``./inst_pkgs/METIS/docs/example_notebooks/`` (see `Python notebooks`_).
+
+   Copy notebooks to the working directory (i.e. ``./``) to run them.::
+
+    $ cp ./inst_pkgs/METIS/docs/example_notebooks/<Notebook-Name.ipynb> .
+
+5. In a terminal, execute the notebook by calling::
+
+    $ jupyter notebook <filename.ipynb>
+
+6. Follow instructions and explanations in the notebook. Some notebooks use example data; the commands to download these data from the scopesim server are included in the notebooks.
+
+You can then edit the notebooks and use them as a starting point for your own simulations.
 
 
 Python notebooks
 ----------------
 
-Download the example notebooks `from the Github repo
-<https://github.com/AstarVienna/irdb/tree/master/METIS/docs/example_notebooks>`_
+These notebooks can be found either:
 
-Input image and cube files for the notebooks `can be found here
-<https://drive.google.com/drive/folders/1Lqux93ymgMM_ZXSSUUPMBnow5sgbo-bb?usp=sharing>`_
-
-.. note::
-   To download a notebook from Github, either:
-   
-   - view the raw file and save this disk from the browser, or
-   - navigate up one level, then right click the file and save as
+- [locally] in the METIS instrument package in ``docs/example_notebooks``, or
+- [download] in the `METIS/docs section of the IRDB Github repository <https://github.com/AstarVienna/irdb/tree/master/METIS/docs/example_notebooks>`_ 
 
 
-.. list-table:: Python Notebooks
-   :widths: 25 25 25 25
+.. warning::
+   Notebooks should be run in your working directory, **NOT** directly in the
+   ``docs/example_notebooks`` folder. Please copy the desired notebook out of
+   this folder.
+
+Ideally your folder structure should look like this::
+
+    working-dir
+    |- <desired notebook>.iypnb
+    |
+    |- inst_pkgs
+      |- METIS
+      |  |- docs
+      |     |- example_notebooks
+      |        |- <desired notebook>.iypnb      # copy out to working-dir
+      |- ELT
+      |- Armazones
+
+
+Introductory notebooks
+++++++++++++++++++++++
+
+.. list-table::
+   :widths: 25 75
+   :width: 900px
    :header-rows: 1
 
    * - Name
      - Description
-     - Download Link
-     - Required Data Files
-   * - Imaging with HL Tau
-     - <add description>
-     - `Notebook Link <https://raw.githubusercontent.com/AstarVienna/irdb/master/METIS/docs/example_notebooks/IMG-HL_Tau.ipynb>`_
-     - `HL Tau FITS image <https://drive.google.com/file/d/1LmKUw8wZkpTw2ZSAOn2ykui0q2RGZ2sA/view?usp=sharing>`_
-   * - <add title>
-     - <add description>
-     - <add notebook link>
-     - <add data files links>
+   * - | `Introduction_to_Scopesim_for_METIS.ipynb <example_notebooks/Introduction_to_Scopesim_for_METIS.ipynb>`_
+       | `Introduction_to_Scopesim_for_METIS.pdf <example_notebooks/Introduction_to_Scopesim_for_METIS.pdf>`_
+     - Introductory overview of how to run simulations in Scopesim
 
+Scientific use-case notebooks
++++++++++++++++++++++++++++++
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+.. list-table::
+   :widths: 25 75
+   :width: 900px
+   :header-rows: 1
 
-   example_notebooks/IMG-HL_Tau
+   * - Name
+     - Description
+   * - `IMG_L_N-examples.ipynb <example_notebooks/IMG_L_N-examples.ipynb>`_
+     - Imaging observations of HL Tau and an AGN model in the L and N band
+   * - `LSS-YSO_model_simulation.ipynb <example_notebooks/LSS-YSO_model_simulation.ipynb>`_
+     - Long-slit spectroscopy in the L-band of three models of a young stellar object
+   * - | `LSS_AGN-01_preparation.ipynb <example_notebooks/LSS_AGN-01_preparation.ipynb>`_
+       | `LSS_AGN-02_simulation.ipynb <example_notebooks/LSS_AGN-02-simulation.ipynb>`_
+     - | Long-slit spectroscopy in the N-band of an AGN model. The first notebook describes
+       | how the input data are prepared for Scopesim, the second runs the simulation.
 
+Notebooks on individual effects
++++++++++++++++++++++++++++++++
+
+These notebooks can be found in ``docs/example_notebooks/demos``.
+
+.. list-table::
+   :widths: 25 75
+   :width: 900px
+   :header-rows: 1
+
+   * - Name
+     - Description
+   * - `demo_adc_wheel.ipynb <example_notebooks/demos/demo_adc_wheel.ipynb>`_
+     - How to use the atmospheric dispersion correctors.
+   * - `demo_auto_exposure.ipynb <example_notebooks/demos/demo_auto_exposure.ipynb>`_
+     - How to select `dit`/`ndit` automatically.
+   * - `demo_chopping_and_nodding.ipynb <example_notebooks/demos/demo_chopping_and_nodding.ipynb>`_
+     - How to produce chop-nod difference images in the N band.
+   * - `demo_detector_modes.ipynb <example_notebooks/demos/demo_detector_modes.ipynb>`_
+     - How to set detector readout modes.
+   * - `demo_filter_wheel.ipynb <example_notebooks/demos/demo_filter_wheel.ipynb>`_
+     - How to use the filter wheel(s).
+   * - `demo_lss_simple.ipynb <example_notebooks/demos/demo_lss_simple.ipynb>`_
+     - Basic procedure for long-slit spectroscopy.
+   * - `demo_slit_wheel.ipynb <example_notebooks/demos/demo_slit_wheel.ipynb>`_
+     - How to use the slit wheel for spectroscopy (and imaging)
 
 Documentation and useful references
 -----------------------------------
@@ -94,10 +172,9 @@ Documentation and useful references
 
 Contact points
 --------------
+Slack channel: `#simulator_support <https://elt-metis.slack.com/archives/C02SZUL1ME1>`_
 
-.. list-table:: Python Notebooks
-   :widths: 33 33 33
-   :header-rows: 1
-* - simmetis.astro@univie.ac.at
-  - oliver.czoske@univie.ac.at
-  - kieran.leschinski@univie.ac.at
+- simmetis.astro@univie.ac.at
+
+  + oliver.czoske@univie.ac.at
+  + kieran.leschinski@univie.ac.at
