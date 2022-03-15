@@ -6,7 +6,7 @@ from matplotlib.colors import LogNorm
 
 from astropy import units as u
 
-from scopesim.source.source_templates import star_field
+from scopesim.source.source_templates import star_field, empty_sky, star
 import scopesim as sim
 
 sim.rc.__config__["!SIM.file.local_packages_path"] = os.path.abspath("../../")
@@ -63,14 +63,23 @@ class TestOsirisLongSlitCompiles:
 
     def test_run_lss_simulation(self):
         # n stars, mag_min, mag_max, width=[arcsec]
-        src = star_field(n=1000, mmin=10, mmax=20, width=450, use_grid=False)
+        src1 = star(x=-3.8, y=-3.8, flux=10*u.mag)
+        src3 = star(x=3.8,  y=3.8,  flux=20*u.mag)
+        src4 = star(x=-100, y=-3.8,    flux=10*u.mag)
+        src5 = star(x=100,  y=-3.8,    flux=10*u.mag)
 
-        cmds = sim.UserCommands(use_instrument="OSIRIS", set_modes=["LSS"])
+        src_comb = src1 + src3 + src4 + src5
+
+        cmds = sim.UserCommands(use_instrument="OSIRIS", set_modes=["LSS"],
+                                properties={"!OBS.dit": 60})
+        # cmds["!OBS.dit"] = 60
+        cmds.cmds["!ATMO.seeing"] = 0.8
+
         osiris = sim.OpticalTrain(cmds)
-        osiris.observe(src)
-        hdulist = osiris.readout()[0]
+        osiris.observe(src_comb)
+        hdulist = osiris.readout(filename="osiris_test.fits", exptime=60)[0]
 
-        if PLOTS:
+        if not PLOTS:
             plt.imshow(hdulist[1].data, norm=LogNorm())
             plt.colorbar()
             plt.show()

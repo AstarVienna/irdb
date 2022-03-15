@@ -9,7 +9,8 @@ date_modified: 2022-03-15
 changes:
   - 2022-03-15 (KL) Created file
 
-properties: {}
+properties:
+  decouple_detector_from_sky_headers: True  # needed for slit spectroscopy
 
 effects:
   - name: grating_efficiency
@@ -61,3 +62,10 @@ effects:
       wave_colname: "wavelength"
       s_colname: "xi"
       col_number_start: 1
+
+
+  - name: OSIRIS_detector_qe
+    description: QE curve for new OSIRIS detector, needed for spec modes
+    class: QuantumEfficiencyCurve
+    kwargs:
+      filename: QE_OSIRIS_new_detector.dat          # fix formatting in file

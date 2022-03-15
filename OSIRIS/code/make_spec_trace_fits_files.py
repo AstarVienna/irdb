@@ -15,8 +15,10 @@ def make_spec_trace_hdu(trace_names, dir_path, fname_format="{}.dat"):
         data = ascii.read(file_path, format='basic', fast_reader=True)
         for i, unit_str in enumerate(["um", "arcsec", "mm", "mm"]):
             data.columns[i].unit = u.Unit(unit_str)
+        table_hdu = fits.table_to_hdu(data)
+        table_hdu.header["EXTNAME"] = name
 
-        trace_hdus += [fits.table_to_hdu(data)]
+        trace_hdus += [table_hdu]
 
         # plt.scatter(data["x"], data["y"], c=data["wavelength"])
         # plt.show()
@@ -33,6 +35,7 @@ def make_cat_hdu(trace_names):
                       names=["description", "extension_id",
                              "aperture_id", "image_plane_id"])
     cat_hdu = fits.table_to_hdu(cat_table)
+    cat_hdu.header["EXTNAME"] = "TOC"
 
     return cat_hdu
 

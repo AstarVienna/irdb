@@ -20,6 +20,7 @@ yamls :
 - LaPalma.yaml
 - GTC.yaml
 - OSIRIS.yaml
+- OSIRIS_DET.yaml
 
 properties :
   instrument: OSIRIS
@@ -46,7 +47,7 @@ mode_yamls :
   properties:
     filter_name : open
     grating_name : R1000B
-    longslit_name : "1.0"
+    longslit_name : "0.6"
     trace_file : "traces/LSS_TRACES.fits"
 
   yamls:
@@ -79,7 +80,7 @@ properties:
     wave_min: 0.3001
     wave_mid: 0.6
     wave_max: 1.0
-    spectral_bin_width: 0.00001       # 0.1 Angstrom
+    spectral_bin_width: 0.0003       # 0.1 Angstrom
 
   computing:
     spline_order: 1

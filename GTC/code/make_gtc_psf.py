@@ -109,12 +109,14 @@ def shrink_osiris_psf():
     hdu.header["WAVEUNIT"] = "um"
     hdu.header["CDELT1"] = (cdelt1, "Pixel scale [deg]")
     hdu.header["CDELT2"] = (cdelt2, "Pixel scale [deg]")
-    hdu.header["CUNIT1"] = "DEGREE"
-    hdu.header["CUNIT2"] = "DEGREE"
+    hdu.header["CUNIT1"] = "deg"
+    hdu.header["CUNIT2"] = "deg"
     hdu.header["CRVAL1"] = 0
     hdu.header["CRVAL2"] = 0
-    hdu.header["CRREF1"] = hdu.header["NAXIS1"] / 2
-    hdu.header["CRREF2"] = hdu.header["NAXIS2"] / 2
+    hdu.header["CRPIX1"] = (hdu.header["NAXIS1"] + 1) / 2
+    hdu.header["CRPIX2"] = (hdu.header["NAXIS2"] + 1) / 2
+    hdu.header["CTYPE1"] = "LINEAR"
+    hdu.header["CTYPE2"] = "LINEAR"
 
     pri_hdu = fits.PrimaryHDU()
     pri_hdu.header["EDATA"] = 1

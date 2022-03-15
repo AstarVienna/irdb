@@ -11,7 +11,7 @@ changes:
 
 
 properties:
-  telescopes: GTC
+  telescope: GTC
   temperture: "!ATMO.temperature"
 
 effects:
@@ -49,10 +49,11 @@ effects:
 #    temperature: 0.
 #    temperature_unit: deg_C
 
-
+# http://www.gtc.iac.es/instruments/osiris/media/psf_osiris_r.fits.gz
 - name: gtc_psf
   description: Generic GTC PSF
   class: FieldConstantPSF
+  include: False
   kwargs:
     filename: PSF_GTC_OSIRIS.fits
     warning: "Default PSF for r-band from GTC website"

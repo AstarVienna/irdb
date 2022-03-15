@@ -22,23 +22,30 @@ properties :
     airmass :       "!OBS.airmass"
     pupil_angle :   "!OBS.pupil_angle"
     pixel_scale :   "!INST.pixel_scale"
+    seeing : 0.7                # [arcsec]
     background :
         filter_name : V
         value: 21.9
         unit: mag
 
 effects :
--   name : lapalma_skycalc_curves
-    description : atmospheric spectra pulled from the skycalc server
-    class : SkycalcTERCurve
-    include : True
-    kwargs :
-        observatory : lasilla
-        wmin : "!SIM.spectral.wave_min"
-        wmax : "!SIM.spectral.wave_max"
-        wunit : um
-        wres : "!SIM.spectral.spectral_resolution"
-        wdelta: "!SIM.spectral.spectral_bin_width"
+- name : lapalma_skycalc_curves
+  description : atmospheric spectra pulled from the skycalc server
+  class : SkycalcTERCurve
+  include : True
+  kwargs :
+    observatory : lasilla
+    wmin : "!SIM.spectral.wave_min"
+    wmax : "!SIM.spectral.wave_max"
+    wunit : um
+    wres : "!SIM.spectral.spectral_resolution"
+    wdelta: "!SIM.spectral.spectral_bin_width"
+
+- name: generic_seeing_psf
+  class: SeeingPSF
+  include: True
+  kwargs:
+    fwhm: "!ATMO.seeing"
 
 #-   name : lapalma_atmo_dispersion
 #    description : atmospheric dispersion

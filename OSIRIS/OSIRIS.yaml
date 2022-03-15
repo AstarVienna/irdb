@@ -27,29 +27,3 @@ effects:
       include_str: "_filter"
       # only include SVO entries with _filter in the name
       # By default an "open" filter with unity transmission is also included
-
-  - name: OSIRIS_detector_qe
-    class: QuantumEfficiencyCurve
-    kwargs:
-      filename: QE_OSIRIS_new_detector.dat          # fix formatting in file
-
-  - name: osiris_4k_detector
-    class: DetectorList
-    kwargs:
-      array_dict:
-        id: [1]
-        x_cen: [0]
-        y_cen: [0]
-        x_size: [4096]
-        y_size: [4096]
-        pixel_size: [0.015]
-        angle: [0.]
-        gain: [1.0]
-      x_cen_unit : mm
-      y_cen_unit : mm
-      x_size_unit : pixel
-      y_size_unit : pixel
-      pixel_size_unit : mm
-      angle_unit : deg
-      gain_unit : electron/adu
-      image_plane_id : 0
