@@ -39,7 +39,7 @@ effects:
     class: SlitWheel
     filename_format: "longslits/LongSlits{}Arcsec.txt"
     current_slit: "!OBS.longslit_name"
-    include: False
+    include: True
     kwargs:
       slit_names:
         - "0.4"
@@ -52,3 +52,12 @@ effects:
         - "2.5"
         - "3.0"
         - "5.0"
+
+  - name: spectral_traces
+    description: list of spectral order trace geometry on the focal plane
+    class: SpectralTraceList
+    kwargs:
+      filename: "!OBS.trace_file"
+      wave_colname: "wavelength"
+      s_colname: "xi"
+      col_number_start: 1

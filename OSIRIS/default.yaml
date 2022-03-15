@@ -46,7 +46,8 @@ mode_yamls :
   properties:
     filter_name : open
     grating_name : R1000B
-    longslit_name: "1.0"
+    longslit_name : "1.0"
+    trace_file : "traces/LSS_TRACES.fits"
 
   yamls:
     - OSIRIS_LSS.yaml

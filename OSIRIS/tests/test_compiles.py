@@ -39,7 +39,7 @@ class TestOsirisImagingCompiles:
 
         assert trans.sum() > 0
 
-    def test_run_simulation(self):
+    def test_run_imaging_simulation(self):
         # n stars, mag_min, mag_max, width=[arcsec]
         src = star_field(n=1000, mmin=10, mmax=20, width=450, use_grid=False)
 
@@ -60,3 +60,17 @@ class TestOsirisLongSlitCompiles:
 
         assert isinstance(cmds, sim.UserCommands)
         assert len(cmds.yaml_dicts) > 2
+
+    def test_run_lss_simulation(self):
+        # n stars, mag_min, mag_max, width=[arcsec]
+        src = star_field(n=1000, mmin=10, mmax=20, width=450, use_grid=False)
+
+        cmds = sim.UserCommands(use_instrument="OSIRIS", set_modes=["LSS"])
+        osiris = sim.OpticalTrain(cmds)
+        osiris.observe(src)
+        hdulist = osiris.readout()[0]
+
+        if PLOTS:
+            plt.imshow(hdulist[1].data, norm=LogNorm())
+            plt.colorbar()
+            plt.show()
