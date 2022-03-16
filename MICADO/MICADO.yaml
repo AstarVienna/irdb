@@ -23,6 +23,7 @@ effects :
         filename : "INST_MICADO_wavefront_error_budget.dat"
 
 -   name: filter_wheel_1
+    description: upper filter wheel
     class: FilterWheel
     kwargs:
         filter_names:
