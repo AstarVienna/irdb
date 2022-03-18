@@ -1,3 +1,12 @@
+# author : Kieran Leschinski
+# source : Various MICADO documents and emails
+# date_created : 2017-11-20
+# date_modified : 2022-03-17
+# status : FDR design
+# changes :
+# - 2022-03-17 (KL) Updated filter wheel contents as per Rics email 16.03.2022
+#
+
 ### MICADO INSTRUMENT COMMON EFFECTS LIST
 object : instrument
 alias : INST
@@ -28,20 +37,16 @@ effects :
     kwargs:
         filter_names:
             # Filter wheel 1
+            - open
+            - xI1
+            - xI2
+            - Spec_IJ
+            - Spec_HK
             - I-long
             - Y
             - J
-            - H
-            - Ks
             - J-short
             - J-long
-            - H-short
-            - H-long
-            - K-short
-            - K-mid
-            - Spec_IJ
-            - Spec_HK
-            - blank
         filename_format: "!INST.filter_file_format"
         current_filter: "!OBS.filter_name_fw1"
         minimum_throughput: !!float 1.01E-4
@@ -52,17 +57,22 @@ effects :
     class: FilterWheel
     kwargs:
         filter_names:
-            - xI1
-            - xI2
-            - xY1
+            - open
             - xY2
-            - xJ1
-            - xJ2
-            - xH1
-            - xH2
             - xK1
             - xK2
-            - blank
+            - block
+            - K-mid
+            - K-short
+            - Ks
+            - H
+            - H-long
+            - H-short
+            - xH1
+            - xH2
+            - xJ1
+            - xJ2
+            - xY1
         filename_format: "!INST.filter_file_format"
         current_filter: "!OBS.filter_name_fw2"
         minimum_throughput: !!float 1.01E-4
@@ -83,7 +93,7 @@ effects :
             - Pa-beta
             - ND1
             - ND3
-            - blank
+            - open
         filename_format: "!INST.filter_file_format"
         current_filter: "!OBS.filter_name_pupil"
         minimum_throughput: !!float 1.01E-4

@@ -90,7 +90,7 @@ class TestMakeOpticalTrain:
     def test_works_seamlessly_for_micado_zoom_mode(self):
         cmd = scopesim.UserCommands(use_instrument="MICADO",
                                     set_modes=["SCAO", "IMG_1.5mas"],
-                                    properties={"!OBS.filter_name": "Ks"})
+                                    properties={"!OBS.filter_name_fw2": "Ks"})
         opt = scopesim.OpticalTrain(cmd)
         assert isinstance(opt, scopesim.OpticalTrain)
 
@@ -101,56 +101,6 @@ class TestMakeOpticalTrain:
 
         assert isinstance(hdu_list, fits.HDUList)
 
-        # opt.image_planes[0].hdu.writeto("small_HR_flux_TEST.fits",
-        #                                 overwrite=True)
-        # hdu_list.writeto("small_HR_TEST.fits", overwrite=True)
-
-    def test_works_for_full_frame(self):
-        pass
-
-
-class TestSkyBackgroundIsRealistic:
-    # previous mag_diff: K=2.05, H=0.25, J=0.75
-    @pytest.mark.parametrize("mode_names, filt_name, etc_flux_values, mag_diff",
-                             [(["SCAO", "IMG_4mas"], "Ks", 147, 0.5),  # ph/s/pix
-                              (["SCAO", "IMG_1.5mas"], "Ks", 147, 0.5),
-                              (["SCAO", "IMG_4mas"], "H", 108, -1),
-                              (["SCAO", "IMG_1.5mas"], "H", 108, -1),
-                              (["SCAO", "IMG_4mas"], "J", 27, -0.5),
-                              (["SCAO", "IMG_1.5mas"], "J", 27, -0.5)])
-    def test_background_is_within_2x_of_eso_etc(self, mode_names, filt_name,
-                                                etc_flux_values, mag_diff):
-        """
-        Comparison of the scopesim MICADO package against the ESO ETC
-
-        Notes
-        -----
-        - mag_diff the discrepancy between the ETC and the skycalc BG mags
-        - The ETC uses 1100m2 area and 5mas pixel size
-        - ETC sky BG mags can be found on the ETC website, skycalc BG mags are
-          given when getting a spectrum on the skycalc website
-        """
-
-        cmd = scopesim.UserCommands(use_instrument="MICADO",
-                                    set_modes=mode_names,
-                                    properties={"!OBS.filter_name": filt_name})
-        opt = scopesim.OpticalTrain(cmd)
-        src = scopesim.source.source_templates.empty_sky()
-        opt.observe(src)
-        av_sim_bg = np.average(opt.image_planes[0].hdu.data)
-
-        sim_pix_scale = cmd["!INST.pixel_scale"]
-        sim_area = cmd["!TEL.area"].value
-        etc_pix_scale = 0.005
-        etc_area = 1100
-        scale_factor = sim_pix_scale**2 / etc_pix_scale**2 * sim_area / etc_area
-        scale_factor *= 2.512**-mag_diff
-
-        scaled_etc_bg = etc_flux_values * scale_factor
-        assert 0.5 < scaled_etc_bg / av_sim_bg < 2
-
-        print(filt_name, scaled_etc_bg, av_sim_bg)
-
 
 class TestDetector:
     @pytest.mark.parametrize("ndit, dit", [(1, 3600)])
@@ -160,8 +110,7 @@ class TestDetector:
                                                 "!OBS.dit": dit,
                                                 "!OBS.ndit": ndit})
         opt = scopesim.OpticalTrain(cmd)
-        opt["armazones_atmo_dispersion"].include = False
-        opt["micado_adc_3D_shift"].include = False
+        opt["skycalc_atmosphere"].include = False
         opt["detector_linearity"].include = False
         src = scopesim.source.source_templates.star_field(16, 20, 35, 3,
                                                           use_grid=True)
@@ -175,7 +124,7 @@ class TestDetector:
         hdu_av = np.median(readout_image)
         assert imp_av == approx(hdu_av, rel=0.05)
 
-        if PLOTS:
+        if not PLOTS:
             plt.subplot(121)
             plt.imshow(implane_image, norm=LogNorm())
             plt.colorbar()
