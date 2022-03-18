@@ -1,3 +1,15 @@
+"""
+Tests the MCAO limiting magnitudes against the values from from Ric's excel doc
+[Signal_noise_estimator_MICADO_2018.04.03]
+
+Comments
+--------
+- 2022-03-18 (KL) Green locally
+  ScopeSim limiting mags are 0.3 mag lower in J, 0.2 mags lower H,Ks
+  The differing BG levels may cause this
+
+"""
+
 # integration test using everything and the MICADO package
 import pytest
 from pytest import approx
@@ -11,10 +23,8 @@ from scopesim.source import source_templates as st
 from matplotlib import pyplot as plt
 from matplotlib.colors import LogNorm
 
+rc.__config__["!SIM.file.local_packages_path"] = "../../"
 PLOTS = False
-
-TOP_PATH = "../../"
-rc.__config__["!SIM.file.local_packages_path"] = TOP_PATH
 
 
 class TestLimiting:
