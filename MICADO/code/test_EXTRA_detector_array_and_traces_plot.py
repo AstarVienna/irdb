@@ -88,7 +88,7 @@ class TestSpecTraceVsDetectors:
                               ('J-band 15 arcsec', 1.16, 1.35, -6, 11),
                               ('HK-band 15 arcsec', 1.5, 2.45, -6, 11)
                               ])
-    def plot_trace_file_vertical(self, name, wave_min, wave_max, xi_min, xi_max):
+    def test_plot_trace_file_vertical(self, name, wave_min, wave_max, xi_min, xi_max):
 
         plt.figure(figsize=(20, 15))
 
@@ -100,7 +100,7 @@ class TestSpecTraceVsDetectors:
             det_xs += [[x - dx, x + dx, x + dx, x - dx, x - dx]]
             det_ys += [[y - dy, y - dy, y + dy, y + dy, y - dy]]
 
-        with fits.open("../TRACE_MICADO.fits") as hdul:
+        with fits.open("../TRACE_MICADO_2.fits") as hdul:
             for i, hdu in enumerate(hdul[2:]):
                 for xi, c in zip([-5, -1.5, 0, 1.5, 10], "mbgyr"):
                     tbl = Table(hdu.data)
@@ -128,4 +128,4 @@ class TestSpecTraceVsDetectors:
         fname = f"new_spec_traces_{name}_lam_{wave_min}_{wave_max}_xi_{xi_min}_{xi_max}"
         # plt.savefig(fname + ".png", format="png")
         # plt.savefig(fname + ".pdf", format="pdf")
-        # plt.show()
+        plt.show()

@@ -30,4 +30,4 @@ effects:
       dwave: 0.0005
       s_colname: "xi"
       col_number_start: 1
-      #invalid_value: None
+

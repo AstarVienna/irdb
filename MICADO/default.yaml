@@ -76,7 +76,7 @@ mode_yamls :
   yamls :
   - MICADO_SPEC.yaml
   properties :
-    trace_file : TRACE_15arcsec.fits
+    trace_file : TRACE_MICADO.fits
     slit_file : MASK_slit_15000x50.dat
     filter_name_fw1: Spec_HK
     filter_name_fw2: open
