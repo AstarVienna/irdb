@@ -38,22 +38,39 @@ class TestInit:
         assert isinstance(micado, sim.OpticalTrain)
         assert len(opt_els) == 6
 
-    def test_runs_spec_hk_3000x30(self):
+    def test_runs_spec_hk_15000x50(self):
         src = st.empty_sky()
 
-        cmds = sim.UserCommands(use_instrument="MICADO",
-                                set_modes=["SCAO", "SPEC_3000x20"])
-        # cmds.cmds["!OBS.trace_file"] = "TRACES_MICADO_220223.fits"    # New, only 4 (HK) traces
-        cmds.cmds["!OBS.trace_file"] = "TRACE_MICADO.fits"      # Old, missing x=0
-        micado = sim.OpticalTrain(cmds)
-        # micado.cmds["!DET.width"] = 4096*3
-        # micado.cmds["!DET.height"] = 4096*3
-        micado["detector_window"].include = False
-        micado["full_detector_array"].include = True
+        cmds_img = sim.UserCommands(use_instrument="MICADO",
+                                    set_modes=["SCAO", "IMG_4mas"])
 
+        micado_img = sim.OpticalTrain(cmds_img)
+        micado_img.observe(src)
+
+        img_av_flux = np.median(micado_img.image_planes[0].data)
+
+        cmds = sim.UserCommands(use_instrument="MICADO",
+                                set_modes=["SCAO", "SPEC_15000x50"])
+        cmds.cmds["!OBS.trace_file"] = "TRACE_MICADO.fits"      # Old, missing x=0
+        cmds.cmds["!DET.dit"] = 3600
+        cmds.cmds["!OBS.filter_name_fw1"] = "open"
+        cmds.cmds["!OBS.filter_name_fw2"] = "Ks"
+
+        micado = sim.OpticalTrain(cmds)
+        FULL_DETECTOR = True
+        micado["detector_window"].include = not FULL_DETECTOR
+        micado["full_detector_array"].include = FULL_DETECTOR
         micado.observe(src)
-        micado.image_planes[0].hdu.writeto("TEST_implane.fits")
-        micado.readout("TEST_readout.fits")
+
+        spec_int_flux = np.sum(micado.image_planes[0].data, axis=0)
+        spec_av_flux = np.median(spec_int_flux[40:2600])
+
+        slit_width = 50 / 4.      # [pixels]
+        grating_efficiency = 0.6**2
+        scale_factor = slit_width * grating_efficiency
+
+        assert spec_av_flux / scale_factor == approx(img_av_flux, rel=0.1)
+
 
         # plt.subplot(121)
         # plt.imshow(micado.image_planes[0].data, norm=LogNorm(), origin="lower")
