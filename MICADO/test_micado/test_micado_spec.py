@@ -51,7 +51,7 @@ class TestInit:
 
         cmds = sim.UserCommands(use_instrument="MICADO",
                                 set_modes=["SCAO", "SPEC_15000x50"])
-        cmds.cmds["!OBS.trace_file"] = "TRACE_MICADO.fits"      # Old, missing x=0
+        cmds.cmds["!OBS.trace_file"] = "TRACE_MICADO.fits"    # Old, missing x=0
         cmds.cmds["!DET.dit"] = 3600
         cmds.cmds["!OBS.filter_name_fw1"] = "open"
         cmds.cmds["!OBS.filter_name_fw2"] = "Ks"
@@ -71,9 +71,9 @@ class TestInit:
 
         assert spec_av_flux / scale_factor == approx(img_av_flux, rel=0.1)
 
-
         # plt.subplot(121)
-        # plt.imshow(micado.image_planes[0].data, norm=LogNorm(), origin="lower")
+        # plt.imshow(micado.image_planes[0].data, norm=LogNorm(),
+        #            origin="lower")
         #
         # plt.subplot(122)
         # plt.imshow(hdul[1].data, norm=LogNorm(), origin="lower")
