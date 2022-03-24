@@ -13,7 +13,8 @@ class TestSpecTraceVsDetectors:
         plt.figure(figsize=(7, 7))
         for row in tbl:
             x, y = row["x_cen"], row["y_cen"]
-            dx, dy =  row["xhw"], row["yhw"]
+            pixsize = row["pixel_size"]
+            dx, dy = row["x_size"] / 2 * pixsize, row["x_size"] / 2 * pixsize
             plt.plot([x-dx, x+dx, x+dx, x-dx, x-dx],
                      [y-dy, y-dy, y+dy, y+dy, y-dy], c="b")
             plt.text(x, y, row["id"],
@@ -50,7 +51,8 @@ class TestSpecTraceVsDetectors:
         det_xs, det_ys = [], []
         for row in tbl:
             x, y = row["x_cen"], row["y_cen"]
-            dx, dy = row["xhw"], row["yhw"]
+            pixsize = row["pixel_size"]
+            dx, dy = row["x_size"] / 2 * pixsize, row["x_size"] / 2 * pixsize
             det_xs += [[x - dx, x + dx, x + dx, x - dx, x - dx]]
             det_ys += [[y - dy, y - dy, y + dy, y + dy, y - dy]]
 
@@ -84,9 +86,9 @@ class TestSpecTraceVsDetectors:
         # plt.show()
 
     @pytest.mark.parametrize("name, wave_min, wave_max, xi_min, xi_max",
-                             [('IzJ-band 3 arcsec', 0.83, 1.57, -1.6, 1.6),
-                              ('J-band 15 arcsec', 1.16, 1.35, -6, 11),
-                              ('HK-band 15 arcsec', 1.5, 2.45, -6, 11)
+                             [('HK-band 15 arcsec', 1.5, 2.45, -6, 11),
+                              ('IzJ-band 3 arcsec', 0.83, 1.57, -1.6, 1.6),
+                              ('J-band 15 arcsec', 1.16, 1.35, -6, 11)
                               ])
     def test_plot_trace_file_vertical(self, name, wave_min, wave_max, xi_min, xi_max):
 
@@ -96,11 +98,12 @@ class TestSpecTraceVsDetectors:
         det_xs, det_ys = [], []
         for row in tbl:
             x, y = row["x_cen"], row["y_cen"]
-            dx, dy = row["xhw"], row["yhw"]
+            pixsize = row["pixel_size"]
+            dx, dy = row["x_size"] / 2 * pixsize, row["x_size"] / 2 * pixsize
             det_xs += [[x - dx, x + dx, x + dx, x - dx, x - dx]]
             det_ys += [[y - dy, y - dy, y + dy, y + dy, y - dy]]
 
-        with fits.open("../TRACE_MICADO_2.fits") as hdul:
+        with fits.open("../TRACE_MICADO.fits") as hdul:
             for i, hdu in enumerate(hdul[2:]):
                 for xi, c in zip([-5, -1.5, 0, 1.5, 10], "mbgyr"):
                     tbl = Table(hdu.data)

@@ -1,0 +1,20 @@
+# keywords to be added to the pipeline
+
+primary_header:
+  HIERARCH ESO:
+    DPR TYPE:
+    ATM TEMPERAT: "!ATMO.temperature"
+
+  HIERARCH SIM:
+    DET DAR include: True
+    DET DAR value: "#<optical_element_name>.<effect_name>.<kwarg_name>"
+      <eso alias> <effect name> <kwarg name>: <kwarg value>, <default_value>
+    DET SHO include: True
+
+  HIERARCH MIC: {}
+
+
+todo:
+  - add fits_alias to all yaml effecet descriptions
+  - add "#"-string finder to from_currsys
+  - add function to add extra fits keywords to output
