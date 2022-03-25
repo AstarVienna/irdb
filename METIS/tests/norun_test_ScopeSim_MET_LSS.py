@@ -80,7 +80,7 @@ class TestMetisLss:
 
         toggle_effects = [
                           # "skycalc_atmosphere",
-                          # "telescope_reflection",
+                          # "reflection",
                           # "common_fore_optics",
                           # "metis_img_lm_mirror_list",
                           # "quantum_efficiency",
@@ -120,7 +120,7 @@ class TestMetisLss:
 
         toggle_effects = [
                           "skycalc_atmosphere",
-                          "telescope_reflection",
+                          "reflection",
                           "common_fore_optics",
                           # "metis_img_lm_mirror_list",
                           # "quantum_efficiency",

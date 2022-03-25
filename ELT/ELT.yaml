@@ -14,7 +14,7 @@ properties :
     filename : "TER_ELT_5_mirror.dat"
 
 effects :
-  - name : telescope_reflection
+  - name : reflection
     description : single combined reflection curve (ESO-333023)
     class : SurfaceList
     include : True

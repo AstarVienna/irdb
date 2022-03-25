@@ -161,7 +161,7 @@ class TestSourceFlux:
         metis = sim.OpticalTrain(cmd)
 
         for eff in ["skycalc_atmosphere",   # Adds ~58000 ph/s/pix
-                    "telescope_reflection", # Adds ~20 ph/s/pix
+                    "reflection", # Adds ~20 ph/s/pix
                     "common_fore_optics",   # EntrWindow alone adds ~14700 ph/s/pix
                     #"metis_img_lm_mirror_list",           # Adds ~0 ph/s/pix
                     "quantum_efficiency",
@@ -199,7 +199,7 @@ class TestSourceFlux:
         metis["detector_linearity"].include = False
 
         # for eff in ["skycalc_atmosphere",  # Adds ~58000 ph/s/pix
-        #             "telescope_reflection",  # Adds ~20 ph/s/pix
+        #             "reflection",  # Adds ~20 ph/s/pix
         #             "common_fore_optice",  # EntrWindow alone adds ~14700 ph/s/pix
         #             "metis_img_lm_mirror_list",  # Adds ~0 ph/s/pix
         #             "quantum_efficiency",
@@ -230,7 +230,7 @@ class TestSourceFlux:
         cmd = sim.UserCommands(use_instrument="METIS", set_modes=["img_n"])
         metis = sim.OpticalTrain(cmd)
         for eff in ["skycalc_atmosphere",   # Adds ~58000 ph/s/pix
-                    "telescope_reflection", # Adds ~20 ph/s/pix
+                    "reflection", # Adds ~20 ph/s/pix
                     "common_fore_optics",   # EntrWindow alone adds ~14700 ph/s/pix
                     "chop_nod",
                     # "metis_img_lm_mirror_list",           # Adds ~0 ph/s/pix
