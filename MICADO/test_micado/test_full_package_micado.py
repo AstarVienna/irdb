@@ -198,9 +198,10 @@ class TestDetector:
                                                 "!OBS.dit": dit,
                                                 "!OBS.ndit": ndit})
         opt = scopesim.OpticalTrain(cmd)
-        opt["armazones_atmo_dispersion"].include = False
-        opt["micado_adc_3D_shift"].include = False
-        opt["detector_linearity"].include = False
+        # opt["armazones_atmo_dispersion"].include = False
+        # opt["micado_adc_3D_shift"].include = False
+        for el in opt["micado_detector_array"]["detector_linearity"]:
+            el.include = False
         src = scopesim.source.source_templates.star_field(16, 20, 35, 3,
                                                           use_grid=True)
         opt.observe(src)
@@ -240,18 +241,22 @@ class TestLimitingMagnitudes:
                                                 "!ATMO.background.magnitude": bg_mag,
                                                 "!ATMO.background.filter_name": filter_name})
         opt = scopesim.OpticalTrain(cmd)
-        for eff in ["armazones_atmo_dispersion", "micado_adc_3D_shift",
-                    "detector_linearity", "full_detector_array"]:
-            opt[eff].include = False
-        for eff in ["detector_window"]:
-            opt[eff].include = True
+        for el in opt["micado_detector_array"]["detector_linearity"]:
+            el.include = False
+        for el in opt["micado_detector_array"]["full_detector_array"]:
+            el.include = False
+        # "armazones_atmo_dispersion" # not enabled anyway
+        # "micado_adc_3D_shift"
+        opt["detector_window"].include = True
         opt.update()
 
-        new_kwargs = {"rescale_emission": {"filter_name": filter_name,
-                                           "filename_format": "filters/TC_filter_{}.dat",
-                                           "value": bg_mag,
-                                           "unit": "mag"}}
-        opt["armazones_atmo_default_ter_curve"] = new_kwargs
+        # new_kwargs = {"rescale_emission": {"filter_name": filter_name,
+        #                                    "filename_format": "filters/TC_filter_{}.dat",
+        #                                    "value": bg_mag,
+        #                                    "unit": "mag"}}
+        # opt["armazones_atmo_default_ter_curve"] = new_kwargs
+        # TODO: is the below the same as the above?
+        opt["armazones"].properties["background"]["filter_name"] = "J"
 
         opt.observe(src)
         hdus = opt.readout()
