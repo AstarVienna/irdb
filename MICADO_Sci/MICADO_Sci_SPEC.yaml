@@ -50,6 +50,9 @@ effects:
     kwargs :
         filename : "TRACE_SCI_3arcsec.fits"
         center_on_wave_mid: True
+        x_colname : "x0"
+        y_colname : "y0"
+        s_colname : "s0"
 
 ---
 
