@@ -288,7 +288,7 @@ class TestObserveOpticalTrain:
         hdu = opt.readout()[0]
 
         implane_av = np.average(opt.image_planes[0].data)
-        hdu_av = np.average([hdu[i].data for i in range(1, 5)])
+        hdu_av = np.average([hdui.data for hdui in hdu[1:]])
         exptime = cmd["!OBS.ndit"] * cmd["!OBS.dit"]
 
         assert hdu_av == approx(implane_av * exptime, rel=0.01)
