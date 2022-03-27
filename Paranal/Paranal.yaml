@@ -34,20 +34,20 @@ effects :
 
 ####################### Alternative effects ####################################
 
--   name : paranal_atmo_dispersion
-    description : atmospheric dispersion
-    class : AtmosphericDispersion
-    include: False
+    -   name : paranal_atmo_dispersion
+        description : atmospheric dispersion
+        class : AtmosphericDispersion
+        include: False
 
--   name : paranal_atmo_default_ter_curve
-    description : atmospheric emission and transmission
-    class : AtmosphericTERCurve
-    include : False
-    kwargs :
-        filename: "TER_paranal_default_NIR_IMG.dat"
-        area: "!TEL.area"
-        rescale_emission:
-            filter_name: "Ks"
-            filename_format: "!INST.filter_file_format"
-            value: 13.6
-            unit: mag
+    -   name : paranal_atmo_default_ter_curve
+        description : atmospheric emission and transmission
+        class : AtmosphericTERCurve
+        include : False
+        kwargs :
+            filename: "TER_paranal_default_NIR_IMG.dat"
+            area: "!TEL.area"
+            rescale_emission:
+                filter_name: "Ks"
+                filename_format: "!INST.filter_file_format"
+                value: 13.6
+                unit: mag

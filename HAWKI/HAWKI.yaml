@@ -28,10 +28,10 @@ effects:
   kwargs:
     filename: LIST_HAWKI_mirrors.dat
 
- - name: filter_wheel
-      class: FilterWheel
-      description: IMG_N science filters
-      kwargs:
+- name: filter_wheel
+  class: FilterWheel
+  description: IMG_N science filters
+  kwargs:
           filter_names:
               - open
               - Y
