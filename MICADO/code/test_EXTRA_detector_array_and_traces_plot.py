@@ -132,3 +132,14 @@ class TestSpecTraceVsDetectors:
         # plt.savefig(fname + ".png", format="png")
         # plt.savefig(fname + ".pdf", format="pdf")
         plt.show()
+
+    def test_plot_order_efficiencies(self):
+
+        plt.figure(figsize=(20, 15))
+
+        with fits.open("../TRACE_MICADO.fits") as hdul:
+            for i, hdu in enumerate(hdul[2:]):
+                tbl = Table(hdu.data)
+                plt.plot(tbl["wavelength"], tbl["r80"])
+
+        plt.show()
