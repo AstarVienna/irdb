@@ -5,7 +5,7 @@ object: configuration
 alias: OBS
 name: METIS_default_configuration
 description: default parameters needed for a METIS simulation
-date_modified: 2022-02-21
+date_modified: 2022-03-14
 changes:
   - 2021-12-16 (OC) chopnod defaults to perpendicular
   - 2021-12-16 (OC) default slits renamed
@@ -14,6 +14,7 @@ changes:
   - 2022-01-25 (OC, KL) add detector modes
   - 2022-02-20 (OC) pupil_transmission now an OBS parameter
   - 2022-02-21 (OC) linear interpolation, cosmetics
+  - 2022-03-14 (OC) use single PSF file
 
 packages:
   - Armazones
@@ -131,7 +132,7 @@ mode_yamls:
       - METIS_LMS.yaml
       - METIS_DET_IFU.yaml
     properties:
-      psf_file: PSF_SCAO_9mag_06seeing.fits
+      psf_file: PSF_LM_9mag_06seeing.fits
       slit: false
       adc: false
       trace_file: TRACE_LMS.fits
