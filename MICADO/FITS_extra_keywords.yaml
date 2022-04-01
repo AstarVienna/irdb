@@ -95,40 +95,42 @@ But this is 'Zukunftsmusik'.
 For now we really just want an interface that can add the ESO header keywords,
 which can also be expanded in the future for our own purposes.
 
-Below is an example of some extra keywords for MICADO headers
+Below is an example of some extra keywords for MICADO headers::
+
+    - ext_type: PrimaryHDU
+      keywords:
+        HIERARCH:
+          ESO:
+            ATM:
+              TEMPERAT: '!ATMO.temperature'   # will be resolved via from_currsys
+              PWV: '!ATMO.pwv'
+              SEEING: 1.2
+            DAR:
+              VALUE: '#<effect_name>.<kwarg_name>'   # will be resolved via effects
+            DPR:
+              TYPE: 'some_type'
+          SIM:
+            random_simulation_keyword: some_value
+          MIC:
+            micado_specific: ['keyword', 'keyword comment']
+    
+      unresolved_keywords:
+        HIERARCH:
+          ESO:
+            ATM:
+              TEMPERAT: '!ATMO.temperature'   # will be left as a string
+    
+    - ext_type: ImageHDU
+      keywords:
+        HIERARCH:
+          SIM:
+            hello: world
+            hallo: welt
+            grias_di: woed
+            zdrasviute: mir
+            salud: el mundo
+
 """
-- ext_type: PrimaryHDU
-  keywords:
-    HIERARCH:
-      ESO:
-        ATM:
-          TEMPERAT: "!ATMO.temperature"   # will be resolved via from_currsys
-          PWV: "!ATMO.pwv"
-          SEEING: 1.2
-        DAR:
-          VALUE: "#<effect_name>.<kwarg_name>"   # will be resolved via effects
-        DPR:
-          TYPE: "some_type"
-      SIM:
-        random_simulation_keyword: some_value
-      MIC:
-        micado_specific: ["keyword", "keyword comment"]
-
-  unresolved_keywords:
-    HIERARCH:
-      ESO:
-        ATM:
-          TEMPERAT: "!ATMO.temperature"   # will be left as a string
-
-- ext_type: ImageHDU
-  keywords:
-    HIERARCH:
-      SIM:
-        hello: world
-        hallo: welt
-        grias_di: woed
-        zdrasviute: mir
-        salud: el mundo
 
 
 # .. todo:
