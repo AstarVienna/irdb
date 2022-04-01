@@ -21,6 +21,13 @@ effects:
     kwargs:
       filename: LIST_METIS_mirrors_lms.dat
 
+  - name: lms_efficiency
+    description: grating efficiency of METIS LMS
+    class: MetisLMSEfficiency
+    kwargs:
+      filename: "!OBS.trace_file"
+      wavelen: "!OBS.wavelen"
+
   - name: lms_image_slicer
     description: field of view of the image slicer
     class: MetisLMSImageSlicer
