@@ -4,10 +4,13 @@ from glob import glob
 import pytest
 import yaml
 
+from scopesim.effects.data_container import DataContainer
+from astropy.io.ascii import InconsistentTableError
+
 from irdb.utils import get_packages, load_badge_yaml, write_badge_yaml, \
     recursive_filename_search
 
-PKG_DIR = pth.abspath(pth.join(pth.dirname(__file__), "../"))
+PKG_DIR = pth.abspath(pth.join(pth.dirname(__file__), "../../"))
 PKG_DICT = get_packages()
 BADGES = load_badge_yaml()
 
@@ -105,4 +108,21 @@ class TestFileStructureOfPackages:
                 BADGES[f"!{pkg_name}.contents.all_yamls_readable"] = True
         assert not yamls_bad, f"Errors found in yaml files: {yamls_bad}"
 
+    def test_all_dat_files_readable(self):
+        bad_files = []
+        fns_dat = glob(PKG_DIR + "/**/*.dat")
+        assert fns_dat
+        for fn_dat in fns_dat:
+            try:
+                datacont = DataContainer(fn_dat)
+            except InconsistentTableError as e:
+                print(fn_dat, "InconsistentTableError", e)
+                bad_files.append(fn_dat)
+            except ValueError as e:
+                print(fn_dat, "ValeError", e)
+                bad_files.append(fn_dat)
+            except Exception as e:
+                print(fn_dat, "Unexpected Exception", e.__class__, e)
+                bad_files.append(fn_dat)
+        assert not bad_files, bad_files
 
