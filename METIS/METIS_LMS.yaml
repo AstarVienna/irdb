@@ -4,9 +4,10 @@ object: instrument
 alias: INST
 name: METIS_LMS
 description: base configuration for METIS LMS
-date_modified: 2022-03-04
+date_modified: 2022-03-14
 changes:
   - 2022-03-04 (OC) introduce decouple_detector_from_sky_headers
+  - 2022-03-22 (OC) add METISLMSImageSlicer effect
 
 properties:
   pixel_scale: 0.0082          # arcsec / pixel
@@ -20,6 +21,28 @@ effects:
     kwargs:
       filename: LIST_METIS_mirrors_lms.dat
 
+  - name: lms_efficiency
+    description: grating efficiency of METIS LMS
+    class: MetisLMSEfficiency
+    kwargs:
+      filename: "!OBS.trace_file"
+      wavelen: "!OBS.wavelen"
+
+  - name: lms_image_slicer
+    description: field of view of the image slicer
+    class: MetisLMSImageSlicer
+    kwargs:
+      filename: "!OBS.trace_file"
+      ext_id: "Aperture List"
+
+  - name: psf
+    description: field constant, wavelength dependent PSF for imaging mode
+    class: FieldConstantPSF
+    kwargs:
+      filename: "!OBS.psf_file"
+      wave_key: "WAVELENG"
+      bkg_width: -1
+
   - name: lms_spectral_traces
     description: list of spectral order trace geometry on the focal plane
     class: MetisLMSSpectralTraceList
@@ -27,7 +50,20 @@ effects:
       filename: "!OBS.trace_file"
       wave_colname: "wavelength"
       wavelen: "!OBS.wavelen"
-      dwave: 0.0005
       s_colname: "xi"
       col_number_start: 1
+      slice_samples: 5    # number of samples along slice width
 
+
+
+---
+### default simulation parameters needed for a METIS simulation
+object: simulation
+alias: SIM
+name: METIS_simulation_parameters
+description: RC simulation parameters which need to change for a METIS run
+
+properties:
+  spectral:
+    spectral_bin_width: !!float 1E-5   # microns, defines fov wavelengths
+    spectral_resolution: 200000          # defines skycalc resolution
