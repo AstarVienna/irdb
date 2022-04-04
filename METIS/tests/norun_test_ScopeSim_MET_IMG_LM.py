@@ -9,7 +9,11 @@ Work out whether the flux components are realistic
 
 """
 import pytest
+pytest.skip("we'll come back to this one day (hopefully)",
+            allow_module_level=True)
+
 from pytest import approx
+
 import numpy as np
 from scipy.misc import face
 
@@ -25,6 +29,7 @@ import hmbp
 import scopesim as sim
 from scopesim.effects import FilterCurve
 from scopesim.source.source_templates import star, empty_sky, star_field
+
 
 # Set the path to the local irdb.
 from scopesim import rc
@@ -70,9 +75,9 @@ class TestImgLMBackgroundLevels:
     def test_sky_phs_with_full_system_transmission(self, filter_name, expected_phs):
         cmd = sim.UserCommands(use_instrument="METIS", set_modes=["img_lm"])
         cmd["!OBS.filter_name"] = filter_name
-        cmd["!AMTO.pwv"] = 1.0
-        cmd["!AMTO.airmass"] = 1.0
-        cmd["!AMTO.temperature"] = 258
+        cmd["!ATMO.pwv"] = 1.0
+        cmd["!ATMO.airmass"] = 1.0
+        cmd["!ATMO.temperature"] = 258
 
         metis = sim.OpticalTrain(cmd)
         metis['detector_linearity'].include = False
@@ -117,7 +122,7 @@ class TestImgLMBackgroundLevels:
     def test_instrument_throughput_without_atmospheric_bg(self):
         cmd = sim.UserCommands(use_instrument="METIS", set_modes=["img_lm"])
         metis = sim.OpticalTrain(cmd)
-        metis["armazones_atmo_skycalc_ter_curve"].include = True
+        metis["skycalc_atmosphere"].include = True
 
         src = empty_sky()
         metis.observe(src)
@@ -129,7 +134,7 @@ class TestImgLMBackgroundLevels:
     def test_print_background_contributions(self):
         cmd = sim.UserCommands(use_instrument="METIS", set_modes=["img_lm"])
         metis = sim.OpticalTrain(cmd)
-        metis["metis_psf_img"].include = False
+        metis["psf"].include = False
 
         metis.observe(empty_sky())
 
@@ -155,12 +160,12 @@ class TestSourceFlux:
         cmd = sim.UserCommands(use_instrument="METIS", set_modes=[mode_name])
         metis = sim.OpticalTrain(cmd)
 
-        for eff in ["armazones_atmo_skycalc_ter_curve",   # Adds ~58000 ph/s/pix
-                    "eso_combined_reflection",            # Adds ~20 ph/s/pix
-                    "metis_cfo_surfaces",                 # EntrWindow alone adds ~14700 ph/s/pix
+        for eff in ["skycalc_atmosphere",   # Adds ~58000 ph/s/pix
+                    "telescope_reflection", # Adds ~20 ph/s/pix
+                    "common_fore_optics",   # EntrWindow alone adds ~14700 ph/s/pix
                     #"metis_img_lm_mirror_list",           # Adds ~0 ph/s/pix
-                    "qe_curve",
-                    "metis_psf_img"
+                    "quantum_efficiency",
+                    "psf"
                     ]:
             metis[eff].include = False
 
@@ -193,12 +198,12 @@ class TestSourceFlux:
         metis = sim.OpticalTrain(cmd)
         metis["detector_linearity"].include = False
 
-        # for eff in ["armazones_atmo_skycalc_ter_curve",  # Adds ~58000 ph/s/pix
-        #             "eso_combined_reflection",  # Adds ~20 ph/s/pix
-        #             "metis_cfo_surfaces",  # EntrWindow alone adds ~14700 ph/s/pix
+        # for eff in ["skycalc_atmosphere",  # Adds ~58000 ph/s/pix
+        #             "telescope_reflection",  # Adds ~20 ph/s/pix
+        #             "common_fore_optice",  # EntrWindow alone adds ~14700 ph/s/pix
         #             "metis_img_lm_mirror_list",  # Adds ~0 ph/s/pix
-        #             "qe_curve",
-        #             "metis_psf_img"
+        #             "quantum_efficiency",
+        #             "psf"
         #             ]:
         #     metis[eff].include = False
 
@@ -224,21 +229,21 @@ class TestSourceFlux:
     def test_image_is_visible(self):
         cmd = sim.UserCommands(use_instrument="METIS", set_modes=["img_n"])
         metis = sim.OpticalTrain(cmd)
-        for eff in ["armazones_atmo_skycalc_ter_curve",   # Adds ~58000 ph/s/pix
-                    "eso_combined_reflection",            # Adds ~20 ph/s/pix
-                    "metis_cfo_surfaces",                 # EntrWindow alone adds ~14700 ph/s/pix
-                    "chopnod",
+        for eff in ["skycalc_atmosphere",   # Adds ~58000 ph/s/pix
+                    "telescope_reflection", # Adds ~20 ph/s/pix
+                    "common_fore_optics",   # EntrWindow alone adds ~14700 ph/s/pix
+                    "chop_nod",
                     # "metis_img_lm_mirror_list",           # Adds ~0 ph/s/pix
-                    # "qe_curve",
-                    "metis_psf_img"
+                    # "quantum_efficiency",
+                    "psf"
                     ]:
             metis[eff].include = False
 
         hdu = fits.open(r"F:\temp\scopesim_metis_workshop\data\sd0490_image_l12_i090_p000.fits")
         hdu[0].header["CDELT1"] *= 10
         hdu[0].header["CDELT2"] *= 10
-        hdu[0].header["CUNIT1"] = "DEGREE"
-        hdu[0].header["CUNIT2"] = "DEGREE"
+        hdu[0].header["CUNIT1"] = "deg"
+        hdu[0].header["CUNIT2"] = "deg"
         hdu[0].header["CRVAL1"] = 0
         hdu[0].header["CRVAL2"] = 0
         src = sim.Source(image_hdu=hdu[0], flux=1*u.Jy)
@@ -292,7 +297,6 @@ def simulate_point_source(plot=False):
 
     # build the optical train and adjust
     metis = sim.OpticalTrain(cmd)
-    metis['scope_vibration'].include = False
     metis['detector_linearity'].include = False
 
     # Set the DIT to 1 second
@@ -353,11 +357,10 @@ def vary_exposure_times(plot=False):
 
     # Load the configuration for the METIS LM-band imaging mode.
     cmd = sim.UserCommands(use_instrument="METIS",
-                                set_modes=["img_lm"])
+                           set_modes=["img_lm"])
 
     # build the optical train and adjust
     metis = sim.OpticalTrain(cmd)
-    metis['scope_vibration'].include = False
     metis['detector_linearity'].include = False
 
     # Observe the source
