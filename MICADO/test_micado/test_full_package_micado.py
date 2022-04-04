@@ -200,7 +200,7 @@ class TestDetector:
         opt = scopesim.OpticalTrain(cmd)
         # opt["armazones_atmo_dispersion"].include = False
         # opt["micado_adc_3D_shift"].include = False
-        for el in opt["micado_detector_array"]["detector_linearity"]:
+        for el in [opt["micado_detector_array"]["detector_linearity"]]:
             el.include = False
         src = scopesim.source.source_templates.star_field(16, 20, 35, 3,
                                                           use_grid=True)
@@ -241,9 +241,10 @@ class TestLimitingMagnitudes:
                                                 "!ATMO.background.magnitude": bg_mag,
                                                 "!ATMO.background.filter_name": filter_name})
         opt = scopesim.OpticalTrain(cmd)
-        for el in opt["micado_detector_array"]["detector_linearity"]:
-            el.include = False
-        for el in opt["micado_detector_array"]["full_detector_array"]:
+        for el in [
+            opt["micado_detector_array"]["detector_linearity"],
+            opt["micado_detector_array"]["full_detector_array"],
+        ]:
             el.include = False
         # "armazones_atmo_dispersion" # not enabled anyway
         # "micado_adc_3D_shift"
