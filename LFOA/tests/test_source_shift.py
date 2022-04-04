@@ -65,13 +65,17 @@ class TestShiftSource:
         data1 = hdulists1[0][1].data
         data = data1
         dmin, dmax, dmean, dmed, dstd = data.min(), data.max(), data.mean(), numpy.median(data), data.std()
-        cm1y, cm1x = scipy.ndimage.center_of_mass(data1)
+
+        # Do some filtering before finding the center of the cluster.
+        data1a = (data1 - dmed)
+        data1a[data1a < 0] = 0
+        cm1y, cm1x = scipy.ndimage.center_of_mass(data1a)
         print(cm1y, cm1x)
 
-        # if not PLOTS:
-        plt.imshow(data, norm=LogNorm(vmin=dmed, vmax=dmed + 0.1 * dstd))
-        plt.colorbar()
-        plt.show()
+        if PLOTS:
+            plt.imshow(data, norm=LogNorm(vmin=dmed, vmax=dmed + 0.1 * dstd))
+            plt.colorbar()
+            plt.show()
 
         # Shift the cluster.
         dx = 10 * u.arcsec
@@ -86,20 +90,28 @@ class TestShiftSource:
         data = data2
         dmin, dmax, dmean, dmed, dstd = data.min(), data.max(), data.mean(), numpy.median(data), data.std()
 
-        # if not PLOTS:
-        plt.imshow(data, norm=LogNorm(vmin=dmed, vmax=dmed + 0.1 * dstd))
-        # im = ax.imshow(data)
-        plt.colorbar()
-        plt.show()
+        if PLOTS:
+            plt.imshow(data, norm=LogNorm(vmin=dmed, vmax=dmed + 0.1 * dstd))
+            plt.colorbar()
+            plt.show()
 
-        cm2y, cm2x = scipy.ndimage.center_of_mass(data2)
+        data2a = (data2 - dmed)
+        data2a[data2a < 0] = 0
+
+        cm2y, cm2x = scipy.ndimage.center_of_mass(data2a)
         print(cm2y, cm2x)
 
         # Compare the center of masses. Centers of mass. Centers of masses...
-        dxm = cm2x - cm1x
-        dym = cm2y - cm1y
+        dxmp = cm2x - cm1x
+        dymp = cm2y - cm1y
+        print(dxmp, dymp)
+
+        # 0.307 is pixel_scale
+        # 2 is the binning
+        dxm = dxmp * 0.307 * 2
+        dym = dymp * 0.307 * 2
         print(dxm, dym)
 
         # E.g. 10.0 == 10.1.
-        assert_approx_equal(dx.value, dxm, 1)
-        assert_approx_equal(dy.value, dxm, 1)
+        assert_approx_equal(dxm, dx.value, 1)
+        assert_approx_equal(dym, dy.value, 1)

@@ -14,9 +14,11 @@ jobs:
   build:
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest]
         python-version: ['3.7', '3.8', '3.9']
+        scopesim-branch: ['master', 'dev_master']
 
     steps:
       - uses: actions/checkout@v2
@@ -29,7 +31,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.github_actions.txt
           pip uninstall -y scopesim scopesim_templates
-          pip install git+https://github.com/AstarVienna/ScopeSim.git
+          pip install git+https://github.com/AstarVienna/ScopeSim.git@${{ matrix.scopesim-branch }}
           pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git
       - name: Run Pytest
         run: pytest

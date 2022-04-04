@@ -1,0 +1,9 @@
+# author : Hugo Buddelmeijer
+# source : Placeholder
+# description : Placeholder
+# date_created : 2022-04-23
+# wavelength_unit : um
+# emission_unit : photlam
+          wavelength         transmission                 emission
+                 0.1   1.0000000000000000                      0.0
+                24.5   1.0000000000000000                      0.0

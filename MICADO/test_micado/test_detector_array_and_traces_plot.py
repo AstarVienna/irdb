@@ -1,11 +1,15 @@
+from pathlib import Path
+
 from matplotlib import pyplot as plt
 from astropy.io import fits, ascii
 from astropy.table import Table
 
+PATH_HERE = Path(__file__).resolve().parent
+
 
 class TestSpecTraceVsDetectors:
     def test_plot_detectors(self):
-        tbl = ascii.read("../FPA_array_layout.dat")
+        tbl = ascii.read(PATH_HERE.parent / "FPA_array_layout.dat")
         print(tbl)
 
         plt.figure(figsize=(7, 7))
@@ -17,7 +21,7 @@ class TestSpecTraceVsDetectors:
             plt.text(x, y, row["id"], horizontalalignment="center", verticalalignment="center", fontsize=18)
 
         for ext in range(2, 3):
-            tbl = Table(fits.getdata("../TRACE_MICADO.fits", ext=ext))
+            tbl = Table(fits.getdata(PATH_HERE.parent / "TRACE_MICADO.fits", ext=ext))
             plt.scatter(tbl["x"], tbl["y"], c=tbl["wavelength"], s=10, cmap="hot_r")
 
             plt.text(tbl["x"][3], tbl["y"][3], f'{round(tbl["wavelength"][3], 2)} um', horizontalalignment="center", verticalalignment="center", fontsize=14)
