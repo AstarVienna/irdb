@@ -39,4 +39,32 @@ jobs:
         # Allow failure if e.g. IRDB dev_master is ran against ScopeSIM master.
         # A pytest failure is only counted if both branches are the same, that
         # is both master or both dev_master.
-        run: pytest || [[ ${{ matrix.scopesim-branch }} != $GITHUB_REF_NAME ]]
+        run: |
+            echo "Target IRDB branch: ${pull_request_target}"
+            echo "This IRDB branch:   ${GITHUB_REF_NAME}"
+            echo "ScopeSIM branch:    ${{ matrix.scopesim-branch }}"
+            this_branch_is_scopesim_branch=$(expr "${GITHUB_REF_NAME}O" == "${{ matrix.scopesim-branch }}O" )
+            echo "this_branch_is_scopesim_branch: ${this_branch_is_scopesim_branch}"
+            target_branch_is_scopesim_branch=$(expr "${pull_request_target}O" == "${{ matrix.scopesim-branch }}O" )
+            echo "target_branch_is_scopesim_branch: ${target_branch_is_scopesim_branch}"
+            not_running_as_pr=$(expr "${pull_request_target:+hello}O" != "helloO")
+            echo "not_running_as_pr: ${not_running_as_pr}"
+            if [[ this_branch_is_scopesim_branch -eq 1 || target_branch_is_scopesim_branch -eq 1 || not_running_as_pr -eq 1 ]] ; then
+                must_succeed="true"
+                may_fail=""
+            else
+                must_succeed=""
+                may_fail="true"
+            fi
+            echo "must_succeed: ${must_succeed}"
+            echo "may_fail: ${may_fail}"
+            #pytest irdb/tests/test_utils.py
+            python -m pytest irdb/tests/test_utils.py
+            result=$?
+            if [[ ${may_fail} ]] ; then
+                echo "May fail, so exiting 0."
+                exit 0
+            else
+                echo "Must succeed, so exiting ${result}."
+                exit $result
+            fi
