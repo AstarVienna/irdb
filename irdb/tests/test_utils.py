@@ -22,6 +22,7 @@ class TestMakeBadgeReport:
 
 class TestLoadBadgeYaml:
     def test_reads_in_badge_yaml(self):
+        1/0
         badges = load_badge_yaml()
 
         assert isinstance(badges, SystemDict)
