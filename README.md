@@ -56,7 +56,7 @@ Detailed information on the test suite can be found in the
 ## Contributing
 
 The IRDB is closely tied to [ScopeSIM](https://github.com/AstarVienna/ScopeSim).
-The following development workflow is therefor used:
+The following development workflow is therefore used:
 
 - The IRDB master branch should always work with the ScopeSIM master branch, similarly with the dev_master branches.
 - The dev_master branch should always be ahead of the master branch.
