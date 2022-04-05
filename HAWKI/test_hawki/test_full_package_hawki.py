@@ -151,7 +151,8 @@ class TestMakeOpticalTrain:
             cmd = scopesim.UserCommands(use_instrument="HAWKI")
             cmd["!OBS.filter_name"] = filt_name
             opt = scopesim.OpticalTrain(cmd)
-            opt["paranal_atmo_default_ter_curve"].include = False
+            # TODO: Exclude if it is included?
+            # opt["paranal_atmo_default_ter_curve"].include = False
 
             src = _single_table_source(n=1000)
             opt.observe(src)
