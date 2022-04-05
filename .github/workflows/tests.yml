@@ -43,11 +43,11 @@ jobs:
             echo "Target IRDB branch: ${GITHUB_BASE_REF}"
             echo "This IRDB branch:   ${GITHUB_REF_NAME}"
             echo "ScopeSIM branch:    ${{ matrix.scopesim-branch }}"
-            this_branch_is_scopesim_branch=$(expr "${GITHUB_REF_NAME}O" == "${{ matrix.scopesim-branch }}O" )
+            this_branch_is_scopesim_branch=$(expr "${GITHUB_REF_NAME}O" == "${{ matrix.scopesim-branch }}O" || true )
             echo "this_branch_is_scopesim_branch: ${this_branch_is_scopesim_branch}"
-            target_branch_is_scopesim_branch=$(expr "${GITHUB_BASE_REF}O" == "${{ matrix.scopesim-branch }}O" )
+            target_branch_is_scopesim_branch=$(expr "${GITHUB_BASE_REF}O" == "${{ matrix.scopesim-branch }}O" || true )
             echo "target_branch_is_scopesim_branch: ${target_branch_is_scopesim_branch}"
-            not_running_as_pr=$(expr "${GITHUB_BASE_REF:+hello}O" != "helloO")
+            not_running_as_pr=$(expr "${GITHUB_BASE_REF:+hello}O" != "helloO" || true )
             echo "not_running_as_pr: ${not_running_as_pr}"
             if [[ this_branch_is_scopesim_branch -eq 1 || target_branch_is_scopesim_branch -eq 1 || not_running_as_pr -eq 1 ]] ; then
                 must_succeed="true"
@@ -59,8 +59,10 @@ jobs:
             echo "must_succeed: ${must_succeed}"
             echo "may_fail: ${may_fail}"
             #pytest irdb/tests/test_utils.py
+            set +e
             python -m pytest irdb/tests/test_utils.py
             result=$?
+            set -e
             if [[ ${may_fail} ]] ; then
                 echo "May fail, so exiting 0."
                 exit 0
