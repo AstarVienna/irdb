@@ -53,3 +53,16 @@ Detailed information on the test suite can be found in the
 
 [badge reports section](_REPORTS/badges.md)
 
+## Contributing
+
+The IRDB is closely tied to [ScopeSIM](https://github.com/AstarVienna/ScopeSim).
+The following development workflow is therefor used:
+
+- The IRDB master branch should always work with the ScopeSIM master branch, similarly with the dev_master branches.
+- The dev_master branch should always be ahead of the master branch.
+- Feature branches are used to introduce new features and these are branched from dev_master, and merged into dev_master.
+- Merging a feature branch into dev_master is only allowed if all tests against ScopeSIM dev_master succeed.
+- Merging a feature branch into dev_master should preferably require a review from a second set of eyes to avoid accidents.
+- dev_master is merged into master whenever ScopeSIM dev_master is merged into master.
+
+
