@@ -36,4 +36,7 @@ jobs:
           pip install git+https://github.com/AstarVienna/ScopeSim.git@${{ matrix.scopesim-branch }}
           pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git
       - name: Run Pytest
-        run: pytest
+        # Allow failure if e.g. IRDB dev_master is ran against ScopeSIM master.
+        # A pytest failure is only counted if both branches are the same, that
+        # is both master or both dev_master.
+        run: pytest || [[ ${{ matrix.scopesim-branch }} != $GITHUB_REF_NAME ]]
