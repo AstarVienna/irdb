@@ -81,21 +81,23 @@ effects :
     class : SourceDescriptionFitsKeywords
     include : True
 
--   name : effects_fits_keywords
-    decription : adds meta dicts from all Effect objects to FITS header
-    class : EffectsMetaKeywords
-    include : True
+# E           ValueError: Illegal value: datetime.date(2021, 2, 22).
+#-   name : effects_fits_keywords
+#    decription : adds meta dicts from all Effect objects to FITS header
+#    class : EffectsMetaKeywords
+#    include : True
 
 -   name : config_fits_keywords
     decription : adds all UserCommands dicts to FITS header
     class : SimulationConfigFitsKeywords
     include : True
 
+# E           FileNotFoundError: [Errno 2] No such file or directory: 'FITS_extra_keywords.yaml'
 -   name : extra_fits_keywords
     decription : adds extra FITS keywords from a yaml file
     class : ExtraFitsKeywords
     include : True
-    kwargs :
-      filename: FITS_extra_keywords.yaml
+#    kwargs :
+#      filename: FITS_extra_keywords.yaml
 
 
