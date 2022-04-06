@@ -10,6 +10,7 @@ Comments
 """
 
 # integration test using everything and the MICADO package
+from pathlib import Path
 import pytest
 from pytest import approx
 
@@ -22,7 +23,10 @@ from scopesim.source import source_templates as st
 from matplotlib import pyplot as plt
 from matplotlib.colors import LogNorm
 
-rc.__config__["!SIM.file.local_packages_path"] = "../../"
+PATH_HERE = Path(__file__).parent
+PATH_IRDB = PATH_HERE.parent.parent
+
+rc.__config__["!SIM.file.local_packages_path"] = str(PATH_IRDB)
 PLOTS = False
 
 
@@ -38,6 +42,7 @@ class TestInit:
         assert isinstance(micado, sim.OpticalTrain)
         assert len(opt_els) == 6
 
+    @pytest.mark.skip(reason="This test runs out of memory and hangs.")
     def test_runs_spec_hk_15000x50(self):
         src = st.empty_sky()
 
