@@ -1,8 +1,7 @@
 import pytest
-
-from matplotlib import pyplot as plt
 from astropy.io import fits, ascii
 from astropy.table import Table
+from matplotlib import pyplot as plt
 
 
 class TestSpecTraceVsDetectors:
