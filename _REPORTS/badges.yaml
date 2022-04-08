@@ -48,6 +48,7 @@ METIS:
   package_type: observation
   structure:
     FPA_linearity.dat: missing
+    FPA_linearity_Aquarius.dat: missing
     INST_METIS_wavefront_error_budget.dat: missing
     QE_detector_Aquarius.dat: missing
     QE_detector_H2RG.dat: missing
