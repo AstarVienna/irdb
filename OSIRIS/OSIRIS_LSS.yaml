@@ -17,10 +17,10 @@ effects:
     description: OSIRIS grating efficiency curves, piggybacking on FilterWheel
     class: FilterWheel
     include: True
-    filename_format: "gratings/{}.txt"
-    minimum_throughput: !!float 0.
-    current_filter: "!OBS.grating_name"
     kwargs:
+      minimum_throughput: !!float 0.
+      filename_format: "gratings/{}.txt"
+      current_filter: "!OBS.grating_name"
       filter_names:
         - unity
         - R300B
@@ -38,10 +38,10 @@ effects:
   - name: slit_wheel
     description: collection of LSS slits
     class: SlitWheel
-    filename_format: "longslits/LongSlits{}Arcsec.txt"
-    current_slit: "!OBS.longslit_name"
     include: True
     kwargs:
+      filename_format: "longslits/LongSlits{}Arcsec.txt"
+      current_slit: "!OBS.longslit_name"
       slit_names:
         - "0.4"
         - "0.6"
@@ -54,15 +54,36 @@ effects:
         - "3.0"
         - "5.0"
 
-  - name: spectral_traces
-    description: list of spectral order trace geometry on the focal plane
-    class: SpectralTraceList
+#  - name: spectral_traces
+#    description: list of spectral order trace geometry on the focal plane
+#    class: SpectralTraceList
+#    kwargs:
+#      filename: "!OBS.trace_file"
+#      wave_colname: "wavelength"
+#      s_colname: "xi"
+#      col_number_start: 1
+
+  - name: spectral_trace_wheel
+    description: grism wheel contining spectral trace geometries
+    class: SpectralTraceListWheel
     kwargs:
-      filename: "!OBS.trace_file"
       wave_colname: "wavelength"
       s_colname: "xi"
       col_number_start: 1
-
+      current_trace_list: "!OBS.grating_name"
+      filename_format: "traces/LSS_{}_TRACE.fits"
+      trace_list_names:
+        - R300B
+        - R300R
+        - R500B
+        - R500R
+        - R1000B
+        - R1000R
+        - R2000B
+        - R2500I
+        - R2500R
+        - R2500U
+        - R2500V
 
   - name: OSIRIS_detector_qe
     description: QE curve for new OSIRIS detector, needed for spec modes

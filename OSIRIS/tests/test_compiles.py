@@ -65,8 +65,8 @@ class TestOsirisLongSlitCompiles:
         # n stars, mag_min, mag_max, width=[arcsec]
         src1 = star(x=-3.8, y=-3.8, flux=10*u.mag)
         src3 = star(x=3.8,  y=3.8,  flux=20*u.mag)
-        src4 = star(x=-100, y=-3.8,    flux=10*u.mag)
-        src5 = star(x=100,  y=-3.8,    flux=10*u.mag)
+        src4 = star(x=-100, y=-3.8, flux=10*u.mag)
+        src5 = star(x=100,  y=-3.8, flux=10*u.mag)
 
         src_comb = src1 + src3 + src4 + src5
 

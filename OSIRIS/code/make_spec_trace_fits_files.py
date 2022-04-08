@@ -8,6 +8,7 @@ from astropy.io import fits
 from astropy.table import Table
 from astropy import units as u
 
+
 def make_spec_trace_hdu(trace_names, dir_path, fname_format="{}.dat"):
     trace_hdus = []
     for name in trace_names:
