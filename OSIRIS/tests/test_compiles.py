@@ -83,3 +83,4 @@ class TestOsirisLongSlitCompiles:
             plt.imshow(hdulist[1].data, norm=LogNorm())
             plt.colorbar()
             plt.show()
+
