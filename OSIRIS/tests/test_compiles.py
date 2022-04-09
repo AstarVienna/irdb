@@ -73,7 +73,8 @@ class TestOsirisLongSlitCompiles:
         cmds = sim.UserCommands(use_instrument="OSIRIS", set_modes=["LSS"],
                                 properties={"!OBS.dit": 60})
         # cmds["!OBS.dit"] = 60
-        cmds.cmds["!ATMO.seeing"] = 0.8
+        cmds["!ATMO.seeing"] = 0.8
+        cmds["!OBS.grating_name"] = "R2500V"
 
         osiris = sim.OpticalTrain(cmds)
         osiris.observe(src_comb)

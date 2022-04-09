@@ -11,6 +11,18 @@ changes:
 
 properties:
   decouple_detector_from_sky_headers: True  # needed for slit spectroscopy
+  grism_names:
+    - R300B
+    - R300R
+    - R500B
+    - R500R
+    - R1000B
+    - R1000R
+    - R2000B
+    - R2500I
+    - R2500R
+    - R2500U
+    - R2500V
 
 effects:
   - name: grating_efficiency
@@ -21,19 +33,7 @@ effects:
       minimum_throughput: !!float 0.
       filename_format: "gratings/{}.txt"
       current_filter: "!OBS.grating_name"
-      filter_names:
-        - unity
-        - R300B
-        - R300R
-        - R500B
-        - R500R
-        - R1000B
-        - R1000R
-        - R2000B
-        - R2500I
-        - R2500R
-        - R2500U
-        - R2500V
+      filter_names: "!INST.grism_names"
 
   - name: slit_wheel
     description: collection of LSS slits
@@ -62,7 +62,7 @@ effects:
 #      wave_colname: "wavelength"
 #      s_colname: "xi"
 #      col_number_start: 1
-
+#
   - name: spectral_trace_wheel
     description: grism wheel contining spectral trace geometries
     class: SpectralTraceListWheel
@@ -72,18 +72,7 @@ effects:
       col_number_start: 1
       current_trace_list: "!OBS.grating_name"
       filename_format: "traces/LSS_{}_TRACE.fits"
-      trace_list_names:
-        - R300B
-        - R300R
-        - R500B
-        - R500R
-        - R1000B
-        - R1000R
-        - R2000B
-        - R2500I
-        - R2500R
-        - R2500U
-        - R2500V
+      trace_list_names: "!INST.grism_names"
 
   - name: OSIRIS_detector_qe
     description: QE curve for new OSIRIS detector, needed for spec modes
