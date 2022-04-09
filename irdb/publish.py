@@ -83,8 +83,8 @@ def make_package(pkg_name=None, release="dev"):
     if pkg_name in PKGS:
         # Collect the info for the version.yaml file
         timestamp = str(dt.now())[:19]
-        suffix = "_dev" if release == "dev" else ""
-        zip_name = f"{pkg_name}_{timestamp[:10]}{suffix}"
+        suffix = ".dev" if release == "dev" else ""
+        zip_name = f"{pkg_name}.{timestamp[:10]}{suffix}"
         version_dict = {"version": f"{timestamp[:10]}{suffix}",
                         "timestamp": timestamp,
                         "release": release}

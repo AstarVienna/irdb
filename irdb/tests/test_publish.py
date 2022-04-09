@@ -18,3 +18,17 @@ def test_make_packages():
 def run_main():
     argv = ["", "-c", "-u", "test_package", "-p", "<insert_if_running_locally"]
     pub.main(argv)
+
+
+def rename_zips():
+    from datetime import datetime as dt
+    from glob import glob
+    import os
+
+    os.chdir("F:/Work/irdb/_OLD_FILES")
+    for fname in glob("*.zip"):
+        base = fname.split(".")[0]
+        mod_date = str(dt.fromtimestamp(os.path.getmtime(fname)))[:10]
+        new_name = f"{base}.{mod_date}.zip"
+        print(fname, new_name)
+        os.rename(fname, new_name)
