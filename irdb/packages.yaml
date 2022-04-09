@@ -1,14 +1,68 @@
-Armazones: "locations/Armazones.zip"
-Paranal: "locations/Paranal.zip"
-VLT: "telescopes/VLT.zip"
-ELT: "telescopes/ELT.zip"
-HST: "telescopes/HST.zip"
-LFOA: "telescopes/LFOA.zip"
-MAORY: "instruments/MAORY.zip"
-METIS: "instruments/METIS.zip"
-MICADO: "instruments/MICADO.zip"
-MICADO_Sci: "instruments/MICADO_Sci.zip"
-HAWKI: "instruments/HAWKI.zip"
-WFC3: "instruments/WFC3.zip"
-test_package: "instruments/test_package.zip"
-
+Armazones:
+  latest: Armazones
+  path: locations
+  stable: Armazones
+ELT:
+  latest: ELT
+  path: telescopes
+  stable: ELT
+GTC:
+  latest: GTC
+  path: telescopes
+  stable: GTC
+HAWKI:
+  latest: HAWKI
+  path: instruments
+  stable: HAWKI
+HST:
+  latest: HST
+  path: telescopes
+  stable: HST
+LFOA:
+  latest: LFOA
+  path: telescopes
+  stable: LFOA
+LaPalma:
+  latest: LaPalma
+  path: locations
+  stable: LaPalma
+MAAT:
+  latest: MAAT
+  path: instruments
+  stable: MAAT
+MAORY:
+  latest: MAORY
+  path: instruments
+  stable: MAORY
+METIS:
+  latest: METIS
+  path: instruments
+  stable: METIS
+MICADO:
+  latest: MICADO
+  path: instruments
+  stable: MICADO
+MICADO_Sci:
+  latest: MICADO_Sci
+  path: instruments
+  stable: MICADO_Sci
+OSIRIS:
+  latest: OSIRIS
+  path: instruments
+  stable: OSIRIS
+Paranal:
+  latest: Paranal_2022-04-09
+  path: locations
+  stable: Paranal_2022-04-09
+VLT:
+  latest: VLT
+  path: telescopes
+  stable: VLT
+WFC3:
+  latest: WFC3
+  path: instruments
+  stable: WFC3
+test_package:
+  latest: test_package_2022-04-09
+  path: instruments
+  stable: test_package_2022-04-09
