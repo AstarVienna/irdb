@@ -85,3 +85,4 @@ class TestOsirisLongSlitCompiles:
             plt.colorbar()
             plt.show()
 
+        assert hdulist[1].data.max() > 1e3
