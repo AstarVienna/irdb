@@ -1,4 +1,4 @@
-### H4RG DETECTOR
+### OSIRIS DETECTOR
 object : detector
 alias : DET
 name : osiris_detector
@@ -6,7 +6,7 @@ description : A single 4k detector
 
 properties :
     image_plane_id : 0
-    temperature : -230
+    temperature : -120
     dit : "!OBS.dit"
     ndit : "!OBS.ndit"
 
@@ -41,7 +41,7 @@ effects :
     class: DarkCurrent
     # [e-/s] level of dark current for each detector
     kwargs:
-        value: 0.1
+        value: 0.001
 
   - name: shot_noise
     description : apply poisson shot noise to images
