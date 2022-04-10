@@ -73,3 +73,9 @@ effects :
     class : BasicReadoutNoise
     kwargs :
         noise_std : 5
+
+  - name : bias
+    description : Bias level
+    class : Bias
+    kwargs :
+        bias : 1040
