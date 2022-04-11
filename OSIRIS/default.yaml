@@ -80,8 +80,8 @@ properties:
   spectral:   # in [um]
     wave_min: 0.3001
     wave_mid: 0.6
-    wave_max: 1.0
-    spectral_bin_width: 0.0003       # 0.1 Angstrom
+    wave_max: 1.05
+    spectral_bin_width: 0.0003       # 0.3 Angstrom
 
   computing:
     spline_order: 1
