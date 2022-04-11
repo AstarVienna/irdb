@@ -11,7 +11,7 @@ def test_make_packages():
     now = str(dt.now())[:10]
     zip_name = pub.make_package(pkg_name, release="dev")
 
-    assert zip_name == f"{pkg_name}_{now}_dev"
+    assert zip_name == f"{pkg_name}.{now}.dev"
     assert pth.exists(pth.join("_ZIPPED_PACKAGES", zip_name+".zip"))
 
 
