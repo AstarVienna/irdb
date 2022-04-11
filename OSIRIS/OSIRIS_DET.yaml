@@ -60,7 +60,8 @@ effects :
     description: Blanks the signal on N edge row and column pixels
     class: ReferencePixelBorder
     kwargs:
-        all: 50
+        left:  50
+        right: 50
 
   - name: binning_2x2
     description: Applies 2x2 binning
