@@ -20,15 +20,15 @@ def run_main():
     pub.main(argv)
 
 
-def rename_zips():
-    from datetime import datetime as dt
-    from glob import glob
-    import os
-
-    os.chdir("F:/Work/irdb/_OLD_FILES")
-    for fname in glob("*.zip"):
-        base = fname.split(".")[0]
-        mod_date = str(dt.fromtimestamp(os.path.getmtime(fname)))[:10]
-        new_name = f"{base}.{mod_date}.zip"
-        print(fname, new_name)
-        os.rename(fname, new_name)
+# def rename_zips():
+#     from datetime import datetime as dt
+#     from glob import glob
+#     import os
+#
+#     os.chdir("F:/Work/irdb/_OLD_FILES")
+#     for fname in glob("*.zip"):
+#         base = fname.split(".")[0]
+#         mod_date = str(dt.fromtimestamp(os.path.getmtime(fname)))[:10]
+#         new_name = f"{base}.{mod_date}.zip"
+#         print(fname, new_name)
+#         os.rename(fname, new_name)
