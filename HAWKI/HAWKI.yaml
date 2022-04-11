@@ -1,6 +1,11 @@
 object: instrument
 alias: INST
 name: HAWKI
+description: base configuration for HAWKI
+date_modified: 2022-04-04
+changes:
+  - 2022-03-22 (MV) formatting
+  - 2022-04-04 (HB, KL) formatting, fixes wonky entries
 
 properties:
   temperature: -198   # deg C
