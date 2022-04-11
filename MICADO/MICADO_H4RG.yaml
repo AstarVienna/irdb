@@ -76,20 +76,29 @@ effects :
         noise_std : 12
         n_channels : 64
 
--   name : source_fits_keywords
-    decription : adds meta data from Source object to FITS header
-    class : SourceDescriptionFitsKeywords
-    include : True
+# ValueError: The header keyword 'SIM SRC0 function_call' with its value is too long
+# "'scopesim_templates.stellar.clusters.cluster(mass=10000, distance=2000, core_radius=0.1, tidal_radius=None, multiplicity_object=None, seed=9001)'"
+#
+#-   name : source_fits_keywords
+#    decription : adds meta data from Source object to FITS header
+#    class : SourceDescriptionFitsKeywords
+#    include : True
 
--   name : effects_fits_keywords
-    decription : adds meta dicts from all Effect objects to FITS header
-    class : EffectsMetaKeywords
-    include : True
+# ValueError: The header keyword 'SIM EFF0 description' with its value is too long
+# "'atmospheric spectra pulled from the skycalc server'"
+#
+#-   name : effects_fits_keywords
+#    decription : adds meta dicts from all Effect objects to FITS header
+#    class : EffectsMetaKeywords
+#    include : True
 
--   name : config_fits_keywords
-    decription : adds all UserCommands dicts to FITS header
-    class : SimulationConfigFitsKeywords
-    include : True
+# ValueError: The header keyword 'SIM CONFIG SIM file server_base_url' with its value is too long
+# "'https://www.univie.ac.at/simcado/InstPkgSvr/'"
+#
+#-   name : config_fits_keywords
+#    decription : adds all UserCommands dicts to FITS header
+#    class : SimulationConfigFitsKeywords
+#    include : True
 
 -   name : extra_fits_keywords
     decription : adds extra FITS keywords from a yaml file
