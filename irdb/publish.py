@@ -103,6 +103,8 @@ def make_package(pkg_name=None, release="dev"):
         if release == "stable":
             PKGS[pkg_name]["stable"] = zip_name
 
+    return zip_name
+
 
 def zip_package_folder(pkg_name, zip_name):
     """
