@@ -19,9 +19,9 @@ HST:
   path: telescopes
   stable: HST
 LFOA:
-  latest: LFOA
+  latest: LFOA.2022-04-12
   path: telescopes
-  stable: LFOA
+  stable: LFOA.2022-04-12
 LaPalma:
   latest: LaPalma
   path: locations
