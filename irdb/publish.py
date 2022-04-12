@@ -15,14 +15,27 @@ ZIPPED_DIR = pth.join(PKGS_DIR, "_ZIPPED_PACKAGES")
 SERVER_DIR = "./InstPkgSvr"
 
 HELPSTR = """
-Publish IRDB packages from the IRDB root directory:
+Publish stable IRDB packages
+----------------------------
+This command must be run from the IRDB root directory
 
-$ python irdb/publish.py -cu <PKG_NAME> ... <PKG_NAME_N> -p <PASSWORD>
+$ python irdb/publish.py -c -u <PKG_NAME> ... <PKG_NAME_N> -p <PASSWORD>
 
 -p <password> : pass the univie server password for uploading zip files
--c, --compile : adds all files in a PKG folder to a .zip archive
--u, --upload : uploads the PKG .zip archive to the server
--h, --help : prints this statement
+-c : [compile] all files in a PKG folder to a .zip archive
+-cdev : [compile-dev] like compile, but tags as development version
+-u : [upload] the PKG .zip archive to the server
+-h : [help] prints this statement
+
+Arguments without a "-" are assumed to be package names (except fo the password)
+
+
+Publish development versions
+----------------------------
+To compile and upload a development version, use the cdev tag
+
+$ python irdb/publish.py -cdev -u <PKG_NAME> ... <PKG_NAME_N> -p <PASSWORD>
+
 """
 
 
@@ -31,7 +44,7 @@ with open(pth.join(pth.dirname(__file__), "packages.yaml"), "r",
     PKGS = yaml.full_load(f)
 
 
-def publish(pkg_names=None, compile_pkg=True, upload_pkg=True, password=None):
+def publish(pkg_names=None, compile=False, upload=True, password=None):
     """
     Should be as easy as just calling this function to republish all packages
 
@@ -40,64 +53,60 @@ def publish(pkg_names=None, compile_pkg=True, upload_pkg=True, password=None):
     Parameters
     ----------
     pkg_names : list
-    compile_pkg : bool
+    compile : str, bool
+        [False, "stable", "dev"]
     upload : bool
     password : str
 
     """
-    if pkg_names is None:
-        pkg_names = PKGS.keys()
-
     for pkg_name in pkg_names:
-        if compile_pkg:
-            make_packages(pkg_name)
-        if upload_pkg:
-            push_to_server(pkg_name, password=password)
+        if compile:
+            make_package(pkg_name, release=compile)
+        if upload:
+            push_to_server(pkg_name, release=compile, password=password)
 
 
-def make_packages(pkg_names=()):
-    """Create packages"""
-    if isinstance(pkg_names, str):
-        pkg_names = [pkg_names]
-
-    for pkg_name in pkg_names:
-        old_pkg_path = pth.join(ZIPPED_DIR, pkg_name + ".zip")
-
-        if pth.exists(old_pkg_path):
-            new_path = rename_package(old_pkg_path)
-            move_package(new_path, OLD_FILES)
-
-        new_pkg_pth = zip_package_folder(pkg_name)
-        move_package(new_pkg_pth, ZIPPED_DIR)
-        print(f"[{str(dt.now())[:19]}]: Compiled package: {pkg_name}")
-
-
-def rename_package(pkg_path):
+def make_package(pkg_name=None, release="dev"):
     """
-    Rename an existing package
+    Makes a package
 
-    The new file name includes the current date.
+    Parameters
+    ----------
+    pkg_name : str
+    release : str
+        ["dev", "stable"]
+
+    Returns
+    -------
+
     """
-    suffix = "." + str(dt.now().date())
-    new_path = pkg_path.replace(".zip", suffix + ".zip")
-    if pth.exists(new_path):
-        os.remove(new_path)
-    os.rename(pkg_path, new_path)
+    if pkg_name in PKGS:
+        # Collect the info for the version.yaml file
+        timestamp = str(dt.now())[:19]
+        suffix = ".dev" if release == "dev" else ""
+        zip_name = f"{pkg_name}.{timestamp[:10]}{suffix}"
+        version_dict = {"version": f"{timestamp[:10]}{suffix}",
+                        "timestamp": timestamp,
+                        "release": release}
 
-    return new_path
+        # Add a version.yaml file to the package
+        pkg_version_path = pth.join(pkg_name, "version.yaml")
+        with open(pkg_version_path, "w") as f:
+            yaml.dump(version_dict, f)
+
+        # Make the zip file
+        zip_package_folder(pkg_name, zip_name)
+        print(f"[{timestamp}]: Compiled package: {zip_name}")
+
+        # Update the global dict of packages
+        PKGS[pkg_name]["latest"] = zip_name
+        if release == "stable":
+            PKGS[pkg_name]["stable"] = zip_name
+
+    return zip_name
 
 
-def move_package(pkg_path, dir_name):
-    """
-    Move a package to a new location
-    """
-    new_path = pth.join(dir_name, pth.basename(pkg_path))
-    if pth.exists(new_path):
-        os.remove(new_path)
-    os.rename(pkg_path, new_path)
-
-
-def zip_package_folder(pkg_name):
+def zip_package_folder(pkg_name, zip_name):
     """
     Create a zip file of packages in `pkg_names`
 
@@ -109,48 +118,76 @@ def zip_package_folder(pkg_name):
         shutil.copytree(pth.join(PKGS_DIR, pkg_name),
                         pth.join(tmpdir, pkg_name),
                         ignore=ignore_patterns)
-        new_pkg_path = shutil.make_archive(pkg_name, "zip",
-                                           tmpdir, pkg_name)
+        new_pkg_path = shutil.make_archive(pth.join(ZIPPED_DIR, zip_name),
+                                           "zip", tmpdir, pkg_name)
 
     return new_pkg_path
 
 
-def push_to_server(pkg_name, password=None):
+def push_to_server(pkg_name, release="stable", password=None):
     """
     Upload a package to the univie server
+
+    Parameters
+    ----------
+    pkg_name : str
+        An entry from packages.yaml
+    release : str
+        ["dev", "stable"]
+    password : str
     """
     if password is None:
         raise ValueError("Password is None. Check email for password")
 
-    local_path = pth.join(ZIPPED_DIR, pkg_name + ".zip")
-
     if pkg_name not in PKGS:
         raise ValueError(f"{pkg_name} was not found in 'irdb/packages.yaml'")
+
+    version = "latest" if release == "dev" else "stable"
+    zip_name = PKGS[pkg_name][version]
+    local_path = pth.join(ZIPPED_DIR, f"{zip_name}.zip")
+    server_dir = PKGS[pkg_name]["path"]
+    server_path = f"{server_dir}/{zip_name}.zip"
 
     cnopts = pysftp.CnOpts()
     cnopts.hostkeys = None
     sftp = pysftp.Connection(host="upload.univie.ac.at", username="simcado",
                              password=password, cnopts=cnopts)
     with sftp.cd("html/InstPkgSvr/"):
-        if sftp.exists(PKGS[pkg_name]):
-            sftp.remove(PKGS[pkg_name])
-        sftp.put(local_path, PKGS[pkg_name])
+        if sftp.exists(server_path):
+            sftp.remove(server_path)
+        sftp.put(local_path, server_path)
         print(f"[{str(dt.now())[:19]}]: Pushed to server: {pkg_name}")
 
 
-if __name__ == "__main__":
+def push_packages_yaml_to_server(password):
+    """
+    Sync the packages.yaml file on the server with the current local one
+    """
+    local_path = pth.join(PKGS_DIR, "irdb", "packages.yaml")
+    server_path = "packages.yaml"
+
+    cnopts = pysftp.CnOpts()
+    cnopts.hostkeys = None
+    sftp = pysftp.Connection(host="upload.univie.ac.at", username="simcado",
+                             password=password, cnopts=cnopts)
+    with sftp.cd("html/InstPkgSvr/"):
+        sftp.put(local_path, server_path)
+        print(f"[{str(dt.now())[:19]}]: Pushed to server: packages.yaml")
+
+
+def main(argv):
     _pkg_names = []
-    if len(sys.argv) > 1:
-        kwargs = {"compile_pkg": False, "upload_pkg": False}
-        argv_iter = iter(sys.argv[1:])
+    if len(argv) > 1:
+        kwargs = {"compile": False, "upload": False}
+        argv_iter = iter(argv[1:])
         for arg in argv_iter:
             if "-" in arg:
                 if "p" in arg:
                     kwargs["password"] = next(argv_iter)
                 if "c" in arg:
-                    kwargs["compile_pkg"] = True
+                    kwargs["compile"] = "dev" if "dev" in arg else "stable"
                 if "u" in arg:
-                    kwargs["upload_pkg"] = True
+                    kwargs["upload"] = True
                 if "h" in arg:
                     print(HELPSTR)
             else:
@@ -160,3 +197,13 @@ if __name__ == "__main__":
                     _pkg_names += [arg]
 
         publish(_pkg_names, **kwargs)
+
+        with open(pth.join(pth.dirname(__file__), "packages.yaml"), "w",
+                  encoding="utf8") as f:
+            yaml.dump(PKGS, f)
+
+        push_packages_yaml_to_server(password=kwargs["password"])
+
+
+if __name__ == "__main__":
+    main(sys.argv)

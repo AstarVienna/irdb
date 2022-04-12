@@ -18,6 +18,7 @@ skycalc_temp.fits
 build/
 docs/build/
 inst_pkgs/
+GTC/code/*.fits
 
 # Temporary and binary files
 *~
@@ -70,4 +71,3 @@ MANIFEST
 
 # Per-project virtualenvs
 .venv*/
-
