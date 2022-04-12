@@ -17,7 +17,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     # Run if our target is IRDB master, or when this is ran manually.
     # if: "${GITHUB_BASE_REF}" == "master" || "${GITHUB_BASE_REF}X" == "X"
-    if: "${GITHUB_BASE_REF}" == "master"
+    if: "${GITHUB_BASE_REF}X" == "masterX"
     strategy:
       fail-fast: false
       matrix:
