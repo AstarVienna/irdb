@@ -29,8 +29,8 @@ effects :
             y_size: [10.0096]
         x_cen_unit: mm
         y_cen_unit: mm
-        x_size_unit_unit: mm
-        y_size_unit_unit: mm
+        x_size_unit: mm
+        y_size_unit: mm
         pixel_size_unit: mm
         angle_unit: deg
         gain_unit: electron/adu
