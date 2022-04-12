@@ -63,5 +63,4 @@ jobs:
           pip install git+https://github.com/AstarVienna/ScopeSim.git@dev_master
           pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git
       - name: Run Pytest
-        # --ignore-glob to prevent recursion
-        run: pytest --ignore-glob="*/inst_pkgs/*"
+        run: pytest
