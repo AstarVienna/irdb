@@ -13,7 +13,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  test_scopesim_master:
+  jobmaster:
     runs-on: ${{ matrix.os }}
     # Run if our target is IRDB master, or when this is ran manually.
     if: "${GITHUB_BASE_REF}" == "master" || "${GITHUB_BASE_REF}X" == "X"
@@ -39,7 +39,7 @@ jobs:
       - name: Run Pytest
         run: pytest
 
-  test_scopesim_dev_master:
+  jobdevmaster:
     runs-on: ${{ matrix.os }}
     # Run if our target is IRDB dev_master, or when this is ran manually.
     if: "${GITHUB_BASE_REF}" == "dev_master" || "${GITHUB_BASE_REF}X" == "X"
