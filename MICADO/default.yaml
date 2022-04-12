@@ -24,6 +24,11 @@ properties :
   pupil_angle : 0
   dit : 60
   ndit : 1
+  instrument : MICADO
+  catg : SCIENCE
+  tech : IMAGE
+  type : OBJECT
+  mjdobs : "2022-05-04T02:30:00" # Should  be a datetime, but is copied verbatim, so should work.
 
 mode_yamls :
 - object : instrument
@@ -124,8 +129,8 @@ properties :
     wave_min : 0.7
     wave_mid : 1.6
     wave_max : 2.5
-    
-  computing : 
+
+  computing :
     preload_field_of_view : True
 
   reports:
