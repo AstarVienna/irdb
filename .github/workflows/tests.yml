@@ -36,4 +36,5 @@ jobs:
           pip install git+https://github.com/AstarVienna/ScopeSim.git@${{ matrix.scopesim-branch }}
           pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git
       - name: Run Pytest
-        run: pytest
+        # --ignore-glob to prevent recursion
+        run: pytest --ignore-glob="*/inst_pkgs/*"
