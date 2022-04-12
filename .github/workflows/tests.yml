@@ -16,7 +16,6 @@ jobs:
   job_master:
     runs-on: ${{ matrix.os }}
     # Run if our target is IRDB master, or when this is ran manually.
-    # if: "${GITHUB_BASE_REF}" == "master" || "${GITHUB_BASE_REF}X" == "X"
     if: github.base_ref == 'master' || github.base_ref == ''
     strategy:
       fail-fast: false
@@ -43,7 +42,6 @@ jobs:
   job_devmaster:
     runs-on: ${{ matrix.os }}
     # Run if our target is IRDB dev_master, or when this is ran manually.
-#    if: "${GITHUB_BASE_REF}" == "dev_master" || "${GITHUB_BASE_REF}X" == "X"
     if: github.base_ref == 'dev_master' || github.base_ref == ''
     strategy:
       fail-fast: false
