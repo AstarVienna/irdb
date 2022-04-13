@@ -8,3 +8,5 @@ photutils
 scopesim
 scopesim_templates
 jupytext
+ipykernel
+nbconvert
