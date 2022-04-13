@@ -1,0 +1,9 @@
+# author : Kieran Leschinski
+# source : Ric Davies
+# date_created : 2022-03-17
+# date_modified : 2022-03-17
+# status : FDR list of filters
+#
+wavelength  transmission
+0.3         0
+3.0         0
