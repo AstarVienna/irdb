@@ -69,7 +69,7 @@ jobs:
     # Run the notebooks. This is a time-consuming step, but important to catch
     # errors. It is therefor only ran on the master and dev_master branches,
     # or when manually triggered. It is not ran on pull requests.
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     # Run if we are on the master or dev_master branch, or if this job permissions:
     # started manually.
     # TODO: Do something smarter than github.base_ref == '', see
