@@ -8,6 +8,7 @@ description: additional effects for METIS long-slit spectroscopy
 date_modified: 2022-01-12
 changes:
   - 2022-01-12 (OC) changed spectral_resolution to _bin_width
+  - 2022-04-13 (KL) added ATMO overrides for skycalc_use_local_file for ScopeSim v0.5 upgrade
 
 properties:
   decouple_detector_from_sky_headers: True  # needed for slit spectroscopy
@@ -39,3 +40,14 @@ properties:
   spectral:
     spectral_bin_width: !!float 5E-4   # microns, defines fov wavelengths
     spectral_resolution: 5000          # defines skycalc resolution
+
+---
+alias: ATMO
+name: LMS_ATMO_overrides
+description: Setting the LMS mode to override the skycalc download
+
+properties:
+  skycalc:
+    use_local_file: SKYCALC_LSS_override.fits
+    # alternatively to download from the skycalc server
+    # use_local_file: False

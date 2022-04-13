@@ -8,6 +8,7 @@ date_modified: 2022-03-14
 changes:
   - 2022-03-04 (OC) introduce decouple_detector_from_sky_headers
   - 2022-03-22 (OC) add METISLMSImageSlicer effect
+  - 2022-04-13 (KL) added ATMO overrides for skycalc_use_local_file for ScopeSim v0.5 upgrade
 
 properties:
   pixel_scale: 0.0082          # arcsec / pixel
@@ -67,3 +68,14 @@ properties:
   spectral:
     spectral_bin_width: !!float 1E-5   # microns, defines fov wavelengths
     spectral_resolution: 200000          # defines skycalc resolution
+
+---
+alias: ATMO
+name: LMS_ATMO_overrides
+description: Setting the LMS mode to override the skycalc download
+
+properties:
+  skycalc:
+    use_local_file: SKYCALC_LMS_override.fits
+    # alternatively to download from the skycalc server
+    # use_local_file: False

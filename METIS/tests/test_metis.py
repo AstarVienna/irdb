@@ -37,10 +37,20 @@ class TestLoads:
         assert isinstance(metis, scopesim.OpticalTrain)
 
 
+class TestSkyCalcOverridesUseLocalFile:
+    def test_scopesim_uses_local_skycalc_package_for_LMS(self):
+        cmd = scopesim.UserCommands(use_instrument="METIS", set_modes=["lss_l"])
+        metis = scopesim.OpticalTrain(cmd)
+        tbl = metis["skycalc_atmosphere"].skycalc_table
+
+        assert tbl.meta["fits_header"]["DATE"] == "2022-04-13T08:28:27"
+
+
 YAML_LIST = glob(os.path.join(PKGS_DIR, "METIS/*.yaml"))
 @pytest.fixture(name="yaml_list", scope="class", params=YAML_LIST)
 def fixture_yaml_list(request):
     return scopesim.commands.user_commands.load_yaml_dicts(request.param)
+
 
 class TestYAML:
     """Test that yaml files result in correct lists"""
