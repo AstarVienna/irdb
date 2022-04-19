@@ -1,0 +1,14 @@
+# author : Kieran Leschinski
+# source : Kieran Leschinski
+# date_created : 2022-03-02
+# date_modified : 22022-03-02
+# status : Empty transmisison curve
+# wavelength_unit : um
+# changes :
+#     - 2022-03-02 (KL) initial commit
+
+wavelength  transmission
+0.29        0.0
+0.3         1.0
+1.0         1.0
+1.01        0.0

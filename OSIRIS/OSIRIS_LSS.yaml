@@ -1,0 +1,81 @@
+### OSIRIS LSS config
+
+object: instrument
+alias: INST
+name: OSIRIS_LSS
+description : The OSIRIS long-slit optics
+date_created: 2022-03-15
+date_modified: 2022-03-15
+changes:
+  - 2022-03-15 (KL) Created file
+
+properties:
+  decouple_detector_from_sky_headers: True  # needed for slit spectroscopy
+  grism_names:
+    - R300B
+    - R300R
+    - R500B
+    - R500R
+    - R1000B
+    - R1000R
+    - R2000B
+    - R2500I
+    - R2500R
+    - R2500U
+    - R2500V
+
+effects:
+  - name: grating_efficiency
+    description: OSIRIS grating efficiency curves, piggybacking on FilterWheel
+    class: FilterWheel
+    include: True
+    kwargs:
+      minimum_throughput: !!float 0.
+      filename_format: "gratings/{}.txt"
+      current_filter: "!OBS.grating_name"
+      filter_names: "!INST.grism_names"
+
+  - name: slit_wheel
+    description: collection of LSS slits
+    class: SlitWheel
+    include: True
+    kwargs:
+      filename_format: "longslits/LongSlits{}Arcsec.txt"
+      current_slit: "!OBS.longslit_name"
+      slit_names:
+        - "0.4"
+        - "0.6"
+        - "0.8"
+        - "1.0"
+        - "1.2"
+        - "1.5"
+        - "1.8"
+        - "2.5"
+        - "3.0"
+        - "5.0"
+
+#  - name: spectral_traces
+#    description: list of spectral order trace geometry on the focal plane
+#    class: SpectralTraceList
+#    kwargs:
+#      filename: "!OBS.trace_file"
+#      wave_colname: "wavelength"
+#      s_colname: "xi"
+#      col_number_start: 1
+#
+  - name: spectral_trace_wheel
+    description: grism wheel contining spectral trace geometries
+    class: SpectralTraceListWheel
+    kwargs:
+      wave_colname: "wavelength"
+      s_colname: "xi"
+      col_number_start: 1
+      current_trace_list: "!OBS.grating_name"
+      filename_format: "traces/LSS_{}_TRACE.fits"
+      trace_list_names: "!INST.grism_names"
+
+  - name: OSIRIS_detector_qe
+    description: QE curve for new OSIRIS detector, needed for spec modes
+    class: QuantumEfficiencyCurve
+    kwargs:
+      filename: QE_OSIRIS_new_detector.dat          # fix formatting in file
