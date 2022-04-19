@@ -1,3 +1,4 @@
+
 """
 Tests the MCAO limiting magnitudes against the values from from Ric's excel doc
 [Signal_noise_estimator_MICADO_2018.04.03]
@@ -71,9 +72,10 @@ class TestLimiting:
         hdul = micado.readout()[0]
         det = hdul[1].data
 
+        det = hdul[1].data
+        imp = micado.image_planes[0].hdu.data  # e-/pixel/s
         if PLOTS:
             plt.subplot(131)
-            imp = micado.image_planes[0].hdu.data       # e-/pixel/s
             plt.imshow(imp, norm=LogNorm(), vmin=np.median(imp), vmax=1.01*np.median(imp))
 
             plt.subplot(132)
@@ -89,7 +91,7 @@ class TestLimiting:
         for x, y, mag in zip(xpix, ypix, mags):
             x, y = int(x+0.5), int(y+0.5)
             sig_im = np.copy(det[y-r0:y+r0+1, x-r0:x+r0+1])
-            bg_im =  np.copy(det[y-r2:y+r2+1, x-r2:x+r2+1])
+            bg_im  = np.copy(det[y-r2:y+r2+1, x-r2:x+r2+1])
             bg_im[r1:-r1, r1:-r1] = 0
 
             bg_median = np.median(bg_im[bg_im > 0])
@@ -131,5 +133,5 @@ class TestLimiting:
 
             plt.show()
 
-        # assert lim_mag == approx(rics_lim_mag, abs=0.3)
-        assert lim_mag == approx(rics_lim_mag, abs=0.5)
+        # J-band fails because ScopeSIm is 0.5 mags lower Ric's estimate. Why?!?
+        assert lim_mag == approx(rics_lim_mag, abs=0.3)
