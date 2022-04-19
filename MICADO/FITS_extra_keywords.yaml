@@ -1,6 +1,8 @@
 - ext_type: PrimaryHDU
   keywords:
     MJD-OBS: "!OBS.mjdobs"
+    RA: "!OBS.ra"
+    DEC: "!OBS.dec"
     HIERARCH:
       ESO:
         DPR:
@@ -21,4 +23,5 @@
           DROT:
             POSANGLE: 0
         TPL:
-          START: "!OBS.mjdobs" # Is this correct?
+          START: "!OBS.tplstart"
+          EXPNO: "!OBS.tplexpno"

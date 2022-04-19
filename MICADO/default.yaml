@@ -28,7 +28,12 @@ properties :
   catg : SCIENCE
   tech : IMAGE
   type : OBJECT
-  mjdobs : "2022-05-04T02:30:00" # Should  be a datetime, but is copied verbatim, so should work.
+  # Should be datetimes, but is copied verbatim, so should work.
+  mjdobs : "2022-05-04T02:30:00"
+  tplstart : "2022-05-04T02:30:00"
+  tplexpno : 0
+  ra : 0.0
+  dec : 0.0
 
 mode_yamls :
 - object : instrument
