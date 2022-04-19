@@ -30,6 +30,10 @@ rc.__config__["!SIM.file.local_packages_path"] = str(PATH_IRDB)
 PLOTS = False
 
 
+# if rc.__config__["!SIM.tests.run_integration_tests"] is False:
+pytestmark = pytest.mark.skip("Takes too much memory")
+
+
 class TestInit:
     @pytest.mark.parametrize("modes", [["SCAO", "SPEC_3000x20"],
                                        ["SCAO", "SPEC_3000x50"],
