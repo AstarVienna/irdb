@@ -11,6 +11,7 @@ Comments
 """
 
 # integration test using everything and the MICADO package
+from pathlib import Path
 import pytest
 from pytest import approx
 import os
@@ -24,7 +25,10 @@ from scopesim import rc
 from matplotlib import pyplot as plt
 from matplotlib.colors import LogNorm
 
-rc.__config__["!SIM.file.local_packages_path"] = "../../"
+PATH_HERE = Path(__file__).parent
+PATH_IRDB = PATH_HERE.parent.parent
+
+rc.__config__["!SIM.file.local_packages_path"] = str(PATH_IRDB)
 PLOTS = False
 
 

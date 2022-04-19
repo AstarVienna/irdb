@@ -1,23 +1,27 @@
-# Extra keywords for ESO
 - ext_type: PrimaryHDU
   keywords:
+    MJD-OBS: "!OBS.mjdobs"
+    RA: "!OBS.ra"
+    DEC: "!OBS.dec"
     HIERARCH:
       ESO:
-        ATM:
-          TEMPERAT: '!ATMO.temperature'   # will be resolved via from_currsys
-          PWV: '!ATMO.pwv'
-          SEEING: 1.2
-        DAR:
-          VALUE: '#<effect_name>.<meta_name>'   # will be resolved via effects
         DPR:
-          TYPE: 'some_type'
-      SIM:
-        random_simulation_keyword: some_value
-      MIC:
-        micado_specific: ['keyword', 'keyword comment']
-
-  unresolved_keywords:
-    HIERARCH:
-      ESO:
-        ATM:
-          TEMPERAT: '!ATMO.temperature'   # will be left as a string
+          CATG: "!OBS.catg"
+          TYPE: "!OBS.type"
+          TECH: "!OBS.tech"
+        DET:
+          DIT: "!OBS.dit"
+          NDIT: "!OBS.ndit"
+          READOUT: "CDS"
+        INS:
+          FILT1:
+            NAME: "!OBS.filter_name_fw1"
+          FILT2:
+            NAME: "!OBS.filter_name_fw2"
+          STOP:
+            NAME: "!OBS.filter_name_fw2" # Is this supported in ScopeSIM?
+          DROT:
+            POSANGLE: 0
+        TPL:
+          START: "!OBS.tplstart"
+          EXPNO: "!OBS.tplexpno"

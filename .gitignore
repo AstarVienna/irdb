@@ -18,6 +18,7 @@ _REPORTS/
 build/
 docs/build/
 inst_pkgs/
+GTC/code/*.fits
 
 # Temporary and binary files
 *~

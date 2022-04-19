@@ -12,6 +12,7 @@ Comments
 """
 
 # integration test using everything and the MICADO package
+from pathlib import Path
 import pytest
 from pytest import approx
 
@@ -24,7 +25,10 @@ from scopesim.source import source_templates as st
 from matplotlib import pyplot as plt
 from matplotlib.colors import LogNorm
 
-rc.__config__["!SIM.file.local_packages_path"] = "../../"
+PATH_HERE = Path(__file__).parent
+PATH_IRDB = PATH_HERE.parent.parent
+
+rc.__config__["!SIM.file.local_packages_path"] = str(PATH_IRDB)
 PLOTS = False
 
 
@@ -66,6 +70,7 @@ class TestLimiting:
 
         micado.observe(src)
         hdul = micado.readout()[0]
+        det = hdul[1].data
 
         det = hdul[1].data
         imp = micado.image_planes[0].hdu.data  # e-/pixel/s
