@@ -1,6 +1,6 @@
 # description : GTC telescope throughput vs. wavelength
-# author : R
-# source :
+# author : Kieran Leschinski
+# source : Made it up
 # date_created : 2022-02-17
 # date_modified : 2022-02-17
 # type : TERCurve
@@ -16,6 +16,6 @@
 # changes :
 #   - 2022-02-17 (KL) Created file
 #
-wavelength	reflection	emissivity
-     0.300	         1           0
-     0.100	         1           0
+wavelength  reflection  emissivity
+0.3         1           0
+1.0         1           0
