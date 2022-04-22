@@ -148,9 +148,9 @@ def plot_order_efficiencies(self):
 
     plt.show()
 
+# plot_trace_file_vertical(2)
 
-plot_trace_file_vertical(2)
-=======
+
 from astropy.io import fits, ascii
 from astropy.table import Table
 from matplotlib import pyplot as plt
