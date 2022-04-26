@@ -104,9 +104,5 @@ Documentation and useful references
 Contact points
 --------------
 
-.. list-table:: Python Notebooks
-   :widths: 33 33 33
-   :header-rows: 1
-
-* - kieran.leschinski@univie.ac.at
-  - oliver.czoske@univie.ac.at
+- kieran.leschinski@univie.ac.at
+- oliver.czoske@univie.ac.at
