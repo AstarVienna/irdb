@@ -12,8 +12,8 @@ _TO_BE_PROCESSED/
 _REPORTS/
 .ipynb_checkpoints/
 
-TEST.fits
-skycalc_temp.fits
+*TEST.fits
+*skycalc_temp.fits
 
 build/
 docs/build/

@@ -8,8 +8,8 @@
 # y_cen_unit : mm
 # xhw_unit : mm
 # yhw_unit : mm
-# x_len_unit : pix
-# y_len_unit : pix
+# x_size_unit : pix
+# y_size_unit : pix
 # pixel_size_unit : mm
 # angle_unit : deg
 # gain_unit : electron/adu
@@ -18,6 +18,7 @@
 # changes:
 # - 2020-02-04 (OC) updated meta data to new format
 # - 2020-07-22 (KL) added image_plane_id = 0
+# - 2022-04-22 (OC) changed column names from _len to _size
 #
-id   x_cen    y_cen     xhw     yhw  x_len  y_len  pixsize  angle    gain
- 1    0.00     0.00  18.432  18.432   2048   2048    0.018    0.0     1.0
+id   x_cen    y_cen  x_size  y_size  pixel_size  angle    gain
+ 1    0.00     0.00   2048   2048    0.018       0.0     1.0
