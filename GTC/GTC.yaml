@@ -1,0 +1,59 @@
+### GTC telescope
+
+object: telescope
+alias: TEL
+name: GTC
+description : The 10.4m Gran Telescopio Canarias optical system
+date_created: 2022-03-02
+date_modified: 2022-03-02
+changes:
+  - 2022-02-17 (KL) Created file based on ELT.yaml
+
+
+properties:
+  telescope: GTC
+  temperture: "!ATMO.temperature"
+
+effects:
+- name: Telescope Surface List
+  description: combined reflection of all GTC mirrors
+  class: SurfaceList
+  kwargs:
+    array_dict: {"name": ["combined_GTC"],
+                 "outer": [10.4],
+                 "inner": [0.],
+                 "angle": [0.],
+                 "temperature": [0.],
+                 "action": ["transmission"],
+                 "filename": ["unity.dat"]}       # add this file
+    outer_unit: m
+    inner_unit: m
+    angle_unit: deg
+    temperature_unit: deg_C
+
+#- name: Telescope Surface List
+#  description: combined reflection of all GTC mirrors
+#  class: TERCurve
+#  kwargs:
+#    array_dict:
+#      wavelength: [0.3, 3.0]
+#      reflection: [1.0, 1.0]
+#      wavelength_unit: um
+#    action: reflection
+#    outer: 10.4
+#    outer_unit: m
+#    inner: 0
+#    inner_unit: m
+#    angle: 0
+#    angle_unit: deg
+#    temperature: 0.
+#    temperature_unit: deg_C
+
+# http://www.gtc.iac.es/instruments/osiris/media/psf_osiris_r.fits.gz
+- name: gtc_psf
+  description: Generic GTC PSF
+  class: FieldConstantPSF
+  include: False
+  kwargs:
+    filename: PSF_GTC_OSIRIS.fits
+    warning: "Default PSF for r-band from GTC website"

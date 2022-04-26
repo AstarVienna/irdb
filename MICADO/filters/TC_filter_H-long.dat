@@ -3,12 +3,7 @@
 # date_created : 2017-11-20
 # date_modified : 2017-11-20
 # status : Design - pre PDR list of filters
-# type : filter:transmission
-# center : 1.6929582614303154
-# width : 0.1125853609834202
-# blue_cutoff : 1.6366655809386053
-# red_cutoff : 1.7492509419220255
-#  
+#
 wavelength transmission
 1.573 0.0000
 1.574 0.0000

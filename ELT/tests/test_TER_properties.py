@@ -75,6 +75,7 @@ def fixture_elt_configs():
             '6 mirror pupil': slist_6p,
             '6 mirror field': slist_6f}
 
+
 class TestELTConfigurations:
     refwave = 2. * u.um
 

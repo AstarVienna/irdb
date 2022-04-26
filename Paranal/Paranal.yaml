@@ -3,9 +3,10 @@ object : atmosphere
 alias : ATMO
 name : paranal
 description : Atmosphere and location details for Paranal
-date-modified: 2022-01-12
+date-modified: 2022-02-21
 changes:
   - 2022-01-12 (OC) changed spectral_resolution to _bin_width
+  - 2022-02-21 (MV) changed effect name to be consistent with Armazones. Commented out alt effects
 
 properties :
     altitude :      2635        # m
@@ -20,34 +21,35 @@ properties :
     pixel_scale :   "!INST.pixel_scale"
 
 effects :
-    - name: paranal_atmo_skycalc_ter_curve
+    - name: skycalc_atmosphere
       description: atmospheric spectra pulled from the skycalc server
       class: SkycalcTERCurve
-      include: False
+      include: True
       kwargs:
           observatory: paranal
           wmin: "!SIM.spectral.wave_min"
           wmax: "!SIM.spectral.wave_max"
           wunit: um
+          wres: "!SIM.spectral.spectral_resolution"
           wdelta: "!SIM.spectral.spectral_bin_width"
 
 
 ####################### Alternative effects ####################################
 
-    -   name : paranal_atmo_dispersion
-        description : atmospheric dispersion
-        class : AtmosphericDispersion
-        include: False
+#-   name : paranal_atmo_dispersion
+#    description : atmospheric dispersion
+#    class : AtmosphericDispersion
+#    include: False
 
-    -   name : paranal_atmo_default_ter_curve
-        description : atmospheric emission and transmission
-        class : AtmosphericTERCurve
-        include : False
-        kwargs :
-            filename: "TER_paranal_default_NIR_IMG.dat"
-            area: "!TEL.area"
-            rescale_emission:
-                filter_name: "Ks"
-                filename_format: "!INST.filter_file_format"
-                value: 13.6
-                unit: mag
+#-   name : paranal_atmo_default_ter_curve
+#    description : atmospheric emission and transmission
+#    class : AtmosphericTERCurve
+#    include : False
+#    kwargs :
+#        filename: "TER_paranal_default_NIR_IMG.dat"
+#        area: "!TEL.area"
+#        rescale_emission:
+#            filter_name: "Ks"
+#            filename_format: "!INST.filter_file_format"
+#            value: 13.6
+#            unit: mag
