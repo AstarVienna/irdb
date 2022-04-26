@@ -1,0 +1,12 @@
+# author : David Jones
+# source : David Jones
+# date_created : 2022-03-03
+# type : aperture:slit_geometry
+# x_unit : arcsec
+# y_unit : arcsec
+#
+    x     y
+-222  -5.05
+ 222  -5.05
+ 222  -2.5
+-222  -2.5

@@ -110,6 +110,9 @@ class TestFileStructureOfPackages:
 
     def test_all_dat_files_readable(self):
         bad_files = []
+        how_bad = {"inconsistent_table_error": [],
+                   "value_error": [],
+                   "unexpected_error": []}
         fns_dat = glob(PKG_DIR + "/**/*.dat")
         assert fns_dat
         for fn_dat in fns_dat:
@@ -118,11 +121,15 @@ class TestFileStructureOfPackages:
             except InconsistentTableError as e:
                 print(fn_dat, "InconsistentTableError", e)
                 bad_files.append(fn_dat)
+                how_bad["inconsistent_table_error"] += [fn_dat]
             except ValueError as e:
                 print(fn_dat, "ValeError", e)
                 bad_files.append(fn_dat)
+                how_bad["value_error"] += [fn_dat]
             except Exception as e:
                 print(fn_dat, "Unexpected Exception", e.__class__, e)
                 bad_files.append(fn_dat)
-        assert not bad_files, bad_files
+                how_bad["unexpected_error"] += [fn_dat]
+        print(how_bad)
 
+        assert not bad_files, bad_files

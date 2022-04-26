@@ -1,0 +1,21 @@
+# description : GTC telescope throughput vs. wavelength
+# author : Kieran Leschinski
+# source : Made it up
+# date_created : 2022-02-17
+# date_modified : 2022-02-17
+# type : TERCurve
+# status : measured
+# action : reflection
+# outer : 10.4
+# outer_unit : m
+# inner : 1.5
+# inner_unit : m
+# wavelength_unit : um
+# notes :
+#   - place holder curve
+# changes :
+#   - 2022-02-17 (KL) Created file
+#
+wavelength  reflection  emissivity
+0.3         1           0
+1.0         1           0
