@@ -55,7 +55,7 @@ class TestRunsStartToFinish:
 
         assert np.median(img) > 0
 
-        if not PLOTS:
+        if PLOTS:
             plt.imshow(img, norm=LogNorm())
             plt.show()
 

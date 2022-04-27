@@ -1,11 +1,11 @@
 Armazones:
-  latest: Armazones
+  latest: Armazones.2022-04-26
   path: locations
-  stable: Armazones
+  stable: Armazones.2022-04-26
 ELT:
-  latest: ELT
+  latest: ELT.2022-04-26
   path: telescopes
-  stable: ELT
+  stable: ELT.2022-04-26
 GTC:
   latest: GTC
   path: telescopes
@@ -31,17 +31,17 @@ MAAT:
   path: instruments
   stable: MAAT
 MAORY:
-  latest: MAORY
+  latest: MAORY.2022-04-26
   path: instruments
-  stable: MAORY
+  stable: MAORY.2022-04-26
 METIS:
-  latest: METIS
+  latest: METIS.2022-04-26
   path: instruments
-  stable: METIS
+  stable: METIS.2022-04-26
 MICADO:
-  latest: MICADO
+  latest: MICADO.2022-04-26
   path: instruments
-  stable: MICADO
+  stable: MICADO.2022-04-26
 MICADO_Sci:
   latest: MICADO_Sci
   path: instruments
@@ -63,6 +63,6 @@ WFC3:
   path: instruments
   stable: WFC3
 test_package:
-  latest: test_package.2022-04-09.dev
+  latest: test_package.2022-04-26
   path: instruments
-  stable: test_package.2022-04-09
+  stable: test_package.2022-04-26

@@ -94,7 +94,7 @@ Documentation and useful references
 
 - `ScopeSim documentation <https://scopesim.readthedocs.io/en/latest/>`_
 - `Sky Object Templates documentation <https://scopesim-templates.readthedocs.io/en/latest/>`_
-- `MICADO homepage <https://metis.strw.leidenuniv.nl/>`_
+- `MICADO homepage <https://www.mpe.mpg.de/7525659/MICADO>`_
 - For experts: GitHub repositories:
 
   + `simulator package ScopeSim <https://github.com/AstarVienna/scopesim>`_
@@ -104,10 +104,5 @@ Documentation and useful references
 Contact points
 --------------
 
-.. list-table:: Python Notebooks
-   :widths: 33 33 33
-   :header-rows: 1
-
-* - simmetis.astro@univie.ac.at
-  - oliver.czoske@univie.ac.at
-  - kieran.leschinski@univie.ac.at
+- kieran.leschinski@univie.ac.at
+- oliver.czoske@univie.ac.at
