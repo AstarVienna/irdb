@@ -73,25 +73,15 @@ Python notebooks
    example_notebooks/1_scopesim_MCAO_4mas_galaxy
    example_notebooks/2_scopesim_SCAO_1.5mas_astrometry
    example_notebooks/3_scopesim_SCAO_4mas_fv-psf
-
-
-
-Scientific use-case notebooks
-+++++++++++++++++++++++++++++
-
-.. list-table:: Science case notebooks
-   :widths: 25 75
-   :header-rows: 1
-
-   * - Name
-     - Description
-   * - <add title>
-     - <add description>
+   example_notebooks/6_basic_spectroscopy
+   example_notebooks/7_dithered_cluster
+   example_notebooks/MICADO_FAQs
 
 
 Documentation and useful references
 -----------------------------------
 
+- `Beginners Guide to ScopeSim (from a METIS perspective) <../../METIS/docs/example_notebooks/Introduction_to_Scopesim_for_METIS>`_
 - `ScopeSim documentation <https://scopesim.readthedocs.io/en/latest/>`_
 - `Sky Object Templates documentation <https://scopesim-templates.readthedocs.io/en/latest/>`_
 - `MICADO homepage <https://www.mpe.mpg.de/7525659/MICADO>`_

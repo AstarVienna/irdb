@@ -63,6 +63,6 @@ WFC3:
   path: instruments
   stable: WFC3
 test_package:
-  latest: test_package.2022-04-26
+  latest: test_package.2022-04-27.dev
   path: instruments
   stable: test_package.2022-04-26
