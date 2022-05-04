@@ -21,7 +21,7 @@ effects:
   kwargs:
     array_dict: {"name": ["combined_GTC"],
                  "outer": [10.4],
-                 "inner": [0.],
+                 "inner": [2.],
                  "angle": [0.],
                  "temperature": [0.],
                  "action": ["transmission"],
