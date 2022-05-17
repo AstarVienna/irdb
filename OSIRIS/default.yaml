@@ -25,8 +25,8 @@ yamls :
 properties :
   instrument: OSIRIS
   modes : ["IMG"]
-  airmass : 1.2
-  declination : -30
+  airmass : 1.1
+  declination : 0
   hour_angle : 0
   pupil_angle : 0
   dit : 60
@@ -81,7 +81,7 @@ properties:
     wave_min: 0.3001
     wave_mid: 0.6
     wave_max: 1.05
-    spectral_bin_width: 0.0003       # 0.3 Angstrom
+    spectral_bin_width: 0.0005       # 0.5 Angstrom
 
   computing:
     spline_order: 1

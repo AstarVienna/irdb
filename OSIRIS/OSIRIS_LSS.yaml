@@ -25,6 +25,7 @@ properties:
     - R2500U
     - R2500V
 
+
 effects:
   - name: grating_efficiency
     description: OSIRIS grating efficiency curves, piggybacking on FilterWheel

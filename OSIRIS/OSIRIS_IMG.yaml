@@ -1,0 +1,20 @@
+### OSIRIS IMG config
+
+object: instrument
+alias: INST
+name: OSIRIS_IMG
+description : The OSIRIS imaging optics
+date_created: 2022-05-06
+
+effects:
+  - name: filter
+    description: OSIRIS filter curve from the Spanish VO
+    class: SpanishVOFilterWheel
+    include: True
+    kwargs:
+      observatory: GTC
+      instrument: OSIRIS
+      current_filter: "!OBS.filter_name"
+      include_str: "_filter"
+      # only include SVO entries with _filter in the name
+      # By default an "open" filter with unity transmission is also included

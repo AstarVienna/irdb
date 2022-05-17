@@ -20,14 +20,11 @@ effects:
   class: SurfaceList
   kwargs:
     array_dict: {"name": ["combined_GTC"],
-                 "outer": [10.4],
-                 "inner": [2.],
+                 "area": [73.0],
                  "angle": [0.],
                  "temperature": [0.],
                  "action": ["transmission"],
                  "filename": ["unity.dat"]}       # add this file
-    outer_unit: m
-    inner_unit: m
     angle_unit: deg
     temperature_unit: deg_C
 

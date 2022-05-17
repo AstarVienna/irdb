@@ -16,7 +16,7 @@ properties :
     longitude :     -17.89203   # deg east
     latitude :      28.75661    # deg north
     temperature :   7           # deg celcius
-    humidity :      0.1         # [0..1]
+    humidity :      0.1         # [0.1]
     pressure :      0.755       # [bar]
     pwv :           2.5         # [mm]
     airmass :       "!OBS.airmass"
@@ -51,3 +51,17 @@ effects :
 #    description : atmospheric dispersion
 #    class : AtmosphericDispersion
 #    include : False
+
+# - name : lapalma_sky
+#   description : atmospheric spectrum from ING
+#   class : TERCurve
+#   include : False
+#   kwargs:
+#     filename: ORM_nightsky.txt
+#
+# - name : lapalma_extinct
+#   description : atmospheric extinction from WEAVE
+#   class : TERCurve
+#   include : False
+#   kwargs:
+#     filename: ORM_extinct.dat
