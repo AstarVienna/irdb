@@ -26,10 +26,6 @@ LaPalma:
   latest: LaPalma
   path: locations
   stable: LaPalma
-MAAT:
-  latest: MAAT
-  path: instruments
-  stable: MAAT
 MAORY:
   latest: MAORY
   path: instruments
