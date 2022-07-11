@@ -1,6 +1,5 @@
 """Publish and upload irdb packages"""
 import sys
-import os
 from os import path as pth
 import shutil
 from tempfile import TemporaryDirectory
@@ -19,22 +18,23 @@ Publish stable IRDB packages
 ----------------------------
 This command must be run from the IRDB root directory
 
-$ python irdb/publish.py -c -u <PKG_NAME> ... <PKG_NAME_N> -p <PASSWORD>
+$ python irdb/publish.py -c -u <PKG_NAME> ... <PKG_NAME_N> -l <USERNAME> -p <PASSWORD>
 
--p <password> : pass the univie server password for uploading zip files
+-l <USERNAME> : UniVie u:space username
+-p <PASSWORD> : UniVie u:space password
 -c : [compile] all files in a PKG folder to a .zip archive
 -cdev : [compile-dev] like compile, but tags as development version
 -u : [upload] the PKG .zip archive to the server
 -h : [help] prints this statement
 
-Arguments without a "-" are assumed to be package names (except fo the password)
+Arguments without a "-" are assumed to be package names, except for username and password
 
 
 Publish development versions
 ----------------------------
 To compile and upload a development version, use the cdev tag
 
-$ python irdb/publish.py -cdev -u <PKG_NAME> ... <PKG_NAME_N> -p <PASSWORD>
+$ python irdb/publish.py -cdev -u <PKG_NAME> ... <PKG_NAME_N> -l <USERNAME> -p <PASSWORD>
 
 """
 
@@ -77,9 +77,6 @@ def make_package(pkg_name=None, release="dev"):
     pkg_name : str
     release : str
         ["dev", "stable"]
-
-    Returns
-    -------
 
     """
     if pkg_name in PKGS:
@@ -137,6 +134,8 @@ def push_to_server(pkg_name, release="stable", login=None, password=None):
     release : str
         ["dev", "stable"]
     login, password : str
+        Univie u:space username and password
+
     """
     if password is None:
         raise ValueError("Password is None. Check email for password")
@@ -165,6 +164,12 @@ def push_to_server(pkg_name, release="stable", login=None, password=None):
 def push_packages_yaml_to_server(login, password):
     """
     Sync the packages.yaml file on the server with the current local one
+
+    Parameters
+    ----------
+    login, password : str
+        Univie u:space username and password
+
     """
     local_path = pth.join(PKGS_DIR, "irdb", "packages.yaml")
     server_path = "packages.yaml"
@@ -180,6 +185,9 @@ def push_packages_yaml_to_server(login, password):
 
 
 def main(argv):
+    """
+    $ python irdb/publish.py -c -u <PKG_NAME> ... <PKG_NAME_N> -l <USERNAME> -p <PASSWORD>
+    """
     _pkg_names = []
     if len(argv) > 1:
         kwargs = {"compile": False, "upload": False}
