@@ -51,9 +51,9 @@ OSIRIS:
   path: instruments
   stable: OSIRIS
 Paranal:
-  latest: Paranal_2022-04-09
+  latest: Paranal.2022-04-09
   path: locations
-  stable: Paranal_2022-04-09
+  stable: Paranal.2022-04-09
 VLT:
   latest: VLT
   path: telescopes
@@ -63,6 +63,6 @@ WFC3:
   path: instruments
   stable: WFC3
 test_package:
-  latest: test_package.2022-04-26
+  latest: test_package.2022-07-11.dev
   path: instruments
-  stable: test_package.2022-04-26
+  stable: test_package.2022-07-11

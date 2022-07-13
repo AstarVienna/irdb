@@ -1,6 +1,5 @@
 """Publish and upload irdb packages"""
 import sys
-import os
 from os import path as pth
 import shutil
 from tempfile import TemporaryDirectory
@@ -19,22 +18,23 @@ Publish stable IRDB packages
 ----------------------------
 This command must be run from the IRDB root directory
 
-$ python irdb/publish.py -c -u <PKG_NAME> ... <PKG_NAME_N> -p <PASSWORD>
+$ python irdb/publish.py -c -u <PKG_NAME> ... <PKG_NAME_N> -l <USERNAME> -p <PASSWORD>
 
--p <password> : pass the univie server password for uploading zip files
+-l <USERNAME> : UniVie u:space username
+-p <PASSWORD> : UniVie u:space password
 -c : [compile] all files in a PKG folder to a .zip archive
 -cdev : [compile-dev] like compile, but tags as development version
 -u : [upload] the PKG .zip archive to the server
 -h : [help] prints this statement
 
-Arguments without a "-" are assumed to be package names (except fo the password)
+Arguments without a "-" are assumed to be package names, except for username and password
 
 
 Publish development versions
 ----------------------------
 To compile and upload a development version, use the cdev tag
 
-$ python irdb/publish.py -cdev -u <PKG_NAME> ... <PKG_NAME_N> -p <PASSWORD>
+$ python irdb/publish.py -cdev -u <PKG_NAME> ... <PKG_NAME_N> -l <USERNAME> -p <PASSWORD>
 
 """
 
@@ -44,7 +44,8 @@ with open(pth.join(pth.dirname(__file__), "packages.yaml"), "r",
     PKGS = yaml.full_load(f)
 
 
-def publish(pkg_names=None, compile=False, upload=True, password=None):
+def publish(pkg_names=None, compile=False, upload=True,
+            login=None, password=None):
     """
     Should be as easy as just calling this function to republish all packages
 
@@ -63,7 +64,8 @@ def publish(pkg_names=None, compile=False, upload=True, password=None):
         if compile:
             make_package(pkg_name, release=compile)
         if upload:
-            push_to_server(pkg_name, release=compile, password=password)
+            push_to_server(pkg_name, release=compile,
+                           login=login, password=password)
 
 
 def make_package(pkg_name=None, release="dev"):
@@ -75,9 +77,6 @@ def make_package(pkg_name=None, release="dev"):
     pkg_name : str
     release : str
         ["dev", "stable"]
-
-    Returns
-    -------
 
     """
     if pkg_name in PKGS:
@@ -124,7 +123,7 @@ def zip_package_folder(pkg_name, zip_name):
     return new_pkg_path
 
 
-def push_to_server(pkg_name, release="stable", password=None):
+def push_to_server(pkg_name, release="stable", login=None, password=None):
     """
     Upload a package to the univie server
 
@@ -134,7 +133,9 @@ def push_to_server(pkg_name, release="stable", password=None):
         An entry from packages.yaml
     release : str
         ["dev", "stable"]
-    password : str
+    login, password : str
+        Univie u:space username and password
+
     """
     if password is None:
         raise ValueError("Password is None. Check email for password")
@@ -150,38 +151,51 @@ def push_to_server(pkg_name, release="stable", password=None):
 
     cnopts = pysftp.CnOpts()
     cnopts.hostkeys = None
-    sftp = pysftp.Connection(host="upload.univie.ac.at", username="simcado",
-                             password=password, cnopts=cnopts)
-    with sftp.cd("html/InstPkgSvr/"):
+    sftp = pysftp.Connection(host="webspace-access.univie.ac.at",
+                             username=login, password=password, cnopts=cnopts)
+
+    with sftp.cd("scopesimu68/html/InstPkgSvr/"):
         if sftp.exists(server_path):
             sftp.remove(server_path)
         sftp.put(local_path, server_path)
         print(f"[{str(dt.now())[:19]}]: Pushed to server: {pkg_name}")
 
 
-def push_packages_yaml_to_server(password):
+def push_packages_yaml_to_server(login, password):
     """
     Sync the packages.yaml file on the server with the current local one
+
+    Parameters
+    ----------
+    login, password : str
+        Univie u:space username and password
+
     """
     local_path = pth.join(PKGS_DIR, "irdb", "packages.yaml")
     server_path = "packages.yaml"
 
     cnopts = pysftp.CnOpts()
     cnopts.hostkeys = None
-    sftp = pysftp.Connection(host="upload.univie.ac.at", username="simcado",
-                             password=password, cnopts=cnopts)
-    with sftp.cd("html/InstPkgSvr/"):
+    sftp = pysftp.Connection(host="webspace-access.univie.ac.at",
+                             username=login, password=password, cnopts=cnopts)
+    # with sftp.cd("html/InstPkgSvr/"):
+    with sftp.cd("scopesimu68/html/InstPkgSvr/"):
         sftp.put(local_path, server_path)
         print(f"[{str(dt.now())[:19]}]: Pushed to server: packages.yaml")
 
 
 def main(argv):
+    """
+    $ python irdb/publish.py -c -u <PKG_NAME> ... <PKG_NAME_N> -l <USERNAME> -p <PASSWORD>
+    """
     _pkg_names = []
     if len(argv) > 1:
         kwargs = {"compile": False, "upload": False}
         argv_iter = iter(argv[1:])
         for arg in argv_iter:
             if "-" in arg:
+                if "l" in arg:
+                    kwargs["login"] = next(argv_iter)
                 if "p" in arg:
                     kwargs["password"] = next(argv_iter)
                 if "c" in arg:
@@ -202,7 +216,8 @@ def main(argv):
                   encoding="utf8") as f:
             yaml.dump(PKGS, f)
 
-        push_packages_yaml_to_server(password=kwargs["password"])
+        push_packages_yaml_to_server(login=kwargs["login"],
+                                     password=kwargs["password"])
 
 
 if __name__ == "__main__":
