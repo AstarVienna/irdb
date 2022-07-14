@@ -78,9 +78,9 @@ class TestOsirisLongSlitCompiles:
 
         osiris = sim.OpticalTrain(cmds)
         osiris.observe(src_comb)
-        hdulist = osiris.readout(filename="osiris_test.fits", exptime=60)[0]
+        hdulist = osiris.readout(exptime=60)[0]
 
-        if not PLOTS:
+        if PLOTS:
             plt.imshow(hdulist[1].data, norm=LogNorm())
             plt.colorbar()
             plt.show()
