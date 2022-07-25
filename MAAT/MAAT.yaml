@@ -1,0 +1,25 @@
+### MAAT image slicer
+
+object: relay_optics
+alias: RO
+name: MAAT
+description : The MAAT image slicer module
+date_created: 2022-03-02
+date_modified: 2022-03-02
+changes:
+  - 2022-03-02 (KL) Created file based on MAORY.yaml
+
+
+effects:
+  - name: maat_transmission
+    description: Optimistic transmission curve for MAAT
+    class: TERCurve
+    kwargs:
+      filename: MAAT_trans.txt
+
+  - name: spectral_traces
+    description: MAAT spectral trace geometry on the detector
+    class: SpectralTraceList
+    include: False
+    kwargs:
+      filename: None

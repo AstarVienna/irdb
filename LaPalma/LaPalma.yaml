@@ -1,0 +1,53 @@
+### Config file for the La Palma optical element
+
+object : atmosphere
+alias : ATMO
+name : LaPalma
+description : Atmospheric characteristics and location details for La Palma
+date_created: 2022-02-17
+date_modified: 2022-02-17
+changes:
+  - 2022-02-17 (KL) Created file based on Armazones.yaml
+
+
+properties :
+    location :      lasilla
+    altitude :      2400        # m
+    longitude :     -17.89203   # deg east
+    latitude :      28.75661    # deg north
+    temperature :   7           # deg celcius
+    humidity :      0.1         # [0..1]
+    pressure :      0.755       # [bar]
+    pwv :           2.5         # [mm]
+    airmass :       "!OBS.airmass"
+    pupil_angle :   "!OBS.pupil_angle"
+    pixel_scale :   "!INST.pixel_scale"
+    seeing : 0.7                # [arcsec]
+    background :
+        filter_name : V
+        value: 21.9
+        unit: mag
+
+effects :
+- name : lapalma_skycalc_curves
+  description : atmospheric spectra pulled from the skycalc server
+  class : SkycalcTERCurve
+  include : True
+  kwargs :
+    observatory : lasilla
+    wmin : "!SIM.spectral.wave_min"
+    wmax : "!SIM.spectral.wave_max"
+    wunit : um
+    wres : "!SIM.spectral.spectral_resolution"
+    wdelta: "!SIM.spectral.spectral_bin_width"
+
+- name: generic_seeing_psf
+  class: SeeingPSF
+  include: True
+  kwargs:
+    fwhm: "!ATMO.seeing"
+
+#-   name : lapalma_atmo_dispersion
+#    description : atmospheric dispersion
+#    class : AtmosphericDispersion
+#    include : False

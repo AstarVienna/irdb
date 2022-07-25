@@ -12,6 +12,13 @@ ELT:
   structure:
     no_missing_files: true
     self_named_yaml: true
+GTC:
+  contents:
+    all_yamls_readable: true
+  package_type: support
+  structure:
+    no_missing_files: true
+    self_named_yaml: true
 HAWKI:
   contents:
     all_yamls_readable: true
@@ -35,6 +42,20 @@ LFOA:
     default_yaml: true
     no_missing_files: true
     self_named_yaml: true
+LaPalma:
+  contents:
+    all_yamls_readable: true
+  package_type: support
+  structure:
+    no_missing_files: true
+    self_named_yaml: true
+MAAT:
+  contents:
+    all_yamls_readable: true
+  package_type: support
+  structure:
+    no_missing_files: true
+    self_named_yaml: true
 MAORY:
   contents:
     all_yamls_readable: true
@@ -48,6 +69,7 @@ METIS:
   package_type: observation
   structure:
     FPA_linearity.dat: missing
+    FPA_linearity_Aquarius.dat: missing
     INST_METIS_wavefront_error_budget.dat: missing
     QE_detector_Aquarius.dat: missing
     QE_detector_H2RG.dat: missing
@@ -84,6 +106,14 @@ MICADO_Sci:
     TER_ELT_System_20190611.dat: missing
     TER_armazones_default_NIR_IMG.dat: missing
     default_yaml: true
+    self_named_yaml: true
+OSIRIS:
+  contents:
+    all_yamls_readable: true
+  package_type: observation
+  structure:
+    default_yaml: true
+    no_missing_files: true
     self_named_yaml: true
 Paranal:
   contents:

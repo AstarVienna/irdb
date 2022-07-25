@@ -1,39 +1,42 @@
-### ELT TELESCOPE
+### Config file for the ELT telescope
 object : telescope
 alias : TEL
 name : ELT
 description : The extremely large telescope
+date-modified: 2022-02-21
+changes:
+  - 2022-02-21 (OC) commented out unused effects
 
 properties :
-    telescope :   ELT
-    temperature : "!ATMO.temperature"
-    ter_curve:
-        filename : "TER_ELT_5_mirror.dat"
+  telescope :   ELT
+  temperature : "!ATMO.temperature"
+  ter_curve:
+    filename : "TER_ELT_5_mirror.dat"
 
 effects :
--   name : eso_combined_reflection
+  - name : telescope_reflection
     description : single combined reflection curve (ESO-333023)
     class : SurfaceList
     include : True
     kwargs :
-        filename : LIST_ELT_combined.tbl
+      filename : LIST_ELT_combined.tbl
 
--   name : scope_vibration
-    description : residual vibration of telescope
-    class : Vibration
-    include : False
-    kwargs :
-        fwhm : 0.001    # [arcsec] FWHM of Gaussian kernel
-        pixel_scale : "!INST.pixel_scale"
+#  - name : scope_vibration
+#    description : residual vibration of telescope
+#    class : Vibration
+#    include : False
+#    kwargs :
+#      fwhm : 0.001    # [arcsec] FWHM of Gaussian kernel
+#      pixel_scale : "!INST.pixel_scale"
 
 
 ####################### Alternative effects ####################################
 
 ## scope_surface_list builds the telescope one by one. This should give
 ## about the same throughput as eso_combined_throughput
--   name : scope_surface_list
-    description : list of ELT surfaces
-    class : SurfaceList
-    include : False
-    kwargs :
-        filename : LIST_mirrors_ELT.tbl
+#-   name : scope_surface_list
+#    description : list of ELT surfaces
+#    class : SurfaceList
+#    include : False
+#    kwargs :
+#        filename : LIST_mirrors_ELT.tbl

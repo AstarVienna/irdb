@@ -48,7 +48,7 @@ class TestObserves:
             plt.show()
 
     def test_observes_from_scopesim_templates(self):
-        src = sim_tp.basic.stars.cluster(mass=10000, distance=2000, core_radius=1)
+        src = sim_tp.stellar.cluster(mass=10000, distance=2000, core_radius=1)
 
         lfoa = scopesim.OpticalTrain("ViennaLT")
         lfoa.observe(src)
@@ -65,7 +65,7 @@ class TestObserves:
             plt.show()
 
     def test_saves_readout_to_disc(self):
-        src = sim_tp.basic.stars.cluster(mass=10000, distance=2000, core_radius=1)
+        src = sim_tp.stellar.cluster(mass=10000, distance=2000, core_radius=1)
         lfoa = scopesim.OpticalTrain("ViennaLT")
         lfoa.observe(src)
         lfoa.readout(filename="TEST.fits")

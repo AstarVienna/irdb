@@ -11,10 +11,11 @@
 # changes :
 # - 2018-11-19 (KL) updated meta data to new format
 # - 2019-08-14 (KL) replaced long 1000000000 with 1e99
+# - 2022-03-17 (KL) Removed measured base of 300. Now linear [0, 1000]
 #
 incident    measured
 0           0
-1           300
+1           1
 1000        1160
 3500        3839
 7000        7350

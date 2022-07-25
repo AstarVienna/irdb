@@ -1,3 +1,4 @@
-# Wavelength(micron)  Throughput
+# wavelength_unit : micron
+wavelength  throughput
     0.5                  1
     2.5                  1

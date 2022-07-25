@@ -1,3 +1,0 @@
-MICADO Pipeline package
-=======================
-

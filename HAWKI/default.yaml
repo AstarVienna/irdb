@@ -3,17 +3,21 @@ object : configuration
 alias : OBS
 name : HAWKI_default_configuration
 description : default parameters needed for a HAWKI simulation
+date_modified: 2022-02-22
+changes:
+  - 2022-02-22 (MV) formatting
+
 
 packages:
-- Paranal
-- VLT
-- HAWKI
+  - Paranal
+  - VLT
+  - HAWKI
 
 yamls:
-- Paranal.yaml
-- VLT.yaml
-- HAWKI.yaml
-- HAWKI_H2RG.yaml
+  - Paranal.yaml
+  - VLT.yaml
+  - HAWKI.yaml
+  - HAWKI_H2RG.yaml
 
 properties :
   filter_name : Ks

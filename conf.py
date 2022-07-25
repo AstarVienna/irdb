@@ -45,28 +45,63 @@ sys.path.insert(0, os.path.abspath('docs'))
 # ones.
 extensions = [
     'nbsphinx',
-    'sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
     'sphinx.ext.coverage',
     'sphinx.ext.mathjax',
     'sphinx.ext.viewcode',
+    # 'matplotlib.sphinxext.plot_directive',
+    # 'numpydoc',
+    # 'sphinx.ext.autodoc',
     # 'jupyter_sphinx.execute',
-    'numpydoc',
-    'sphinxcontrib.apidoc',
-    'matplotlib.sphinxext.plot_directive',
+    # 'sphinxcontrib.apidoc',
 ]
 
-# apidoc settings
+# numpydoc settings
 numpydoc_show_class_members = False
-apidoc_module_dir = os.path.abspath('irdb/')
-apidoc_output_dir = 'docs/source/reference'
-apidoc_separate_modules = True
-apidoc_excluded_paths = ["tests/", "docs/"]
+
+# apidoc settings
+# apidoc_module_dir = os.path.abspath('irdb/')
+# apidoc_output_dir = 'docs/source/reference'
+# apidoc_separate_modules = True
+# apidoc_excluded_paths = ["tests/", "docs/"]
 
 # nbsphinx settings
 nbsphinx_allow_errors = True
-nbsphinx_execute = 'auto'      # auto, never, always
+nbsphinx_execute = "never"
+
+if "F:" in os.getcwd():
+    nbsphinx_execute = "never"
+else:
+    nbsphinx_execute = "never"
+# add_hidden_cell_to_ipynb_files()
+
+def add_hidden_cell_to_ipynb_files():
+    import glob
+    old_string = '''"cells": ['''
+    new_string = '''"cells": [
+  {
+    "cell_type": "code",
+    "execution_count": null,
+    "metadata": { "nbsphinx": "hidden" },
+    "outputs": [],
+    "source": [
+      "import os, scopesim as sim",
+      "if os.environ.get(\"READTHEDOCS\") == \"True\" or \"F:\" in os.getcwd():",
+      "    sim.rc.__config__[\"!SIM.file.local_packages_path\"] = os.path.abspath(\"../../../\")",
+    ]
+  },'''
+    paths = glob.glob("./**/*.ipynb", recursive=True)
+    for path in paths:
+        with open(path, "r+") as f:
+            contents = f.read()
+            # check if the hidden cell has already been added to notebook
+            if 'os.environ.get("READTHEDOCS")' not in contents:
+                contents = contents.replace(old_string, new_string)
+                f.seek(0)
+                f.write(contents)
+
+# add_hidden_cell_to_ipynb_files()
 
 # Matplotlib plot directive config parameters
 plot_html_show_source_link = False
@@ -85,8 +120,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Instrument Reference Database'
-copyright = '2019, Kieran Leschinski'
-author = 'Kieran Leschinski'
+copyright = '2019, A*Vienna Software Team'
+author = 'Kieran Leschinski, Oliver Czoske'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -124,7 +159,7 @@ pygments_style = 'sphinx'
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
-# html_theme_options = {}
+html_theme_options = {"body_max_width": "900px"}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -177,7 +212,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'InstrumentReferenceDatabase.tex', 'Instrument Reference Database Documentation',
-     'Kieran Leschinski', 'manual'),
+     'Kieran Leschinski, Oliver Czoske', 'manual'),
 ]
 
 

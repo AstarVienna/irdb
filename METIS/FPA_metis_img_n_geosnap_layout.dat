@@ -2,14 +2,12 @@
 # author : Oliver Czoske
 # sources: E-REP-NOVA-MET-1191_2-0
 # date_created : 2020-02-04
-# date_modified : 2021-02-16
+# date_modified : 2022-04-26
 # type : detector:chip_list
 # x_cen_unit : mm
 # y_cen_unit : mm
-# xhw_unit : mm
-# yhw_unit : mm
-# x_len_unit : pix
-# y_len_unit : pix
+# x_size_unit : pix
+# y_size_unit : pix
 # pixel_size_unit : mm
 # angle_unit : deg
 # gain_unit : electron/adu
@@ -19,6 +17,7 @@
 # - 2020-02-04 (OC) initialised
 # - 2020-07-23 (KL) added image_plane_id = 0
 # - 2021-02-16 (OC) source reference corrected
+# - 2022-02-26 (OC) changed column names from _len to _size, removed columns xhw, yhw
 #
-id   x_cen    y_cen     xhw     yhw  x_len  y_len  pixsize  angle    gain
- 1    0.00     0.00  18.432  18.432   2048   2048    0.018    0.0     1.0
+id   x_cen    y_cen  x_size  y_size  pixsize  angle    gain
+ 1    0.00     0.00    2048    2048    0.018    0.0     1.0

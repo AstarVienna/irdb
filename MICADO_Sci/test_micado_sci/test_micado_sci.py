@@ -109,6 +109,7 @@ class TestObserve:
             plt.imshow(opt.image_planes[0].image, norm=LogNorm())
             plt.show()
 
+    @pytest.mark.skip(reason="Takes too much memory, can get killed by OOM killer in ScopeSIM 0.4.0. Works in 0.1.4.")
     def test_star_field_with_spec(self):
         cmd = sim.UserCommands(use_instrument="MICADO_Sci",
                                set_modes=["MCAO", "SPEC"])
@@ -119,13 +120,17 @@ class TestObserve:
 
         if PLOTS:
             plt.imshow(opt.image_planes[0].image, norm=LogNorm())
-            plt.show()           
+            plt.show()
 
+    @pytest.mark.skip(reason="Takes too much memory, can get killed by OOM killer in ScopeSIM 0.4.0. Works in 0.1.4.")
     def test_spec_for_a_specific_wavelength_range_works(self):
         n = 11
         src = sim.source.source_templates.star_field(n, 15, 25, 3, use_grid=False)
         src.fields[0]["x"] = np.linspace(-1.5, 1.5, n)
         src.fields[0]["y"] = [0] * n
+        # src needs to be shifted to prevent an error from astropy.units:
+        # "TypeError: None is not a valid Unit
+        src.shift()
         cmd = sim.UserCommands(use_instrument="MICADO_Sci",
                                set_modes=["SCAO", "SPEC"])
         cmd["!OBS.dit"] = 3600                  # sec

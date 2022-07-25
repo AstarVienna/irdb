@@ -3,6 +3,8 @@ object : detector
 alias : DET
 name : LFOA_SBIG_detector
 description : base configuration for LFOA SBIG camera
+changes:
+    - 2022-04-12 (KL) Updated detector list contents to x/y_size etc
 
 properties :
     temperature : -30
@@ -18,18 +20,18 @@ effects :
         image_plane_id : 0
         array_dict:
             id: [1]
-            pixsize: [0.0068]
+            pixel_size: [0.0068]
             angle: [0.]
             gain: [1.0]
             x_cen: [0.]
             y_cen: [0.]
-            xhw: [7.4256]
-            yhw: [5.0048]
+            x_size: [14.8512]
+            y_size: [10.0096]
         x_cen_unit: mm
         y_cen_unit: mm
-        xhw_unit: mm
-        yhw_unit: mm
-        pixsize_unit: mm
+        x_size_unit: mm
+        y_size_unit: mm
+        pixel_size_unit: mm
         angle_unit: deg
         gain_unit: electron/adu
 

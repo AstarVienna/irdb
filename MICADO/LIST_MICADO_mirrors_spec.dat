@@ -5,7 +5,7 @@
 # status : Design, pre PDR list of swappable optics for spectroscopy
 # type : mirror:list
 # ETYPE : SURFLIST
-# EDIM : 1 
+# EDIM : 1
 # outer_unit : m
 # inner_unit : m
 # angle_unit : degree

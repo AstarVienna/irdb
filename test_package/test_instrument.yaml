@@ -8,7 +8,7 @@ properties :
 
 effects :
 - name : tc_from_file
-  class : TERcurve
+  class : TERCurve
   kwargs :
     filename : TC_filter_Ks.dat
 

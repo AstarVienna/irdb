@@ -2,13 +2,14 @@
 ### H2RG DETECTOR
 object: detector
 alias: DET
-name: metis_img_lm_detector_array
+name: METIS_DET_IMG_LM
 description: A single H2RG detector
 date_modified: 2021-12-26
 changes:
   - 2021-12-16 (OC) some rearrangements
   - 2022-01-25 (KL, OC) added DetectorModePropertiesSetter effect
   - 2022-01-26 (OC) added DET.detector
+  - 2022-02-21 (OC) rename effects
 
 properties:
   detector:  HAWAII2RG
@@ -24,14 +25,14 @@ properties:
     file_name: "FPA_linearity_HxRG.dat"
 
 effects:
-  - name: detector_array_list
+  - name: detector_array
     description: METIS IMG-LM detector array list
     class: DetectorList
     kwargs:
       file_name: "!DET.layout.file_name"
 
   - name: detector_readout_parameters
-    description: Readout modes for H2RG detector
+    description: Readout parameters for H2RG detector (fast and slow modes)
     class: DetectorModePropertiesSetter
     kwargs:
       mode_properties:
@@ -48,7 +49,7 @@ effects:
           "!DET.readout_noise": 15
           "!DET.dark_current": 0.05
 
-  - name: qe_curve
+  - name: quantum_efficiency
     description: Quantum efficiency curves for each detector
     class: QuantumEfficiencyCurve
     kwargs:
@@ -63,7 +64,7 @@ effects:
       full_well: "!DET.full_well"
       mindit: "!DET.mindit"
 
-  - name: exposure_action
+  - name: summed_exposure
     description: Summing up sky signal for all DITs and NDITs
     class: SummedExposure
 
