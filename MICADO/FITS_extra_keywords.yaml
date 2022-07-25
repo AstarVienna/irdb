@@ -1,0 +1,27 @@
+- ext_type: PrimaryHDU
+  keywords:
+    MJD-OBS: "!OBS.mjdobs"
+    RA: "!OBS.ra"
+    DEC: "!OBS.dec"
+    HIERARCH:
+      ESO:
+        DPR:
+          CATG: "!OBS.catg"
+          TYPE: "!OBS.type"
+          TECH: "!OBS.tech"
+        DET:
+          DIT: "!OBS.dit"
+          NDIT: "!OBS.ndit"
+          READOUT: "CDS"
+        INS:
+          FILT1:
+            NAME: "!OBS.filter_name_fw1"
+          FILT2:
+            NAME: "!OBS.filter_name_fw2"
+          STOP:
+            NAME: "!OBS.filter_name_fw2" # Is this supported in ScopeSIM?
+          DROT:
+            POSANGLE: 0
+        TPL:
+          START: "!OBS.tplstart"
+          EXPNO: "!OBS.tplexpno"

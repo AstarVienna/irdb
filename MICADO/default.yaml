@@ -24,6 +24,16 @@ properties :
   pupil_angle : 0
   dit : 60
   ndit : 1
+  instrument : MICADO
+  catg : SCIENCE
+  tech : IMAGE
+  type : OBJECT
+  # Should be datetimes, but is copied verbatim, so should work.
+  mjdobs : "2022-05-04T02:30:00"
+  tplstart : "2022-05-04T02:30:00"
+  tplexpno : 0
+  ra : 0.0
+  dec : 0.0
 
 mode_yamls :
 - object : instrument
@@ -47,9 +57,9 @@ mode_yamls :
   yamls :
   - MICADO_IMG_wide.yaml
   properties :
-    filter_name_fw1: Ks
-    filter_name_fw2: blank
-    filter_name_pupil: blank
+    filter_name_fw1: open
+    filter_name_fw2: Ks
+    filter_name_pupil: open
 
 - object : observation
   alias: OBS
@@ -58,9 +68,9 @@ mode_yamls :
   yamls :
   - MICADO_IMG_zoom.yaml
   properties :
-    filter_name_fw1: Ks
-    filter_name_fw2: blank
-    filter_name_pupil: blank
+    filter_name_fw1: open
+    filter_name_fw2: Ks
+    filter_name_pupil: open
 
 - object : observation
   alias: OBS
@@ -76,11 +86,11 @@ mode_yamls :
   yamls :
   - MICADO_SPEC.yaml
   properties :
-    trace_file : TRACE_15arcsec.fits
+    trace_file : TRACE_MICADO.fits
     slit_file : MASK_slit_15000x50.dat
     filter_name_fw1: Spec_HK
-    filter_name_fw2: blank
-    filter_name_pupil: blank
+    filter_name_fw2: open
+    filter_name_pupil: open
 
 - object : observation
   alias: OBS
@@ -92,8 +102,8 @@ mode_yamls :
     trace_file : TRACE_MICADO.fits
     slit_file : MASK_slit_3000x50.dat
     filter_name_fw1: Spec_HK
-    filter_name_fw2: blank
-    filter_name_pupil: blank
+    filter_name_fw2: open
+    filter_name_pupil: open
 
 - object : observation
   alias: OBS
@@ -105,8 +115,8 @@ mode_yamls :
     trace_file : TRACE_MICADO.fits
     slit_file : MASK_slit_3000x20.dat
     filter_name_fw1: Spec_HK
-    filter_name_fw2: blank
-    filter_name_pupil: blank
+    filter_name_fw2: open
+    filter_name_pupil: open
 
 
 ---
@@ -124,8 +134,8 @@ properties :
     wave_min : 0.7
     wave_mid : 1.6
     wave_max : 2.5
-    
-  computing : 
+
+  computing :
     preload_field_of_view : True
 
   reports:

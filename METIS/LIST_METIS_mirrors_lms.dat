@@ -1,7 +1,7 @@
 # author : Oliver Czoske
 # source : E-REP-ATC-MET-1003
 # date_created : 2020-04-13
-# date_modified : 2020-04-13
+# date_modified : 2022-05-06
 # description : LMS nominal mode
 # status : PDR design
 # type : mirror:list
@@ -10,9 +10,9 @@
 # angle_unit : degree
 # temperature_unit : deg_C
 # comments :
-# 	   - peak performance of echelle grism
-#	   - for minimum performance change LMS_main_grism
+# 	   - does not include echelle efficiency
 # changes :
+#          - 2022-05-06 (OC) remove echelle effiency, this is a separate effect
 #
 name                outer   inner   angle   temperature   action       filename
 CFO_pickoff         0.090   0.0     0.      -203.         reflection   TER_mirror_gold.dat
@@ -32,7 +32,6 @@ LMS_pre_field       0.090   0.0     0.      -203.         reflection   TER_mirro
 LMS_main_M1         0.370   0.0     0.      -203.         reflection   TER_mirror_gold.dat
 LMS_main_M2         0.160   0.0     0.      -203.         reflection   TER_mirror_gold.dat
 LMS_main_M3         0.200   0.0     0.      -203.         reflection   TER_mirror_gold.dat
-LMS_main_grism      0.200   0.0     0.      -203.         reflection   TER_lms_grism_max.dat
 LMS_main_M3         0.200   0.0     0.      -203.         reflection   TER_mirror_gold.dat
 LMS_main_M2         0.160   0.0     0.      -203.         reflection   TER_mirror_gold.dat
 LMS_main_M1         0.370   0.0     0.      -203.         reflection   TER_mirror_gold.dat

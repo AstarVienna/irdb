@@ -7,6 +7,7 @@ description : additional effects for the spectroscopy mode
 properties :
     pixel_scale : 0.004
     plate_scale : 0.2666666667
+    decouple_detector_from_sky_headers: True  # needed for slit spectroscopy
 
 effects :
 -   name : spec_mode_optics
@@ -28,4 +29,16 @@ effects :
     wave_colname : "wavelength"
     s_colname : "xi"
     col_number_start : 1
-    invalid_value : 0
+
+
+---
+### default simulation parameters needed for a MICADO SPEC simulation
+object: simulation
+alias: SIM
+name: MICADO_SPEC_SIM_params
+description: RC simulation parameters which need to change for a MICADO SPEC run
+
+properties:
+  spectral:
+    spectral_bin_width: !!float 5E-4   # microns, defines fov wavelengths
+    spectral_resolution: 5000          # defines skycalc resolution

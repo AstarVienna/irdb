@@ -4,15 +4,20 @@ object: instrument
 alias: INST
 name: METIS_LMS
 description: base configuration for METIS LMS
-date_modified: 2022-03-14
+date_modified: 2022-05-12
 changes:
   - 2022-03-04 (OC) introduce decouple_detector_from_sky_headers
   - 2022-03-22 (OC) add METISLMSImageSlicer effect
+<<<<<<< HEAD
   - 2022-04-13 (KL) added ATMO overrides for skycalc_use_local_file for ScopeSim v0.5 upgrade
+=======
+  - 2022-05-12 (OC) add fp2_platescale
+>>>>>>> dev_master
 
 properties:
   pixel_scale: 0.0082          # arcsec / pixel
   plate_scale: 0.455555555556  # arcsec / mm
+  fp2_platescale: 0.303        # arcsec / mm
   decouple_detector_from_sky_headers: True  # needed for spectroscopy
 
 effects:
