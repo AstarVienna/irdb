@@ -13,7 +13,6 @@ changes:
 packages :
 - LaPalma
 - GTC
-- MAAT
 - OSIRIS
 
 yamls :
@@ -49,21 +48,18 @@ mode_yamls :
     filter_name : open
     grating_name : R1000B
     longslit_name : "0.6"
-    trace_file : "traces/LSS_TRACES.fits"
-
   yamls:
     - OSIRIS_LSS.yaml
 
-
-#- object : instrument
-#  alias: OBS
-#  name : MAAT
-#  description : "OSIRIS IFU (MAAT) mode"
-#  yamls :
-#    - MAAT.yaml
-#  properties:
-#    filter_name : None
-#    grating_name : None
+- object : instrument
+  alias: OBS
+  name : MAAT
+  description : "OSIRIS IFU (MAAT) mode"
+  properties:
+    filter_name : open
+    grating_name : R2000B
+  yamls:
+    - OSIRIS_MAAT.yaml
 
 
 ---

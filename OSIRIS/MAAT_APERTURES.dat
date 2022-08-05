@@ -1,0 +1,34 @@
+# left_unit: arcsec  
+# right_unit: arcsec  
+# top_unit: arcsec  
+# bottom_unit: arcsec  
+# angle_unit: deg  
+id  left    right   top     bottom  angle   conserve_image  shape
+1   -6      6       -4.250  -3.947  0       True            rect      
+2   -6      6       -3.946  -3.643  0       True            rect      
+3   -6      6       -3.643  -3.340  0       True            rect      
+4   -6      6       -3.339  -3.036  0       True            rect      
+5   -6      6       -3.036  -2.733  0       True            rect      
+6   -6      6       -2.732  -2.429  0       True            rect      
+7   -6      6       -2.428  -2.125  0       True            rect      
+8   -6      6       -2.125  -1.822  0       True            rect      
+9   -6      6       -1.821  -1.518  0       True            rect      
+10  -6      6       -1.518  -1.215  0       True            rect      
+11  -6      6       -1.214  -9.110  0       True            rect      
+12  -6      6       -9.100  -6.070  0       True            rect      
+13  -6      6       -6.070  -3.040  0       True            rect      
+14  -6      6       -3.030   0.000  0       True            rect      
+15  -6      6        0.000   3.030  0       True            rect      
+16  -6      6        3.040   6.070  0       True            rect      
+17  -6      6        6.070   9.100  0       True            rect      
+18  -6      6        9.110   1.214  0       True            rect      
+19  -6      6        1.215   1.518  0       True            rect      
+20  -6      6        1.518   1.821  0       True            rect      
+21  -6      6        1.822   2.125  0       True            rect      
+22  -6      6        2.125   2.428  0       True            rect      
+23  -6      6        2.429   2.732  0       True            rect      
+24  -6      6        2.733   3.036  0       True            rect      
+25  -6      6        3.036   3.339  0       True            rect      
+26  -6      6        3.340   3.643  0       True            rect      
+27  -6      6        3.643   3.946  0       True            rect      
+28  -6      6        3.947   4.250  0       True            rect      
