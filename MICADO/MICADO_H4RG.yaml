@@ -58,6 +58,7 @@ effects :
     class: DarkCurrent
     # [e-/s] level of dark current for each detector
     kwargs:
+        value: -9001
         hildegard: 9001.
         perchtwald: "leiwand"
 
