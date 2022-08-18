@@ -53,7 +53,7 @@ effects :
     kwargs:
         value: 9001.                    # changed
 
--   name: brown_current                 # added this
+-   name: dark_current_2                 # added this
     description : MICADO dark current
     class: DarkCurrent
     # [e-/s] level of dark current for each detector
