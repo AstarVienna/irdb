@@ -40,7 +40,7 @@ effects :
     description : Quantum efficiency curves for each detector
     class : QuantumEfficiencyCurve
     kwargs :
-        filename : QE_detector_H2RG.dat
+        filename :  ""                # QE_detector_H2RG.dat
 
 -   name: exposure_action
     description: Summing up sky signal for all DITs and NDITs
@@ -51,7 +51,15 @@ effects :
     class: DarkCurrent
     # [e-/s] level of dark current for each detector
     kwargs:
-        value: 9001.
+        value: 9001.                    # changed
+
+-   name: brown_current                 # added this
+    description : MICADO dark current
+    class: DarkCurrent
+    # [e-/s] level of dark current for each detector
+    kwargs:
+        hildegard: 9001.
+        perchtwald: "leiwand"
 
 -   name: shot_noise
     description : apply poisson shot noise to images
@@ -67,7 +75,7 @@ effects :
     description: Blanks the signal on N edge row and column pixels
     class: ReferencePixelBorder
     kwargs:
-        all: 0
+        all: 8.             # changed
 
 -   name : readout_noise
     description : Readout noise frames
