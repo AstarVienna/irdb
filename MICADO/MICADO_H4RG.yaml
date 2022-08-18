@@ -51,7 +51,7 @@ effects :
     class: DarkCurrent
     # [e-/s] level of dark current for each detector
     kwargs:
-        value: 0.1
+        value: 9001.
 
 -   name: shot_noise
     description : apply poisson shot noise to images
