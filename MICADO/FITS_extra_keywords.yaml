@@ -3,6 +3,7 @@
     MJD-OBS: "!OBS.mjdobs"
     RA: "!OBS.ra"
     DEC: "!OBS.dec"
+    INSTRUME: ""
     HIERARCH:
       ESO:
         DPR:
@@ -18,10 +19,100 @@
             NAME: "!OBS.filter_name_fw1"
           FILT2:
             NAME: "!OBS.filter_name_fw2"
-          STOP:
-            NAME: "!OBS.filter_name_fw2" # Is this supported in ScopeSIM?
-          DROT:
-            POSANGLE: 0
+#          STOP:
+#            NAME: "!OBS.filter_name_fw2" # Is this supported in ScopeSIM?
+          DROT: 0
+#          DROT:
+#            POSANGLE: 0
         TPL:
           START: "!OBS.tplstart"
           EXPNO: "!OBS.tplexpno"
+        OBS:
+          TPLNO: "!OBS.tplno"
+          INSTRUME: "MICADO"
+          NAME: "!OBS.obsname"
+      WISE:
+        ATM:
+          LOCATION: "!ATMO.location"
+          ALTITUDE: "!ATMO.altitude"
+          LONGITUD: "!ATMO.longitude"
+          LATITUDE: "!ATMO.latitude"
+          TEMPERAT: "!ATMO.temperature"
+          HUMIDITY: "!ATMO.humidity"
+          PRESSURE: "!ATMO.pressure"
+          PWV: "!ATMO.pwv"
+#          AIRMASS: "!ATMO.airmass"
+          BKG:
+            FILT: "!ATMO.background.filter_name"
+            VALUE: "!ATMO.background.value"
+            UNIT: "!ATMO.background.unit"
+          SPE:
+            FILENAME: "!ATMO.spectrum.filename"
+          SKY:
+            OBSERVAT: "#skycalc_atmosphere.observatory"
+            WUNIT: "#skycalc_atmosphere.wunit"
+            WGRIDMOD: "#skycalc_atmosphere.wgrid_mode"
+        INS:
+          MODE: "IMAGING"
+          NAME: "MICADO"
+          TEMPERAT: "!INST.temperature"
+          FILT:
+            # TODO: do something sensible for INS FILT NAME?
+            NAME: "open"
+          FILT1:
+            MINIMUM_: "#filter_wheel_1.minimum_throughput"
+            OUTER: "#filter_wheel_1.outer"
+          FILT2:
+            MINIMUM_: "#filter_wheel_2.minimum_throughput"
+            OUTER: "#filter_wheel_2.outer"
+          OPTI6:
+            # TODO: Do something sensible.
+            NAME: "open"
+          DROT: 0
+          READMODE: "CDS"
+          PLATE_SC: "!INST.plate_scale"
+          STA:
+            REALFILE: "#micado_static_surfaces.filename"
+          NCP:
+            REALFILE: "#micado_ncpas_psf.filename"
+        OBS:
+          RA: "!OBS.ra"
+          DEC: "!OBS.dec"
+        TEL:
+          NAME: "ELT"
+          TELESCOP: "ELT"
+          TER:
+            FILENAME: "!TEL.ter_curve.filename"
+          REF:
+            REALFILE: "#telescope_reflection.filename"
+        OCS:
+          PXSCALE: "!INST.pixel_scale"
+        REL:
+          PSF:
+            REALFILE: "#relay_psf.filename"
+          SUR:
+            REALFILE: "#relay_surface_list.filename"
+        DET:
+#          NAME: "!DET.name"
+          NAME: ""
+          IMAGE_PL: "!DET.image_plane_id"
+          TEMPERAT: "!DET.temperature"
+          DAR:
+            VALUE: "#dark_current.value"
+          SHO:
+            STATE: "#shot_noise.include"
+          EXP:
+            STATE: "#exposure_action.include"
+          QEC:
+            REALFILE: "#qe_curve.filename"
+          LIN:
+            REALFILE: "#detector_linearity.filename"
+#          REA:
+#            NOISESTD: "#readout_noise.noise_std"
+#            NCHANNEL: "#readout_noise.n_channels"
+          REF:
+            ALL: "#border_reference_pixels.all"
+- ext_type: ImageHDU
+  keywords:
+    INHERIT: "T"
+    EXTNAME: "DET艘.DATA"
