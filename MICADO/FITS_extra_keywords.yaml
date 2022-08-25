@@ -19,11 +19,9 @@
             NAME: "!OBS.filter_name_fw1"
           FILT2:
             NAME: "!OBS.filter_name_fw2"
-#          STOP:
-#            NAME: "!OBS.filter_name_fw2" # Is this supported in ScopeSIM?
+          #  STOP:
+          #    NAME: "!OBS.filter_name_fw2"
           DROT: 0
-#          DROT:
-#            POSANGLE: 0
         TPL:
           START: "!OBS.tplstart"
           EXPNO: "!OBS.tplexpno"
@@ -41,7 +39,9 @@
           HUMIDITY: "!ATMO.humidity"
           PRESSURE: "!ATMO.pressure"
           PWV: "!ATMO.pwv"
-#          AIRMASS: "!ATMO.airmass"
+          # Airmass is not part of the atmosphere itself but rather of the
+          # observation and is usually a top level keyword in the ESO world.
+          # AIRMASS: "!ATMO.airmass"
           BKG:
             FILT: "!ATMO.background.filter_name"
             VALUE: "!ATMO.background.value"
@@ -87,13 +87,10 @@
             REALFILE: "#telescope_reflection.filename"
         OCS:
           PXSCALE: "!INST.pixel_scale"
-        REL:
-          PSF:
-            REALFILE: "#relay_psf.filename"
-          SUR:
-            REALFILE: "#relay_surface_list.filename"
         DET:
-#          NAME: "!DET.name"
+          # Refering to the name of an object is currently not possible.
+          # See https://github.com/AstarVienna/ScopeSim/issues/163
+          # NAME: "!DET.name"
           NAME: ""
           IMAGE_PL: "!DET.image_plane_id"
           TEMPERAT: "!DET.temperature"
@@ -107,12 +104,14 @@
             REALFILE: "#qe_curve.filename"
           LIN:
             REALFILE: "#detector_linearity.filename"
-#          REA:
-#            NOISESTD: "#readout_noise.noise_std"
-#            NCHANNEL: "#readout_noise.n_channels"
+          # TODO: Make it easy to support optional effects.
+          # REA:
+          #   NOISESTD: "#readout_noise.noise_std"
+          #   NCHANNEL: "#readout_noise.n_channels"
           REF:
             ALL: "#border_reference_pixels.all"
 - ext_type: ImageHDU
   keywords:
     INHERIT: "T"
+    # Will resolve to e.g. DET1.DATA, DET2.DATA etc., as required by ESO.
     EXTNAME: "DET艘.DATA"

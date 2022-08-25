@@ -21,6 +21,12 @@ effects :
     kwargs:
         filename: LIST_RO_SCAO_mirrors.dat
 
+-   name : extra_fits_keywords_ro
+    description : adds extra FITS keywords for Relay Optics
+    class : ExtraFitsKeywords
+    include : True
+    kwargs :
+        filename : FITS_extra_keywords_Standalone_RO.yaml
 
 ################################################################################
 
