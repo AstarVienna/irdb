@@ -1,8 +1,11 @@
 from synphot import SourceSpectrum
 from astropy import units as u
+from matplotlib import pyplot as plt
+from matplotlib.colors import LogNorm
 
 import scopesim as sim
 from scopesim_templates.misc import uniform_source
+
 
 sim.rc.__config__["!SIM.file.local_packages_path"] = "F:/Work/irdb/"
 
@@ -16,3 +19,6 @@ osiris["lapalma_skycalc_curves"].include = False
 arcspec = SourceSpectrum.from_file('OSIRIS_stitchedArc.dat')
 arc = uniform_source(sed=arcspec, filter_curve='V', amplitude=16*u.ABmag, extend=520)
 osiris.observe(arc)
+
+plt.imshow(osiris.image_planes[0].data, norm=LogNorm())
+plt.show()
