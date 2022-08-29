@@ -114,4 +114,4 @@
   keywords:
     INHERIT: "T"
     # Will resolve to e.g. DET1.DATA, DET2.DATA etc., as required by ESO.
-    EXTNAME: "DETi.DATA"
+    EXTNAME: "DET§.DATA"
