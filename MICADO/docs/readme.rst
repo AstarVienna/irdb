@@ -63,7 +63,7 @@ Python notebooks
 <https://github.com/AstarVienna/irdb/tree/master/MICADO/docs/example_notebooks>`_
 
 **Input image and cube files for the notebooks** `can be found here
-<https://www.univie.ac.at/simcado/InstPkgSvr/example_data/>`_
+<https://scopesim.univie.ac.at/InstPkgSvr/example_data/>`_
 
 
 .. toctree::
@@ -73,7 +73,6 @@ Python notebooks
    example_notebooks/1_scopesim_MCAO_4mas_galaxy
    example_notebooks/2_scopesim_SCAO_1.5mas_astrometry
    example_notebooks/3_scopesim_SCAO_4mas_fv-psf
-
 
 
 Scientific use-case notebooks

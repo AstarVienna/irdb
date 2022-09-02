@@ -1,6 +1,6 @@
 <?php
 //start the server by running the ezphp.exe in parent folder
-//call https://www.univie.ac.at/simcado/InstPkgSvr/api.php?package_name=MICADO
+//call https://scopesim.univie.ac.at/InstPkgSvr/api.php?package_name=MICADO
 
     function log_package_use() {
         $log_file = "scopesim.log";

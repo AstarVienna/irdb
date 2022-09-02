@@ -93,7 +93,7 @@ effects :
 #    include : True
 
 # ValueError: The header keyword 'SIM CONFIG SIM file server_base_url' with its value is too long
-# "'https://www.univie.ac.at/simcado/InstPkgSvr/'"
+# "'https://scopesim.univie.ac.at/InstPkgSvr/'"
 #
 #-   name : config_fits_keywords
 #    decription : adds all UserCommands dicts to FITS header
