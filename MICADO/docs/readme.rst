@@ -62,9 +62,9 @@ Python notebooks
 **Download the example notebooks** `from the Github repo
 <https://github.com/AstarVienna/irdb/tree/master/MICADO/docs/example_notebooks>`_
 
-**Input image and cube files for the notebooks** `can be found here
-<https://scopesim.univie.ac.at/InstPkgSvr/example_data/>`_
-
+.. These data files are only relevant (probably) for METIS
+   **Input image and cube files for the notebooks** `can be found here
+   <https://scopesim.univie.ac.at/InstPkgSvr/example_data/>`_
 
 .. toctree::
    :maxdepth: 1
