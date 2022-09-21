@@ -23,6 +23,7 @@ effects:
     kwargs:
       filename: LIST_METIS_mirrors_cfo.dat
 
+  # METIS ADCs are conjugated to ZD=25 and 41 degs (Airmass 1.10, 1.33)
   - name: adc_wheel
     description: collection of atmospheric dispersion correctors
     class: ADCWheel
