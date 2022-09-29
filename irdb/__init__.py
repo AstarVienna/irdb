@@ -7,8 +7,10 @@ with open(p.join(dname, "packages.yaml")) as f:
     PKGS = yaml.full_load(f)
 
 
-def __getattr__(name):
-    if name not in PKGS:
-        raise ImportError(f"{name} not in irdb.PKGS dictionary")
-
-    return PKGS[name]
+# I was thinking this could work as a way of doing an on-the-fly import for
+# any of the packages. But this seems not to work in this state.
+# def __getattr__(name):
+#     if name not in PKGS:
+#         raise ImportError(f"{name} not in irdb.PKGS dictionary")
+#
+#     return PKGS[name]
