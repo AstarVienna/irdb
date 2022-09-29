@@ -22,7 +22,7 @@ effects :
         y_size: [4096]
         pixel_size: [0.015]
         angle: [0.]
-        gain: [1.0]
+        gain: [0.95]
       x_cen_unit : mm
       y_cen_unit : mm
       x_size_unit : pixel

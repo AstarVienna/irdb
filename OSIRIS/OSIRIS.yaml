@@ -13,17 +13,3 @@ changes:
 properties:
   pixel_scale: 0.127        # [arcsec / pixel]
   plate_scale: 8.46666667   # [arcsec / mm]
-
-
-effects:
-  - name: filter
-    description: OSIRIS filter curve from the Spanish VO
-    class: SpanishVOFilterWheel
-    include: True
-    kwargs:
-      observatory: GTC
-      instrument: OSIRIS
-      current_filter: "!OBS.filter_name"
-      include_str: "_filter"
-      # only include SVO entries with _filter in the name
-      # By default an "open" filter with unity transmission is also included

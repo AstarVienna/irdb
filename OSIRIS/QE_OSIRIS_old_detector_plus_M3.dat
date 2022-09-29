@@ -1,0 +1,29 @@
+# author : David Jones
+# source :  David Jones
+# date_created  : 2022-05-04
+# date_modified : 2022-05-04
+# type : detector:quantum_efficiency
+# description : Q2E chip quantum efficiency of old CCD
+# wavelength_unit: nm
+# action : transmission
+wavelength  transmission
+300.00 0.0921
+350.00 0.1841
+400.00 0.3678
+450.00 0.5046
+500.00 0.5772
+550.00 0.6593
+600.00 0.7020
+650.00 0.7698
+700.00 0.7810
+750.00 0.7621
+775.00 0.7501
+800.00 0.7375
+825.00 0.7142
+850.00 0.6942
+875.00 0.6121
+900.00 0.5345
+925.00 0.4401
+950.00 0.3420
+1000.0 0.1598
+1200.0 0.0964
