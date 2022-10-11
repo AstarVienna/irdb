@@ -138,6 +138,8 @@ def make_pyreduce_guess_recarray(detector_dict, detector_id=5):
     """
     Creates an array with the dtypes and names for a PyReduce initial guess file
 
+    .. note:: This function DOES NOT save the recarray to disk.
+
     This array can be saved to disk using numpy.savez()
     See https://numpy.org/doc/stable/reference/generated/numpy.savez.html
 
