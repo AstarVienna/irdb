@@ -1,0 +1,9 @@
+- ext_type: PrimaryHDU
+  keywords:
+    HIERARCH:
+      WISE:
+        REL:
+          PSF:
+            REALFILE: "#relay_psf.filename"
+          SUR:
+            REALFILE: "#relay_surface_list.filename"

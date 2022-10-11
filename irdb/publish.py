@@ -20,7 +20,7 @@ This command must be run from the IRDB root directory
 
 $ python irdb/publish.py -c -u <PKG_NAME> ... <PKG_NAME_N> -l <USERNAME> -p <PASSWORD>
 
--l <USERNAME> : UniVie u:space username
+-l <USERNAME> : UniVie u:space username - e.g. u\kieranl14
 -p <PASSWORD> : UniVie u:space password
 -c : [compile] all files in a PKG folder to a .zip archive
 -cdev : [compile-dev] like compile, but tags as development version

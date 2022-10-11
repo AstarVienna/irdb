@@ -1,0 +1,5 @@
+- version: 1.0
+  date: 2022.09.23
+  author: Kieran Leschinski
+  notes:
+  - added Hugo's FITS keywords
