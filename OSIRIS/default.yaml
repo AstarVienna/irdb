@@ -31,6 +31,11 @@ properties :
   dit : 60
   ndit : 1
   bias : 1040
+  mjdobs : 59618.2
+  object : "ASTRO"
+  ra : "00:00:00.000"
+  dec : "00:00:00.000"
+  obsmode : 'OsirisBias'
 
 mode_yamls :
 - object : instrument
@@ -48,6 +53,7 @@ mode_yamls :
     filter_name : open
     grating_name : R1000B
     longslit_name : "0.6"
+    obsmode : 'OsirisLongSlitSpectroscopy'
   yamls:
     - OSIRIS_LSS.yaml
 
@@ -58,12 +64,13 @@ mode_yamls :
   properties:
     filter_name : open
     grating_name : R2000B
+    obsmode : 'OsirisMAAT'
   yamls:
     - OSIRIS_MAAT.yaml
 
 
 ---
-### default simulation parameters needed for a METIS simulation
+### default simulation parameters needed for an OSIRIS simulation
 object: simulation
 alias: SIM
 name: OSIRIS_simulation_parameters
