@@ -78,9 +78,9 @@ class TestMaatOperations:
         osiris = sim.OpticalTrain(cmds)
         osiris["lapalma_skycalc_curves"].include = False
 
-        use_trace_wheel = True
-        osiris["maat_spectral_traces"].include = not use_trace_wheel
-        osiris["spectral_trace_wheel"].include = use_trace_wheel
+        # use_trace_wheel = True
+        # osiris["maat_spectral_traces"].include = not use_trace_wheel
+        # osiris["spectral_trace_wheel"].include = use_trace_wheel
 
         osiris.observe(arc)
         hdu = osiris.readout()[0]

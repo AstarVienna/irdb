@@ -47,7 +47,6 @@ effects:
   - name: spectral_trace_wheel
     description: grism wheel contining spectral trace geometries
     class: SpectralTraceListWheel
-    include: False
     kwargs:
       wave_colname: "wavelength"
       s_colname: "xi"
