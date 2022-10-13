@@ -26,7 +26,24 @@ def setup_package():
           author = "Kieran Leschinski",
           author_email = "kieran.leschinski@unive.ac.at",
           url = "http://homepage.univie.ac.at/kieran.leschinski/",
+          package_dir={'scopesim': 'scopesim'},
           packages = ["irdb/tests"],
+          install_requires=["numpy>=1.16",
+                            "scipy>=1.0.0",
+                            "astropy>=2.0",
+                            "matplotlib>=1.5",
+
+                            "docutils",
+                            "requests>=2.20",
+                            "beautifulsoup4>=4.4",
+                            "lxml",
+                            "pyyaml>5.1",
+                            "pysftp",
+
+                            "synphot>=0.1.3",
+                            "skycalc_ipy>=0.1.3",
+                            "anisocado",
+                            ],
           )
 
 

@@ -13,7 +13,6 @@ changes:
 packages :
 - LaPalma
 - GTC
-- MAAT
 - OSIRIS
 
 yamls :
@@ -25,13 +24,18 @@ yamls :
 properties :
   instrument: OSIRIS
   modes : ["IMG"]
-  airmass : 1.2
-  declination : -30
+  airmass : 1.1
+  declination : 0
   hour_angle : 0
   pupil_angle : 0
   dit : 60
   ndit : 1
   bias : 1040
+  mjdobs : 59618.2
+  object : "ASTRO"
+  ra : "00:00:00.000"
+  dec : "00:00:00.000"
+  obsmode : 'OsirisBias'
 
 mode_yamls :
 - object : instrument
@@ -49,25 +53,24 @@ mode_yamls :
     filter_name : open
     grating_name : R1000B
     longslit_name : "0.6"
-    trace_file : "traces/LSS_TRACES.fits"
-
+    obsmode : 'OsirisLongSlitSpectroscopy'
   yamls:
     - OSIRIS_LSS.yaml
 
-
-#- object : instrument
-#  alias: OBS
-#  name : MAAT
-#  description : "OSIRIS IFU (MAAT) mode"
-#  yamls :
-#    - MAAT.yaml
-#  properties:
-#    filter_name : None
-#    grating_name : None
+- object : instrument
+  alias: OBS
+  name : MAAT
+  description : "OSIRIS IFU (MAAT) mode"
+  properties:
+    filter_name : open
+    grating_name : R2000B
+    obsmode : 'OsirisMAAT'
+  yamls:
+    - OSIRIS_MAAT.yaml
 
 
 ---
-### default simulation parameters needed for a METIS simulation
+### default simulation parameters needed for an OSIRIS simulation
 object: simulation
 alias: SIM
 name: OSIRIS_simulation_parameters
@@ -81,7 +84,7 @@ properties:
     wave_min: 0.3001
     wave_mid: 0.6
     wave_max: 1.05
-    spectral_bin_width: 0.0003       # 0.3 Angstrom
+    spectral_bin_width: 0.0005       # 0.5 Angstrom
 
   computing:
     spline_order: 1

@@ -5,9 +5,10 @@ alias: INST
 name: OSIRIS_LSS
 description : The OSIRIS long-slit optics
 date_created: 2022-03-15
-date_modified: 2022-03-15
+date_modified: 2022-05-04
 changes:
   - 2022-03-15 (KL) Created file
+  - 2022-05-04 (DJ) Added old QE curve
 
 properties:
   decouple_detector_from_sky_headers: True  # needed for slit spectroscopy
@@ -54,17 +55,8 @@ effects:
         - "3.0"
         - "5.0"
 
-#  - name: spectral_traces
-#    description: list of spectral order trace geometry on the focal plane
-#    class: SpectralTraceList
-#    kwargs:
-#      filename: "!OBS.trace_file"
-#      wave_colname: "wavelength"
-#      s_colname: "xi"
-#      col_number_start: 1
-#
   - name: spectral_trace_wheel
-    description: grism wheel contining spectral trace geometries
+    description: grism wheel containing spectral trace geometries
     class: SpectralTraceListWheel
     kwargs:
       wave_colname: "wavelength"
@@ -78,4 +70,11 @@ effects:
     description: QE curve for new OSIRIS detector, needed for spec modes
     class: QuantumEfficiencyCurve
     kwargs:
-      filename: QE_OSIRIS_new_detector.dat          # fix formatting in file
+      filename: QE_OSIRIS_new_detector.dat
+
+  - name: OSIRIS_old_detector_qe
+    description: QE curve for old OSIRIS detector plus M3 response
+    class: QuantumEfficiencyCurve
+    include: False
+    kwargs:
+      filename: QE_OSIRIS_old_detector_plus_M3.dat
