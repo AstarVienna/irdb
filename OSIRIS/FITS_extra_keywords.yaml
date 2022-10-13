@@ -1,0 +1,12 @@
+ - ext_type: PrimaryHDU
+   keywords:
+    MJD-OBS: "!OBS.mjdobs"
+    RA: "!OBS.ra"
+    DEC: "!OBS.dec"
+    OBJECT: "!OBS.object"
+    OBSMODE: "!OBS.obsmode"
+    AIRMASS: "!OBS.airmass"
+    GRISM: "!OBS.grating_name"
+    INSTRUME: "OSIRIS"
+    TELESCOP: "GTC"
+    EXPTIME: "!OBS.dit"

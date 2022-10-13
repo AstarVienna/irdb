@@ -70,10 +70,6 @@ numpydoc_show_class_members = False
 nbsphinx_allow_errors = True
 nbsphinx_execute = "never"
 
-if "F:" in os.getcwd():
-    nbsphinx_execute = "never"
-else:
-    nbsphinx_execute = "never"
 # add_hidden_cell_to_ipynb_files()
 
 def add_hidden_cell_to_ipynb_files():

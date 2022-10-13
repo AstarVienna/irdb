@@ -1,0 +1,75 @@
+import os
+import numpy as np
+from matplotlib import pyplot as plt
+from matplotlib.colors import LogNorm
+from matplotlib.colors import Normalize
+
+from astropy import units as u
+from astropy.io import fits
+from synphot import SourceSpectrum
+
+import scopesim as sim
+
+from scopesim_templates.calibration import flat_field
+from scopesim_templates.misc.misc import point_source
+from scopesim_templates.misc.misc import uniform_source
+from scopesim_templates.extragalactic import galaxy
+
+sim.rc.__config__["!SIM.file.local_packages_path"] = "../../"
+
+
+def test_maat_runs_with_point_source():
+    g191 = SourceSpectrum.from_file('test_data/fg191b2b.dat')
+    src = point_source(sed=g191, filter_curve='V',
+                       amplitude=11.78 * u.ABmag, x=3, y=2)
+
+    cmds = sim.UserCommands(use_instrument="OSIRIS", set_modes=["MAAT"])
+    cmds.cmds["!ATMO.seeing"] = 1.
+    cmds.cmds["!OBS.exptime"] = 80
+    cmds.cmds["!OBS.dit"] = 80
+    cmds.cmds["!OBS.ndit"] = 1
+    cmds.cmds["!OBS.airmass"] = 1.2
+    cmds.cmds["!OBS.grating_name"] = 'R2000B'
+
+    osiris = sim.OpticalTrain(cmds)
+    osiris.observe(src)
+
+    plt.imshow(osiris.image_planes[0].data)
+    plt.show()
+
+
+def test_maat_runs_with_extended_source():
+    src = galaxy("kc96/s0", z=0.1, amplitude=12*u.mag, filter_curve="V",
+                 pixel_scale=0.1, r_eff=3.5, n=2, ellip=0.3, theta=45, extend=5)
+
+    cmds = sim.UserCommands(use_instrument="OSIRIS", set_modes=["MAAT"])
+    cmds.cmds["!ATMO.seeing"] = 1.
+    cmds.cmds["!OBS.exptime"] = 80
+    cmds.cmds["!OBS.dit"] = 80
+    cmds.cmds["!OBS.ndit"] = 1
+    cmds.cmds["!OBS.airmass"] = 1.2
+    cmds.cmds["!OBS.grating_name"] = 'R2000B'
+
+    osiris = sim.OpticalTrain(cmds)
+    osiris.observe(src)
+
+    plt.imshow(osiris.image_planes[0].data)
+    plt.show()
+
+
+def test_maat_runs_with_line_list_source():
+    arcspec=SourceSpectrum.from_file('test_data/OSIRIS_stitchedArc.dat')
+    arc = uniform_source(sed=arcspec, filter_curve='V', amplitude=16*u.ABmag, extend=520)
+
+    cmds = sim.UserCommands(use_instrument="OSIRIS", set_modes=["MAAT"])
+    cmds.cmds["!OBS.exptime"] = 60
+    cmds.cmds["!OBS.dit"] = 60
+    cmds.cmds["!OBS.ndit"] = 1
+    cmds.cmds["!OBS.grating_name"] = 'R2000B'
+
+    osiris = sim.OpticalTrain(cmds)
+    osiris["lapalma_skycalc_curves"].include = False
+    osiris.observe(arc)
+
+    plt.imshow(osiris.image_planes[0].data, norm=LogNorm())
+    plt.show()
