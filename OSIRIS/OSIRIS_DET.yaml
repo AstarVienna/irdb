@@ -95,7 +95,7 @@ effects :
 
   - name: NewCCD_rotation
     description: New OSIRIS CCD is rotated 90 degrees
-    class: RotateCCD
+    class: Rotate90CCD
     include: True
     kwargs:
       rotations: 1
