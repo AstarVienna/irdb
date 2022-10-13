@@ -62,9 +62,6 @@ Python notebooks
 **Download the example notebooks** `from the Github repo
 <https://github.com/AstarVienna/irdb/tree/master/MICADO/docs/example_notebooks>`_
 
-**Input image and cube files for the notebooks** `can be found here
-<https://www.univie.ac.at/simcado/InstPkgSvr/example_data/>`_
-
 
 .. toctree::
    :maxdepth: 1

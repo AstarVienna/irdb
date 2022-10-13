@@ -59,10 +59,6 @@ WFC3:
   path: instruments
   stable: WFC3
 test_package:
-<<<<<<< HEAD
-  latest: test_package.2022-04-27.dev
-=======
   latest: test_package.2022-07-11.dev
->>>>>>> dev_master
   path: instruments
   stable: test_package.2022-07-11
