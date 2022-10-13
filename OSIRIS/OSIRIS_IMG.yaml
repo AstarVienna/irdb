@@ -27,5 +27,5 @@ name : osiris_IMG_detector_params
 description : Default detector params for IMG
 
 properties:
-  binx: 1 #North-South with old CCD
+  binx: 2 #North-South with old CCD
   biny: 2 #North-South with new CCD

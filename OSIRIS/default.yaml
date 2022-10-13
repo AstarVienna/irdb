@@ -44,6 +44,8 @@ mode_yamls :
   description : "OSIRIS imaging mode"
   properties:
     filter_name : sdss_r_filter
+  yamls:
+    - OSIRIS_IMG.yaml
 
 - object : instrument
   alias: OBS
