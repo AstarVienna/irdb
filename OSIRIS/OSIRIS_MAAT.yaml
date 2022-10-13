@@ -38,38 +38,32 @@ effects:
       current_filter: "!OBS.grating_name"
       filter_names: "!INST.grism_names"
 
-#  - name: maat_slicer
-#    description: field of view of the image slicer
-#    class: MetisLMSImageSlicer
-#    kwargs:
-#      filename: "MAAT_APERTURES.fits"
-#      ext_id: "Aperture List"
-
-#  - name: spectral_trace_wheel
-#    description: grism wheel contining spectral trace geometries
-#    class: SpectralTraceListWheel
-#    kwargs:
-#      wave_colname: "wavelength"
-#      s_colname: "xi"
-#      col_number_start: 1
-#      current_trace_list: "!OBS.grating_name"
-#      filename_format: "MAAT_traces/{}_MAAT_TRACE.fits"
-#      trace_list_names: "!INST.grism_names"
-
   - name: maat_image_slicer
     description: apertures for each field of the image slicer
     class: ApertureList
     kwargs:
       filename: "MAAT_APERTURES.dat"
 
-  - name: maat_spectral_traces
-    description: list of spectral order trace geometry on the focal plane
-    class: SpectralTraceList
+  - name: spectral_trace_wheel
+    description: grism wheel contining spectral trace geometries
+    class: SpectralTraceListWheel
+    include: False
     kwargs:
-      filename: "MAAT_traces/R2000B_MAAT_TRACE.fits"
       wave_colname: "wavelength"
       s_colname: "xi"
       col_number_start: 1
+      current_trace_list: "!OBS.grating_name"
+      filename_format: "MAAT_traces/{}_MAAT_TRACE.fits"
+      trace_list_names: "!INST.grism_names"
+
+#  - name: maat_spectral_traces
+#    description: list of spectral order trace geometry on the focal plane
+#    class: SpectralTraceList
+#    kwargs:
+#      filename: "MAAT_traces/R2000B_MAAT_TRACE.fits"
+#      wave_colname: "wavelength"
+#      s_colname: "xi"
+#      col_number_start: 1
 
   - name: OSIRIS_detector_qe
     description: QE curve for new OSIRIS detector, needed for spec modes

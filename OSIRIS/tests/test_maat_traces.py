@@ -10,6 +10,8 @@ import scopesim as sim
 from scopesim.effects import SpectralTraceList
 from scopesim.optics import FieldOfView
 
+from scopesim_templates.misc.misc import uniform_source
+
 sim.rc.__config__["!SIM.file.local_packages_path"] = "../../"
 
 PLOTS = False
@@ -20,7 +22,6 @@ class TestMaatTraces:
         """
         Test that the input trace description maps 1:1 to the output trace image
         """
-        from scopesim_templates.misc.misc import uniform_source
         arcspec = SourceSpectrum.from_file('test_data/OSIRIS_stitchedArc.dat')
         arc = uniform_source(sed=arcspec, filter_curve='V',
                              amplitude=16 * u.ABmag, extend=520)
@@ -59,3 +60,37 @@ class TestMaatTraces:
             i += 1
 
         plt.show()
+
+
+class TestMaatOperations:
+    def test_basic_trace_image(self):
+
+        arcspec = SourceSpectrum.from_file('test_data/OSIRIS_stitchedArc.dat')
+        arc = uniform_source(sed=arcspec, filter_curve='V',
+                             amplitude=16 * u.ABmag, extend=520)
+
+        cmds = sim.UserCommands(use_instrument="OSIRIS", set_modes=["MAAT"])
+        cmds.cmds["!OBS.exptime"] = 60
+        cmds.cmds["!OBS.dit"] = 60
+        cmds.cmds["!OBS.ndit"] = 1
+        cmds.cmds["!OBS.grating_name"] = 'R2500V'
+
+        osiris = sim.OpticalTrain(cmds)
+        osiris["lapalma_skycalc_curves"].include = False
+
+        use_trace_wheel = True
+        osiris["maat_spectral_traces"].include = not use_trace_wheel
+        osiris["spectral_trace_wheel"].include = use_trace_wheel
+
+        osiris.observe(arc)
+        hdu = osiris.readout()[0]
+
+        if not PLOTS:
+            plt.figure(figsize=(16, 8))
+            plt.subplot(121)
+            plt.title("Focal Plane Image")
+            plt.imshow(osiris.image_planes[0].data, norm=LogNorm())
+            plt.subplot(122)
+            plt.title("Detector Readout Image")
+            plt.imshow(hdu[1].data, norm=LogNorm())
+            plt.show()
