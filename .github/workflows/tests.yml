@@ -67,7 +67,7 @@ jobs:
 
   job_notebooks:
     # Run the notebooks. This is a time-consuming step, but important to catch
-    # errors. It is therefor only ran on the master and dev_master branches,
+    # errors. It is therefore only ran on the master and dev_master branches,
     # or when manually triggered. It is not ran on pull requests.
     runs-on: ubuntu-latest
     # Run if we are on the master or dev_master branch, or if this job permissions:
