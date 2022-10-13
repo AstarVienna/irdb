@@ -77,3 +77,15 @@ effects:
     include: True
     kwargs:
       filename: QE_OSIRIS_new_detector.dat
+
+
+---
+### default detector parameters for MAAT
+object : detector
+alias : DET
+name : osiris_MAAT_detector_params
+description : Default detector params for MAAT
+
+properties:
+  binx: 1 #Spectral direction with new CCD
+  biny: 2 #Spectral direction with old CCD

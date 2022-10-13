@@ -18,3 +18,14 @@ effects:
       include_str: "_filter"
       # only include SVO entries with _filter in the name
       # By default an "open" filter with unity transmission is also included
+
+---
+### default detector parameters for IMG
+object : detector
+alias : DET
+name : osiris_IMG_detector_params
+description : Default detector params for IMG
+
+properties:
+  binx: 1 #North-South with old CCD
+  biny: 2 #North-South with new CCD

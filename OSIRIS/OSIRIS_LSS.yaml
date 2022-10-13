@@ -78,3 +78,14 @@ effects:
     include: False
     kwargs:
       filename: QE_OSIRIS_old_detector_plus_M3.dat
+
+---
+### default detector parameters for LSS
+object : detector
+alias : DET
+name : osiris_LSS_detector_params
+description : Default detector params for LSS
+
+properties:
+  binx: 2 #Spectral direction with new CCD
+  biny: 2 #Spectral direction with old CCD
