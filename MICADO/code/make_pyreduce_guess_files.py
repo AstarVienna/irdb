@@ -216,6 +216,9 @@ def make_npz_file(line_list_path, irdb_micado_path, npz_output_path,
     """
     Make the .npz file required by PyReduce based on ScopeSim files
 
+    This is the function that drives the creation of the NPZ file.
+    It can be seen as a wrapper for the old __main__ testing script.
+
     Parameters
     ----------
     line_list_path : str
@@ -296,7 +299,6 @@ def make_npz_file(line_list_path, irdb_micado_path, npz_output_path,
         np.savez(npz_output_path, cs_lines=rec_array)
 
     return rec_array
-
 
 
 ################################################################################
