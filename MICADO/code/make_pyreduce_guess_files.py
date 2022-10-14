@@ -1,11 +1,12 @@
+import os
 import numpy as np
 import matplotlib.pyplot as plt
+from astropy.io import ascii
 
 from scopesim.effects import SpectralTraceList, DetectorList
-from scopesim import rc
 
 
-def xy_from_xilam(trace_list, wavelengths, slit_coords=[0]):
+def xy_from_xilam(trace_list, wavelengths, fluxes, slit_coords):
     """
     Returns a grid of x,y focal plane coords for the grid of [wave, slit_coords]
 
@@ -15,6 +16,8 @@ def xy_from_xilam(trace_list, wavelengths, slit_coords=[0]):
         Spectral trace list objects containing the description of the traces
     wavelengths : list or 1D-array
         [um]
+    fluxes : list or 1D-array
+        [any units]
     slit_coords : list or 1D-array
         [arcsec] Positions along th
 
@@ -63,6 +66,7 @@ def xy_from_xilam(trace_list, wavelengths, slit_coords=[0]):
         mask = (wavelengths >= spt.wave_min) * (wavelengths <= spt.wave_max)
         waves = wavelengths[mask]
         xy_dict[key] = {"wavelengths": waves,
+                        "fluxes": fluxes[mask],
                         "slit_coords": slit_coords,
                         "x": spt.xilam2x(slit_coords, waves, grid=True),
                         "y": spt.xilam2y(slit_coords, waves, grid=True)}
@@ -92,7 +96,8 @@ def pixel_from_mm(detector_list, xy_dict):
                     - "x" : list
                     - "y" : list
                 - "traces"
-                    - "waves" : list
+                    - "wavelengths" : list
+                    - "fluxes": list
                     - "slit_coords" : list
                     - "x_mm" : list     # relative to centre of focal plane
                     - "y_mm" : list
@@ -123,7 +128,8 @@ def pixel_from_mm(detector_list, xy_dict):
                 y_mm = dic["y"][mask]
                 x_pix = (x_mm - x0) / pixel_size
                 y_pix = (y_mm - y0) / pixel_size
-                traces_dict[key] = {"waves": dic["wavelengths"][mask],
+                traces_dict[key] = {"wavelengths": dic["wavelengths"][mask],
+                                    "fluxes": dic["fluxes"][mask],
                                     "slit_coords": dic["slit_coords"],
                                     "x_mm": x_mm,
                                     "y_mm": y_mm,
@@ -164,31 +170,37 @@ def make_pyreduce_guess_recarray(detector_dict, detector_id=5):
     file using the "cs_lines" name for the array.
 
     """
+
+    x_mins = {key: trace["x_pix"][0].min()
+              for key, trace in detector_dict[detector_id]["traces"].items()}
+    sorted_x_mins = sorted(x_mins, key=x_mins.get)
+
     guess_tbls = []
-    for key, trace_dict in detector_dict[detector_id]["traces"].items():
-        len_trace = len(trace_dict["waves"])
+    for i, order_name in enumerate(sorted_x_mins):
+        trace_dict = detector_dict[detector_id]["traces"][order_name]
+        len_trace = len(trace_dict["wavelengths"])
         rec_arr = np.recarray(shape=len_trace,
                                dtype=[("wlc", ">f8"),      # Wavelength (before fit)
                                       ("wll", ">f8"),      # Wavelength (after fit)
                                       ("posc", ">f8"),     # Pixel Position (before fit)
                                       ("posm", ">f8"),     # Pixel Position (after fit)
-                                      ("xfirst", ">i2"),   # first pixel of the line
-                                      ("xlast", ">i2"),    # last pixel of the line
+                                      ("xfirst", ">f8"),   # first pixel of the line
+                                      ("xlast", ">f8"),    # last pixel of the line
                                       ("width", ">f8"),    # width of the line in pixels
                                       ("height", ">f8"),   # relative strength of the line
                                       ("order", ">i2"),    # echelle order the line is found in
                                       ("flag", "?")        # flag that tells us if we should use the line or not)
                                       ])
 
-        rec_arr["wlc"] = trace_dict["waves"]
-        rec_arr["wll"] = trace_dict["waves"]
-        rec_arr["posc"] = trace_dict["y_pix"].flatten()     # !!! This is because the MICADO traces are verticle, and pyreduce likes horizontal traces. I guess we need to flip the detecotr arrays for Pyreduce?
-        rec_arr["posm"] = rec_arr["posc"]                   # !!! inital guess can be the same as posm?
+        rec_arr["wlc"] = trace_dict["wavelengths"] * 1e4        # [Angstrom]
+        rec_arr["wll"] = trace_dict["wavelengths"] * 1e4
+        rec_arr["posc"] = trace_dict["y_pix"][:, 1]             # Centre of the line. Also, Pyreduce likes horizontal traces. Please Transpose the detector frame for PyReduce.
+        rec_arr["posm"] = rec_arr["posc"]
         rec_arr["width"] = 5
-        rec_arr["height"] = 1                               # !!! This should probably be the line intensity, I think?
-        rec_arr["xfirst"] = rec_arr["posc"] - rec_arr["width"]         # !!! Based on nirspec_K2.npz, this is the intial guess for +/- hwhm of the line (?)
-        rec_arr["xlast"] = rec_arr["posc"] + rec_arr["width"]
-        rec_arr["order"] = ["".join(key.split("_")[-2:])] * len_trace
+        rec_arr["height"] = trace_dict["fluxes"]                # Arbitrary line intensity
+        rec_arr["xfirst"] = trace_dict["y_pix"].min(axis=1)     # This accounts for the shear in the lines, and that the bottom and top of the lines will be offset wrt the central pixel
+        rec_arr["xlast"] = trace_dict["y_pix"].max(axis=1)
+        rec_arr["order"] = [i] * len_trace
         rec_arr["flag"] = [True] * len_trace
 
         guess_tbls += [rec_arr]
@@ -196,6 +208,95 @@ def make_pyreduce_guess_recarray(detector_dict, detector_id=5):
     comb_recarray = np.hstack(guess_tbls)
 
     return comb_recarray
+
+
+def make_npz_file(line_list_path, irdb_micado_path, npz_output_path,
+                  detector_id, wave_min=0.78, wave_max=1.5,
+                  slit_coords=(-1.5, 0., 1.5)):
+    """
+    Make the .npz file required by PyReduce based on ScopeSim files
+
+    Parameters
+    ----------
+    line_list_path : str
+        [nm] Path to file with wavelengths and intensities of lines.
+        Note: to fit with MICADO line list, use [nm]
+    irdb_micado_path : str
+        Path inside the MICADO IRDB package
+    npz_output_path : str
+        Where to save the .npz file
+    detector_id : int
+        Which MICADO detector to use
+    wave_min, wave_max : float, optional
+        [nm] Consistency with input line list
+    slit_coords : list of floats, optional
+        [arcsec] The ends and middle of the slit
+
+    Returns
+    -------
+    rec_array : np.recarray
+        The numpy record-array needed by PyReduce
+
+    Examples
+    --------
+    ::
+
+        line_list_path = "<path/to>/masterlinelist_2.1.txt"
+        irdb_micado_path = "<path/to>/irdb/MICADO"
+        npz_output_path = "./HK_3arcsec_chip5.npz"
+
+        make_npz_file(line_list_path=line_list_path,
+                      irdb_micado_path=irdb_micado_path,
+                      npz_output_path=npz_output_path,
+                      detector_id=5,
+                      wave_min=780.,
+                      wave_max=1500.)
+
+    """
+    # --------------------------------------------------------------------------
+    # Quickly swap directories to get the MICADO trace info
+
+    old_working_dir = os.getcwd()
+    os.chdir(irdb_micado_path)
+    # Load the Trace List and the Detector List from the MICADO package
+    det_list = DetectorList(filename="FPA_array_layout.dat")
+    trace_list = SpectralTraceList(filename="TRACE_MICADO.fits",
+                                   wave_colname="wavelength",
+                                   s_colname="xi",
+                                   col_number_start=1,
+                                   pixel_scale=0.004,
+                                   plate_scale=0.2666666667)
+    os.chdir(old_working_dir)
+
+    # --------------------------------------------------------------------------
+    # Load the desired line list
+
+    line_list = ascii.read(line_list_path)
+    fluxes = np.array(line_list["Relative_Intensity"])
+    waves = np.array(line_list["Wavelength"])               # input in [nm]
+    mask = (waves >= wave_min) * (waves <= wave_max)
+    my_wavelengths = waves[mask] * 1e-3                     # convert to [um]
+    relative_flux = fluxes[mask]
+
+    # --------------------------------------------------------------------------
+    # Convert wavelengths to xy pixel positions
+
+    xy_dict = xy_from_xilam(trace_list=trace_list,
+                            wavelengths=my_wavelengths,
+                            fluxes=relative_flux,
+                            slit_coords=slit_coords)
+    detector_dict = pixel_from_mm(detector_list=det_list,
+                                  xy_dict=xy_dict)
+
+    # --------------------------------------------------------------------------
+    # Make the rec_array and write to disk
+
+    rec_array = make_pyreduce_guess_recarray(detector_dict, detector_id)
+    if npz_output_path is not None:
+        np.savez(npz_output_path, cs_lines=rec_array)
+
+    return rec_array
+
 
 
 ################################################################################
@@ -210,6 +311,7 @@ def plot_xy_dict(xy_dict):
     plt.gca().set_aspect("equal")
     plt.show()
 
+
 def plot_detector_xy_mm(detector_dict):
     for i, det in enumerate(detector_dict.values()):
         for trace in det["traces"].values():
@@ -220,6 +322,7 @@ def plot_detector_xy_mm(detector_dict):
     plt.ylim(-100, 100)
     plt.gca().set_aspect("equal")
     plt.show()
+
 
 def plot_traces_xy_pix(detector_dict):
     for i, det in enumerate(detector_dict.values()):
@@ -232,50 +335,27 @@ def plot_traces_xy_pix(detector_dict):
         plt.gca().set_aspect("equal")
     plt.show()
 
-################################################################################
-# TESTING MAIN FUNCTION
-################################################################################
+
+def plot_rec_arrays(rec_arrays, detector_dict=None):
+    for i, ra in enumerate(rec_arrays):
+        plt.subplot(3, 3, i + 1)
+        plt.plot(ra["posc"])
+
+        plt.gca().set_aspect("equal")
+    plt.show()
+
 
 if __name__ == "__main__":
-    """
-    Get the trace coordinates for whatever wavelengths we want
-    Replace `my_wavelength` with the desired line list
-    - Default here is a contant sampling of IJ filter with 1 nm bins 
-    Slit edges are: 
-    - IJ filter: [-1.5, 1.5] for 3" slit 
-    - HK filter: [-1.5, 1.5] for 3" slit
-    - HK filter: [-1.5, 13.5] for 15" slit
-    By default I pass the centre of the slit (i.e. 0)
-    
-    """
-    my_wavelengths = np.arange(0.78, 1.64, 0.001)           # equidistant samlpling for the IJ filter
-    slit_coords = [0]
+    line_list_path = "F:/Work/ScopeSim_Templates/scopesim_templates/micado/data/masterlinelist_2.1.txt"
+    irdb_micado_path = "F:/Work/irdb/MICADO"
+    npz_output_path = "./HK_3arcsec_chip5.npz"
 
-    # Load the Trace List and the Detector List from the MICADO package
-    det_list = DetectorList(filename="../FPA_array_layout.dat")
-    trace_list = SpectralTraceList(filename="../TRACE_MICADO.fits",
-                                   wave_colname="wavelength",
-                                   s_colname="xi",
-                                   col_number_start=1,
-                                   pixel_scale=0.004,
-                                   plate_scale=0.2666666667)
+    rec_array = make_npz_file(line_list_path=line_list_path,
+                              irdb_micado_path=irdb_micado_path,
+                              npz_output_path=None,
+                              detector_id=5,
+                              wave_min=780.,
+                              wave_max=1500.)
 
-    xy_dict = xy_from_xilam(trace_list=trace_list,
-                            wavelengths=my_wavelengths,
-                            slit_coords=slit_coords)
-    detector_dict = pixel_from_mm(detector_list=det_list,
-                                  xy_dict=xy_dict)
-
-    comb_recarray = make_pyreduce_guess_recarray(detector_dict, detector_id=5)
-
-    print(comb_recarray)
-    print(comb_recarray.dtype)
-
-    # comb_recarray should be saved to disk as an .npz file with the array name
-    # "cs_lines" so that it is compatible with PyReduce.
-    # See https://pyreduce-astro.readthedocs.io/en/latest/wavecal_linelist.html
-
-
-    # plot_xy_dict(xy_dict)
-    # plot_detector_xy_mm(detector_dict)
-    # plot_traces_xy_pix(detector_dict)
+    print(rec_array)
+    print(rec_array.dtype)
