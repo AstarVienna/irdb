@@ -29,3 +29,4 @@ description : Default detector params for IMG
 properties:
   binx: 2 #North-South with old CCD
   biny: 2 #North-South with new CCD
+  ccdsum: '2 2'

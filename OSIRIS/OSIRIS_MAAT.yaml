@@ -82,3 +82,4 @@ description : Default detector params for MAAT
 properties:
   binx: 1 #Spectral direction with new CCD
   biny: 2 #Spectral direction with old CCD
+  ccdsum: '1 2'
