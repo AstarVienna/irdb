@@ -11,9 +11,9 @@ changes:
 
 
 properties :
-    location :      lasilla
-    altitude :      2400        # m
-    longitude :     -17.89203   # deg east
+    location :      lapalma
+    altitude :      2348        # m
+    longitude :     17.89203    # deg east
     latitude :      28.75661    # deg north
     temperature :   7           # deg celcius
     humidity :      0.1         # [0.1]
