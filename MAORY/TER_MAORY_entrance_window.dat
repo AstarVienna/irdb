@@ -1,18 +1,24 @@
 # name : Entrance window spectral response
-# description : Throughput of all 4 surfaces of the entrance window
+# description : Throughput of all 2 surfaces of the entrance window
 # author : Kieran Leschinski
 # sources:
 # date_created : 2016
-# date_modified : 2018-11-19
-# status : Idea - guess pulled out of thin air
+# date_modified : 2022-10-28
+# status : MORFEO design
 # type : window:transmission
 # wavelength_unit : um
 #
 # changes :
 # - 2018-11-19 (KL) updated meta data to new format
+# - 2022-10-28 (KL) Chat with Carmelo, updated transmission guess
 #
 wavelength  transmission    reflection      emissivity
 0.5         0               1               0
-0.51        0.95            0               0.05
-3.0         0.95            0               0.05
-3.01        0               1               0
+0.51        0.93            0               0.05
+1.5         0.935           0               0.065 
+2.0         0.936           0               0.064
+2.2         0.936           0               0.064 
+2.3         0.925           0               0.075 
+2.4         0.91            0               0.09 
+2.5         0.9             0               0.1 
+3.0         0               1               0
