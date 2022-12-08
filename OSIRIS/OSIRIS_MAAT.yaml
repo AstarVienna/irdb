@@ -43,9 +43,10 @@ effects:
     class: ApertureList
     kwargs:
       filename: "MAAT_APERTURES.dat"
+      extend_fov_beyond_slit: 4
 
   - name: spectral_trace_wheel
-    description: grism wheel contining spectral trace geometries
+    description: grism wheel containing spectral trace geometries
     class: SpectralTraceListWheel
     kwargs:
       wave_colname: "wavelength"
