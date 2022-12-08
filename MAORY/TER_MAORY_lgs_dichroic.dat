@@ -1,15 +1,22 @@
-# source : Carmelo Archidiacono
+# source : E-MAO-SF0-INA-DER-001 from Carmelo Archidiacono
 # name : maory_lgs_dichroic_pickoff
 # date_created : 2020-06-21
-# date_modified : 2020-06-22
+# date_modified : 2022-10-28
 # wavelength_unit : um
 #
 # changes :
 # - 2020-06-23 (KL) Added meta data
 # - 2020-12-03 (KL) Expanded to full TER columns
+# - 2022-10-28 (KL) Updated TER columns based on E-MAO-SF0-INA-DER-001
 #
 wavelength      reflection  emissivity  transmission
-0.3             0.0001      0.0         0.9999
-0.6             0.0001      0.0         0.9999
-0.601           0.9999      0.0         0.0001
-3.0             0.9999      0.0         0.0001
+0.3             0.965       0.0         0.035
+0.560           0.965       0.0         0.035
+0.580           0.04        0.0         0.96
+0.589           0.04        0.0         0.96
+0.598           0.04        0.0         0.96
+0.620           0.965       0.0         0.035
+0.8             0.965       0.0         0.035
+1.0             0.979       0.0         0.021 
+2.4             0.98        0.0         0.02
+3.0             0.98        0.0         0.02

@@ -23,6 +23,5 @@ M8          0.85    0.      0.      !ATMO.temperature   reflection      TER_MAOR
 DM9         0.75    0.      0.      !ATMO.temperature   reflection      TER_MAORY_mirror_mgf2agal.dat
 DM10        0.75    0.      0.      !ATMO.temperature   reflection      TER_MAORY_mirror_mgf2agal.dat
 Dichroic    0.6     0.      0.      !ATMO.temperature   reflection      TER_MAORY_lgs_dichroic.dat
-M10         0.6     0.      0.      !ATMO.temperature   reflection      TER_MAORY_mirror_silver.dat
 M11         0.8     0.      45.     !ATMO.temperature   reflection      TER_MAORY_mirror_silver.dat
 M12         0.8     0.      0.      !ATMO.temperature   reflection      TER_MAORY_mirror_silver.dat
