@@ -36,6 +36,7 @@ properties :
   ra : "00:00:00.000"
   dec : "00:00:00.000"
   obsmode : 'OsirisBias'
+  maskname : 'NOMASK'
 
 mode_yamls :
 - object : instrument

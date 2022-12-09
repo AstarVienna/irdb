@@ -51,3 +51,4 @@ properties:
   binx: 2 #North-South with old CCD
   biny: 2 #North-South with new CCD
   ccdsum: '2 2'
+  datasec: '[25:2048,0:2048]'

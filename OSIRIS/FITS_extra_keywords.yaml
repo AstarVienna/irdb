@@ -9,6 +9,10 @@
     AIRMASS: "!OBS.airmass"
     GRISM: "!OBS.grating_name"
     SLITW: "!OBS.longslit_name"
+    FILTER1: "!OBS.filter_name"
+    MASKNAME: "!OBS.maskname"
+    DETECTOR: "NewOSIRIS"
+    DATASEC: "!DET.datasec"
     INSTRUME: "OSIRIS"
     TELESCOP: "GTC"
     OBSERVAT: "ORM"
@@ -16,6 +20,9 @@
     LATITUDE: "+28:45:43.2"
     LONGITUD: "+17:52:39.5"
     HEIGHT  : "2348"
+    TAMBIENT : "!ATMO.temperature"
+    HUMIDITY : "!ATMO.humidity"
+    PRESSURE : "!ATMO.pressure"
 
  - ext_type: ImageHDU
    keywords:
