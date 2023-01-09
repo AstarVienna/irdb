@@ -1,0 +1,30 @@
+MOSAIC MVP
+==========
+MOS-NIR-LR-H
+
+What should this produce?
+- A FITS file with 7 traces for a single fibre bundle
+- 2 objects
+
+Needed effects
+--------------
+- PSF
+- LSF (gaussian, for now ...)
+- Trace spread width (~3pix; To add)
+- Spectral trace projection description for each of the 7 (2x) traces
+- Transmission
+    - fibres / microlens
+    - collomator
+    - dichroic
+    - grating
+    - camera
+    - detector qe
+- aperture list for (2x) 7 apertures
+- atmospheric dispersion (; To add)
+- all the detector noise
+    - shot noise
+    - dark current
+    - ron
+    - linearity
+    - exposure summing/averaging/subtracting
+- detector dimensions

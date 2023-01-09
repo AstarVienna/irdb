@@ -1,0 +1,41 @@
+### default observation parameters needed for a MOSAIC simulation
+object : configuration
+alias : OBS
+name : MOSAIC_default_configuration
+description : default parameters needed for a MOSAIC simulation
+
+packages :
+- Armazones
+- ELT
+- MOSAIC
+
+yamls :
+- Armazones.yaml
+- ELT.yaml
+
+properties :
+  modes : ["MOS", "NIR", "LR", "H"]
+  airmass : 1.2
+  declination : -30
+  hour_angle : 0
+  pupil_angle : 0
+  dit : 60
+  ndit : 1
+  instrument : MOSAIC
+  ra : 0.0
+  dec : 0.0
+
+mode_yamls :
+- object : instrument
+  alias: OBS
+  name : GLAO
+  description : "GLAO optical system"
+  yamls :
+  - MOSAIC_PSF.yaml
+
+- object : instrument
+  alias: OBS
+  name : MOS
+  description : "GLAO optical system"
+  yamls :
+  - MOSAIC_PSF.yaml
