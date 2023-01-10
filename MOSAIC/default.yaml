@@ -14,7 +14,7 @@ yamls :
 - ELT.yaml
 
 properties :
-  modes : ["MOS", "NIR", "LR", "H"]
+  modes : ["MOS-NIR-LR-H"]
   airmass : 1.2
   declination : -30
   hour_angle : 0
@@ -24,18 +24,15 @@ properties :
   instrument : MOSAIC
   ra : 0.0
   dec : 0.0
+  psf_fwhm : 0.2
+
 
 mode_yamls :
 - object : instrument
   alias: OBS
-  name : GLAO
-  description : "GLAO optical system"
+  name : "MOS-NIR-LR-H"
+  description : "MVP system for a single MOSAIC config"
   yamls :
-  - MOSAIC_PSF.yaml
+  - MOSAIC-MOS-NIR-LR-H.yaml
 
-- object : instrument
-  alias: OBS
-  name : MOS
-  description : "GLAO optical system"
-  yamls :
-  - MOSAIC_PSF.yaml
+
