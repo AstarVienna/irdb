@@ -1,0 +1,65 @@
+### MOSAIC
+object : instrument
+alias : INST
+name : MOS-NIR-LR-H
+description : MVP yaml file for MOSAIC test run
+
+properties :
+    pixel_scale : 0.095         # arcsec / pixel
+    plate_scale : 6.333333333   # arcsec / mm
+
+effects:
+- name : psf
+  description : Seeing limited PSF
+  class : SeeingPSF
+  kwargs :
+    fwhm : "!OBS.psf_fwhm"       # [arcsec]
+
+#- name : lsf
+#  description : Line spread function
+#  class : Trace2DLSF
+#  kwargs :
+#    fwhm : 2.56       # [pixels]
+
+- name: fibre_list
+  description: collection of apertures corresponding to the MOS fibre heads
+  class: FibreApertureList
+  include: "!OBS.include_fibres"
+  kwargs:
+    filename : "fibres_MOS_NIR_LR_H.dat"
+
+- name : mos_spectral_traces
+  description : list of mos trace geometries on the focal plane
+  class : UnresolvedSpectralTraceList
+  kwargs :
+    filename : "trace_MOS_NIR_LR_H.fits"
+
+- name : collimator_transmission
+  class : TERCurve
+  kwargs :
+    filename : TER_collimator.dat
+
+- name : fibre_transmission
+  class : TERCurve
+  kwargs :
+    filename : TER_collimator
+
+- name : YZ_dichroic_transmission
+  class : TERCurve
+  kwargs :
+    filename : TER_YZ_dichroic.dat
+
+- name : J_dichroic_transmission
+  class : TERCurve
+  kwargs :
+    filename : TER_J_dichroic.dat
+
+- name : H_grating_transmission
+  class : TERCurve
+  kwargs :
+    filename : TER_H_grating.dat
+
+- name : H_camera_transmission
+  class : TERCurve
+  kwargs :
+    filename : TER_H_camera.dat

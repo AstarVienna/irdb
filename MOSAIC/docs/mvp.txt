@@ -8,9 +8,16 @@ What should this produce?
 
 Needed effects
 --------------
+ATMO
+- atmospheric dispersion (; To add)
+
+TEL
 - PSF
+
+INST
 - LSF (gaussian, for now ...)
 - Trace spread width (~3pix; To add)
+- aperture list for (2x) 7 apertures
 - Spectral trace projection description for each of the 7 (2x) traces
 - Transmission
     - fibres / microlens
@@ -19,12 +26,13 @@ Needed effects
     - grating
     - camera
     - detector qe
-- aperture list for (2x) 7 apertures
-- atmospheric dispersion (; To add)
+
+DET
+- detector dimensions
 - all the detector noise
     - shot noise
     - dark current
     - ron
     - linearity
     - exposure summing/averaging/subtracting
-- detector dimensions
+
