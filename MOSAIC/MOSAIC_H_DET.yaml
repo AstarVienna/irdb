@@ -31,6 +31,9 @@ effects:
   description : Quantum efficiency curve (pseudo transmission curve)
   class : QuantumEfficiencyCurve
   kwargs :
+    #  read QE curve from file:
+    # filename : QE_H4RG.dat
+    #   or define QE inline (following 5 lines)
     array_dict:
       wavelength: [0.7, 0.9, 2.4, 2.6]
       transmission: [0.0, 1, 1, 0.0]

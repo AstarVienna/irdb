@@ -1,0 +1,7 @@
+# x_unit : arcsec
+# y_unit : arcsec
+# r_unit : arcsec
+# angle_unit : deg
+#
+id  x       y       r       angle   conserve_image  shape
+0   0       0       0.095   0       False           hex
