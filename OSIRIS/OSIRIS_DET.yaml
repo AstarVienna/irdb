@@ -62,8 +62,8 @@ effects :
     description: Blanks the signal on N edge row and column pixels
     class: ReferencePixelBorder
     kwargs:
-        left:  50
-#        right: 50 #New CCD only has prescan, no overscan
+        right:  50
+#        left: 50 #New CCD only has prescan, no overscan
 
   - name : readout_noise
     description : Readout noise frames
@@ -98,4 +98,4 @@ effects :
     class: Rotate90CCD
     include: True
     kwargs:
-      rotations: 1
+      rotations: 3
