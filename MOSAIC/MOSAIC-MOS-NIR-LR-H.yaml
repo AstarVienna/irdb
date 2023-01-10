@@ -21,7 +21,7 @@ effects:
 #  kwargs :
 #    fwhm : 2.56       # [pixels]
 
-- name: fibre_list
+- name: aperture_list
   description: collection of apertures corresponding to the MOS fibre heads
   class: FibreApertureList
   include: "!OBS.include_fibres"
@@ -37,29 +37,31 @@ effects:
 - name : collimator_transmission
   class : TERCurve
   kwargs :
-    filename : TER_collimator.dat
+    filename : "TER_collimator.dat"
 
 - name : fibre_transmission
   class : TERCurve
   kwargs :
-    filename : TER_collimator
+    filename : "TER_fibre.dat"
 
 - name : YZ_dichroic_transmission
   class : TERCurve
   kwargs :
-    filename : TER_YZ_dichroic.dat
+    filename : "TER_YZ_dichroic.dat"
+    action : transmission
 
 - name : J_dichroic_transmission
   class : TERCurve
   kwargs :
-    filename : TER_J_dichroic.dat
+    filename : "TER_J_dichroic.dat"
+    action : transmission
 
 - name : H_grating_transmission
   class : TERCurve
   kwargs :
-    filename : TER_H_grating.dat
+    filename : "TER_H_grating.dat"
 
 - name : H_camera_transmission
   class : TERCurve
   kwargs :
-    filename : TER_H_camera.dat
+    filename : "TER_H_camera.dat"
