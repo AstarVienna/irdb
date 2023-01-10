@@ -26,13 +26,13 @@ effects:
   class: FibreApertureList
   include: "!OBS.include_fibres"
   kwargs:
-    filename : "fibres_MOS_NIR_LR_H.dat"
+    filename : "apertures_MOS_NIR_LR_H.dat"
 
 - name : mos_spectral_traces
   description : list of mos trace geometries on the focal plane
   class : UnresolvedSpectralTraceList
   kwargs :
-    filename : "trace_MOS_NIR_LR_H.fits"
+    filename : "traces_MOS_NIR_LR_H.fits"
 
 - name : collimator_transmission
   class : TERCurve
