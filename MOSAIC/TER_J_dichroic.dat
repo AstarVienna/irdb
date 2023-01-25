@@ -1,8 +1,11 @@
-# wave_boundary:[0.77, 1.93]
-# Dichroic#J:0.98
-# Source:mosaic_optical_architecture_option2_09042021.xlsx
-# Created by:M. Rodrigues
-# Created on:10/01/2023
+# wave_boundary : [0.77, 1.93]
+# Dichroic_J : 0.98
+# Source : mosaic_optical_architecture_option2_09042021.xlsx
+# Created_by : M. Rodrigues
+# Created_on : 10/01/2023
+# wavelength_unit : um
+# action : transmission
+#
 wavelength transmission
 0.77 0.98
 0.795 0.98

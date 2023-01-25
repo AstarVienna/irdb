@@ -1,11 +1,14 @@
-# wave_boundary:[1.01, 1.37]
-# Grating_trans_File:Grating_NIR_LR2.ecsv
-# n_lens:1
-# LensCoating_trans_File:EPSilver_RMI_0deg.ecsv
-# Bulk_trans_File:1.0
-# Source:mosaic_optical_architecture_option2_09042021.xlsx
-# Created by:M. Rodrigues
-# Created on:10/01/2023
+# wave_boundary : [1.01, 1.37]
+# Grating_trans_File : Grating_NIR_LR2.ecsv
+# n_lens : 1
+# LensCoating_trans_File : EPSilver_RMI_0deg.ecsv
+# Bulk_trans_File : 1.0
+# Source : mosaic_optical_architecture_option2_09042021.xlsx
+# Created_by : M. Rodrigues
+# Created_on : 10/01/2023
+# wavelength_unit : um
+# action : transmission
+#
 wavelength transmission
 1.01 0.8316
 1.035 0.8395199999999999

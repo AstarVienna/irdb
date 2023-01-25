@@ -1,14 +1,17 @@
-# wave_boundary:[0.77, 1.93]
-# Fiber_attenuation_File:Fiber_UV-VIS-NIR_attenuation.ecsv
-# Lens Misalignement:0.98
-# Lens Transmission:0.96
-# Coupling loss:0.98
-# Slitout loss:0.96
-# Connector #1:0.96
-# Connector #2:0.96
-# Source:mosaic_optical_architecture_option2_09042021.xlsx
-# Created by:M. Rodrigues
-# Created on:10/01/2023
+# wave_boundary : [0.77, 1.93]
+# Fiber_attenuation_File : Fiber_UV-VIS-NIR_attenuation.ecsv
+# Lens_Misalignement : 0.98
+# Lens_Transmission : 0.96
+# Coupling_loss : 0.98
+# Slitout_loss : 0.96
+# Connector_1 : 0.96
+# Connector_2 : 0.96
+# Source : mosaic_optical_architecture_option2_09042021.xlsx
+# Created_by : M. Rodrigues
+# Created_on : 10/01/2023
+# wavelength_unit : um
+# action : transmission
+#
 wavelength transmission
 0.77 0.7929395564676074
 0.795 0.7944719776856711
