@@ -17,11 +17,13 @@ from scopesim_templates.extragalactic import galaxy
 
 sim.rc.__config__["!SIM.file.local_packages_path"] = "../../"
 
+PLOTS = True
+
 
 def test_maat_runs_with_point_source():
     g191 = SourceSpectrum.from_file('test_data/fg191b2b.dat')
     src = point_source(sed=g191, filter_curve='V',
-                       amplitude=11.78 * u.ABmag, x=3, y=2)
+                       amplitude=11.78 * u.ABmag, x=3, y=2.1)
 
     cmds = sim.UserCommands(use_instrument="OSIRIS", set_modes=["MAAT"])
     cmds.cmds["!ATMO.seeing"] = 1.
@@ -34,8 +36,9 @@ def test_maat_runs_with_point_source():
     osiris = sim.OpticalTrain(cmds)
     osiris.observe(src)
 
-    plt.imshow(osiris.image_planes[0].data)
-    plt.show()
+    if PLOTS:
+        plt.imshow(osiris.image_planes[0].data, norm=LogNorm())
+        plt.show()
 
 
 def test_maat_runs_with_extended_source():
@@ -53,8 +56,9 @@ def test_maat_runs_with_extended_source():
     osiris = sim.OpticalTrain(cmds)
     osiris.observe(src)
 
-    plt.imshow(osiris.image_planes[0].data)
-    plt.show()
+    if PLOTS:
+        plt.imshow(osiris.image_planes[0].data)
+        plt.show()
 
 
 def test_maat_runs_with_line_list_source():
@@ -71,5 +75,6 @@ def test_maat_runs_with_line_list_source():
     osiris["lapalma_skycalc_curves"].include = False
     osiris.observe(arc)
 
-    plt.imshow(osiris.image_planes[0].data, norm=LogNorm())
-    plt.show()
+    if PLOTS:
+        plt.imshow(osiris.image_planes[0].data, norm=LogNorm())
+        plt.show()

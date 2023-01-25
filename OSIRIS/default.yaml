@@ -44,6 +44,11 @@ mode_yamls :
   description : "OSIRIS imaging mode"
   properties:
     filter_name : sdss_r_filter
+    grating_name : None
+    longslit_name: None
+    obsmode: OsirisBias
+  yamls:
+    - OSIRIS_IMG.yaml
 
 - object : instrument
   alias: OBS
@@ -64,6 +69,7 @@ mode_yamls :
   properties:
     filter_name : open
     grating_name : R2000B
+    longslit_name: None
     obsmode : 'OsirisMAAT'
   yamls:
     - OSIRIS_MAAT.yaml

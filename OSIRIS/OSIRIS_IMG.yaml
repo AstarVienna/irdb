@@ -19,6 +19,27 @@ effects:
       # only include SVO entries with _filter in the name
       # By default an "open" filter with unity transmission is also included
 
+  - name: OSIRIS_detector_qe
+    description: QE curve for new OSIRIS detector
+    class: QuantumEfficiencyCurve
+    include: True
+    kwargs:
+      filename: QE_OSIRIS_new_detector.dat
+
+  - name: OSIRIS_old_detector_qe
+    description: QE curve for old OSIRIS detector plus M3 response
+    class: QuantumEfficiencyCurve
+    include: False
+    kwargs:
+      filename: QE_OSIRIS_old_detector_plus_M3.dat
+
+  - name: GTC_imaging_transmission
+    description: Combined transmission curve for GTC mirrors and OSIRIS mirrors (excluding M3)
+    class: TERCurve
+    include: True
+    kwargs:
+      filename: GTC_im_efficiency.dat
+
 ---
 ### default detector parameters for IMG
 object : detector
@@ -27,5 +48,6 @@ name : osiris_IMG_detector_params
 description : Default detector params for IMG
 
 properties:
-  binx: 1 #North-South with old CCD
+  binx: 2 #North-South with old CCD
   biny: 2 #North-South with new CCD
+  ccdsum: '2 2'
