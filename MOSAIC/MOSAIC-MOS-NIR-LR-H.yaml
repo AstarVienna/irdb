@@ -33,6 +33,7 @@ effects:
   class : UnresolvedSpectralTraceList
   kwargs :
     filename : "traces_MOS_NIR_LR_H.fits"
+    # filename : "TRACE_MOSAIC_MOS_NIR_LR_H.fits"
 
 - name : collimator_transmission
   class : TERCurve
@@ -42,7 +43,7 @@ effects:
 - name : fibre_transmission
   class : TERCurve
   kwargs :
-    filename : "TER_fibre.dat"
+    filename : "TER_NIR_fibre.dat"
 
 - name : YZ_dichroic_transmission
   class : TERCurve

@@ -1,10 +1,11 @@
-# wave_boundary:[0.77, 1.93]
-# n_mirrors:2
-# Mirror_reflec:EPSilver_RMI_0deg.ecsv
-# SystemMargin_trans_File:0.98
-# Source:mosaic_optical_architecture_option2_09042021.xlsx
-# Created by:M. Rodrigues
-# Created on:10/01/2023
+# wave_boundary: [0.77, 1.93]
+# n_mirrors: 2
+# mirror_reflec: EPSilver_RMI_0deg.ecsv
+# systemMargin_trans_File: 0.98
+# source: mosaic_optical_architecture_option2_09042021.xlsx
+# created_by: M. Rodrigues
+# created_on: 10-01-2023
+#
 wavelength transmission
 0.77 0.9558466848
 0.795 0.9581709312000001
