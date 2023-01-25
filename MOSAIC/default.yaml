@@ -34,5 +34,24 @@ mode_yamls :
   description : "MVP system for a single MOSAIC config"
   yamls :
   - MOSAIC-MOS-NIR-LR-H.yaml
+  - MOSAIC_H_DET.yaml
 
 
+---
+### default simulation parameters needed for a MICADO simulation
+object : simulation
+alias : SIM
+name : MICADO_simulation_paramters
+description : RC simulation paramters which need to change for a MICADO run
+
+properties :
+  random :
+    seed : None
+
+  spectral :
+    wave_min : 0.8
+    wave_mid : 1.3
+    wave_max : 1.75
+
+  computing :
+    preload_field_of_view : True
