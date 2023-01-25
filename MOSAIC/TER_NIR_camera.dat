@@ -1,13 +1,16 @@
-# wave_boundary:[0.77, 1.93]
-# n_mirrors:1
-# Mirror_reflec:EPSilver_RMI_0deg.ecsv
-# n_lens:2
-# LensCoating_trans_File:EPSilver_RMI_0deg.ecsv
-# Bulk_trans_File:1.0
-# Vignetting:0.8
-# Source:mosaic_optical_architecture_option2_09042021.xlsx
-# Created by:M. Rodrigues
-# Created on:10/01/2023
+# wave_boundary : [0.77, 1.93]
+# n_mirrors : 1
+# Mirror_reflec : EPSilver_RMI_0deg.ecsv
+# n_lens : 2
+# LensCoating_trans_File : EPSilver_RMI_0deg.ecsv
+# Bulk_trans_File : 1.0
+# Vignetting : 0.8
+# Source : mosaic_optical_architecture_option2_09042021.xlsx
+# Created_by : M. Rodrigues
+# Created_on : 10/01/2023
+# wavelength_unit : um
+# action : transmission
+#
 wavelength transmission
 0.77 0.7706074987008001
 0.795 0.7734199320576001

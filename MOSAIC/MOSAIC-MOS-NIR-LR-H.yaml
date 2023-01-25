@@ -31,6 +31,7 @@ effects:
 - name : mos_spectral_traces
   description : list of mos trace geometries on the focal plane
   class : UnresolvedSpectralTraceList
+  include: "!OBS.include_fibres"
   kwargs :
     filename : "traces_MOS_NIR_LR_H.fits"
     # filename : "TRACE_MOSAIC_MOS_NIR_LR_H.fits"
@@ -65,4 +66,4 @@ effects:
 - name : H_camera_transmission
   class : TERCurve
   kwargs :
-    filename : "TER_H_camera.dat"
+    filename : "TER_NIR_camera.dat"

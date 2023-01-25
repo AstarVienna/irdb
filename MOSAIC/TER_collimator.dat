@@ -5,6 +5,8 @@
 # source: mosaic_optical_architecture_option2_09042021.xlsx
 # created_by: M. Rodrigues
 # created_on: 10-01-2023
+# wavelength_unit : um
+# action : transmission
 #
 wavelength transmission
 0.77 0.9558466848

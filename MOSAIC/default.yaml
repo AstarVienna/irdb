@@ -25,6 +25,7 @@ properties :
   ra : 0.0
   dec : 0.0
   psf_fwhm : 0.2
+  include_fibres : False
 
 
 mode_yamls :

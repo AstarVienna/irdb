@@ -5,6 +5,7 @@ import scopesim as sim
 IRDB_DIR = pth.abspath(pth.join(pth.dirname(__file__), "../../"))
 sim.rc.__config__["!SIM.file.local_packages_path"] = IRDB_DIR
 
+
 class TestMosaicMvp:
     def test_initialise_command_object(self):
         cmds = sim.UserCommands(use_instrument="MOSAIC")
@@ -15,3 +16,22 @@ class TestMosaicMvp:
         cmds = sim.UserCommands(use_instrument="MOSAIC")
         mosaic = sim.OpticalTrain(cmds)
         assert isinstance(mosaic, sim.OpticalTrain)
+
+class TestMosiacMvpCanObserveSomething:
+    from scopesim.source import source_templates as st
+    src = st.empty_sky()
+
+    cmds = sim.UserCommands(use_instrument="MOSAIC")
+    mosaic = sim.OpticalTrain(cmds)
+
+    mosaic.observe(src)
+
+    import matplotlib.pyplot as plt
+    plt.imshow(mosaic.image_planes[0].data)
+    plt.pause(0)
+    plt.show()
+
+
+
+
+
