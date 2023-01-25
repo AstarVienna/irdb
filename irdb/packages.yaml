@@ -43,9 +43,9 @@ MICADO_Sci:
   path: instruments
   stable: MICADO_Sci
 OSIRIS:
-  latest: OSIRIS
+  latest: OSIRIS.2023-01-13
   path: instruments
-  stable: OSIRIS
+  stable: OSIRIS.2023-01-13
 Paranal:
   latest: Paranal.2022-04-09
   path: locations
