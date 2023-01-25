@@ -6,12 +6,13 @@ import pandas as pd
 from astropy.io import fits
 from astropy.table import Table
 
+
 class TraceGenerator:
     
     def __init__(self,
-                 l_low: float=0.770,
-                 l_high: float=1.063,
-                 delta_lambda: float=0.183e-3,
+                 l_low: float=1.4,      # um
+                 l_high: float=1.91,     # um
+                 delta_lambda: float=0.183e-3*2,      # um
                  sampling: float=2.56,  # pixels
                  pixel_size: float=0.015,  # mm
                  trace_distances=8,  # pixels
@@ -25,7 +26,7 @@ class TraceGenerator:
         :type l_low: float, optional
         :param l_high: the maximum lambda of the trace , defaults to 1.063
         :type l_high: float, optional
-        :param delta_lambda: delata lambda of the trace, defaults to 0.183
+        :param delta_lambda: delta lambda of the trace, defaults to 0.183
         :type delta_lambda: float, optional
         :param sampling: sampling in pixels, defaults to 2.56
         :type sampling: float, optional
@@ -58,6 +59,8 @@ class TraceGenerator:
         self._wavelengths = np.arange(self._l_low, self._l_high, self._delta_lambda)
     
     def _set_y(self):
+        # self._y = np.linspace(-30.72, 30.72, self._wavelengths.size)
+
         self._y = np.arange(self._wavelengths.size) * self._sampling * self._pixel_size
         self._y = self._y - (self._y[-1] - self._y[0])/2
     
@@ -90,4 +93,4 @@ class TraceGenerator:
 
 if __name__ =="__main__":
     t = TraceGenerator()
-    t.to_fits("TRACE_MOSAIC_MOS_NIR_LR_H.fits")
+    t.to_fits("../TRACE_MOSAIC_MOS_NIR_LR_H.fits")
