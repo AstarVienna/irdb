@@ -9,7 +9,7 @@ properties :
   temperature : -230      # [deg C]
   dit: "!OBS.dit"
   ndit: "!OBS.ndit"
-  width: 128              # [pixel]
+  width: 256              # [pixel]
   height: 4096
   x: 0                    # [mm]
   y: 0

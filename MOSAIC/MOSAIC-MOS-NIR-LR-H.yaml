@@ -15,11 +15,12 @@ effects:
   kwargs :
     fwhm : "!OBS.psf_fwhm"       # [arcsec]
 
-#- name : lsf
-#  description : Line spread function
-#  class : Trace2DLSF
-#  kwargs :
-#    fwhm : 2.56       # [pixels]
+- name : fibre_projection_psf
+  description : 2D PSF applied to traces due to fibre size
+  class : RadialProfilePSF
+  kwargs :
+    r : [0, 1, 2]       # [pixels]
+    z : [0.6, 0.2, 0]   # [rel intensity]
 
 - name: aperture_list
   description: collection of apertures corresponding to the MOS fibre heads
@@ -33,8 +34,8 @@ effects:
   class : UnresolvedSpectralTraceList
   include: "!OBS.include_fibres"
   kwargs :
-    filename : "traces_MOS_NIR_LR_H.fits"
-    # filename : "TRACE_MOSAIC_MOS_NIR_LR_H.fits"
+    #filename : "traces_MOS_NIR_LR_H.fits"
+    filename : "TRACE_MOSAIC_MOS_NIR_LR_H.fits"
 
 - name : collimator_transmission
   class : TERCurve
