@@ -12,7 +12,7 @@ class TraceGenerator:
     def __init__(self,
                  l_low: float=1.4,      # um
                  l_high: float=1.91,     # um
-                 delta_lambda: float=0.183e-3*2,      # um
+                 delta_lambda: float=0.183e-3,      # um
                  sampling: float=2.56,  # pixels
                  pixel_size: float=0.015,  # mm
                  trace_distances=8,  # pixels
@@ -20,7 +20,7 @@ class TraceGenerator:
                  nbr_mos: int=2,
                  mos_distance: float=32,  # pixels
                  ):
-        """Build a trace Generator. 
+        """Build a trace Generator.
 
         :param l_low: the minimum wavelength of the trace , defaults to 0.770
         :type l_low: float, optional
@@ -75,22 +75,34 @@ class TraceGenerator:
     def _generate_trace(self,id:int) -> pd.DataFrame:
         res = pd.DataFrame({"wavelength":self._wavelengths, "y":self._y})
         res["x"] = self._x[id]
+
         return res
 
-    def _generate_trace_descriptor(self,) -> pd.DataFrame:
+    def _generate_trace_descriptor(self) -> pd.DataFrame:
         res = pd.DataFrame({"aperture_id":np.arange(self._x.size)})
         res["description"] = [f"Trace_Ap{i}" for i in res["aperture_id"]]
         res["extension_id"] = res["aperture_id"] + 2
         res["image_plane_id"] = 0
+
         return res.loc[:,["description", "extension_id", "aperture_id","image_plane_id"]]
-    
-    def to_fits(self, path:str) -> None:
-        li = [fits.PrimaryHDU(), fits.BinTableHDU(Table.from_pandas(self._generate_trace_descriptor()))]
-        li = li + [fits.BinTableHDU(Table.from_pandas(self._generate_trace(i))) for i in range(self._x.size)]
-        hdul = fits.HDUList(li)
-        hdul.writeto(path,overwrite=True)
+
+    def _generate_primary_header(self) -> fits.Header:
+        hdr = fits.Header()
+        hdr.update({"ECAT": 1,
+                    "EDATA": 2})
+
+        return hdr
+
+    def make_fits(self) -> fits.HDUList:
+        li = [fits.PrimaryHDU(header=self._generate_primary_header()),
+              fits.BinTableHDU(Table.from_pandas(self._generate_trace_descriptor()))]
+        li = li + [fits.BinTableHDU(Table.from_pandas(self._generate_trace(i)))
+                   for i in range(self._x.size)]
+
+        return fits.HDUList(li)
 
 
 if __name__ =="__main__":
     t = TraceGenerator()
-    t.to_fits("../TRACE_MOSAIC_MOS_NIR_LR_H.fits")
+    hdul = t.make_fits()
+    hdul.writeto("../TRACE_MOSAIC_MOS_NIR_LR_H.fits", overwrite=True)
