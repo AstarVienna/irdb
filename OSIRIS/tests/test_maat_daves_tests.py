@@ -1,4 +1,6 @@
 import os
+from pathlib import Path
+
 import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib.colors import LogNorm
@@ -17,11 +19,13 @@ from scopesim_templates.extragalactic import galaxy
 
 sim.rc.__config__["!SIM.file.local_packages_path"] = "../../"
 
-PLOTS = True
+PLOTS = False
+
+PATH_HERE = Path(__file__).parent
 
 
 def test_maat_runs_with_point_source():
-    g191 = SourceSpectrum.from_file('test_data/fg191b2b.dat')
+    g191 = SourceSpectrum.from_file(str(PATH_HERE / 'test_data' / 'fg191b2b.dat'))
     src = point_source(sed=g191, filter_curve='V',
                        amplitude=11.78 * u.ABmag, x=3, y=2.1)
 
@@ -62,7 +66,7 @@ def test_maat_runs_with_extended_source():
 
 
 def test_maat_runs_with_line_list_source():
-    arcspec=SourceSpectrum.from_file('test_data/OSIRIS_stitchedArc.dat')
+    arcspec=SourceSpectrum.from_file(str(PATH_HERE / 'test_data' / 'OSIRIS_stitchedArc.dat'))
     arc = uniform_source(sed=arcspec, filter_curve='V', amplitude=16*u.ABmag, extend=520)
 
     cmds = sim.UserCommands(use_instrument="OSIRIS", set_modes=["MAAT"])

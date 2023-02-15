@@ -109,7 +109,7 @@ class TestOsirisMaatCompiles:
         osiris.observe(src)
         hdulist = osiris.readout(exptime=60)[0]
 
-        if not PLOTS:
+        if PLOTS:
             plt.imshow(hdulist[1].data, norm=LogNorm())
             plt.colorbar()
             plt.show()
