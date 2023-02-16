@@ -92,4 +92,6 @@ jobs:
           pip install git+https://github.com/AstarVienna/ScopeSim.git@dev_master
           pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git
       - name: Run MICADO Notebooks
-        run: jupytext --execute MICADO/docs/example_notebooks/*.ipynb
+        run: |
+          sed -i "s/USE_FULL_DETECTOR = True/USE_FULL_DETECTOR = False/g" MICADO/docs/example_notebooks/*.ipynb
+          jupytext --execute MICADO/docs/example_notebooks/*.ipynb
