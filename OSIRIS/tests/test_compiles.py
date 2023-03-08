@@ -86,3 +86,32 @@ class TestOsirisLongSlitCompiles:
             plt.show()
 
         assert hdulist[1].data.max() > 1e3
+
+
+class TestOsirisMaatCompiles:
+    def test_everything_is_read_in_nicely(self):
+        cmds = sim.UserCommands(use_instrument="OSIRIS", set_modes=["MAAT"])
+
+        assert isinstance(cmds, sim.UserCommands)
+        assert len(cmds.yaml_dicts) > 2
+
+    def test_run_maat_simulation(self):
+        # n stars, mag_min, mag_max, width=[arcsec]
+        src = star_field(5**2, 10, 10, 8, use_grid=True)
+
+        cmds = sim.UserCommands(use_instrument="OSIRIS", set_modes=["MAAT"],
+                                properties={"!OBS.dit": 60})
+        # cmds["!OBS.dit"] = 60
+        cmds["!ATMO.seeing"] = 0.8
+        # cmds["!OBS.grating_name"] = "R2500V"
+
+        osiris = sim.OpticalTrain(cmds)
+        osiris.observe(src)
+        hdulist = osiris.readout(exptime=60)[0]
+
+        if PLOTS:
+            plt.imshow(hdulist[1].data, norm=LogNorm())
+            plt.colorbar()
+            plt.show()
+
+        assert hdulist[1].data.max() > 1e3

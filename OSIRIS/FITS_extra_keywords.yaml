@@ -1,0 +1,22 @@
+ - ext_type: PrimaryHDU
+   keywords:
+    MJD-OBS: "!OBS.mjdobs"
+    CCD-SUM: "!DET.ccdsum"
+    RA: "!OBS.ra"
+    DEC: "!OBS.dec"
+    OBJECT: "!OBS.object"
+    OBSMODE: "!OBS.obsmode"
+    AIRMASS: "!OBS.airmass"
+    GRISM: "!OBS.grating_name"
+    SLITW: "!OBS.longslit_name"
+    INSTRUME: "OSIRIS"
+    TELESCOP: "GTC"
+    OBSERVAT: "ORM"
+    EXPTIME: "!OBS.dit"
+    LATITUDE: "+28:45:43.2"
+    LONGITUD: "+17:52:39.5"
+    HEIGHT  : "2348"
+
+ - ext_type: ImageHDU
+   keywords:
+    CCD-SUM: "!DET.ccdsum"

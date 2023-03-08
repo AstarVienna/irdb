@@ -25,7 +25,6 @@ properties:
     - R2500U
     - R2500V
 
-
 effects:
   - name: grating_efficiency
     description: OSIRIS grating efficiency curves, piggybacking on FilterWheel
@@ -56,17 +55,8 @@ effects:
         - "3.0"
         - "5.0"
 
-#  - name: spectral_traces
-#    description: list of spectral order trace geometry on the focal plane
-#    class: SpectralTraceList
-#    kwargs:
-#      filename: "!OBS.trace_file"
-#      wave_colname: "wavelength"
-#      s_colname: "xi"
-#      col_number_start: 1
-#
   - name: spectral_trace_wheel
-    description: grism wheel contining spectral trace geometries
+    description: grism wheel containing spectral trace geometries
     class: SpectralTraceListWheel
     kwargs:
       wave_colname: "wavelength"
@@ -88,3 +78,15 @@ effects:
     include: False
     kwargs:
       filename: QE_OSIRIS_old_detector_plus_M3.dat
+
+---
+### default detector parameters for LSS
+object : detector
+alias : DET
+name : osiris_LSS_detector_params
+description : Default detector params for LSS
+
+properties:
+  binx: 2 #Spectral direction with new CCD
+  biny: 2 #Spectral direction with old CCD
+  ccdsum: '2 2'

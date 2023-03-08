@@ -1,0 +1,29 @@
+# left_unit: arcsec
+# right_unit: arcsec
+# top_unit: arcsec
+# bottom_unit: arcsec
+# angle_unit: deg
+ id  left  right  bottom     top  angle  conserve_image  shape
+  0  -5.0    5.0    -3.5  -3.195    0.0            True   rect
+  1  -5.0    5.0  -3.196  -2.891    0.0            True   rect
+  2  -5.0    5.0  -2.891  -2.586    0.0            True   rect
+  3  -5.0    5.0  -2.587  -2.282    0.0            True   rect
+  4  -5.0    5.0  -2.283  -1.978    0.0            True   rect
+  5  -5.0    5.0  -1.978  -1.673    0.0            True   rect
+  6  -5.0    5.0  -1.674  -1.369    0.0            True   rect
+  7  -5.0    5.0   -1.37  -1.065    0.0            True   rect
+  8  -5.0    5.0  -1.065   -0.76    0.0            True   rect
+  9  -5.0    5.0  -0.761  -0.456    0.0            True   rect
+ 10  -5.0    5.0  -0.457  -0.152    0.0            True   rect
+ 11  -5.0    5.0  -0.152   0.153    0.0            True   rect
+ 12  -5.0    5.0   0.152   0.457    0.0            True   rect
+ 13  -5.0    5.0   0.456   0.761    0.0            True   rect
+ 14  -5.0    5.0    0.76   1.065    0.0            True   rect
+ 15  -5.0    5.0   1.065    1.37    0.0            True   rect
+ 16  -5.0    5.0   1.369   1.674    0.0            True   rect
+ 17  -5.0    5.0   1.673   1.978    0.0            True   rect
+ 18  -5.0    5.0   1.978   2.283    0.0            True   rect
+ 19  -5.0    5.0   2.282   2.587    0.0            True   rect
+ 20  -5.0    5.0   2.586   2.891    0.0            True   rect
+ 21  -5.0    5.0   2.891   3.196    0.0            True   rect
+ 22  -5.0    5.0   3.195     3.5    0.0            True   rect

@@ -21,8 +21,13 @@ properties:
     - R2500U
     - R2500V
 
-
 effects:
+  - name: maat_transmission
+    description: Optimistic transmission curve for MAAT
+    class: TERCurve
+    kwargs:
+      filename: MAAT_trans.txt
+
   - name: grating_efficiency
     description: OSIRIS grating efficiency curves, piggybacking on FilterWheel
     class: FilterWheel
@@ -33,16 +38,15 @@ effects:
       current_filter: "!OBS.grating_name"
       filter_names: "!INST.grism_names"
 
-  - name: maat_slicer
-    description: field of view of the image slicer
-    class: MetisLMSImageSlicer
+  - name: maat_image_slicer
+    description: apertures for each field of the image slicer
+    class: ApertureList
     kwargs:
-      filename: "MAAT_APERTURES.fits"
-      ext_id: "Aperture List"
-
+      filename: "MAAT_APERTURES.dat"
+      extend_fov_beyond_slit: 4
 
   - name: spectral_trace_wheel
-    description: grism wheel contining spectral trace geometries
+    description: grism wheel containing spectral trace geometries
     class: SpectralTraceListWheel
     kwargs:
       wave_colname: "wavelength"
@@ -52,6 +56,15 @@ effects:
       filename_format: "MAAT_traces/{}_MAAT_TRACE.fits"
       trace_list_names: "!INST.grism_names"
 
+#  - name: maat_spectral_traces
+#    description: list of spectral order trace geometry on the focal plane
+#    class: SpectralTraceList
+#    kwargs:
+#      filename: "MAAT_traces/R2000B_MAAT_TRACE.fits"
+#      wave_colname: "wavelength"
+#      s_colname: "xi"
+#      col_number_start: 1
+
   - name: OSIRIS_detector_qe
     description: QE curve for new OSIRIS detector, needed for spec modes
     class: QuantumEfficiencyCurve
@@ -59,9 +72,15 @@ effects:
     kwargs:
       filename: QE_OSIRIS_new_detector.dat
 
-effects:
-  - name: maat_transmission
-    description: Optimistic transmission curve for MAAT
-    class: TERCurve
-    kwargs:
-      filename: MAAT_trans.txt
+
+---
+### default detector parameters for MAAT
+object : detector
+alias : DET
+name : osiris_MAAT_detector_params
+description : Default detector params for MAAT
+
+properties:
+  binx: 1 #Spectral direction with new CCD
+  biny: 2 #Spectral direction with old CCD
+  ccdsum: '1 2'

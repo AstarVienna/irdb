@@ -7,6 +7,8 @@ description : A single 4k detector
 properties :
     image_plane_id : 0
     temperature : -120
+#    binx : 2
+#    biny: 2
     dit : "!OBS.dit"
     ndit : "!OBS.ndit"
 
@@ -61,13 +63,7 @@ effects :
     class: ReferencePixelBorder
     kwargs:
         left:  50
-        right: 50
-
-  - name: binning_2x2
-    description: Applies 2x2 binning
-    class: BinnedImage
-    kwargs:
-        bin_size: 2
+#        right: 50 #New CCD only has prescan, no overscan
 
   - name : readout_noise
     description : Readout noise frames
@@ -75,8 +71,31 @@ effects :
     kwargs :
         noise_std : 5
 
+
+  - name: binning
+    description: Applies binning
+    class: UnequalBinnedImage
+    include: True
+    kwargs:
+        binx: "!DET.binx"
+        biny: "!DET.biny"
+
   - name : bias
     description : Bias level
     class : Bias
     kwargs :
         bias : 1040
+
+  - name : extra_fits_keywords
+    decription : adds extra FITS keywords from a yaml file
+    class : ExtraFitsKeywords
+    include : True
+    kwargs :
+      filename: FITS_extra_keywords.yaml
+
+  - name: NewCCD_rotation
+    description: New OSIRIS CCD is rotated 90 degrees
+    class: Rotate90CCD
+    include: True
+    kwargs:
+      rotations: 1
