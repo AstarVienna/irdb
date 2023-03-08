@@ -35,9 +35,9 @@ METIS:
   path: instruments
   stable: METIS.2022-04-26
 MICADO:
-  latest: MICADO.2022-10-06
+  latest: MICADO.2023-03-08
   path: instruments
-  stable: MICADO.2022-10-06
+  stable: MICADO.2023-03-08
 MICADO_Sci:
   latest: MICADO_Sci
   path: instruments
