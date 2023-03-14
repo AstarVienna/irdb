@@ -91,11 +91,11 @@ jobs:
           pip uninstall -y scopesim scopesim_templates
           pip install git+https://github.com/AstarVienna/ScopeSim.git@dev_master
           pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git
-      - name: Run MICADO Notebooks
-        run: |
-          sed -i "s/USE_FULL_DETECTOR = True/USE_FULL_DETECTOR = False/g" MICADO/docs/example_notebooks/*.ipynb
-          jupytext --execute MICADO/docs/example_notebooks/*.ipynb
       - name: Run METIS Notebooks
         run: |
           jupytext --execute METIS/docs/example_notebooks/demos/*.ipynb
           jupytext --execute METIS/docs/example_notebooks/*.ipynb
+      - name: Run MICADO Notebooks
+        run: |
+          sed -i "s/USE_FULL_DETECTOR = True/USE_FULL_DETECTOR = False/g" MICADO/docs/example_notebooks/*.ipynb
+          jupytext --execute MICADO/docs/example_notebooks/*.ipynb
