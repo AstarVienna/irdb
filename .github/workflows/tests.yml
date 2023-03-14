@@ -95,3 +95,5 @@ jobs:
         run: |
           sed -i "s/USE_FULL_DETECTOR = True/USE_FULL_DETECTOR = False/g" MICADO/docs/example_notebooks/*.ipynb
           jupytext --execute MICADO/docs/example_notebooks/*.ipynb
+          jupytext --execute METIS/docs/example_notebooks/demos/*.ipynb
+          jupytext --execute METIS/docs/example_notebooks/*.ipynb
