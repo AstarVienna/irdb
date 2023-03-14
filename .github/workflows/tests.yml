@@ -93,9 +93,9 @@ jobs:
           pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git
       - name: Run METIS Notebooks
         run: |
-          jupytext --execute METIS/docs/example_notebooks/demos/*.ipynb
-          jupytext --execute METIS/docs/example_notebooks/*.ipynb
+          for fn in METIS/docs/example_notebooks/*.ipynb; do echo "${fn}"; /usr/bin/time -v jupytext --execute --update "${fn}"; done
+          for fn in METIS/docs/example_notebooks/demos/*.ipynb; do echo "${fn}"; /usr/bin/time -v jupytext --execute --update "${fn}"; done
       - name: Run MICADO Notebooks
         run: |
           sed -i "s/USE_FULL_DETECTOR = True/USE_FULL_DETECTOR = False/g" MICADO/docs/example_notebooks/*.ipynb
-          jupytext --execute MICADO/docs/example_notebooks/*.ipynb
+          for fn in MICADO/docs/example_notebooks/*.ipynb; do echo "${fn}"; /usr/bin/time -v jupytext --execute --update "${fn}"; done
