@@ -1,5 +1,6 @@
 import os
 import numpy as np
+from pathlib import Path
 
 from matplotlib import pyplot as plt
 from matplotlib.colors import LogNorm
@@ -9,7 +10,8 @@ from astropy import units as u
 from scopesim.source.source_templates import star_field, empty_sky, star
 import scopesim as sim
 
-sim.rc.__config__["!SIM.file.local_packages_path"] = os.path.abspath("../../")
+PATH_HERE = Path(__file__).parent
+sim.rc.__config__["!SIM.file.local_packages_path"] = str(PATH_HERE.parent.parent)
 
 PLOTS = False
 

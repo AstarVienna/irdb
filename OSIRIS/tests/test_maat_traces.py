@@ -14,12 +14,10 @@ from scopesim.optics import FieldOfView
 
 from scopesim_templates.misc.misc import uniform_source
 
-sim.rc.__config__["!SIM.file.local_packages_path"] = "../../"
+PATH_HERE = Path(__file__).parent
+sim.rc.__config__["!SIM.file.local_packages_path"] = str(PATH_HERE.parent.parent)
 
 PLOTS = False
-
-PATH_HERE = Path(__file__).parent
-
 
 class TestMaatTraces:
     def test_plot_traces(self):

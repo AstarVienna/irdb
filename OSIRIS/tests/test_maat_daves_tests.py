@@ -17,11 +17,10 @@ from scopesim_templates.misc.misc import point_source
 from scopesim_templates.misc.misc import uniform_source
 from scopesim_templates.extragalactic import galaxy
 
-sim.rc.__config__["!SIM.file.local_packages_path"] = "../../"
-
 PLOTS = False
 
 PATH_HERE = Path(__file__).parent
+sim.rc.__config__["!SIM.file.local_packages_path"] = str(PATH_HERE.parent.parent)
 
 
 def test_maat_runs_with_point_source():
