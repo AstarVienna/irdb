@@ -1,24 +1,18 @@
-from os import path as p
 from pathlib import Path
 
+import numpy as np
+import scopesim as sim
+from astropy import units as u
 from matplotlib import pyplot as plt
 from matplotlib.colors import LogNorm
-import numpy as np
-from astropy import units as u
-
-from synphot import SourceSpectrum
-from scopesim_templates.misc.misc import point_source
-import scopesim as sim
 from scopesim.effects import SpectralTraceList
-from scopesim.optics import FieldOfView
-
 from scopesim_templates.misc.misc import uniform_source
-
-sim.rc.__config__["!SIM.file.local_packages_path"] = "../../"
-
-PLOTS = False
+from synphot import SourceSpectrum
 
 PATH_HERE = Path(__file__).parent
+sim.rc.__config__["!SIM.file.local_packages_path"] = str(PATH_HERE.parent.parent)
+
+PLOTS = False
 
 
 class TestMaatTraces:
