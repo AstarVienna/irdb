@@ -1,7 +1,6 @@
 from os import path as pth
 from glob import glob
 import numpy as np
-from matplotlib import pyplot as plt
 
 from astropy.io import ascii
 from astropy.io import fits
@@ -58,18 +57,23 @@ def make_pri_hdu():
 
 
 def get_trace_names(dir_path):
-    paths = glob(dir_path+ "/*.dat")
+    paths = glob(dir_path + "/*.dat")
     names = [path.replace(dir_path, "").replace(".dat", "").replace("\\", "") for path in paths]
 
     return names
 
 
-dir_path = "../traces"
-trace_names = get_trace_names(dir_path)
+def do_main():
+    dir_path = "../traces"
+    trace_names = get_trace_names(dir_path)
 
-pri_hdu = make_pri_hdu()
-cat_hdu = make_cat_hdu(trace_names)
-trace_hdus = make_spec_trace_hdu(trace_names, dir_path)
+    pri_hdu = make_pri_hdu()
+    cat_hdu = make_cat_hdu(trace_names)
+    trace_hdus = make_spec_trace_hdu(trace_names, dir_path)
 
-trace_hdulist = fits.HDUList([pri_hdu] + [cat_hdu] + trace_hdus)
-trace_hdulist.writeto("../traces/LSS_TRACES.fits", overwrite=True)
+    trace_hdulist = fits.HDUList([pri_hdu] + [cat_hdu] + trace_hdus)
+    trace_hdulist.writeto("../traces/LSS_TRACES.fits", overwrite=True)
+
+
+if __name__ == '__main__':
+    do_main()
