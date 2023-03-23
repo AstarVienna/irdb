@@ -21,7 +21,7 @@
     * SCAO AnisoCADO ConstPSF   [MICADO_Sci_SCAO.yaml:INST]  
 
 #### MCAO
-* MAORY TER             [MICADO_Sci_MCAO.yaml:INST]
+* MORFEO TER             [MICADO_Sci_MCAO.yaml:INST]
 * Detector Window       [MICADO_sci_detector.yaml:DET, (w,h) in MICADO_Sci_MCAO.yaml:DET]
 * PSF
     * MCAO StrehlPSF (max SR JHK-13/30/50)  [MICADO_Sci_SCAO.yaml:INST]

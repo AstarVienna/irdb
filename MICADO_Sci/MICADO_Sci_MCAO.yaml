@@ -1,6 +1,6 @@
 #
 ##### MCAO
-#* MAORY TER
+#* MORFEO TER
 #* Detector Window
 #* PSF
 #    * MCAO StrehlPSF (max SR JHK-13/30/50)
@@ -17,13 +17,13 @@ properties:
 
 effects:
 -   name: maory_mms_ter
-    description: Combined TER curve for MAORY MMS relay optics module
+    description: Combined TER curve for MORFEO MMS relay optics module
     class: TERCurve
     kwargs:
-        filename: TER_MAORY_MMS.dat
+        filename: TER_MORFEO_MMS.dat
 
 -   name: maory_const_psf
-    description: field constant PSF as produced by MAORY
+    description: field constant PSF as produced by MORFEO
     class: AnisocadoConstPSF
     kwargs:
         filename: "MICADO_AnisoCADO_rms_map.fits"

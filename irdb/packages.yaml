@@ -26,10 +26,10 @@ LaPalma:
   latest: LaPalma
   path: locations
   stable: LaPalma
-MAORY:
-  latest: MAORY.2022-04-26
+MORFEO:
+  latest: MORFEO.2022-04-26
   path: instruments
-  stable: MAORY.2022-04-26
+  stable: MORFEO.2022-04-26
 METIS:
   latest: METIS.2022-04-26
   path: instruments

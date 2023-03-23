@@ -43,7 +43,7 @@ The data is split in the following way:
 
 * Armazones
 * ELT
-* MAORY
+* MORFEO
 * MICADO
 * METIS (under construction)
 

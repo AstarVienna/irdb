@@ -7,7 +7,7 @@ description : default parameters needed for a MICADO simulation
 packages :
 - Armazones
 - ELT
-- MAORY
+- MORFEO
 - MICADO
 
 yamls :
@@ -50,7 +50,7 @@ mode_yamls :
   name : MCAO
   description : "MCAO optical system"
   yamls :
-  - MAORY.yaml
+  - MORFEO.yaml
 
 - object : observation
   alias: OBS

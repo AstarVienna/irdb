@@ -21,7 +21,7 @@ RC parameter ``scopesim.__rc__["!SIM.file.local_packages_path"]``::
     packages :
     - Armazones
     - ELT
-    - MAORY
+    - MORFEO
     - MICADO
 
 Next a list of the yaml files containing the default setup for the optical
@@ -31,7 +31,7 @@ one of the packages listed above::
     yamls :
     - Armazones.yaml
     - ELT.yaml
-    - MAORY.yaml
+    - MORFEO.yaml
     - MICADO.yaml
     - MODE_IMG_wide.yaml
     - H4RG.yaml

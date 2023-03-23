@@ -13,7 +13,7 @@ description : default parameters needed for a MICADO-Sci simulation
 packages :
 - Armazones
 - ELT
-- MAORY
+- MORFEO
 - MICADO
 - MICADO_Sci
 

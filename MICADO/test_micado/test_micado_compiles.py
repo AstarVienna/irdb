@@ -35,7 +35,7 @@ PLOTS = False
 class TestInit:
     def test_all_packages_are_available(self):
         rc_local_path = rc.__config__["!SIM.file.local_packages_path"]
-        for pkg_name in ["Armazones", "ELT", "MAORY", "MICADO"]:
+        for pkg_name in ["Armazones", "ELT", "MORFEO", "MICADO"]:
             assert os.path.isdir(os.path.join(rc_local_path, pkg_name))
 
 
@@ -59,14 +59,14 @@ class TestLoadUserCommands:
         cmd = scopesim.UserCommands(use_instrument="MICADO")
         cmd.set_modes(["MCAO", "SPEC_3000x50"])
 
-        assert "MAORY" in [yd["name"] for yd in cmd.yaml_dicts]
+        assert "MORFEO" in [yd["name"] for yd in cmd.yaml_dicts]
         assert "MICADO_SPEC" in [yd["name"] for yd in cmd.yaml_dicts]
 
     def test_user_commands_can_change_modes_via_init(self):
         cmd = scopesim.UserCommands(use_instrument="MICADO",
                                     set_modes=["MCAO", "SPEC_3000x50"])
 
-        assert "MAORY" in [yd["name"] for yd in cmd.yaml_dicts]
+        assert "MORFEO" in [yd["name"] for yd in cmd.yaml_dicts]
         assert "MICADO_SPEC" in [yd["name"] for yd in cmd.yaml_dicts]
 
 
