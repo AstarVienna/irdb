@@ -69,7 +69,7 @@ compress_surface_list_to_ter(f_in="LIST_RO_SCAO_mirrors.dat",
                              f_out="TER_MICADO_RO.dat", **kwargs)
 
 # MORFEO common optics
-compress_surface_list_to_ter(f_in="LIST_mirrors_maory_mms.tbl",
+compress_surface_list_to_ter(f_in="LIST_mirrors_morfeo_mms.tbl",
                              f_out="TER_MORFEO_MMS.dat", **kwargs)
 
 

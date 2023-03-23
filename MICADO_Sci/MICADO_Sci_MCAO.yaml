@@ -16,13 +16,13 @@ properties:
         wavelength: "!OBS.filter_name"
 
 effects:
--   name: maory_mms_ter
+-   name: morfeo_mms_ter
     description: Combined TER curve for MORFEO MMS relay optics module
     class: TERCurve
     kwargs:
         filename: TER_MORFEO_MMS.dat
 
--   name: maory_const_psf
+-   name: morfeo_const_psf
     description: field constant PSF as produced by MORFEO
     class: AnisocadoConstPSF
     kwargs:
