@@ -34,7 +34,6 @@ effects:
   class : UnresolvedSpectralTraceList
   include: "!OBS.include_fibres"
   kwargs :
-    #filename : "traces_MOS_NIR_LR_H.fits"
     filename : "TRACE_MOSAIC_MOS_NIR_LR_H.fits"
 
 - name : collimator_transmission
