@@ -33,7 +33,7 @@ class TestMosiacMvpCanObserveSomething:
     mosaic.observe(src)
 
     if PLOTS:
-        plt.imshow(mosaic.image_planes[0].data.T, norm=LogNorm())
+        plt.imshow(mosaic.image_planes[0].data, norm=LogNorm(), origin="lower")
         plt.pause(0)
         plt.show()
 

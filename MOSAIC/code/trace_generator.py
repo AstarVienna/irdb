@@ -10,9 +10,9 @@ from astropy.table import Table
 class TraceGenerator:
     
     def __init__(self,
-                 l_low: float=1.4,      # um
-                 l_high: float=1.91,     # um
-                 delta_lambda: float=0.183e-3,      # um
+                 l_low: float=1.420,      # um
+                 l_high: float=1.857,     # um
+                 delta_lambda: float=0.273e-3,      # um
                  sampling: float=2.56,  # pixels
                  pixel_size: float=0.015,  # mm
                  trace_distances=8,  # pixels
@@ -59,8 +59,6 @@ class TraceGenerator:
         self._wavelengths = np.arange(self._l_low, self._l_high, self._delta_lambda)
     
     def _set_y(self):
-        # self._y = np.linspace(-30.72, 30.72, self._wavelengths.size)
-
         self._y = np.arange(self._wavelengths.size) * self._sampling * self._pixel_size
         self._y = self._y - (self._y[-1] - self._y[0])/2
     

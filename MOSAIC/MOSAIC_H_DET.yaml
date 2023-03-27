@@ -9,8 +9,8 @@ properties :
   temperature : -230      # [deg C]
   dit: "!OBS.dit"
   ndit: "!OBS.ndit"
-  width: 256              # [pixel]
-  height: 4096
+  width: 8092              # [pixel]
+  height: 8092
   x: 0                    # [mm]
   y: 0
 
@@ -20,7 +20,7 @@ effects:
   description: Cut-out of the focal plane image with custom dimensions and coordinates
   kwargs:
     image_plane_id: 0
-    pixel_size: 0.01
+    pixel_size: 0.015
     x: "!DET.x"
     y: "!DET.y"
     width: "!DET.width"
