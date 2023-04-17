@@ -121,5 +121,4 @@ jobs:
           pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git
       - name: Run METIS Notebooks
         run: |
-          foreach ($fn in Get-ChildItem METIS/docs/example_notebooks -Filter *.ipynb) { Write-Output $fn.FullName ; Measure-Command { jupytext --execute --update $fn.FullName }
-}
+          foreach ($fn in Get-ChildItem METIS/docs/example_notebooks -Filter *.ipynb) { Write-Output $fn.FullName ; Measure-Command { jupytext --execute --update $fn.FullName } }
