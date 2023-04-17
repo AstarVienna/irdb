@@ -20,7 +20,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, windows-latest]
         python-version: ['3.7', '3.8', '3.9']
 
     steps:
@@ -46,7 +46,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, windows-latest]
         python-version: ['3.7', '3.8', '3.9']
 
     steps:
@@ -99,3 +99,26 @@ jobs:
         run: |
           sed -i "s/USE_FULL_DETECTOR = True/USE_FULL_DETECTOR = False/g" MICADO/docs/example_notebooks/*.ipynb
           for fn in MICADO/docs/example_notebooks/*.ipynb; do echo "${fn}"; /usr/bin/time -v jupytext --execute --update "${fn}"; done
+
+  job_notebooks_windows:
+    # Supposedly the same as above, but on windows.
+    runs-on: windows-latest
+    if: github.ref == 'dev_master' || github.ref == 'master' || github.base_ref == ''
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          # No matrix is used since this is a time-consuming tosk.
+          python-version: 3.9
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.github_actions.txt
+          pip uninstall -y scopesim scopesim_templates
+          pip install git+https://github.com/AstarVienna/ScopeSim.git@dev_master
+          pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git
+      - name: Run METIS Notebooks
+        run: |
+          foreach ($fn in Get-ChildItem METIS/docs/example_notebooks -Filter *.ipynb) { Write-Output $fn.FullName ; Measure-Command { jupytext --execute --update $fn.FullName } }
