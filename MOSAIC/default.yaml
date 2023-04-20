@@ -10,7 +10,7 @@ packages :
 - MOSAIC
 
 yamls :
-- Armazones.yaml
+# - Armazones.yaml
 - ELT.yaml
 
 properties :
@@ -52,7 +52,7 @@ properties :
   spectral :
     wave_min : 0.8
     wave_mid : 1.3
-    wave_max : 1.75
+    wave_max : 2.0
 
   computing :
     preload_field_of_view : True

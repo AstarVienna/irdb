@@ -55,6 +55,11 @@ class TraceGenerator:
     def _set_xmos(self):
         self._xmos = np.arange(self._fiber_per_mos) * self._trace_distance * self._pixel_size
 
+    def _trace_names(self):
+        return [f"BUNDLE_FIBRE_{bun+1}_{fib+1}"
+                for bun in range(self._nbr_mos)
+                for fib in range(self._fiber_per_mos)]
+
     def _set_wavelength(self):
         self._wavelengths = np.arange(self._l_low, self._l_high, self._delta_lambda)
     
@@ -94,8 +99,27 @@ class TraceGenerator:
     def make_fits(self) -> fits.HDUList:
         li = [fits.PrimaryHDU(header=self._generate_primary_header()),
               fits.BinTableHDU(Table.from_pandas(self._generate_trace_descriptor()))]
-        li = li + [fits.BinTableHDU(Table.from_pandas(self._generate_trace(i)))
-                   for i in range(self._x.size)]
+        ttbls = [Table.from_pandas(self._generate_trace(i))
+                 for i in range(self._x.size)]
+
+
+        from astropy import units as u
+        for tbl in ttbls:
+            tbl.units = [u.um, u.mm, u.mm]
+            tbl["x"] *= u.mm
+            tbl["y"] *= u.mm
+            tbl["wavelength"] *= u.um
+
+        bintbls = [fits.table_to_hdu(tbl) for tbl in ttbls]
+
+        extnames = self._trace_names()
+        for i, tbl in enumerate(bintbls):
+            tbl.header["EXTNAME"] = extnames[i]
+            tbl.header["TUNIT1"] = "um"
+            tbl.header["TUNIT2"] = "mm"
+            tbl.header["TUNIT3"] = "mm"
+
+        li = li + bintbls
 
         return fits.HDUList(li)
 
