@@ -116,6 +116,7 @@ def zip_package_folder(pkg_name, zip_name):
     with TemporaryDirectory() as tmpdir:
         shutil.copytree(pth.join(PKGS_DIR, pkg_name),
                         pth.join(tmpdir, pkg_name),
+                        symlinks=True,
                         ignore=ignore_patterns)
         new_pkg_path = shutil.make_archive(pth.join(ZIPPED_DIR, zip_name),
                                            "zip", tmpdir, pkg_name)

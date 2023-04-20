@@ -1,18 +1,16 @@
-from os import path as p
+from pathlib import Path
+
+import numpy as np
+import scopesim as sim
+from astropy import units as u
 from matplotlib import pyplot as plt
 from matplotlib.colors import LogNorm
-import numpy as np
-from astropy import units as u
-
-from synphot import SourceSpectrum
-from scopesim_templates.misc.misc import point_source
-import scopesim as sim
 from scopesim.effects import SpectralTraceList
-from scopesim.optics import FieldOfView
-
 from scopesim_templates.misc.misc import uniform_source
+from synphot import SourceSpectrum
 
-sim.rc.__config__["!SIM.file.local_packages_path"] = "../../"
+PATH_HERE = Path(__file__).parent
+sim.rc.__config__["!SIM.file.local_packages_path"] = str(PATH_HERE.parent.parent)
 
 PLOTS = False
 
@@ -22,7 +20,7 @@ class TestMaatTraces:
         """
         Test that the input trace description maps 1:1 to the output trace image
         """
-        arcspec = SourceSpectrum.from_file('test_data/OSIRIS_stitchedArc.dat')
+        arcspec = SourceSpectrum.from_file(str(PATH_HERE / 'test_data' / 'OSIRIS_stitchedArc.dat'))
         arc = uniform_source(sed=arcspec, filter_curve='V',
                              amplitude=16 * u.ABmag, extend=520)
 
@@ -36,12 +34,13 @@ class TestMaatTraces:
         osiris["lapalma_skycalc_curves"].include = False
         osiris.observe(arc)
 
-        plt.imshow(osiris.image_planes[0].data, norm=LogNorm())
+        if PLOTS:
+            plt.imshow(osiris.image_planes[0].data, norm=LogNorm())
 
         # -----------------------------
 
         clrs = "rgbcmyk" * 10
-        sptl = SpectralTraceList(filename="../MAAT_traces/R2000B_MAAT_TRACE.fits",
+        sptl = SpectralTraceList(filename=str(PATH_HERE.parent / "MAAT_traces" / "R2000B_MAAT_TRACE.fits"),
                                  wave_colname="wavelength",
                                  s_colname="xi",
                                  col_number_start=1)
@@ -50,22 +49,25 @@ class TestMaatTraces:
             c = clrs[i]
             x = trace.table["x"] / 0.015 + 2048
             y = trace.table["y"] / 0.015 + 2048
-            plt.plot(x, y, c)
+            if PLOTS:
+                plt.plot(x, y, c)
 
             waves = np.linspace(trace.wave_min, trace.wave_max, 20)
             slit_coords = [-5, 5]
             x = trace.xilam2x(slit_coords, waves, grid=True) / 0.015 + 2048
             y = trace.xilam2y(slit_coords, waves, grid=True) / 0.015 + 2048
-            plt.plot(x, y, f"{c}.")
+            if PLOTS:
+                plt.plot(x, y, f"{c}.")
             i += 1
 
-        plt.show()
+        if PLOTS:
+            plt.show()
 
 
 class TestMaatOperations:
     def test_basic_trace_image(self):
 
-        arcspec = SourceSpectrum.from_file('test_data/OSIRIS_stitchedArc.dat')
+        arcspec = SourceSpectrum.from_file(str(PATH_HERE / 'test_data' / 'OSIRIS_stitchedArc.dat'))
         arc = uniform_source(sed=arcspec, filter_curve='V',
                              amplitude=16 * u.ABmag, extend=520)
 
@@ -85,7 +87,7 @@ class TestMaatOperations:
         osiris.observe(arc)
         hdu = osiris.readout()[0]
 
-        if not PLOTS:
+        if PLOTS:
             plt.figure(figsize=(16, 8))
             plt.subplot(121)
             plt.title("Focal Plane Image")

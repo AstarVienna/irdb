@@ -1,15 +1,14 @@
-import os
-import numpy as np
+from pathlib import Path
 
+import numpy as np
+import scopesim as sim
+from astropy import units as u
 from matplotlib import pyplot as plt
 from matplotlib.colors import LogNorm
+from scopesim.source.source_templates import star_field, star
 
-from astropy import units as u
-
-from scopesim.source.source_templates import star_field, empty_sky, star
-import scopesim as sim
-
-sim.rc.__config__["!SIM.file.local_packages_path"] = os.path.abspath("../../")
+PATH_HERE = Path(__file__).parent
+sim.rc.__config__["!SIM.file.local_packages_path"] = str(PATH_HERE.parent.parent)
 
 PLOTS = False
 
@@ -109,7 +108,7 @@ class TestOsirisMaatCompiles:
         osiris.observe(src)
         hdulist = osiris.readout(exptime=60)[0]
 
-        if not PLOTS:
+        if PLOTS:
             plt.imshow(hdulist[1].data, norm=LogNorm())
             plt.colorbar()
             plt.show()

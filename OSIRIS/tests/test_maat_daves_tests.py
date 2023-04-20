@@ -1,27 +1,22 @@
-import os
-import numpy as np
-from matplotlib import pyplot as plt
-from matplotlib.colors import LogNorm
-from matplotlib.colors import Normalize
-
-from astropy import units as u
-from astropy.io import fits
-from synphot import SourceSpectrum
+from pathlib import Path
 
 import scopesim as sim
-
-from scopesim_templates.calibration import flat_field
+from astropy import units as u
+from matplotlib import pyplot as plt
+from matplotlib.colors import LogNorm
+from scopesim_templates.extragalactic import galaxy
 from scopesim_templates.misc.misc import point_source
 from scopesim_templates.misc.misc import uniform_source
-from scopesim_templates.extragalactic import galaxy
+from synphot import SourceSpectrum
 
-sim.rc.__config__["!SIM.file.local_packages_path"] = "../../"
+PLOTS = False
 
-PLOTS = True
+PATH_HERE = Path(__file__).parent
+sim.rc.__config__["!SIM.file.local_packages_path"] = str(PATH_HERE.parent.parent)
 
 
 def test_maat_runs_with_point_source():
-    g191 = SourceSpectrum.from_file('test_data/fg191b2b.dat')
+    g191 = SourceSpectrum.from_file(str(PATH_HERE / 'test_data' / 'fg191b2b.dat'))
     src = point_source(sed=g191, filter_curve='V',
                        amplitude=11.78 * u.ABmag, x=3, y=2.1)
 
@@ -62,7 +57,7 @@ def test_maat_runs_with_extended_source():
 
 
 def test_maat_runs_with_line_list_source():
-    arcspec=SourceSpectrum.from_file('test_data/OSIRIS_stitchedArc.dat')
+    arcspec = SourceSpectrum.from_file(str(PATH_HERE / 'test_data' / 'OSIRIS_stitchedArc.dat'))
     arc = uniform_source(sed=arcspec, filter_curve='V', amplitude=16*u.ABmag, extend=520)
 
     cmds = sim.UserCommands(use_instrument="OSIRIS", set_modes=["MAAT"])
