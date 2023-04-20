@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import LogNorm
 
 import scopesim as sim
+import scopesim.source.source_templates as st
 
 IRDB_DIR = pth.abspath(pth.join(pth.dirname(__file__), "../../"))
 sim.rc.__config__["!SIM.file.local_packages_path"] = IRDB_DIR
@@ -24,20 +25,16 @@ class TestMosaicMvp:
 
 
 class TestMosiacMvpCanObserveSomething:
-    from scopesim.source import source_templates as st
-    src = st.empty_sky()
+    def test_run_observe(self):
+        src = st.empty_sky()
 
-    cmds = sim.UserCommands(use_instrument="MOSAIC")
-    mosaic = sim.OpticalTrain(cmds)
+        cmds = sim.UserCommands(use_instrument="MOSAIC")
+        mosaic = sim.OpticalTrain(cmds)
+        mosaic.cmds["!ATMO.temperature"] = 0
 
-    mosaic.observe(src)
+        mosaic.observe(src)
 
-    if PLOTS:
-        plt.imshow(mosaic.image_planes[0].data, norm=LogNorm(), origin="lower")
-        plt.pause(0)
-        plt.show()
-
-
-
-
-
+        if PLOTS:
+            plt.imshow(mosaic.image_planes[0].data, norm=LogNorm(), origin="lower")
+            plt.pause(0)
+            plt.show()
