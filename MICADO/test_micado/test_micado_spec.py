@@ -67,12 +67,23 @@ class TestInit:
         cmds.cmds["!DET.dit"] = 3600
         cmds.cmds["!OBS.filter_name_fw1"] = "open"
         cmds.cmds["!OBS.filter_name_fw2"] = "Ks"
+        # cmds.cmds["!SIM.spectral."]
 
         micado = sim.OpticalTrain(cmds)
         FULL_DETECTOR = True
         micado["detector_window"].include = not FULL_DETECTOR
         micado["full_detector_array"].include = FULL_DETECTOR
         micado.observe(src)
+        hdul = micado.readout()
+
+        if not PLOTS:
+            plt.subplot(121)
+            plt.imshow(micado.image_planes[0].data, norm=LogNorm(),
+                       origin="lower")
+            plt.subplot(122)
+            plt.imshow(hdul[1].data, norm=LogNorm(), origin="lower")
+
+            plt.show()
 
         spec_int_flux = np.sum(micado.image_planes[0].data, axis=0)
         spec_av_flux = np.median(spec_int_flux[40:2600])
@@ -83,11 +94,4 @@ class TestInit:
 
         assert spec_av_flux / scale_factor == approx(img_av_flux, rel=0.1)
 
-        # plt.subplot(121)
-        # plt.imshow(micado.image_planes[0].data, norm=LogNorm(),
-        #            origin="lower")
-        #
-        # plt.subplot(122)
-        # plt.imshow(hdul[1].data, norm=LogNorm(), origin="lower")
-        #
-        # plt.show()
+
