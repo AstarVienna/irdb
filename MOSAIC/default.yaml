@@ -50,9 +50,9 @@ properties :
     seed : None
 
   spectral :
-    wave_min : 0.8
-    wave_mid : 1.3
-    wave_max : 2.0
+    wave_min : 1.42
+    wave_mid : 1.6
+    wave_max : 1.857
 
   computing :
     preload_field_of_view : True
