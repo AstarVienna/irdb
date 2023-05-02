@@ -1,0 +1,60 @@
+### test rig setup
+object : instrument
+alias : INST
+name : test_rig
+description : The optics of the test rig
+
+properties :
+    pixel_scale : 1
+    plate_scale : 1
+    filter_name : "Ks"
+
+effects :
+-   name : test_rig_throughput
+    description : system throughput
+    class : TERCurve
+    kwargs :
+        array_dict:
+            wavelength : [0.7, 0.8, 2.4, 2.5]
+            transmission : [0, 1, 1, 0]
+        wavelength_unit : um
+        action : transmission
+        area : 1
+        area_unit : m2
+
+-   name: filter_wheel
+    description: filter wheel
+    class: FilterWheel
+    kwargs:
+        filter_names:
+            # MICADO filter set
+            - open
+            - xI1
+            - xI2
+            - Spec_IJ
+            - Spec_HK
+            - I-long
+            - Y
+            - J
+            - J-short
+            - J-long
+            - xY2
+            - xK1
+            - xK2
+            - block
+            - K-mid
+            - K-short
+            - Ks
+            - H
+            - H-long
+            - H-short
+            - xH1
+            - xH2
+            - xJ1
+            - xJ2
+            - xY1
+        filename_format: "filters/TC_filter_{}.dat"
+        current_filter: "!INST.filter_name"
+        minimum_throughput: !!float 1.01E-4
+        outer: 0.2
+        outer_unit: "m"

@@ -1,0 +1,50 @@
+### default observation parameters needed for the MPIA WCU test rig
+object : configuration
+alias : OBS
+name : MPIA_test_rig_OBS_defaults
+description : default observation parameters needed for the MPIA WCU test rig
+
+packages :
+- MPIA_tests
+- MICADO
+
+yamls :
+- test_rig.yaml
+- test_rig_DET.yaml
+
+properties :
+  dit : 60
+  ndit : 1
+  filter_name : Ks
+
+---
+
+### required default telescope parameters
+object : mock telescope
+alias : TEL
+name : MPIA_test_rig_TEL_defaults
+description : telescope paramters
+
+properties :
+  area : 1  # m2
+
+
+---
+
+### default simulation parameters needed for a LFAO simulation
+object : simulation
+alias : SIM
+name : MPIA_test_rig_SIM_defaults
+description : RC simulation paramters
+
+properties :
+  random :
+    seed : 9001
+
+  spectral :
+    wave_min : 0.7
+    wave_mid : 1.5
+    wave_max : 2.5
+
+  computing :
+    preload_field_of_view : False
