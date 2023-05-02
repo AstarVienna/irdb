@@ -63,15 +63,12 @@ class TestMosiacMvpCanObserveSomething:
         mosaic.observe(src)
         hdul = mosaic.readout()[0]
 
+        # in and out fluxes are in units of "ph / s"
         in_flux = (np.trapz(src.spectra[0](wave), wave) *
                    src.fields[0]["weight"] *
                    (mosaic.cmds["!TEL.area"] *
-                    mosaic.cmds["!OBS.dit"] * u.s)).to(u.ph).value
+                    1 * u.s)).to(u.ph).value
         out_flux = np.sum(mosaic._last_fovs[0].hdu.data)
-
-        # assert 0.3 < out_flux / in_flux < 0.5
-
-        im = mosaic.image_planes[0].data
         im2 = hdul[1].data
 
         if PLOTS:

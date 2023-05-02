@@ -2,6 +2,7 @@ numpy>=1.16
 scipy
 matplotlib
 astropy
+pandas>1.5.2
 
 docutils
 requests

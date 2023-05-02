@@ -7,6 +7,10 @@ description : MVP yaml file for MOSAIC test run
 properties :
     pixel_scale : 0.095         # arcsec / pixel
     plate_scale : 6.333333333   # arcsec / mm
+    distance_between_fibers: 8 #pixels
+    fiber_per_bundle: 7
+    n_bundles: 2
+    distance_between_bundles: 32 #pixels
 
 effects:
 - name : psf
@@ -29,23 +33,17 @@ effects:
   kwargs:
     filename : "apertures_MOS_NIR_LR_H.dat"
 
-# - name : mos_spectral_traces
-#   description : list of mos trace geometries on the focal plane
-#   class : UnresolvedSpectralTraceList
-#   include: "!OBS.include_fibres"
-#   kwargs :
-#     filename : "TRACE_MOSAIC_MOS_NIR_LR_H.fits"
-
 - name : mos_spectral_traces
   description : list of mos trace geometries on the focal plane
-  class : MosaicSpectralTraceList
+  class : UnresolvedSpectralTraceList
   include: "!OBS.include_fibres"
   kwargs :
-    distance_between_fibers: 8 #pixels
-    fiber_per_bundle : 7
-    n_bundles : 2
-    distance_between_bundles: 32 #pixels
-    
+    filename : "TRACE_MOSAIC_MOS_NIR_LR_H.fits"
+
+#- name : mos_spectral_traces
+#  description : list of mos trace geometries on the focal plane
+#  class : MosaicSpectralTraceList
+#  include: "!OBS.include_fibres"
 
 - name : collimator_transmission
   class : TERCurve

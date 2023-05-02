@@ -2,11 +2,15 @@ pytest
 numpy
 matplotlib
 astropy
+pandas>1.5.2
+
 pyyaml
 pysftp
 photutils
+
 scopesim
 scopesim_templates
+
 jupytext
 ipykernel
 nbconvert
