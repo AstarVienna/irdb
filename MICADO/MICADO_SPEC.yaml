@@ -21,6 +21,12 @@ effects :
   kwargs :
     filename : "!OBS.slit_file"
 
+- name : grating_efficiency
+  description : grating efficiency for spectral orders
+  class : SpectralEfficiency
+  kwargs :
+    filename : "TER_grating.fits"
+
 - name : micado_spectral_traces
   description : list of spectral order trace geometry on the focal plane
   class : SpectralTraceList
