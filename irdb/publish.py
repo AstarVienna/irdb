@@ -41,8 +41,8 @@ $ python irdb/publish.py -cdev -u <PKG_NAME> ... <PKG_NAME_N> -l <USERNAME> -p <
 
 
 with open(PATH_HERE / "packages.yaml", "r",
-          encoding="utf8") as f:
-    PKGS = yaml.full_load(f)
+          encoding="utf8") as f_pkgs:
+    PKGS = yaml.full_load(f_pkgs)
 
 
 def publish(pkg_names=None, compile=False, upload=True,
