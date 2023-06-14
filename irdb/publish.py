@@ -80,28 +80,29 @@ def make_package(pkg_name=None, release="dev"):
         ["dev", "stable"]
 
     """
-    if pkg_name in PKGS:
-        # Collect the info for the version.yaml file
-        timestamp = str(dt.now())[:19]
-        suffix = ".dev" if release == "dev" else ""
-        zip_name = f"{pkg_name}.{timestamp[:10]}{suffix}"
-        version_dict = {"version": f"{timestamp[:10]}{suffix}",
-                        "timestamp": timestamp,
-                        "release": release}
+    assert pkg_name in PKGS, f"{pkg_name} not found in {PKGS.keys()}"
 
-        # Add a version.yaml file to the package
-        pkg_version_path = PKGS_DIR / pkg_name / "version.yaml"
-        with open(pkg_version_path, "w") as f:
-            yaml.dump(version_dict, f)
+    # Collect the info for the version.yaml file
+    timestamp = str(dt.now())[:19]
+    suffix = ".dev" if release == "dev" else ""
+    zip_name = f"{pkg_name}.{timestamp[:10]}{suffix}"
+    version_dict = {"version": f"{timestamp[:10]}{suffix}",
+                    "timestamp": timestamp,
+                    "release": release}
 
-        # Make the zip file
-        zip_package_folder(pkg_name, zip_name)
-        print(f"[{timestamp}]: Compiled package: {zip_name}")
+    # Add a version.yaml file to the package
+    pkg_version_path = PKGS_DIR / pkg_name / "version.yaml"
+    with open(pkg_version_path, "w") as f:
+        yaml.dump(version_dict, f)
 
-        # Update the global dict of packages
-        PKGS[pkg_name]["latest"] = zip_name
-        if release == "stable":
-            PKGS[pkg_name]["stable"] = zip_name
+    # Make the zip file
+    zip_package_folder(pkg_name, zip_name)
+    print(f"[{timestamp}]: Compiled package: {zip_name}")
+
+    # Update the global dict of packages
+    PKGS[pkg_name]["latest"] = zip_name
+    if release == "stable":
+        PKGS[pkg_name]["stable"] = zip_name
 
     return zip_name
 
