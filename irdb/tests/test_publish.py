@@ -2,10 +2,29 @@ import os
 from os import path as pth
 from datetime import datetime as dt
 
+import pytest
+
 from .. import publish as pub
 
 
-def test_make_packages():
+@pytest.fixture(name="preserve_versions", scope="function")
+def fixture_preserve_versions():
+    """Preserve the versions of test packages."""
+    p_test_package = pub.PKGS_DIR / "test_package" / "version.yaml"
+
+    # Backup version information.
+    b_yaml_packages = pub.PATH_PACKAGES_YAML.read_bytes()
+    b_yaml_test_package = p_test_package.read_bytes()
+
+    # yield instead of return so the fixture can clean up afterwards
+    yield
+
+    # Put the original values back.
+    pub.PATH_PACKAGES_YAML.write_bytes(b_yaml_packages)
+    p_test_package.write_bytes(b_yaml_test_package)
+
+
+def test_make_packages(preserve_versions):
     os.chdir(pth.join(pth.dirname(__file__), "../../"))
     pkg_name = "test_package"
     now = str(dt.now())[:10]
@@ -15,8 +34,8 @@ def test_make_packages():
     assert pth.exists(pth.join("_ZIPPED_PACKAGES", zip_name+".zip"))
 
 
-def run_main():
-    argv = ["", "-c", "-u", "test_package", "-p", "<insert_if_running_locally"]
+def test_run_main(preserve_versions):
+    argv = ["", "-c", "test_package", "-p", "<insert_if_running_locally"]
     pub.main(argv)
 
 
