@@ -247,8 +247,9 @@ def main(argv):
                   encoding="utf8") as f:
             yaml.dump(PKGS, f)
 
-        push_packages_yaml_to_server(login=kwargs["login"],
-                                     password=kwargs["password"])
+        if kwargs["upload"]:
+            push_packages_yaml_to_server(login=kwargs["login"],
+                                         password=kwargs["password"])
 
 
 if __name__ == "__main__":
