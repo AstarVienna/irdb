@@ -45,7 +45,7 @@ with open(PATH_HERE / "packages.yaml", "r",
     PKGS = yaml.full_load(f_pkgs)
 
 
-def publish(pkg_names=None, compile=False, upload=True,
+def publish(pkg_names=None, compilezip=False, upload=True,
             login=None, password=None):
     """
     Should be as easy as just calling this function to republish all packages
@@ -55,17 +55,17 @@ def publish(pkg_names=None, compile=False, upload=True,
     Parameters
     ----------
     pkg_names : list
-    compile : str, bool
+    compilezip : str, bool
         [False, "stable", "dev"]
     upload : bool
     password : str
 
     """
     for pkg_name in pkg_names:
-        if compile:
-            make_package(pkg_name, release=compile)
+        if compilezip:
+            make_package(pkg_name, release=compilezip)
         if upload:
-            push_to_server(pkg_name, release=compile,
+            push_to_server(pkg_name, release=compilezip,
                            login=login, password=password)
 
 
@@ -193,7 +193,7 @@ def main(argv):
     """
     _pkg_names = []
     if len(argv) > 1:
-        kwargs = {"compile": False, "upload": False}
+        kwargs = {"compilezip": False, "upload": False}
         argv_iter = iter(argv[1:])
         for arg in argv_iter:
             if "-" in arg:
@@ -202,7 +202,7 @@ def main(argv):
                 if "p" in arg:
                     kwargs["password"] = next(argv_iter)
                 if "c" in arg:
-                    kwargs["compile"] = "dev" if "dev" in arg else "stable"
+                    kwargs["compilezip"] = "dev" if "dev" in arg else "stable"
                 if "u" in arg:
                     kwargs["upload"] = True
                 if "h" in arg:
