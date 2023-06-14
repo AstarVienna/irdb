@@ -12,6 +12,8 @@ PKGS_DIR = PATH_HERE.parent
 OLD_FILES = PKGS_DIR / "_OLD_FILES"
 ZIPPED_DIR = PKGS_DIR / "_ZIPPED_PACKAGES"
 
+PATH_PACKAGES_YAML = PATH_HERE / "packages.yaml"
+
 SERVER_DIR = PATH_HERE / "InstPkgSvr"
 
 HELPSTR = r"""
@@ -41,7 +43,7 @@ $ python irdb/publish.py -cdev -u <PKG_NAME> ... <PKG_NAME_N> -l <USERNAME> -p <
 """
 
 
-with open(PATH_HERE / "packages.yaml", "r",
+with open(PATH_PACKAGES_YAML, "r",
           encoding="utf8") as f_pkgs:
     PKGS = yaml.full_load(f_pkgs)
 
@@ -199,7 +201,7 @@ def push_packages_yaml_to_server(login, password):
         Univie u:space username and password
 
     """
-    local_path = PKGS_DIR / "irdb" / "packages.yaml"
+    local_path = PATH_PACKAGES_YAML
     server_path = "packages.yaml"
 
     cnopts = pysftp.CnOpts()
@@ -243,7 +245,7 @@ def main(argv):
 
         publish(_pkg_names, **kwargs)
 
-        with open(PATH_HERE / "packages.yaml", "w",
+        with open(PATH_PACKAGES_YAML, "w",
                   encoding="utf8") as f:
             yaml.dump(PKGS, f)
 
