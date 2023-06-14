@@ -14,7 +14,7 @@ ZIPPED_DIR = PKGS_DIR / "_ZIPPED_PACKAGES"
 
 SERVER_DIR = PATH_HERE / "InstPkgSvr"
 
-HELPSTR = """
+HELPSTR = r"""
 Publish stable IRDB packages
 ----------------------------
 This command must be run from the IRDB root directory
@@ -58,6 +58,7 @@ def publish(pkg_names=None, compilezip=False, upload=True,
     compilezip : str, bool
         [False, "stable", "dev"]
     upload : bool
+    login : str
     password : str
 
     """
