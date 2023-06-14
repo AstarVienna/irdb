@@ -93,7 +93,7 @@ def make_package(pkg_name=None, release="dev"):
 
     # Add a version.yaml file to the package
     pkg_version_path = PKGS_DIR / pkg_name / "version.yaml"
-    with open(pkg_version_path, "w") as f:
+    with open(pkg_version_path, "w", encoding="utf8") as f:
         yaml.dump(version_dict, f)
 
     # Make the zip file
