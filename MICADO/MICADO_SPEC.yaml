@@ -46,5 +46,5 @@ description: RC simulation parameters which need to change for a MICADO SPEC run
 
 properties:
   spectral:
-    spectral_bin_width: !!float 5E-4   # microns, defines fov wavelengths
+    spectral_bin_width: !!float 2E-5   # microns, defines fov wavelengths
     spectral_resolution: 5000          # defines skycalc resolution
