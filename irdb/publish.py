@@ -217,7 +217,7 @@ def main(argv):
 
         publish(_pkg_names, **kwargs)
 
-        with open(PKGS_DIR / "packages.yaml", "w",
+        with open(PATH_HERE / "packages.yaml", "w",
                   encoding="utf8") as f:
             yaml.dump(PKGS, f)
 
