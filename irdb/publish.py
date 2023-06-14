@@ -1,17 +1,18 @@
 """Publish and upload irdb packages"""
 import sys
-from os import path as pth
 import shutil
+from pathlib import Path
 from tempfile import TemporaryDirectory
 from datetime import datetime as dt
 import yaml
 import pysftp
 
-PKGS_DIR = pth.abspath(pth.join(pth.dirname(__file__), "../"))
-OLD_FILES = pth.join(PKGS_DIR, "_OLD_FILES")
-ZIPPED_DIR = pth.join(PKGS_DIR, "_ZIPPED_PACKAGES")
+PATH_HERE = Path(__file__).parent
+PKGS_DIR = PATH_HERE.parent
+OLD_FILES = PKGS_DIR / "_OLD_FILES"
+ZIPPED_DIR = PKGS_DIR / "_ZIPPED_PACKAGES"
 
-SERVER_DIR = "./InstPkgSvr"
+SERVER_DIR = PATH_HERE / "InstPkgSvr"
 
 HELPSTR = """
 Publish stable IRDB packages
@@ -39,7 +40,7 @@ $ python irdb/publish.py -cdev -u <PKG_NAME> ... <PKG_NAME_N> -l <USERNAME> -p <
 """
 
 
-with open(pth.join(pth.dirname(__file__), "packages.yaml"), "r",
+with open(PATH_HERE / "packages.yaml", "r",
           encoding="utf8") as f:
     PKGS = yaml.full_load(f)
 
@@ -89,7 +90,7 @@ def make_package(pkg_name=None, release="dev"):
                         "release": release}
 
         # Add a version.yaml file to the package
-        pkg_version_path = pth.join(pkg_name, "version.yaml")
+        pkg_version_path = PKGS_DIR / pkg_name / "version.yaml"
         with open(pkg_version_path, "w") as f:
             yaml.dump(version_dict, f)
 
@@ -114,11 +115,11 @@ def zip_package_folder(pkg_name, zip_name):
     """
     ignore_patterns = shutil.ignore_patterns("__pycache__", ".*")
     with TemporaryDirectory() as tmpdir:
-        shutil.copytree(pth.join(PKGS_DIR, pkg_name),
-                        pth.join(tmpdir, pkg_name),
+        shutil.copytree(PKGS_DIR / pkg_name,
+                        Path(tmpdir) / pkg_name,
                         symlinks=True,
                         ignore=ignore_patterns)
-        new_pkg_path = shutil.make_archive(pth.join(ZIPPED_DIR, zip_name),
+        new_pkg_path = shutil.make_archive(ZIPPED_DIR / zip_name,
                                            "zip", tmpdir, pkg_name)
 
     return new_pkg_path
@@ -146,7 +147,7 @@ def push_to_server(pkg_name, release="stable", login=None, password=None):
 
     version = "latest" if release == "dev" else "stable"
     zip_name = PKGS[pkg_name][version]
-    local_path = pth.join(ZIPPED_DIR, f"{zip_name}.zip")
+    local_path = ZIPPED_DIR / f"{zip_name}.zip"
     server_dir = PKGS[pkg_name]["path"]
     server_path = f"{server_dir}/{zip_name}.zip"
 
@@ -172,7 +173,7 @@ def push_packages_yaml_to_server(login, password):
         Univie u:space username and password
 
     """
-    local_path = pth.join(PKGS_DIR, "irdb", "packages.yaml")
+    local_path = PKGS_DIR / "irdb" / "packages.yaml"
     server_path = "packages.yaml"
 
     cnopts = pysftp.CnOpts()
@@ -213,7 +214,7 @@ def main(argv):
 
         publish(_pkg_names, **kwargs)
 
-        with open(pth.join(pth.dirname(__file__), "packages.yaml"), "w",
+        with open(PKGS_DIR / "packages.yaml", "w",
                   encoding="utf8") as f:
             yaml.dump(PKGS, f)
 
