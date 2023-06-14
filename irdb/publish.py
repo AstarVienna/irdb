@@ -70,7 +70,7 @@ def publish(pkg_names=None, compilezip=False, upload=True,
                            login=login, password=password)
 
 
-def make_package(pkg_name=None, release="dev"):
+def make_package(pkg_name=None, release="dev", update_version=True):
     """
     Makes a package
 
@@ -79,24 +79,42 @@ def make_package(pkg_name=None, release="dev"):
     pkg_name : str
     release : str
         ["dev", "stable"]
+    update_version : bool
+        True (default): update version in <pkg_name>/version.yaml
+        False: use version in <pkg_name>/version.yaml
 
+    By default, make_package updates the version to today. update_version can
+    be set to False in order to use the existing version. This is a step towards
+    a Continuous Deployment setup, where a new version is created first, and
+    then a package will be uploaded (semi-)automatically.
+
+    In practice, the update_version=False functionality can also be used to
+    retroactively upload a package that for some reason was not successfully
+    uploaded.
     """
     assert pkg_name in PKGS, f"{pkg_name} not found in {PKGS.keys()}"
 
-    # Collect the info for the version.yaml file
-    timestamp = str(dt.now())[:19]
-    suffix = ".dev" if release == "dev" else ""
-    zip_name = f"{pkg_name}.{timestamp[:10]}{suffix}"
-    version_dict = {"version": f"{timestamp[:10]}{suffix}",
-                    "timestamp": timestamp,
-                    "release": release}
-
-    # Add a version.yaml file to the package
     pkg_version_path = PKGS_DIR / pkg_name / "version.yaml"
-    with open(pkg_version_path, "w", encoding="utf8") as f:
-        yaml.dump(version_dict, f)
+    if update_version:
+        # Collect the info for the version.yaml file
+        timestamp = str(dt.now())[:19]
+        suffix = ".dev" if release == "dev" else ""
+        version_dict = {"version": f"{timestamp[:10]}{suffix}",
+                        "timestamp": timestamp,
+                        "release": release}
+
+        # Add a version.yaml file to the package
+        with open(pkg_version_path, "w", encoding="utf8") as f:
+            yaml.dump(version_dict, f)
+    else:
+        with open(pkg_version_path, encoding="utf8") as f:
+            version_dict = yaml.load(f)
+        timestamp = version_dict["timestamp"]
+        release = version_dict["release"]
+        suffix = ".dev" if release == "dev" else ""
 
     # Make the zip file
+    zip_name = f"{pkg_name}.{timestamp[:10]}{suffix}"
     zip_package_folder(pkg_name, zip_name)
     print(f"[{timestamp}]: Compiled package: {zip_name}")
 
