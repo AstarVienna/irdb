@@ -23,6 +23,7 @@ $ python irdb/publish.py -c -u <PKG_NAME> ... <PKG_NAME_N> -l <USERNAME> -p <PAS
 
 -l <USERNAME> : UniVie u:space username - e.g. u\kieranl14
 -p <PASSWORD> : UniVie u:space password
+-d : [update-version] : do not update the version of the package to today
 -c : [compile] all files in a PKG folder to a .zip archive
 -cdev : [compile-dev] like compile, but tags as development version
 -u : [upload] the PKG .zip archive to the server
@@ -46,7 +47,7 @@ with open(PATH_HERE / "packages.yaml", "r",
 
 
 def publish(pkg_names=None, compilezip=False, upload=True,
-            login=None, password=None):
+            login=None, password=None, update_version=True):
     """
     Should be as easy as just calling this function to republish all packages
 
@@ -60,11 +61,16 @@ def publish(pkg_names=None, compilezip=False, upload=True,
     upload : bool
     login : str
     password : str
-
+    update_version : bool
+        True (default): update version in <pkg_name>/version.yaml
+        False: use version in <pkg_name>/version.yaml
+        See make_package().
     """
     for pkg_name in pkg_names:
         if compilezip:
-            make_package(pkg_name, release=compilezip)
+            make_package(pkg_name,
+                         release=compilezip,
+                         update_version=update_version)
         if upload:
             push_to_server(pkg_name, release=compilezip,
                            login=login, password=password)
@@ -108,7 +114,7 @@ def make_package(pkg_name=None, release="dev", update_version=True):
             yaml.dump(version_dict, f)
     else:
         with open(pkg_version_path, encoding="utf8") as f:
-            version_dict = yaml.load(f)
+            version_dict = yaml.safe_load(f)
         timestamp = version_dict["timestamp"]
         release = version_dict["release"]
         suffix = ".dev" if release == "dev" else ""
@@ -212,7 +218,7 @@ def main(argv):
     """
     _pkg_names = []
     if len(argv) > 1:
-        kwargs = {"compilezip": False, "upload": False}
+        kwargs = {"compilezip": False, "upload": False, "update_version": True}
         argv_iter = iter(argv[1:])
         for arg in argv_iter:
             if "-" in arg:
@@ -224,6 +230,8 @@ def main(argv):
                     kwargs["compilezip"] = "dev" if "dev" in arg else "stable"
                 if "u" in arg:
                     kwargs["upload"] = True
+                if "d" in arg:
+                    kwargs["update_version"] = False
                 if "h" in arg:
                     print(HELPSTR)
                     sys.exit()
