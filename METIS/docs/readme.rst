@@ -76,7 +76,7 @@ Python notebooks
 These notebooks can be found either:
 
 - [locally] in the METIS instrument package in ``docs/example_notebooks``, or
-- [download] in the `METIS/docs section of the IRDB Github repository <https://github.com/AstarVienna/irdb/tree/master/METIS/docs/example_notebooks>`_ 
+- [download] in the `METIS/docs section of the IRDB Github repository <https://github.com/AstarVienna/irdb/tree/master/METIS/docs/example_notebooks>`_
 
 
 .. warning::
@@ -153,6 +153,8 @@ These notebooks can be found in ``docs/example_notebooks/demos``.
      - How to set detector readout modes.
    * - `demo_filter_wheel.ipynb <example_notebooks/demos/demo_filter_wheel.ipynb>`_
      - How to use the filter wheel(s).
+   * - `demo_grating_efficiency.ipynb <example_notebooks/demos/demo_grating_efficiency.ipynb>`_
+     - Demonstration of spectral (grating) efficiency.
    * - `demo_lss_simple.ipynb <example_notebooks/demos/demo_lss_simple.ipynb>`_
      - Basic procedure for long-slit spectroscopy.
    * - `demo_slit_wheel.ipynb <example_notebooks/demos/demo_slit_wheel.ipynb>`_
