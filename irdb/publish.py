@@ -208,6 +208,7 @@ def main(argv):
                     kwargs["upload"] = True
                 if "h" in arg:
                     print(HELPSTR)
+                    sys.exit()
             else:
                 if arg.lower() == "all":
                     _pkg_names = PKGS.keys()
