@@ -64,6 +64,32 @@ def test_run_main_no_update_version():
     assert pckgs_dict["test_package"]["stable"] == "test_package.2022-07-11"
 
 
+def test_versions():
+    """See whether the versions are compatible."""
+
+    release_from_release = {
+        "stable": "stable",
+        "dev": "latest",
+        "latest": "dev",
+    }
+
+    with open(pub.PATH_PACKAGES_YAML, encoding="utf8") as f:
+        pckgs_dict = yaml.safe_load(f)
+
+    for name, package_dict in pckgs_dict.items():
+        path_version = pub.PKGS_DIR / name / "version.yaml"
+        if not path_version.exists():
+            # TODO: should this be disallowed?
+            continue
+        with open(path_version, encoding="utf8") as f:
+            version_dict = yaml.safe_load(f)
+            release_1 = version_dict["release"]
+            version_1 = f"{name}.{version_dict['version']}"
+            release_2 = release_from_release[release_1]
+            version_2 = package_dict[release_2]
+            assert version_1 == version_2
+
+
 # def rename_zips():
 #     from datetime import datetime as dt
 #     from glob import glob
