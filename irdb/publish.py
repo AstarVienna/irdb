@@ -112,11 +112,11 @@ def make_package(pkg_name=None, release="dev", update_version=True):
                         "release": release}
 
         # Add a version.yaml file to the package
-        with open(pkg_version_path, "w", encoding="utf8") as f:
-            yaml.dump(version_dict, f)
+        with pkg_version_path("w", encoding="utf8") as file:
+            yaml.dump(version_dict, file)
     else:
-        with open(pkg_version_path, encoding="utf8") as f:
-            version_dict = yaml.safe_load(f)
+        with pkg_version_path.open(encoding="utf8") as file:
+            version_dict = yaml.safe_load(file)
         timestamp = version_dict["timestamp"]
         release = version_dict["release"]
         suffix = ".dev" if release == "dev" else ""
