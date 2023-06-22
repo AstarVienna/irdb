@@ -153,12 +153,14 @@ These notebooks can be found in ``docs/example_notebooks/demos``.
      - How to set detector readout modes.
    * - `demo_filter_wheel.ipynb <example_notebooks/demos/demo_filter_wheel.ipynb>`_
      - How to use the filter wheel(s).
-   * - `demo_grating_efficiency.ipynb <example_notebooks/demos/demo_grating_efficiency.ipynb>`_
-     - Demonstration of spectral (grating) efficiency.
    * - `demo_lss_simple.ipynb <example_notebooks/demos/demo_lss_simple.ipynb>`_
      - Basic procedure for long-slit spectroscopy.
+   * - `demo_grating_efficiency.ipynb <example_notebooks/demos/demo_grating_efficiency.ipynb>`_
+     - Demonstration of spectral (grating) efficiency.
    * - `demo_slit_wheel.ipynb <example_notebooks/demos/demo_slit_wheel.ipynb>`_
      - How to use the slit wheel for spectroscopy (and imaging)
+   * - `demo_rectify_traces.ipynb <example_notebooks/demos/demo_rectify_traces.ipynb>`_
+     - How to obtain wavelength-calibrated and rectified 2D spectra.
 
 Documentation and useful references
 -----------------------------------
