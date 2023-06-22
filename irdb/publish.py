@@ -105,10 +105,10 @@ def make_package(pkg_name=None, release="dev", update_version=True):
     pkg_version_path = PKGS_DIR / pkg_name / "version.yaml"
     if update_version:
         # Collect the info for the version.yaml file
-        timestamp = str(dt.now())[:19]
+        time = dt.utcnow()
         suffix = ".dev" if release == "dev" else ""
-        version_dict = {"version": f"{timestamp[:10]}{suffix}",
-                        "timestamp": timestamp,
+        version_dict = {"version": f"{time.date()}{suffix}",
+                        "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
                         "release": release}
 
         # Add a version.yaml file to the package
@@ -117,14 +117,14 @@ def make_package(pkg_name=None, release="dev", update_version=True):
     else:
         with pkg_version_path.open(encoding="utf8") as file:
             version_dict = yaml.safe_load(file)
-        timestamp = version_dict["timestamp"]
+        time = dt.fromisoformat(version_dict["timestamp"])
         release = version_dict["release"]
         suffix = ".dev" if release == "dev" else ""
 
     # Make the zip file
-    zip_name = f"{pkg_name}.{timestamp[:10]}{suffix}"
+    zip_name = f"{pkg_name}.{time.date()}{suffix}"
     zip_package_folder(pkg_name, zip_name)
-    print(f"[{timestamp}]: Compiled package: {zip_name}")
+    print(f"[{time}]: Compiled package: {zip_name}")
 
     # Update the global dict of packages
     PKGS[pkg_name]["latest"] = zip_name
@@ -188,7 +188,8 @@ def push_to_server(pkg_name, release="stable", login=None, password=None):
         if sftp.exists(server_path):
             sftp.remove(server_path)
         sftp.put(local_path, server_path)
-        print(f"[{str(dt.now())[:19]}]: Pushed to server: {pkg_name}")
+        now = dt.utcnow().strftime("%Y-%m-%d %H:%M:%S")
+        print(f"[{now}]: Pushed to server: {pkg_name}")
 
 
 def push_packages_yaml_to_server(login, password):
@@ -211,7 +212,8 @@ def push_packages_yaml_to_server(login, password):
     # with sftp.cd("html/InstPkgSvr/"):
     with sftp.cd("scopesimu68/html/InstPkgSvr/"):
         sftp.put(local_path, server_path)
-        print(f"[{str(dt.now())[:19]}]: Pushed to server: packages.yaml")
+        now = dt.utcnow().strftime("%Y-%m-%d %H:%M:%S")
+        print(f"[{now}]: Pushed to server: packages.yaml")
 
 
 def main(argv):
