@@ -1,0 +1,17 @@
+# author : Ric Davies
+# source: Ric Davies
+# description : generic near-infrared anti-reflection coating
+# date_created  : 2023-06-06
+# wavelength_unit : um
+#
+wavelength  transmission
+0.200       0.700
+0.400       0.800
+0.600       0.900
+0.800       0.980
+1.000       0.990
+1.250       0.995
+1.550       0.995
+1.850       0.995
+2.200       0.990
+2.500       0.980
