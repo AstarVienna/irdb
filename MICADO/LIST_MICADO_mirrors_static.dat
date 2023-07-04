@@ -1,8 +1,8 @@
 # author : Kieran Leschinski
-# source : Ric's SPIE 2018 PPT presentation
+# source : Ric's SPIE 2018 PPT presentation,
 # date_created  : 2018-11-19
-# date_modified : 2019-07-10
-# status : Design, pre PDR list of all static MICADO surfaces
+# date_modified : 2023-07-04
+# status : Design, FDR
 # type : mirror:list
 # outer_unit : m
 # inner_unit : m
@@ -13,10 +13,11 @@
 # - 2019-07-10 (KL) Shortened the list to only the swappable mirrors
 # - 2020-08-25 (KL) Updated angle_unit to degree from degrees (why has astropy not complained until now?)
 # - 2020-10-10 (KL) Added SCAO pick-off dichroic after CM17 conversation
+# - 2023-07-04 (OC) Dichroic action changed to transmission, ELT-DER-MCD-56304-0054
 #
 name        outer   inner   angle   temperature     action         filename
 I00_EntrWin 0.5     0.0     0       0               transmission   TER_entrance_window.dat
-I09_SCAO_PO 0.5     0.0     45      -190            reflection     TER_SCAO_dichroic.dat
+I09_SCAO_PO 0.5     0.0     45      -190            transmission   TER_SCAO_dichroic.dat
 I01_Fold1   0.5     0.0     45      -190            reflection     TER_mirror_gold.dat
 I02_Coli1   0.4     0.0     10      -190            reflection     TER_mirror_gold.dat
 I03_Coli2   0.2     0.0     10      -190            reflection     TER_mirror_gold.dat
