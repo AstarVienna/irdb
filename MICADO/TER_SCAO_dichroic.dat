@@ -4,12 +4,12 @@
 # date_created : 2020-11-11
 # date_modified : 2023-06-13
 # status : FDR design and iteration with manufacturer
-# wavelength unit : um
+# wavelength_unit : um
 # changes :
 # - 2018-11-19 (KL) updated meta data to new format
 # - 2022-03-16 (KL) updated values from Ric
 # - 2023-06-13 (RD) new values based on design & modelling
-# - 2023-07-04 (OC) wavelengths converted to um
+# - 2023-07-04 (OC) wavelengths converted to um, unit keyword was missing underscore
 #
 wavelength	transmission	reflection	emissivity
 0.550	0.0116	0.9881	0.0004
