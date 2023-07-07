@@ -75,3 +75,10 @@ MANIFEST
 /GTC/code/psf_osiris_r.fits
 /OSIRIS/tests/osiris_test.fits
 TEST*.fits
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Pylint
+.pylint.d/
