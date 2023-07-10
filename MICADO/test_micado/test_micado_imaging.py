@@ -50,7 +50,7 @@ class TestLimiting:
     Tolerance for assert is 0.3 mag (to high?)
 
     """
-    # TODO: Fix J, or somehowe pytest xfail the test based on parametrization.
+    # TODO: Fix J, or somehow pytest xfail the test based on parametrization.
     @pytest.mark.parametrize(" fw1,    fw2,    r0, rics_lim_mag, abslim",
                              [("J",    "open", 1,  27.9, 1.0),
                               ("open", "H",    2,  27.5, 0.3),
@@ -71,16 +71,15 @@ class TestLimiting:
 
         micado.observe(src)
         hdul = micado.readout()[0]
-        det = hdul[1].data
 
         det = hdul[1].data
         imp = micado.image_planes[0].hdu.data  # e-/pixel/s
         if PLOTS:
             plt.subplot(131)
-            plt.imshow(imp, norm=LogNorm(), vmin=np.median(imp), vmax=1.01*np.median(imp))
+            plt.imshow(imp, norm=LogNorm(vmin=np.median(imp), vmax=1.01*np.median(imp)))
 
             plt.subplot(132)
-            plt.imshow(det, norm=LogNorm(), vmin=np.median(det), vmax=1.01*np.median(det))
+            plt.imshow(det, norm=LogNorm(vmin=np.median(det), vmax=1.01*np.median(det)))
 
         offset = 2      # this needs to be addressed
         xpix, ypix = src.fields[0]["x"].data, src.fields[0]["y"].data

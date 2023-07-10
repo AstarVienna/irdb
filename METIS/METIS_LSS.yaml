@@ -18,6 +18,12 @@ effects:
   #    class: TERCurve
   #    kwargs:
   #      filename: TER_blaze_L.dat
+  - name: grating_efficiency
+    description: grating efficiency
+    class: SpectralEfficiency
+    include: false
+    kwargs:
+      filename: "!OBS.efficiency_file"
 
   - name: spectral_traces
     description: list of spectral order trace geometry on the focal plane

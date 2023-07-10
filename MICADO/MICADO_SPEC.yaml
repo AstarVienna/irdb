@@ -21,6 +21,12 @@ effects :
   kwargs :
     filename : "!OBS.slit_file"
 
+- name : grating_efficiency
+  description : grating efficiency for spectral orders
+  class : SpectralEfficiency
+  kwargs :
+    filename : "TER_grating.fits"
+
 - name : micado_spectral_traces
   description : list of spectral order trace geometry on the focal plane
   class : SpectralTraceList
@@ -40,5 +46,5 @@ description: RC simulation parameters which need to change for a MICADO SPEC run
 
 properties:
   spectral:
-    spectral_bin_width: !!float 5E-4   # microns, defines fov wavelengths
+    spectral_bin_width: !!float 2E-5   # microns, defines fov wavelengths
     spectral_resolution: 5000          # defines skycalc resolution

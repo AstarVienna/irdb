@@ -84,6 +84,7 @@ mode_yamls:
     properties:
       psf_file: PSF_LM_9mag_06seeing.fits
       trace_file: TRACE_LSS_L_sci.fits
+      efficiency_file: TER_grating_L.fits
       slit: C-38_1
       adc: const_90
       filter_name: L_spec
@@ -101,6 +102,7 @@ mode_yamls:
     properties:
       psf_file: PSF_LM_9mag_06seeing.fits
       trace_file: TRACE_LSS_M_sci.fits
+      efficiency_file: TER_grating_M.fits
       slit: C-38_1
       adc: const_90
       filter_name: M_spec
@@ -118,6 +120,7 @@ mode_yamls:
     properties:
       psf_file: PSF_N_9mag_06seeing.fits
       trace_file: TRACE_LSS_N_sci.fits
+      efficiency_file: TER_grating_N.fits
       slit: D-57_1
       adc: false
       filter_name: N_spec

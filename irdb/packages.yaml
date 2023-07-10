@@ -11,9 +11,9 @@ GTC:
   path: telescopes
   stable: GTC
 HAWKI:
-  latest: HAWKI
+  latest: HAWKI.2023-06-14
   path: instruments
-  stable: HAWKI
+  stable: HAWKI.2023-06-14
 HST:
   latest: HST
   path: telescopes
