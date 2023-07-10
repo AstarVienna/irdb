@@ -63,7 +63,7 @@ The default yaml file contains a list of everything needed for an
 ``OpticalTrain`` to be successfully built. This means it needs to reference any
 other packages which are needed for the full optical system. In the case of
 MICADO this means including the the location (Armazones), the telescope (ELT),
-and possibly an external relay optics (MAORY). These packages willl need to be
+and possibly an external relay optics (MORFEO). These packages willl need to be
 downloaded separately but should still be references in the ``default.yaml``
 file with the ``packages`` list.
 
@@ -71,7 +71,7 @@ The default file should also contain a list of all the yaml files needed for the
 default configuration of the instrument, including those yaml files which are
 contained in other packages. This is only necessary if the package
 is a "primary package" - i.e. one that will be used to create detector readout
-images, e.g. MICADO. If the package is a "support package" (e.g. ELT, MAORY),
+images, e.g. MICADO. If the package is a "support package" (e.g. ELT, MORFEO),
 then this list isn't needed. **This list is referenced using the ``yamls``
 keyword**
 
@@ -89,13 +89,13 @@ Here is an example ot the ``OBS`` optical element yaml dictionary in a
     packages:
     - Armazones
     - ELT
-    - MAORY
+    - MORFEO
     - MICADO
 
     yamls:
     - Armazones.yaml
     - ELT.yaml
-    - MAORY.yaml
+    - MORFEO.yaml
     - MICADO.yaml
     - MICADO_IMG_wide.yaml
     - MICADO_H4RG.yaml

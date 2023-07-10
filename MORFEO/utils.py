@@ -4,7 +4,7 @@ import anisocado as aniso
 
 def make_standard_scao_constpsf():
     waves = [1.2, 1.6, 2.15]
-    nmRms = [310, 310, 310]     # achieves the 40-18-6 Strehls for MAORY
+    nmRms = [310, 310, 310]     # achieves the 40-18-6 Strehls for MORFEO
     offset = [0, 0]
     psfs = []
     for wave, rms in zip(waves, nmRms):
@@ -17,7 +17,7 @@ def make_standard_scao_constpsf():
             "DATE_CRE" : "2019-07-30",
             "DATE_MOD" : "2019-07-30",
             "SOURCE" : "AnisoCADO",
-            "STATUS" : "Best guess for a MAORY ConstantPSF with AnisoCADO",
+            "STATUS" : "Best guess for a MORFEO ConstantPSF with AnisoCADO",
             "ETYPE" : "CONSTPSF",
             "ECAT" : (-1, "Field constant. No layer catalogue"),
             "EDATA" : (1, "PSFs begin from EXT 1"),
