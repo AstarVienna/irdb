@@ -13,8 +13,8 @@ from scopesim.effects import SurfaceList
 
 PLOTS = False
 
-MAORY_DIR = pth.abspath(pth.join(pth.dirname(__file__), "../../MAORY/"))
-rc.__search_path__.insert(0, MAORY_DIR)
+MORFEO_DIR = pth.abspath(pth.join(pth.dirname(__file__), "../../MORFEO/"))
+rc.__search_path__.insert(0, MORFEO_DIR)
 MICADO_DIR = pth.abspath(pth.join(pth.dirname(__file__), "../../MICADO/"))
 rc.__search_path__.insert(0, MICADO_DIR)
 MICADO_SCI_DIR = pth.abspath(pth.join(pth.dirname(__file__), "../"))
@@ -68,9 +68,9 @@ compress_surface_list_to_ter(f_in="LIST_MICADO_mirrors_static.dat",
 compress_surface_list_to_ter(f_in="LIST_RO_SCAO_mirrors.dat",
                              f_out="TER_MICADO_RO.dat", **kwargs)
 
-# MAORY common optics
-compress_surface_list_to_ter(f_in="LIST_mirrors_maory_mms.tbl",
-                             f_out="TER_MAORY_MMS.dat", **kwargs)
+# MORFEO common optics
+compress_surface_list_to_ter(f_in="LIST_mirrors_morfeo_mms.tbl",
+                             f_out="TER_MORFEO_MMS.dat", **kwargs)
 
 
 def generate_anisocado_strehl_map_for_micado():

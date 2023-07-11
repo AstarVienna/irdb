@@ -11,9 +11,9 @@ GTC:
   path: telescopes
   stable: GTC
 HAWKI:
-  latest: HAWKI
+  latest: HAWKI.2023-06-14
   path: instruments
-  stable: HAWKI
+  stable: HAWKI.2023-06-14
 HST:
   latest: HST
   path: telescopes
@@ -26,10 +26,10 @@ LaPalma:
   latest: LaPalma
   path: locations
   stable: LaPalma
-MAORY:
-  latest: MAORY.2022-04-26
+MORFEO:
+  latest: MORFEO.2022-04-26
   path: instruments
-  stable: MAORY.2022-04-26
+  stable: MORFEO.2022-04-26
 METIS:
   latest: METIS.2022-04-26
   path: instruments

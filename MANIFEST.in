@@ -1,6 +1,6 @@
 include Armazones/*
 include ELT/*
-include MAORY/*
+include MORFEO/*
 include MICADO/*
 include SimpleCADO/*
 include test_package/*
