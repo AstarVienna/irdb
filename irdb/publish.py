@@ -224,17 +224,17 @@ def main(argv):
         argv_iter = iter(argv[1:])
         for arg in argv_iter:
             if "-" in arg:
-                if "l" in arg:
+                if "-l" in arg:
                     kwargs["login"] = next(argv_iter)
-                if "p" in arg:
+                if "-p" in arg:
                     kwargs["password"] = next(argv_iter)
-                if "c" in arg:
+                if "-c" in arg:
                     kwargs["compilezip"] = "dev" if "dev" in arg else "stable"
-                if "u" in arg:
+                if "-u" in arg:
                     kwargs["upload"] = True
-                if "d" in arg:
+                if "-d" in arg:
                     kwargs["update_version"] = False
-                if "h" in arg:
+                if "-h" in arg:
                     print(HELPSTR)
                     sys.exit()
             else:
