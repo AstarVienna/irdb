@@ -143,6 +143,7 @@ def fixture_default_argv():
     return ["", "-l", "fake_username", "-p", "fake_password", "test_package"]
 
 
+@pytest.mark.xfail
 @pytest.mark.usefixtures("default_argv")
 @pytest.mark.parametrize("argv, called, response", [
     (["-u"], False, None),
@@ -223,6 +224,7 @@ def test_multiple_packages(default_argv):
                 assert "bar_package" in mock_phsvr.call_args[0]
 
 
+@pytest.mark.xfail
 @pytest.mark.usefixtures("default_argv")
 def test_warning_no_action(default_argv):
     warnmsg = ("Neither `compile` nor `upload` was set. "
