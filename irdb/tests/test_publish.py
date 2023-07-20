@@ -68,7 +68,7 @@ from .. import publish as pub
 @pytest.fixture(scope="module")
 def temp_zipfiles(tmp_path_factory):
     tmpdir = tmp_path_factory.mktemp("_ZIPPED_PACKAGES")
-    with mock.patch("__main__.pub.ZIPPED_DIR", tmpdir):
+    with mock.patch("irdb.publish.ZIPPED_DIR", tmpdir):
         pub.zip_package_folder("test_package",
                                "test_package.2023-07-19.zip")
         pub.zip_package_folder("test_package",
@@ -79,7 +79,7 @@ def temp_zipfiles(tmp_path_factory):
 @pytest.mark.usefixtures("temp_zipfiles")
 class TestGetLocalPath():
     def test_stable(self, temp_zipfiles):
-        with mock.patch("__main__.pub.ZIPPED_DIR", temp_zipfiles):
+        with mock.patch("irdb.publish.ZIPPED_DIR", temp_zipfiles):
             response = str(pub._get_local_path("test_package", True))
             assert response.endswith(".zip")
             assert "test_package" in response
@@ -87,7 +87,7 @@ class TestGetLocalPath():
             assert "test_package.2023-07-19.zip" in response
 
     def test_dev(self, temp_zipfiles):
-        with mock.patch("__main__.pub.ZIPPED_DIR", temp_zipfiles):
+        with mock.patch("irdb.publish.ZIPPED_DIR", temp_zipfiles):
             response = str(pub._get_local_path("test_package", False))
             assert response.endswith(".dev.zip")
             assert "test_package" in response
@@ -101,7 +101,7 @@ class TestGetServerPath():
     def test_missing_called(self):
         fake_folder_dict = {"bogus": "bar"}
         mock_obj = mock.Mock(return_value=fake_folder_dict)
-        with mock.patch("__main__.pub._handle_missing_folder",
+        with mock.patch("irdb.publish._handle_missing_folder",
                         mock_obj) as mock_missing:
             assert pub._get_server_path("bogus", "foo") == "bar/foo"
             assert mock_missing.called_once_with("bogus")
@@ -152,7 +152,7 @@ def fixture_default_argv():
 ])
 def test_call_confirm(default_argv, argv, called, response):
     with mock.patch("sys.argv", default_argv + argv):
-        with mock.patch("__main__.pub.confirm",
+        with mock.patch("irdb.publish.confirm",
                         mock.Mock(return_value=response)) as mock_confirm:
             # Catch exception raised by fake login credentials
             authex = pub.pysftp.paramiko.ssh_exception.AuthenticationException
@@ -178,7 +178,7 @@ def test_call_confirm(default_argv, argv, called, response):
 ])
 def test_make_package_called(default_argv, argv, called, args):
     with mock.patch("sys.argv", default_argv + argv):
-        with mock.patch("__main__.pub.make_package") as mock_mkpkg:
+        with mock.patch("irdb.publish.make_package") as mock_mkpkg:
             pub.main()
             if called:
                 mock_mkpkg.assert_called_once_with("test_package",
@@ -199,7 +199,7 @@ def test_make_package_called(default_argv, argv, called, args):
 def test_push_to_server_called(default_argv, argv, called, args):
     pwd = pub.Password("fake_password")
     with mock.patch("sys.argv", default_argv + argv):
-        with mock.patch("__main__.pub.push_to_server") as mock_phsvr:
+        with mock.patch("irdb.publish.push_to_server") as mock_phsvr:
             pub.main()
             if called:
                 mock_phsvr.assert_called_once_with("test_package",
@@ -214,8 +214,8 @@ def test_push_to_server_called(default_argv, argv, called, args):
 def test_multiple_packages(default_argv):
     argv = ["foo_package", "bar_package", "-c", "-u"]
     with mock.patch("sys.argv", default_argv + argv):
-        with mock.patch("__main__.pub.make_package") as mock_mkpkg:
-            with mock.patch("__main__.pub.push_to_server") as mock_phsvr:
+        with mock.patch("irdb.publish.make_package") as mock_mkpkg:
+            with mock.patch("irdb.publish.push_to_server") as mock_phsvr:
                 pub.main()
                 assert mock_mkpkg.call_count == 3
                 assert mock_phsvr.call_count == 3
