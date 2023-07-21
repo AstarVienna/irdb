@@ -224,11 +224,10 @@ def test_multiple_packages(default_argv):
                 assert "bar_package" in mock_phsvr.call_args[0]
 
 
-@pytest.mark.usefixtures("default_argv", "capfd")
-def test_warning_no_action(default_argv, capfd):
+@pytest.mark.usefixtures("default_argv", "caplog")
+def test_warning_no_action(default_argv, caplog):
     warnmsg = ("Neither `compile` nor `upload` was set. "
                "No action will be performed.")
     with mock.patch("sys.argv", default_argv):
         pub.main()
-        out, err = capfd.readouterr()
-        assert warnmsg in out
+        assert warnmsg in caplog.text
