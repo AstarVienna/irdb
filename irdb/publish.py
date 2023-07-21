@@ -35,16 +35,10 @@ class Password:
             value = getpass.getpass("UniVie u:space password: ")
         self.value = value
 
-    def __repr__(self):
-        return f"{self.__class__.__name__}(*****)"
-
-    def __str__(self):
-        return self.value
-
     def __eq__(self, other):
         if not isinstance(other, self.__class__):
             raise TypeError()
-        return str(self) == str(other)
+        return self.value == other.value
 
 
 def publish(pkg_names=None, compilezip=False, upload=True,
@@ -219,7 +213,7 @@ def confirm(pkg_name: str) -> bool:
 
 def push_to_server(pkg_name: str, stable: bool = False,
                    login: Optional[str] = None,
-                   password: Optional[str] = None,
+                   password: Optional[Password] = None,
                    no_confirm: bool = False) -> None:
     """
     Upload a package to the univie server.
@@ -259,7 +253,7 @@ def push_to_server(pkg_name: str, stable: bool = False,
     cnopts = pysftp.CnOpts()
     cnopts.hostkeys = None
     sftp = pysftp.Connection(host="webspace-access.univie.ac.at",
-                             username=login, password=str(password),
+                             username=login, password=password.value,
                              cnopts=cnopts)
 
     with sftp.cd("scopesimu68/html/InstPkgSvr/"):
