@@ -44,7 +44,8 @@ import pytest
 
 from .. import publish as pub
 
-# argv mock reference: https://stackoverflow.com/questions/48359957/pytest-with-argparse-how-to-test-user-is-prompted-for-confirmation
+# argv mock reference:
+# https://stackoverflow.com/questions/48359957/pytest-with-argparse-how-to-test-user-is-prompted-for-confirmation
 
 
 # PATH_TEST_PACKAGE_VERSION_YAML = pub.PKGS_DIR / "test_package" / "version.yaml"
@@ -77,7 +78,7 @@ def temp_zipfiles(tmp_path_factory):
 
 
 @pytest.mark.usefixtures("temp_zipfiles")
-class TestGetLocalPath():
+class TestGetLocalPath:
     def test_stable(self, temp_zipfiles):
         with mock.patch("irdb.publish.ZIPPED_DIR", temp_zipfiles):
             response = str(pub._get_local_path("test_package", True))
@@ -94,7 +95,7 @@ class TestGetLocalPath():
             assert "test_package.2023-07-20.dev.zip" in response
 
 
-class TestGetServerPath():
+class TestGetServerPath:
     def test_normal(self):
         assert pub._get_server_path("test_package", "foo") == "instruments/foo"
 
