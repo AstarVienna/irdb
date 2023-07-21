@@ -143,30 +143,30 @@ def fixture_default_argv():
     return ["", "-l", "fake_username", "-p", "fake_password", "test_package"]
 
 
-@pytest.mark.xfail
-@pytest.mark.usefixtures("default_argv")
+@pytest.mark.usefixtures("default_argv", "temp_zipfiles")
 @pytest.mark.parametrize("argv, called, response", [
     (["-u"], False, None),
     (["-u", "-s", "--no-confirm"], False, None),
     (["-u", "-s"], True, False),
     (["-u", "-s"], True, True),
 ])
-def test_call_confirm(default_argv, argv, called, response):
+def test_call_confirm(default_argv, temp_zipfiles, argv, called, response):
     with mock.patch("sys.argv", default_argv + argv):
         with mock.patch("irdb.publish.confirm",
                         mock.Mock(return_value=response)) as mock_confirm:
-            # Catch exception raised by fake login credentials
-            authex = pub.pysftp.paramiko.ssh_exception.AuthenticationException
+            with mock.patch("irdb.publish.ZIPPED_DIR", temp_zipfiles):
+                # Catch exception raised by fake login credentials
+                authex = pub.pysftp.paramiko.ssh_exception.AuthenticationException
 
-            if called and not response:
-                # Should abort -> no authex raised
-                pub.main()
-            else:
-                # Should continue and attempt upload -> authex raised
-                with pytest.raises(authex):
+                if called and not response:
+                    # Should abort -> no authex raised
                     pub.main()
+                else:
+                    # Should continue and attempt upload -> authex raised
+                    with pytest.raises(authex):
+                        pub.main()
 
-            assert mock_confirm.called == called
+                assert mock_confirm.called == called
 
 
 @pytest.mark.usefixtures("default_argv")
