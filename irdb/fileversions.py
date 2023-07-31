@@ -38,19 +38,23 @@ class IRDBFile():
         return max(self.changes)
 
     @classmethod
+    def from_file(cls, file):
+        table = ioascii.read(file, format="basic", guess=False)
+        comments_str = "\n".join(table.meta["comments"])
+        meta = yaml.full_load(comments_str)
+        try:
+            chgs = list(cls._parse_changes(meta["changes"]))
+        except KeyError:
+            chgs = None
+        return cls(file.name,
+                   meta["date_created"],
+                   meta.get("date_modified", None),
+                   chgs)
+
+    @classmethod
     def from_folder(cls, folder):
         for file in folder.glob("*.dat"):
-            table = ioascii.read(file, format="basic", guess=False)
-            comments_str = "\n".join(table.meta["comments"])
-            meta = yaml.full_load(comments_str)
-            try:
-                chgs = list(cls._parse_changes(meta["changes"]))
-            except KeyError:
-                chgs = None
-            yield cls(file.name,
-                      meta["date_created"],
-                      meta.get("date_modified", None),
-                      chgs)
+            yield cls.from_file(file)
 
     @staticmethod
     def _parse_changes(changes):
@@ -80,35 +84,35 @@ class IRDBFile():
                 msg = f"{date_modified=!s} earlier than {date_created=!s}"
                 raise ValueError(msg)
 
-
-files = list(IRDBFile.from_folder(Path("../")))
-
-db = {"Data files": {}}
-for f in files:
-    try:
-        f.validate_dates()
-        db["Data files"][f.name] = {"no_conflicts": True}
-    except ValueError as err:
-        msg = str(err).replace(" ", "_").replace("-", "--")
-        db["Data files"][f.name] = {msg: "error"}
-
-from irdb import utils
-utils.write_badge_yaml(db, "test.yaml")
-utils.make_badge_report("test.yaml", "test.md")
-
-# colnames = ["File", "Last modification"]
-# data = [[f.name for f in files], [f.date_modified for f in files]]
-# tbl = Table(names=colnames, data=data, copy=False)
-
-# nb = nbf.v4.new_notebook()
-# text = """\
-# # My first automatic Jupyter Notebook
-# This is an auto-generated notebook."""
-
-
-# nb["cells"] = [nbf.v4.new_markdown_cell(text),
-#                nbf.v4.new_markdown_cell(tbl.show_in_notebook().data)]
-# fname = "test.ipynb"
-
-# with open(fname, "w") as f:
-#     nbf.write(nb, f)
+if __name__ == "__main__":
+    files = list(IRDBFile.from_folder(Path("../")))
+    
+    db = {"Data files": {}}
+    for f in files:
+        try:
+            f.validate_dates()
+            db["Data files"][f.name] = {"no_conflicts": True}
+        except ValueError as err:
+            msg = str(err).replace(" ", "_").replace("-", "--")
+            db["Data files"][f.name] = {msg: "error"}
+    
+    from irdb import utils
+    utils.write_badge_yaml(db, "test.yaml")
+    utils.make_badge_report("test.yaml", "test.md")
+    
+    # colnames = ["File", "Last modification"]
+    # data = [[f.name for f in files], [f.date_modified for f in files]]
+    # tbl = Table(names=colnames, data=data, copy=False)
+    
+    # nb = nbf.v4.new_notebook()
+    # text = """\
+    # # My first automatic Jupyter Notebook
+    # This is an auto-generated notebook."""
+    
+    
+    # nb["cells"] = [nbf.v4.new_markdown_cell(text),
+    #                nbf.v4.new_markdown_cell(tbl.show_in_notebook().data)]
+    # fname = "test.ipynb"
+    
+    # with open(fname, "w") as f:
+    #     nbf.write(nb, f)
