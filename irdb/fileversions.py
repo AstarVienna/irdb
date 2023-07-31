@@ -6,17 +6,18 @@ This is a temporary script file.
 """
 
 # import sys
-import logging
-import yaml
+# import logging
 # from typing import TextIO
 # from io import StringIO
 import datetime as dt
 from pathlib import Path
 from dataclasses import dataclass
 
-from astropy.table import Table
+import yaml
+
+# from astropy.table import Table
 from astropy.io import ascii as ioascii
-import nbformat as nbf
+# import nbformat as nbf
 
 
 @dataclass(order=True)
@@ -24,7 +25,7 @@ class FileChange():
     date: dt.date
     author: str
     comment: str = ""
-    
+
 
 @dataclass
 class IRDBFile():
@@ -47,13 +48,13 @@ class IRDBFile():
         except KeyError:
             chgs = None
         return cls(file.name,
-                   meta["date_created"],
+                   meta.get("date_created", None),
                    meta.get("date_modified", None),
                    chgs)
 
     @classmethod
     def from_folder(cls, folder):
-        for file in folder.glob("*.dat"):
+        for file in folder.rglob("*.dat"):
             yield cls.from_file(file)
 
     @staticmethod
@@ -80,13 +81,13 @@ class IRDBFile():
         if date_modified is not None:
             if self.changes is None:
                 raise ValueError("Modified date set but no changes listed.")
-            if not date_modified >= date_created:
+            if date_modified < date_created:
                 msg = f"{date_modified=!s} earlier than {date_created=!s}"
                 raise ValueError(msg)
 
 if __name__ == "__main__":
     files = list(IRDBFile.from_folder(Path("../")))
-    
+
     db = {"Data files": {}}
     for f in files:
         try:
@@ -95,24 +96,20 @@ if __name__ == "__main__":
         except ValueError as err:
             msg = str(err).replace(" ", "_").replace("-", "--")
             db["Data files"][f.name] = {msg: "error"}
-    
-    from irdb import utils
-    utils.write_badge_yaml(db, "test.yaml")
-    utils.make_badge_report("test.yaml", "test.md")
-    
+
     # colnames = ["File", "Last modification"]
     # data = [[f.name for f in files], [f.date_modified for f in files]]
     # tbl = Table(names=colnames, data=data, copy=False)
-    
+
     # nb = nbf.v4.new_notebook()
     # text = """\
     # # My first automatic Jupyter Notebook
     # This is an auto-generated notebook."""
-    
-    
+
+
     # nb["cells"] = [nbf.v4.new_markdown_cell(text),
     #                nbf.v4.new_markdown_cell(tbl.show_in_notebook().data)]
     # fname = "test.ipynb"
-    
+
     # with open(fname, "w") as f:
     #     nbf.write(nb, f)

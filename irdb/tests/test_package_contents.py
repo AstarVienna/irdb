@@ -14,13 +14,13 @@ from irdb.badges import BadgeReport
 from irdb.fileversions import IRDBFile
 
 
-@pytest.fixture(scope="module")
-def pkg_dir():
+@pytest.fixture(name="pkg_dir", scope="module")
+def fixture_pkg_dir():
     return Path(__file__).parent.parent.parent
 
 
-@pytest.fixture(scope="module")
-def badges():
+@pytest.fixture(name="badges", scope="module")
+def fixture_badges():
     with BadgeReport() as report:
         yield report
 

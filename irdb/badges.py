@@ -47,7 +47,7 @@ class Badge():
 
     def __init__(self, key: str, value):
         self.key = _fix_badge_str(key)
-        self.value = _fix_badge_str(value)
+        self.value = _fix_badge_str(value) if isinstance(value, str) else value
 
     def write(self, stream: TextIO) -> None:
         """Write formatted pattern to I/O stream"""
@@ -69,16 +69,17 @@ class NumBadge(Badge):
 
 class StrBadge(Badge):
     special_strings = {
-        "observation" : "blueviolet",
-        "support" : "deepskyblue",
-        "error" : "red",
-        "missing" : "red",
-        "warning" : "orange",
-        "conflict" : "orange",
-        "incomplete" : "orange",
+        "observation": "blueviolet",
+        "support": "deepskyblue",
+        "error": "red",
+        "missing": "red",
+        "warning": "orange",
+        "conflict": "orange",
+        "incomplete": "orange",
         "ok": "green",
         "found": "green",
-        "not found": "red",
+        "not_found": "red",
+        "none": "yellowgreen",
         }
 
     def __init__(self, key: str, value: str):
