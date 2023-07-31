@@ -19,7 +19,15 @@ def get_packages():
     """
     # TODO: update docstring for generator
     for pkg_path in PKG_DIR.iterdir():
-        if (pkg_path / f"{pkg_path.name}.yaml").exists():
+        specials = {"irdb", "docs"}
+        # NOTE: Previously, only folders with a self-named yaml file were
+        #       considered packages by this function. This caused some packages
+        #       to 'slip under the radar' by the tests, and also defeated the
+        #       purpose of test_all_packages_have_a_self_named_yaml.
+        # if (pkg_path / f"{pkg_path.name}.yaml").exists():
+        if (pkg_path.is_dir()
+            and not pkg_path.name.startswith((".", "_"))
+            and not pkg_path.name in specials):
             yield pkg_path.name, pkg_path
 
 
