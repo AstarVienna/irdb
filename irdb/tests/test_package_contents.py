@@ -23,6 +23,7 @@ def badges():
 
 
 class TestFileStructureOfPackages:
+    @pytest.mark.usefixtures("badges")
     def test_default_yaml_contains_packages_list(self, badges):
         bad_packages = []
         for pkg_name, pkg_path in PKG_DICT.items():
@@ -45,6 +46,7 @@ class TestFileStructureOfPackages:
                 bad_packages.append(pkg_name)
         assert not bad_packages
 
+    @pytest.mark.usefixtures("badges")
     def test_all_packages_have_a_self_named_yaml(self, badges):
         """This test can never fail.
 
@@ -63,6 +65,7 @@ class TestFileStructureOfPackages:
     @pytest.mark.xfail(
         reason="Most of the missing files seem to exist in other packages though, so they are probably okay."
     )
+    @pytest.mark.usefixtures("badges")
     def test_all_files_referenced_in_yamls_exist(self, badges):
         missing_files = []
         for pkg_name, pkg_path in PKG_DICT.items():
@@ -96,6 +99,7 @@ class TestFileStructureOfPackages:
                 badges[f"!{pkg_name}.structure.no_missing_files"] = "!OK"
         assert not missing_files, f"{missing_files}"
 
+    @pytest.mark.usefixtures("badges")
     def test_all_yaml_files_readable(self, badges):
         yamls_bad = []
         for pkg_name, pkg_path in PKG_DICT.items():
@@ -114,6 +118,7 @@ class TestFileStructureOfPackages:
         assert not yamls_bad, f"Errors found in yaml files: {yamls_bad}"
 
     @pytest.mark.xfail
+    @pytest.mark.usefixtures("badges")
     def test_all_dat_files_readable(self, badges):
         bad_files = []
         how_bad = {"inconsistent_table_error": [],
