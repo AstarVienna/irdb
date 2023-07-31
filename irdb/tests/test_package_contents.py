@@ -23,6 +23,28 @@ def badges():
 
 
 class TestFileStructureOfPackages:
+    def test_default_yaml_contains_packages_list(self, badges):
+        bad_packages = []
+        for pkg_name, pkg_path in PKG_DICT.items():
+            default_yaml = pkg_path / "default.yaml"
+            if not default_yaml.exists():
+                badges[f"!{pkg_name}.package_type"] = "support"
+                continue
+
+            badges[f"!{pkg_name}.package_type"] = "observation"
+
+            with default_yaml.open(encoding="utf-8") as file:
+                yaml_dict = next(yaml.full_load_all(file))
+
+            result = "packages" in yaml_dict and "yamls" in yaml_dict and \
+                     f"{pkg_name}.yaml" in yaml_dict["yamls"]
+            if result:
+                badges[f"!{pkg_name}.structure.default_yaml"] = "OK"
+            else:
+                badges[f"!{pkg_name}.structure.default_yaml"] = "incomplete"
+                bad_packages.append(pkg_name)
+        assert not bad_packages
+
     def test_all_packages_have_a_self_named_yaml(self, badges):
         """This test can never fail.
 
@@ -36,29 +58,6 @@ class TestFileStructureOfPackages:
             else:
                 badges[f"!{pkg_name}.structure.self_named_yaml"] = "not found"
                 bad_packages.append(pkg_name)
-        assert not bad_packages
-
-    def test_default_yaml_contains_packages_list(self, badges):
-        bad_packages = []
-        for pkg_name, pkg_path in PKG_DICT.items():
-            default_yaml = pkg_path / "default.yaml"
-            if not default_yaml.exists():
-                badges[f"!{pkg_name}.package_type"] = "support"
-                continue
-
-            with default_yaml.open(encoding="utf-8") as file:
-                yaml_dict = next(yaml.full_load_all(file))
-
-            result = "packages" in yaml_dict and "yamls" in yaml_dict and \
-                     f"{pkg_name}.yaml" in yaml_dict["yamls"]
-            if result:
-                badges[f"!{pkg_name}.structure.default_yaml"] = "OK"
-            else:
-                badges[f"!{pkg_name}.structure.default_yaml"] = "incomplete"
-                bad_packages.append(pkg_name)
-
-            badges[f"!{pkg_name}.package_type"] = "observation"
-
         assert not bad_packages
 
     @pytest.mark.xfail(
