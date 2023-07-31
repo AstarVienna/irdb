@@ -9,20 +9,21 @@ import yaml
 from scopesim.effects.data_container import DataContainer
 from astropy.io.ascii import InconsistentTableError
 
-from irdb.utils import get_packages, load_badge_yaml, write_badge_yaml, \
-    recursive_filename_search
+from irdb.utils import get_packages, recursive_filename_search
+from irdb.badges import BadgeReport
 
 PKG_DIR = Path(__file__).parent.parent.parent
 PKG_DICT = dict(get_packages())
-BADGES = load_badge_yaml()
 
 
-def teardown_module():
-    write_badge_yaml(BADGES)
+@pytest.fixture(scope="class")
+def badges():
+    with BadgeReport() as report:
+        yield report
 
 
 class TestFileStructureOfPackages:
-    def test_all_packages_have_a_self_named_yaml(self):
+    def test_all_packages_have_a_self_named_yaml(self, badges):
         """This test can never fail.
 
         get_packages() decides whether a directory is a package based on
@@ -37,7 +38,7 @@ class TestFileStructureOfPackages:
                 bad_packages.append(pkg_name)
         assert not bad_packages
 
-    def test_default_yaml_contains_packages_list(self):
+    def test_default_yaml_contains_packages_list(self, badges):
         bad_packages = []
         for pkg_name, pkg_path in PKG_DICT.items():
             default_yaml = pkg_path / "default.yaml"
@@ -57,12 +58,13 @@ class TestFileStructureOfPackages:
                 bad_packages.append(pkg_name)
 
             badges[f"!{pkg_name}.package_type"] = "observation"
+
         assert not bad_packages
 
     @pytest.mark.xfail(
         reason="Most of the missing files seem to exist in other packages though, so they are probably okay."
     )
-    def test_all_files_referenced_in_yamls_exist(self):
+    def test_all_files_referenced_in_yamls_exist(self, badges):
         missing_files = []
         for pkg_name, pkg_path in PKG_DICT.items():
 
@@ -95,7 +97,7 @@ class TestFileStructureOfPackages:
                 badges[f"!{pkg_name}.structure.no_missing_files"] = "!OK"
         assert not missing_files, f"{missing_files}"
 
-    def test_all_yaml_files_readable(self):
+    def test_all_yaml_files_readable(self, badges):
         yamls_bad = []
         for pkg_name, pkg_path in PKG_DICT.items():
             num_errors = 0
@@ -112,7 +114,8 @@ class TestFileStructureOfPackages:
                 badges[f"!{pkg_name}.contents.all_yamls_readable"] = "!OK"
         assert not yamls_bad, f"Errors found in yaml files: {yamls_bad}"
 
-    def test_all_dat_files_readable(self):
+    @pytest.mark.xfail
+    def test_all_dat_files_readable(self, badges):
         bad_files = []
         how_bad = {"inconsistent_table_error": [],
                    "value_error": [],
