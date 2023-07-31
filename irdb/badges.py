@@ -51,7 +51,6 @@ class Badge():
 
     def write(self, stream: TextIO) -> None:
         """Write formatted pattern to I/O stream"""
-        stream.write("* ")
         _dict = {"key": self.key, "val": self.value, "col": self.colour}
         stream.write(self.pattern.substitute(_dict))
 
@@ -98,28 +97,36 @@ class MsgOnlyBadge(StrBadge):
 
 
 class BadgeReport(SystemDict):
-    def __init__(self, filename=None):
-        print("\nREPORT INIT")
+    def __init__(self, filename=None, report_filename=None):
+        logging.debug("REPORT INIT")
         self.filename = filename or "badges.yaml"
-        self.path = Path(PKG_DIR, "_REPORTS", self.filename)
+        self.yamlpath = Path(PKG_DIR, "_REPORTS", self.filename)
+        self.report_name = report_filename or "badges.md"
+        self.report_path = Path(PKG_DIR, "_REPORTS", self.report_name)
         super().__init__()
 
     def __enter__(self):
-        print("\nREPORT ENTER")
+        logging.debug("REPORT ENTER")
         try:
-            with self.path.open(encoding="utf-8") as file:
+            with self.yamlpath.open(encoding="utf-8") as file:
                 self.update(yaml.full_load(file))
         except FileNotFoundError:
-            logging.warning("%s not found, init empty dict", self.path)
+            logging.warning("%s not found, init empty dict", self.yamlpath)
         return self
 
     def __exit__(self, exc_type, exc_value, exc_traceback):
-        print("\nREPORT EXIT")
+        logging.debug("REPORT EXIT")
         self.write_yaml()
+        self.generate_report()
+        logging.debug("REPORT DONE")
 
     def write_yaml(self):
         dumpstr = yaml.dump(self.dic, sort_keys=False)
-        self.path.write_text(dumpstr, encoding="utf-8")
+        self.yamlpath.write_text(dumpstr, encoding="utf-8")
+
+    def generate_report(self):
+        with self.report_path.open("w", encoding="utf-8") as file:
+            make_entries(file, self.dic)
 
 
 def load_badge_yaml(filename=None):
@@ -181,6 +188,8 @@ def make_badge_report(badge_filename=None, report_filename=None):
     """
     Generates the badges.md file which describes the state of the packages
     """
+    warn(("Using this function directly is deprecated, use BadgeReport "
+          "context manager instead."), DeprecationWarning, stacklevel=2)
     if badge_filename is None:
         badge_filename = "badges.yaml"
     if report_filename is None:
@@ -191,6 +200,12 @@ def make_badge_report(badge_filename=None, report_filename=None):
     path = Path(PKG_DIR, "_REPORTS", report_filename)
     with path.open("w", encoding="utf-8") as file:
         make_entries(file, badge_dict.dic)
+
+
+def _get_nested_header(key: str, level: int) -> str:
+    if level > 2:
+        return f"* {key}: "
+    return f"{'#' * (level + 2)} {key.title() if level else key}"
 
 
 def make_entries(stream: TextIO, entry, level=0) -> None:
@@ -217,12 +232,14 @@ def make_entries(stream: TextIO, entry, level=0) -> None:
 
     for key, value in entry.items():
         stream.write("\n")
-        stream.write("  " * level)
+        stream.write("  " * (level - 2))
         if isinstance(value, Mapping):
-            stream.write(f"* {key}: " if level else f"## {key}: ")
+            stream.write(_get_nested_header(key, level))
             # recursive
             make_entries(stream, value, level=level+1)
         else:
+            if level > 1:
+                stream.write("* ")
             Badge(key, value).write(stream)
 
 
