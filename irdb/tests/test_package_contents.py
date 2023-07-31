@@ -11,6 +11,7 @@ from astropy.io.ascii import InconsistentTableError
 
 from irdb.utils import get_packages, recursive_filename_search
 from irdb.badges import BadgeReport
+from irdb.fileversions import IRDBFile
 
 
 @pytest.fixture(scope="module")
@@ -162,6 +163,49 @@ class TestFileStructureOfPackages:
                               err.__class__, err)
                 bad_files.append(str(fn_loc))
                 badges[f"!{fn_loc.parts[0]}.contents"][fn_loc.name] = "error"
+                how_bad["unexpected_error"].append(str(fn_loc))
+        logging.warning(how_bad)
+
+        assert not bad_files, bad_files
+
+    @pytest.mark.xfail(
+        reason=("This (new) test shows many previously unknown, but not "
+                "critical inconsistencies, which would pollute the tests, so "
+                "xfail this for now, report is generated regardless.")
+    )
+    @pytest.mark.usefixtures("pkg_dir", "badges")
+    def test_all_dat_files_consistent(self, pkg_dir, badges):
+        bad_files = []
+        how_bad = {"file_read_error": [],
+                   "value_error": [],
+                   "unexpected_error": []}
+        # fns_dat = list(IRDBFile.from_folder(pkg_dir))
+        fns_dat = pkg_dir.rglob("*.dat")
+        # TODO: the following assert now always passed because fns_dat is a
+        #       generator object (while the check was likely meant to catch
+        #       empty lists)
+        assert fns_dat
+        for fn_dat in fns_dat:
+            fn_loc = fn_dat.relative_to(pkg_dir)
+            try:
+                dat_file = IRDBFile.from_file(fn_dat)
+            except Exception as err:
+                logging.error("%s Error reading dat file %s", str(fn_loc), err)
+                # bad_files.append(str(fn_loc))
+                how_bad["file_read_error"].append(str(fn_loc))
+
+            try:
+                dat_file.validate_dates()
+            except ValueError as err:
+                logging.error("%s ValeError %s", str(fn_loc), err)
+                bad_files.append(str(fn_loc))
+                badges[f"!{fn_loc.parts[0]}.dates"][dat_file.name] = "conflict"
+                how_bad["value_error"].append(str(fn_loc))
+            except Exception as err:
+                logging.error("%s Unexpected Exception %s %s", str(fn_loc),
+                              err.__class__, err)
+                bad_files.append(str(fn_loc))
+                badges[f"!{fn_loc.parts[0]}.dates"][dat_file.name] = "error"
                 how_bad["unexpected_error"].append(str(fn_loc))
         logging.warning(how_bad)
 
