@@ -1,10 +1,11 @@
 import os
 from os import path as pth
+from pathlib import Path
 import yaml
 
 from irdb.system_dict import SystemDict
 
-PKG_DIR = pth.abspath(pth.join(pth.dirname(__file__), "../"))
+PKG_DIR = Path(__file__).parent.parent
 
 
 def get_packages():
@@ -16,16 +17,10 @@ def get_packages():
     pkgs : dict
         {"packge_name" : "path_to_package"}
     """
-    dirs = os.listdir(PKG_DIR)
-    pkgs = {}
-    for pkg in dirs:
-        pkg_path = pth.abspath(pth.join(PKG_DIR, pkg))
-        pkg_base = f"{pkg}.yaml"
-        if pth.exists(pth.join(pkg_path, pkg_base)):
-            pkgs[pkg] = pkg_path
-
-    return pkgs
-
+    # TODO: update docstring for generator
+    for pkg_path in PKG_DIR.iterdir():
+        if (pkg_path / f"{pkg_path.name}.yaml").exists():
+            yield pkg_path.name, pkg_path
 
 def load_badge_yaml(filename=None):
     """
@@ -156,13 +151,13 @@ def recursive_filename_search(entry):
     fnames = []
     if isinstance(entry, list):
         for item in entry:
-            fnames += recursive_filename_search(item)
+            fnames.extend(recursive_filename_search(item))
 
     if isinstance(entry, dict):
-        for key in entry:
-            if key.lower() == "filename" or key.lower() == "file_name":
-                fnames += [entry[key]]
-            elif isinstance(entry[key], (dict, list)):
-                fnames += recursive_filename_search(entry[key])
+        for key, value in entry.items():
+            if key.lower() in {"filename", "file_name"}:
+                fnames.append(value)
+            elif isinstance(value, (dict, list)):
+                fnames.extend(recursive_filename_search(value))
 
     return fnames
