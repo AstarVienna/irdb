@@ -120,11 +120,11 @@ class BadgeReport(SystemDict):
         self.generate_report()
         logging.debug("REPORT DONE")
 
-    def write_yaml(self):
+    def write_yaml(self) -> None:
         dumpstr = yaml.dump(self.dic, sort_keys=False)
         self.yamlpath.write_text(dumpstr, encoding="utf-8")
 
-    def generate_report(self):
+    def generate_report(self) -> None:
         with self.report_path.open("w", encoding="utf-8") as file:
             make_entries(file, self.dic)
 
