@@ -45,7 +45,7 @@ class TestFileStructureOfPackages:
             badges[f"!{pkg_name}.structure.default_yaml"] = "OK"
         else:
             badges[f"!{pkg_name}.structure.default_yaml"] = "incomplete"
-            assert result, pkg_name
+        assert result, pkg_name
 
     @pytest.mark.parametrize("package", list(get_packages()))
     @pytest.mark.usefixtures("badges")
@@ -149,20 +149,20 @@ class TestFileStructureOfPackages:
                 _ = DataContainer(str(fn_dat))
             except InconsistentTableError as err:
                 logging.error("%s InconsistentTableError %s", str(fn_loc), err)
-                bad_files.append(fn_loc)
+                bad_files.append(str(fn_loc))
                 badges[f"!{fn_loc.parts[0]}.contents"][fn_loc.name] = "error"
-                how_bad["inconsistent_table_error"].append(fn_loc)
+                how_bad["inconsistent_table_error"].append(str(fn_loc))
             except ValueError as err:
                 logging.error("%s ValeError %s", str(fn_loc), err)
-                bad_files.append(fn_loc)
+                bad_files.append(str(fn_loc))
                 badges[f"!{fn_loc.parts[0]}.contents"][fn_loc.name] = "error"
-                how_bad["value_error"].append(fn_loc)
+                how_bad["value_error"].append(str(fn_loc))
             except Exception as err:
                 logging.error("%s Unexpected Exception %s %s", str(fn_loc),
                               err.__class__, err)
-                bad_files.append(fn_loc)
+                bad_files.append(str(fn_loc))
                 badges[f"!{fn_loc.parts[0]}.contents"][fn_loc.name] = "error"
-                how_bad["unexpected_error"].append(fn_loc)
+                how_bad["unexpected_error"].append(str(fn_loc))
         logging.warning(how_bad)
 
         assert not bad_files, bad_files
