@@ -15,6 +15,7 @@ from typing import TextIO
 # from io import StringIO
 from numbers import Number
 from string import Template
+from datetime import datetime as dt
 from collections.abc import Mapping
 
 import yaml
@@ -98,12 +99,21 @@ class MsgOnlyBadge(StrBadge):
 
 
 class BadgeReport(SystemDict):
-    def __init__(self, filename=None, report_filename=None):
+    def __init__(self, filename=None, report_filename=None, logs_filename=None,
+                 save_logs=True):
         logging.debug("REPORT INIT")
+        base_path = Path(PKG_DIR, "_REPORTS")
+
         self.filename = filename or "badges.yaml"
-        self.yamlpath = Path(PKG_DIR, "_REPORTS", self.filename)
+        self.yamlpath = base_path / self.filename
         self.report_name = report_filename or "badges.md"
-        self.report_path = Path(PKG_DIR, "_REPORTS", self.report_name)
+        self.report_path = base_path / self.report_name
+
+        self.save_logs = save_logs
+        self.logs = []
+        self.logs_name = logs_filename or "badge_report_log.txt"
+        self.log_path = base_path / self.logs_name
+
         super().__init__()
 
     def __enter__(self):
@@ -119,14 +129,29 @@ class BadgeReport(SystemDict):
         logging.debug("REPORT EXIT")
         self.write_yaml()
         self.generate_report()
+        if self.save_logs:
+            self.write_logs()
         logging.debug("REPORT DONE")
+
+    def write_logs(self) -> None:
+        with self.log_path.open("w", encoding="utf-8") as file:
+            for log in self.logs:
+                file.write(f"{log.levelname}::{log.message}\n")
 
     def write_yaml(self) -> None:
         dumpstr = yaml.dump(self.dic, sort_keys=False)
         self.yamlpath.write_text(dumpstr, encoding="utf-8")
 
+    def _make_preamble(self) -> str:
+        preamble = ("# IRDB Packages Report\n\n"
+                    f"**Created on UTC {dt.utcnow():%Y-%m-%d %H:%M:%S}**\n\n"
+                    "For details on errors and conflicts, see badge report "
+                    "log file in this directory.\n\n")
+        return preamble
+
     def generate_report(self) -> None:
         with self.report_path.open("w", encoding="utf-8") as file:
+            file.write(self._make_preamble())
             make_entries(file, self.dic)
 
 
