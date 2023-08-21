@@ -1,6 +1,6 @@
 # ScopeSim's Instrument reference database
 
-[![Documentation Status](https://readthedocs.org/projects/scopesim-templates/badge/?version=latest)](https://scopesim-templates.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/irdb/badge/?version=latest)](https://irdb.readthedocs.io/en/latest/)
 [![Tests](https://github.com/AstarVienna/irdb/actions/workflows/tests.yml/badge.svg)](https://github.com/AstarVienna/irdb/actions/workflows/tests.yml)
 [![Server Status](https://img.shields.io/website.svg?label=IRDB%20Package%20Server&url=https%3A%2F%2Fscopesim.univie.ac.at%2FInstPkgSvr)](https://scopesim.univie.ac.at/InstPkgSvr)
 
