@@ -121,7 +121,7 @@ mode_yamls :
   properties :
     trace_file : TRACE_MICADO.fits
     slit_file : MASK_slit_3000x16.dat
-    filter_name_fw1 : Spec_HK
+    filter_name_fw1 : Spec_IJ
     filter_name_fw2 : open
     filter_name_pupil : open
 
