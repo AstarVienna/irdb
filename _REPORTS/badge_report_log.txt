@@ -1,0 +1,178 @@
+WARNING::Couldn't convert <table>.meta['comments'] to dict
+ERROR::LFOA\filters\old_filters\TC_filter_Halpha_wide_old.dat ValeError dictionary update sequence element #0 has length 49; 2 is required
+ERROR::NACO\filters\NB_3.74.dat ValeError chr() arg not in range(0x110000)
+WARNING::Couldn't convert <table>.meta['comments'] to dict
+ERROR::NACO\filters\NB_4.05.dat ValeError dictionary update sequence element #0 has length 85; 2 is required
+ERROR::OSIRIS\traces\TRACE_R1000B.dat ValeError dictionary update sequence element #0 has length 1; 2 is required
+ERROR::OSIRIS\traces\TRACE_R1000R.dat ValeError dictionary update sequence element #0 has length 1; 2 is required
+ERROR::OSIRIS\traces\TRACE_R2000B.dat ValeError dictionary update sequence element #0 has length 1; 2 is required
+ERROR::OSIRIS\traces\TRACE_R2500I.dat ValeError dictionary update sequence element #0 has length 1; 2 is required
+ERROR::OSIRIS\traces\TRACE_R2500R.dat ValeError dictionary update sequence element #0 has length 1; 2 is required
+ERROR::OSIRIS\traces\TRACE_R2500U.dat ValeError dictionary update sequence element #0 has length 1; 2 is required
+ERROR::OSIRIS\traces\TRACE_R2500V.dat ValeError dictionary update sequence element #0 has length 1; 2 is required
+ERROR::OSIRIS\traces\TRACE_R300B.dat ValeError dictionary update sequence element #0 has length 1; 2 is required
+ERROR::OSIRIS\traces\TRACE_R300R.dat ValeError dictionary update sequence element #0 has length 1; 2 is required
+ERROR::OSIRIS\traces\TRACE_R500B.dat ValeError dictionary update sequence element #0 has length 1; 2 is required
+ERROR::OSIRIS\traces\TRACE_R500R.dat ValeError dictionary update sequence element #0 has length 1; 2 is required
+ERROR::Armazones\TER_armazones_default_NIR_IMG.dat ValeError date_last_change=2020-10-29 not equal to date_modified=2019-08-09
+ERROR::ELT\TER_ELT_5_mirror_clean.dat ValeError date_last_change=2020-08-17 not equal to date_modified=2019-06-11
+ERROR::ELT\TER_ELT_mirror_aluminium.dat ValeError date_last_change=2020-08-25 not equal to date_modified=2018-11-19
+ERROR::ELT\TER_ELT_mirror_mgf2agal.dat ValeError date_last_change=2020-08-25 not equal to date_modified=2018-11-19
+ERROR::GTC\unity.dat ValeError Modified date set but no changes listed.
+ERROR::HAWKI\FPA_hawki_layout.dat ValeError date_last_change=2018-11-19 not equal to date_modified=2019-08-13
+ERROR::HAWKI\LIST_HAWKI_mirrors.dat ValeError date_last_change=2020-10-06 not equal to date_modified=2019-08-13
+ERROR::HAWKI\TER_mirror_gold.dat ValeError date_last_change=2020-10-06 not equal to date_modified=2019-01-28
+ERROR::HAWKI\TER_window.dat ValeError date_last_change=2020-10-06 not equal to date_modified=2018-11-19
+ERROR::HAWKI\filters\TC_filter_BrGamma.dat ValeError date_last_change=2019-08-13 not equal to date_modified=2018-03-21
+ERROR::HAWKI\filters\TC_filter_CH4.dat ValeError date_last_change=2019-08-13 not equal to date_modified=2018-03-21
+ERROR::HAWKI\filters\TC_filter_H.dat ValeError date_last_change=2019-08-13 not equal to date_modified=2018-03-21
+ERROR::HAWKI\filters\TC_filter_H2.dat ValeError date_last_change=2019-08-13 not equal to date_modified=2018-03-21
+ERROR::HAWKI\filters\TC_filter_J.dat ValeError date_last_change=2019-08-13 not equal to date_modified=2018-03-21
+ERROR::HAWKI\filters\TC_filter_Ks.dat ValeError date_last_change=2019-08-13 not equal to date_modified=2018-03-21
+ERROR::HAWKI\filters\TC_filter_NB1060.dat ValeError date_last_change=2019-08-13 not equal to date_modified=2018-03-21
+ERROR::HAWKI\filters\TC_filter_NB1190.dat ValeError date_last_change=2019-08-13 not equal to date_modified=2018-03-21
+ERROR::HAWKI\filters\TC_filter_NB2090.dat ValeError date_last_change=2019-08-13 not equal to date_modified=2018-03-21
+ERROR::HAWKI\filters\TC_filter_Y.dat ValeError date_last_change=2019-08-13 not equal to date_modified=2018-03-21
+ERROR::HST\TER_ELT_mirror_mgf2agal.dat ValeError date_last_change=2019-07-25 not equal to date_modified=2018-11-19
+ERROR::HST\wfc3_ir_primary_001_syn.dat ValeError Modified date set but no changes listed.
+ERROR::HST\wfc3_ir_secondary_001_syn.dat ValeError Modified date set but no changes listed.
+ERROR::LFOA\TER_focal_reducer.dat ValeError Modified date set but no changes listed.
+ERROR::LFOA\TER_mirror_aluminium.dat ValeError date_last_change=2019-07-25 not equal to date_modified=2018-11-19
+ERROR::LFOA\filters\old_filters\TC_filter_Halpha_wide_old.dat Error reading dat file expected '<document start>', but found '<block mapping start>'
+  in "<unicode string>", line 2, column 1:
+    wavelength_unit : nm
+    ^
+ERROR::METIS\FPA_linearity_GeoSnap_low_capacity.dat Error reading dat file 'NoneType' object is not iterable
+ERROR::METIS\FPA_linearity_HxRG.dat Error reading dat file 'NoneType' object is not iterable
+ERROR::METIS\FPA_metis_img_lm_layout.dat ValeError date_last_change=2022-04-22 not equal to date_modified=2020-02-04
+ERROR::METIS\FPA_metis_img_nq_aquarius_layout.dat ValeError date_last_change=2022-04-22 not equal to date_modified=2022-04-26
+ERROR::METIS\FPA_metis_img_n_geosnap_layout.dat ValeError date_last_change=2022-02-26 not equal to date_modified=2022-04-26
+ERROR::METIS\LIST_ifu_apertures.dat Error reading dat file month must be in 1..12
+ERROR::METIS\LIST_METIS_mirrors_img_n.dat Error reading dat file 'NoneType' object is not iterable
+ERROR::METIS\QE_detector_geosnap.dat ValeError date_last_change=2020-07-23 not equal to date_modified=2020-07-14
+ERROR::METIS\QE_detector_H2RG_METIS.dat ValeError date_last_change=2020-07-23 not equal to date_modified=2020-07-14
+ERROR::METIS\TER_ADC_const_90.dat Error reading dat file 'NoneType' object is not iterable
+ERROR::METIS\TER_ADC_const_90.dat ValeError date_last_change=2020-07-23 not equal to date_modified=2020-07-14
+ERROR::METIS\TER_img_dichroic.dat ValeError Modified date set but no changes listed.
+ERROR::METIS\TER_lms_grism_max.dat Error reading dat file 'NoneType' object is not iterable
+ERROR::METIS\TER_lms_grism_max.dat ValeError Modified date set but no changes listed.
+ERROR::METIS\TER_lms_grism_min.dat Error reading dat file 'NoneType' object is not iterable
+ERROR::METIS\TER_lms_grism_min.dat ValeError Modified date set but no changes listed.
+ERROR::METIS\TER_mirror_gold.dat ValeError Modified date set but no changes listed.
+ERROR::METIS\filters\TC_filter_Br_alpha.dat Error reading dat file 'dict' object has no attribute 'split'
+ERROR::METIS\filters\TC_filter_Br_alpha_ref.dat Error reading dat file 'dict' object has no attribute 'split'
+ERROR::METIS\filters\TC_filter_CO_1-0_ice.dat Error reading dat file 'dict' object has no attribute 'split'
+ERROR::METIS\filters\TC_filter_CO_ref.dat Error reading dat file 'dict' object has no attribute 'split'
+ERROR::METIS\filters\TC_filter_H2O-ice.dat Error reading dat file 'dict' object has no attribute 'split'
+ERROR::METIS\filters\TC_filter_HCI_L_long.dat Error reading dat file 'NoneType' object is not iterable
+ERROR::METIS\filters\TC_filter_HCI_L_short.dat Error reading dat file 'NoneType' object is not iterable
+ERROR::METIS\filters\TC_filter_HCI_M.dat Error reading dat file 'NoneType' object is not iterable
+ERROR::METIS\filters\TC_filter_IB_4.05.dat Error reading dat file 'dict' object has no attribute 'split'
+ERROR::METIS\filters\TC_filter_L.dat Error reading dat file 'dict' object has no attribute 'split'
+ERROR::METIS\filters\TC_filter_Lp.dat Error reading dat file 'dict' object has no attribute 'split'
+ERROR::METIS\filters\TC_filter_L_spec.dat Error reading dat file 'NoneType' object is not iterable
+ERROR::METIS\filters\TC_filter_Mp.dat Error reading dat file 'dict' object has no attribute 'split'
+ERROR::METIS\filters\TC_filter_M_spec.dat Error reading dat file 'NoneType' object is not iterable
+ERROR::METIS\filters\TC_filter_N1.dat Error reading dat file 'dict' object has no attribute 'split'
+ERROR::METIS\filters\TC_filter_N2.dat Error reading dat file 'dict' object has no attribute 'split'
+ERROR::METIS\filters\TC_filter_N3.dat Error reading dat file 'dict' object has no attribute 'split'
+ERROR::METIS\filters\TC_filter_ND_OD1.dat Error reading dat file 'NoneType' object is not iterable
+ERROR::METIS\filters\TC_filter_ND_OD2.dat Error reading dat file 'NoneType' object is not iterable
+ERROR::METIS\filters\TC_filter_ND_OD3.dat Error reading dat file 'NoneType' object is not iterable
+ERROR::METIS\filters\TC_filter_ND_OD4.dat Error reading dat file 'NoneType' object is not iterable
+ERROR::METIS\filters\TC_filter_ND_OD5.dat Error reading dat file 'NoneType' object is not iterable
+ERROR::METIS\filters\TC_filter_Ne_II.dat Error reading dat file 'dict' object has no attribute 'split'
+ERROR::METIS\filters\TC_filter_Ne_II_ref.dat Error reading dat file 'dict' object has no attribute 'split'
+ERROR::METIS\filters\TC_filter_N_spec.dat Error reading dat file 'NoneType' object is not iterable
+ERROR::METIS\filters\TC_filter_PAH_11.25.dat Error reading dat file 'dict' object has no attribute 'split'
+ERROR::METIS\filters\TC_filter_PAH_11.25_ref.dat Error reading dat file 'dict' object has no attribute 'split'
+ERROR::METIS\filters\TC_filter_PAH_3.3.dat Error reading dat file 'dict' object has no attribute 'split'
+ERROR::METIS\filters\TC_filter_PAH_3.3_ref.dat Error reading dat file 'dict' object has no attribute 'split'
+ERROR::METIS\filters\TC_filter_PAH_8.6.dat Error reading dat file 'dict' object has no attribute 'split'
+ERROR::METIS\filters\TC_filter_PAH_8.6_ref.dat Error reading dat file 'dict' object has no attribute 'split'
+ERROR::METIS\filters\TC_filter_Q1.dat Error reading dat file 'dict' object has no attribute 'split'
+ERROR::METIS\filters\TC_filter_short-L.dat Error reading dat file 'dict' object has no attribute 'split'
+ERROR::METIS\filters\TC_filter_S_IV.dat Error reading dat file 'dict' object has no attribute 'split'
+ERROR::METIS\filters\TC_filter_S_IV_ref.dat Error reading dat file 'dict' object has no attribute 'split'
+ERROR::MICADO\FPA_linearity.dat ValeError date_last_change=2022-03-17 not equal to date_modified=2018-11-19
+ERROR::MICADO\LIST_RO_SCAO_mirrors.dat ValeError date_last_change=2020-07-18 not equal to date_modified=2020-08-17
+ERROR::MICADO\MASK_slit_3000x20.dat ValeError date_last_change=2020-03-24 not equal to date_modified=2019-07-10
+ERROR::MICADO\MASK_slit_3000x50.dat ValeError date_last_change=2020-03-24 not equal to date_modified=2019-07-10
+ERROR::MICADO\TER_entrance_window.dat ValeError Changes listed but no modified date set.
+ERROR::MICADO\TER_MICADO_mirror_mgf2agal.dat ValeError date_last_change=2019-07-25 not equal to date_modified=2018-11-19
+ERROR::MICADO\TER_mirror_gold.dat ValeError date_last_change=2023-07-13 not equal to date_modified=2023-07-23
+ERROR::MICADO\TER_SCAO_dichroic.dat ValeError date_last_change=2023-07-04 not equal to date_modified=2023-06-13
+ERROR::MICADO\filters\TC_filter_blank.dat ValeError Modified date set but no changes listed.
+ERROR::MICADO\filters\TC_filter_block.dat ValeError Modified date set but no changes listed.
+ERROR::MICADO\filters\TC_filter_Ks2.dat ValeError Modified date set but no changes listed.
+ERROR::MICADO\filters\TC_filter_ND1.dat ValeError Modified date set but no changes listed.
+ERROR::MICADO\filters\TC_filter_ND3.dat ValeError Modified date set but no changes listed.
+ERROR::MICADO\filters\TC_filter_open.dat ValeError Modified date set but no changes listed.
+ERROR::MICADO\filters\TC_filter_stop_IJH.dat ValeError Modified date set but no changes listed.
+ERROR::MICADO\filters\TC_filter_stop_K.dat ValeError Modified date set but no changes listed.
+ERROR::MICADO_Sci\TER_MICADO_IMG_common.dat ValeError Modified date set but no changes listed.
+ERROR::MICADO_Sci\TER_MICADO_RO.dat ValeError Modified date set but no changes listed.
+ERROR::MICADO_Sci\TER_MORFEO_MMS.dat ValeError Modified date set but no changes listed.
+ERROR::MORFEO\TER_mirror_silver.dat ValeError date_last_change=2020-06-23 not equal to date_modified=2020-06-22
+ERROR::MORFEO\TER_MORFEO_entrance_window.dat Unexpected Exception <class 'TypeError'> '<' not supported between instances of 'datetime.date' and 'int'
+ERROR::MORFEO\TER_MORFEO_mirror_aluminium.dat ValeError date_last_change=2019-07-25 not equal to date_modified=2018-11-19
+ERROR::MORFEO\TER_MORFEO_mirror_mgf2agal.dat ValeError date_last_change=2020-08-25 not equal to date_modified=2018-11-19
+ERROR::OSIRIS\QE_OSIRIS_new_detector.dat ValeError date_last_change=2022-06-14 not equal to date_modified=2022-03-12
+ERROR::OSIRIS\QE_OSIRIS_old_detector_plus_M3.dat ValeError Modified date set but no changes listed.
+ERROR::OSIRIS\unity.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
+ERROR::OSIRIS\code\OSIRIS_stitchedArc.dat Error reading dat file 'comments'
+ERROR::OSIRIS\code\OSIRIS_stitchedArc.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
+ERROR::OSIRIS\tests\test_data\fg191b2b.dat Error reading dat file 'comments'
+ERROR::OSIRIS\tests\test_data\fg191b2b.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
+ERROR::OSIRIS\tests\test_data\OSIRIS_stitchedArc.dat Error reading dat file 'comments'
+ERROR::OSIRIS\tests\test_data\OSIRIS_stitchedArc.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
+ERROR::OSIRIS\traces\TRACE_R1000B.dat Error reading dat file string indices must be integers
+ERROR::OSIRIS\traces\TRACE_R1000B.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
+ERROR::OSIRIS\traces\TRACE_R1000R.dat Error reading dat file string indices must be integers
+ERROR::OSIRIS\traces\TRACE_R1000R.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
+ERROR::OSIRIS\traces\TRACE_R2000B.dat Error reading dat file string indices must be integers
+ERROR::OSIRIS\traces\TRACE_R2000B.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
+ERROR::OSIRIS\traces\TRACE_R2500I.dat Error reading dat file string indices must be integers
+ERROR::OSIRIS\traces\TRACE_R2500I.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
+ERROR::OSIRIS\traces\TRACE_R2500R.dat Error reading dat file string indices must be integers
+ERROR::OSIRIS\traces\TRACE_R2500R.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
+ERROR::OSIRIS\traces\TRACE_R2500U.dat Error reading dat file string indices must be integers
+ERROR::OSIRIS\traces\TRACE_R2500U.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
+ERROR::OSIRIS\traces\TRACE_R2500V.dat Error reading dat file string indices must be integers
+ERROR::OSIRIS\traces\TRACE_R2500V.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
+ERROR::OSIRIS\traces\TRACE_R300B.dat Error reading dat file string indices must be integers
+ERROR::OSIRIS\traces\TRACE_R300B.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
+ERROR::OSIRIS\traces\TRACE_R300R.dat Error reading dat file string indices must be integers
+ERROR::OSIRIS\traces\TRACE_R300R.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
+ERROR::OSIRIS\traces\TRACE_R500B.dat Error reading dat file string indices must be integers
+ERROR::OSIRIS\traces\TRACE_R500B.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
+ERROR::OSIRIS\traces\TRACE_R500R.dat Error reading dat file string indices must be integers
+ERROR::OSIRIS\traces\TRACE_R500R.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
+ERROR::test_package\TC_filter_Ks.dat ValeError date_last_change=2019-11-09 not equal to date_modified=2018-01-28
+ERROR::VLT\LIST_VLT_mirrors.dat ValeError date_last_change=2020-10-06 not equal to date_modified=2019-08-13
+ERROR::VLT\TC_mirror_aluminium.dat ValeError date_last_change=2019-08-13 not equal to date_modified=2018-11-19
+ERROR::WFC3\TER_filter_F098M.dat ValeError Modified date set but no changes listed.
+ERROR::WFC3\TER_filter_F105W.dat ValeError Modified date set but no changes listed.
+ERROR::WFC3\TER_filter_F110W.dat ValeError Modified date set but no changes listed.
+ERROR::WFC3\TER_filter_F125W.dat ValeError Modified date set but no changes listed.
+ERROR::WFC3\TER_filter_F126N.dat ValeError Modified date set but no changes listed.
+ERROR::WFC3\TER_filter_F127M.dat ValeError Modified date set but no changes listed.
+ERROR::WFC3\TER_filter_F128N.dat ValeError Modified date set but no changes listed.
+ERROR::WFC3\TER_filter_F130N.dat ValeError Modified date set but no changes listed.
+ERROR::WFC3\TER_filter_F132N.dat ValeError Modified date set but no changes listed.
+ERROR::WFC3\TER_filter_F139M.dat ValeError Modified date set but no changes listed.
+ERROR::WFC3\TER_filter_F140W.dat ValeError Modified date set but no changes listed.
+ERROR::WFC3\TER_filter_F153M.dat ValeError Modified date set but no changes listed.
+ERROR::WFC3\TER_filter_F160W.dat ValeError Modified date set but no changes listed.
+ERROR::WFC3\TER_filter_F164N.dat ValeError Modified date set but no changes listed.
+ERROR::WFC3\TER_filter_F167N.dat ValeError Modified date set but no changes listed.
+ERROR::WFC3\wfc3_ir_cor_004_syn.dat ValeError Modified date set but no changes listed.
+ERROR::WFC3\wfc3_ir_csm_001_syn.dat ValeError Modified date set but no changes listed.
+ERROR::WFC3\wfc3_ir_dn_002_syn.dat ValeError Modified date set but no changes listed.
+ERROR::WFC3\wfc3_ir_fold_001_syn.dat ValeError Modified date set but no changes listed.
+ERROR::WFC3\wfc3_ir_mask_001_syn.dat ValeError Modified date set but no changes listed.
+ERROR::WFC3\wfc3_ir_mir1_001_syn.dat ValeError Modified date set but no changes listed.
+ERROR::WFC3\wfc3_ir_mir2_001_syn.dat ValeError Modified date set but no changes listed.
+ERROR::WFC3\wfc3_ir_qe_003_syn.dat ValeError Modified date set but no changes listed.
+ERROR::WFC3\wfc3_ir_rcp_001_syn.dat ValeError Modified date set but no changes listed.
+ERROR::WFC3\wfc3_ir_win_001_syn.dat ValeError Modified date set but no changes listed.

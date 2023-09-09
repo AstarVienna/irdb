@@ -1,0 +1,19 @@
+# description : Slit mask for the long slit (15 arcsec x 20 mas)
+# author : Kieran Leschinski
+# source : ELT-TRE-MCD-56300-0014_3.0
+# date_created  : 2019-07-10
+# date_modified : 2023-07-24
+# status : FDR design
+# type : aperture:slit_geometry
+# x_unit : arcsec
+# y_unit : arcsec
+# changes :
+# - 2019-07-10 (KL) Created the file
+# - 2020-03-24 (KL) Changed geometry to 15000x50mas
+# - 2023-07-13 (OC) Changed geometry to 15000x20mas
+# - 2023-07-24 (OC) Position in x corrected
+x       y
+-5.0    -0.010
+10.0    -0.010
+10.0     0.010
+-5.0     0.010

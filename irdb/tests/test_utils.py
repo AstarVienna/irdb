@@ -1,45 +1,38 @@
-import os
-from os import path as pth
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Tests for irdb.utils
 
-from irdb.utils import load_badge_yaml, write_badge_yaml, make_badge_report
-from irdb.system_dict import SystemDict
+Does currently not test utils.recursive_filename_search()
+"""
 
+from pathlib import Path
 
-class TestMakeBadgeReport:
-    """
-    Run this to make a Badge report
+import pytest
 
-    Run test_package_contents before running this test
-    """
-    def test_reads_yaml_correctly(self):
-        # if not pth.exists("../_REPORTS/badges.yaml"):
-        #     with open(pth.join(pth.dirname(__file__),
-        #                        "../_REPORTS/badges.yaml"), "w") as f:
-        #         f.write("")
-
-        print(make_badge_report())
+from irdb.utils import get_packages
 
 
-class TestLoadBadgeYaml:
-    def test_reads_in_badge_yaml(self):
-        badges = load_badge_yaml()
-
-        assert isinstance(badges, SystemDict)
-        assert len(badges.dic) > 0
-
-        print(badges)
+@pytest.fixture(name="packages", scope="class")
+def fixture_packages():
+    return dict(get_packages())
 
 
-class TestWriteBadgeYaml:
-    def test_write_badge_yaml_contents_to_file(self):
-        fname = "new_badges.yaml"
-        badges = load_badge_yaml()
-        write_badge_yaml(badges, fname)
-        new_badges = load_badge_yaml(fname)
+class TestGetPackages:
+    @pytest.mark.usefixtures("packages")
+    def test_includes_various_packages(self, packages):
+        wanted = {"Armazones", "ELT", "METIS", "MICADO", "test_package"}
+        assert all(pkg_name in packages.keys() for pkg_name in wanted)
 
-        for key in badges.dic:
-            assert badges[key] == new_badges[key]
+    @pytest.mark.usefixtures("packages")
+    def test_doesnt_includes_specials(self, packages):
+        wanted = {"irdb", "docs", "_REPORTS", ".github"}
+        assert all(pkg_name not in packages.keys() for pkg_name in wanted)
 
-        dname = pth.abspath(pth.join(pth.dirname(__file__),
-                                     "../", "../", "_REPORTS"))
-        os.remove(pth.join(dname, fname))
+    @pytest.mark.usefixtures("packages")
+    def test_values_are_path_objects(self, packages):
+        assert isinstance(packages["test_package"], Path)
+
+    @pytest.mark.usefixtures("packages")
+    def test_only_includes_dirs(self, packages):
+        assert all(path.is_dir() for path in packages.values())

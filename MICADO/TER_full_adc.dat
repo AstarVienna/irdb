@@ -2,7 +2,7 @@
 # description : Combined throughput of 8 surfaces and 4 prisms of the ADC
 # author : Ric Davies
 # sources: materials properties from Joost van den Born with generic AR coatings
-# date_created : 2016
+# date_created : 2016-01-01
 # date_modified : 2023-06-14
 # status : post FDR
 # type : adc:transmission
