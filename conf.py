@@ -30,6 +30,7 @@ sphinx
 
 import sys
 import os
+from pathlib import Path
 
 sys.path.insert(0, os.path.abspath('/'))
 sys.path.insert(0, os.path.abspath('docs'))
@@ -97,7 +98,18 @@ def add_hidden_cell_to_ipynb_files():
                 f.seek(0)
                 f.write(contents)
 
+
 # add_hidden_cell_to_ipynb_files()
+
+
+def remove_inst_pkgs_symlink():
+    """Remove inst_pkgs symlinks."""
+    for path in list(Path(".").rglob('inst_pkgs')):
+        if path.is_symlink():
+            path.unlink()
+
+
+remove_inst_pkgs_symlink()
 
 # Matplotlib plot directive config parameters
 plot_html_show_source_link = False

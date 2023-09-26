@@ -21,12 +21,12 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        python-version: ['3.7', '3.8', '3.9']
+        python-version: ['3.8', '3.9', '3.10', '3.11']
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
@@ -47,12 +47,12 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        python-version: ['3.7', '3.8', '3.9']
+        python-version: ['3.8', '3.9', '3.10', '3.11']
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
@@ -76,12 +76,12 @@ jobs:
     # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
     if: github.ref == 'dev_master' || github.ref == 'master' || github.base_ref == ''
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           # No matrix is used since this is a time-consuming tosk.
-          python-version: 3.9
+          python-version: 3.11
       - name: Install dependencies
         # TODO: Also test against ScopeSIM@master?
         # TODO: And/or ScopeSIM_Templates@dev_master?
@@ -98,4 +98,5 @@ jobs:
       - name: Run MICADO Notebooks
         run: |
           sed -i "s/USE_FULL_DETECTOR = True/USE_FULL_DETECTOR = False/g" MICADO/docs/example_notebooks/*.ipynb
+          sed -i 's/# cmd\[\\"!SIM.spectral.spectral_bin_width/cmd\[\\"!SIM.spectral.spectral_bin_width/g'   MICADO/docs/example_notebooks/*.ipynb
           for fn in MICADO/docs/example_notebooks/*.ipynb; do echo "${fn}"; /usr/bin/time -v jupytext --execute --update "${fn}"; done

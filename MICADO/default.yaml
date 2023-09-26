@@ -1,13 +1,18 @@
+---
 ### default observation parameters needed for a MICADO simulation
+
 object : configuration
 alias : OBS
 name : MICADO_default_configuration
 description : default parameters needed for a MICADO simulation
+date_modified: 2023-07-13
+changes:
+  - 2023-07-13 (OC) add modes for FDR slits, deprecate pre-FDR slits
 
 packages :
 - Armazones
 - ELT
-- MAORY
+- MORFEO
 - MICADO
 
 yamls :
@@ -17,6 +22,7 @@ yamls :
 - MICADO_H4RG.yaml
 
 properties :
+  instrument : MICADO
   modes : ["SCAO", "IMG_4mas"]
   airmass : 1.2
   declination : -30
@@ -24,7 +30,6 @@ properties :
   pupil_angle : 0
   dit : 60
   ndit : 1
-  instrument : MICADO
   catg : SCIENCE
   tech : IMAGE
   type : OBJECT
@@ -50,7 +55,7 @@ mode_yamls :
   name : MCAO
   description : "MCAO optical system"
   yamls :
-  - MAORY.yaml
+  - MORFEO.yaml
 
 - object : observation
   alias: OBS
@@ -83,8 +88,51 @@ mode_yamls :
 
 - object : observation
   alias: OBS
+  name : SPEC_15000x20
+  description : "spectrograph : slit size 15000x20mas"
+  yamls :
+  - MICADO_SPEC.yaml
+  properties :
+    trace_file : TRACE_MICADO.fits
+    slit_file : MASK_slit_15000x20.dat
+    filter_name_fw1: Spec_HK
+    filter_name_fw2: open
+    filter_name_pupil: open
+
+- object : observation
+  alias: OBS
+  name : SPEC_3000x48
+  description : "spectrograph : slit size 3000x48mas"
+  yamls :
+  - MICADO_SPEC.yaml
+  properties :
+    trace_file : TRACE_MICADO.fits
+    slit_file : MASK_slit_3000x48.dat
+    filter_name_fw1: Spec_HK
+    filter_name_fw2: open
+    filter_name_pupil: open
+
+- object : observation
+  alias : OBS
+  name : SPEC_3000x16
+  description : "spectrograph : slit size 3000x16mas"
+  yamls :
+  - MICADO_SPEC.yaml
+  properties :
+    trace_file : TRACE_MICADO.fits
+    slit_file : MASK_slit_3000x16.dat
+    filter_name_fw1 : Spec_IJ
+    filter_name_fw2 : open
+    filter_name_pupil : open
+
+- object : observation
+  alias: OBS
   name : SPEC_15000x50
   description : "spectrograph : slit size 15000x50mas"
+  deprecate : "Deprecated instrument mode. For spectroscopy use
+  - SPEC_3000x16
+  - SPEC_3000x48
+  - SPEC_15000x20"
   yamls :
   - MICADO_SPEC.yaml
   properties :
@@ -98,6 +146,10 @@ mode_yamls :
   alias: OBS
   name : SPEC_3000x50
   description : "spectrograph : slit size 3000x50mas"
+  deprecate : "Deprecated instrument mode. For spectroscopy use
+  - SPEC_3000x16
+  - SPEC_3000x48
+  - SPEC_15000x20"
   yamls :
   - MICADO_SPEC.yaml
   properties :
@@ -111,6 +163,10 @@ mode_yamls :
   alias: OBS
   name : SPEC_3000x20
   description : "spectrograph : slit size 3000x20mas"
+  deprecate : "Deprecated instrument mode. For spectroscopy use
+  - SPEC_3000x16
+  - SPEC_3000x48
+  - SPEC_15000x20"
   yamls :
   - MICADO_SPEC.yaml
   properties :
@@ -138,7 +194,7 @@ properties :
     wave_max : 2.5
 
   computing :
-    preload_field_of_view : True
+    preload_field_of_views : True
 
   reports:
     preamble_file: "../docs/micado.rst"

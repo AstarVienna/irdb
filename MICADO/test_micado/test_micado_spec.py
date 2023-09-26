@@ -35,7 +35,10 @@ pytestmark = pytest.mark.skip("Takes too much memory")
 
 
 class TestInit:
-    @pytest.mark.parametrize("modes", [["SCAO", "SPEC_3000x20"],
+    @pytest.mark.parametrize("modes", [["SCAO", "SPEC_3000x16"],
+                                       ["SCAO", "SPEC_3000x48"],
+                                       ["SCAO", "SPEC_15000x20"],
+                                       ["SCAO", "SPEC_3000x20"],
                                        ["SCAO", "SPEC_3000x50"],
                                        ["SCAO", "SPEC_15000x50"]])
     def test_loads_optical_train(self, modes):

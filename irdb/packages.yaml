@@ -11,9 +11,9 @@ GTC:
   path: telescopes
   stable: GTC
 HAWKI:
-  latest: HAWKI
+  latest: HAWKI.2023-06-14
   path: instruments
-  stable: HAWKI
+  stable: HAWKI.2023-06-14
 HST:
   latest: HST
   path: telescopes
@@ -26,22 +26,22 @@ LaPalma:
   latest: LaPalma
   path: locations
   stable: LaPalma
-MAORY:
-  latest: MAORY.2022-04-26
-  path: instruments
-  stable: MAORY.2022-04-26
 METIS:
   latest: METIS.2022-04-26
   path: instruments
   stable: METIS.2022-04-26
 MICADO:
-  latest: MICADO.2023-03-08
+  latest: MICADO.2023-07-14.dev
   path: instruments
   stable: MICADO.2023-03-08
 MICADO_Sci:
   latest: MICADO_Sci
   path: instruments
   stable: MICADO_Sci
+MORFEO:
+  latest: MORFEO.2022-04-26
+  path: instruments
+  stable: MORFEO.2022-04-26
 OSIRIS:
   latest: OSIRIS
   path: instruments

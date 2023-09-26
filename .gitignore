@@ -9,7 +9,10 @@ _Legacy_packages/
 *ezphp.exe
 to_be_processed/
 _TO_BE_PROCESSED/
-_REPORTS/
+_REPORTS/*
+!badge_report_log.txt
+!badges.yaml
+!badges.md
 .ipynb_checkpoints/
 
 *TEST.fits
@@ -75,3 +78,10 @@ MANIFEST
 /GTC/code/psf_osiris_r.fits
 /OSIRIS/tests/osiris_test.fits
 TEST*.fits
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Pylint
+.pylint.d/

@@ -1,164 +1,319 @@
+# IRDB Packages Report
 
-## Armazones: 
-  * contents: 
-    * [![](https://img.shields.io/badge/all_yamls_readable-True-green)]()
-  * [![](https://img.shields.io/badge/package_type-support-blue)]()
-  * structure: 
-    * [![](https://img.shields.io/badge/no_missing_files-True-green)]()
-    * [![](https://img.shields.io/badge/self_named_yaml-True-green)]()
-## ELT: 
-  * contents: 
-    * [![](https://img.shields.io/badge/all_yamls_readable-True-green)]()
-  * [![](https://img.shields.io/badge/package_type-support-blue)]()
-  * structure: 
-    * [![](https://img.shields.io/badge/no_missing_files-True-green)]()
-    * [![](https://img.shields.io/badge/self_named_yaml-True-green)]()
-## GTC: 
-  * contents: 
-    * [![](https://img.shields.io/badge/all_yamls_readable-True-green)]()
-  * [![](https://img.shields.io/badge/package_type-support-blue)]()
-  * structure: 
-    * [![](https://img.shields.io/badge/no_missing_files-True-green)]()
-    * [![](https://img.shields.io/badge/self_named_yaml-True-green)]()
-## HAWKI: 
-  * contents: 
-    * [![](https://img.shields.io/badge/all_yamls_readable-True-green)]()
-  * [![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
-  * structure: 
-    * [![](https://img.shields.io/badge/default_yaml-True-green)]()
-    * [![](https://img.shields.io/badge/no_missing_files-True-green)]()
-    * [![](https://img.shields.io/badge/self_named_yaml-True-green)]()
-## HST: 
-  * contents: 
-    * [![](https://img.shields.io/badge/all_yamls_readable-True-green)]()
-  * [![](https://img.shields.io/badge/package_type-support-blue)]()
-  * structure: 
-    * [![](https://img.shields.io/badge/no_missing_files-True-green)]()
-    * [![](https://img.shields.io/badge/self_named_yaml-True-green)]()
-## LFOA: 
-  * contents: 
-    * [![](https://img.shields.io/badge/all_yamls_readable-True-green)]()
-  * [![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
-  * structure: 
-    * [![](https://img.shields.io/badge/default_yaml-True-green)]()
-    * [![](https://img.shields.io/badge/no_missing_files-True-green)]()
-    * [![](https://img.shields.io/badge/self_named_yaml-True-green)]()
-## LaPalma: 
-  * contents: 
-    * [![](https://img.shields.io/badge/all_yamls_readable-True-green)]()
-  * [![](https://img.shields.io/badge/package_type-support-blue)]()
-  * structure: 
-    * [![](https://img.shields.io/badge/no_missing_files-True-green)]()
-    * [![](https://img.shields.io/badge/self_named_yaml-True-green)]()
-## MAAT: 
-  * contents: 
-    * [![](https://img.shields.io/badge/all_yamls_readable-True-green)]()
-  * [![](https://img.shields.io/badge/package_type-support-blue)]()
-  * structure: 
-    * [![](https://img.shields.io/badge/no_missing_files-True-green)]()
-    * [![](https://img.shields.io/badge/self_named_yaml-True-green)]()
-## MAORY: 
-  * contents: 
-    * [![](https://img.shields.io/badge/all_yamls_readable-True-green)]()
-  * [![](https://img.shields.io/badge/package_type-support-blue)]()
-  * structure: 
-    * [![](https://img.shields.io/badge/no_missing_files-True-green)]()
-    * [![](https://img.shields.io/badge/self_named_yaml-True-green)]()
-## METIS: 
-  * contents: 
-    * [![](https://img.shields.io/badge/all_yamls_readable-True-green)]()
-  * [![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
-  * structure: 
-    * [![](https://img.shields.io/badge/FPA_linearity.dat-missing-red)]()
-    * [![](https://img.shields.io/badge/FPA_linearity_Aquarius.dat-missing-red)]()
-    * [![](https://img.shields.io/badge/INST_METIS_wavefront_error_budget.dat-missing-red)]()
-    * [![](https://img.shields.io/badge/QE_detector_Aquarius.dat-missing-red)]()
-    * [![](https://img.shields.io/badge/QE_detector_H2RG.dat-missing-red)]()
-    * [![](https://img.shields.io/badge/QE_detector_geosnap.dat-missing-red)]()
-    * [![](https://img.shields.io/badge/TER_ELT_6_mirror_field_track.dat-missing-red)]()
-    * [![](https://img.shields.io/badge/TER_armazones_default_MIR_IMG.dat-missing-red)]()
-    * [![](https://img.shields.io/badge/default_yaml-True-green)]()
-    * [![](https://img.shields.io/badge/self_named_yaml-True-green)]()
-## MICADO: 
-  * contents: 
-    * [![](https://img.shields.io/badge/all_yamls_readable-True-green)]()
-  * [![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
-  * structure: 
-    * [![](https://img.shields.io/badge/default_yaml-True-green)]()
-    * [![](https://img.shields.io/badge/no_missing_files-True-green)]()
-    * [![](https://img.shields.io/badge/self_named_yaml-True-green)]()
-## MICADO_ETC: 
-  * contents: 
-    * [![](https://img.shields.io/badge/all_yamls_readable-True-green)]()
-  * [![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
-  * structure: 
-    * [![](https://img.shields.io/badge/MICADO_AnisoCADO_rms_map.fits-missing-red)]()
-    * [![](https://img.shields.io/badge/default_yaml-True-green)]()
-    * [![](https://img.shields.io/badge/self_named_yaml-True-green)]()
-## MICADO_Sci: 
-  * contents: 
-    * [![](https://img.shields.io/badge/all_yamls_readable-True-green)]()
-  * [![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
-  * structure: 
-    * [![](https://img.shields.io/badge/FPA_linearity.dat-missing-red)]()
-    * [![](https://img.shields.io/badge/MICADO_AnisoCADO_rms_map.fits-missing-red)]()
-    * [![](https://img.shields.io/badge/QE_detector_H2RG.dat-missing-red)]()
-    * [![](https://img.shields.io/badge/TER_ELT_5_mirror.dat-missing-red)]()
-    * [![](https://img.shields.io/badge/TER_ELT_System_20190611.dat-missing-red)]()
-    * [![](https://img.shields.io/badge/TER_armazones_default_NIR_IMG.dat-missing-red)]()
-    * [![](https://img.shields.io/badge/default_yaml-True-green)]()
-    * [![](https://img.shields.io/badge/self_named_yaml-True-green)]()
-## OSIRIS: 
-  * contents: 
-    * [![](https://img.shields.io/badge/all_yamls_readable-True-green)]()
-  * [![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
-  * structure: 
-    * [![](https://img.shields.io/badge/default_yaml-True-green)]()
-    * [![](https://img.shields.io/badge/no_missing_files-True-green)]()
-    * [![](https://img.shields.io/badge/self_named_yaml-True-green)]()
-## Paranal: 
-  * contents: 
-    * [![](https://img.shields.io/badge/all_yamls_readable-True-green)]()
-  * [![](https://img.shields.io/badge/package_type-support-blue)]()
-  * structure: 
-    * [![](https://img.shields.io/badge/no_missing_files-True-green)]()
-    * [![](https://img.shields.io/badge/self_named_yaml-True-green)]()
-## SimpleCADO: 
-  * contents: 
-    * [![](https://img.shields.io/badge/all_yamls_readable-True-green)]()
-  * [![](https://img.shields.io/badge/package_type-support-blue)]()
-  * structure: 
-    * [![](https://img.shields.io/badge/no_missing_files-True-green)]()
-    * [![](https://img.shields.io/badge/self_named_yaml-True-green)]()
-## VLT: 
-  * contents: 
-    * [![](https://img.shields.io/badge/all_yamls_readable-True-green)]()
-  * [![](https://img.shields.io/badge/package_type-support-blue)]()
-  * structure: 
-    * [![](https://img.shields.io/badge/no_missing_files-True-green)]()
-    * [![](https://img.shields.io/badge/self_named_yaml-True-green)]()
-## ViennaLT: 
-  * contents: 
-    * [![](https://img.shields.io/badge/all_yamls_readable-True-green)]()
-  * [![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
-  * structure: 
-    * [![](https://img.shields.io/badge/QE_SBIG.dat-missing-red)]()
-    * [![](https://img.shields.io/badge/TER_atmosphere.dat-missing-red)]()
-    * [![](https://img.shields.io/badge/default_yaml-True-green)]()
-    * [![](https://img.shields.io/badge/self_named_yaml-True-green)]()
-## WFC3: 
-  * contents: 
-    * [![](https://img.shields.io/badge/all_yamls_readable-True-green)]()
-  * [![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
-  * structure: 
-    * [![](https://img.shields.io/badge/default_yaml-True-green)]()
-    * [![](https://img.shields.io/badge/no_missing_files-True-green)]()
-    * [![](https://img.shields.io/badge/self_named_yaml-True-green)]()
-## test_package: 
-  * contents: 
-    * [![](https://img.shields.io/badge/all_yamls_readable-True-green)]()
-  * [![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
-  * structure: 
-    * [![](https://img.shields.io/badge/default_yaml-True-green)]()
-    * [![](https://img.shields.io/badge/no_missing_files-True-green)]()
-    * [![](https://img.shields.io/badge/self_named_yaml-True-green)]()
+**Created on UTC 2023-08-01 22:03:17**
+
+For details on errors and conflicts, see badge report log file in this directory.
+
+
+## Armazones
+[![](https://img.shields.io/badge/package_type-support-deepskyblue)]()
+### Structure
+* [![](https://img.shields.io/badge/self_named_yaml-found-green)]()
+* [![](https://img.shields.io/badge/no_missing_files-green)]()
+### Contents
+* [![](https://img.shields.io/badge/all_yamls_readable-green)]()
+### Dates
+* [![](https://img.shields.io/badge/TER_armazones_default_NIR_IMG.dat-conflict-orange)]()
+## ELT
+[![](https://img.shields.io/badge/package_type-support-deepskyblue)]()
+### Structure
+* [![](https://img.shields.io/badge/self_named_yaml-found-green)]()
+* [![](https://img.shields.io/badge/no_missing_files-green)]()
+### Contents
+* [![](https://img.shields.io/badge/all_yamls_readable-green)]()
+### Dates
+* [![](https://img.shields.io/badge/TER_ELT_5_mirror_clean.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TER_ELT_mirror_aluminium.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TER_ELT_mirror_mgf2agal.dat-conflict-orange)]()
+## ERIS
+[![](https://img.shields.io/badge/package_type-support-deepskyblue)]()
+### Structure
+* [![](https://img.shields.io/badge/self_named_yaml-not_found-red)]()
+* [![](https://img.shields.io/badge/no_files_referenced-yellowgreen)]()
+### Contents
+* [![](https://img.shields.io/badge/no_yaml_files-yellowgreen)]()
+## FORS
+[![](https://img.shields.io/badge/package_type-support-deepskyblue)]()
+### Structure
+* [![](https://img.shields.io/badge/self_named_yaml-not_found-red)]()
+* [![](https://img.shields.io/badge/no_files_referenced-yellowgreen)]()
+### Contents
+* [![](https://img.shields.io/badge/no_yaml_files-yellowgreen)]()
+## GTC
+[![](https://img.shields.io/badge/package_type-support-deepskyblue)]()
+### Structure
+* [![](https://img.shields.io/badge/self_named_yaml-found-green)]()
+* [![](https://img.shields.io/badge/no_missing_files-green)]()
+### Contents
+* [![](https://img.shields.io/badge/all_yamls_readable-green)]()
+### Dates
+* [![](https://img.shields.io/badge/unity.dat-conflict-orange)]()
+## HARMONI
+[![](https://img.shields.io/badge/package_type-support-deepskyblue)]()
+### Structure
+* [![](https://img.shields.io/badge/self_named_yaml-not_found-red)]()
+* [![](https://img.shields.io/badge/no_files_referenced-yellowgreen)]()
+### Contents
+* [![](https://img.shields.io/badge/no_yaml_files-yellowgreen)]()
+## HAWKI
+[![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
+### Structure
+* [![](https://img.shields.io/badge/default_yaml-OK-green)]()
+* [![](https://img.shields.io/badge/self_named_yaml-found-green)]()
+* [![](https://img.shields.io/badge/no_missing_files-green)]()
+### Contents
+* [![](https://img.shields.io/badge/all_yamls_readable-green)]()
+### Dates
+* [![](https://img.shields.io/badge/FPA_hawki_layout.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/LIST_HAWKI_mirrors.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TER_mirror_gold.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TER_window.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TC_filter_BrGamma.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TC_filter_CH4.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TC_filter_H.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TC_filter_H2.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TC_filter_J.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TC_filter_Ks.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TC_filter_NB1060.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TC_filter_NB1190.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TC_filter_NB2090.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TC_filter_Y.dat-conflict-orange)]()
+## HST
+[![](https://img.shields.io/badge/package_type-support-deepskyblue)]()
+### Structure
+* [![](https://img.shields.io/badge/self_named_yaml-found-green)]()
+* [![](https://img.shields.io/badge/no_missing_files-green)]()
+### Contents
+* [![](https://img.shields.io/badge/all_yamls_readable-green)]()
+### Dates
+* [![](https://img.shields.io/badge/TER_ELT_mirror_mgf2agal.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/wfc3_ir_primary_001_syn.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/wfc3_ir_secondary_001_syn.dat-conflict-orange)]()
+## KMOS
+[![](https://img.shields.io/badge/package_type-support-deepskyblue)]()
+### Structure
+* [![](https://img.shields.io/badge/self_named_yaml-not_found-red)]()
+* [![](https://img.shields.io/badge/no_files_referenced-yellowgreen)]()
+### Contents
+* [![](https://img.shields.io/badge/no_yaml_files-yellowgreen)]()
+## LaPalma
+[![](https://img.shields.io/badge/package_type-support-deepskyblue)]()
+### Structure
+* [![](https://img.shields.io/badge/self_named_yaml-found-green)]()
+* [![](https://img.shields.io/badge/no_missing_files-green)]()
+### Contents
+* [![](https://img.shields.io/badge/all_yamls_readable-green)]()
+## LFOA
+[![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
+### Structure
+* [![](https://img.shields.io/badge/default_yaml-OK-green)]()
+* [![](https://img.shields.io/badge/self_named_yaml-found-green)]()
+* [![](https://img.shields.io/badge/no_missing_files-green)]()
+### Contents
+* [![](https://img.shields.io/badge/all_yamls_readable-green)]()
+* [![](https://img.shields.io/badge/TC_filter_Halpha_wide_old.dat-error-red)]()
+### Dates
+* [![](https://img.shields.io/badge/TER_focal_reducer.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TER_mirror_aluminium.dat-conflict-orange)]()
+## MCIFU
+[![](https://img.shields.io/badge/package_type-support-deepskyblue)]()
+### Structure
+* [![](https://img.shields.io/badge/self_named_yaml-not_found-red)]()
+* [![](https://img.shields.io/badge/no_files_referenced-yellowgreen)]()
+### Contents
+* [![](https://img.shields.io/badge/no_yaml_files-yellowgreen)]()
+## METIS
+[![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
+### Structure
+* [![](https://img.shields.io/badge/default_yaml-OK-green)]()
+* [![](https://img.shields.io/badge/self_named_yaml-found-green)]()
+* [![](https://img.shields.io/badge/TER_ELT_6_mirror_field_track.dat-missing-red)]()
+* [![](https://img.shields.io/badge/QE_detector_Aquarius.dat-missing-red)]()
+* [![](https://img.shields.io/badge/FPA_linearity_Aquarius.dat-missing-red)]()
+### Contents
+* [![](https://img.shields.io/badge/all_yamls_readable-green)]()
+### Dates
+* [![](https://img.shields.io/badge/FPA_metis_img_lm_layout.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/FPA_metis_img_nq_aquarius_layout.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/FPA_metis_img_n_geosnap_layout.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/QE_detector_geosnap.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/QE_detector_H2RG_METIS.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TER_img_dichroic.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TER_mirror_gold.dat-conflict-orange)]()
+## MICADO
+[![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
+### Structure
+* [![](https://img.shields.io/badge/default_yaml-OK-green)]()
+* [![](https://img.shields.io/badge/self_named_yaml-found-green)]()
+* [![](https://img.shields.io/badge/no_missing_files-green)]()
+### Contents
+* [![](https://img.shields.io/badge/all_yamls_readable-green)]()
+### Dates
+* [![](https://img.shields.io/badge/FPA_linearity.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/LIST_RO_SCAO_mirrors.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/MASK_slit_3000x20.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/MASK_slit_3000x50.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TER_entrance_window.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TER_MICADO_mirror_mgf2agal.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TER_mirror_gold.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TER_SCAO_dichroic.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TC_filter_blank.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TC_filter_block.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TC_filter_Ks2.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TC_filter_ND1.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TC_filter_ND3.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TC_filter_open.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TC_filter_stop_IJH.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TC_filter_stop_K.dat-conflict-orange)]()
+## MICADO_Sci
+[![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
+### Structure
+* [![](https://img.shields.io/badge/default_yaml-OK-green)]()
+* [![](https://img.shields.io/badge/self_named_yaml-found-green)]()
+* [![](https://img.shields.io/badge/TER_armazones_default_NIR_IMG.dat-missing-red)]()
+* [![](https://img.shields.io/badge/TER_ELT_5_mirror.dat-missing-red)]()
+* [![](https://img.shields.io/badge/QE_detector_H2RG.dat-missing-red)]()
+* [![](https://img.shields.io/badge/FPA_linearity.dat-missing-red)]()
+* [![](https://img.shields.io/badge/MICADO_AnisoCADO_rms_map.fits-missing-red)]()
+### Contents
+* [![](https://img.shields.io/badge/all_yamls_readable-green)]()
+### Dates
+* [![](https://img.shields.io/badge/TER_MICADO_IMG_common.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TER_MICADO_RO.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TER_MORFEO_MMS.dat-conflict-orange)]()
+## MORFEO
+[![](https://img.shields.io/badge/package_type-support-deepskyblue)]()
+### Structure
+* [![](https://img.shields.io/badge/self_named_yaml-found-green)]()
+* [![](https://img.shields.io/badge/no_missing_files-green)]()
+### Contents
+* [![](https://img.shields.io/badge/all_yamls_readable-green)]()
+### Dates
+* [![](https://img.shields.io/badge/TER_mirror_silver.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TER_MORFEO_entrance_window.dat-error-red)]()
+* [![](https://img.shields.io/badge/TER_MORFEO_mirror_aluminium.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TER_MORFEO_mirror_mgf2agal.dat-conflict-orange)]()
+## MUSE
+[![](https://img.shields.io/badge/package_type-support-deepskyblue)]()
+### Structure
+* [![](https://img.shields.io/badge/self_named_yaml-not_found-red)]()
+* [![](https://img.shields.io/badge/no_files_referenced-yellowgreen)]()
+### Contents
+* [![](https://img.shields.io/badge/no_yaml_files-yellowgreen)]()
+## NACO
+[![](https://img.shields.io/badge/package_type-support-deepskyblue)]()
+### Structure
+* [![](https://img.shields.io/badge/self_named_yaml-not_found-red)]()
+* [![](https://img.shields.io/badge/no_files_referenced-yellowgreen)]()
+### Contents
+* [![](https://img.shields.io/badge/no_yaml_files-yellowgreen)]()
+* [![](https://img.shields.io/badge/NB_3.74.dat-error-red)]()
+* [![](https://img.shields.io/badge/NB_4.05.dat-error-red)]()
+### Dates
+## OSIRIS
+[![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
+### Structure
+* [![](https://img.shields.io/badge/default_yaml-OK-green)]()
+* [![](https://img.shields.io/badge/self_named_yaml-found-green)]()
+* [![](https://img.shields.io/badge/no_missing_files-green)]()
+### Contents
+* [![](https://img.shields.io/badge/all_yamls_readable-green)]()
+* [![](https://img.shields.io/badge/TRACE_R1000B.dat-error-red)]()
+* [![](https://img.shields.io/badge/TRACE_R1000R.dat-error-red)]()
+* [![](https://img.shields.io/badge/TRACE_R2000B.dat-error-red)]()
+* [![](https://img.shields.io/badge/TRACE_R2500I.dat-error-red)]()
+* [![](https://img.shields.io/badge/TRACE_R2500R.dat-error-red)]()
+* [![](https://img.shields.io/badge/TRACE_R2500U.dat-error-red)]()
+* [![](https://img.shields.io/badge/TRACE_R2500V.dat-error-red)]()
+* [![](https://img.shields.io/badge/TRACE_R300B.dat-error-red)]()
+* [![](https://img.shields.io/badge/TRACE_R300R.dat-error-red)]()
+* [![](https://img.shields.io/badge/TRACE_R500B.dat-error-red)]()
+* [![](https://img.shields.io/badge/TRACE_R500R.dat-error-red)]()
+### Dates
+* [![](https://img.shields.io/badge/QE_OSIRIS_new_detector.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/QE_OSIRIS_old_detector_plus_M3.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/unity.dat-conflict-orange)]()
+## Paranal
+[![](https://img.shields.io/badge/package_type-support-deepskyblue)]()
+### Structure
+* [![](https://img.shields.io/badge/self_named_yaml-found-green)]()
+* [![](https://img.shields.io/badge/no_missing_files-green)]()
+### Contents
+* [![](https://img.shields.io/badge/all_yamls_readable-green)]()
+## test_package
+[![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
+### Structure
+* [![](https://img.shields.io/badge/default_yaml-OK-green)]()
+* [![](https://img.shields.io/badge/self_named_yaml-found-green)]()
+* [![](https://img.shields.io/badge/no_missing_files-green)]()
+### Contents
+* [![](https://img.shields.io/badge/all_yamls_readable-green)]()
+### Dates
+* [![](https://img.shields.io/badge/TC_filter_Ks.dat-conflict-orange)]()
+## UVES
+[![](https://img.shields.io/badge/package_type-support-deepskyblue)]()
+### Structure
+* [![](https://img.shields.io/badge/self_named_yaml-not_found-red)]()
+* [![](https://img.shields.io/badge/no_files_referenced-yellowgreen)]()
+### Contents
+* [![](https://img.shields.io/badge/no_yaml_files-yellowgreen)]()
+## ViennaLT
+[![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
+### Structure
+* [![](https://img.shields.io/badge/default_yaml-OK-green)]()
+* [![](https://img.shields.io/badge/self_named_yaml-found-green)]()
+* [![](https://img.shields.io/badge/TER_atmosphere.dat-missing-red)]()
+* [![](https://img.shields.io/badge/QE_SBIG.dat-missing-red)]()
+### Contents
+* [![](https://img.shields.io/badge/all_yamls_readable-green)]()
+## VISIR
+[![](https://img.shields.io/badge/package_type-support-deepskyblue)]()
+### Structure
+* [![](https://img.shields.io/badge/self_named_yaml-not_found-red)]()
+* [![](https://img.shields.io/badge/no_files_referenced-yellowgreen)]()
+### Contents
+* [![](https://img.shields.io/badge/no_yaml_files-yellowgreen)]()
+## VLT
+[![](https://img.shields.io/badge/package_type-support-deepskyblue)]()
+### Structure
+* [![](https://img.shields.io/badge/self_named_yaml-found-green)]()
+* [![](https://img.shields.io/badge/no_missing_files-green)]()
+### Contents
+* [![](https://img.shields.io/badge/all_yamls_readable-green)]()
+### Dates
+* [![](https://img.shields.io/badge/LIST_VLT_mirrors.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TC_mirror_aluminium.dat-conflict-orange)]()
+## WFC3
+[![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
+### Structure
+* [![](https://img.shields.io/badge/default_yaml-OK-green)]()
+* [![](https://img.shields.io/badge/self_named_yaml-found-green)]()
+* [![](https://img.shields.io/badge/no_missing_files-green)]()
+### Contents
+* [![](https://img.shields.io/badge/all_yamls_readable-green)]()
+### Dates
+* [![](https://img.shields.io/badge/TER_filter_F098M.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TER_filter_F105W.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TER_filter_F110W.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TER_filter_F125W.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TER_filter_F126N.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TER_filter_F127M.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TER_filter_F128N.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TER_filter_F130N.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TER_filter_F132N.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TER_filter_F139M.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TER_filter_F140W.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TER_filter_F153M.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TER_filter_F160W.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TER_filter_F164N.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/TER_filter_F167N.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/wfc3_ir_cor_004_syn.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/wfc3_ir_csm_001_syn.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/wfc3_ir_dn_002_syn.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/wfc3_ir_fold_001_syn.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/wfc3_ir_mask_001_syn.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/wfc3_ir_mir1_001_syn.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/wfc3_ir_mir2_001_syn.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/wfc3_ir_qe_003_syn.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/wfc3_ir_rcp_001_syn.dat-conflict-orange)]()
+* [![](https://img.shields.io/badge/wfc3_ir_win_001_syn.dat-conflict-orange)]()
