@@ -121,8 +121,10 @@ class TestMakeOpticalTrain:
             plt.show()
 
         # test that the ImagePlane is large enough
-        assert opt.image_planes[0].header["NAXIS1"] > 1024
-        assert opt.image_planes[0].header["NAXIS2"] > 1024
+        # Note: This was "> 1024", which failed after the off-by-one fix.
+        #       Is there any physical reason why 1024 exactly is not enough?
+        assert opt.image_planes[0].header["NAXIS1"] >= 1024
+        assert opt.image_planes[0].header["NAXIS2"] >= 1024
         assert np.all(opt.image_planes[0].data == 0)
 
         # test assert there are 1 detector

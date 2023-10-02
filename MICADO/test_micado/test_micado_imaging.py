@@ -81,10 +81,9 @@ class TestLimiting:
             plt.subplot(132)
             plt.imshow(det, norm=LogNorm(vmin=np.median(det), vmax=1.01*np.median(det)))
 
-        offset = 2      # this needs to be addressed
         xpix, ypix = src.fields[0]["x"].data, src.fields[0]["y"].data
-        xpix = xpix / 0.004 + 512 + offset
-        ypix = ypix / 0.004 + 512 + offset
+        xpix = xpix / 0.004 + 512
+        ypix = ypix / 0.004 + 512
         mags = np.round(np.linspace(mmin, mmax, n_stars), 1)
 
         snrs = []
