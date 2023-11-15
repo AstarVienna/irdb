@@ -15,6 +15,9 @@ rc.__search_path__ += [TOP_PATH]
 
 PLOTS = False
 
+# FIXME: Use proper fixtures and patching here, see ScopeSim test guide.
+
+
 def test_eso_vs_scopesim_throughput():
     slist = sim.effects.SurfaceList(filename="LIST_mirrors_ELT.tbl")
     wave = np.linspace(0.3, 2.5, 100) * u.um
@@ -33,6 +36,7 @@ def test_eso_vs_scopesim_throughput():
 ## .todo: the values are not correct
 def test_eso_vs_scopesim_emission():
     rc.__currsys__["!ATMO.temperature"] = 0.
+    rc.__currsys__["!TEL.temperature"] = "!ATMO.temperature"
     rc.__currsys__["!TEL.etendue"] = (1 * u.m * u.arcsec)**2
 
     slist = sim.effects.SurfaceList(filename="LIST_mirrors_ELT.tbl")
@@ -58,6 +62,7 @@ def test_eso_vs_scopesim_emission():
 def fixture_elt_configs():
     """Instantiate ELT combined surface lists"""
     rc.__currsys__["!ATMO.temperature"] = 0.
+    rc.__currsys__["!TEL.temperature"] = "!ATMO.temperature"
     rc.__currsys__["!TEL.etendue"] = (1 * u.m * u.arcsec)**2
 
     rc.__currsys__["!TEL.ter_curve.filename"] = "TER_ELT_5_mirror.dat"
