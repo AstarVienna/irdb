@@ -1,7 +1,7 @@
 # author : Oliver Czoske, Kieran Leschinski
 # source : ESO ELT DRM, ESO-253082_4
 # date_created : 2018-11-19
-# date_modified : 2020-08-17
+# date_modified : 2023-11-10
 # status : Design, pre MICADO-FDR mirror list
 # outer_unit : m
 # inner_unit : m
@@ -14,11 +14,11 @@
 # - 2019-01-28 (KL) Fixed YAML format in meta data
 # - 2020-08-17 (KL) Updated M1 and M4 dimensions according to ESO-253082_4 sect 4.7 "all-glass" diameter
 # - 2020-08-17 (KL) Pegged temperature to the atmosphere
+# - 2023-11-10 (FH) Use telescope temperature as lookup
 #
 name        outer   inner   angle   temperature         action          filename
-ELT_M1      36.9    10.95   0.      !ATMO.temperature   reflection      TER_ELT_mirror_mgf2agal.dat
-ELT_M2      4.2     0.545   0.      !ATMO.temperature   reflection      TER_ELT_mirror_mgf2agal.dat
-ELT_M3      3.8     0.14    0.      !ATMO.temperature   reflection      TER_ELT_mirror_mgf2agal.dat
-ELT_M4      2.54    0.536   7.75    !ATMO.temperature   reflection      TER_ELT_mirror_aluminium.dat
-ELT_M5      2.66    0.      37.25   !ATMO.temperature   reflection      TER_ELT_mirror_mgf2agal.dat
-
+ELT_M1      36.9    10.95   0.      !TEL.temperature    reflection      TER_ELT_mirror_mgf2agal.dat
+ELT_M2      4.2     0.545   0.      !TEL.temperature    reflection      TER_ELT_mirror_mgf2agal.dat
+ELT_M3      3.8     0.14    0.      !TEL.temperature    reflection      TER_ELT_mirror_mgf2agal.dat
+ELT_M4      2.54    0.536   7.75    !TEL.temperature    reflection      TER_ELT_mirror_aluminium.dat
+ELT_M5      2.66    0.      37.25   !TEL.temperature    reflection      TER_ELT_mirror_mgf2agal.dat

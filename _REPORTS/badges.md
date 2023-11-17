@@ -1,6 +1,6 @@
 # IRDB Packages Report
 
-**Created on UTC 2023-08-01 22:03:17**
+**Created on UTC 2023-11-10 18:03:14**
 
 For details on errors and conflicts, see badge report log file in this directory.
 
@@ -150,7 +150,6 @@ For details on errors and conflicts, see badge report log file in this directory
 * [![](https://img.shields.io/badge/all_yamls_readable-green)]()
 ### Dates
 * [![](https://img.shields.io/badge/FPA_linearity.dat-conflict-orange)]()
-* [![](https://img.shields.io/badge/LIST_RO_SCAO_mirrors.dat-conflict-orange)]()
 * [![](https://img.shields.io/badge/MASK_slit_3000x20.dat-conflict-orange)]()
 * [![](https://img.shields.io/badge/MASK_slit_3000x50.dat-conflict-orange)]()
 * [![](https://img.shields.io/badge/TER_entrance_window.dat-conflict-orange)]()
