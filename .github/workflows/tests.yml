@@ -14,6 +14,7 @@ on:
 
 jobs:
   job_master:
+    name: Test against ScopeSim master
     runs-on: ${{ matrix.os }}
     # Run if our target is IRDB master, or when this is ran manually.
     if: github.base_ref == 'master' || github.base_ref == ''
@@ -40,6 +41,7 @@ jobs:
         run: pytest
 
   job_devmaster:
+    name: Test against ScopeSim dev_master
     runs-on: ${{ matrix.os }}
     # Run if our target is IRDB dev_master, or when this is ran manually.
     if: github.base_ref == 'dev_master' || github.base_ref == ''
@@ -65,7 +67,8 @@ jobs:
       - name: Run Pytest
         run: pytest
 
-  job_notebooks:
+  micado_notebooks:
+    name: Run MICADO Notebooks
     # Run the notebooks. This is a time-consuming step, but important to catch
     # errors. It is therefore only ran on the master and dev_master branches,
     # or when manually triggered. It is not ran on pull requests.
