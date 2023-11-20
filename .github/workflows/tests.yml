@@ -39,6 +39,11 @@ jobs:
           pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git
       - name: Run Pytest
         run: pytest
+      - name: Store badge report files
+        uses: actions/upload-artifact@v3
+        with:
+          name: badge-report
+          path: _REPORTS
 
   tests_devmaster:
     name: Test against ScopeSim dev_master

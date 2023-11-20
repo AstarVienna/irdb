@@ -222,14 +222,15 @@ class BadgeReport(SystemDict):
 
     def __enter__(self):
         logging.debug("REPORT ENTER")
-        try:
-            # TODO: WHY do we actually load this first? It caused some issues
-            #       with 'old' badges that are not cleared. Is there any good
-            #       reason at all to load the previous yaml file???
-            with self.yamlpath.open(encoding="utf-8") as file:
-                self.update(yaml.full_load(file))
-        except FileNotFoundError:
-            logging.warning("%s not found, init empty dict", self.yamlpath)
+        # try:
+        #     # TODO: WHY do we actually load this first? It caused some issues
+        #     #       with 'old' badges that are not cleared. Is there any good
+        #     #       reason at all to load the previous yaml file???
+        #     with self.yamlpath.open(encoding="utf-8") as file:
+        #         self.update(yaml.full_load(file))
+        # except FileNotFoundError:
+        #     logging.warning("%s not found, init empty dict", self.yamlpath)
+        logging.debug("Init emtpy dict.")
         return self
 
     def __exit__(self, exc_type, exc_value, exc_traceback):
