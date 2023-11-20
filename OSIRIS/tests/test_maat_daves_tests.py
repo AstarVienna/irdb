@@ -1,4 +1,5 @@
 from pathlib import Path
+import pytest
 
 import scopesim as sim
 from astropy import units as u
@@ -15,6 +16,7 @@ PATH_HERE = Path(__file__).parent
 sim.rc.__config__["!SIM.file.local_packages_path"] = str(PATH_HERE.parent.parent)
 
 
+@pytest.mark.slow
 def test_maat_runs_with_point_source():
     g191 = SourceSpectrum.from_file(str(PATH_HERE / 'test_data' / 'fg191b2b.dat'))
     src = point_source(sed=g191, filter_curve='V',
@@ -36,6 +38,7 @@ def test_maat_runs_with_point_source():
         plt.show()
 
 
+@pytest.mark.slow
 def test_maat_runs_with_extended_source():
     src = galaxy("kc96/s0", z=0.1, amplitude=12*u.mag, filter_curve="V",
                  pixel_scale=0.1, r_eff=3.5, n=2, ellip=0.3, theta=45, extend=5)
@@ -56,6 +59,7 @@ def test_maat_runs_with_extended_source():
         plt.show()
 
 
+@pytest.mark.slow
 def test_maat_runs_with_line_list_source():
     arcspec = SourceSpectrum.from_file(str(PATH_HERE / 'test_data' / 'OSIRIS_stitchedArc.dat'))
     arc = uniform_source(sed=arcspec, filter_curve='V', amplitude=16*u.ABmag, extend=520)

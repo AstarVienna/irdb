@@ -144,6 +144,7 @@ def fixture_default_argv():
     return ["", "-l", "fake_username", "-p", "fake_password", "test_package"]
 
 
+@pytest.mark.webtest
 @pytest.mark.usefixtures("default_argv", "temp_zipfiles")
 @pytest.mark.parametrize("argv, called, response", [
     (["-u"], False, None),
