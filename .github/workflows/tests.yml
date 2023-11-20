@@ -94,12 +94,40 @@ jobs:
           pip uninstall -y scopesim scopesim_templates
           pip install git+https://github.com/AstarVienna/ScopeSim.git@dev_master
           pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git
-      - name: Run METIS Notebooks
-        run: |
-          for fn in METIS/docs/example_notebooks/*.ipynb; do echo "${fn}"; /usr/bin/time -v jupytext --execute --update "${fn}"; done
-          for fn in METIS/docs/example_notebooks/demos/*.ipynb; do echo "${fn}"; /usr/bin/time -v jupytext --execute --update "${fn}"; done
-      - name: Run MICADO Notebooks
+      - name: Run Notebooks
         run: |
           sed -i "s/USE_FULL_DETECTOR = True/USE_FULL_DETECTOR = False/g" MICADO/docs/example_notebooks/*.ipynb
           sed -i 's/# cmd\[\\"!SIM.spectral.spectral_bin_width/cmd\[\\"!SIM.spectral.spectral_bin_width/g'   MICADO/docs/example_notebooks/*.ipynb
           for fn in MICADO/docs/example_notebooks/*.ipynb; do echo "${fn}"; /usr/bin/time -v jupytext --execute --update "${fn}"; done
+
+  metis_notebooks:
+    name: Run METIS Notebooks
+    # Run the notebooks. This is a time-consuming step, but important to catch
+    # errors. It is therefore only ran on the master and dev_master branches,
+    # or when manually triggered. It is not ran on pull requests.
+    runs-on: ubuntu-latest
+    # Run if we are on the master or dev_master branch, or if this job permissions:
+    # started manually.
+    # TODO: Do something smarter than github.base_ref == '', see
+    # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
+    if: github.ref == 'dev_master' || github.ref == 'master' || github.base_ref == ''
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          # No matrix is used since this is a time-consuming tosk.
+          python-version: 3.11
+      - name: Install dependencies
+        # TODO: Also test against ScopeSIM@master?
+        # TODO: And/or ScopeSIM_Templates@dev_master?
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.github_actions.txt
+          pip uninstall -y scopesim scopesim_templates
+          pip install git+https://github.com/AstarVienna/ScopeSim.git@dev_master
+          pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git
+      - name: Run Notebooks
+        run: |
+          for fn in METIS/docs/example_notebooks/*.ipynb; do echo "${fn}"; /usr/bin/time -v jupytext --execute --update "${fn}"; done
+          for fn in METIS/docs/example_notebooks/demos/*.ipynb; do echo "${fn}"; /usr/bin/time -v jupytext --execute --update "${fn}"; done
