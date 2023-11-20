@@ -13,7 +13,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  job_master:
+  tests_master:
     name: Test against ScopeSim master
     runs-on: ${{ matrix.os }}
     # Run if our target is IRDB master, or when this is ran manually.
@@ -40,7 +40,7 @@ jobs:
       - name: Run Pytest
         run: pytest
 
-  job_devmaster:
+  tests_devmaster:
     name: Test against ScopeSim dev_master
     runs-on: ${{ matrix.os }}
     # Run if our target is IRDB dev_master, or when this is ran manually.
