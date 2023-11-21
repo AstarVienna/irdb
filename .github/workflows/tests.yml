@@ -100,6 +100,8 @@ jobs:
           pip install git+https://github.com/AstarVienna/ScopeSim.git@dev_master
           pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git
       - name: Run Notebooks
+        env:
+          PYDEVD_DISABLE_FILE_VALIDATION: 1
         run: |
           echo "## MICADO Notebooks tested" >> $GITHUB_STEP_SUMMARY
           sed -i "s/USE_FULL_DETECTOR = True/USE_FULL_DETECTOR = False/g" MICADO/docs/example_notebooks/*.ipynb
@@ -139,6 +141,8 @@ jobs:
           pip install git+https://github.com/AstarVienna/ScopeSim.git@dev_master
           pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git
       - name: Run Notebooks
+        env:
+          PYDEVD_DISABLE_FILE_VALIDATION: 1
         run: |
           echo "## METIS Notebooks tested" >> $GITHUB_STEP_SUMMARY
           echo "### Example Notebooks" >> $GITHUB_STEP_SUMMARY
