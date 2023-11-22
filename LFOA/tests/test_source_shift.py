@@ -52,6 +52,7 @@ PLOTS = False
 #         shutil.rmtree(rc_local_path)
 
 
+@pytest.mark.slow
 class TestShiftSource:
     def test_shift_lfao(self):
         # core_radius = 0.6 to ensure it fits the image after shifting

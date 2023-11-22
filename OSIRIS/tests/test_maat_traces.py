@@ -1,4 +1,5 @@
 from pathlib import Path
+import pytest
 
 import numpy as np
 import scopesim as sim
@@ -15,6 +16,7 @@ sim.rc.__config__["!SIM.file.local_packages_path"] = str(PATH_HERE.parent.parent
 PLOTS = False
 
 
+@pytest.mark.slow
 class TestMaatTraces:
     def test_plot_traces(self):
         """
@@ -64,6 +66,7 @@ class TestMaatTraces:
             plt.show()
 
 
+@pytest.mark.slow
 class TestMaatOperations:
     def test_basic_trace_image(self):
 
