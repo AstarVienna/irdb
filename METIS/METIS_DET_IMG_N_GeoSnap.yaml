@@ -27,7 +27,7 @@ effects:
     description: METIS IMG-N detector array list
     class: DetectorList
     kwargs:
-      file_name: "!DET.layout.file_name"
+      filename: "!DET.layout.file_name"
 
   - name: detector_readout_parameters
     description: Readout modes for Geosnap detector (high and low capacity)
@@ -55,7 +55,7 @@ effects:
     description: Quantum efficiency curves for each detector
     class: QuantumEfficiencyCurve
     kwargs:
-      file_name: "!DET.qe_curve.file_name"
+      filename: "!DET.qe_curve.file_name"
 
   - name: auto_exposure
     description: automatic determination of DIT and NDIT
