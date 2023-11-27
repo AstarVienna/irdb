@@ -24,7 +24,11 @@
           IMAGE_PL: "!DET.image_plane_id"
           TEMPERAT: "!DET.temperature"
           DAR:
-            VALUE: "#dark_current.value"
+            # TODO: directly ask the dark_current effect for its value, like
+            #VALUE: "#dark_current.value"
+            # However, that currently does not work because that resolves to
+            # !DET.dark_current which is not subsequently resolved.
+            VALUE: "!DET.dark_current"
           SHO:
             STATE: "#shot_noise.include"
           QEC:
