@@ -61,7 +61,7 @@ effects:
     class : ExtraFitsKeywords
     include : True
     kwargs :
-      filename: FITS_extra_keywords.yaml
+      filename: headers/FITS_extra_keywords.yaml
 
 #  - name : metis_adc_residuals
 #    class : AtmosphericDispersionCorrection
