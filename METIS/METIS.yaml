@@ -56,6 +56,13 @@ effects:
       transmission: "!OBS.pupil_transmission"
       minimum_throughput: !!float 0.
 
+  - name : extra_fits_keywords
+    decription : adds extra FITS keywords from a yaml file
+    class : ExtraFitsKeywords
+    include : True
+    kwargs :
+      filename: FITS_extra_keywords.yaml
+
 #  - name : metis_adc_residuals
 #    class : AtmosphericDispersionCorrection
 #    include : False

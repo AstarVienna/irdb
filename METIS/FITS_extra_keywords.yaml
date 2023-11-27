@@ -1,0 +1,82 @@
+- ext_type: PrimaryHDU
+  keywords:
+    MJD-OBS: "!OBS.mjdobs"
+    RA: "!OBS.ra"
+    DEC: "!OBS.dec"
+    INSTRUME: "METIS"
+    # Airmass is not part of the atmosphere itself but rather of the
+    # observation and is usually a top level keyword in the ESO world.
+    AIRMASS: "!OBS.airmass"
+    HIERARCH:
+      ESO:
+        DPR:
+          CATG: "!OBS.catg"
+          TYPE: "!OBS.type"
+          TECH: "!OBS.tech"
+        DET:
+          DIT: "!OBS.dit"
+          NDIT: "!OBS.ndit"
+          READOUT: "CDS"
+          # Refering to the name of an object is currently not possible.
+          # See https://github.com/AstarVienna/ScopeSim/issues/163
+          # NAME: "!DET.name"
+          NAME: ""
+          IMAGE_PL: "!DET.image_plane_id"
+          TEMPERAT: "!DET.temperature"
+          DAR:
+            VALUE: "#dark_current.value"
+          SHO:
+            STATE: "#shot_noise.include"
+          QEC:
+            FILENAME: "#quantum_efficiency.filename"
+          LIN:
+            FILENAME: "#detector_linearity.filename"
+          # TODO: Include a ReferencePixelBorder effect?
+          #REF:
+          #  ALL: "#border_reference_pixels.all"
+        INS:
+          # TODO: Something sensible for INS.MODE
+          MODE: "TODO"
+          NAME: "METIS"
+          FILT:
+            NAME: "!OBS.filter_name"
+          NDFILT:
+            NAME: "!OBS.nd_filter_name"
+          # TODO: The OPTI keywords
+          #OPTI6:
+          #  NAME: "open"
+          DROT: 0
+          READMODE: "CDS"
+          PLATE_SC: "!INST.plate_scale"
+        TPL:
+          START: "!OBS.tplstart"
+          EXPNO: "!OBS.tplexpno"
+        OBS:
+          TPLNO: "!OBS.tplno"
+          INSTRUME: "METIS"
+          NAME: "!OBS.obsname"
+          RA: "!OBS.ra"
+          DEC: "!OBS.dec"
+        ATMO:
+          LOCATION: "!ATMO.location"
+          ALTITUDE: "!ATMO.altitude"
+          LONGITUD: "!ATMO.longitude"
+          LATITUDE: "!ATMO.latitude"
+          TEMPERAT: "!ATMO.temperature"
+          HUMIDITY: "!ATMO.humidity"
+          PRESSURE: "!ATMO.pressure"
+          PWV: "!ATMO.pwv"
+        TEL:
+          NAME: "ELT"
+          TELESCOP: "ELT"
+          TER:
+            FILENAME: "!TEL.ter_curve.filename"
+          REF:
+            FILENAME: "#telescope_reflection.filename"
+        OCS:
+          PXSCALE: "!INST.pixel_scale"
+- ext_type: ImageHDU
+  keywords:
+    INHERIT: "T"
+    # Will resolve to e.g. DET1.DATA, DET2.DATA etc., as required by ESO.
+    EXTNAME: "DET§.DATA"
