@@ -9,6 +9,8 @@
     AIRMASS: "!OBS.airmass"
     HIERARCH:
       ESO:
+        # Keywords in the ESO hierarchy should also appear in the raw data.
+        # However, many of these have not yet been decided on.
         DPR:
           CATG: "!OBS.catg"
           TYPE: "!OBS.type"
@@ -17,24 +19,8 @@
           DIT: "!OBS.dit"
           NDIT: "!OBS.ndit"
           READOUT: "CDS"
-          # Refering to the name of an object is currently not possible.
-          # See https://github.com/AstarVienna/ScopeSim/issues/163
-          # NAME: "!DET.name"
           NAME: ""
-          IMAGE_PL: "!DET.image_plane_id"
           TEMPERAT: "!DET.temperature"
-          DAR:
-            # TODO: directly ask the dark_current effect for its value, like
-            #VALUE: "#dark_current.value"
-            # However, that currently does not work because that resolves to
-            # !DET.dark_current which is not subsequently resolved.
-            VALUE: "!DET.dark_current"
-          SHO:
-            STATE: "#shot_noise.include"
-          QEC:
-            FILENAME: "#quantum_efficiency.filename"
-          LIN:
-            FILENAME: "#detector_linearity.filename"
           # TODO: Include a ReferencePixelBorder effect?
           #REF:
           #  ALL: "#border_reference_pixels.all"
@@ -50,7 +36,8 @@
           #OPTI6:
           #  NAME: "open"
           DROT: 0
-          READMODE: "CDS"
+          # TODO: What should be the READMODE?
+          READMODE: "TODO"
           PLATE_SC: "!INST.plate_scale"
         TPL:
           START: "!OBS.tplstart"
@@ -70,6 +57,24 @@
           HUMIDITY: "!ATMO.humidity"
           PRESSURE: "!ATMO.pressure"
           PWV: "!ATMO.pwv"
+      WISE:
+        # Extra keywords to be used by MetisWISE.
+        # These are specific to ScopeSIM.
+        DET:
+          IMAGE_PL: "!DET.image_plane_id"
+          TEMPERAT: "!DET.temperature"
+          DAR:
+            # TODO: directly ask the dark_current effect for its value, like
+            #VALUE: "#dark_current.value"
+            # However, that currently does not work because that resolves to
+            # !DET.dark_current which is not subsequently resolved.
+            VALUE: "!DET.dark_current"
+          SHO:
+            STATE: "#shot_noise.include"
+          QEC:
+            FILENAME: "#quantum_efficiency.filename"
+          LIN:
+            FILENAME: "#detector_linearity.filename"
         TEL:
           NAME: "ELT"
           TELESCOP: "ELT"
