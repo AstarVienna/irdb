@@ -40,18 +40,21 @@ properties:
   auto_exposure:
     fill_frac: 0.75   # fraction to which full well is filled in one DIT
 
-  # Default DPR keywords.
-  catg : SCIENCE
-  tech : IMAGE
-  type : OBJECT
+  # Default DPR keywords and template name.
+  # TODO: Perhaps create different 'modes' for each template, with a
+  #       corresponding yaml file with the keywords.
+  tplname: "METIS_img_lm_obs_GenericOffset"
+  catg: "SCIENCE"
+  tech: "IMAGE,LM"
+  type: "OBJECT"
   # More default properties for the observation
-  mjdobs : "2027-05-04T02:30:00"
-  tplstart : "2027-05-04T02:30:00"
-  tplno : 0
-  tplexpno : 0
-  obsname : "MyScienceTest"
-  ra : 0.0
-  dec : 0.0
+  mjdobs: "2027-05-04T02:30:00"
+  tplstart: "2027-05-04T02:30:00"
+  tplno: 0
+  tplexpno: 0
+  obsname: "MyScienceTest"
+  ra: 0.0
+  dec: 0.0
 
 mode_yamls:
   - object: observation
