@@ -53,7 +53,7 @@ class TestMosiacMvpCanObserveSomething:
         # assert im[:, :].sum()
 
     def test_run_observe_with_star(self):
-        src = st.star(0, 0, 20*u.mag)
+        src = st.star(0, 0, 25*u.mag)
         wave = np.linspace(1.420, 1.825, 4096) * u.um
 
         cmds = sim.UserCommands(use_instrument="MOSAIC")
@@ -61,6 +61,9 @@ class TestMosiacMvpCanObserveSomething:
         mosaic.cmds["!ATMO.temperature"] = 0
 
         mosaic.observe(src)
+        im = mosaic.image_planes[0].data
+
+        mosaic.cmds["!OBS.dit"] = 3600
         hdul = mosaic.readout()[0]
 
         # in and out fluxes are in units of "ph / s"
@@ -71,7 +74,7 @@ class TestMosiacMvpCanObserveSomething:
         out_flux = np.sum(mosaic._last_fovs[0].hdu.data)
         im2 = hdul[1].data
 
-        if PLOTS:
+        if not PLOTS:
             plt.figure(figsize=(13, 6))
             plt.subplot(121)
             plt.imshow(im, norm=LogNorm(), origin="lower")
@@ -80,6 +83,7 @@ class TestMosiacMvpCanObserveSomething:
             plt.pause(0)
             plt.show()
 
+        # assert in_flux == approx(out_flux)
 
 class TestRadiometryOfMvp:
     def test_same_number_of_photons_go_in_and_out(self):
