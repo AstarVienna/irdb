@@ -105,7 +105,7 @@ class TestGetServerPath:
         with mock.patch("irdb.publish._handle_missing_folder",
                         mock_obj) as mock_missing:
             assert pub._get_server_path("bogus", "foo") == "bar/foo"
-            assert mock_missing.called_once_with("bogus")
+            mock_missing.assert_called_once_with("bogus")
 
 
 def _fake_input(prompt: str, from_user: str) -> str:
@@ -144,6 +144,7 @@ def fixture_default_argv():
     return ["", "-l", "fake_username", "-p", "fake_password", "test_package"]
 
 
+@pytest.mark.webtest
 @pytest.mark.usefixtures("default_argv", "temp_zipfiles")
 @pytest.mark.parametrize("argv, called, response", [
     (["-u"], False, None),

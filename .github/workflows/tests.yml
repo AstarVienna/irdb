@@ -13,7 +13,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  job_master:
+  tests_master:
+    name: Test against ScopeSim master
     runs-on: ${{ matrix.os }}
     # Run if our target is IRDB master, or when this is ran manually.
     if: github.base_ref == 'master' || github.base_ref == ''
@@ -21,7 +22,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        python-version: ['3.8', '3.9', '3.10', '3.11']
+        python-version: ['3.8', '3.9', '3.10', '3.11', '3.12']
 
     steps:
       - uses: actions/checkout@v3
@@ -38,8 +39,14 @@ jobs:
           pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git
       - name: Run Pytest
         run: pytest
+      - name: Store badge report files
+        uses: actions/upload-artifact@v3
+        with:
+          name: badge-report
+          path: _REPORTS
 
-  job_devmaster:
+  tests_devmaster:
+    name: Test against ScopeSim dev_master
     runs-on: ${{ matrix.os }}
     # Run if our target is IRDB dev_master, or when this is ran manually.
     if: github.base_ref == 'dev_master' || github.base_ref == ''
@@ -47,7 +54,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        python-version: ['3.8', '3.9', '3.10', '3.11']
+        python-version: ['3.8', '3.9', '3.10', '3.11', '3.12']
 
     steps:
       - uses: actions/checkout@v3
@@ -65,7 +72,8 @@ jobs:
       - name: Run Pytest
         run: pytest
 
-  job_notebooks:
+  micado_notebooks:
+    name: Run MICADO Notebooks
     # Run the notebooks. This is a time-consuming step, but important to catch
     # errors. It is therefore only ran on the master and dev_master branches,
     # or when manually triggered. It is not ran on pull requests.
@@ -91,12 +99,63 @@ jobs:
           pip uninstall -y scopesim scopesim_templates
           pip install git+https://github.com/AstarVienna/ScopeSim.git@dev_master
           pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git
-      - name: Run METIS Notebooks
+      - name: Run Notebooks
+        env:
+          PYDEVD_DISABLE_FILE_VALIDATION: 1
         run: |
-          for fn in METIS/docs/example_notebooks/*.ipynb; do echo "${fn}"; /usr/bin/time -v jupytext --execute --update "${fn}"; done
-          for fn in METIS/docs/example_notebooks/demos/*.ipynb; do echo "${fn}"; /usr/bin/time -v jupytext --execute --update "${fn}"; done
-      - name: Run MICADO Notebooks
-        run: |
+          echo "## MICADO Notebooks tested" >> $GITHUB_STEP_SUMMARY
           sed -i "s/USE_FULL_DETECTOR = True/USE_FULL_DETECTOR = False/g" MICADO/docs/example_notebooks/*.ipynb
           sed -i 's/# cmd\[\\"!SIM.spectral.spectral_bin_width/cmd\[\\"!SIM.spectral.spectral_bin_width/g'   MICADO/docs/example_notebooks/*.ipynb
-          for fn in MICADO/docs/example_notebooks/*.ipynb; do echo "${fn}"; /usr/bin/time -v jupytext --execute --update "${fn}"; done
+          for fn in MICADO/docs/example_notebooks/*.ipynb
+          do 
+            echo "${fn}"
+            echo "- ${fn}" >> $GITHUB_STEP_SUMMARY
+            /usr/bin/time -v jupytext --execute --update "${fn}"
+          done
+
+  metis_notebooks:
+    name: Run METIS Notebooks
+    # Run the notebooks. This is a time-consuming step, but important to catch
+    # errors. It is therefore only ran on the master and dev_master branches,
+    # or when manually triggered. It is not ran on pull requests.
+    runs-on: ubuntu-latest
+    # Run if we are on the master or dev_master branch, or if this job permissions:
+    # started manually.
+    # TODO: Do something smarter than github.base_ref == '', see
+    # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
+    if: github.ref == 'dev_master' || github.ref == 'master' || github.base_ref == ''
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          # No matrix is used since this is a time-consuming tosk.
+          python-version: 3.11
+      - name: Install dependencies
+        # TODO: Also test against ScopeSIM@master?
+        # TODO: And/or ScopeSIM_Templates@dev_master?
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.github_actions.txt
+          pip uninstall -y scopesim scopesim_templates
+          pip install git+https://github.com/AstarVienna/ScopeSim.git@dev_master
+          pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git
+      - name: Run Notebooks
+        env:
+          PYDEVD_DISABLE_FILE_VALIDATION: 1
+        run: |
+          echo "## METIS Notebooks tested" >> $GITHUB_STEP_SUMMARY
+          echo "### Example Notebooks" >> $GITHUB_STEP_SUMMARY
+          for fn in METIS/docs/example_notebooks/*.ipynb
+          do
+            echo "${fn}"
+            echo "- ${fn}" >> $GITHUB_STEP_SUMMARY
+            /usr/bin/time -v jupytext --execute --update "${fn}"
+          done
+          echo "## Demo Notebooks" >> $GITHUB_STEP_SUMMARY
+          for fn in METIS/docs/example_notebooks/demos/*.ipynb
+          do
+            echo "${fn}"
+            echo "- ${fn}" >> $GITHUB_STEP_SUMMARY
+            /usr/bin/time -v jupytext --execute --update "${fn}"
+          done

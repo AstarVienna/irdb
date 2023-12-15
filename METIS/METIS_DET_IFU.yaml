@@ -18,7 +18,7 @@ properties:
   readout_noise: 70         # electrons, AI on RvB: check
   layout:
     file_name: "FPA_metis_lms_layout.dat"
-  qe_curve:
+  quantum_efficiency:
     file_name: "QE_detector_H2RG_METIS.dat"
   linearity:
     file_name: "FPA_linearity_HxRG.dat"

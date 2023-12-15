@@ -31,7 +31,7 @@ effects:
     description: METIS detector array list
     class: DetectorList
     kwargs:
-      file_name: "!DET.layout.file_name"
+      filename: "!DET.layout.file_name"
 
   - name: detector_readout_parameters
     description: Readout modes for Aquarius detector
@@ -54,7 +54,7 @@ effects:
     class: QuantumEfficiencyCurve
     include: false    # QE file does not exist
     kwargs:
-      file_name: "!DET.qe_curve.file_name"
+      filename: "!DET.qe_curve.file_name"
 
   - name: auto_exposure
     description: automatic determination of DIT and NDIT

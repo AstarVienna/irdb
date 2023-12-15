@@ -2,13 +2,14 @@
 # author : Oliver Czoske
 # source : ESO-253082_4
 # date_created : 2021-02-22
-# date_modified : 2021-02-22
+# date_modified : 2023-11-10
 # status : Design
 # outer_unit : m
 # inner_unit : m
 # angle_unit : degree
 # temperature_unit  : deg_C
 # changes :
+# - 2023-11-10 (FH) Use telescope temperature as lookup
 #
 name        outer   inner   angle   temperature         action          filename
-ELT         36.9    10.95   0.      !ATMO.temperature   reflection      !TEL.ter_curve.filename
+ELT         36.9    10.95   0.      !TEL.temperature    reflection      !TEL.ter_curve.filename

@@ -51,7 +51,7 @@ This is a short overview of the installation and setup procedure; for a more det
 
     $ python
     >> import scopesim
-    >> scopesim.download_package(["instruments/METIS", "telescopes/ELT", "locations/Armazones"])
+    >> scopesim.download_packages(["METIS", "ELT", "Armazones"])
 
    This will install the packages in the subdirectory ``./inst_pkgs``.
 

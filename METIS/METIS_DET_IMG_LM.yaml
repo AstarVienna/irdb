@@ -29,7 +29,7 @@ effects:
     description: METIS IMG-LM detector array list
     class: DetectorList
     kwargs:
-      file_name: "!DET.layout.file_name"
+      filename: "!DET.layout.file_name"
 
   - name: detector_readout_parameters
     description: Readout parameters for H2RG detector (fast and slow modes)
