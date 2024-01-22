@@ -56,6 +56,13 @@ effects:
       transmission: "!OBS.pupil_transmission"
       minimum_throughput: !!float 0.
 
+  - name : common_fits_keywords
+    decription : FITS keywords common to all modes
+    class : ExtraFitsKeywords
+    include : True
+    kwargs :
+      filename: headers/FITS_common_keywords.yaml
+
 #  - name : metis_adc_residuals
 #    class : AtmosphericDispersionCorrection
 #    include : False
