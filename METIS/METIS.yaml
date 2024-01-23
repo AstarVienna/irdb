@@ -55,6 +55,7 @@ effects:
     kwargs:
       transmission: "!OBS.pupil_transmission"
       minimum_throughput: !!float 0.
+      action: transmission
 
   - name : common_fits_keywords
     decription : FITS keywords common to all modes

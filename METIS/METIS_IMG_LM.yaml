@@ -53,6 +53,7 @@ effects:
       minimum_throughput: !!float 0.
       outer: 56                               # E-REP-MPIA-MET-1008_1-0
       outer_unit: "mm"
+      action: transmission
 
   - name: nd_filter_wheel
     class: FilterWheel
@@ -72,6 +73,7 @@ effects:
       minimum_throughput: !!float 0.
       outer: 56                                # E-REP-MPIA-MET-1008_1-0
       outer_unit: "mm"
+      action: transmission
 
   - name: psf
     description: field constant, wavelength dependent PSF for imaging mode
