@@ -40,7 +40,7 @@ effects :
     description : Quantum efficiency curves for each detector
     class : QuantumEfficiencyCurve
     kwargs :
-        filename : QE_detector_H2RG.dat
+        filename : QE_detector_H4RG.dat
 
 -   name: exposure_action
     description: Summing up sky signal for all DITs and NDITs
