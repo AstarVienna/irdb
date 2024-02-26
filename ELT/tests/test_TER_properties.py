@@ -35,13 +35,16 @@ def test_eso_vs_scopesim_throughput():
 
 ## .todo: the values are not correct
 def test_eso_vs_scopesim_emission():
-    rc.__currsys__["!ATMO.temperature"] = 0.
-    rc.__currsys__["!TEL.temperature"] = "!ATMO.temperature"
-    rc.__currsys__["!TEL.etendue"] = (1 * u.m * u.arcsec)**2
+    cmds = UserCommands({
+        "!ATMO.temperature": 0.,
+        "!TEL.temperature": "!ATMO.temperature",
+        "!TEL.etendue": (1 * u.m * u.arcsec)**2,
+    })
 
-    slist = sim.effects.SurfaceList(filename="LIST_mirrors_ELT.tbl")
+    slist = sim.effects.SurfaceList(filename="LIST_mirrors_ELT.tbl", cmds=cmds)
     ter = sim.effects.TERCurve(filename="TER_ELT_5_mirror.dat",
-                               temperature="!ATMO.temperature")
+                               temperature="!ATMO.temperature",
+                               cmds=cmds)
 
     wave = np.linspace(0.3, 12.5, 100) * u.um
     sl_flux = slist.emission(wave)
