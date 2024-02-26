@@ -55,6 +55,9 @@ properties:
   obsname: "MyScienceTest"
   ra: 0.0
   dec: 0.0
+  # These defaults are overruled by the individual modes:
+  filter_name: open
+  nd_filter_name: open
 
 mode_yamls:
   - object: observation
