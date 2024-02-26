@@ -57,7 +57,7 @@ class TestLoadUserCommands:
 
     def test_user_commands_can_change_modes(self):
         cmd = scopesim.UserCommands(use_instrument="MICADO")
-        cmd.set_modes(["MCAO", "SPEC_3000x50"])
+        cmd.set_modes("MCAO", "SPEC_3000x50")
 
         assert "MORFEO" in [yd["name"] for yd in cmd.yaml_dicts]
         assert "MICADO_SPEC" in [yd["name"] for yd in cmd.yaml_dicts]
@@ -131,4 +131,3 @@ class TestDetector:
             plt.show()
 
         assert imp_av == approx(hdu_av, rel=0.05)
-
