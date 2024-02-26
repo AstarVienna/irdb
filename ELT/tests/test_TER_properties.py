@@ -9,6 +9,7 @@ import astropy.units as u
 import matplotlib.pyplot as plt
 import scopesim as sim
 from scopesim import rc
+from scopesim import UserCommands
 
 TOP_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "../"))
 rc.__search_path__ += [TOP_PATH]
@@ -35,7 +36,7 @@ def test_eso_vs_scopesim_throughput():
 
 ## .todo: the values are not correct
 def test_eso_vs_scopesim_emission():
-    cmds = UserCommands({
+    cmds = UserCommands(properties={
         "!ATMO.temperature": 0.,
         "!TEL.temperature": "!ATMO.temperature",
         "!TEL.etendue": (1 * u.m * u.arcsec)**2,
