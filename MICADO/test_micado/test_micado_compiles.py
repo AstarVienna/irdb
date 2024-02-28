@@ -131,4 +131,3 @@ class TestDetector:
             plt.show()
 
         assert imp_av == approx(hdu_av, rel=0.05)
-
