@@ -132,9 +132,7 @@ class MsgOnlyBadge(StrBadge):
     pattern = Template("[![](https://img.shields.io/badge/$key-$col)]()")
 
     def __init__(self, key: str, value: str):
-        # value = value.removeprefix("!")
-        # TODO: for Python 3.8 support:
-        value = value[1:]
+        value = value.removeprefix("!")
         super().__init__(key, value)
 
 
