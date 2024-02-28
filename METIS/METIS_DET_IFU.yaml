@@ -9,6 +9,7 @@ changes:
   - 2021-12-16 (OC) some rearrangements
 
 properties:
+  image_plane_id: 0
   temperature: -233
   dit: "!OBS.dit"
   ndit: "!OBS.ndit"
@@ -31,7 +32,7 @@ effects:
     kwargs:
       filename: "!DET.layout.file_name"
 
-  - name: qe_curve
+  - name: quantum_efficiency
     description: Quantum efficiency curves for each detector
     class: QuantumEfficiencyCurve
     kwargs:

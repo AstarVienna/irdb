@@ -222,6 +222,7 @@ class TestTraceFile:
                               scopesim.effects.SpectralTrace)
 
 
+@pytest.mark.slow
 class TestObserves:
     """Test basic observations for the main instrument modes"""
     def test_something_comes_out_img_lm(self):

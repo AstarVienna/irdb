@@ -143,7 +143,6 @@ MICADO:
     all_yamls_readable: '!OK'
   dates:
     FPA_linearity.dat: conflict
-    LIST_RO_SCAO_mirrors.dat: conflict
     MASK_slit_3000x20.dat: conflict
     MASK_slit_3000x50.dat: conflict
     TER_entrance_window.dat: conflict

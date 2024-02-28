@@ -7,14 +7,14 @@
 
 Introduction
 ------------
-The new METIS data simulator is based on the generic simulator software Scopesim, a descendant of the older SimCado/SimMETIS interface. METIS itself is handled as an instrument package that contains configuration files for the various instrument modes as well as data files describing the components of the instruments.
+The METIS data simulator is based on the generic simulator software Scopesim, a descendant of the older SimCado/SimMETIS interface. METIS itself is handled as an instrument package that contains configuration files for the various instrument modes as well as data files describing the components of the instruments.
 The new METIS data simulator currently supports the imaging and long-slit modes. The LM-band high-resolution IFU (LMS) mode will be offered soon.
 
 
 Prerequisites
 -------------
 
-- A working installation of Python 3.6 or newer
+- A working installation of a recent Python version
 - A working installation of Jupyter if you want to run the simulator from notebooks. This is necessary to run the example notebooks contained in the instrument package.
 - A working installation of the Python package installer pip
 
@@ -51,7 +51,7 @@ This is a short overview of the installation and setup procedure; for a more det
 
     $ python
     >> import scopesim
-    >> scopesim.download_package(["instruments/METIS", "telescopes/ELT", "locations/Armazones"])
+    >> scopesim.download_packages(["METIS", "ELT", "Armazones"])
 
    This will install the packages in the subdirectory ``./inst_pkgs``.
 
@@ -127,7 +127,7 @@ Scientific use-case notebooks
    * - `LSS-YSO_model_simulation.ipynb <example_notebooks/LSS-YSO_model_simulation.ipynb>`_
      - Long-slit spectroscopy in the L-band of three models of a young stellar object
    * - | `LSS_AGN-01_preparation.ipynb <example_notebooks/LSS_AGN-01_preparation.ipynb>`_
-       | `LSS_AGN-02_simulation.ipynb <example_notebooks/LSS_AGN-02-simulation.ipynb>`_
+       | `LSS_AGN-02_simulation.ipynb <example_notebooks/LSS_AGN-02_simulation.ipynb>`_
      - | Long-slit spectroscopy in the N-band of an AGN model. The first notebook describes
        | how the input data are prepared for Scopesim, the second runs the simulation.
 
@@ -176,9 +176,9 @@ Documentation and useful references
 
 Contact points
 --------------
-Slack channel: `#simulator_support <https://elt-metis.slack.com/archives/C02SZUL1ME1>`_
+`ScopeSim Slack <https://join.slack.com/t/scopesim/shared_invite/zt-143s42izo-LnyqoG7gH5j~aGn51Z~4IA>`_
 
 Email:
-- simmetis.astro@univie.ac.at
-- oliver.czoske@univie.ac.at
+
+- scopesim@univie.ac.at
 - kieran.leschinski@univie.ac.at

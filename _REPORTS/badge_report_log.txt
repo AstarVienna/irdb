@@ -95,7 +95,6 @@ ERROR::METIS\filters\TC_filter_short-L.dat Error reading dat file 'dict' object 
 ERROR::METIS\filters\TC_filter_S_IV.dat Error reading dat file 'dict' object has no attribute 'split'
 ERROR::METIS\filters\TC_filter_S_IV_ref.dat Error reading dat file 'dict' object has no attribute 'split'
 ERROR::MICADO\FPA_linearity.dat ValeError date_last_change=2022-03-17 not equal to date_modified=2018-11-19
-ERROR::MICADO\LIST_RO_SCAO_mirrors.dat ValeError date_last_change=2020-07-18 not equal to date_modified=2020-08-17
 ERROR::MICADO\MASK_slit_3000x20.dat ValeError date_last_change=2020-03-24 not equal to date_modified=2019-07-10
 ERROR::MICADO\MASK_slit_3000x50.dat ValeError date_last_change=2020-03-24 not equal to date_modified=2019-07-10
 ERROR::MICADO\TER_entrance_window.dat ValeError Changes listed but no modified date set.

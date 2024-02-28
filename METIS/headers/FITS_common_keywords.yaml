@@ -1,0 +1,163 @@
+- ext_type: PrimaryHDU
+  keywords:
+    # Top level keywords. Several of the top level keywords are described in
+    # ESO-044156, Data Interface Control Document, or DICD (v7).
+    # TODO: Add more keywords from ESO-044156.
+    MJD-OBS: "!OBS.mjdobs"
+    RA: "!OBS.ra"
+    DEC: "!OBS.dec"
+    ORIGIN: "SCOPESIM"
+    TELESCOP: "ELT"
+    INSTRUME: "METIS"
+    AIRMASS: "!OBS.airmass"
+
+    HIERARCH:
+      ESO:
+        # Keywords in the ESO hierarchy. We expect all of these to also appear
+        # in the raw data from the telescope. However, this list is not
+        # exhaustive; the real data will have more keywords.
+        #
+        # ESO-044156, Data Interface Control Document, or DICD (v7), describes
+        # the structure of these header keywords and provides many standardized
+        # keywords. In particular, ESO-044156 defines the default categories,
+        # and also the recommendation to limit the names to 8 characters.
+        DPR:
+          # DPR keywords as defined in the DRLD.
+          #
+          # Currently, the DPR keywords have to be specified as input
+          # parameters. Perhaps we could create a yaml file for each raw
+          # data type.
+          CATG: "!OBS.catg"
+          TYPE: "!OBS.type"
+          TECH: "!OBS.tech"
+        OBS:
+          # Keywords in the Observation category.
+          #
+          # Taken from ESO-044156 (DICD), but they should also be described
+          # elsewhere. Only those somewhat relevant to PIP are included
+          #
+          # TODO: Ensure ScopeSim can simulate Observing Blocks.
+          # TODO: Add more OBS keywords.
+          # TODO: Ensure the OBS keywords are in E-LIS-KUL-MET-1002.
+
+          # A unique numeric id which was assigned to the observation
+          # block by the Observation Handling Subsystem.
+          ID: 42
+
+          # The name of the observation block itself.
+          NAME: "TODO"
+
+          # The exact start time of the OB in the restricted ISO 8601 format.
+          START: "TODO"
+
+          # The template sequence number within the observation block. The
+          #  first template in the observation block shall have the OBS.TPLNO
+          # value of 1.
+          TPLNO: 1
+
+        TPL:
+          # Standard template keywords, however, these are not all included
+          # in the template manual.
+          # TODO: Expand with more standard template keywords.
+          ID:  "!OBS.tplname"
+          NAME: "!OBS.tplname"
+          EXPNO: "!OBS.tplexpno"
+          START: "!OBS.tplstart"
+
+        DET:
+          # Keywords from the detector subsystem.
+          #
+          # E-LIS-KUL-MET-1002 currently only specifies DETi.DIT and DETi.NDIT,
+          # where n=1,2,3. However, our raw files only have data from a single
+          # subinstrument, so we should ensure that DET.DIT and DET.NDIT are
+          # also provided. Idem for DETi.NCORRS.NAME and DET.CUBE.MODE
+          #
+          # NCORRS.NAME and CUBE.MODE from Template Manual.
+          DIT: "!OBS.dit"
+          NDIT: "!OBS.ndit"
+          NCORRS:
+            # Readout mode.
+            # TODO: Put something sensible in DET.NCORRS.NAME
+            NAME: "TODO"
+          CUBE:
+            # TODO: Allow cube mode in ScopeSim.
+            MODE: "F"
+        INS:
+          # Keywords from the instrument subsystem.
+          #
+          # Many more are defined in E-LIS-KUL-MET-1002. Not all possible INS
+          # keywords are applicable to all observation modes.
+          #
+          # TODO: Add the OPTI keywords, but probably in separate yaml files
+          #       for each mode.
+          #OPTI6:
+          #  NAME: "open"
+          DROT:
+            # Derotator position angle.
+            POSANG: 0
+        DRS:
+          # Data Reduction Subsystem keywords as defined in the DRLD.
+          # TODO: Add SLIT / IFU / MASK / PUPIL, but those are perhaps not
+          #       applicable to all observations and thus need their own
+          #       keywords yaml file.
+          FILTER: "!OBS.filter_name"
+          NDFILTER: "!OBS.nd_filter_name"
+
+      WISE:
+        # Extra keywords to fill the (hypothetical) MetisWISE database.
+        # These keywords will not be part of the raw data from the telescope,
+        # and are primarily used for reproducibility.
+        # However, several of these keywords would also be useful for the real
+        # data, and we should consider moving those to the ESO hierarchy
+        # (perhaps in a different category though).
+        ATMO:
+          # Keywords describing the atmosphere
+          LOCATION: "!ATMO.location"
+          ALTITUDE: "!ATMO.altitude"
+          LONGITUD: "!ATMO.longitude"
+          LATITUDE: "!ATMO.latitude"
+          TEMPERAT: "!ATMO.temperature"
+          HUMIDITY: "!ATMO.humidity"
+          PRESSURE: "!ATMO.pressure"
+          PWV: "!ATMO.pwv"
+        DET:
+          IMAGE_PL: "!DET.image_plane_id"
+          TEMPERAT: "!DET.temperature"
+          DAR:
+            # TODO: directly ask the dark_current effect for its value, like
+            #VALUE: "#dark_current.value"
+            # However, that currently does not work because that resolves to
+            # !DET.dark_current which is not subsequently resolved.
+            VALUE: "!DET.dark_current"
+          SHO:
+            STATE: "#shot_noise.include"
+          QEC:
+            FILENAME: "#quantum_efficiency.filename"
+          LIN:
+            FILENAME: "#detector_linearity.filename"
+          # TODO: Include a ReferencePixelBorder effect?
+          #REF:
+          #  ALL: "#border_reference_pixels.all"
+        TEL:
+          NAME: "ELT"
+          TELESCOP: "ELT"
+          TER:
+            FILENAME: "!TEL.ter_curve.filename"
+          REF:
+            FILENAME: "#telescope_reflection.filename"
+        OCS:
+          PXSCALE: "!INST.pixel_scale"
+        OBS:
+          TPLNO: "!OBS.tplno"
+          INSTRUME: "METIS"
+          NAME: "!OBS.obsname"
+          RA: "!OBS.ra"
+          DEC: "!OBS.dec"
+
+- ext_type: ImageHDU
+  # Keyword for extension HDUs.
+  keywords:
+    INHERIT: "T"
+    # Will resolve to e.g. DET1.DATA, DET2.DATA etc. This allows us to reorder
+    # the extensions in case they are shuffled.
+    EXTNAME: "DET§.DATA"

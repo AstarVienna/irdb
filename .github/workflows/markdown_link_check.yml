@@ -1,0 +1,24 @@
+name: Check Markdown links
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - dev_master
+  pull_request:
+    branches:
+      - main
+      - master
+      - dev_master
+
+  # Allows you to run this workflow manually from the Actions tab.
+  workflow_dispatch:
+
+  # Run every day at 5:00 UTC
+  schedule:
+    - cron: "0 5 * * *"
+
+jobs:
+  markdown-link-check:
+    uses: AstarVienna/DevOps/.github/workflows/markdown_link_check.yml@master

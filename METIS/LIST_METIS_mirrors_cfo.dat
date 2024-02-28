@@ -1,7 +1,7 @@
 # author : Oliver Czoske
 # source : E-REP-NOVA-MET-1142, E-REP-NOVA-MET-1144
 # date_created : 2020-02-28
-# date_modified : 2021-12-01
+# date_modified : 2023-11-10
 # status : PDR design, guess
 # type : mirror:list
 # outer_unit : m
@@ -11,9 +11,10 @@
 # changes:
 #    - 2021-12-01 (OC) entrance window set to ambient temperature
 #    - 2021-12-01 (OC) ADC removed, will be converted to a Scopesim Effect
+#    - 2023-11-10 (FH) Use telescope temperature as lookup for entry window
 #
 name          outer inner angle temperature        action       filename
-CFO_EntrWin   0.2   0.0   15    !ATMO.temperature  transmission TER_entrance_window.dat
+CFO_EntrWin   0.2   0.0   15    !TEL.temperature   transmission TER_entrance_window.dat
 CFO_CM1       0.3   0.0   0     -206.              reflection   TER_mirror_gold.dat
 CFO_FM1       0.3   0.0   0     -206.              reflection   TER_mirror_gold.dat
 CFO_CM2       0.3   0.0   0     -206.              reflection   TER_mirror_gold.dat

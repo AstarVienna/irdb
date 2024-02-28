@@ -75,10 +75,10 @@ class TestMakeOpticalTrain:
         cmd = scopesim.UserCommands(use_instrument="WFC3")
         opt = scopesim.OpticalTrain(cmd)
 
-        # test that the major values have been updated in rc.__currsys__
-        assert rc.__currsys__["!TEL.area"].value == approx(4.453, rel=1e-3)
-        assert rc.__currsys__["!TEL.etendue"].value == approx(0.0753, rel=1e-3)
-        assert rc.__currsys__["!INST.pixel_scale"] == approx(0.13, rel=1e-3)
+        # test that the major values have been updated
+        assert opt.cmds["!TEL.area"].value == approx(4.453, rel=1e-3)
+        assert opt.cmds["!TEL.etendue"].value == approx(0.0753, rel=1e-3)
+        assert opt.cmds["!INST.pixel_scale"] == approx(0.13, rel=1e-3)
 
         # test that OpticalTrain builds properly
         assert isinstance(opt, scopesim.OpticalTrain)
@@ -138,8 +138,8 @@ class TestMakeOpticalTrain:
             plt.imshow(hdu[0].data)
             plt.show()
 
-        dit = rc.__currsys__["!OBS.dit"]
-        ndit = rc.__currsys__["!OBS.ndit"]
+        dit = opt.cmds["!OBS.dit"]
+        ndit = opt.cmds["!OBS.ndit"]
         assert np.average(hdu[1].data) == approx(ndit * dit * 0.048, abs=1)
 
 

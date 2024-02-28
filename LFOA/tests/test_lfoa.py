@@ -47,6 +47,7 @@ class TestObserves:
 
             plt.show()
 
+    @pytest.mark.slow
     def test_observes_from_scopesim_templates(self):
         src = sim_tp.stellar.cluster(mass=10000, distance=2000, core_radius=1)
 
@@ -64,6 +65,7 @@ class TestObserves:
             plt.colorbar()
             plt.show()
 
+    @pytest.mark.slow
     def test_saves_readout_to_disc(self):
         src = sim_tp.stellar.cluster(mass=10000, distance=2000, core_radius=1)
         lfoa = scopesim.OpticalTrain("LFOA")

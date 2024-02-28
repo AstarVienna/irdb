@@ -22,6 +22,7 @@ class TestLoads:
         assert isinstance(lfoa, scopesim.OpticalTrain)
 
 
+@pytest.mark.slow
 class TestObserves:
     def test_something_comes_out(self):
         src = star_field(100, 0, 10, width=360, use_grid=True)
