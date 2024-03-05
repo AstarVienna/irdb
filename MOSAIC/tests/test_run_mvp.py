@@ -34,6 +34,7 @@ class TestMosiacMvpCanObserveSomething:
         cmds = sim.UserCommands(use_instrument="MOSAIC")
         mosaic = sim.OpticalTrain(cmds)
         mosaic.cmds["!ATMO.temperature"] = 0
+        mosaic.cmds["!OBS.dit"] = 3600
 
         mosaic.observe(src)
         hdul = mosaic.readout()[0]
@@ -47,13 +48,12 @@ class TestMosiacMvpCanObserveSomething:
             plt.imshow(im, norm=LogNorm(), origin="lower")
             plt.subplot(122)
             plt.imshow(im2, origin="lower")
-            plt.pause(0)
             plt.show()
 
         # assert im[:, :].sum()
 
     def test_run_observe_with_star(self):
-        src = st.star(0, 0, 25*u.mag)
+        src = st.star(0, 0, 20*u.mag)
         wave = np.linspace(1.420, 1.825, 4096) * u.um
 
         cmds = sim.UserCommands(use_instrument="MOSAIC")
@@ -80,7 +80,6 @@ class TestMosiacMvpCanObserveSomething:
             plt.imshow(im, norm=LogNorm(), origin="lower")
             plt.subplot(122)
             plt.imshow(im2, origin="lower")
-            plt.pause(0)
             plt.show()
 
         # assert in_flux == approx(out_flux)
