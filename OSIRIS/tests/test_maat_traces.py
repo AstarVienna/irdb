@@ -27,10 +27,10 @@ class TestMaatTraces:
                              amplitude=16 * u.ABmag, extend=520)
 
         cmds = sim.UserCommands(use_instrument="OSIRIS", set_modes=["MAAT"])
-        cmds.cmds["!OBS.exptime"] = 60
-        cmds.cmds["!OBS.dit"] = 60
-        cmds.cmds["!OBS.ndit"] = 1
-        cmds.cmds["!OBS.grating_name"] = 'R2000B'
+        cmds["!OBS.exptime"] = 60
+        cmds["!OBS.dit"] = 60
+        cmds["!OBS.ndit"] = 1
+        cmds["!OBS.grating_name"] = 'R2000B'
 
         osiris = sim.OpticalTrain(cmds)
         osiris["lapalma_skycalc_curves"].include = False
@@ -75,10 +75,10 @@ class TestMaatOperations:
                              amplitude=16 * u.ABmag, extend=520)
 
         cmds = sim.UserCommands(use_instrument="OSIRIS", set_modes=["MAAT"])
-        cmds.cmds["!OBS.exptime"] = 60
-        cmds.cmds["!OBS.dit"] = 60
-        cmds.cmds["!OBS.ndit"] = 1
-        cmds.cmds["!OBS.grating_name"] = 'R2500V'
+        cmds["!OBS.exptime"] = 60
+        cmds["!OBS.dit"] = 60
+        cmds["!OBS.ndit"] = 1
+        cmds["!OBS.grating_name"] = 'R2500V'
 
         osiris = sim.OpticalTrain(cmds)
         osiris["lapalma_skycalc_curves"].include = False

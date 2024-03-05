@@ -23,12 +23,12 @@ def test_maat_runs_with_point_source():
                        amplitude=11.78 * u.ABmag, x=3, y=2.1)
 
     cmds = sim.UserCommands(use_instrument="OSIRIS", set_modes=["MAAT"])
-    cmds.cmds["!ATMO.seeing"] = 1.
-    cmds.cmds["!OBS.exptime"] = 80
-    cmds.cmds["!OBS.dit"] = 80
-    cmds.cmds["!OBS.ndit"] = 1
-    cmds.cmds["!OBS.airmass"] = 1.2
-    cmds.cmds["!OBS.grating_name"] = 'R2000B'
+    cmds["!ATMO.seeing"] = 1.
+    cmds["!OBS.exptime"] = 80
+    cmds["!OBS.dit"] = 80
+    cmds["!OBS.ndit"] = 1
+    cmds["!OBS.airmass"] = 1.2
+    cmds["!OBS.grating_name"] = 'R2000B'
 
     osiris = sim.OpticalTrain(cmds)
     osiris.observe(src)
@@ -44,12 +44,12 @@ def test_maat_runs_with_extended_source():
                  pixel_scale=0.1, r_eff=3.5, n=2, ellip=0.3, theta=45, extend=5)
 
     cmds = sim.UserCommands(use_instrument="OSIRIS", set_modes=["MAAT"])
-    cmds.cmds["!ATMO.seeing"] = 1.
-    cmds.cmds["!OBS.exptime"] = 80
-    cmds.cmds["!OBS.dit"] = 80
-    cmds.cmds["!OBS.ndit"] = 1
-    cmds.cmds["!OBS.airmass"] = 1.2
-    cmds.cmds["!OBS.grating_name"] = 'R2000B'
+    cmds["!ATMO.seeing"] = 1.
+    cmds["!OBS.exptime"] = 80
+    cmds["!OBS.dit"] = 80
+    cmds["!OBS.ndit"] = 1
+    cmds["!OBS.airmass"] = 1.2
+    cmds["!OBS.grating_name"] = 'R2000B'
 
     osiris = sim.OpticalTrain(cmds)
     osiris.observe(src)
@@ -65,10 +65,10 @@ def test_maat_runs_with_line_list_source():
     arc = uniform_source(sed=arcspec, filter_curve='V', amplitude=16*u.ABmag, extend=520)
 
     cmds = sim.UserCommands(use_instrument="OSIRIS", set_modes=["MAAT"])
-    cmds.cmds["!OBS.exptime"] = 60
-    cmds.cmds["!OBS.dit"] = 60
-    cmds.cmds["!OBS.ndit"] = 1
-    cmds.cmds["!OBS.grating_name"] = 'R2000B'
+    cmds["!OBS.exptime"] = 60
+    cmds["!OBS.dit"] = 60
+    cmds["!OBS.ndit"] = 1
+    cmds["!OBS.grating_name"] = 'R2000B'
 
     osiris = sim.OpticalTrain(cmds)
     osiris["lapalma_skycalc_curves"].include = False
