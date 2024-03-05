@@ -7,9 +7,7 @@ import re
 import logging
 from datetime import date
 from typing import List, Tuple, Set, Dict
-# Python 3.8 doesn't yet know these things.......
-# from collections.abc import Iterator, Iterable, Mapping
-from typing import Iterator, Iterable, Mapping
+from collections.abc import Iterator, Iterable, Mapping
 
 from more_itertools import first, last, groupby_transform
 

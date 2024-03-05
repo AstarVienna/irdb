@@ -51,7 +51,6 @@ def make_micado_rst_files():
                  "SPEC_3000x50"]
 
     cmd = sim.UserCommands(use_instrument="MICADO", set_modes=all_modes)
-    rc.__currsys__ = cmd
 
     opt_els = []
     for yaml in cmd.yaml_dicts:

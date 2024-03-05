@@ -12,6 +12,7 @@ changes:
 
 properties:
   detector: Raytheon Aquarius
+  image_plane_id: 0
   temperature: -265
   dit: "!OBS.dit"
   ndit: "!OBS.ndit"
