@@ -74,7 +74,7 @@ class TestMosiacMvpCanObserveSomething:
         out_flux = np.sum(mosaic._last_fovs[0].hdu.data)
         im2 = hdul[1].data
 
-        if not PLOTS:
+        if PLOTS:
             plt.figure(figsize=(13, 6))
             plt.subplot(121)
             plt.imshow(im, norm=LogNorm(), origin="lower")
