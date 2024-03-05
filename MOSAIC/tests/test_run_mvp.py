@@ -79,7 +79,7 @@ class TestMosiacMvpCanObserveSomething:
             plt.subplot(121)
             plt.imshow(im, norm=LogNorm(), origin="lower")
             plt.subplot(122)
-            plt.imshow(im2, origin="lower")
+            plt.imshow(im2, origin="lower", norm=LogNorm())
             plt.show()
 
         # assert in_flux == approx(out_flux)

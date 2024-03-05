@@ -1,0 +1,80 @@
+### MOSAIC
+object : instrument
+alias : INST
+name : MOS-NIR-LR-H
+description : MVP yaml file for MOSAIC test run
+
+properties :
+    pixel_scale : 0.095         # arcsec / pixel
+    plate_scale : 6.333333333   # arcsec / mm
+    distance_between_fibers: 8  #pixels
+    fiber_per_bundle: 7
+    n_bundles: 2
+    distance_between_bundles: 32 #pixels
+
+effects:
+- name : psf
+  description : Seeing limited PSF
+  class : SeeingPSF
+  kwargs :
+    fwhm : "!OBS.psf_fwhm"       # [arcsec]
+
+- name : fibre_projection_psf
+  description : 2D PSF applied to traces due to fibre size
+  class : MosaicBundleTracePSF
+  kwargs :
+    r : [0, 1, 2]       # [pixels]
+    z : [0.6, 0.2, 0]   # [rel intensity]
+    trace_spacing : 2
+    trace_flux_weights : [0.7, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05]
+
+- name: aperture_list
+  description: collection of apertures corresponding to the MOS fibre heads
+  class: FibreApertureList
+  include: "!OBS.include_fibres"
+  kwargs:
+    filename : "apertures_MOS_NIR_LR_H_2.dat"
+
+- name : mos_spectral_traces
+  description : list of mos trace geometries on the focal plane
+  class : UnresolvedSpectralTraceList
+  include: "!OBS.include_fibres"
+  kwargs :
+    filename : "TRACE_MOSAIC_MOS_NIR_LR_H_2.fits"
+
+#- name : mos_spectral_traces
+#  description : list of mos trace geometries on the focal plane
+#  class : MosaicSpectralTraceList
+#  include: "!OBS.include_fibres"
+
+- name : collimator_transmission
+  class : TERCurve
+  kwargs :
+    filename : "TER_collimator.dat"
+
+- name : fibre_transmission
+  class : TERCurve
+  kwargs :
+    filename : "TER_NIR_fibre.dat"
+
+- name : YZ_dichroic_transmission
+  class : TERCurve
+  kwargs :
+    filename : "TER_YZ_dichroic.dat"
+    action : transmission
+
+- name : J_dichroic_transmission
+  class : TERCurve
+  kwargs :
+    filename : "TER_J_dichroic.dat"
+    action : transmission
+
+- name : H_grating_transmission
+  class : TERCurve
+  kwargs :
+    filename : "TER_H_grating.dat"
+
+- name : H_camera_transmission
+  class : TERCurve
+  kwargs :
+    filename : "TER_NIR_camera.dat"
