@@ -74,16 +74,22 @@ plot_html_show_source_link = False
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
-source_suffix = ['.rst', '.md']
+source_suffix = {
+    ".rst": "restructuredtext",
+    ".ipynb": "myst-nb",
+    ".myst": "myst-nb",
+    ".md": "myst-nb",
+}
 source_encoding = 'utf-8'
 
 
 # MyST NB stuff
-nb_execution_timeout = 600  # [s]
-nb_execution_mode = "cache"
+nb_execution_timeout = 6  # [s]
+nb_execution_mode = "force"
 nb_execution_excludepatterns = [
     "METIS/docs/example_notebooks/LSS*",
     "METIS/docs/example_notebooks/IFU*",
+    "MICADO/**"
 ]
 
 
@@ -126,6 +132,7 @@ html_theme = "sphinx_book_theme"
 html_theme_options = {
     "repository_url": "https://github.com/AstarVienna/irdb",
     "use_repository_button": True,
+    "use_download_button": True,
     "home_page_in_toc": True,
 }
 
@@ -149,7 +156,7 @@ html_sidebars = {
         "sbt-sidebar-nav.html",
     ]
 }
-
+html_sourcelink_suffix = ""
 
 # -- Options for HTMLHelp output ------------------------------------------
 

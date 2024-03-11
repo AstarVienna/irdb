@@ -15,8 +15,8 @@ scopesim-templates
 
 sphinx>=4.3.0
 sphinx-book-theme
-jupyter_sphinx==0.2.3
 sphinxcontrib-apidoc
 sphinx-copybutton
 myst-nb
+jupytext
 numpydoc

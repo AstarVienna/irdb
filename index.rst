@@ -10,31 +10,22 @@
 The Instrument Reference Database (IRDB) contains the instrument specific
 information used by the ScopeSim astronomical instrument data simulator.
 
-Instrument-Specific "Getting Started" Guides
---------------------------------------------
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+```{toctree}
+:maxdepth: 1
+:caption: Instrument-Specific "Getting Started" Guides
+:glob:
 
-   METIS + ScopeSim <METIS/docs/readme>
-   MICADO + ScopeSim <MICADO/docs/readme>
+METIS/docs/README
+MICADO/docs/README
+*/readme
+*/README
+*/docs/readme
+*/docs/README
+```
 
 
 Instrument Packages in the IRDB
 -------------------------------
 
-+-----------+------------+------------+
-| Locations | Telescopes |Instruments |
-+===========+============+============+
-| Armazones | ELT        | MICADO     |
-|           |            +------------+
-|           |            | METIS      |
-+-----------+------------+------------+
-| Paranal   | VLT        | HAWKI      |
-+-----------+------------+------------+
-|           |            | LFOA       |
-+-----------+------------+------------+
-
-
-
+WIP
