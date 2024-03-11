@@ -13,8 +13,9 @@ pysftp
 scopesim
 
 sphinx>=4.3.0
-sphinx-rtd-theme>=0.5.1
+sphinx-book-theme
 jupyter_sphinx==0.2.3
 sphinxcontrib-apidoc
-nbsphinx
+sphinx-copybutton
+myst-nb
 numpydoc
