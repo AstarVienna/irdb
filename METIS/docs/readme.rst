@@ -98,12 +98,9 @@ Ideally your folder structure should look like this::
       |- Armazones
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 0
    :caption: List of notebooks for METIS
 
-   example_notebooks/IFU-examples.ipynb
-   example_notebooks/IMG_L_N-examples.ipynb
-   example_notebooks/Introduction_to_Scopesim_for_METIS.ipynb
    example_notebooks/LSS_AGN-01_preparation.ipynb
    example_notebooks/LSS_AGN-02_simulation.ipynb
    example_notebooks/LSS-YSO_model_simulation.ipynb
@@ -123,19 +120,25 @@ Ideally your folder structure should look like this::
 Introductory notebooks
 ++++++++++++++++++++++
 
-.. list-table::
-   :widths: 25 75
-   :width: 900px
-   :header-rows: 1
+.. toctree::
+   :maxdepth: 1
+   :caption: Introductory overview of how to run simulations in ScopeSim
 
-   * - Name
-     - Description
-   * - | `Introduction_to_Scopesim_for_METIS.ipynb <example_notebooks/Introduction_to_Scopesim_for_METIS.ipynb>`_
-       | `Introduction_to_Scopesim_for_METIS.pdf <example_notebooks/Introduction_to_Scopesim_for_METIS.pdf>`_
-     - Introductory overview of how to run simulations in Scopesim
+   example_notebooks/Introduction_to_Scopesim_for_METIS.ipynb
+   example_notebooks/IMG_L_N-examples.ipynb
+   example_notebooks/IFU-examples.ipynb
+
 
 Scientific use-case notebooks
 +++++++++++++++++++++++++++++
+
+.. toctree::
+   :maxdepth: 0
+   :caption: List of notebooks for METIS
+
+   example_notebooks/LSS_AGN-01_preparation.ipynb
+   example_notebooks/LSS_AGN-02_simulation.ipynb
+   example_notebooks/LSS-YSO_model_simulation.ipynb
 
 .. list-table::
    :widths: 25 75
