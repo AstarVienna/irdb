@@ -126,17 +126,19 @@ html_static_path = ['docs/source/_static']      # 'METIS/docs/example_notebooks'
 html_logo = 'docs/source/_static/logos/T_favicon.png'
 html_title = "IRDB"
 
-# Custom sidebar templates, must be a dictionary that maps document names
-# to template names.
-#
-# This is required for the alabaster theme
-# refs: http://alabaster.readthedocs.io/en/latest/installation.html#sidebars
-# html_sidebars = {
-#     '**': [
-#         'relations.html',  # needs 'show_related': True theme option to display
-#         'searchbox.html',
-#     ]
-# }
+
+# Add local templates path to modify autosummary templates
+#templates_path = ['_templates']
+
+# Static files to copy after template files
+html_static_path = ['_static']
+html_sidebars = {
+    "**": [
+        "navbar-logo.html",
+        "search-field.html",
+        "sbt-sidebar-nav.html",
+    ]
+}
 
 
 # -- Options for HTMLHelp output ------------------------------------------
