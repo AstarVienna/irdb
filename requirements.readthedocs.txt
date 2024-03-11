@@ -11,6 +11,7 @@ pysftp
 
 # git+https://github.com/AstarVienna/ScopeSim.git@master_rtd
 scopesim
+scopesim-templates
 
 sphinx>=4.3.0
 sphinx-book-theme
