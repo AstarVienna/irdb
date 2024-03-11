@@ -101,9 +101,6 @@ Ideally your folder structure should look like this::
    :maxdepth: 0
    :caption: List of notebooks for METIS
 
-   example_notebooks/LSS_AGN-01_preparation.ipynb
-   example_notebooks/LSS_AGN-02_simulation.ipynb
-   example_notebooks/LSS-YSO_model_simulation.ipynb
    example_notebooks/RawHeaders.ipynb
    example_notebooks/demos/demo_adc_wheel.ipynb
    example_notebooks/demos/demo_auto_exposure.ipynb
@@ -115,6 +112,8 @@ Ideally your folder structure should look like this::
    example_notebooks/demos/demo_metis_lms_efficiency.ipynb
    example_notebooks/demos/demo_rectify_traces.ipynb
    example_notebooks/demos/demo_slit_wheel.ipynb
+   example_notebooks/testnotebook.md
+   example_notebooks/testnotebook2.md
 
 
 Introductory notebooks
