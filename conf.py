@@ -126,6 +126,7 @@ html_theme = "sphinx_book_theme"
 html_theme_options = {
     "repository_url": "https://github.com/AstarVienna/irdb",
     "use_repository_button": True,
+    "use_download_button": True,
     "home_page_in_toc": True,
 }
 
