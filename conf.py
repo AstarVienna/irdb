@@ -79,7 +79,8 @@ source_encoding = 'utf-8'
 
 
 # MyST NB stuff
-nb_execution_timeout = 1800  # [s]
+nb_execution_timeout = 600  # [s]
+nb_execution_mode = "cache"
 
 
 # The master toctree document.
