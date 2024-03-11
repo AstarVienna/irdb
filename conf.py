@@ -77,6 +77,11 @@ templates_path = ['_templates']
 source_suffix = ['.rst', '.md']
 source_encoding = 'utf-8'
 
+
+# MyST NB stuff
+nb_execution_timeout = 1800  # [s]
+
+
 # The master toctree document.
 master_doc = 'index'
 
