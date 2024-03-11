@@ -11,7 +11,5 @@ Too see if it'll add the option to download as `.ipynb` file.
 This time with a simpler header.
 
 ```{code-cell} ipython3
-:tags: [full_width]
-
 print("Heyo")
 ```

@@ -150,7 +150,7 @@ html_sidebars = {
         "sbt-sidebar-nav.html",
     ]
 }
-
+html_sourcelink_suffix = ""
 
 # -- Options for HTMLHelp output ------------------------------------------
 

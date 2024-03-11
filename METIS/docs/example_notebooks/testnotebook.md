@@ -17,7 +17,5 @@ kernelspec:
 Too see if it'll add the option to download as `.ipynb` file.
 
 ```{code-cell} ipython3
-:tags: [full_width]
-
 print("Heyo")
 ```
