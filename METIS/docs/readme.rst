@@ -97,6 +97,28 @@ Ideally your folder structure should look like this::
       |- ELT
       |- Armazones
 
+.. toctree::
+   :maxdepth: 1
+   :caption: List of notebooks for METIS
+
+   example_notebooks/IFU-examples.ipynb
+   example_notebooks/IMG_L_N-examples.ipynb
+   example_notebooks/Introduction_to_Scopesim_for_METIS.ipynb
+   example_notebooks/LSS_AGN-01_preparation.ipynb
+   example_notebooks/LSS_AGN-02_simulation.ipynb
+   example_notebooks/LSS-YSO_model_simulation.ipynb
+   example_notebooks/RawHeaders.ipynb
+   example_notebooks/demos/demo_adc_wheel.ipynb
+   example_notebooks/demos/demo_auto_exposure.ipynb
+   example_notebooks/demos/demo_chopping_and_nodding.ipynb
+   example_notebooks/demos/demo_detector_modes.ipynb
+   example_notebooks/demos/demo_filter_wheel.ipynb
+   example_notebooks/demos/demo_grating_efficiency.ipynb
+   example_notebooks/demos/demo_lss_simple.ipynb
+   example_notebooks/demos/demo_metis_lms_efficiency.ipynb
+   example_notebooks/demos/demo_rectify_traces.ipynb
+   example_notebooks/demos/demo_slit_wheel.ipynb
+
 
 Introductory notebooks
 ++++++++++++++++++++++
