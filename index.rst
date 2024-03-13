@@ -17,7 +17,7 @@ Instrument-Specific "Getting Started" Guides
    :maxdepth: 2
    :caption: Contents:
 
-   METIS + ScopeSim <METIS/docs/readme>
+   METIS + ScopeSim <METIS/docs/README>
    MICADO + ScopeSim <MICADO/docs/readme>
 
 
@@ -35,6 +35,3 @@ Instrument Packages in the IRDB
 +-----------+------------+------------+
 |           |            | LFOA       |
 +-----------+------------+------------+
-
-
-
