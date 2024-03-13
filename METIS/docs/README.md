@@ -1,3 +1,5 @@
+# METIS + ScopeSim
+
 ```{image} metis_scopesim_logo.png
 :alt: METIS + ScopeSim
 :width: 600px
