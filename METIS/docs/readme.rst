@@ -114,6 +114,7 @@ Ideally your folder structure should look like this::
    example_notebooks/demos/demo_slit_wheel.ipynb
    example_notebooks/testnotebook.md
    example_notebooks/testnotebook2.md
+   example_notebooks/testnotebook3.ipynb
 
 
 Introductory notebooks
