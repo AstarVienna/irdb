@@ -65,9 +65,6 @@ The current filter can be changed to any of the filters in the list:
 
 ```{code-cell} ipython3
 metis['filter_wheel'].change_filter("PAH_3.3")
-```
-
-```{code-cell} ipython3
 metis['filter_wheel'].current_filter
 ```
 
@@ -75,9 +72,7 @@ metis['filter_wheel'].current_filter
 
 ```{code-cell} ipython3
 src = sim.source.source_templates.empty_sky()
-```
 
-```{code-cell} ipython3
 metis['filter_wheel'].change_filter("Lp")
 
 metis.observe(src)
@@ -92,8 +87,8 @@ img_PAH = metis.image_planes[0].data
 ```
 
 ```{code-cell} ipython3
-print("Background in Lp:      {:8.1f} counts/s".format(np.median(img_Lp)))
-print("Background in PAH_3.3: {:8.1f} counts/s".format(np.median(img_PAH)))
+print(f"Background in Lp:      {np.median(img_Lp):8.1f} counts/s")
+print(f"Background in PAH_3.3: {np.median(img_PAH):8.1f} counts/s")
 ```
 
 ## Using the neutral-density filter wheel
@@ -112,9 +107,7 @@ Observe a bright star (default arguments result in Vega at 0 mag) in the Lp filt
 
 ```{code-cell} ipython3
 star = sim.source.source_templates.star()
-```
 
-```{code-cell} ipython3
 metis['filter_wheel'].change_filter('Lp')
 ```
 

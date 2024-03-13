@@ -33,17 +33,8 @@ If you haven't got the instrument packages yet, uncomment the following cell.
 
 ```{code-cell} ipython3
 cmd = sim.UserCommands(use_instrument="METIS", set_modes=["img_lm"])
-```
-
-```{code-cell} ipython3
 metis = sim.OpticalTrain(cmd)
-```
-
-```{code-cell} ipython3
 src = sim.source.source_templates.empty_sky()
-```
-
-```{code-cell} ipython3
 metis.observe(src)
 ```
 
@@ -75,13 +66,7 @@ print(f"Fill fraction:                      {outimg.max() / full_well:8.1%}")
 
 ```{code-cell} ipython3
 cmd = sim.UserCommands(use_instrument="METIS", set_modes=['img_n'])
-```
-
-```{code-cell} ipython3
 metis = sim.OpticalTrain(cmd)
-```
-
-```{code-cell} ipython3
 metis.observe(src)
 ```
 
@@ -100,13 +85,7 @@ print(f"Fill fraction:                      {outimg.max() / full_well:9.1%}")
 
 ```{code-cell} ipython3
 cmd = sim.UserCommands(use_instrument="METIS", set_modes=['lss_l'])
-```
-
-```{code-cell} ipython3
 metis = sim.OpticalTrain(cmd)
-```
-
-```{code-cell} ipython3
 metis.observe(src)
 ```
 
@@ -128,17 +107,8 @@ Use N-band imaging of Vega. DIT is automatically set to the minimum possible val
 
 ```{code-cell} ipython3
 cmd = sim.UserCommands(use_instrument="METIS", set_modes=["img_n"])
-```
-
-```{code-cell} ipython3
 metis = sim.OpticalTrain(cmd)
-```
-
-```{code-cell} ipython3
 src = sim.source.source_templates.star()
-```
-
-```{code-cell} ipython3
 metis.observe(src)
 ```
 
@@ -158,7 +128,6 @@ Plot a cut through the star to show how its peak saturates the detector.
 
 ```{code-cell} ipython3
 from matplotlib import pyplot as plt
-%matplotlib inline
 ```
 
 ```{code-cell} ipython3

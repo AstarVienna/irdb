@@ -16,15 +16,13 @@ kernelspec:
 This notebook demonstrates how to use the various slits in METIS. They are defined in a `SlitWheel` effect, which works in the same way as `FilterWheel`. The notebook uses imaging mode to show the slits directly. 
 
 ```{code-cell} ipython3
+from matplotlib import pyplot as plt
+
 import scopesim as sim
 sim.bug_report()
 
 # Edit this path if you have a custom install directory, otherwise comment it out.
 # sim.rc.__config__["!SIM.file.local_packages_path"] = "../../../../"
-```
-
-```{code-cell} ipython3
-from matplotlib import pyplot as plt
 ```
 
 If you haven't got the instrument packages yet, uncomment the following cell.
@@ -45,9 +43,6 @@ cmd['!OBS.slit'] = "C-38_1"
 
 ```{code-cell} ipython3
 src = sim.source.source_templates.empty_sky()
-```
-
-```{code-cell} ipython3
 metis = sim.OpticalTrain(cmd)
 ```
 

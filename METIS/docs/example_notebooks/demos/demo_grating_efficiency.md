@@ -49,9 +49,7 @@ from scopesim_templates.micado import flatlamp
 lam = np.linspace(2.8, 18, 2048)
 flux = 0.1 * np.ones_like(lam)
 spec = SourceSpectrum(Empirical1D, points = lam * u.um, lookup_table=flux)
-```
 
-```{code-cell} ipython3
 src = flatlamp()
 src.spectra[0] = spec
 ```
@@ -60,13 +58,9 @@ src.spectra[0] = spec
 
 ```{code-cell} ipython3
 cmd_l = sim.UserCommands(use_instrument='METIS', set_modes=['lss_l'])
-```
 
-```{code-cell} ipython3
 metis_l = sim.OpticalTrain(cmd_l)
-```
 
-```{code-cell} ipython3
 metis_l['psf'].include = False                # PSF is not necessary for slit-filling source
 metis_l['skycalc_atmosphere'].include = False # sky lines obscure flat spectrum 
 ```

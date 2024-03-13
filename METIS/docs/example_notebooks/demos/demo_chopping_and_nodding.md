@@ -33,9 +33,7 @@ If you haven't got the instrument packages yet, uncomment the following cell.
 
 ```{code-cell} ipython3
 cmd = sim.UserCommands(use_instrument="METIS", set_modes=['img_n'])
-```
 
-```{code-cell} ipython3
 metis = sim.OpticalTrain(cmd)
 metis['chop_nod'].include = True
 ```
@@ -43,15 +41,13 @@ metis['chop_nod'].include = True
 The default is perpendicular nodding, with the chop throw in the x-direction and the nod throw in the y direction.
 
 ```{code-cell} ipython3
-print("Chop offsets:", metis.cmds[metis['chop_nod'].meta['chop_offsets']])
-print("Nod offsets: ", metis.cmds[metis['chop_nod'].meta['nod_offsets']])
+print(f"Chop offsets: {metis.cmds[metis['chop_nod'].meta['chop_offsets']]}")
+print(f"Nod offsets: {metis.cmds[metis['chop_nod'].meta['nod_offsets']]}")
 ```
 
 ```{code-cell} ipython3
 src = sim.source.source_templates.star()
-```
 
-```{code-cell} ipython3
 metis.observe(src, update=True)
 imghdu = metis.readout()[0][1]
 ```

@@ -84,9 +84,6 @@ metis["psf"].include = False
 
 ```{code-cell} ipython3
 metis.observe(src_linelamp, update=True)
-```
-
-```{code-cell} ipython3
 readout = metis.readout()[0]
 ```
 
@@ -100,9 +97,6 @@ The non-linearity in the dispersion in METIS is small and not readily apparent.S
 
 ```{code-cell} ipython3
 tracelist = metis["spectral_traces"]
-```
-
-```{code-cell} ipython3
 rectified = tracelist.rectify_traces(readout, -4.0, 4.0)
 ```
 

@@ -51,9 +51,7 @@ We build the optical train using the default mode, and then check that the relev
 
 ```{code-cell} ipython3
 metis = sim.OpticalTrain(cmd)
-```
 
-```{code-cell} ipython3
 metis.cmds["!DET"]
 ```
 
@@ -72,9 +70,7 @@ We can switch to the `slow` mode in the existing optical train by doing
 ```{code-cell} ipython3
 metis.cmds["!OBS.detector_readout_mode"] = "slow"
 metis.update()
-```
 
-```{code-cell} ipython3
 metis.cmds["!DET"]
 ```
 
@@ -88,9 +84,7 @@ To investigate the behaviour of the detector readout modes, we look at the L-ban
 
 ```{code-cell} ipython3
 sky = sim.source.source_templates.empty_sky()
-```
 
-```{code-cell} ipython3
 cmd = sim.UserCommands(use_instrument="METIS", set_modes=["lss_l"],
                       properties={"!OBS.exptime": 1000})
 metis = sim.OpticalTrain(cmd)
@@ -154,9 +148,7 @@ This demonstrates the high- and low-capacity modes of the Geosnap detector. The 
 
 ```{code-cell} ipython3
 star = sim.source.source_templates.star(flux=20 * u.Jy)
-```
 
-```{code-cell} ipython3
 cmd_n = sim.UserCommands(use_instrument="METIS", set_modes=['img_n'],
                         properties={"!OBS.filter_name": "N2", "!OBS.nd_filter_name": "ND_OD1"})
 metis_n = sim.OpticalTrain(cmd_n)

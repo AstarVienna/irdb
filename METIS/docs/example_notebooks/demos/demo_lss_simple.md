@@ -39,9 +39,6 @@ Set up the instrument in lss_l mode:
 
 ```{code-cell} ipython3
 cmd = sim.UserCommands(use_instrument="METIS", set_modes=['lss_l'])
-```
-
-```{code-cell} ipython3
 metis = sim.OpticalTrain(cmd)
 ```
 
@@ -49,9 +46,7 @@ The source is a star with Vega spectrum and apparent brightness of 12 mag.
 
 ```{code-cell} ipython3
 src = sim.source.source_templates.star(flux=12)
-```
 
-```{code-cell} ipython3
 metis.observe(src, update=True)
 result = metis.readout(detector_readout_mode="auto")[0][1]
 ```
@@ -69,13 +64,9 @@ The default configuration for METIS applies a mapping of the two-dimensional spe
 ```{code-cell} ipython3
 cmds = sim.UserCommands(use_instrument="METIS", set_modes=['lss_l'])
 cmds['!OBS.trace_file'] = "TRACE_LSS_L.fits"
-```
 
-```{code-cell} ipython3
 metis = sim.OpticalTrain(cmds)
-```
 
-```{code-cell} ipython3
 metis.observe(src, update=True)
 result_2 = metis.readout()[0][1]
 ```
