@@ -74,9 +74,10 @@ plot_html_show_source_link = False
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
-# source_suffix = ['.rst', '.md']
 source_suffix = {
+    ".rst": "restructuredtext",
     ".ipynb": "myst-nb",
+    ".myst": "myst-nb",
     ".md": "myst-nb",
 }
 source_encoding = 'utf-8'
