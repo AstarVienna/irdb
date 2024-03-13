@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Demo Filter Wheel
+# How to use the filter wheel(s)
 
 This notebook demonstrates the use of the `FilterWheel` in Scopesim. The METIS configuration contains two instances of this effect, named `filter_wheel` (for science filters) and `nd_filter_wheel` (for neutral-density filters). Each filter wheel contains a number of predefined filters, with different filter sets for the LM- and N-band imagers. 
 

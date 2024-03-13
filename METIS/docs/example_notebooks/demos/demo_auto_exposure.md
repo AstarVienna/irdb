@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Demo Auto Exposure
+# How to select `dit`/`ndit` automatically
 
 This is a setup/test/demonstration notebook for the `AutoExposure` effect in Scopesim. The notebook uses the `irdb/METIS` configuration. The observed source is blank sky, except for the last example where a star of 0 mag is used (Vega).
 

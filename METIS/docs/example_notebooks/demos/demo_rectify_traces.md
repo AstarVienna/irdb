@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Demo Rectify Traces
+# How to obtain wavelength-calibrated and rectified 2D spectra
 
 This notebook demonstrates how to rectify a detector readout from a spectroscopic simulation using Scopesim. "Rectification" means the transformation of a spectral trace from the detector onto a rectangular pixel grid of wavelength and spatial position along the slit. Wavelength calibration and rectification are major tasks of the spectroscopic data-reduction pipeline. For convenience, Scopesim includes functionality to perform these tasks by reversing the *known* mapping that was used for the simulation, resulting in easily analysable 2D spectra that include all the noise and background components but neglect the uncertainties of a wavelength calibration as it would be performed during the reduction of real data. 
 Rectification is demonstrated on a METIS long-slit simulation, but the procedure applies to MICADO spectroscopic simulations as well (but more expensive to simulate and rectify). METIS IFU simulations have to be treated differently. 

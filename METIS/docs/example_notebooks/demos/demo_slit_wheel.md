@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Demo Slit Wheel
+# How to use the slit wheel for spectroscopy (and imaging)
 
 This notebook demonstrates how to use the various slits in METIS. They are defined in a `SlitWheel` effect, which works in the same way as `FilterWheel`. The notebook uses imaging mode to show the slits directly. 
 

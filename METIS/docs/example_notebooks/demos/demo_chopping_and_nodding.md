@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Demo Chopping and Nodding
+# How to produce chop-nod difference images in the N band
 
 This notebook demonstrates how to use the `ChopNod` effect in Scopesim. Both chopping and nodding are currently defined as two-point patterns, where the throw direction is given as a 2D vector (dx, dy) in `metis['chop_nod'].meta['chop_offsets']` and `metis['chop_nod'].meta['nod_offsets']`. For parallel nodding, the two vectors are parallel (typically nod_offset = - chop_offset, giving a three-point pattern), for perpendicular nodding, the vectors are orthogonal.  
 

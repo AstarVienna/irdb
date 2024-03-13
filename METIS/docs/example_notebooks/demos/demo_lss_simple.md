@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Demo LSS Simple
+# Basic procedure for long-slit spectroscopy
 
 This notebook shows the most basic setup for long-slit spectroscopy, using a star as the source.
 

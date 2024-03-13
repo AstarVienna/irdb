@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Demo METIS LMS Efficiency
+# Demonstration of METIS LMS Efficiency
 
 This notebook demonstrates the effect `MetisLMSEfficiency`. Here we use it standalone to reproduce Figure 6 from E-REP-ATC-MET-1016 (v1.0) to show that the effect computes the efficiency correctly.
 

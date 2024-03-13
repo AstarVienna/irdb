@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Demo Grating Efficiency
+# Demonstration of spectral (grating) efficiency
 
 This notebook demonstrates and tests the `SpectralEfficiency` effect for the METIS long-slit spectroscopic modes. Lacking real data, the grating effciencies used here (and available in the irdb) are pure fantasy.
 

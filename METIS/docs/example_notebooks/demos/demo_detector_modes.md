@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Demo Detecor Modes
+# How to set detector readout modes
 
 This notebook demonstrates the effect `detector_readout_parameters`, which selects between the different detector readout modes. These are `fast` and `slow` for the HAWAII2RG detectors, and `high_capacity` and `low_capacity` for the Geosnap detector.
 

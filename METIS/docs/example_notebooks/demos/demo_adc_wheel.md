@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Demo ADC Wheel
+# How to use the atmospheric dispersion correctors
 
 This notebook demonstrates how to use the various atmospheric dispersion correctors in METIS. Note that the action of an adc is currently restricted to a transmission loss. The implementation of the geometric differential refraction residuals will follow at a later stage.
 

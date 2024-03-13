@@ -159,33 +159,7 @@ Scientific use-case notebooks
 Notebooks on individual effects
 +++++++++++++++++++++++++++++++
 
-These notebooks can be found in ``docs/example_notebooks/demos``.
-
-.. list-table::
-   :widths: 25 75
-   :width: 900px
-   :header-rows: 1
-
-   * - Name
-     - Description
-   * - `demo_adc_wheel.ipynb <example_notebooks/demos/demo_adc_wheel.ipynb>`_
-     - How to use the atmospheric dispersion correctors.
-   * - `demo_auto_exposure.ipynb <example_notebooks/demos/demo_auto_exposure.ipynb>`_
-     - How to select `dit`/`ndit` automatically.
-   * - `demo_chopping_and_nodding.ipynb <example_notebooks/demos/demo_chopping_and_nodding.ipynb>`_
-     - How to produce chop-nod difference images in the N band.
-   * - `demo_detector_modes.ipynb <example_notebooks/demos/demo_detector_modes.ipynb>`_
-     - How to set detector readout modes.
-   * - `demo_filter_wheel.ipynb <example_notebooks/demos/demo_filter_wheel.ipynb>`_
-     - How to use the filter wheel(s).
-   * - `demo_lss_simple.ipynb <example_notebooks/demos/demo_lss_simple.ipynb>`_
-     - Basic procedure for long-slit spectroscopy.
-   * - `demo_grating_efficiency.ipynb <example_notebooks/demos/demo_grating_efficiency.ipynb>`_
-     - Demonstration of spectral (grating) efficiency.
-   * - `demo_slit_wheel.ipynb <example_notebooks/demos/demo_slit_wheel.ipynb>`_
-     - How to use the slit wheel for spectroscopy (and imaging)
-   * - `demo_rectify_traces.ipynb <example_notebooks/demos/demo_rectify_traces.ipynb>`_
-     - How to obtain wavelength-calibrated and rectified 2D spectra.
+These notebooks can be found in `docs/example_notebooks/demos`.
 
 .. toctree::
    :maxdepth: 1
