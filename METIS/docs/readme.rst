@@ -187,6 +187,13 @@ These notebooks can be found in ``docs/example_notebooks/demos``.
    * - `demo_rectify_traces.ipynb <example_notebooks/demos/demo_rectify_traces.ipynb>`_
      - How to obtain wavelength-calibrated and rectified 2D spectra.
 
+.. toctree::
+   :maxdepth: 1
+   :caption: METIS demo notebooks
+
+   example_notebooks/demos
+   example_notebooks/demos/
+
 Documentation and useful references
 -----------------------------------
 
