@@ -55,7 +55,7 @@ full_well = metis.cmds["!DET.full_well"]
 print("\nResult\n======")
 print(f"Maximum value in readout (per DIT): {outimg.max():8.1f}")
 print(f"Detector full well:                 {full_well:8.1f}")
-print(f"Fill fraction:                      {outimg.max() / full_well:8.1f%")
+print(f"Fill fraction:                      {outimg.max() / full_well:8.1f%}")
 ```
 
 Exposure time can be changed with an argument to `metis.readout()`:
