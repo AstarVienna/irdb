@@ -165,8 +165,17 @@ These notebooks can be found in `docs/example_notebooks/demos`.
    :maxdepth: 1
    :caption: METIS demo notebooks
 
-   example_notebooks/demos
-   example_notebooks/demos/
+   example_notebooks/demos/demo_adc_wheel
+   example_notebooks/demos/demo_auto_exposure
+   example_notebooks/demos/demo_chopping_and_nodding
+   example_notebooks/demos/demo_detector_modes
+   example_notebooks/demos/demo_filter_wheel
+   example_notebooks/demos/demo_grating_efficiency
+   example_notebooks/demos/demo_lss_simple
+   example_notebooks/demos/demo_metis_lms_efficiency
+   example_notebooks/demos/demo_rectify_traces
+   example_notebooks/demos/demo_slit_wheel
+
 
 Documentation and useful references
 -----------------------------------
