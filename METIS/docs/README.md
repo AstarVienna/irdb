@@ -88,16 +88,18 @@ Notebooks should be run in your working directory, **NOT** directly in the `docs
 
 Ideally your folder structure should look like this::
 
-    working-dir
-    |- <desired notebook>.iypnb
-    |
-    |- inst_pkgs
-      |- METIS
-      |  |- docs
-      |     |- example_notebooks
-      |        |- <desired notebook>.iypnb      # copy out to working-dir
-      |- ELT
-      |- Armazones
+```
+working-dir
+├─ <desired notebook>.iypnb
+│
+└─ inst_pkgs
+  ├─ METIS
+  │  └─ docs
+  │     └─ example_notebooks
+  │        └─ <desired notebook>.iypnb      # copy out to working-dir
+  ├─ ELT
+  └─ Armazones
+```
 
 ```{toctree}
 :maxdepth: 2
