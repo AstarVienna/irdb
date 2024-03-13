@@ -34,7 +34,7 @@ mode_yamls :
   name : "MOS-NIR-LR-H"
   description : "MVP system for a single MOSAIC config"
   yamls :
-  - MOSAIC-MOS-NIR-LR-H_2.yaml
+  - MOSAIC-MOS-NIR-LR-H.yaml
   - MOSAIC_H_DET.yaml
 
 

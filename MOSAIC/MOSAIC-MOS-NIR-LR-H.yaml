@@ -33,6 +33,15 @@ effects:
   kwargs:
     filename : "apertures_MOS_NIR_LR_H.dat"
 
+- name: fibre_bundle_point_source_transmission
+  description: For point sources adds an extra quasi-transmission drop for each fibre due to the distribution of PSF flux over the bundle
+  class: AirmassDependantFibreBundleTransmission
+  include: "!OBS.include_fibres"
+  kwargs:
+    filename: "TER_NIR_bundle_ter_correction.dat"
+    n_fibres: 7
+    zenith_dist: 15
+
 - name : mos_spectral_traces
   description : list of mos trace geometries on the focal plane
   class : UnresolvedSpectralTraceList

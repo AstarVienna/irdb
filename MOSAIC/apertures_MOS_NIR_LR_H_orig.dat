@@ -1,0 +1,25 @@
+# description : Two 7-fibre bundles
+# x_unit : arcsec
+# y_unit : arcsec
+# r_unit : arcsec
+# angle_unit : deg
+# comments :
+#   - This file contains the positions of two 7-fibre bundles.
+#   - The centre of the bundles are located at (0, 0) and (2, 0) [arcsec] relative
+#   - to the centre of the observation field
+#
+id      x       y       r       angle   conserve_image  shape
+0       0       0       0.095   0       False           hex
+1       0.165   0.19    0.095   0       False           hex
+2       0.165   0.095   0.095   0       False           hex
+3       0       -0.095  0.095   0       False           hex
+4       -0.165  -0.19   0.095   0       False           hex
+5       -0.165  -0.095  0.095   0       False           hex
+6       0       0.095   0.095   0       False           hex
+7       2       0       0.095   0       False           hex
+8       2.165   0.19    0.095   0       False           hex
+9       2.165   0.095   0.095   0       False           hex
+10      2       -0.095  0.095   0       False           hex
+11      -2.165  -0.19   0.095   0       False           hex
+12      -2.165  -0.095  0.095   0       False           hex
+13      2       0.095   0.095   0       False           hex
