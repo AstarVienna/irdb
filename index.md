@@ -9,14 +9,17 @@
 The Instrument Reference Database (IRDB) contains the instrument specific
 information used by the ScopeSim astronomical instrument data simulator.
 
-## Instrument-Specific "Getting Started" Guides
-
 ```{toctree}
+:maxdepth: 1
+:caption: Instrument-Specific "Getting Started" Guides
+
 METIS/docs/README
-MICADO/docs/readme
+MICADO/docs/README
 ```
 
 ## Instrument Packages in the IRDB
+
+WIP
 
 ```
 +-----------+------------+------------+
