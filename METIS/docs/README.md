@@ -110,7 +110,6 @@ working-dir
 example_notebooks/testnotebook
 example_notebooks/testnotebook2
 example_notebooks/testnotebook3
-../../README
 ```
 
 ```{toctree}
