@@ -17,17 +17,17 @@ The new METIS data simulator currently supports the imaging and long-slit modes.
 - A working installation of Jupyter if you want to run the simulator from notebooks. This is necessary to run the example notebooks contained in the instrument package.
 - A working installation of the Python package installer pip
 
-:::{note}
+```{note}
 If you come across a bug or get stuck with a certain aspect of ScopeSim or the METIS package, please get in touch with us (email addresses below).
 
 **Your feedback is the only way we know** what needs to be changed/improved with the package and the simulator.
 
 Please always provide the output of the command `scopesim.bug_report()` run on your installation.
-:::
+```
 
 ## Installation & setup
 
-This is a short overview of the installation and setup procedure; for a more detailed presentation see [`Introduction_to_Scopesim_for_METIS <example_notebooks/Introduction_to_Scopesim_for_METIS.ipynb>`_.
+This is a short overview of the installation and setup procedure; for a more detailed presentation see [Introduction_to_Scopesim_for_METIS](example_notebooks/Introduction_to_Scopesim_for_METIS).
 
 1. Install `scopesim` in your python environment:
 
@@ -84,9 +84,9 @@ These notebooks can be found either:
 - *download* in the [METIS/docs section of the IRDB Github repository](https://github.com/AstarVienna/irdb/tree/master/METIS/docs/example_notebooks)
 
 
-:::{warning}
+```{warning}
 Notebooks should be run in your working directory, **NOT** directly in the `docs/example_notebooks` folder. Please copy the desired notebook out of this folder.
-:::
+```
 
 Ideally your folder structure should look like this::
 
