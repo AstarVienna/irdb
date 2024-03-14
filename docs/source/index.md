@@ -1,29 +1,24 @@
-.. ReadTheDocs index file. Originally from docs/source/index.rst
-   Moved here so that all package docs are accessible to Sphinx and RTD
+```{image} /_static/logos/logo_irdb.PNG
+:alt: Welcome to the IRDB Documentation!
+:width: 600px
+:align: center
+```
 
-.. image:: docs/source/_static/logos/logo_irdb.PNG
-    :width: 600 px
-    :alt: Welcome to the ScopeSim Documentation!
-    :align: center
-
+# Instrument Reference Database
 
 The Instrument Reference Database (IRDB) contains the instrument specific
 information used by the ScopeSim astronomical instrument data simulator.
 
-Instrument-Specific "Getting Started" Guides
---------------------------------------------
+## Instrument-Specific "Getting Started" Guides
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+```{toctree}
+../../METIS/docs/README
+../../MICADO/docs/readme
+```
 
-   METIS + ScopeSim <METIS/docs/README>
-   MICADO + ScopeSim <MICADO/docs/readme>
+## Instrument Packages in the IRDB
 
-
-Instrument Packages in the IRDB
--------------------------------
-
+```
 +-----------+------------+------------+
 | Locations | Telescopes |Instruments |
 +===========+============+============+
@@ -35,3 +30,4 @@ Instrument Packages in the IRDB
 +-----------+------------+------------+
 |           |            | LFOA       |
 +-----------+------------+------------+
+```
