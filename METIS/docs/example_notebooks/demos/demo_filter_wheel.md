@@ -19,9 +19,7 @@ This notebook demonstrates the use of the `FilterWheel` in Scopesim. The METIS c
 import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib.colors import LogNorm
-```
 
-```{code-cell} ipython3
 import scopesim as sim
 sim.bug_report()
 
@@ -77,16 +75,12 @@ metis['filter_wheel'].change_filter("Lp")
 
 metis.observe(src)
 img_Lp = metis.image_planes[0].data
-```
 
-```{code-cell} ipython3
 metis['filter_wheel'].change_filter("PAH_3.3")
 
 metis.observe(src, update=True)
 img_PAH = metis.image_planes[0].data
-```
 
-```{code-cell} ipython3
 print(f"Background in Lp:      {np.median(img_Lp):8.1f} counts/s")
 print(f"Background in PAH_3.3: {np.median(img_PAH):8.1f} counts/s")
 ```
@@ -157,8 +151,12 @@ ax3.set_title("ND filter: 1e-4");
 A custom filter that is not in the default filter set can be added to the wheel using the method `add_filter`. A "filter" is an object of class `TERCurve` (or one of its subclasses) and the various methods for instantiating such an object can be used.
 
 ```{code-cell} ipython3
-newfilter = sim.effects.ter_curves.TopHatFilterCurve(transmission=0.9, blue_cutoff=3.8, red_cutoff=3.9, 
-                                                     name="custom_tophat")
+newfilter = sim.effects.ter_curves.TopHatFilterCurve(
+    transmission=0.9,
+    blue_cutoff=3.8,
+    red_cutoff=3.9,
+    name="custom_tophat",
+)
 metis['filter_wheel'].add_filter(newfilter)
 metis['filter_wheel'].filters
 ```

@@ -128,13 +128,10 @@ Plot a cut through the star to show how its peak saturates the detector.
 
 ```{code-cell} ipython3
 from matplotlib import pyplot as plt
-```
 
-```{code-cell} ipython3
 plt.plot(outimg[950:1100, 1024])
 ```
 
 ```{code-cell} ipython3
-npix = (outimg >= full_well).sum()
-print(f"Number of saturated pixels: {npix:d}")
+print(f"Number of saturated pixels: {(outimg >= full_well).sum():d}")
 ```

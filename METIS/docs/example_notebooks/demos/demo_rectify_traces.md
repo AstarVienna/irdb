@@ -26,9 +26,6 @@ from astropy.wcs import WCS
 
 from synphot import SourceSpectrum, Empirical1D
 from scopesim_templates.micado import flatlamp
-```
-
-```{code-cell} ipython3
 import scopesim as sim
 sim.bug_report()
 ```
@@ -80,15 +77,13 @@ We exclude atmospheric emission (and absorption) as is appropriate for a calibra
 ```{code-cell} ipython3
 metis["skycalc_atmosphere"].include = False
 metis["psf"].include = False
-```
 
-```{code-cell} ipython3
 metis.observe(src_linelamp, update=True)
 readout = metis.readout()[0]
 ```
 
 ```{code-cell} ipython3
-plt.imshow(readout[1].data, origin="lower");
+plt.imshow(readout[1].data, origin="lower")
 ```
 
 ## Rectification of the spectrum

@@ -39,9 +39,7 @@ In imaging mode, `"!OBS.slit"` is `false` by default, i.e. there is no slit in t
 
 ```{code-cell} ipython3
 cmd['!OBS.slit'] = "C-38_1"
-```
 
-```{code-cell} ipython3
 src = sim.source.source_templates.empty_sky()
 metis = sim.OpticalTrain(cmd)
 ```
@@ -73,8 +71,15 @@ for i, slit in enumerate(metis['slit_wheel'].slits):
 The slit wheel holds a number of default slits (defined by the configuration for the instrument used). A custom slit can be added using the method `add_slit`. A "slit" is an object of class `ApertureMask` and the various methods for instantiating such an object can be used.
 
 ```{code-cell} ipython3
-newslit = sim.effects.ApertureMask(name="Square", array_dict={"x": [-1, 1, 1, -1], "y": [-1, -1, 1, 1]}, 
-                                   x_unit="arcsec", y_unit="arcsec")
+newslit = sim.effects.ApertureMask(
+    name="Square",
+    array_dict={
+        "x": [-1, 1, 1, -1],
+        "y": [-1, -1, 1, 1],
+    },
+    x_unit="arcsec",
+    y_unit="arcsec",
+)
 metis['slit_wheel'].add_slit(newslit)
 metis['slit_wheel'].slits
 ```
