@@ -12,9 +12,14 @@ information used by the ScopeSim astronomical instrument data simulator.
 ```{toctree}
 :maxdepth: 1
 :caption: Instrument-Specific "Getting Started" Guides
+:glob:
 
 METIS/docs/README
 MICADO/docs/README
+*/readme
+*/README
+*/docs/readme
+*/docs/README
 ```
 
 ## Instrument Packages in the IRDB
