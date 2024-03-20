@@ -28,7 +28,7 @@ If you come across a bug or get stuck with a certain aspect of ScopeSim or the M
 (py-nbs)=
 ## Python notebooks
 
-```{note}
+```{hint}
 To download a notebook from Github, either:
 
 - view the raw file and save this disk from the browser, or
