@@ -24,20 +24,14 @@ If you come across a bug or get stuck with a certain aspect of ScopeSim or the M
 Please always provide the output of the command `scopesim.bug_report()` run on your installation.
 ```
 
-## Installation & setup
+## Quickstart
 
-This is a short overview of the installation and setup procedure; for a more detailed presentation see [Introduction_to_Scopesim_for_METIS](example_notebooks/Introduction_to_Scopesim_for_METIS).
+This is a short overview of the installation and setup procedure. **For a more detailed presentation see [Introduction to ScopeSim for METIS](example_notebooks/Introduction_to_Scopesim_for_METIS)**.
 
 1. Install `scopesim` in your python environment:
 
     ```bash
     pip install scopesim
-    ```
-
-    To upgrade an existing installation do:
-
-    ```bash
-    pip install -U scopesim
     ```
 
 2. Create a working directory where you want to run simulations, e.g.:
@@ -47,24 +41,24 @@ This is a short overview of the installation and setup procedure; for a more det
     cd ~/path/to/playing_with_scopesim
     ```
 
-3. Install relevant irdb packages into this directory:
+3. In your favourite python environment (e.g. `ipython`, `jupyter notebook` or a script), install relevant irdb packages into this directory:
 
     ```python
     import scopesim
     scopesim.download_packages(["METIS", "ELT", "Armazones"])
     ```
 
-    This will install the packages in the subdirectory `./inst_pkgs`.
+    This will install the packages in the subdirectory `./inst_pkgs`. Note that this only has to be done once!
 
 4. The METIS package includes a number of tutorial notebooks in the directory `./inst_pkgs/METIS/docs/example_notebooks/` (see [Python notebooks](#py-nbs)).
 
-    Copy notebooks to the working directory (i.e. `./`) to run them.:
+    Copy notebooks to the working directory (i.e. `./`) to run them:
 
     ```bash
     cp ./inst_pkgs/METIS/docs/example_notebooks/<Notebook-Name.ipynb> .
     ```
 
-5. In a terminal, execute the notebook by calling::
+5. In a terminal, execute the notebook by calling:
 
     ```bash
     jupyter notebook <filename.ipynb>
@@ -83,7 +77,7 @@ These notebooks can be found either:
 - *download* in the [METIS/docs section of the IRDB Github repository](https://github.com/AstarVienna/irdb/tree/master/METIS/docs/example_notebooks)
 
 
-```{warning}
+```{important}
 Notebooks should be run in your working directory, **NOT** directly in the `docs/example_notebooks` folder. Please copy the desired notebook out of this folder.
 ```
 

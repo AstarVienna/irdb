@@ -22,37 +22,13 @@ If you come across a bug or get stuck with a certain aspect of ScopeSim or the M
 **Your feedback is the only way we know** what needs to be changed/improved with the package and the simulator.
 ```
 
-## Installation & setup
-
-1. Install `scopesim` in your python environment:
-
-    ```bash
-    pip install scopesim
-    ```
-
-2. Create a directory where your simulation notebooks will live, e.g. `~/path/to/playing_with_scopesim/`
-3. Install relevant irdb packages & download example notebooks into this directory::
-
-    ```python
-    import scopesim
-    scopesim.download_packages(["Armazones", "ELT", "MICADO"])
-    ```
-
-4. Download one of the tutorial notebooks (see [Python notebooks](#py-nbs))
-5. In a Terminal, cd to ~/ScopeSim and execute the notebook by calling::
-
-    ```bash
-    cd ~/path/to/playing_with_scopesim/
-    jupyter notebook <filename.ipynb>
-    ```
-
-6. Follow instruction and explanations in the notebook.
-
+```{include} ../../docs/source/ScopeSim_guide.md
+```
 
 (py-nbs)=
 ## Python notebooks
 
-```{note}
+```{hint}
 To download a notebook from Github, either:
 
 - view the raw file and save this disk from the browser, or

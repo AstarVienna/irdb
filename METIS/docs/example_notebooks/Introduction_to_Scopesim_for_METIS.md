@@ -14,61 +14,20 @@ kernelspec:
 
 # Installation and prerequisites
 
-This notebook presents a basic description of the simulation procedure with scopesim and tries to give some useful hints how the behaviour of each step can be inspected and controlled. Once scopesim and the necessary instrument packages are installed, a simulation is basically a four-step process using the commands `UserCommands`, `OpticalTrain`, `observe` and `readout`. The cells in this notebook are not executable; the practical application to a variety of different source objects and instrument modes is presented in other notebooks.
-
-The easiest way to install Scopesim is to use `pip` from the command line:
-
-```bash
-pip install scopesim
+```{include} ../../../docs/source/ScopeSim_guide.md
 ```
-
-If you want to upgrade an existing installation, do
-
-```bash
-pip install -U scopesim
-```
-
-In your favourite python environment (e.g. `ipython`, `jupyter notebook` or a script), scopesim is loaded by
-
-```python
-import scopesim
-```
-
-or
-
-```python
-import scopesim as sim
-```
-
-Scopesim has a utility function `sim.bug_report()` which checks a number of other python packages required by scopesim and reports their version numbers. The output of this command should be included in any bug report or question submitted to the scopesim team.
-
-## Instrument packages
-
-Scopesim is a general simulation framework. In order to simulate observations with any particular instrument, you will have to load an instrument package, as well as packages describing the telescope and observatory location (the latter is important for the atmospheric conditions). In the case of METIS, the packages can be downloaded with 
-
-```python
-sim.download_packages(["METIS", "ELT", "Armazones"])
-```
-
-By default, scopesim looks for the packages in the subdirectory `inst_pkgs` of the current working directory. The download command will install them there, so there should be no problem.  
-
-It is possible to install the packages elsewhere; if you do that you will have to declare to scopesim where they are. This can be done by setting
-
-```python
-sim.rc.__config__["!SIM.file.local_packages_path"] = "/path/to/inst_pgks"
-```
-
-If you encounter the error `File cannot be found: default.yaml` when calling `sim.UserCommands` (see below), either call `sim.download_package` from the working directory or set the `local_packages_path` as just explained.
-
-We suggest following the default scheme, because keeping the instrument packages together with the input and output data of scopesim makes it easier later to reconstruct the conditions under which a simulation was run. 
-
-The command `sim.list_packages()` lists all packages that are available for download, as well as those that are already installed.
 
 ## Setting up the instrument
 
 The instrument is configured using the `sim.UserCommands()` class. A basic setup for METIS could be
 
-```python
+```{code-cell} ipython3
+:tags: [hide-cell]
+import scopesim as sim
+sim.download_packages(["Armazones", "ELT", "METIS"])
+```
+
+```{code-cell} ipython3
 cmd = sim.UserCommands(use_instrument="METIS", set_modes=["img_lm"])
 ```
 
@@ -96,13 +55,13 @@ The `UserCommands` dictionary is structured into a number of sections that can b
 
 The parameters can be changed at this point, for instance to change the pupil transmission (this refers to undersizing of the aperture by inserting a cold stop):
 
-```python
+```{code-cell} ipython3
 cmd["!OBS.pupil_transmission"] = 0.9
 ```
 
 Individual parameters can be set immediately in the `UserCommands` by giving a `properties` dictionary. This gives the compact form
 
-```python
+```{code-cell} ipython3
 cmd = sim.UserCommands(use_instrument="METIS", set_modes=["lss_m"],
                        properties={"!OBS.slit": "D-57_1",
                                    "!OBS.detector_readout_mode": "slow"})
@@ -114,19 +73,19 @@ Some parameters can also be set later as will be demonstrated.
 
 The combination of atmosphere, telescope and instrument is represented in scopesim as an `OpticalTrain` object, which is instantiated as
 
-```python
+```{code-cell} ipython3
 metis = sim.OpticalTrain(cmd)
 ```
 
 The optical train consists of a number of `Effect` objects, which can be listed as
 
-```python
+```{code-cell} ipython3
 metis.effects
 ```
 
 The table has four columns of which `name` and `included` are important. An effect is addressed by its name; for example, `metis["detector_linearity"]` is the effect that describes the (non-)linearity of the detector. Each effect has a `meta` dictionary that contains parameters used to set it up, as well as meta data from configuration files. To resolve a parameter that contains a bang string, the function `from_currsys` has to be used. For instance, `metis["dark_current"]` returns `!DET.dark_current`, which is resolved by
 
-```python
+```{code-cell} ipython3
 sim.utils.from_currsys(metis["dark_current"])
 ```
 
@@ -134,13 +93,13 @@ into a number of electrons per second.
 
 Some parameters support changing parameters, these are notably `filter_wheel` and `slit_wheel`. These have a number of predefined options that can be seen with
 
-```python
+```{code-cell} ipython3
 metis["filter_wheel"].filters
 ```
 
 The current setting is found by `metis["filter_wheel"].current_filter` and can be changed by
 
-```python
+```{code-cell} ipython3
 metis["filter_wheel"].change_filter("PAH_3.3")
 ```
 
@@ -150,20 +109,20 @@ The `observe()` method of an `OpticalTrain` transmits a source object through th
 
 The definition of `Source` objects is described in other notebooks. The observation is done by
 
-```python
+```{code-cell} ipython3
 src = sim.source.source_templates.star()
 metis.observe(src)
 ```
 
 The same optical train can be used to observe multiple sources in succession. In this case it is advisable (and should never harm) to include the parameter `update=True`:
 
-```python
+```{code-cell} ipython3
 metis.observe(src, update=True)
 ```
 
 Sometimes one might have several optical trains to observe the same source, e.g `metis_l` and `metis_n` for observation in the L and M bands, respectively. To switch from one to the other it is necessary to call the method `set_focus()`, as in
 
-```python
+```{code-cell} ipython3
 metis_l.observe(src)
 metis_n.set_focus()
 metis_n.observe(src)
@@ -171,13 +130,13 @@ metis_n.observe(src)
 
 The noise-free image is an `ImagePlane` object, which can be accessed as
 
-```python
+```{code-cell} ipython3
 metis.image_planes[0]
 ```
 
 In general, `image_planes` is a list, although METIS always produces a single `ImagePlane`. An `ImagePlane` is essentially a FITS HDU whose parts are accessed as 
 
-```python
+```{code-cell} ipython3
 metis.image_planes[0].header
 metis.image_planes[0].data
 ```
@@ -186,13 +145,13 @@ metis.image_planes[0].data
 
 The `readout()` method applies photon noise and detector noise to the image and creates detector images with a given exposure time. The result of `readout()` is a list of FITS HDULists (essentially FITS "files" in memory). For METIS only a single HDULIST is created, so a command like
 
-```python
+```{code-cell} ipython3
 result = metis.readout()[0]
 ```
 
 is convenient. The detector image is in the first extension of `result` and one might want to look at
 
-```python
+```{code-cell} ipython3
 result[0].header
 result[1].header
 result[1].data
@@ -200,7 +159,7 @@ result[1].data
 
 By default, the exposure time is set by the `UserCommands` parameter `!OBS.exptime`. In many cases it is more convenient to set it as a parameter to the `readout()` method:
 
-```python
+```{code-cell} ipython3
 result = metis.readout(exptime=3600)[0]    # exposure time in seconds
 ```
 
@@ -208,7 +167,7 @@ The exposure time is automatically split into `NDIT` subexposures of length `DIT
 
 The METIS detectors each have two settings ("fast" and "slow" for the HAWAII detectors, "high_capacity" and "low_capacity" for the Geosnap). There is a default setting for each instrument mode, but an optimal readout mode can also be automatically determined by
 
-```python
+```{code-cell} ipython3
 result = metis.readout(detector_readout_mode="auto")
 ```
 
