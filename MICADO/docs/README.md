@@ -22,7 +22,7 @@ If you come across a bug or get stuck with a certain aspect of ScopeSim or the M
 **Your feedback is the only way we know** what needs to be changed/improved with the package and the simulator.
 ```
 
-```{include} ../../../docs/source/ScopeSim_guide.md
+```{include} ../../docs/source/ScopeSim_guide.md
 ```
 
 (py-nbs)=
