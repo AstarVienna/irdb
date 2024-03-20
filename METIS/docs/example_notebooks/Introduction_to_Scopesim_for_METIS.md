@@ -22,8 +22,12 @@ kernelspec:
 The instrument is configured using the `sim.UserCommands()` class. A basic setup for METIS could be
 
 ```{code-cell} ipython3
+:tags: [hide-cell]
 import scopesim as sim
+sim.download_packages(["Armazones", "ELT", "METIS"])
+```
 
+```{code-cell} ipython3
 cmd = sim.UserCommands(use_instrument="METIS", set_modes=["img_lm"])
 ```
 
