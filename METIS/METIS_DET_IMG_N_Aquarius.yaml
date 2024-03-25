@@ -4,11 +4,12 @@ object: detector
 alias: DET
 name: METIS_DET_IMG_N_Aquarius
 description: Aquarius detector for METIS IMG-NQ
-date-modified: 2022-02-21
+date-modified: 2024-03-25
 changes:
   - 2021-12-16 (OC) some rearrangements
   - 2021-12-26 (OC) added DetectorModePropertiesSetter and DET.detector
   - 2022-02-21 (OC) rename effects
+  - 2024-03-25 (FH) filename instead of file_name
 
 properties:
   detector: Raytheon Aquarius
@@ -21,18 +22,18 @@ properties:
   dark_current: 13         # [e-/s] E-REP-NOVA-MET-1191, v2-0
   readout_noise: 12
   layout:
-    file_name: "FPA_metis_img_nq_aquarius_layout.dat"
+    filename: "FPA_metis_img_nq_aquarius_layout.dat"
   qe_curve:
-    file_name: "QE_detector_Aquarius.dat"
+    filename: "QE_detector_Aquarius.dat"
   linearity:
-    file_name: "FPA_linearity_Aquarius.dat"
+    filename: "FPA_linearity_Aquarius.dat"
 
 effects:
   - name: detector_array
     description: METIS detector array list
     class: DetectorList
     kwargs:
-      filename: "!DET.layout.file_name"
+      filename: "!DET.layout.filename"
 
   - name: detector_readout_parameters
     description: Readout modes for Aquarius detector
@@ -55,7 +56,7 @@ effects:
     class: QuantumEfficiencyCurve
     include: false    # QE file does not exist
     kwargs:
-      filename: "!DET.qe_curve.file_name"
+      filename: "!DET.qe_curve.filename"
 
   - name: auto_exposure
     description: automatic determination of DIT and NDIT
@@ -82,7 +83,7 @@ effects:
     description: Linearity characteristics of Aquarius chip
     class: LinearityCurve
     kwargs:
-      filename: "!DET.linearity.file_name"
+      filename: "!DET.linearity.filename"
 
   - name: readout_noise
     description: Readout noise frames
