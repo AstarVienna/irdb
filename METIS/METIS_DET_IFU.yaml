@@ -4,9 +4,10 @@ object: detector
 alias: DET
 name: metis_lms_detector_array
 description: A set of 4 H2RG detectors
-date_modified: 2021-12-16
+date_modified: 2024-03-25
 changes:
   - 2021-12-16 (OC) some rearrangements
+  - 2024-03-25 (FH) filename instead of file_name
 
 properties:
   image_plane_id: 0
@@ -18,11 +19,11 @@ properties:
   dark_current: 0.1         # [e-/s]
   readout_noise: 70         # electrons, AI on RvB: check
   layout:
-    file_name: "FPA_metis_lms_layout.dat"
+    filename: "FPA_metis_lms_layout.dat"
   qe_curve:
-    file_name: "QE_detector_H2RG_METIS.dat"
+    filename: "QE_detector_H2RG_METIS.dat"
   linearity:
-    file_name: "FPA_linearity_HxRG.dat"
+    filename: "FPA_linearity_HxRG.dat"
 
 effects:
   - name: detector_array_list
@@ -30,13 +31,13 @@ effects:
     class: DetectorList
     include: true
     kwargs:
-      filename: "!DET.layout.file_name"
+      filename: "!DET.layout.filename"
 
   - name: quantum_efficiency
     description: Quantum efficiency curves for each detector
     class: QuantumEfficiencyCurve
     kwargs:
-      filename: "!DET.qe_curve.file_name"
+      filename: "!DET.qe_curve.filename"
 
   - name: auto_exposure
     description: automatic determination of DIT and NDIT
@@ -63,7 +64,7 @@ effects:
     description: Linearity characteristics of H2RG chips
     class: LinearityCurve
     kwargs:
-      filename: "!DET.linearity.file_name"
+      filename: "!DET.linearity.filename"
 
   - name: readout_noise
     description: Readout noise frames
