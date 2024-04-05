@@ -230,7 +230,7 @@ class TestObserves:
         src = star_field(100, 0, 10, width=10, use_grid=True)
 
         cmds = scopesim.UserCommands(use_instrument="METIS",
-                                     set_modes=['img_lm'])
+                                     set_modes=["light", "img_lm"])
         metis = scopesim.OpticalTrain(cmds)
         metis['detector_linearity'].include = False
 
@@ -257,7 +257,7 @@ class TestObserves:
         src = star_field(100, 0, 10, width=10, use_grid=True)
 
         cmds = scopesim.UserCommands(use_instrument="METIS",
-                                     set_modes=["img_n"])
+                                     set_modes=["light", "img_n"])
 
         metis = scopesim.OpticalTrain(cmds)
         metis['chop_nod'].include = False
