@@ -14,7 +14,7 @@ from matplotlib import pyplot as plt
 from matplotlib.colors import LogNorm
 
 import scopesim
-from scopesim.source.source_templates import star_field
+from scopesim.source.source_templates import star_field, empty_sky
 #import scopesim_templates as sim_tp
 
 PLOTS = False
@@ -280,3 +280,21 @@ class TestObserves:
             plt.show()
 
         assert mx > med + 3 * std
+
+    def test_wcu_modes_disables_upstream(self):
+        cmd = scopesim.UserCommands(
+            use_instrument="METIS",
+            set_modes=["wcu", "img_n"])
+        opt = scopesim.OpticalTrain(cmd)
+        opt.observe(empty_sky())
+        h_wcu = opt.readout()
+
+        cmd = scopesim.UserCommands(
+            use_instrument="METIS",
+            set_modes=["light", "img_n"])
+        opt = scopesim.OpticalTrain(cmd)
+        opt.observe(empty_sky())
+        h_obs = opt.readout()
+
+        # WCU must be less because atmo emission is not present
+        assert h_obs[0][1].data.mean() > h_wcu[0][1].data.mean()
