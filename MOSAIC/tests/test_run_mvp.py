@@ -54,25 +54,26 @@ class TestMosiacMvpCanObserveSomething:
 
     def test_run_observe_with_star(self):
         src = st.star(0, 0, 20*u.mag)
+        src = st.empty_sky()
+
         wave = np.linspace(1.420, 1.825, 4096) * u.um
 
         cmds = sim.UserCommands(use_instrument="MOSAIC")
         mosaic = sim.OpticalTrain(cmds)
         mosaic.cmds["!ATMO.temperature"] = 0
+        mosaic.cmds["!OBS.dit"] = 3600
 
         mosaic.observe(src)
-        im = mosaic.image_planes[0].data
-
-        mosaic.cmds["!OBS.dit"] = 3600
         hdul = mosaic.readout()[0]
 
+        im = mosaic.image_planes[0].data
+        im2 = hdul[1].data
         # in and out fluxes are in units of "ph / s"
         in_flux = (np.trapz(src.spectra[0](wave), wave) *
                    src.fields[0]["weight"] *
                    (mosaic.cmds["!TEL.area"] *
                     1 * u.s)).to(u.ph).value
         out_flux = np.sum(mosaic._last_fovs[0].hdu.data)
-        im2 = hdul[1].data
 
         if not PLOTS:
             plt.figure(figsize=(13, 6))

@@ -9,17 +9,17 @@
 #   - to the centre of the observation field
 #
 id      x       y       r       angle   conserve_image  shape
-0       0       0       0.285   0       False           hex
-1       0       0       0.285   0       False           hex
-2       0       0       0.285   0       False           hex
-3       0       0       0.285   0       False           hex
-4       0       0       0.285   0       False           hex
-5       0       0       0.285   0       False           hex
-6       0       0       0.285   0       False           hex
-7       2       0       0.285   0       False           hex
-8       2       0       0.285   0       False           hex
-9       2       0       0.285   0       False           hex
-10      2       0       0.285   0       False           hex
-11      2       0       0.285   0       False           hex
-12      2       0       0.285   0       False           hex
-13      2       0       0.285   0       False           hex
+0       0       0       0.095   0       False           hex
+1       0       0       0.095   0       False           hex
+2       0       0       0.095   0       False           hex
+3       0       0       0.095   0       False           hex
+4       0       0       0.095   0       False           hex
+5       0       0       0.095   0       False           hex
+6       0       0       0.095   0       False           hex
+7       2       0       0.095   0       False           hex
+8       2       0       0.095   0       False           hex
+9       2       0       0.095   0       False           hex
+10      2       0       0.095   0       False           hex
+11      2       0       0.095   0       False           hex
+12      2       0       0.095   0       False           hex
+13      2       0       0.095   0       False           hex
