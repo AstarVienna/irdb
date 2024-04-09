@@ -20,6 +20,7 @@ PLOTS = False
 
 
 def test_eso_vs_scopesim_throughput():
+    rc.__currsys__["!TEL.temperature"] = 7
     slist = sim.effects.SurfaceList(filename="LIST_mirrors_ELT.tbl")
     wave = np.linspace(0.3, 2.5, 100) * u.um
     if PLOTS:

@@ -102,7 +102,7 @@ mode_yamls:
       - METIS_DET_IMG_LM.yaml
     properties:
       psf_file: PSF_LM_9mag_06seeing.fits
-      trace_file: TRACE_LSS_L_sci.fits
+      trace_file: TRACE_LSS_L.fits
       efficiency_file: TER_grating_L.fits
       slit: C-38_1
       adc: const_90
@@ -120,7 +120,7 @@ mode_yamls:
       - METIS_DET_IMG_LM.yaml
     properties:
       psf_file: PSF_LM_9mag_06seeing.fits
-      trace_file: TRACE_LSS_M_sci.fits
+      trace_file: TRACE_LSS_M.fits
       efficiency_file: TER_grating_M.fits
       slit: C-38_1
       adc: const_90
@@ -138,7 +138,7 @@ mode_yamls:
       - METIS_DET_IMG_N_GeoSnap.yaml
     properties:
       psf_file: PSF_N_9mag_06seeing.fits
-      trace_file: TRACE_LSS_N_sci.fits
+      trace_file: TRACE_LSS_N.fits
       efficiency_file: TER_grating_N.fits
       slit: D-57_1
       adc: false

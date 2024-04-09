@@ -157,12 +157,12 @@ class TestObserveOpticalTrain:
 
     def test_actually_produces_stars(self):
         cmd = scopesim.UserCommands(use_instrument="WFC3",
-                                    properties={"!OBS.dit": 100,
-                                                "!OBS.ndit": 10})
+                                    properties={"!OBS.dit": 1,
+                                                "!OBS.ndit": 1})
         cmd.ignore_effects += ["detector_linearity"]
 
         opt = scopesim.OpticalTrain(cmd)
-        src = scopesim.source.source_templates.star_field(10000, 5, 15, 440)
+        src = scopesim.source.source_templates.star_field(10000, 10, 10, 440, use_grid=True)
 
         opt.observe(src)
         hdu = opt.readout()[0]
@@ -171,8 +171,6 @@ class TestObserveOpticalTrain:
         hdu_av = np.average(hdu[1].data)
         exptime = cmd["!OBS.ndit"] * cmd["!OBS.dit"]
 
-        assert hdu_av == approx(implane_av * exptime, rel=0.01)
-
         if PLOTS:
             plt.subplot(1, 2, 1)
             plt.imshow(opt.image_planes[0].image[128:2048, 128:2048].T,
@@ -180,8 +178,10 @@ class TestObserveOpticalTrain:
             plt.colorbar()
 
             plt.subplot(1, 2, 2)
-            plt.imshow(hdu[1].data[128:2048, 128:2048].T, norm=LogNorm(),
-                       vmax=3e7)
+            plt.imshow(hdu[1].data[128:2048, 128:2048].T,
+                       norm=LogNorm(vmax=3e7, vmin=1e4))
             plt.colorbar()
 
             plt.show()
+
+        assert hdu_av == approx(implane_av * exptime, rel=0.01)
