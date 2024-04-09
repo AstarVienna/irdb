@@ -171,7 +171,7 @@ class TestObserveOpticalTrain:
         hdu_av = np.average(hdu[1].data)
         exptime = cmd["!OBS.ndit"] * cmd["!OBS.dit"]
 
-        if not PLOTS:
+        if PLOTS:
             plt.subplot(1, 2, 1)
             plt.imshow(opt.image_planes[0].image[128:2048, 128:2048].T,
                        norm=LogNorm())

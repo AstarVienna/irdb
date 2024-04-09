@@ -76,7 +76,7 @@ class TestInit:
         micado.observe(src)
         hdul = micado.readout()
 
-        if not PLOTS:
+        if PLOTS:
             plt.subplot(121)
             plt.imshow(micado.image_planes[0].data, norm=LogNorm(),
                        origin="lower")
@@ -93,5 +93,3 @@ class TestInit:
         scale_factor = slit_width * grating_efficiency
 
         assert spec_av_flux / scale_factor == approx(img_av_flux, rel=0.1)
-
-
