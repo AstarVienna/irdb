@@ -71,3 +71,9 @@ effects:
     kwargs:
       noise_std: "!DET.readout_noise"
       n_channels: 32
+
+  - name: quantization
+    description: Turn photon count into integers
+    class: Quantization
+    kwargs:
+      dtype: uint32
