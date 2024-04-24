@@ -13,7 +13,7 @@ kernelspec:
 
 # How to use the slit wheel for spectroscopy (and imaging)
 
-This notebook demonstrates how to use the various slits in METIS. They are defined in a `SlitWheel` effect, which works in the same way as `FilterWheel`. The notebook uses imaging mode to show the slits directly. 
+This notebook demonstrates how to use the various slits in METIS. They are defined in a `SlitWheel` effect, which works in the same way as `FilterWheel`. The notebook uses imaging mode to show the slits directly.
 
 ```{code-cell} ipython3
 from matplotlib import pyplot as plt
@@ -46,11 +46,12 @@ metis = sim.OpticalTrain(cmd)
 The following slits are now available and can be selected with `metis['slit_wheel'].change_slit()` as demonstrated below.
 
 ```{code-cell} ipython3
-metis['slit_wheel'].slits
+for slit in metis['slit_wheel'].slits:
+    print(slit)
 ```
 
 ```{code-cell} ipython3
-implanes = dict()
+implanes = {}
 for slit in metis['slit_wheel'].slits:
     metis['slit_wheel'].change_slit(slit)
     metis.observe(src, update=True)
@@ -80,11 +81,13 @@ newslit = sim.effects.ApertureMask(
     y_unit="arcsec",
 )
 metis['slit_wheel'].add_slit(newslit)
-metis['slit_wheel'].slits
+for slit in metis['slit_wheel'].slits:
+    print(slit)
 ```
 
 ```{code-cell} ipython3
 :tags: [hide-output]
+
 metis['slit_wheel'].change_slit("Square")
 metis.observe(src, update=True)
 ```

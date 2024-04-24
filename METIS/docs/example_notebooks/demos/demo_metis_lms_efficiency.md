@@ -36,7 +36,7 @@ If you haven't got the instrument package yet, uncomment the following cell. The
 When simulating an LMS observation, the user selects a target wavelength by setting `cmd['!OBS.wavelen']`, e.g. 4.2 (microns). In normal use, the efficiency is instantiated as an effect within the `OpticalTrain`. Here, we instantiate the effect directly as
 
 ```{code-cell} ipython3
-eff = MetisLMSEfficiency(wavelen=4.2, filename="METIS/TRACE_LMS.fits")
+eff = MetisLMSEfficiency(wavelen=4.2, filename="../../../TRACE_LMS.fits")
 ```
 
 The effect automatically selects the echelle order for that wavelength and computes the grating efficiency.
@@ -55,14 +55,18 @@ Alternatively, the order can be specified directly. This is used in the followin
 plt.figure(figsize=(8, 6))
 plt.ylim(0, 1)
 plt.xlim(3.0, 5.05)
-plt.xlabel(r"Wavelength [$\mu$m]")
+plt.xlabel(r"Wavelength [$\mathrm{\mu m}$]")
 plt.ylabel("Efficiency")
 plt.xticks(np.arange(3.0, 5.05, 0.2))
 for order in np.arange(22, 37):
-    eff = MetisLMSEfficiency(order=order, filename="METIS/TRACE_LMS.fits")
+    eff = MetisLMSEfficiency(order=order, filename="../../../TRACE_LMS.fits")
     lam = eff.surface.transmission.waveset
     effic = eff.surface.transmission(lam)
     lammax = lam[np.argmax(effic)]
     p = plt.plot(lam.to(u.um), eff.surface.transmission(lam))
     plt.text(lammax.to(u.um).value, 0.76, str(order), ha='center', color=p[0].get_color())
+```
+
+```{code-cell} ipython3
+
 ```

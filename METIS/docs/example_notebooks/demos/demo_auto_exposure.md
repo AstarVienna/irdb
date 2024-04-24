@@ -22,7 +22,7 @@ import scopesim as sim
 sim.rc.__config__["!SIM.file.local_packages_path"] = "../../../../"
 ```
 
-If you haven't got the instrument packages yet, uncomment the following cell. 
+If you haven't got the instrument packages yet, uncomment the following cell.
 
 ```{code-cell} ipython3
 # sim.download_packages(["METIS", "ELT", "Armazones"])
@@ -32,30 +32,32 @@ If you haven't got the instrument packages yet, uncomment the following cell.
 
 ```{code-cell} ipython3
 :tags: [hide-output]
-cmd = sim.UserCommands(use_instrument="METIS", set_modes=["img_lm"])
+
+cmd = sim.UserCommands(use_instrument="METIS", set_modes=["img_lm"],
+                       properties={"!OBS.dit": None, "!OBS.ndit": None})
 metis = sim.OpticalTrain(cmd)
 src = sim.source.source_templates.empty_sky()
 metis.observe(src)
 ```
 
 ```{code-cell} ipython3
-outimg = metis.readout()[0][1].data 
-outimg /= metis.cmds[metis['summed_exposure'].meta['ndit']]
-
+outimg = (metis.readout()[0][1].data /
+          metis.cmds[metis['summed_exposure'].meta['ndit']])
 full_well = metis.cmds["!DET.full_well"]
+
 print("\nResult\n======")
 print(f"Maximum value in readout (per DIT): {outimg.max():8.1f}")
 print(f"Detector full well:                 {full_well:8.1f}")
 print(f"Fill fraction:                      {outimg.max() / full_well:8.1%}")
 ```
 
-Exposure time can be changed with an argument to `metis.readout()`:
+Exposure time can be changed with an argument to `metis.readout()` (note that the `dit=None` and `ndit=None` are necessary as of ScopeSim v0.8.0 to ensure DIT and NDIT are recalculated from the given exposure time if `.readout` is called multiple times):
 
 ```{code-cell} ipython3
-outimg = metis.readout(exptime = 1000)[0][1].data 
-outimg /= metis.cmds[metis['summed_exposure'].meta['ndit']]
-
+outimg = (metis.readout(exptime = 1000, dit=None, ndit=None)[0][1].data /
+          metis.cmds[metis['summed_exposure'].meta['ndit']])
 full_well = metis.cmds["!DET.full_well"]
+
 print("\nResult\n======")
 print(f"Maximum value in readout (per DIT): {outimg.max():8.1f}")
 print(f"Detector full well:                 {full_well:8.1f}")
@@ -66,16 +68,18 @@ print(f"Fill fraction:                      {outimg.max() / full_well:8.1%}")
 
 ```{code-cell} ipython3
 :tags: [hide-output]
-cmd = sim.UserCommands(use_instrument="METIS", set_modes=['img_n'])
+
+cmd = sim.UserCommands(use_instrument="METIS", set_modes=['img_n'],
+                       properties={"!OBS.dit": None, "!OBS.ndit": None})
 metis = sim.OpticalTrain(cmd)
 metis.observe(src)
 ```
 
 ```{code-cell} ipython3
-outimg = metis.readout()[0][1].data 
-outimg /= metis.cmds[metis['summed_exposure'].meta['ndit']]
-
+outimg = (metis.readout()[0][1].data /
+          metis.cmds[metis['summed_exposure'].meta['ndit']])
 full_well = metis.cmds["!DET.full_well"]
+
 print("\nResult\n======")
 print(f"Maximum value in readout (per DIT): {outimg.max():9.1f}")
 print(f"Detector full well:                 {full_well:9.1f}")
@@ -86,15 +90,16 @@ print(f"Fill fraction:                      {outimg.max() / full_well:9.1%}")
 
 ```{code-cell} ipython3
 :tags: [hide-output]
-cmd = sim.UserCommands(use_instrument="METIS", set_modes=['lss_l'])
+
+cmd = sim.UserCommands(use_instrument="METIS", set_modes=['lss_l'],
+                       properties={"!OBS.dit": None, "!OBS.ndit": None})
 metis = sim.OpticalTrain(cmd)
 metis.observe(src)
 ```
 
 ```{code-cell} ipython3
-outimg = metis.readout(exptime=3600.)[0][1].data 
-outimg /= metis.cmds[metis['summed_exposure'].meta['ndit']]
-
+outimg = (metis.readout(exptime=3600.)[0][1].data /
+          metis.cmds[metis['summed_exposure'].meta['ndit']])
 full_well = metis.cmds["!DET.full_well"]
 
 print("\nResult\n======")
@@ -109,16 +114,17 @@ Use N-band imaging of Vega. DIT is automatically set to the minimum possible val
 
 ```{code-cell} ipython3
 :tags: [hide-output]
-cmd = sim.UserCommands(use_instrument="METIS", set_modes=["img_n"])
+
+cmd = sim.UserCommands(use_instrument="METIS", set_modes=["img_n"],
+                       properties={"!OBS.dit": None, "!OBS.ndit": None})
 metis = sim.OpticalTrain(cmd)
 src = sim.source.source_templates.star()
 metis.observe(src)
 ```
 
 ```{code-cell} ipython3
-outimg = metis.readout()[0][1].data
-outimg /= metis.cmds[metis['summed_exposure'].meta['ndit']]
-
+outimg = (metis.readout()[0][1].data /
+          metis.cmds[metis['summed_exposure'].meta['ndit']])
 full_well = metis.cmds["!DET.full_well"]
 
 print("\nResult\n======")

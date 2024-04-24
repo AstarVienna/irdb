@@ -87,9 +87,10 @@ metis = sim.OpticalTrain(cmd)
 
 ```{code-cell} ipython3
 :tags: [hide-output]
+
 print("Detector mode:", metis.cmds["!OBS.detector_readout_mode"])
 metis.observe(sky, update=True)
-hdul_slow = metis.readout()[0]
+hdul_slow = metis.readout(dit=None, ndit=None)[0]
 ```
 
 We get the statistics in a strip at the left edge of the detector that is not covered by any source or background flux and compare to the expected values.
@@ -108,7 +109,7 @@ noise_slow_expected = np.sqrt(ndit_slow) * metis.cmds["!DET.readout_noise"]
 Do the same for the `fast` mode.
 
 ```{code-cell} ipython3
-hdul_fast = metis.readout(detector_readout_mode="fast")[0]
+hdul_fast = metis.readout(detector_readout_mode="fast", dit=None, ndit=None)[0]
 ```
 
 ```{code-cell} ipython3
@@ -136,7 +137,7 @@ Slow: ndit  = {ndit_slow}
 Finally, we can let Scopesim automatically select the "best" mode.
 
 ```{code-cell} ipython3
-hdul_auto = metis.readout(detector_readout_mode="auto")[0]
+hdul_auto = metis.readout(detector_readout_mode="auto", dit=None, ndit=None)[0]
 ```
 
 ## Test: Full well (IMG-N) 
@@ -144,6 +145,7 @@ This demonstrates the high- and low-capacity modes of the Geosnap detector. The 
 
 ```{code-cell} ipython3
 :tags: [hide-output]
+
 star = sim.source.source_templates.star(flux=20 * u.Jy)
 
 cmd_n = sim.UserCommands(use_instrument="METIS", set_modes=['img_n'],
@@ -154,11 +156,13 @@ metis_n.observe(star, update=True)
 
 ```{code-cell} ipython3
 print("--- high-capacity mode ---")
-hdul_high = metis_n.readout(detector_readout_mode="high_capacity")[0]
+hdul_high = metis_n.readout(detector_readout_mode="high_capacity",
+                            dit=None, ndit=None)[0]
 fullwell_high = metis.cmds["!DET.full_well"]
 ndit_high = metis.cmds["!OBS.ndit"]
 print("--- low-capacity mode ---")
-hdul_low = metis_n.readout(detector_readout_mode="low_capacity")[0]
+hdul_low = metis_n.readout(detector_readout_mode="low_capacity",
+                           dit=None, ndit=None)[0]
 ndit_low = metis.cmds["!OBS.ndit"]
 fullwell_low = metis.cmds["!DET.full_well"]
 ```

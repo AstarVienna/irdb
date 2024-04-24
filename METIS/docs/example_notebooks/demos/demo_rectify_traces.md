@@ -14,7 +14,7 @@ kernelspec:
 # How to obtain wavelength-calibrated and rectified 2D spectra
 
 This notebook demonstrates how to rectify a detector readout from a spectroscopic simulation using Scopesim. "Rectification" means the transformation of a spectral trace from the detector onto a rectangular pixel grid of wavelength and spatial position along the slit. Wavelength calibration and rectification are major tasks of the spectroscopic data-reduction pipeline. For convenience, Scopesim includes functionality to perform these tasks by reversing the *known* mapping that was used for the simulation, resulting in easily analysable 2D spectra that include all the noise and background components but neglect the uncertainties of a wavelength calibration as it would be performed during the reduction of real data. 
-Rectification is demonstrated on a METIS long-slit simulation, but the procedure applies to MICADO spectroscopic simulations as well (but more expensive to simulate and rectify). METIS IFU simulations have to be treated differently. 
+Rectification is demonstrated on a METIS long-slit simulation, but the procedure applies to MICADO spectroscopic simulations as well (but more expensive to simulate and rectify). METIS IFU simulations have to be treated differently.
 
 ```{code-cell} ipython3
 import numpy as np
@@ -36,7 +36,7 @@ sim.rc.__config__["!SIM.file.local_packages_path"] = "../../../../"
 If you haven’t got the instrument packages yet, uncomment the following cell.
 
 ```{code-cell} ipython3
-# sim.download_package(["instruments/METIS", "telescopes/ELT", "locations/Armazones"])
+# sim.download_package(["METIS", "ELT", "Armazones"])
 ```
 
 ## Creation of a source - lamp with equally spaced lines
@@ -55,7 +55,7 @@ for line in lines:
 spec = SourceSpectrum(Empirical1D, points=wave*u.um, lookup_table=flux)
 
 src_linelamp = flatlamp()
-src_linelamp.spectra[0] = spec
+src_linelamp.fields[0].spectra[0] = spec
 ```
 
 ## Simulation of an observation
@@ -65,7 +65,7 @@ We use METIS in the L-band long-slit spectroscopic mode, using a fairly narrow s
 ```{code-cell} ipython3
 cmds = sim.UserCommands(use_instrument="METIS", set_modes=["lss_l"],
                        properties={"!OBS.trace_file": "TRACE_LSS_L.fits",
-                                  "!OBS.slit": "B-28_6"})
+                                   "!OBS.slit": "B-28_6"})
 
 metis = sim.OpticalTrain(cmds)
 ```
@@ -74,6 +74,7 @@ We exclude atmospheric emission (and absorption) as is appropriate for a calibra
 
 ```{code-cell} ipython3
 :tags: [hide-output]
+
 metis["skycalc_atmosphere"].include = False
 metis["psf"].include = False
 
@@ -81,9 +82,10 @@ metis.observe(src_linelamp, update=True)
 ```
 
 ```{code-cell} ipython3
-readout = metis.readout()[0]
+readout = metis.readout(exptime=5, dit=None, ndit=None)[0]
 
 plt.imshow(readout[1].data, origin="lower")
+plt.colorbar()
 ```
 
 ## Rectification of the spectrum
@@ -111,15 +113,19 @@ xi = (wcs.all_pix2world(1000, np.arange(naxis2), 0)[1] * u.Unit(wcs.wcs.cunit[1]
 ```{code-cell} ipython3
 plt.imshow(rectified[1].data, origin="lower", extent=[lam[0], lam[-1], xi[0], xi[-1]])
 plt.gca().set_aspect("auto")
-plt.xlabel(r"Wavelength [$\mu$m]")
+plt.xlabel(r"Wavelength [$\mathrm{\mu m}$]")
 plt.ylabel(r"Spatial position along slit [arcsec]");
 ```
 
 ```{code-cell} ipython3
 i1, i2 = 120, 620
-plt.figure(figsize=(15, 7))
+plt.figure(figsize=(12, 6))
 plt.plot(lam[i1:i2], rectified[1].data[800, i1:i2], label="single row")
 plt.plot(lam[i1:i2], rectified[1].data.mean(axis=0)[i1:i2], label="average")
 plt.legend()
-plt.xlabel(r"Wavelength [$\mu$m]");
+plt.xlabel(r"Wavelength [$\mathrm{\mu m}$]");
+```
+
+```{code-cell} ipython3
+
 ```

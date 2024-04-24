@@ -13,7 +13,7 @@ kernelspec:
 
 # How to use the filter wheel(s)
 
-This notebook demonstrates the use of the `FilterWheel` in Scopesim. The METIS configuration contains two instances of this effect, named `filter_wheel` (for science filters) and `nd_filter_wheel` (for neutral-density filters). Each filter wheel contains a number of predefined filters, with different filter sets for the LM- and N-band imagers. 
+This notebook demonstrates the use of the `FilterWheel` in Scopesim. The METIS configuration contains two instances of this effect, named `filter_wheel` (for science filters) and `nd_filter_wheel` (for neutral-density filters). Each filter wheel contains a number of predefined filters, with different filter sets for the LM- and N-band imagers.
 
 ```{code-cell} ipython3
 import numpy as np
@@ -49,26 +49,28 @@ metis = sim.OpticalTrain(cmd)
 The METIS package defines the list of filters that are available in the real instrument:
 
 ```{code-cell} ipython3
-metis['filter_wheel'].filters
+for filt in metis['filter_wheel'].filters:
+    print(filt)
 ```
 
 At any moment one of these filters is in the optical path and used for the simulation. Initially, this is the one set by `!OBS.filter_name`:
 
 ```{code-cell} ipython3
-metis['filter_wheel'].current_filter
+print(metis['filter_wheel'].current_filter)
 ```
 
 The current filter can be changed to any of the filters in the list:
 
 ```{code-cell} ipython3
 metis['filter_wheel'].change_filter("PAH_3.3")
-metis['filter_wheel'].current_filter
+print(metis['filter_wheel'].current_filter)
 ```
 
 ## Observing the same source in different filters
 
 ```{code-cell} ipython3
 :tags: [hide-output]
+
 src = sim.source.source_templates.empty_sky()
 
 metis['filter_wheel'].change_filter("Lp")
@@ -93,11 +95,12 @@ print(f"Background in PAH_3.3: {np.median(img_PAH):8.1f} counts/s")
 METIS also has neutral-density filters that can be inserted and changed using the `nd_filter_wheel` effect. The transmission of the filter `ND_ODx` is $10^{-x}$.
 
 ```{code-cell} ipython3
-metis['nd_filter_wheel'].filters
+for filt in metis['nd_filter_wheel'].filters:
+    print(filt)
 ```
 
 ```{code-cell} ipython3
-metis['nd_filter_wheel'].current_filter
+print(metis['nd_filter_wheel'].current_filter)
 ```
 
 Observe a bright star (default arguments result in Vega at 0 mag) in the Lp filter. It will be found that the star saturates the detector in the open position, and requires the `ND_OD4` filter not to do so.
@@ -110,56 +113,64 @@ metis['filter_wheel'].change_filter('Lp')
 
 ```{code-cell} ipython3
 :tags: [hide-output]
+
 metis['nd_filter_wheel'].change_filter("open")
 metis.observe(star, update=True)
 ```
 
 ```{code-cell} ipython3
-hdu_open = metis.readout()[0][1]
+hdu_open = metis.readout(dit=None, ndit=None)[0][1]
 ```
 
 ```{code-cell} ipython3
 :tags: [hide-output]
+
 metis['nd_filter_wheel'].change_filter("ND_OD3")
 metis.observe(star, update=True)
 ```
 
 ```{code-cell} ipython3
-hdu_OD3 = metis.readout()[0][1]
+hdu_OD3 = metis.readout(dit=None, ndit=None)[0][1]
 ```
 
 ```{code-cell} ipython3
 :tags: [hide-output]
+
 metis['nd_filter_wheel'].change_filter("ND_OD4")
 metis.observe(star, update=True)
 ```
 
 ```{code-cell} ipython3
-hdu_OD4 = metis.readout()[0][1]
+hdu_OD4 = metis.readout(dit=None, ndit=None)[0][1]
 ```
 
 ```{code-cell} ipython3
-plt.figure(figsize=(15, 4))
-plt.subplot(131)
-plt.imshow(hdu_open.data[700:1350, 700:1350], origin='lower', norm=LogNorm(vmin=1e-3, vmax=2e6))
-plt.colorbar()
-plt.subplot(132)
-plt.imshow(hdu_OD3.data[700:1350, 700:1350], origin='lower', norm=LogNorm(vmin=1e-3, vmax=2e6))
-plt.colorbar()
-plt.subplot(133)
-plt.imshow(hdu_OD4.data[700:1350, 700:1350], origin='lower', norm=LogNorm(vmin=1e-3, vmax=2e6))
-plt.colorbar();
-```
+vmin, vmax = 1e2, 1e6
+imgslice = slice(700, 1350), slice(700, 1350)
+pltslice = slice(850, 1200), 1024
+fig, axes = plt.subplots(2, 3, sharey="row", figsize=(12, 6),
+                         gridspec_kw={"height_ratios": [3, 2]},
+                         layout="constrained")
+cmap = axes[0, 0].imshow(
+    hdu_open.data[imgslice].clip(min=0),
+    origin="lower", norm=LogNorm(vmin=vmin, vmax=vmax))
+fig.colorbar(cmap)
+axes[0, 0].set_title("ND filter: open")
+axes[1, 0].plot(hdu_open.data[pltslice])
 
-```{code-cell} ipython3
-fig, (ax1, ax2, ax3) = plt.subplots(1, 3, sharey=True, figsize=(15, 4))
+cmap = axes[0, 1].imshow(
+    hdu_OD3.data[imgslice].clip(min=0),
+    origin="lower", norm=LogNorm(vmin=vmin, vmax=vmax))
+fig.colorbar(cmap)
+axes[0, 1].set_title("ND filter: 1e-3")
+axes[1, 1].plot(hdu_OD3.data[pltslice])
 
-ax1.plot(hdu_open.data[800:1250, 1024])
-ax1.set_title("ND filter: open")
-ax2.plot(hdu_OD3.data[800:1250, 1024])
-ax2.set_title("ND filter: 1e-3")
-ax3.plot(hdu_OD4.data[800:1250, 1024])
-ax3.set_title("ND filter: 1e-4");
+cmap = axes[0, 2].imshow(
+    hdu_OD4.data[imgslice].clip(min=0),
+    origin="lower", norm=LogNorm(vmin=vmin, vmax=vmax))
+fig.colorbar(cmap)
+axes[0, 2].set_title("ND filter: 1e-4")
+axes[1, 2].plot(hdu_OD4.data[pltslice]);
 ```
 
 ## Adding a custom filter to the filter wheel
@@ -173,10 +184,15 @@ newfilter = sim.effects.ter_curves.TopHatFilterCurve(
     name="custom_tophat",
 )
 metis['filter_wheel'].add_filter(newfilter)
-metis['filter_wheel'].filters
+for filt in metis['filter_wheel'].filters:
+    print(filt)
 ```
 
 ```{code-cell} ipython3
 metis['filter_wheel'].change_filter("custom_tophat")
 metis['filter_wheel'].current_filter.plot();
+```
+
+```{code-cell} ipython3
+
 ```
