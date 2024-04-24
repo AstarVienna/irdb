@@ -16,6 +16,7 @@ kernelspec:
 A notebook to show the raw headers of the simulated data.
 
 ```{code-cell} ipython3
+:tags: [hide-output]
 import os
 import numpy as np
 
@@ -30,10 +31,6 @@ import scopesim as sim
 import scopesim_templates
 # Edit this path to use where you have downloaded the IRDB packages (see other notebooks).
 sim.rc.__config__["!SIM.file.local_packages_path"] = "../../../"
-```
-
-```{code-cell} ipython3
-# sim.bug_report()
 ```
 
 ```{code-cell} ipython3

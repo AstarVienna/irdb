@@ -20,7 +20,6 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 import scopesim as sim
-sim.bug_report()
 
 # Edit this path if you have a custom install directory, otherwise comment it out.
 sim.rc.__config__["!SIM.file.local_packages_path"] = "../../../../"  
@@ -57,6 +56,7 @@ metis['adc_wheel'].adcs
 Run a simulation with the ADC in the path:
 
 ```{code-cell} ipython3
+:tags: [hide-output]
 metis.observe(src, update=True)
 implane_adc = metis.image_planes[0].data
 ```
@@ -68,6 +68,7 @@ metis['adc_wheel'].change_adc(False)
 ```
 
 ```{code-cell} ipython3
+:tags: [hide-output]
 metis.observe(src, update=True)
 implane_no_adc = metis.image_planes[0].data
 ```

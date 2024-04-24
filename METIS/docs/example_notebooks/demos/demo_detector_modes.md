@@ -16,16 +16,11 @@ kernelspec:
 This notebook demonstrates the effect `detector_readout_parameters`, which selects between the different detector readout modes. These are `fast` and `slow` for the HAWAII2RG detectors, and `high_capacity` and `low_capacity` for the Geosnap detector.
 
 ```{code-cell} ipython3
-import os
 import numpy as np
 from astropy import units as u
 from matplotlib import pyplot as plt
-from matplotlib.colors import LogNorm
-```
 
-```{code-cell} ipython3
 import scopesim as sim
-sim.bug_report()
 
 # Edit this path if you have a custom install directory, otherwise comment it out.
 sim.rc.__config__["!SIM.file.local_packages_path"] = "../../../../"
@@ -91,6 +86,7 @@ metis = sim.OpticalTrain(cmd)
 ```
 
 ```{code-cell} ipython3
+:tags: [hide-output]
 print("Detector mode:", metis.cmds["!OBS.detector_readout_mode"])
 metis.observe(sky, update=True)
 hdul_slow = metis.readout()[0]
@@ -147,15 +143,16 @@ hdul_auto = metis.readout(detector_readout_mode="auto")[0]
 This demonstrates the high- and low-capacity modes of the Geosnap detector. The setup uses a neutral-density filter to ensure that the background does not saturate the detector in the low-capacity mode. The source is a very bright star, which saturates in the low-capacity mode but does not in the high-capacity mode.
 
 ```{code-cell} ipython3
+:tags: [hide-output]
 star = sim.source.source_templates.star(flux=20 * u.Jy)
 
 cmd_n = sim.UserCommands(use_instrument="METIS", set_modes=['img_n'],
                         properties={"!OBS.filter_name": "N2", "!OBS.nd_filter_name": "ND_OD1"})
 metis_n = sim.OpticalTrain(cmd_n)
+metis_n.observe(star, update=True)
 ```
 
 ```{code-cell} ipython3
-metis_n.observe(star, update=True)
 print("--- high-capacity mode ---")
 hdul_high = metis_n.readout(detector_readout_mode="high_capacity")[0]
 fullwell_high = metis.cmds["!DET.full_well"]

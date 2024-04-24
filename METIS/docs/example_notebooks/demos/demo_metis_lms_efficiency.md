@@ -16,18 +16,12 @@ kernelspec:
 This notebook demonstrates the effect `MetisLMSEfficiency`. Here we use it standalone to reproduce Figure 6 from E-REP-ATC-MET-1016 (v1.0) to show that the effect computes the efficiency correctly.
 
 ```{code-cell} ipython3
-from scopesim.effects.metis_lms_trace_list import MetisLMSEfficiency
-```
-
-```{code-cell} ipython3
 import numpy as np
 from astropy import units as u
 from matplotlib import pyplot as plt
-```
 
-```{code-cell} ipython3
 import scopesim as sim
-sim.bug_report()
+from scopesim.effects.metis_lms_trace_list import MetisLMSEfficiency
 
 # Edit this path if you have a custom install directory, otherwise comment it out.
 sim.rc.__config__["!SIM.file.local_packages_path"] = "../../../../"

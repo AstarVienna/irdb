@@ -21,13 +21,11 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 from astropy import units as u
-from astropy.io import fits
 from astropy.wcs import WCS
 
 from synphot import SourceSpectrum, Empirical1D
 from scopesim_templates.micado import flatlamp
 import scopesim as sim
-sim.bug_report()
 ```
 
 ```{code-cell} ipython3
@@ -75,20 +73,22 @@ metis = sim.OpticalTrain(cmds)
 We exclude atmospheric emission (and absorption) as is appropriate for a calibration-lamp observation. As the source fills the slit homogeneously a PSF convolution should have no effect on the result. Excluding PSF convolution cuts down significantly on computation time.
 
 ```{code-cell} ipython3
+:tags: [hide-output]
 metis["skycalc_atmosphere"].include = False
 metis["psf"].include = False
 
 metis.observe(src_linelamp, update=True)
-readout = metis.readout()[0]
 ```
 
 ```{code-cell} ipython3
+readout = metis.readout()[0]
+
 plt.imshow(readout[1].data, origin="lower")
 ```
 
 ## Rectification of the spectrum
 
-The non-linearity in the dispersion in METIS is small and not readily apparent.Still, rectification is necessary to arrive at a 2D spectrum with well-defined wavelength and spatial coordinates. The method to use is `rectify_traces` and belongs to the `SpectralTraceList` effect, which is accessible in the METIS `OpticalTrain` as `"spectral_traces"` (in MICADO it would be `"micado_spectral_traces"`. Currently, it is necessary to specify the spatial extent of the slit when calling the method. The long slit in METIS has a length of 8 arcsec and extends from -4 arcsec to +4 arcsec.
+The non-linearity in the dispersion in METIS is small and not readily apparent. Still, rectification is necessary to arrive at a 2D spectrum with well-defined wavelength and spatial coordinates. The method to use is `rectify_traces` and belongs to the `SpectralTraceList` effect, which is accessible in the METIS `OpticalTrain` as `"spectral_traces"` (in MICADO it would be `"micado_spectral_traces"`. Currently, it is necessary to specify the spatial extent of the slit when calling the method. The long slit in METIS has a length of 8 arcsec and extends from -4 arcsec to +4 arcsec.
 
 ```{code-cell} ipython3
 tracelist = metis["spectral_traces"]

@@ -21,7 +21,6 @@ from matplotlib import pyplot as plt
 from matplotlib.colors import LogNorm
 
 import scopesim as sim
-sim.bug_report()
 
 # Edit this path if you have a custom install directory, otherwise comment it out.
 sim.rc.__config__["!SIM.file.local_packages_path"] = "../../../../"
@@ -69,6 +68,7 @@ metis['filter_wheel'].current_filter
 ## Observing the same source in different filters
 
 ```{code-cell} ipython3
+:tags: [hide-output]
 src = sim.source.source_templates.empty_sky()
 
 metis['filter_wheel'].change_filter("Lp")
@@ -79,6 +79,9 @@ img_Lp = metis.image_planes[0].data
 metis['filter_wheel'].change_filter("PAH_3.3")
 
 metis.observe(src, update=True)
+```
+
+```{code-cell} ipython3
 img_PAH = metis.image_planes[0].data
 
 print(f"Background in Lp:      {np.median(img_Lp):8.1f} counts/s")
@@ -106,20 +109,32 @@ metis['filter_wheel'].change_filter('Lp')
 ```
 
 ```{code-cell} ipython3
+:tags: [hide-output]
 metis['nd_filter_wheel'].change_filter("open")
 metis.observe(star, update=True)
+```
+
+```{code-cell} ipython3
 hdu_open = metis.readout()[0][1]
 ```
 
 ```{code-cell} ipython3
+:tags: [hide-output]
 metis['nd_filter_wheel'].change_filter("ND_OD3")
 metis.observe(star, update=True)
+```
+
+```{code-cell} ipython3
 hdu_OD3 = metis.readout()[0][1]
 ```
 
 ```{code-cell} ipython3
+:tags: [hide-output]
 metis['nd_filter_wheel'].change_filter("ND_OD4")
 metis.observe(star, update=True)
+```
+
+```{code-cell} ipython3
 hdu_OD4 = metis.readout()[0][1]
 ```
 

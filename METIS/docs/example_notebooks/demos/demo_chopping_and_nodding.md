@@ -19,7 +19,6 @@ This notebook demonstrates how to use the `ChopNod` effect in Scopesim. Both cho
 from matplotlib import pyplot as plt
 
 import scopesim as sim
-sim.bug_report()
 
 # Edit this path if you have a custom install directory, otherwise comment it out.
 sim.rc.__config__["!SIM.file.local_packages_path"] = "../../../../" 
@@ -46,6 +45,7 @@ print(f"Nod offsets: {metis.cmds[metis['chop_nod'].meta['nod_offsets']]}")
 ```
 
 ```{code-cell} ipython3
+:tags: [hide-output]
 src = sim.source.source_templates.star()
 
 metis.observe(src, update=True)

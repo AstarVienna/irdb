@@ -19,7 +19,6 @@ This notebook demonstrates how to use the various slits in METIS. They are defin
 from matplotlib import pyplot as plt
 
 import scopesim as sim
-sim.bug_report()
 
 # Edit this path if you have a custom install directory, otherwise comment it out.
 # sim.rc.__config__["!SIM.file.local_packages_path"] = "../../../../"
@@ -85,8 +84,12 @@ metis['slit_wheel'].slits
 ```
 
 ```{code-cell} ipython3
+:tags: [hide-output]
 metis['slit_wheel'].change_slit("Square")
 metis.observe(src, update=True)
+```
+
+```{code-cell} ipython3
 implane = metis.image_planes[0].data
 plt.imshow(implane[600:1450,], origin='lower')
 plt.title("Slit " + metis['slit_wheel'].current_slit.meta['name']);

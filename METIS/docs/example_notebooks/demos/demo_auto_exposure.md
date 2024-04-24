@@ -17,7 +17,6 @@ This is a setup/test/demonstration notebook for the `AutoExposure` effect in Sco
 
 ```{code-cell} ipython3
 import scopesim as sim
-sim.bug_report()
 
 # Edit this path if you have a custom install directory, otherwise comment it out.
 sim.rc.__config__["!SIM.file.local_packages_path"] = "../../../../"
@@ -32,6 +31,7 @@ If you haven't got the instrument packages yet, uncomment the following cell.
 ## Imaging LM-band
 
 ```{code-cell} ipython3
+:tags: [hide-output]
 cmd = sim.UserCommands(use_instrument="METIS", set_modes=["img_lm"])
 metis = sim.OpticalTrain(cmd)
 src = sim.source.source_templates.empty_sky()
@@ -65,6 +65,7 @@ print(f"Fill fraction:                      {outimg.max() / full_well:8.1%}")
 ## Imaging N-band
 
 ```{code-cell} ipython3
+:tags: [hide-output]
 cmd = sim.UserCommands(use_instrument="METIS", set_modes=['img_n'])
 metis = sim.OpticalTrain(cmd)
 metis.observe(src)
@@ -84,6 +85,7 @@ print(f"Fill fraction:                      {outimg.max() / full_well:9.1%}")
 ## Long-slit spectroscopy
 
 ```{code-cell} ipython3
+:tags: [hide-output]
 cmd = sim.UserCommands(use_instrument="METIS", set_modes=['lss_l'])
 metis = sim.OpticalTrain(cmd)
 metis.observe(src)
@@ -106,6 +108,7 @@ print(f"Fill fraction:                      {outimg.max() / full_well:8.1%}")
 Use N-band imaging of Vega. DIT is automatically set to the minimum possible value, but the centre of the star still saturates the detector. In the final image, the star's profile is capped at the full well of the detector.
 
 ```{code-cell} ipython3
+:tags: [hide-output]
 cmd = sim.UserCommands(use_instrument="METIS", set_modes=["img_n"])
 metis = sim.OpticalTrain(cmd)
 src = sim.source.source_templates.star()
