@@ -99,3 +99,9 @@ effects:
       chop_offsets: "!OBS.chop_offsets"
       nod_offsets: "!OBS.nod_offsets"
       pixel_scale: "!INST.pixel_scale"
+
+  - name: quantization
+    description: Turn photon count into integers
+    class: Quantization
+    kwargs:
+      dtype: uint16
