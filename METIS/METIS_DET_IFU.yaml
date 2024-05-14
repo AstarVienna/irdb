@@ -76,4 +76,4 @@ effects:
     description: Turn photon count into integers
     class: Quantization
     kwargs:
-      dtype: uint32
+      dtype: uint16
