@@ -1,1 +1,88 @@
+---
+object: configuration
+alias: OBS
+name: HARMONI_default_configuration
+description: default parameters needed for a HARMONI simulation
+date_modified: 2024-05-15
+changes:
+  - 2024-05-15 (KL, FH) created initial version
 
+yamls:
+  - Armazones.yaml
+  - ELT.yaml
+  - HARMONI.yaml
+
+properties:
+  instrument: "HARMONI"
+  modes: ["4mas", "NOAO"]
+  airmass: 1.2
+  declination: 0
+  hour_angle: 0
+  exptime: None
+  dit: 1
+  ndit: 1
+
+mode_yamls :
+- object : instrument
+  alias: OBS
+  name : NOAO
+  description : "NOAO (no A.O., seeing limited) optical system"
+  yamls :
+  - HARMONI_NOAO.yaml
+
+- object : instrument
+  alias: OBS
+  name : SCAO
+  description : "SCAO optical system"
+  yamls :
+  - HARMONI_SCAO.yaml
+
+- object : instrument
+  alias: OBS
+  name : LTAO
+  description : "LTAO optical system"
+  yamls :
+  - HARMONI_LTAO.yaml
+
+- object : observation
+  alias: OBS
+  name : 4mas
+  description : "4mas/spexel mode"
+  yamls :
+  - HARMONI_4mas.yaml
+  properties :
+    
+
+- object : observation
+  alias: OBS
+  name : 10mas
+  description : "10mas/spexel mode"
+  yamls :
+  - HARMONI_10mas.yaml
+  properties :
+    
+
+- object : observation
+  alias: OBS
+  name : 20mas
+  description : "20mas/spexel mode"
+  yamls :
+  - HARMONI_20mas.yaml
+  properties :
+    
+
+- object : observation
+  alias: OBS
+  name : 60x30mas
+  description : "60x30mas/spexel mode"
+  yamls :
+  - HARMONI_60x30mas.yaml
+  properties :
+    
+
+- object : observation
+  alias: OBS
+  name : HCI
+  description : "High contrast imaging"
+  yamls :
+  - HARMONI_IMG_HCI.yaml
