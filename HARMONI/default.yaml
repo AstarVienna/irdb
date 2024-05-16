@@ -27,29 +27,33 @@ mode_yamls :
   alias: OBS
   name : NOAO
   description : "NOAO (no A.O., seeing limited) optical system"
+  status: concept
   yamls :
-  - HARMONI_NOAO.yaml
+    - HARMONI_NOAO.yaml
 
 - object : instrument
   alias: OBS
   name : SCAO
   description : "SCAO optical system"
+  status: concept
   yamls :
-  - HARMONI_SCAO.yaml
+    - HARMONI_SCAO.yaml
 
 - object : instrument
   alias: OBS
   name : LTAO
   description : "LTAO optical system"
+  status: concept
   yamls :
-  - HARMONI_LTAO.yaml
+    - HARMONI_LTAO.yaml
 
 - object : observation
   alias: OBS
   name : 4mas
   description : "4mas/spexel mode"
+  status: concept
   yamls :
-  - HARMONI_4mas.yaml
+    - HARMONI_4mas.yaml
   properties :
     
 
@@ -57,8 +61,9 @@ mode_yamls :
   alias: OBS
   name : 10mas
   description : "10mas/spexel mode"
+  status: concept
   yamls :
-  - HARMONI_10mas.yaml
+    - HARMONI_10mas.yaml
   properties :
     
 
@@ -66,8 +71,9 @@ mode_yamls :
   alias: OBS
   name : 20mas
   description : "20mas/spexel mode"
+  status: concept
   yamls :
-  - HARMONI_20mas.yaml
+    - HARMONI_20mas.yaml
   properties :
     
 
@@ -75,8 +81,9 @@ mode_yamls :
   alias: OBS
   name : 60x30mas
   description : "60x30mas/spexel mode"
+  status: concept
   yamls :
-  - HARMONI_60x30mas.yaml
+    - HARMONI_60x30mas.yaml
   properties :
     
 
@@ -84,5 +91,6 @@ mode_yamls :
   alias: OBS
   name : HCI
   description : "High contrast imaging"
+  status: concept
   yamls :
-  - HARMONI_IMG_HCI.yaml
+    - HARMONI_IMG_HCI.yaml
