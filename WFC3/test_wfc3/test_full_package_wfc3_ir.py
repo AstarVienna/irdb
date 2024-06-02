@@ -129,8 +129,8 @@ class TestMakeOpticalTrain:
 
         # test assert there are 1 detector
         hdu = opt.readout()[0]
-        assert len(opt.detector_arrays[0].detectors) == 1
-        for detector in opt.detector_arrays[0].detectors:
+        assert len(opt.detector_managers[0]) == 1
+        for detector in opt.detector_managers[0]:
             assert detector.hdu.header["NAXIS1"] == 1024
             assert detector.hdu.header["NAXIS2"] == 1024
 
