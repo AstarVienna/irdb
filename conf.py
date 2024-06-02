@@ -84,8 +84,8 @@ source_encoding = 'utf-8'
 
 
 # MyST NB stuff
-nb_execution_timeout = 600  # [s]
-nb_execution_mode = "cache"
+nb_execution_timeout = 3600  # [s]
+nb_execution_mode = "auto"
 nb_execution_excludepatterns = [
     "METIS/docs/example_notebooks/LSS*",
     "METIS/docs/example_notebooks/IFU*",
