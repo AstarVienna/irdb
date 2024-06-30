@@ -116,8 +116,8 @@ effects :
                  "gain": [1.0]}
     x_cen_unit : mm
     y_cen_unit : mm
-    x_len_unit : mm
-    y_len_unit : mm
+    x_size_unit : mm
+    x_size_unit : mm
     pixsize_unit : mm
     angle_unit : deg
     gain_unit : electron/adu
