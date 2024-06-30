@@ -116,8 +116,8 @@ effects :
                  "gain": [1.0]}
     x_cen_unit : mm
     y_cen_unit : mm
-    x_len_unit : mm
-    y_len_unit : mm
+    x_size_unit : mm
+    x_size_unit : mm
     pixsize_unit : mm
     angle_unit : deg
     gain_unit : electron/adu
@@ -152,7 +152,7 @@ class TestParanal:
 
     @pytest.mark.parametrize("filter_name, bg_level",
                              [("J", 674), ("H", 4693), ("Ks", 1026)])
-    def test_flux_scales_with_pixel_scale(self, filter_name, bg_level):
+    def test_flux_scales_with_pixel_scale_JHK(self, filter_name, bg_level):
         yaml_text = YAML_TEXT % (WAVE_MIN, WAVE_MAX,
                                  PIXEL_SCALE, PIXEL_SCALE,
                                  filter_name)
