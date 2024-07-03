@@ -1,19 +1,19 @@
-### H4RG DETECTOR
+---
+### Princeton DREAMS InGaAs DETECTOR
 object : detector
 alias : DET
-name : MICADO_DET
-description : A set of 9 H4RG detectors
+name : DREAMS_InGaAs_detector
+description : base configuration for LFOA SBIG camera
 
-properties :
-    image_plane_id : 0
-    temperature : -230
-    dit : "!OBS.dit"
-    ndit : "!OBS.ndit"
-    width: 1024
-    height: 1024
-    x: 0
-    y: 0
-
+properties:
+  image_plane_id : 0
+  temperature : -60
+  dit : "!OBS.dit"
+  ndit : "!OBS.ndit"
+  width: 1280
+  height: 1024
+  x: 0
+  y: 0
 effects :
 -   name: full_detector_array
     description : THe full 3x3 MICADO detector array list
