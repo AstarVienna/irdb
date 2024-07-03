@@ -21,6 +21,7 @@ yamls :
 properties :
   instrument : MICADO
   modes : ["SCAO", "IMG_4mas"]
+#  modes : ["IMG_4mas"]
   airmass : 1.2
   declination : -30
   hour_angle : 0

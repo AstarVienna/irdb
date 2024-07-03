@@ -20,8 +20,8 @@ effects :
     class: DetectorList
     include: True
     kwargs:
-#        filename : FPA_array_layout.dat
-        filename : FPA_array_layout_single.dat  # To test with a single detector
+        filename : FPA_array_layout.dat
+#        filename : FPA_array_layout_single.dat  # To test with a single detector
         active_detectors : "all"
 
 -   name : qe_curve
