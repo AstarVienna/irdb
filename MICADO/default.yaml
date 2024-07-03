@@ -19,7 +19,7 @@ yamls :
 - Armazones.yaml
 - ELT.yaml
 - MICADO.yaml
-- MICADO_H4RG.yaml
+- DREAMS_InGaAs.yaml
 
 properties :
   instrument : MICADO
