@@ -102,11 +102,11 @@ effects :
 #    class : SimulationConfigFitsKeywords
 #    include : True
 
--   name : extra_fits_keywords
-    decription : adds extra FITS keywords from a yaml file
-    class : ExtraFitsKeywords
-    include : True
-    kwargs :
-      filename: FITS_extra_keywords.yaml
-
-
+#-   name : extra_fits_keywords
+#    decription : adds extra FITS keywords from a yaml file
+#    class : ExtraFitsKeywords
+#    include : True
+#    kwargs :
+#      filename: FITS_extra_keywords.yaml
+#
+#
