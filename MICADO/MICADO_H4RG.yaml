@@ -76,3 +76,8 @@ effects :
         noise_std : 12
         n_channels : 64
 
+-   name : detector_binning
+    description : Binning the detector frames
+    class : BinnedImage
+    kwargs :
+      bin_size : "!DET.bin_size"
