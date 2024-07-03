@@ -18,11 +18,11 @@ properties :
     filter_file_format : "filters/TC_filter_{}.dat"
 
 effects : 
--   name: micado_static_surfaces
-    description : surfaces list for wide field optics
+-   name: dreams_static_surfaces
+    description : telescope and camera optical surfaces
     class: SurfaceList
     kwargs:
-        filename: LIST_MICADO_mirrors_static.dat
+      filename: LIST_DREAMS_mirrors_static.dat
 
 -   name : micado_ncpas_psf
     description : Effective NCPA induced PSF kernel
