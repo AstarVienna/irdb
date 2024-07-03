@@ -11,13 +11,10 @@ changes:
 
 packages :
 - Armazones
-- ELT
-- MORFEO
 - MICADO
 
 yamls :
 - Armazones.yaml
-- ELT.yaml
 - MICADO.yaml
 - DREAMS_InGaAs.yaml
 
