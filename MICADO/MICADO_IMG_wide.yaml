@@ -6,8 +6,8 @@ description : additional effects for the wide-field imaging mode
 
 properties :
     # DREAMS, does not work
-    # pixel_scale : 2.48    # arcsec / pixel
-    # plate_scale : 206.265     # arcsec / mm
+#     pixel_scale : 2.48    # arcsec / pixel
+#     plate_scale : 206.265     # arcsec / mm
 
     # MICADO, works:
     # pixel_scale : 0.004         # arcsec / pixel
@@ -22,8 +22,25 @@ properties :
     #plate_scale : 41.253   # arcsec / mm
 
     # Something in between, DREAMS/2.5, almost at 1 arcsec / pixel, works
-    pixel_scale : 0.992    # arcsec / pixel
-    plate_scale : 82.506   # arcsec / mm
+    #pixel_scale : 0.992    # arcsec / pixel
+    #plate_scale : 82.506   # arcsec / mm
+
+    # Something in between, DREAMS/2.6, just above 1 arcsec / pixel, works
+    #pixel_scale : 1.03333333    # arcsec / pixel
+    #plate_scale : 85.94375   # arcsec / mm
+
+    # Something in between, DREAMS/2, works
+#    pixel_scale : 1.24    # arcsec / pixel
+#    plate_scale : 103.1325   # arcsec / mm
+
+    # Something in between, DREAMS * 0.8, broken
+    #pixel_scale : 1.984    # arcsec / pixel
+    #plate_scale : 165.012   # arcsec / mm
+
+    # Something in between, DREAMS * 0.6, not sure, cluster is very faint maybe?, ah, this is almost the PSF size of 1.5
+    # Yes, setting the fwhm of the PSF to 15 instead of 1.5 makes it work
+    pixel_scale : 1.488    # arcsec / pixel
+    plate_scale : 123.759   # arcsec / mm
 
 
 effects :

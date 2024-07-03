@@ -13,6 +13,8 @@ effects :
     class : SeeingPSF
     kwargs :
       # DREAMS
-      fwhm : 1.5       # [arcsec]
+#      fwhm : 1.5       # [arcsec]
       # Arbitrary:
       # fwhm : 0.15       # [arcsec]
+      # DREAMS * 10
+      fwhm : 15.0       # [arcsec]
