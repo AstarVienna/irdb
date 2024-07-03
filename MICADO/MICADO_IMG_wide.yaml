@@ -5,17 +5,21 @@ name : MICADO_IMG_LR
 description : additional effects for the wide-field imaging mode
 
 properties :
-    # DREAMS:
+    # DREAMS, does not work
     # pixel_scale : 2.48    # arcsec / pixel
     # plate_scale : 206.265     # arcsec / mm
 
-    # MICADO:
+    # MICADO, works:
     # pixel_scale : 0.004         # arcsec / pixel
     # plate_scale : 0.26666666666 # arcsec / mm
 
-    # Something in between, DREAMS/10
-    pixel_scale : 0.248    # arcsec / pixel
-    plate_scale : 20.6265   # arcsec / mm
+    # Something in between, DREAMS/10, also works
+    # pixel_scale : 0.248    # arcsec / pixel
+    # plate_scale : 20.6265   # arcsec / mm
+
+    # Something in between, DREAMS/5, does work
+     pixel_scale : 0.496    # arcsec / pixel
+     plate_scale : 41.253   # arcsec / mm
 
 effects :
 -   name: micado_wide_field_mirror_list
