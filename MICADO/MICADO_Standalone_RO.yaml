@@ -8,25 +8,17 @@ properties :
     temperature : "!ATMO.temperature"
 
 effects :
--   name : relay_psf
-    description : SCAO PSF
-    class : FieldConstantPSF
-    kwargs:
-        filename : PSF_SCAO_ConstPSF_0_5off.fits
-        warning : "Default PSF is NOT field varying. See documentation."
+-   name : seeing_psf
+    description : Schoepfl PSF
+    class : SeeingPSF
+    kwargs :
+      fwhm : 1.5       # [arcsec]
 
 -   name: relay_surface_list
     description : list of surfaces in the relay optics
     class: SurfaceList
     kwargs:
         filename: LIST_RO_SCAO_mirrors.dat
-
--   name : extra_fits_keywords_ro
-    description : adds extra FITS keywords for Relay Optics
-    class : ExtraFitsKeywords
-    include : True
-    kwargs :
-        filename : FITS_extra_keywords_Standalone_RO.yaml
 
 ################################################################################
 
