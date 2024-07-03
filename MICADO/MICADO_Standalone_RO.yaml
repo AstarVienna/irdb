@@ -12,4 +12,7 @@ effects :
     description : Schoepfl PSF
     class : SeeingPSF
     kwargs :
-      fwhm : 1.5       # [arcsec]
+      # DREAMS
+      # fwhm : 1.5       # [arcsec]
+      # Arbitrary:
+      fwhm : 0.15       # [arcsec]
