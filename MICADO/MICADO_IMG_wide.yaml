@@ -8,9 +8,14 @@ properties :
     # DREAMS:
     # pixel_scale : 2.48    # arcsec / pixel
     # plate_scale : 206.265     # arcsec / mm
+
     # MICADO:
-    pixel_scale : 0.004         # arcsec / pixel
-    plate_scale : 0.26666666666 # arcsec / mm
+    # pixel_scale : 0.004         # arcsec / pixel
+    # plate_scale : 0.26666666666 # arcsec / mm
+
+    # Something in between, DREAMS/100
+    pixel_scale : 0.0248    # arcsec / pixel
+    plate_scale : 2.06265   # arcsec / mm
 
 effects :
 -   name: micado_wide_field_mirror_list
