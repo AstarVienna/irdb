@@ -18,23 +18,10 @@ effects :
 -   name: full_detector_array
     description : THe full 3x3 MICADO detector array list
     class: DetectorList
-    include: False
+    include: True
     kwargs:
         filename : FPA_array_layout.dat
         active_detectors : "all"
-
--   name: detector_window
-    class: DetectorWindow
-    description: Cut-out of the focal plane image with custom dimensions and coordinates
-    include: True
-    kwargs:
-        image_plane_id: 0
-        pixel_size: 0.015
-        x: "!DET.x"
-        y: "!DET.y"
-        width: "!DET.width"
-        height: "!DET.height"
-        units: pixel
 
 -   name : qe_curve
     description : Quantum efficiency curves for each detector
