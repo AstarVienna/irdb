@@ -40,18 +40,17 @@ effects :
     description : Quantum efficiency curves for each detector
     class : QuantumEfficiencyCurve
     kwargs :
-        filename : QE_detector_H4RG.dat
+        filename : QE_InGaAs.dat
 
 -   name: exposure_action
     description: Summing up sky signal for all DITs and NDITs
     class: SummedExposure
 
 -   name: dark_current
-    description : MICADO dark current
+    description : SBIG dark current
     class: DarkCurrent
-    # [e-/s] level of dark current for each detector
     kwargs:
-        value: 0.1
+      value: 67.00
 
 -   name: shot_noise
     description : apply poisson shot noise to images
