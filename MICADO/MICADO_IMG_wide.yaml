@@ -18,8 +18,13 @@ properties :
     # plate_scale : 20.6265   # arcsec / mm
 
     # Something in between, DREAMS/5, does work
-     pixel_scale : 0.496    # arcsec / pixel
-     plate_scale : 41.253   # arcsec / mm
+    #pixel_scale : 0.496    # arcsec / pixel
+    #plate_scale : 41.253   # arcsec / mm
+
+    # Something in between, DREAMS/2.5, almost at 1 arcsec / pixel, works
+    pixel_scale : 0.992    # arcsec / pixel
+    plate_scale : 82.506   # arcsec / mm
+
 
 effects :
 -   name: micado_wide_field_mirror_list
