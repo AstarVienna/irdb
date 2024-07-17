@@ -72,15 +72,21 @@ class TestOsirisLongSlitCompiles:
 
         src_comb = src1 + src3 + src4 + src5
 
-        cmds = sim.UserCommands(use_instrument="OSIRIS", set_modes=["LSS"],
-                                properties={"!OBS.dit": 60})
-        # cmds["!OBS.dit"] = 60
+        cmds = sim.UserCommands(
+            use_instrument="OSIRIS",
+            set_modes=["LSS"],
+            properties={
+                # dit is used in the optical train,
+                # while exptime ends up in the headers
+                "!OBS.dit": 60,
+                "!OBS.exptime": 60,
+            })
         cmds["!ATMO.seeing"] = 0.8
         cmds["!OBS.grating_name"] = "R2500V"
 
         osiris = sim.OpticalTrain(cmds)
         osiris.observe(src_comb)
-        hdulist = osiris.readout(exptime=60)[0]
+        hdulist = osiris.readout()[0]
 
         if PLOTS:
             plt.imshow(hdulist[1].data, norm=LogNorm())
@@ -102,15 +108,19 @@ class TestOsirisMaatCompiles:
         # n stars, mag_min, mag_max, width=[arcsec]
         src = star_field(5**2, 10, 10, 8, use_grid=True)
 
-        cmds = sim.UserCommands(use_instrument="OSIRIS", set_modes=["MAAT"],
-                                properties={"!OBS.dit": 60})
-        # cmds["!OBS.dit"] = 60
+        cmds = sim.UserCommands(
+            use_instrument="OSIRIS",
+            set_modes=["MAAT"],
+            properties={
+                "!OBS.dit": 60,
+                "!OBS.exptime": 60,
+            })
         cmds["!ATMO.seeing"] = 0.8
         # cmds["!OBS.grating_name"] = "R2500V"
 
         osiris = sim.OpticalTrain(cmds)
         osiris.observe(src)
-        hdulist = osiris.readout(exptime=60)[0]
+        hdulist = osiris.readout()[0]
 
         if PLOTS:
             plt.imshow(hdulist[1].data, norm=LogNorm())
