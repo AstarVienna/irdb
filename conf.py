@@ -45,61 +45,18 @@ sys.path.insert(0, os.path.abspath('docs'))
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'nbsphinx',
     'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
     'sphinx.ext.coverage',
     'sphinx.ext.mathjax',
     'sphinx.ext.viewcode',
-    # 'matplotlib.sphinxext.plot_directive',
-    # 'numpydoc',
-    # 'sphinx.ext.autodoc',
-    # 'jupyter_sphinx.execute',
-    # 'sphinxcontrib.apidoc',
+    'sphinx_copybutton',
+    'myst_nb',
 ]
 
 # numpydoc settings
 numpydoc_show_class_members = False
 
-# apidoc settings
-# apidoc_module_dir = os.path.abspath('irdb/')
-# apidoc_output_dir = 'docs/source/reference'
-# apidoc_separate_modules = True
-# apidoc_excluded_paths = ["tests/", "docs/"]
-
-# nbsphinx settings
-nbsphinx_allow_errors = True
-nbsphinx_execute = "never"
-
-# add_hidden_cell_to_ipynb_files()
-
-def add_hidden_cell_to_ipynb_files():
-    import glob
-    old_string = '''"cells": ['''
-    new_string = '''"cells": [
-  {
-    "cell_type": "code",
-    "execution_count": null,
-    "metadata": { "nbsphinx": "hidden" },
-    "outputs": [],
-    "source": [
-      "import os, scopesim as sim",
-      "if os.environ.get(\"READTHEDOCS\") == \"True\" or \"F:\" in os.getcwd():",
-      "    sim.rc.__config__[\"!SIM.file.local_packages_path\"] = os.path.abspath(\"../../../\")",
-    ]
-  },'''
-    paths = glob.glob("./**/*.ipynb", recursive=True)
-    for path in paths:
-        with open(path, "r+") as f:
-            contents = f.read()
-            # check if the hidden cell has already been added to notebook
-            if 'os.environ.get("READTHEDOCS")' not in contents:
-                contents = contents.replace(old_string, new_string)
-                f.seek(0)
-                f.write(contents)
-
-
-# add_hidden_cell_to_ipynb_files()
 
 
 def remove_inst_pkgs_symlink():
@@ -117,18 +74,31 @@ plot_html_show_source_link = False
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
-# The suffix(es) of source filenames.
-# You can specify multiple suffix as a list of string:
-#
-# source_suffix = ['.rst', '.md']
-source_suffix = '.rst'
+source_suffix = {
+    ".rst": "restructuredtext",
+    ".ipynb": "myst-nb",
+    ".myst": "myst-nb",
+    ".md": "myst-nb",
+}
+source_encoding = 'utf-8'
+
+
+# MyST NB stuff
+nb_execution_timeout = 3600  # [s]
+nb_execution_mode = "auto"
+nb_execution_excludepatterns = [
+    "METIS/docs/example_notebooks/LSS*",
+    "METIS/docs/example_notebooks/IFU*",
+    "MICADO/**"
+]
+
 
 # The master toctree document.
 master_doc = 'index'
 
 # General information about the project.
 project = 'Instrument Reference Database'
-copyright = '2019, A*Vienna Software Team'
+copyright = '2024, A*Vienna Software Team'
 author = 'Kieran Leschinski, Oliver Czoske'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -158,36 +128,35 @@ pygments_style = 'sphinx'
 
 # -- Options for HTML output ----------------------------------------------
 
-# The theme to use for HTML and HTML Help pages.  See the documentation for
-# a list of builtin themes.
-#
-# html_theme = 'alabaster'
-
-# Theme options are theme-specific and customize the look and feel of a theme
-# further.  For a list of options available for each theme, see the
-# documentation.
-#
-html_theme_options = {"body_max_width": "900px"}
+html_theme = "sphinx_book_theme"
+html_theme_options = {
+    "repository_url": "https://github.com/AstarVienna/irdb",
+    "use_repository_button": True,
+    "use_download_button": True,
+    "home_page_in_toc": True,
+}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['docs/source/_static']      # 'METIS/docs/example_notebooks'
-html_favicon = 'docs/source/_static/logos/T_favicon.png'
+html_logo = 'docs/source/_static/logos/T_favicon.png'
+html_title = "IRDB"
 
 
-# Custom sidebar templates, must be a dictionary that maps document names
-# to template names.
-#
-# This is required for the alabaster theme
-# refs: http://alabaster.readthedocs.io/en/latest/installation.html#sidebars
-# html_sidebars = {
-#     '**': [
-#         'relations.html',  # needs 'show_related': True theme option to display
-#         'searchbox.html',
-#     ]
-# }
+# Add local templates path to modify autosummary templates
+#templates_path = ['_templates']
 
+# Static files to copy after template files
+html_static_path = ['_static']
+html_sidebars = {
+    "**": [
+        "navbar-logo.html",
+        "search-field.html",
+        "sbt-sidebar-nav.html",
+    ]
+}
+html_sourcelink_suffix = ""
 
 # -- Options for HTMLHelp output ------------------------------------------
 
