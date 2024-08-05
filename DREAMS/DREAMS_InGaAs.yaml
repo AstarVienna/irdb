@@ -1,0 +1,62 @@
+---
+### Princeton DREAMS InGaAs DETECTOR
+object : detector
+alias : DET
+name : DREAMS_InGaAs_detector
+description : base configuration for LFOA SBIG camera
+
+properties:
+  image_plane_id : 0
+  temperature : -60
+  dit : "!OBS.dit"
+  ndit : "!OBS.ndit"
+  width: 1280
+  height: 1024
+  x: 0
+  y: 0
+effects:
+-   name: full_detector_array
+    description: THe full DREAMS detector array list
+    class: DetectorList
+    include: True
+    kwargs:
+      filename : FPA_array_layout.dat
+      active_detectors : "all"
+
+-   name: qe_curve
+    description : Quantum efficiency curves for each detector
+    class : QuantumEfficiencyCurve
+    kwargs :
+      filename : QE_InGaAs.dat
+
+-   name: exposure_action
+    description: Summing up sky signal for all DITs and NDITs
+    class: SummedExposure
+
+-   name: dark_current
+    description : SBIG dark current
+    class: DarkCurrent
+    kwargs:
+      value: 67.00
+
+-   name: shot_noise
+    description : apply Poisson shot noise to images
+    class: ShotNoise
+
+- name: detector_linearity
+  class: LinearityCurve
+  kwargs:
+    incident: [0, 57143, 999999999999]
+    measured: [0, 57143, 57143]
+
+-   name : readout_noise
+    description : Readout noise frames
+    class : BasicReadoutNoise
+    kwargs :
+      noise_std : 75
+
+-   name : detector_binning
+    description : Binning the detector frames
+    class : BinnedImage
+    kwargs :
+      bin_size : "!DET.bin_size"

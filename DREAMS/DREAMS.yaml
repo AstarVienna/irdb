@@ -1,0 +1,52 @@
+---
+
+### Leopold Figl SBIG camera
+object : instrument
+alias : INST
+name : DREAMS
+description : 
+  DREAMS is a 0.5m telescope operated
+  by the Department of Astropyhics at the University of ANU.
+
+properties:
+  temperature: -40  # deg
+  pixel_scale : 2.48    # arcsec / pixel
+  plate_scale : 206.265     # arcsec / mm
+
+effects:
+-   name : seeing_psf
+    description : Schoepfl PSF
+    class : SeeingPSF
+    kwargs :
+      fwhm : 15.00       # [arcsec]
+-   name : skycalc_average_atmo
+    description : atmospheric properties for a default skycalc run
+    class : AtmosphericTERCurve
+    include : True
+    kwargs :
+      filename: "TER_atmosphere.dat"
+      rescale_emission:
+        filter_name: "!OBS.sky.filter_name"
+        filename_format: "filters/{}.dat"
+        value: "!OBS.sky.bg_mag"
+        unit: mag
+-   name: dreams_static_surfaces
+    description : telescope and camera optical surfaces
+    class: SurfaceList
+    kwargs:
+      filename: LIST_DREAMS_mirrors_static.dat
+      
+-   name: filter_curve
+    description : transmission curve for filter
+    class: FilterCurve
+    kwargs:
+      filter_name: "!OBS.filter_name"
+      filename_format: "filters/{}.dat"
+      minimum_throughput: !!float 1.01E-4
+      outer: 0.05088
+      outer_unit: "m"
+
+-   name: fits_headers
+    description : FITS headers
+    class: ExtraFitsKeywords
+    include: True
