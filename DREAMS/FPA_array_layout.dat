@@ -1,0 +1,23 @@
+# name : DREAMS 1280SCICAM
+# author : Anjali Shivani Reddy
+# sources : https://github.com/Astrogirlanajli/DREAMS/blob/main/5240-0001%20Scicam%20FPA%20Drawing%20mm%20v1.pdf
+# date_created : 2024-05-04
+# type : detector:chip_list
+# x_cen_unit : mm
+# y_cen_unit : mm
+# x_size_unit : pix
+# y_size_unit : pix
+# pixel_size_unit : mm
+# angle_unit : deg
+# gain_unit : electron/adu
+#
+id   x_cen    y_cen   x_size  y_size  pixel_size  angle  gain
+1   -8.015    12.95    1280    1024       0.012    0.0    4.3
+2    8.015    12.95    1280    1024       0.012    0.0    4.3
+3   -8.015    0.000    1280    1024       0.012    0.0    4.3
+4    8.015    0.000    1280    1024       0.012    0.0    4.3
+5   -8.015   -12.95    1280    1024       0.012    0.0    4.3
+6    8.015   -12.95    1280    1024       0.012    0.0    4.3
+
+
+
