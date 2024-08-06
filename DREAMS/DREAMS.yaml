@@ -26,9 +26,9 @@ effects:
     kwargs :
       filename: "TER_atmosphere.dat"
       rescale_emission:
-        filter_name: "!OBS.sky.filter_name"
+        filter_name: "!OBS.filter_name"
         filename_format: "filters/{}.dat"
-        value: "!OBS.sky.bg_mag"
+        value: "!OBS.bg_mag"
         unit: mag
 -   name: dreams_static_surfaces
     description : telescope and camera optical surfaces
