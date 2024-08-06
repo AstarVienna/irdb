@@ -19,10 +19,10 @@ properties :
   pupil_angle : 0
   dit : 10
   ndit : 1
-  filter_name : "!OBS.filter_name"
+  filter_name : !OBS.filter_name
   sky :
     bg_mag : 14.5
-    filter_name : "!OBS.filter_name"
+    filter_name : !OBS.filter_name
 
 ---
 ### default simulation parameters needed for DREAMS simulation
