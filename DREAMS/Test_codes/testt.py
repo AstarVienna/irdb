@@ -17,7 +17,7 @@ if rc.__config__["!SIM.tests.run_integration_tests"] is False:
     pytestmark = pytest.mark.skip("Ignoring DREAMS integration tests")
 
 # Set TOP_PATH to the directory containing the DREAMS package
-TOP_PATH = "/Users/anjali/Desktop"
+TOP_PATH = "/Users/anjali/github"
 rc.__config__["!SIM.file.local_packages_path"] = TOP_PATH
 
 # Adjust the PKGS dictionary to reflect the correct path
