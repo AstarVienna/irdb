@@ -19,15 +19,15 @@ properties :
   pupil_angle : 0
   dit : 10
   ndit : 1
-  filter_name : !OBS.filter_name
+  filter_name : J
   sky :
     bg_mag : 14.5
-    filter_name : !OBS.filter_name
+    filter_name : J
 
 ---
 ### default simulation parameters needed for DREAMS simulation
 object : simulation
-alias : SIM
+alias : OBS
 name : LFAO_simulation_paramters
 description : RC simulation paramters
 
