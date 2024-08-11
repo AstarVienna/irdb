@@ -6,7 +6,7 @@ alias : INST
 name : DREAMS
 description : 
   DREAMS is a 0.5m telescope operated
-  by the Department of Astropyhics at the University of ANU.
+  by the Department of Astrophyhics at the University of ANU.
 
 properties:
   temperature: -40  # deg
@@ -18,7 +18,7 @@ effects:
     description : Schoepfl PSF
     class : SeeingPSF
     kwargs :
-      fwhm : 15.00       # [arcsec]
+      fwhm : 5.00       # [arcsec]
 -   name : skycalc_average_atmo
     description : atmospheric properties for a default skycalc run
     class : AtmosphericTERCurve

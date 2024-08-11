@@ -17,7 +17,7 @@ properties :
   declination : -31.273 
   hour_angle : 0
   pupil_angle : 0
-  dit : 10
+  dit : 8
   ndit : 1
   filter_name : J
   sky :
