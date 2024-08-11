@@ -1,4 +1,3 @@
-
 # DREAMS Teelescope
 
 The Dynamic REd All-sky Monitoring Survey (DREAMS) is a cutting-edge 0.5-meter infrared telescope, strategically situated at the Siding Spring Observatory, part of the Australian National University. DREAMS is pioneering in its application of Indium Gallium Arsenide (InGaAs) detectors, which, despite having a higher noise profile, offer a cost-effective alternative to the traditionally used mercury-cadmium-telluride (HgCdTe) detectors in infrared astronomy. The telescope is equipped with the advanced Princeton Infrared Technologies 1280SCICAM, enabling high-sensitivity observations across the near-infrared spectrum.
