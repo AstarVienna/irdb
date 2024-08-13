@@ -3,7 +3,7 @@
 object : detector
 alias : DET
 name : DREAMS_InGaAs_detector
-description : base configuration for LFOA SBIG camera
+description : base configuration for Dreams camera
 
 properties:
   image_plane_id : 0
