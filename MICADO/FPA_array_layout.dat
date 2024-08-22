@@ -1,8 +1,7 @@
-# name : MICADO H4RG-15 FPA
-# author : Oliver Czoske
-# sources: E-MCD-FPA-572089EB.uda, ELT-TRE-MCD-56300-0011
-# date_created  : 2017-06-28
-# date_modified : 2023-07-28
+# name : DREAMS 1280SCICAM
+# author : Anjali Shivani Reddy
+# sources : https://github.com/Astrogirlanajli/DREAMS/blob/main/5240-0001%20Scicam%20FPA%20Drawing%20mm%20v1.pdf
+# date_created : 2024-05-04
 # type : detector:chip_list
 # x_cen_unit : mm
 # y_cen_unit : mm
@@ -12,24 +11,10 @@
 # angle_unit : deg
 # gain_unit : electron/adu
 #
-# changes:
-# - 2017-08-12 (OC) id changed to conform with spectroscopy report
-# - 2018-07-26 (OC) large gap (chips 5 and 6) reduced to 8 mm
-# - 2018-11-19 (KL) updated meta data to new format
-# - 2019-01-28 (KL) moved units into header
-# - 2022-02-09 (KL) small/large gap (chips 5 and 4) changed to 2.5/6.5 mm (see email from ric)
-# - 2022-03-03 (KL) added detector angles based on (left, top) = (1,1) pixel from ELT-TRE-MCD-56300-0132
-# - 2022-03-22 (KL) changed column names from x_len to x_size, removed columns xhw, yhw
-# - 2022-03-22 (KL) flipped column 4 and 6 to make plotting in grid format easier
-# - 2023-07-28 (OC) swap rows for detectors 4 and 6 to make id sequential
-#
-id   x_cen   y_cen  x_size  y_size  pixel_size  angle    gain
-1   -63.94   63.94    4096    4096       0.015    0.0     1.0
-2     0.00   63.94    4096    4096       0.015  270.0     1.0
-3    63.94   63.94    4096    4096       0.015  180.0     1.0
-4    67.94    0.00    4096    4096       0.015  180.0     1.0
-5     0.00    0.00    4096    4096       0.015  180.0     1.0
-6   -63.94    0.00    4096    4096       0.015    0.0     1.0
-7   -63.94  -63.94    4096    4096       0.015    0.0     1.0
-8     0.00  -63.94    4096    4096       0.015   90.0     1.0
-9    63.94  -63.94    4096    4096       0.015  180.0     1.0
+id   x_cen   y_cen  x_size  y_size   pixel_size   angle  gain
+1    8.015   12.95    1280    1024       0.012    0.0     4.3
+2   -8.015   12.95    1280    1024       0.012    0.0     4.3
+3    8.015   0.000    1280    1024       0.012    0.0     4.3
+4   -8.015   0.000    1280    1024       0.012    0.0     4.3
+5    8.015   -12.95   1280    1024       0.012    0.0     4.3
+6   -8.015   -12.95   1280    1024       0.012    0.0     4.3

@@ -1,0 +1,10 @@
+# name : mirror_list
+# outer_unit : m
+# inner_unit : m
+# angle_unit : degree
+# temperature_unit  : deg_C
+# description : A list of optical surfaces in the telescope and camera. M[1-2] are the telescope mirrors.
+#
+name    outer   inner   angle   temperature    action          filename
+M1      0.5     0.0     0       -40           reflection      TER_mirror.dat
+M2      0.5     0.0     0       -40           reflection      TER_mirror.dat

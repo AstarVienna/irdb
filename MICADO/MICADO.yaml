@@ -18,11 +18,11 @@ properties :
     filter_file_format : "filters/TC_filter_{}.dat"
 
 effects : 
--   name: micado_static_surfaces
-    description : surfaces list for wide field optics
+-   name: dreams_static_surfaces
+    description : telescope and camera optical surfaces
     class: SurfaceList
     kwargs:
-        filename: LIST_MICADO_mirrors_static.dat
+      filename: LIST_DREAMS_mirrors_static.dat
 
 -   name : micado_ncpas_psf
     description : Effective NCPA induced PSF kernel
@@ -31,71 +31,12 @@ effects :
         pixel_scale : "!INST.pixel_scale"
         filename : "INST_MICADO_wavefront_error_budget.dat"
 
--   name: filter_wheel_1
-    description: upper filter wheel
-    class: FilterWheel
+-   name: filter_curve
+    description : transmission curve for filter
+    class: FilterCurve
     kwargs:
-        filter_names:
-            # Filter wheel 1
-            - open
-            - xI1
-            - xI2
-            - Spec_IJ
-            - Spec_HK
-            - I-long
-            - Y
-            - J
-            - J-short
-            - J-long
-        filename_format: "!INST.filter_file_format"
-        current_filter: "!OBS.filter_name_fw1"
-        minimum_throughput: !!float 1.01E-4
-        outer: 0.2
-        outer_unit: "m"
-
--   name: filter_wheel_2
-    class: FilterWheel
-    kwargs:
-        filter_names:
-            - open
-            - xY2
-            - xK1
-            - xK2
-            - block
-            - K-mid
-            - K-short
-            - Ks
-            - H
-            - H-long
-            - H-short
-            - xH1
-            - xH2
-            - xJ1
-            - xJ2
-            - xY1
-        filename_format: "!INST.filter_file_format"
-        current_filter: "!OBS.filter_name_fw2"
-        minimum_throughput: !!float 1.01E-4
-        outer: 0.2
-        outer_unit: "m"
-
--   name: pupil_wheel
-    class: FilterWheel
-    kwargs:
-        filter_names:
-            - H-cont
-            - FeII
-            - H2_1-0S1
-            - Br-gamma
-            - K-cont
-            - K-long
-            - He-I
-            - Pa-beta
-            - ND1
-            - ND3
-            - open
-        filename_format: "!INST.filter_file_format"
-        current_filter: "!OBS.filter_name_pupil"
+        filter_name: "!OBS.filter_name"
+        filename_format: "filters/TC_filter_{}.dat"
         minimum_throughput: !!float 1.01E-4
         outer: 0.2
         outer_unit: "m"
