@@ -18,7 +18,7 @@ effects:
     description : Schoepfl PSF
     class : SeeingPSF
     kwargs :
-      fwhm : 5.00       # [arcsec]
+      fwhm : 15.00       # [arcsec]
 -   name : skycalc_average_atmo
     description : atmospheric properties for a default skycalc run
     class : AtmosphericTERCurve
