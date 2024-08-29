@@ -1,18 +1,23 @@
+#Elliptical Galaxy
 import os
 import pytest
 import numpy as np
+from astropy.io.fits import HDUList
 from matplotlib import pyplot as plt
 from matplotlib.colors import LogNorm
 import scopesim
-from scopesim import Source, rc
-from scopesim_templates.extragalactic import galaxy
-from scopesim.source.source_templates import star_field
-from scopesim.optics.fov_manager import FOVManager
+import synphot
+from scopesim_templates.extragalactic.galaxies import elliptical
 from astropy.io import fits
+
+
+from scopesim import rc
+from scopesim.source.source_templates import star_field
+import scopesim_templates as sim_tp
+from scopesim.optics.fov_manager import FOVManager
 
 PLOTS = True
 
-# Check if integration tests should be skipped
 if rc.__config__["!SIM.tests.run_integration_tests"] is False:
     pytestmark = pytest.mark.skip("Ignoring DREAMS integration tests")
 
@@ -29,41 +34,29 @@ if not os.path.exists(PKGS["DREAMS"]):
 else:
     print("DREAMS package found at:", PKGS["DREAMS"])
 
-# Initialize UserCommands for DREAMS
 cmds = scopesim.UserCommands(use_instrument="DREAMS")
-cmds["!OBS.dit"] = 10
+cmds["!OBS.dit"] = 1000
+cmds["!OBS.ndit"] = 1000
 cmds["!DET.bin_size"] = 1
 cmds["!OBS.sky.bg_mag"] = 14.9
 cmds["!OBS.sky.filter_name"] = "J"
 cmds["SIM.sub_pixel.flag"] = True
-
-# Set up the optical train
 dreams = scopesim.OpticalTrain(cmds)
 dreams["detector_linearity"].include = False
-
-# Configure the field of view
 dreams.fov_manager = FOVManager(dreams.optics_manager.fov_setup_effects, cmds=dreams.cmds, preload_fovs=False)
+# Then make the initial field of view 10 times larges than normal.
 dreams.fov_manager.volumes_list[0]["x_min"] = -18000  # arcsec
 dreams.fov_manager.volumes_list[0]["x_max"] = 18000
 dreams.fov_manager.volumes_list[0]["y_min"] = -18000
 dreams.fov_manager.volumes_list[0]["y_max"] = 18000
+# Finally, shrink the field of view to the detector size.
 dreams.fov_manager._fovs_list = list(dreams.fov_manager.generate_fovs_list())
 
 print("scopesim package loaded successfully.")
-
-# Create a galaxy source
-src = galaxy("kc96/s0", z=0.1, amplitude=17, filter_curve="J", pixel_scale=0.05, r_eff=2.5, n=4, ellip=0.5, theta=45, extend=3)
-
-# Observe the source
+src = elliptical(half_light_radius=11500, pixel_scale=2.48, filter_name="J", amplitude=17, normalization="total", n=4, ellipticity=0.5, angle=30)
 dreams.observe(src, update=False)
-
-# Readout and plot
 hdus = dreams.readout()
-
-plt.subplot(121)
-wave = np.arange(3000, 11000)
-plt.plot(wave, dreams.optics_manager.surfaces_table.throughput(wave))
-
+dreams.readout(filename="ellip.fits")
 plt.subplot(122)
 im = hdus[0][1].data
 plt.imshow(im, norm=LogNorm())
@@ -81,5 +74,3 @@ for plot_number, hdu_number in enumerate(detector_order, 1):
     plt.title(f"HDU {hdu_number}")
 
 plt.show()
-
-
