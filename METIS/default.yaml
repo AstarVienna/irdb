@@ -5,7 +5,7 @@ object: configuration
 alias: OBS
 name: METIS_default_configuration
 description: default parameters needed for a METIS simulation
-date_modified: 2022-03-14
+date_modified: 2024-09-04
 changes:
   - 2021-12-16 (OC) chopnod defaults to perpendicular
   - 2021-12-16 (OC) default slits renamed
@@ -15,16 +15,17 @@ changes:
   - 2022-02-20 (OC) pupil_transmission now an OBS parameter
   - 2022-02-21 (OC) linear interpolation, cosmetics
   - 2022-03-14 (OC) use single PSF file
+  - 2024-09-04 (OC) rearrange to include WCU modes
 
 packages:
   - Armazones
   - ELT
   - METIS
 
-yamls:
-  - Armazones.yaml
-  - ELT.yaml                # overrides below
-  - METIS.yaml
+#yamls:
+#  - Armazones.yaml
+#  - ELT.yaml                # overrides below
+#  - METIS.yaml
 
 properties:
   instrument: "METIS"
@@ -65,6 +66,9 @@ mode_yamls:
     name: img_lm
     description: "METIS LM-band imaging"
     yamls:
+      - Armazones.yaml
+      - ELT.yaml
+      - METIS.yaml
       - METIS_IMG_LM.yaml
       - METIS_DET_IMG_LM.yaml
     properties:
@@ -80,6 +84,9 @@ mode_yamls:
     name: img_n
     description: "METIS N-band imaging"
     yamls:
+      - Armazones.yaml
+      - ELT.yaml
+      - METIS.yaml
       - METIS_IMG_N.yaml
       - METIS_DET_IMG_N_GeoSnap.yaml
     properties:
@@ -97,6 +104,9 @@ mode_yamls:
     name: lss_l
     description: "METIS L-band slit spectroscopy"
     yamls:
+      - Armazones.yaml
+      - ELT.yaml
+      - METIS.yaml
       - METIS_IMG_LM.yaml
       - METIS_LSS.yaml
       - METIS_DET_IMG_LM.yaml
@@ -115,6 +125,9 @@ mode_yamls:
     name: lss_m
     description: "METIS M-band slit spectroscopy"
     yamls:
+      - Armazones.yaml
+      - ELT.yaml
+      - METIS.yaml
       - METIS_IMG_LM.yaml
       - METIS_LSS.yaml
       - METIS_DET_IMG_LM.yaml
@@ -133,6 +146,9 @@ mode_yamls:
     name: lss_n
     description: "METIS N-band slit spectroscopy"
     yamls:
+      - Armazones.yaml
+      - ELT.yaml
+      - METIS.yaml
       - METIS_IMG_N.yaml
       - METIS_LSS.yaml
       - METIS_DET_IMG_N_GeoSnap.yaml
@@ -151,6 +167,9 @@ mode_yamls:
     name: lms
     description: "METIS LM-band integral-field spectroscopy, nominal mode"
     yamls:
+      - Armazones.yaml
+      - ELT.yaml
+      - METIS.yaml
       - METIS_LMS.yaml
       - METIS_DET_IFU.yaml
     properties:
@@ -166,6 +185,136 @@ mode_yamls:
     name: lms_extended
     description: "METIS LM-band integral-field spectroscopy, extended mode"
     yamls:
+      - Armazones.yaml
+      - ELT.yaml
+      - METIS.yaml
+      - METIS_LMS_EXT.yaml
+      - METIS_DET_IFU.yaml
+    properties:
+      slit: false
+      adc: false
+      detector_readout_mode: slow
+
+  - object: observation
+    alias: OBS
+    name: wcu_img_lm
+    description: "METIS LM-band imaging with WCU"
+    yamls:
+      - METIS_WCU.yaml
+      - METIS.yaml
+      - METIS_IMG_LM.yaml
+      - METIS_DET_IMG_LM.yaml
+    properties:
+      psf_file: PSF_SCAO_9mag_06seeing.fits  # REPLACE!
+      filter_name: Lp
+      nd_filter_name: open
+      slit: false
+      adc: false
+      detector_readout_mode: fast
+
+  - object: observation
+    alias: OBS
+    name: wcu_img_n
+    description: "METIS N-band imaging"
+    yamls:
+      - METIS_WCU.yaml
+      - METIS.yaml
+      - METIS_IMG_N.yaml
+      - METIS_DET_IMG_N_GeoSnap.yaml
+    properties:
+      psf_file: PSF_SCAO_9mag_06seeing.fits    # REPLACE!
+      filter_name: N2
+      nd_filter_name: open
+      slit: false
+      adc: false
+      chop_offsets: [3, 0]  # perpendicular chopping and nodding
+      nod_offsets: [0, 3]
+      detector_readout_mode: high_capacity
+
+  - object: observation
+    alias: OBS
+    name: wcu_lss_l
+    description: "METIS L-band slit spectroscopy"
+    yamls:
+      - METIS_WCU.yaml
+      - METIS.yaml
+      - METIS_IMG_LM.yaml
+      - METIS_LSS.yaml
+      - METIS_DET_IMG_LM.yaml
+    properties:
+      psf_file: PSF_LM_9mag_06seeing.fits    # REPLACE!
+      trace_file: TRACE_LSS_L.fits
+      efficiency_file: TER_grating_L.fits
+      slit: C-38_1
+      adc: const_90
+      filter_name: L_spec
+      nd_filter_name: open
+      detector_readout_mode: slow
+
+  - object: observation
+    alias: OBS
+    name: wcu_lss_m
+    description: "METIS M-band slit spectroscopy"
+    yamls:
+      - METIS_WCU.yaml
+      - METIS.yaml
+      - METIS_IMG_LM.yaml
+      - METIS_LSS.yaml
+      - METIS_DET_IMG_LM.yaml
+    properties:
+      psf_file: PSF_LM_9mag_06seeing.fits    # REPLACE!
+      trace_file: TRACE_LSS_M.fits
+      efficiency_file: TER_grating_M.fits
+      slit: C-38_1
+      adc: const_90
+      filter_name: M_spec
+      nd_filter_name: open
+      detector_readout_mode: slow
+
+  - object: observation
+    alias: OBS
+    name: wcu_lss_n
+    description: "METIS N-band slit spectroscopy"
+    yamls:
+      - METIS_WCU.yaml
+      - METIS.yaml
+      - METIS_IMG_N.yaml
+      - METIS_LSS.yaml
+      - METIS_DET_IMG_N_GeoSnap.yaml
+    properties:
+      psf_file: PSF_N_9mag_06seeing.fits    # REPLACE!
+      trace_file: TRACE_LSS_N.fits
+      efficiency_file: TER_grating_N.fits
+      slit: D-57_1
+      adc: false
+      filter_name: N_spec
+      nd_filter_name: open
+      detector_readout_mode: low_capacity
+
+  - object: observation
+    alias: OBS
+    name: wcu_lms
+    description: "METIS LM-band integral-field spectroscopy, nominal mode"
+    yamls:
+      - METIS_WCU.yaml
+      - METIS.yaml
+      - METIS_LMS.yaml
+      - METIS_DET_IFU.yaml
+    properties:
+      psf_file: PSF_LM_9mag_06seeing.fits    # REPLACE!
+      slit: false
+      adc: false
+      trace_file: TRACE_LMS.fits
+      wavelen: 4.2
+      detector_readout_mode: slow
+
+  - object: observation     # is this a separate mode from nominal LMS?
+    alias: OBS
+    name: wcu_lms_extended
+    description: "METIS LM-band integral-field spectroscopy, extended mode"
+    yamls:
+      - METIS_WCU.yaml
+      - METIS.yaml
       - METIS_LMS_EXT.yaml
       - METIS_DET_IFU.yaml
     properties:

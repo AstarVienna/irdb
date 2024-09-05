@@ -3,7 +3,7 @@
 
 object: warm calibration unit
 alias : WCU
-name: METIS
+name: METIS_WCU
 description: base configuration for METIS/WCU
 date_modified: 2024-09-03
 changes:
