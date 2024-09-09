@@ -18,3 +18,9 @@ effects:
     class: PupilTransmission
     kwargs:
       transmission: 0.9    # change this, or provide a wheel
+
+  - name:  wcu_relay_optics
+    description: surface list for METIS WCU relay optics
+    class: SurfaceList
+    kwargs:
+      filename: LIST_METIS_mirrors_wcu.dat

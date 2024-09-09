@@ -12,10 +12,10 @@
 #    - 2024-09-09 (OC) created
 #
 name                outer   inner angle temperature        action       filename
-WCU_table_fold_1    0.217   0.0   45    !TEL.temperature   reflection   TER_mirror_gold.dat
-WCU_table_fold_2    0.271   0.0   45    !TEL.temperature   reflection   TER_mirror_gold.dat
-WCU_CM1             0.274   0.0   0     !TEL.temperature   reflection   TER_mirror_gold.dat
-WCU_CM2             0.100   0.0   0     !TEL.temperature   reflection   TER_mirror_gold.dat
-WCU_CM3             0.196   0.0   0     !TEL.temperature   reflection   TER_mirror_gold.dat
-WCU_fold_down       0.184   0.0   45    !TEL.temperature   reflection   TER_mirror_gold.dat
-WCU_periscopic_feed 0.217   0.0   45    !TEL.temperature   reflection   TER_mirror_gold.dat
+WCU_table_fold_1    0.217   0.0   45    !WCU.temperature   reflection   TER_mirror_gold.dat
+WCU_table_fold_2    0.271   0.0   45    !WCU.temperature   reflection   TER_mirror_gold.dat
+WCU_CM1             0.274   0.0   0     !WCU.temperature   reflection   TER_mirror_gold.dat
+WCU_CM2             0.100   0.0   0     !WCU.temperature   reflection   TER_mirror_gold.dat
+WCU_CM3             0.196   0.0   0     !WCU.temperature   reflection   TER_mirror_gold.dat
+WCU_fold_down       0.184   0.0   45    !WCU.temperature   reflection   TER_mirror_gold.dat
+WCU_periscopic_feed 0.217   0.0   45    !WCU.temperature   reflection   TER_mirror_gold.dat
