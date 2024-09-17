@@ -10,6 +10,9 @@ changes:
   - 2022-01-25 (KL, OC) added DetectorModePropertiesSetter effect
   - 2022-01-26 (OC) added DET.detector, linearity set explicitely
   - 2022-02-21 (OC) rename effects
+  - 2024-08-22 (OC) rename quantization to ADConversion, add gain
+                    from Bowens2024 for high-capacity and a guess
+                    for low-capacity
 
 properties:
   detector: Teledyne GeoSnap
@@ -38,6 +41,7 @@ effects:
           description:               "Geosnap, high-capacity mode"
           "!DET.mindit":             0.011          # seconds
           "!DET.full_well":          !!float 2.8e6  # electrons
+          "!DET.gain":               195            # electron/ADU
           "!DET.readout_noise":      300            # electrons (DCS)
           "!DET.dark_current":       !!float 1e5    # electrons/second
           "!DET.linearity.incident": [0, !!float 2.8e6, !!float 1e99]
@@ -46,6 +50,7 @@ effects:
           description:               "Geosnap, low-capacity mode"
           "!DET.mindit":             0.011          # seconds
           "!DET.full_well":          !!float 1.8e5  # electrons
+          "!DET.gain":               10             # electron/ADU (guess!)
           "!DET.readout_noise":      35             # electrons (DCS)
           "!DET.dark_current":       !!float 1e5    # electrons/second
           "!DET.linearity.incident": [0, !!float 1.8e5, !!float 1e99]
@@ -103,8 +108,9 @@ effects:
       nod_offsets: "!OBS.nod_offsets"
       pixel_scale: "!INST.pixel_scale"
 
-  - name: quantization
-    description: Turn photon count into integers
-    class: Quantization
+  - name: ad_conversion
+    description: Apply gain and convert electron count into integers
+    class: ADConversion
     kwargs:
       dtype: uint16
+      gain: "!DET.gain"
