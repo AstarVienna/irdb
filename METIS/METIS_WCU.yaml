@@ -1,0 +1,26 @@
+---
+### METIS WCU MODE
+
+object: instrument
+alias: INST
+name: wcu
+description: warm calibration unit mode
+date_modified: 2024-04-06
+changes:
+  - 2024-04-06 (FH) created file
+
+properties:
+
+effects: []
+
+---
+### default simulation parameters needed for a METIS simulation
+object: simulation
+alias: SIM
+name: METIS_simulation_parameters
+description: RC simulation parameters which need to change for a METIS run
+
+properties:
+  spectral:
+    spectral_bin_width: !!float 1E-3   # microns, defines fov wavelengths
+    spectral_resolution: 5000          # defines skycalc resolution
