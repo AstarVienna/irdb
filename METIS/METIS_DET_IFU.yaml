@@ -7,6 +7,7 @@ description: A set of 4 H2RG detectors
 date_modified: 2021-12-16
 changes:
   - 2021-12-16 (OC) some rearrangements
+  - 2024-10-11 (OC) add ADConversion, gain from B.Serra (2024-10-09)
 
 properties:
   image_plane_id: 0
@@ -15,7 +16,7 @@ properties:
   ndit: "!OBS.ndit"
   mindit: 1.3               # seconds, Roy van Boekel, pers. communication
   full_well: !!float 1.E5   # electrons, E-TNT-MPIA-1004, v1-0
-  gain:      1.             # electron/ADU TODO replace with realistic value
+  gain:      2.0            # electron/ADU, email B.Serra
   dark_current: 0.1         # [e-/s]
   readout_noise: 70         # electrons, AI on RvB: check
   layout:

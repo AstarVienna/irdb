@@ -10,6 +10,8 @@ changes:
   - 2022-01-25 (KL, OC) added DetectorModePropertiesSetter effect
   - 2022-01-26 (OC) added DET.detector
   - 2022-02-21 (OC) rename effects
+  - 2024-10-11 (OC) rename quantization to ADConversion, gain values
+                    from email by B.Serra (2024-10-09)
 
 properties:
   detector:  HAWAII2RG
@@ -40,12 +42,14 @@ effects:
           description: "HAWAII2RG, fast mode"
           "!DET.mindit": 0.04
           "!DET.full_well": !!float 1e5
+          "!DET.gain": 4.0     # e/ADU (email B.Serra)
           "!DET.readout_noise": 70
           "!DET.dark_current": 0.05
         slow:
           description: "HAWAII2RG, slow mode"
           "!DET.mindit": 1.3
           "!DET.full_well": !!float 1e5
+          "!DET.gain":  2.5    # e/ADU (email B.Serra)
           "!DET.readout_noise": 15
           "!DET.dark_current": 0.05
 
@@ -91,8 +95,9 @@ effects:
       noise_std: "!DET.readout_noise"
       n_channels: 32
 
-  - name: quantization
-    description: Turn photon count into integers
-    class: Quantization
+  - name: ad_conversion
+    description: Apply gain and convert electron counts into integers
+    class: ADConversion
     kwargs:
       dtype: uint16
+      gain: "!DET.gain"

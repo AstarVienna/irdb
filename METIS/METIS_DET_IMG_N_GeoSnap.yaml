@@ -13,6 +13,7 @@ changes:
   - 2024-08-22 (OC) rename quantization to ADConversion, add gain
                     from Bowens2024 for high-capacity and a guess
                     for low-capacity
+  - 2024-10-11 (OC) gain values from email by B.Serra (2024-10-09)
 
 properties:
   detector: Teledyne GeoSnap
@@ -41,7 +42,7 @@ effects:
           description:               "Geosnap, high-capacity mode"
           "!DET.mindit":             0.011          # seconds
           "!DET.full_well":          !!float 2.8e6  # electrons
-          "!DET.gain":               195            # electron/ADU
+          "!DET.gain":               201            # electron/ADU (email B.Serra)
           "!DET.readout_noise":      300            # electrons (DCS)
           "!DET.dark_current":       !!float 1e5    # electrons/second
           "!DET.linearity.incident": [0, !!float 2.8e6, !!float 1e99]
@@ -50,7 +51,7 @@ effects:
           description:               "Geosnap, low-capacity mode"
           "!DET.mindit":             0.011          # seconds
           "!DET.full_well":          !!float 1.8e5  # electrons
-          "!DET.gain":               10             # electron/ADU (guess!)
+          "!DET.gain":               14             # electron/ADU (email B.Serra)
           "!DET.readout_noise":      35             # electrons (DCS)
           "!DET.dark_current":       !!float 1e5    # electrons/second
           "!DET.linearity.incident": [0, !!float 1.8e5, !!float 1e99]
