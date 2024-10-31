@@ -8,7 +8,7 @@ import scipy
 PKGS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
 sim.rc.__config__["!SIM.file.local_packages_path"] = PKGS_DIR
 
-PLOTS = True
+PLOTS = False
 
 
 class TestReadoutExptime:
