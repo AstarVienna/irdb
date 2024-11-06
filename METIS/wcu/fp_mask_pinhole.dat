@@ -1,0 +1,16 @@
+# description : WCU focal plane mask, pinhole
+# author : Oliver Czoske
+# source : ...
+# date_created : 2024-11-06
+# date_modified : 2024-11-06
+# status : ...
+# type : aperture:aperture_mask
+# x_unit : arcsec
+# y_unit : arcsec
+# changes :
+#
+ x  y
+-0.02 -0.02
+ 0.02 -0.02
+ 0.02  0.02
+-0.02  0.02

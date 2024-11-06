@@ -13,11 +13,22 @@ properties:
   temperature: 15    # how warm is the WCU? - need temperatures for the source and for the mirrors!
 
 effects:
-  - name:  wcu_mask
-    description: wcu mask  (replace by Wheel)
-    class: PupilTransmission
+  - name: bb_source
+    description: Black Body source
+    class: BlackBodySource
     kwargs:
-      transmission: 0.9    # change this, or provide a wheel
+      bb_temp: 1000
+      wcu_temp: 300
+
+  - name: mask_wheel
+    description: WCU focal plane masks
+    class: SlitWheel
+    kwargs:
+      slit_names:
+        - open
+        - pinhole
+      filename_format: "wcu/fp_mask_{}.dat"
+      current_slit: "open"
 
   - name:  wcu_relay_optics
     description: surface list for METIS WCU relay optics
