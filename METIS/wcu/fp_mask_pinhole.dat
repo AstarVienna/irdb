@@ -3,14 +3,14 @@
 # source : ...
 # date_created : 2024-11-06
 # date_modified : 2024-11-06
-# status : ...
+# status : preliminary fantasy values
 # type : aperture:aperture_mask
 # x_unit : arcsec
 # y_unit : arcsec
 # changes :
 #
  x  y
--0.02 -0.02
- 0.02 -0.02
- 0.02  0.02
--0.02  0.02
+-0.2 -0.2
+ 0.2 -0.2
+ 0.2  0.2
+-0.2  0.2

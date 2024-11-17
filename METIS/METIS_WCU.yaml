@@ -8,16 +8,17 @@ description: base configuration for METIS/WCU
 date_modified: 2024-09-03
 changes:
   - 2024-09-03 (OC) file created
+  - 2024-11-06 (OC) add BlackBodySource
 
 properties:
-  temperature: 15    # how warm is the WCU? - need temperatures for the source and for the mirrors!
+  temperature: 15      # Celsius! needed for relay optics
 
 effects:
   - name: bb_source
     description: Black Body source
     class: BlackBodySource
     kwargs:
-      bb_temp: 1000
+      bb_temp: 1000    # Kelvin!
       wcu_temp: 300
 
   - name: mask_wheel
