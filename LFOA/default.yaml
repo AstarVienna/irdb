@@ -3,6 +3,7 @@ object : configuration
 alias : OBS
 name : LFOA_default_configuration
 description : default parameters needed for a LFOA simulation
+status: experimental
 
 packages :
 - LFOA

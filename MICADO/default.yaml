@@ -5,6 +5,7 @@ object : configuration
 alias : OBS
 name : MICADO_default_configuration
 description : default parameters needed for a MICADO simulation
+status: development
 date_modified: 2023-07-13
 changes:
   - 2023-07-13 (OC) add modes for FDR slits, deprecate pre-FDR slits
@@ -61,6 +62,7 @@ mode_yamls :
   alias: OBS
   name : IMG_4mas
   description : "wide-field imager  : 4mas/pix"
+  status: development
   yamls :
   - MICADO_IMG_wide.yaml
   properties :
@@ -72,6 +74,7 @@ mode_yamls :
   alias: OBS
   name : IMG_1.5mas
   description : "high resolution imager  : 1.5mas/pix"
+  status: development
   yamls :
   - MICADO_IMG_zoom.yaml
   properties :
@@ -83,6 +86,7 @@ mode_yamls :
   alias: OBS
   name : IMG_HCI
   description : "High contrast imaging"
+  status: experimental
   yamls :
   - MICADO_IMG_HCI.yaml
 
@@ -90,6 +94,7 @@ mode_yamls :
   alias: OBS
   name : SPEC_15000x20
   description : "spectrograph : slit size 15000x20mas"
+  status: development
   yamls :
   - MICADO_SPEC.yaml
   properties :
@@ -103,6 +108,7 @@ mode_yamls :
   alias: OBS
   name : SPEC_3000x48
   description : "spectrograph : slit size 3000x48mas"
+  status: development
   yamls :
   - MICADO_SPEC.yaml
   properties :
@@ -116,6 +122,7 @@ mode_yamls :
   alias : OBS
   name : SPEC_3000x16
   description : "spectrograph : slit size 3000x16mas"
+  status: development
   yamls :
   - MICADO_SPEC.yaml
   properties :
@@ -129,6 +136,7 @@ mode_yamls :
   alias: OBS
   name : SPEC_15000x50
   description : "spectrograph : slit size 15000x50mas"
+  status: deprecated
   deprecate : "Deprecated instrument mode. For spectroscopy use
   - SPEC_3000x16
   - SPEC_3000x48
@@ -146,6 +154,7 @@ mode_yamls :
   alias: OBS
   name : SPEC_3000x50
   description : "spectrograph : slit size 3000x50mas"
+  status: deprecated
   deprecate : "Deprecated instrument mode. For spectroscopy use
   - SPEC_3000x16
   - SPEC_3000x48
@@ -163,6 +172,7 @@ mode_yamls :
   alias: OBS
   name : SPEC_3000x20
   description : "spectrograph : slit size 3000x20mas"
+  status: deprecated
   deprecate : "Deprecated instrument mode. For spectroscopy use
   - SPEC_3000x16
   - SPEC_3000x48
