@@ -13,13 +13,25 @@ changes:
 properties:
   temperature: 15      # Celsius! needed for relay optics
 
+
 effects:
   - name: bb_source
     description: Black Body source
     class: BlackBodySource
     kwargs:
-      bb_temp: 1000    # Kelvin!
-      wcu_temp: 300
+      bb_temp: 1000  # [K] temperature of BB source  # Kelvin!
+      is_temp:  300  # [K] temperature of the integratig sphere
+      wcu_temp: 300  # [K] ambient temperature in the WCU
+      bb_to_is: "wcu/WCU_BB_to_IS_throughput.fits"
+      is_reflect: "wcu/WCU_IS_reflectivity.dat"
+      tube_reflect: "wcu/WCU_tube_reflectivity.dat"
+      mask_reflect: "wcu/WCU_mask_reflectivity.dat"
+      emiss_bb: 0.98 # E-REP-MPIA-MET-1203
+      diam_is_in:  25.4  # [mm] diameter of integrating sphere entrance port
+      diam_is: 250       # [mm] diameter of integrating sphere
+      diam_is_out: 100   # [mm] diameter if integrating sphere output port
+      rho_is:   0.95     # [] reflectivity of integrating sphere
+      rho_tube: 0.95     # [] reflectivity of tube between BB and IS
 
   - name: mask_wheel
     description: WCU focal plane masks
