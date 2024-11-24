@@ -13,38 +13,44 @@ changes:
 properties:
   temperature: 15      # Celsius! needed for relay optics
 
-
 effects:
   - name: bb_source
     description: Black Body source
     class: BlackBodySource
     kwargs:
-      bb_temp: 1000  # [K] temperature of BB source  # Kelvin!
-      is_temp:  300  # [K] temperature of the integratig sphere
-      wcu_temp: 300  # [K] ambient temperature in the WCU
-      bb_to_is: "wcu/WCU_BB_to_IS_throughput.fits"
-      is_reflect: "wcu/WCU_IS_reflectivity.dat"
-      tube_reflect: "wcu/WCU_tube_reflectivity.dat"
-      mask_reflect: "wcu/WCU_mask_reflectivity.dat"
-      emiss_bb: 0.98 # E-REP-MPIA-MET-1203
-      diam_is_in:  25.4  # [mm] diameter of integrating sphere entrance port
-      diam_is: 250       # [mm] diameter of integrating sphere
-      diam_is_out: 100   # [mm] diameter if integrating sphere output port
-      rho_is:   0.95     # [] reflectivity of integrating sphere
-      rho_tube: 0.95     # [] reflectivity of tube between BB and IS
+      config_file: "metis_wcu_config.yaml"
+      #bb_temp: 1000  # [K] temperature of BB source  # Kelvin!
+      #is_temp:  300  # [K] temperature of the integratig sphere
+      #wcu_temp: 300  # [K] ambient temperature in the WCU
+      #bb_to_is: "wcu/WCU_BB_to_IS_throughput.fits"
+      #is_reflect: "wcu/WCU_IS_reflectivity.dat"
+      #tube_reflect: "wcu/WCU_tube_reflectivity.dat"
+      #mask_reflect: "wcu/WCU_mask_reflectivity.dat"
+      #emiss_bb: 0.98 # E-REP-MPIA-MET-1203
+      #diam_is_in:  25.4  # [mm] diameter of integrating sphere entrance port
+      #diam_is: 250       # [mm] diameter of integrating sphere
+      #diam_is_out: 100   # [mm] diameter if integrating sphere output port
+      #rho_is:   0.95     # [] reflectivity of integrating sphere
+      #rho_tube: 0.95     # [] reflectivity of tube between BB and IS
 
-  - name: mask_wheel
-    description: WCU focal plane masks
-    class: SlitWheel
-    kwargs:
-      slit_names:
-        - open
-        - pinhole
-      filename_format: "wcu/fp_mask_{}.dat"
-      current_slit: "open"
+#  - name: mask_wheel
+#    description: WCU focal plane masks
+#    class: SlitWheel
+#    kwargs:
+#      slit_names:
+#        - open
+#        - pinhole
+#      filename_format: "wcu/fp_mask_{}.dat"
+#      current_slit: "open"
 
   - name:  wcu_relay_optics
     description: surface list for METIS WCU relay optics
     class: SurfaceList
     kwargs:
       filename: LIST_METIS_mirrors_wcu.dat
+
+---
+# Required parameters to replace telescope
+alias: TEL
+properties:
+  area: 975.23478998
