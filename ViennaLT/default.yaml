@@ -4,6 +4,7 @@ object : configuration
 alias : OBS
 name : ViLT_default_configuration
 description : Vienna Little Telescope configuration
+status: experimental
 
 packages :
   - LFOA

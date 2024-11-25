@@ -7,6 +7,7 @@ object : configuration
 alias : OBS
 name : HST_WFC3_default_config
 description : defatult configuration for HST WFC3 UVIS and NIR imaging
+status: experimental
 
 packages:
 - HST
