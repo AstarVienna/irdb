@@ -4,6 +4,7 @@ object : configuration
 alias : OBS
 name : OSIRIS_default_configuration
 description : default parameters needed for a OSIRIS simulation
+status: experimental
 date_created: 2022-03-02
 date_modified: 2022-03-02
 changes:

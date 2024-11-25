@@ -14,7 +14,7 @@ on:
 
 jobs:
   tests_master:
-    name: Test against ScopeSim master
+    name: Test against ScopeSim release
     runs-on: ${{ matrix.os }}
     # Run if our target is IRDB master, or when this is ran manually.
     if: github.base_ref == 'master' || github.base_ref == ''
@@ -22,31 +22,30 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        python-version: ['3.9', '3.10', '3.11', '3.12']
+        python-version: ['3.10', '3.11', '3.12']
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.github_actions.txt
-          pip uninstall -y scopesim scopesim_templates
-          pip install git+https://github.com/AstarVienna/ScopeSim.git@master
+          pip uninstall -y scopesim_templates
           pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git
       - name: Run Pytest
         run: pytest
       - name: Store badge report files
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: badge-report
           path: _REPORTS
 
   tests_devmaster:
-    name: Test against ScopeSim dev_master
+    name: Test against ScopeSim main
     runs-on: ${{ matrix.os }}
     # Run if our target is IRDB dev_master, or when this is ran manually.
     if: github.base_ref == 'dev_master' || github.base_ref == ''
@@ -54,12 +53,12 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        python-version: ['3.9', '3.10', '3.11', '3.12']
+        python-version: ['3.10', '3.11', '3.12']
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
@@ -67,7 +66,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.github_actions.txt
           pip uninstall -y scopesim scopesim_templates
-          pip install git+https://github.com/AstarVienna/ScopeSim.git@dev_master
+          pip install git+https://github.com/AstarVienna/ScopeSim.git
           pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git
       - name: Run Pytest
         run: pytest
@@ -84,9 +83,9 @@ jobs:
     # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
     if: github.ref == 'dev_master' || github.ref == 'master' || github.base_ref == ''
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           # No matrix is used since this is a time-consuming tosk.
           python-version: 3.11
@@ -97,7 +96,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.github_actions.txt
           pip uninstall -y scopesim scopesim_templates
-          pip install git+https://github.com/AstarVienna/ScopeSim.git@dev_master
+          pip install git+https://github.com/AstarVienna/ScopeSim.git
           pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git
       - name: Run Notebooks
         env:
@@ -125,9 +124,9 @@ jobs:
     # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
     if: github.ref == 'dev_master' || github.ref == 'master' || github.base_ref == ''
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           # No matrix is used since this is a time-consuming tosk.
           python-version: 3.11
@@ -138,7 +137,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.github_actions.txt
           pip uninstall -y scopesim scopesim_templates
-          pip install git+https://github.com/AstarVienna/ScopeSim.git@dev_master
+          pip install git+https://github.com/AstarVienna/ScopeSim.git
           pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git
       - name: Run Notebooks
         env:

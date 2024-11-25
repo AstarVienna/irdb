@@ -36,7 +36,7 @@ def setup_package():
                             "docutils",
                             "requests>=2.20",
                             "beautifulsoup4>=4.4",
-                            "lxml",
+                            "lxml[html_clean]",
                             "pyyaml>5.1",
                             "pysftp",
 
