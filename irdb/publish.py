@@ -154,9 +154,13 @@ def zip_package_folder(pkg_name: str, zip_name: str) -> Path:
 
 
 def _get_local_path(pkg_name: str, stable: bool) -> Path:
+    # TODO: add support for additional same day versions
+    pattern = f"{pkg_name}.*{'' if stable else '.dev'}.zip"
     try:
-        zipped_versions = (path for path in ZIPPED_DIR.glob(f"{pkg_name}*.zip")
-                           if _is_stable(path.stem) == stable)
+        zipped_versions = (
+            path for path in ZIPPED_DIR.glob(pattern)
+            if _is_stable(path.stem) == stable
+        )
         local_path = max(zipped_versions, key=lambda path: path.stem)
     except ValueError as err:
         raise ValueError(f"No compiled version of '{pkg_name}' found for "
