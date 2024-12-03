@@ -6,9 +6,11 @@ alias : OBS
 name : MICADO_default_configuration
 description : default parameters needed for a MICADO simulation
 status: development
-date_modified: 2023-07-13
+date_modified: 2024-11-19
 changes:
   - 2023-07-13 (OC) add modes for FDR slits, deprecate pre-FDR slits
+  - 2023-08-29 (FH) fix default filter for 3000x16 mode
+  - 2024-11-19 (FH) add status keywords
 
 packages :
 - Armazones

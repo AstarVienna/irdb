@@ -6,7 +6,7 @@ alias: OBS
 name: METIS_default_configuration
 description: default parameters needed for a METIS simulation
 status: development
-date_modified: 2022-03-14
+date_modified: 2024-11-19
 changes:
   - 2021-12-16 (OC) chopnod defaults to perpendicular
   - 2021-12-16 (OC) default slits renamed
@@ -16,6 +16,11 @@ changes:
   - 2022-02-20 (OC) pupil_transmission now an OBS parameter
   - 2022-02-21 (OC) linear interpolation, cosmetics
   - 2022-03-14 (OC) use single PSF file
+  - 2023-06-11 (OC) include grating efficiency files
+  - 2023-12-01 (HB) add header keywords
+  - 2024-02-26 (HB) add defaults for filter names
+  - 2024-04-09 (FH) actually use new trace files
+  - 2024-11-19 (FH) add status keywords
 
 packages:
   - Armazones
