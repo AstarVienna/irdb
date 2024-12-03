@@ -1,51 +1,29 @@
 ---
-### default observation parameters needed for a MICADO simulation
-
-object : configuration
-alias : OBS
-name : MICADO_default_configuration
-description : default parameters needed for a MICADO simulation
+### MICADO package metadata
+alias: PKG
+name: MICADO_default_configuration
+description: default parameters needed for a MICADO simulation
 status: development
-date_modified: 2024-11-19
+date_modified: 2024-12-03
 changes:
   - 2023-07-13 (OC) add modes for FDR slits, deprecate pre-FDR slits
   - 2023-08-29 (FH) fix default filter for 3000x16 mode
   - 2024-11-19 (FH) add status keywords
+  - 2024-12-03 (FH) restructure default OBS properties, add PKG alias
 
-packages :
-- Armazones
-- ELT
-- MORFEO
-- MICADO
+packages:
+  - Armazones
+  - ELT
+  - MORFEO
+  - MICADO
 
-yamls :
-- Armazones.yaml
-- ELT.yaml
-- MICADO.yaml
-- MICADO_H4RG.yaml
+yamls:
+  - Armazones.yaml
+  - ELT.yaml
+  - MICADO.yaml
+  - MICADO_H4RG.yaml
 
-properties :
-  instrument : MICADO
-  modes : ["SCAO", "IMG_4mas"]
-  airmass : 1.2
-  declination : -30
-  hour_angle : 0
-  pupil_angle : 0
-  dit : 60
-  ndit : 1
-  catg : SCIENCE
-  tech : IMAGE
-  type : OBJECT
-  # Should be datetimes, but is copied verbatim, so should work.
-  mjdobs : "2022-05-04T02:30:00"
-  tplstart : "2022-05-04T02:30:00"
-  tplexpno : 0
-  tplno : 0
-  obsname : "MyScienceTest"
-  ra : 0.0
-  dec : 0.0
-
-mode_yamls :
+mode_yamls:
 - object : instrument
   alias: OBS
   name : SCAO
@@ -188,14 +166,33 @@ mode_yamls :
     filter_name_fw2: open
     filter_name_pupil: open
 
+---
+### default observation parameters needed for a MICADO simulation
+alias: OBS
+properties:
+  instrument: MICADO
+  modes: ["SCAO", "IMG_4mas"]
+  airmass: 1.2
+  declination: -30
+  hour_angle: 0
+  pupil_angle: 0
+  dit: 60
+  ndit: 1
+  catg: SCIENCE
+  tech: IMAGE
+  type: OBJECT
+  # Should be datetimes, but is copied verbatim, so should work.
+  mjdobs: "2022-05-04T02:30:00"
+  tplstart: "2022-05-04T02:30:00"
+  tplexpno: 0
+  tplno: 0
+  obsname: "MyScienceTest"
+  ra: 0.0
+  dec: 0.0
 
 ---
 ### default simulation parameters needed for a MICADO simulation
-object : simulation
 alias : SIM
-name : MICADO_simulation_paramters
-description : RC simulation paramters which need to change for a MICADO run
-
 properties :
   random :
     seed : 9001

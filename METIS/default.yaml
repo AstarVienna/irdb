@@ -1,12 +1,10 @@
 ---
-### default configuration for METIS simulations
-
-object: configuration
-alias: OBS
+### METIS package metadata
+alias: PKG
 name: METIS_default_configuration
 description: default parameters needed for a METIS simulation
 status: development
-date_modified: 2024-11-19
+date_modified: 2024-12-03
 changes:
   - 2021-12-16 (OC) chopnod defaults to perpendicular
   - 2021-12-16 (OC) default slits renamed
@@ -21,6 +19,7 @@ changes:
   - 2024-02-26 (HB) add defaults for filter names
   - 2024-04-09 (FH) actually use new trace files
   - 2024-11-19 (FH) add status keywords
+  - 2024-12-03 (FH) restructure default OBS properties, add PKG alias
 
 packages:
   - Armazones
@@ -31,39 +30,6 @@ yamls:
   - Armazones.yaml
   - ELT.yaml                # overrides below
   - METIS.yaml
-
-properties:
-  instrument: "METIS"
-  modes: ["img_lm"]
-  airmass: 1.2
-  declination: -30
-  hour_angle: 0
-  pupil_angle: 0
-  exptime: 1.
-  dit: 1              # when exptime is given and auto_exposure is on,
-  ndit: 1             # these values are ignored
-  pupil_transmission: 1.0
-  auto_exposure:
-    fill_frac: 0.75   # fraction to which full well is filled in one DIT
-
-  # Default DPR keywords and template name.
-  # TODO: Perhaps create different 'modes' for each template, with a
-  #       corresponding yaml file with the keywords.
-  tplname: "METIS_img_lm_obs_GenericOffset"
-  catg: "SCIENCE"
-  tech: "IMAGE,LM"
-  type: "OBJECT"
-  # More default properties for the observation
-  mjdobs: "2027-05-04T02:30:00"
-  tplstart: "2027-05-04T02:30:00"
-  tplno: 0
-  tplexpno: 0
-  obsname: "MyScienceTest"
-  ra: 0.0
-  dec: 0.0
-  # These defaults are overruled by the individual modes:
-  filter_name: open
-  nd_filter_name: open
 
 mode_yamls:
   - object: observation
@@ -187,12 +153,44 @@ mode_yamls:
       detector_readout_mode: slow
 
 ---
-### default simulation parameters needed for a METIS simulation
-object: simulation
-alias: SIM
-name: METIS_simulation_parameters
-description: RC simulation parameters which need to change for a METIS run
+### default observation parameters needed for a METIS simulation
+alias: OBS
+properties:
+  instrument: "METIS"
+  modes: ["img_lm"]
+  airmass: 1.2
+  declination: -30
+  hour_angle: 0
+  pupil_angle: 0
+  exptime: 1.
+  dit: 1              # when exptime is given and auto_exposure is on,
+  ndit: 1             # these values are ignored
+  pupil_transmission: 1.0
+  auto_exposure:
+    fill_frac: 0.75   # fraction to which full well is filled in one DIT
 
+  # Default DPR keywords and template name.
+  # TODO: Perhaps create different 'modes' for each template, with a
+  #       corresponding yaml file with the keywords.
+  tplname: "METIS_img_lm_obs_GenericOffset"
+  catg: "SCIENCE"
+  tech: "IMAGE,LM"
+  type: "OBJECT"
+  # More default properties for the observation
+  mjdobs: "2027-05-04T02:30:00"
+  tplstart: "2027-05-04T02:30:00"
+  tplno: 0
+  tplexpno: 0
+  obsname: "MyScienceTest"
+  ra: 0.0
+  dec: 0.0
+  # These defaults are overruled by the individual modes:
+  filter_name: open
+  nd_filter_name: open
+
+---
+### default simulation parameters needed for a METIS simulation
+alias: SIM
 properties:
   random:
     seed: None                         # 9001
@@ -208,11 +206,7 @@ properties:
 
 ---
 ### override for the ELT configuration
-object : telescope
 alias : TEL
-name : ELT_overrides
-description : override telescope configuration
-
 properties:
   ter_curve:
     filename: "TER_ELT_6_mirror_field_track.dat"
