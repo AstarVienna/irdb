@@ -1,97 +1,98 @@
-### default observation parameters needed for an OSIRIS simulation
-
-object : configuration
-alias : OBS
-name : OSIRIS_default_configuration
-description : default parameters needed for a OSIRIS simulation
+---
+### OSIRIS package metadata
+alias: PKG
+name: OSIRIS_default_configuration
+description: default parameters needed for a OSIRIS simulation
 status: experimental
-date_created: 2022-03-02
-date_modified: 2022-03-02
+date_modified: 2024-12-12
 changes:
-  - 2022-03-02 (KL) Created file based on METIS default.yaml
+  - 2022-03-02 (KL) created file based on METIS default.yaml
+  - 2022-05-17 (DJ) update grating response curves
+  - 2022-08-05 (KL) update spectral traces
+  - 2022-10-12 (DJ) adding keywords required for MAAT pipeline
+  - 2022-10-13 (DJ) FITS keywords and overscan/prescan update
+  - 2024-11-19 (FH) add status keywords
+  - 2024-12-12 (FH) restructure default OBS properties, add PKG alias
 
+packages:
+  - LaPalma
+  - GTC
+  - OSIRIS
 
-packages :
-- LaPalma
-- GTC
-- OSIRIS
+yamls:
+  - LaPalma.yaml
+  - GTC.yaml
+  - OSIRIS.yaml
+  - OSIRIS_DET.yaml
 
-yamls :
-- LaPalma.yaml
-- GTC.yaml
-- OSIRIS.yaml
-- OSIRIS_DET.yaml
+mode_yamls:
+  - object: instrument
+    alias: OBS
+    name: IMG
+    description: OSIRIS imaging mode
+    properties:
+      filter_name: sdss_r_filter
+      grating_name: None
+      longslit_name: None
+      obsmode: OsirisBias
+    yamls:
+      - OSIRIS_IMG.yaml
 
-properties :
+  - object: instrument
+    alias: OBS
+    name: LSS
+    description: OSIRIS Long-Slit mode
+    properties:
+      filter_name: open
+      grating_name: R1000B
+      longslit_name: "0.6"
+      obsmode: OsirisLongSlitSpectroscopy
+    yamls:
+      - OSIRIS_LSS.yaml
+
+  - object: instrument
+    alias: OBS
+    name: MAAT
+    description: OSIRIS IFU (MAAT) mode
+    properties:
+      filter_name: open
+      grating_name: R2000B
+      longslit_name: None
+      obsmode: OsirisMAAT
+    yamls:
+      - OSIRIS_MAAT.yaml
+
+---
+### default observation parameters needed for an OSIRIS simulation
+alias: OBS
+properties:
   instrument: OSIRIS
-  modes : ["IMG"]
-  airmass : 1.1
-  declination : 0
-  hour_angle : 0
-  pupil_angle : 0
-  dit : 60
-  ndit : 1
-  bias : 1040
-  mjdobs : 59618.2
-  object : "ASTRO"
+  modes: ["IMG"]
+  airmass: 1.1
+  declination: 0
+  hour_angle: 0
+  pupil_angle: 0
+  dit: 60  # [s]
+  ndit: 1
+  bias: 1040
+  mjdobs: 59618.2
+  object: ASTRO
   ra : "00:00:00.000"
   dec : "00:00:00.000"
-  obsmode : 'OsirisBias'
-
-mode_yamls :
-- object : instrument
-  alias: OBS
-  name : IMG
-  description : "OSIRIS imaging mode"
-  properties:
-    filter_name : sdss_r_filter
-    grating_name : None
-    longslit_name: None
-    obsmode: OsirisBias
-  yamls:
-    - OSIRIS_IMG.yaml
-
-- object : instrument
-  alias: OBS
-  name : LSS
-  description : "OSIRIS Long-Slit mode"
-  properties:
-    filter_name : open
-    grating_name : R1000B
-    longslit_name : "0.6"
-    obsmode : 'OsirisLongSlitSpectroscopy'
-  yamls:
-    - OSIRIS_LSS.yaml
-
-- object : instrument
-  alias: OBS
-  name : MAAT
-  description : "OSIRIS IFU (MAAT) mode"
-  properties:
-    filter_name : open
-    grating_name : R2000B
-    longslit_name: None
-    obsmode : 'OsirisMAAT'
-  yamls:
-    - OSIRIS_MAAT.yaml
-
+  obsmode : OsirisBias
 
 ---
 ### default simulation parameters needed for an OSIRIS simulation
-object: simulation
 alias: SIM
-name: OSIRIS_simulation_parameters
-description: RC simulation parameters which need to change for a OSIRIS run
-
 properties:
   random:
     seed: None                         # 9001
 
-  spectral:   # in [um]
-    wave_min: 0.3001
-    wave_mid: 0.6
-    wave_max: 1.05
-    spectral_bin_width: 0.0005       # 0.5 Angstrom
+  spectral:
+    wave_min: 0.3001  # [um]
+    wave_mid: 0.6     # [um]
+    wave_max: 1.05    # [um]
+    spectral_bin_width: 0.0005  # [um], 0.5 AA
 
   computing:
     spline_order: 1
