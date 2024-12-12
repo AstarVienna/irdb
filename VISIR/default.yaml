@@ -1,0 +1,9 @@
+---
+### VISIR package metadata
+alias: PKG
+name: VISIR
+description: NOT YET FUNCTIONAL PLACEHOLDER
+status: concept
+date_modified: 2024-12-12
+changes:
+  - 2024-12-12 (FH) initial creation
