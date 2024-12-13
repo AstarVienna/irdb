@@ -1,5 +1,5 @@
-NACO
-====
+# NACO
+
 1-5µm
 IMG, SPEC, HCI
 SCAO
@@ -29,4 +29,3 @@ Full well depth 160k e-, linear up to 100k
 
 
 MINDIT 0.175 sec
-
