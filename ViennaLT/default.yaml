@@ -1,52 +1,49 @@
-# Default configuration for the Vienna Little Telescope
-
-object : configuration
-alias : OBS
-name : ViLT_default_configuration
-description : Vienna Little Telescope configuration
+---
+### Default configuration for the Vienna Little Telescope
+alias: PKG
+name: ViLT_default_configuration
+description: Vienna Little Telescope configuration
 status: experimental
+date_modified: 2024-12-12
+changes:
+  - 2020-10-23 (KL) initial creation
+  - 2024-11-19 (FH) add status keywords
+  - 2024-12-12 (FH) restructure default OBS properties, add PKG alias
 
-packages :
+packages:
   - LFOA
   - ViennaLT
 
-yamls :
+yamls:
   - ViennaLT.yaml
   - ViLT_PL16803.yaml
 
-properties :
-  airmass : 1.2
-  declination : +30
-  hour_angle : 0
-  pupil_angle : 0
-  dit : 60
-  ndit : 1
-  filter_name : V
-  sky :
-    bg_mag : 19.
-    filter_name : V
+---
+### default observation parameters needed for a ViLT simulation
+alias: OBS
+properties:
+  airmass: 1.2
+  declination: +30
+  hour_angle: 0
+  pupil_angle: 0
+  dit: 60  # [s]
+  ndit: 1
+  filter_name: V
+  sky:
+    bg_mag: 19.
+    filter_name: V
 
 ---
+### default simulation parameters needed for a ViLT simulation
+alias: SIM
+properties:
+  random:
+    seed: 9001
 
-## default simulation parameters needed for a simulation
-object : simulation
-alias : SIM
-name : ViLT_simulation_paramters
-description : RC simulation paramters
+  spectral:
+    wave_min: 0.3   # [um]
+    wave_mid: 0.55  # [um]
+    wave_max: 1.0   # [um]
 
-properties :
-  random :
-    seed : 9001
-
-  spectral :
-    wave_min : 0.3
-    wave_mid : 0.55
-    wave_max : 1.0
-
-  computing :
-    preload_field_of_view : False
-
-
-
-
-
+  computing:
+    preload_field_of_view: False

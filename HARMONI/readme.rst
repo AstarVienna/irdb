@@ -1,2 +1,0 @@
-HARMONI at the ELT
-==================

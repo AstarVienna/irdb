@@ -1,7 +1,8 @@
-WARNING::Couldn't convert <table>.meta['comments'] to dict
 ERROR::LFOA\filters\old_filters\TC_filter_Halpha_wide_old.dat ValeError dictionary update sequence element #0 has length 49; 2 is required
+ERROR::METIS\code\2023-06-20-spectra_Grism-L_band.dat ValeError dictionary update sequence element #0 has length 32; 2 is required
+ERROR::METIS\code\2023-06-20-spectra_Grism-M_band.dat ValeError dictionary update sequence element #0 has length 32; 2 is required
+ERROR::METIS\code\2023-06-20-spectra_Grism-N_band.dat ValeError dictionary update sequence element #0 has length 32; 2 is required
 ERROR::NACO\filters\NB_3.74.dat ValeError chr() arg not in range(0x110000)
-WARNING::Couldn't convert <table>.meta['comments'] to dict
 ERROR::NACO\filters\NB_4.05.dat ValeError dictionary update sequence element #0 has length 85; 2 is required
 ERROR::OSIRIS\traces\TRACE_R1000B.dat ValeError dictionary update sequence element #0 has length 1; 2 is required
 ERROR::OSIRIS\traces\TRACE_R1000R.dat ValeError dictionary update sequence element #0 has length 1; 2 is required
@@ -59,6 +60,18 @@ ERROR::METIS\TER_lms_grism_max.dat ValeError Modified date set but no changes li
 ERROR::METIS\TER_lms_grism_min.dat Error reading dat file 'NoneType' object is not iterable
 ERROR::METIS\TER_lms_grism_min.dat ValeError Modified date set but no changes listed.
 ERROR::METIS\TER_mirror_gold.dat ValeError Modified date set but no changes listed.
+ERROR::METIS\code\2023-06-20-spectra_Grism-L_band.dat Error reading dat file mapping values are not allowed here
+  in "<unicode string>", line 10, column 50:
+     ... n of coordinates at the detector: Detector sensitive surface, bo ... 
+                                         ^
+ERROR::METIS\code\2023-06-20-spectra_Grism-M_band.dat Error reading dat file mapping values are not allowed here
+  in "<unicode string>", line 10, column 50:
+     ... n of coordinates at the detector: Detector sensitive surface, bo ... 
+                                         ^
+ERROR::METIS\code\2023-06-20-spectra_Grism-N_band.dat Error reading dat file mapping values are not allowed here
+  in "<unicode string>", line 10, column 50:
+     ... n of coordinates at the detector: Detector sensitive surface, bo ... 
+                                         ^
 ERROR::METIS\filters\TC_filter_Br_alpha.dat Error reading dat file 'dict' object has no attribute 'split'
 ERROR::METIS\filters\TC_filter_Br_alpha_ref.dat Error reading dat file 'dict' object has no attribute 'split'
 ERROR::METIS\filters\TC_filter_CO_1-0_ice.dat Error reading dat file 'dict' object has no attribute 'split'
@@ -97,6 +110,7 @@ ERROR::METIS\filters\TC_filter_S_IV_ref.dat Error reading dat file 'dict' object
 ERROR::MICADO\FPA_linearity.dat ValeError date_last_change=2022-03-17 not equal to date_modified=2018-11-19
 ERROR::MICADO\MASK_slit_3000x20.dat ValeError date_last_change=2020-03-24 not equal to date_modified=2019-07-10
 ERROR::MICADO\MASK_slit_3000x50.dat ValeError date_last_change=2020-03-24 not equal to date_modified=2019-07-10
+ERROR::MICADO\QE_detector_H4RG.dat Error reading dat file 'NoneType' object is not iterable
 ERROR::MICADO\TER_entrance_window.dat ValeError Changes listed but no modified date set.
 ERROR::MICADO\TER_MICADO_mirror_mgf2agal.dat ValeError date_last_change=2019-07-25 not equal to date_modified=2018-11-19
 ERROR::MICADO\TER_mirror_gold.dat ValeError date_last_change=2023-07-13 not equal to date_modified=2023-07-23
@@ -121,32 +135,32 @@ ERROR::OSIRIS\QE_OSIRIS_old_detector_plus_M3.dat ValeError Modified date set but
 ERROR::OSIRIS\unity.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
 ERROR::OSIRIS\code\OSIRIS_stitchedArc.dat Error reading dat file 'comments'
 ERROR::OSIRIS\code\OSIRIS_stitchedArc.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
+ERROR::OSIRIS\traces\TRACE_R1000B.dat Error reading dat file string indices must be integers, not 'str'
+ERROR::OSIRIS\traces\TRACE_R1000B.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
+ERROR::OSIRIS\traces\TRACE_R1000R.dat Error reading dat file string indices must be integers, not 'str'
+ERROR::OSIRIS\traces\TRACE_R1000R.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
+ERROR::OSIRIS\traces\TRACE_R2000B.dat Error reading dat file string indices must be integers, not 'str'
+ERROR::OSIRIS\traces\TRACE_R2000B.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
+ERROR::OSIRIS\traces\TRACE_R2500I.dat Error reading dat file string indices must be integers, not 'str'
+ERROR::OSIRIS\traces\TRACE_R2500I.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
+ERROR::OSIRIS\traces\TRACE_R2500R.dat Error reading dat file string indices must be integers, not 'str'
+ERROR::OSIRIS\traces\TRACE_R2500R.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
+ERROR::OSIRIS\traces\TRACE_R2500U.dat Error reading dat file string indices must be integers, not 'str'
+ERROR::OSIRIS\traces\TRACE_R2500U.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
+ERROR::OSIRIS\traces\TRACE_R2500V.dat Error reading dat file string indices must be integers, not 'str'
+ERROR::OSIRIS\traces\TRACE_R2500V.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
+ERROR::OSIRIS\traces\TRACE_R300B.dat Error reading dat file string indices must be integers, not 'str'
+ERROR::OSIRIS\traces\TRACE_R300B.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
+ERROR::OSIRIS\traces\TRACE_R300R.dat Error reading dat file string indices must be integers, not 'str'
+ERROR::OSIRIS\traces\TRACE_R300R.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
+ERROR::OSIRIS\traces\TRACE_R500B.dat Error reading dat file string indices must be integers, not 'str'
+ERROR::OSIRIS\traces\TRACE_R500B.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
+ERROR::OSIRIS\traces\TRACE_R500R.dat Error reading dat file string indices must be integers, not 'str'
+ERROR::OSIRIS\traces\TRACE_R500R.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
 ERROR::OSIRIS\tests\test_data\fg191b2b.dat Error reading dat file 'comments'
 ERROR::OSIRIS\tests\test_data\fg191b2b.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
 ERROR::OSIRIS\tests\test_data\OSIRIS_stitchedArc.dat Error reading dat file 'comments'
 ERROR::OSIRIS\tests\test_data\OSIRIS_stitchedArc.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
-ERROR::OSIRIS\traces\TRACE_R1000B.dat Error reading dat file string indices must be integers
-ERROR::OSIRIS\traces\TRACE_R1000B.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
-ERROR::OSIRIS\traces\TRACE_R1000R.dat Error reading dat file string indices must be integers
-ERROR::OSIRIS\traces\TRACE_R1000R.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
-ERROR::OSIRIS\traces\TRACE_R2000B.dat Error reading dat file string indices must be integers
-ERROR::OSIRIS\traces\TRACE_R2000B.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
-ERROR::OSIRIS\traces\TRACE_R2500I.dat Error reading dat file string indices must be integers
-ERROR::OSIRIS\traces\TRACE_R2500I.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
-ERROR::OSIRIS\traces\TRACE_R2500R.dat Error reading dat file string indices must be integers
-ERROR::OSIRIS\traces\TRACE_R2500R.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
-ERROR::OSIRIS\traces\TRACE_R2500U.dat Error reading dat file string indices must be integers
-ERROR::OSIRIS\traces\TRACE_R2500U.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
-ERROR::OSIRIS\traces\TRACE_R2500V.dat Error reading dat file string indices must be integers
-ERROR::OSIRIS\traces\TRACE_R2500V.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
-ERROR::OSIRIS\traces\TRACE_R300B.dat Error reading dat file string indices must be integers
-ERROR::OSIRIS\traces\TRACE_R300B.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
-ERROR::OSIRIS\traces\TRACE_R300R.dat Error reading dat file string indices must be integers
-ERROR::OSIRIS\traces\TRACE_R300R.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
-ERROR::OSIRIS\traces\TRACE_R500B.dat Error reading dat file string indices must be integers
-ERROR::OSIRIS\traces\TRACE_R500B.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
-ERROR::OSIRIS\traces\TRACE_R500R.dat Error reading dat file string indices must be integers
-ERROR::OSIRIS\traces\TRACE_R500R.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
 ERROR::test_package\TC_filter_Ks.dat ValeError date_last_change=2019-11-09 not equal to date_modified=2018-01-28
 ERROR::VLT\LIST_VLT_mirrors.dat ValeError date_last_change=2020-10-06 not equal to date_modified=2019-08-13
 ERROR::VLT\TC_mirror_aluminium.dat ValeError date_last_change=2019-08-13 not equal to date_modified=2018-11-19

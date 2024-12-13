@@ -1,6 +1,6 @@
 # IRDB Packages Report
 
-**Created on UTC 2023-11-10 18:03:14**
+**Created on UTC 2024-12-13 10:38:49**
 
 For details on errors and conflicts, see badge report log file in this directory.
 
@@ -26,19 +26,21 @@ For details on errors and conflicts, see badge report log file in this directory
 * [![](https://img.shields.io/badge/TER_ELT_mirror_aluminium.dat-conflict-orange)]()
 * [![](https://img.shields.io/badge/TER_ELT_mirror_mgf2agal.dat-conflict-orange)]()
 ## ERIS
-[![](https://img.shields.io/badge/package_type-support-deepskyblue)]()
+[![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
 ### Structure
+* [![](https://img.shields.io/badge/default_yaml-OK-green)]()
 * [![](https://img.shields.io/badge/self_named_yaml-not_found-red)]()
-* [![](https://img.shields.io/badge/no_files_referenced-yellowgreen)]()
+* [![](https://img.shields.io/badge/no_missing_files-green)]()
 ### Contents
-* [![](https://img.shields.io/badge/no_yaml_files-yellowgreen)]()
+* [![](https://img.shields.io/badge/all_yamls_readable-green)]()
 ## FORS
-[![](https://img.shields.io/badge/package_type-support-deepskyblue)]()
+[![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
 ### Structure
+* [![](https://img.shields.io/badge/default_yaml-OK-green)]()
 * [![](https://img.shields.io/badge/self_named_yaml-not_found-red)]()
-* [![](https://img.shields.io/badge/no_files_referenced-yellowgreen)]()
+* [![](https://img.shields.io/badge/no_missing_files-green)]()
 ### Contents
-* [![](https://img.shields.io/badge/no_yaml_files-yellowgreen)]()
+* [![](https://img.shields.io/badge/all_yamls_readable-green)]()
 ## GTC
 [![](https://img.shields.io/badge/package_type-support-deepskyblue)]()
 ### Structure
@@ -90,12 +92,13 @@ For details on errors and conflicts, see badge report log file in this directory
 * [![](https://img.shields.io/badge/wfc3_ir_primary_001_syn.dat-conflict-orange)]()
 * [![](https://img.shields.io/badge/wfc3_ir_secondary_001_syn.dat-conflict-orange)]()
 ## KMOS
-[![](https://img.shields.io/badge/package_type-support-deepskyblue)]()
+[![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
 ### Structure
+* [![](https://img.shields.io/badge/default_yaml-OK-green)]()
 * [![](https://img.shields.io/badge/self_named_yaml-not_found-red)]()
-* [![](https://img.shields.io/badge/no_files_referenced-yellowgreen)]()
+* [![](https://img.shields.io/badge/no_missing_files-green)]()
 ### Contents
-* [![](https://img.shields.io/badge/no_yaml_files-yellowgreen)]()
+* [![](https://img.shields.io/badge/all_yamls_readable-green)]()
 ## LaPalma
 [![](https://img.shields.io/badge/package_type-support-deepskyblue)]()
 ### Structure
@@ -116,12 +119,13 @@ For details on errors and conflicts, see badge report log file in this directory
 * [![](https://img.shields.io/badge/TER_focal_reducer.dat-conflict-orange)]()
 * [![](https://img.shields.io/badge/TER_mirror_aluminium.dat-conflict-orange)]()
 ## MCIFU
-[![](https://img.shields.io/badge/package_type-support-deepskyblue)]()
+[![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
 ### Structure
+* [![](https://img.shields.io/badge/default_yaml-OK-green)]()
 * [![](https://img.shields.io/badge/self_named_yaml-not_found-red)]()
-* [![](https://img.shields.io/badge/no_files_referenced-yellowgreen)]()
+* [![](https://img.shields.io/badge/no_missing_files-green)]()
 ### Contents
-* [![](https://img.shields.io/badge/no_yaml_files-yellowgreen)]()
+* [![](https://img.shields.io/badge/all_yamls_readable-green)]()
 ## METIS
 [![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
 ### Structure
@@ -132,6 +136,9 @@ For details on errors and conflicts, see badge report log file in this directory
 * [![](https://img.shields.io/badge/FPA_linearity_Aquarius.dat-missing-red)]()
 ### Contents
 * [![](https://img.shields.io/badge/all_yamls_readable-green)]()
+* [![](https://img.shields.io/badge/2023--06--20--spectra_Grism--L_band.dat-error-red)]()
+* [![](https://img.shields.io/badge/2023--06--20--spectra_Grism--M_band.dat-error-red)]()
+* [![](https://img.shields.io/badge/2023--06--20--spectra_Grism--N_band.dat-error-red)]()
 ### Dates
 * [![](https://img.shields.io/badge/FPA_metis_img_lm_layout.dat-conflict-orange)]()
 * [![](https://img.shields.io/badge/FPA_metis_img_nq_aquarius_layout.dat-conflict-orange)]()
@@ -193,19 +200,21 @@ For details on errors and conflicts, see badge report log file in this directory
 * [![](https://img.shields.io/badge/TER_MORFEO_mirror_aluminium.dat-conflict-orange)]()
 * [![](https://img.shields.io/badge/TER_MORFEO_mirror_mgf2agal.dat-conflict-orange)]()
 ## MUSE
-[![](https://img.shields.io/badge/package_type-support-deepskyblue)]()
+[![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
 ### Structure
+* [![](https://img.shields.io/badge/default_yaml-OK-green)]()
 * [![](https://img.shields.io/badge/self_named_yaml-not_found-red)]()
-* [![](https://img.shields.io/badge/no_files_referenced-yellowgreen)]()
+* [![](https://img.shields.io/badge/no_missing_files-green)]()
 ### Contents
-* [![](https://img.shields.io/badge/no_yaml_files-yellowgreen)]()
+* [![](https://img.shields.io/badge/all_yamls_readable-green)]()
 ## NACO
-[![](https://img.shields.io/badge/package_type-support-deepskyblue)]()
+[![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
 ### Structure
+* [![](https://img.shields.io/badge/default_yaml-OK-green)]()
 * [![](https://img.shields.io/badge/self_named_yaml-not_found-red)]()
-* [![](https://img.shields.io/badge/no_files_referenced-yellowgreen)]()
+* [![](https://img.shields.io/badge/no_missing_files-green)]()
 ### Contents
-* [![](https://img.shields.io/badge/no_yaml_files-yellowgreen)]()
+* [![](https://img.shields.io/badge/all_yamls_readable-green)]()
 * [![](https://img.shields.io/badge/NB_3.74.dat-error-red)]()
 * [![](https://img.shields.io/badge/NB_4.05.dat-error-red)]()
 ### Dates
@@ -250,12 +259,13 @@ For details on errors and conflicts, see badge report log file in this directory
 ### Dates
 * [![](https://img.shields.io/badge/TC_filter_Ks.dat-conflict-orange)]()
 ## UVES
-[![](https://img.shields.io/badge/package_type-support-deepskyblue)]()
+[![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
 ### Structure
+* [![](https://img.shields.io/badge/default_yaml-OK-green)]()
 * [![](https://img.shields.io/badge/self_named_yaml-not_found-red)]()
-* [![](https://img.shields.io/badge/no_files_referenced-yellowgreen)]()
+* [![](https://img.shields.io/badge/no_missing_files-green)]()
 ### Contents
-* [![](https://img.shields.io/badge/no_yaml_files-yellowgreen)]()
+* [![](https://img.shields.io/badge/all_yamls_readable-green)]()
 ## ViennaLT
 [![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
 ### Structure
@@ -266,12 +276,13 @@ For details on errors and conflicts, see badge report log file in this directory
 ### Contents
 * [![](https://img.shields.io/badge/all_yamls_readable-green)]()
 ## VISIR
-[![](https://img.shields.io/badge/package_type-support-deepskyblue)]()
+[![](https://img.shields.io/badge/package_type-observation-blueviolet)]()
 ### Structure
+* [![](https://img.shields.io/badge/default_yaml-OK-green)]()
 * [![](https://img.shields.io/badge/self_named_yaml-not_found-red)]()
-* [![](https://img.shields.io/badge/no_files_referenced-yellowgreen)]()
+* [![](https://img.shields.io/badge/no_missing_files-green)]()
 ### Contents
-* [![](https://img.shields.io/badge/no_yaml_files-yellowgreen)]()
+* [![](https://img.shields.io/badge/all_yamls_readable-green)]()
 ## VLT
 [![](https://img.shields.io/badge/package_type-support-deepskyblue)]()
 ### Structure
