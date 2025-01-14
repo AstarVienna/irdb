@@ -9,6 +9,7 @@ object : configuration
 alias : OBS
 name : MICADO_sci_default_configuration
 description : default parameters needed for a MICADO-Sci simulation
+status : deprecated
 
 packages :
 - Armazones

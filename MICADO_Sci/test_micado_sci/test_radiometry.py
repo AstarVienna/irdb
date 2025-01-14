@@ -37,6 +37,8 @@ from matplotlib.colors import LogNorm
 import scopesim as sim
 from scopesim import rc
 
+pytest.skip(allow_module_level=True)
+
 TOP_PATH = pth.abspath(pth.join(pth.dirname(__file__), "../../"))
 rc.__config__["!SIM.file.local_packages_path"] = TOP_PATH
 

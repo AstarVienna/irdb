@@ -5,6 +5,7 @@ object: configuration
 alias: OBS
 name: METIS_default_configuration
 description: default parameters needed for a METIS simulation
+status: development
 date_modified: 2024-09-04
 changes:
   - 2021-12-16 (OC) chopnod defaults to perpendicular
@@ -65,6 +66,7 @@ mode_yamls:
     alias: OBS
     name: img_lm
     description: "METIS LM-band imaging"
+    status: development
     yamls:
       - Armazones.yaml
       - ELT.yaml
@@ -83,6 +85,7 @@ mode_yamls:
     alias: OBS
     name: img_n
     description: "METIS N-band imaging"
+    status: development
     yamls:
       - Armazones.yaml
       - ELT.yaml
@@ -103,6 +106,7 @@ mode_yamls:
     alias: OBS
     name: lss_l
     description: "METIS L-band slit spectroscopy"
+    status: development
     yamls:
       - Armazones.yaml
       - ELT.yaml
@@ -124,6 +128,7 @@ mode_yamls:
     alias: OBS
     name: lss_m
     description: "METIS M-band slit spectroscopy"
+    status: development
     yamls:
       - Armazones.yaml
       - ELT.yaml
@@ -145,6 +150,7 @@ mode_yamls:
     alias: OBS
     name: lss_n
     description: "METIS N-band slit spectroscopy"
+    status: development
     yamls:
       - Armazones.yaml
       - ELT.yaml
@@ -166,6 +172,7 @@ mode_yamls:
     alias: OBS
     name: lms
     description: "METIS LM-band integral-field spectroscopy, nominal mode"
+    status: experimental
     yamls:
       - Armazones.yaml
       - ELT.yaml
@@ -184,6 +191,7 @@ mode_yamls:
     alias: OBS
     name: lms_extended
     description: "METIS LM-band integral-field spectroscopy, extended mode"
+    status: experimental
     yamls:
       - Armazones.yaml
       - ELT.yaml

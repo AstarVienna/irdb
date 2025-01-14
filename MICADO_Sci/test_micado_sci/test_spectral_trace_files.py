@@ -9,6 +9,8 @@ from scopesim.effects import SpectralTraceList
 from scopesim.tests.mocks.py_objects import header_objects as ho
 from scopesim import rc
 
+pytest.skip(allow_module_level=True)
+
 PLOTS = False
 DATA_DIR = pth.abspath(pth.join(pth.dirname(__file__), "../"))
 rc.__search_path__.insert(0, DATA_DIR)

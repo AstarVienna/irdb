@@ -22,12 +22,12 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        python-version: ['3.9', '3.10', '3.11', '3.12']
+        python-version: ['3.10', '3.11', '3.12']
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
@@ -39,7 +39,7 @@ jobs:
       - name: Run Pytest
         run: pytest
       - name: Store badge report files
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: badge-report
           path: _REPORTS
@@ -53,12 +53,12 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        python-version: ['3.9', '3.10', '3.11', '3.12']
+        python-version: ['3.10', '3.11', '3.12']
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
@@ -83,9 +83,9 @@ jobs:
     # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
     if: github.ref == 'dev_master' || github.ref == 'master' || github.base_ref == ''
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           # No matrix is used since this is a time-consuming tosk.
           python-version: 3.11
@@ -124,9 +124,9 @@ jobs:
     # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
     if: github.ref == 'dev_master' || github.ref == 'master' || github.base_ref == ''
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           # No matrix is used since this is a time-consuming tosk.
           python-version: 3.11

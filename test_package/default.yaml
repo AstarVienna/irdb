@@ -2,6 +2,7 @@
 object : observation
 alias : OBS
 name : test_instrument
+status: production
 
 packages :
 - test_package
