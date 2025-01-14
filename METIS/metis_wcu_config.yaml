@@ -14,5 +14,6 @@ diam_is_out: 100   # [mm] diameter if integrating sphere output port
 rho_is:   0.95     # [] reflectivity of integrating sphere
 rho_tube: 0.95     # [] reflectivity of tube between BB and IS
 rho_mask: 0.95     # [] reflectivity of focal-plane mask
-fpmasks:  ["open", "pinhole", "grid"]
+fpmasks:  ["open", "pinhole_lm", "pinhole_n", "grid_lm"]
+fpmask_filename_format: "wcu/fp_mask_{}.dat"
 current_mask: "open"     # focal plane mask: "open", "pinhole", "grid"
