@@ -8,6 +8,8 @@ bb_aperture: 1.0    # aperture of flux-controlling mask
 fpmasks:  ["open", "pinhole_lm", "pinhole_n", "grid_lm"]
 fpmask_filename_format: "wcu/fp_mask_{}.dat"
 current_fpmask: "open"
+fpmask_angle: 0
+fpmask_shift: (0, 0)
 
 # ------------- Data needed to describe the WCU
 bb_to_is:     "wcu/WCU_BB_to_IS_throughput.fits"
