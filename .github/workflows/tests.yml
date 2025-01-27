@@ -23,6 +23,10 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         python-version: ['3.10', '3.11', '3.12']
+        include:
+          - os: ubuntu-latest
+            python-version: '3.12'
+            upload-badges: True
 
     steps:
       - uses: actions/checkout@v4
@@ -39,6 +43,7 @@ jobs:
       - name: Run Pytest
         run: pytest
       - name: Store badge report files
+        if: ${{ matrix.upload-badges }}
         uses: actions/upload-artifact@v4
         with:
           name: badge-report
