@@ -43,7 +43,7 @@ PLOTS = False
 #     for pkg_name in PKGS:
 #         if not os.path.isdir(os.path.join(rc_local_path, pkg_name)) and \
 #                 "irdb" not in rc_local_path:
-#             scopesim.download_package(PKGS[pkg_name])
+#             scopesim.download_packages(PKGS[pkg_name])
 #
 #
 # def teardown_module():
