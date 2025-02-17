@@ -38,7 +38,6 @@ def fixture_badges():
 
 
 @pytest.mark.parametrize("package", list(get_packages()))
-@pytest.mark.usefixtures("badges")
 class TestFileStructureOfPackages:
     def test_default_yaml_contains_packages_list(self, package, badges):
         pkg_name, pkg_path = package
@@ -154,7 +153,6 @@ class TestFileStructureOfPackages:
 
 
 @pytest.mark.parametrize("package", list(get_packages()))
-@pytest.mark.usefixtures("pkg_dir", "badges")
 class TestPackageDatFiles:
     @pytest.mark.xfail(
         reason=("Due to bad globbing, files in subfolders were not checked "
