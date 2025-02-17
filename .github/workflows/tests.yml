@@ -78,10 +78,10 @@ jobs:
 
             if [ $? -eq 0 ]; then
               branch="$GITHUB_HEAD_REF"
-              echo "Using branch $branch for $p" >> $GITHUB_STEP_SUMMARY
             fi
 
             echo "$p=$branch" >> "$GITHUB_OUTPUT"
+            echo "Using branch $branch for $p" >> $GITHUB_STEP_SUMMARY
           done
 
       - name: Install dependencies
