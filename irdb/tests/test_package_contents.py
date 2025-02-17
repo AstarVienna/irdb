@@ -21,6 +21,9 @@ logging.shutdown()
 reload(logging)
 
 
+# Note: This module doesn't need to run always, so mark it.
+pytestmark = pytest.mark.badges
+
 # TODO: some tests should be skipped if something else has failed.
 # howto: https://stackoverflow.com/questions/75377691/skip-test-case-if-above-test-case-failed-pytest
 # and: https://pytest-dependency.readthedocs.io/en/stable/advanced.html
