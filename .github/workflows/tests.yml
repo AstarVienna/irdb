@@ -50,7 +50,7 @@ jobs:
           path: _REPORTS
 
   tests_devmaster:
-    name: Test against ScopeSim main
+    name: Test against ScopeSim main or PR branch
     runs-on: ${{ matrix.os }}
     # Run if our target is IRDB dev_master, or when this is ran manually.
     if: github.base_ref == 'dev_master' || github.base_ref == ''
@@ -66,13 +66,32 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
+
+      - name: Check for sister branches
+        id: determine-branches
+        if: github.event_name == 'pull_request'
+        shell: sh +e {0}
+        run: |
+          for p in ScopeSim ScopeSim_Templates; do
+            branch=main
+            git ls-remote --exit-code --heads "https://github.com/AstarVienna/$p.git" "$GITHUB_HEAD_REF" > /dev/null
+
+            if [ $? -eq 0 ]; then
+              branch="$GITHUB_HEAD_REF"
+              echo "Using branch $branch for $p" >> $GITHUB_STEP_SUMMARY
+            fi
+
+            echo "$p=$branch" >> "$GITHUB_OUTPUT"
+          done
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.github_actions.txt
           pip uninstall -y scopesim scopesim_templates
-          pip install git+https://github.com/AstarVienna/ScopeSim.git
-          pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git
+          pip install git+https://github.com/AstarVienna/ScopeSim.git@${{ steps.determine-branches.outputs.ScopeSim }}
+          pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git@${{ steps.determine-branches.outputs.ScopeSim_Templates }}
+
       - name: Run Pytest
         run: pytest
 
