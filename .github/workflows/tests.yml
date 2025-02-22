@@ -69,15 +69,17 @@ jobs:
 
       - name: Check for sister branches
         id: determine-branches
-        if: github.event_name == 'pull_request'
         shell: sh +e {0}
         run: |
           for p in ScopeSim ScopeSim_Templates; do
             branch=main
-            git ls-remote --exit-code --heads "https://github.com/AstarVienna/$p.git" "$GITHUB_HEAD_REF" > /dev/null
 
-            if [ $? -eq 0 ]; then
-              branch="$GITHUB_HEAD_REF"
+            if [ "$GITHUB_EVENT_NAME" = "pull_request" ]; then
+              git ls-remote --exit-code --heads "https://github.com/AstarVienna/$p.git" "$GITHUB_HEAD_REF" > /dev/null
+
+              if [ $? -eq 0 ]; then
+                branch="$GITHUB_HEAD_REF"
+              fi
             fi
 
             echo "$p=$branch" >> "$GITHUB_OUTPUT"
