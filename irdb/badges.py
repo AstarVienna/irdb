@@ -11,6 +11,7 @@ from typing import TextIO
 from numbers import Number
 from string import Template
 from datetime import datetime as dt
+from datetime import UTC
 from collections.abc import Mapping
 
 import yaml
@@ -143,7 +144,7 @@ class BadgeReport(SystemDict):
     that should be included in that report file:
 
     >>> import pytest
-    >>> 
+    >>>
     >>> @pytest.fixture(name="badges", scope="module")
     >>> def fixture_badges():
     >>>     with BadgeReport() as report:
@@ -161,7 +162,7 @@ class BadgeReport(SystemDict):
     stored in the report, to be written in a separate log file at teardown:
 
     >>> import logging
-    >>> 
+    >>>
     >>> def test_something_else(self, badges, caplog):
     >>>     logging.warning("Oh no!")
     >>>     badges.logs.extend(caplog.records)
@@ -252,7 +253,7 @@ class BadgeReport(SystemDict):
 
     def _make_preamble(self) -> str:
         preamble = ("# IRDB Packages Report\n\n"
-                    f"**Created on UTC {dt.utcnow():%Y-%m-%d %H:%M:%S}**\n\n"
+                    f"**Created on UTC {dt.now(UTC):%Y-%m-%d %H:%M:%S}**\n\n"
                     "For details on errors and conflicts, see badge report "
                     "log file in this directory.\n\n")
         return preamble
