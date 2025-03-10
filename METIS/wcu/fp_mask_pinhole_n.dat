@@ -1,0 +1,16 @@
+# description : WCU focal plane mask, pinhole N
+# name : WCU FP mask #2
+# author : Oliver Czoske
+# source : E-SPE-UZK-MET-1015_2-0; E-REP-UZK-MET-1008_3-0, Table 10-8
+# date_created : 2025-01-13
+# date_modified : 2025-01-13
+# status : FDR
+# type : aperture:aperture_mask
+# x_unit : arcsec
+# y_unit : arcsec
+# diam_unit : arcsec
+# notes: diam 66 um at 3.319 mm/arcsec
+# changes :
+#
+ x   y    diam
+ 0   0    0.01988551
