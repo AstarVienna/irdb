@@ -52,8 +52,12 @@ class TestFileStructureOfPackages:
         with default_yaml.open(encoding="utf-8") as file:
             yaml_dict = next(yaml.full_load_all(file))
 
-        result = "packages" in yaml_dict and "yamls" in yaml_dict and \
-                 f"{pkg_name}.yaml" in yaml_dict["yamls"]
+        result = "packages" in yaml_dict
+
+        # METIS is special since in WCU mode it operates without METIS.
+        if pkg_name not in {"METIS"}:
+            result &= "yamls" in yaml_dict \
+                and f"{pkg_name}.yaml" in yaml_dict["yamls"]
         if result:
             badges[f"!{pkg_name}.structure.default_yaml"] = "OK"
         else:
