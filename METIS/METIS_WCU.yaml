@@ -44,3 +44,4 @@ alias: TEL
 properties:
   #area: 975.23478998
   area: 1354.593    #### TEST, needed to agree with RvB's calculation
+  temperature: "!WCU.temperature"  # Overrides !ATMO.temperature
