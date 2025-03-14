@@ -1,0 +1,15 @@
+---
+### MUSE package metadata
+alias: PKG
+name: MUSE
+description: NOT YET FUNCTIONAL PLACEHOLDER
+status: concept
+date_modified: 2024-12-12
+changes:
+  - 2024-12-12 (FH) initial creation
+
+packages:
+  - MUSE
+
+yamls:
+  - MUSE.yaml

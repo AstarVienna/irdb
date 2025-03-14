@@ -51,7 +51,7 @@ class TestLoadUserCommands:
 
     def test_user_commands_loads_mode_files(self):
         cmd = scopesim.UserCommands(use_instrument="MICADO")
-        yaml_names = [yd["name"] for yd in cmd.yaml_dicts]
+        yaml_names = [yd.get("name") for yd in cmd.yaml_dicts]
 
         assert "MICADO_IMG_LR" in yaml_names
 
@@ -59,15 +59,15 @@ class TestLoadUserCommands:
         cmd = scopesim.UserCommands(use_instrument="MICADO")
         cmd.set_modes(["MCAO", "SPEC_3000x50"])
 
-        assert "MORFEO" in [yd["name"] for yd in cmd.yaml_dicts]
-        assert "MICADO_SPEC" in [yd["name"] for yd in cmd.yaml_dicts]
+        assert "MORFEO" in [yd.get("name") for yd in cmd.yaml_dicts]
+        assert "MICADO_SPEC" in [yd.get("name") for yd in cmd.yaml_dicts]
 
     def test_user_commands_can_change_modes_via_init(self):
         cmd = scopesim.UserCommands(use_instrument="MICADO",
                                     set_modes=["MCAO", "SPEC_3000x50"])
 
-        assert "MORFEO" in [yd["name"] for yd in cmd.yaml_dicts]
-        assert "MICADO_SPEC" in [yd["name"] for yd in cmd.yaml_dicts]
+        assert "MORFEO" in [yd.get("name") for yd in cmd.yaml_dicts]
+        assert "MICADO_SPEC" in [yd.get("name") for yd in cmd.yaml_dicts]
 
 
 class TestMakeOpticalTrain:

@@ -1,0 +1,15 @@
+---
+### MCIFU package metadata
+alias: PKG
+name: MCIFU
+description: NOT YET FUNCTIONAL PLACEHOLDER
+status: concept
+date_modified: 2024-12-12
+changes:
+  - 2024-12-12 (FH) initial creation
+
+packages:
+  - MCIFU
+
+yamls:
+  - MCIFU.yaml

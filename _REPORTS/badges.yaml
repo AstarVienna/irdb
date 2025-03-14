@@ -19,19 +19,21 @@ ELT:
     TER_ELT_mirror_aluminium.dat: conflict
     TER_ELT_mirror_mgf2agal.dat: conflict
 ERIS:
-  package_type: support
+  package_type: observation
   structure:
+    default_yaml: OK
     self_named_yaml: not found
-    no_files_referenced: '!NONE'
+    no_missing_files: '!OK'
   contents:
-    no_yaml_files: '!NONE'
+    all_yamls_readable: '!OK'
 FORS:
-  package_type: support
+  package_type: observation
   structure:
+    default_yaml: OK
     self_named_yaml: not found
-    no_files_referenced: '!NONE'
+    no_missing_files: '!OK'
   contents:
-    no_yaml_files: '!NONE'
+    all_yamls_readable: '!OK'
 GTC:
   package_type: support
   structure:
@@ -83,12 +85,13 @@ HST:
     wfc3_ir_primary_001_syn.dat: conflict
     wfc3_ir_secondary_001_syn.dat: conflict
 KMOS:
-  package_type: support
+  package_type: observation
   structure:
+    default_yaml: OK
     self_named_yaml: not found
-    no_files_referenced: '!NONE'
+    no_missing_files: '!OK'
   contents:
-    no_yaml_files: '!NONE'
+    all_yamls_readable: '!OK'
 LaPalma:
   package_type: support
   structure:
@@ -109,12 +112,13 @@ LFOA:
     TER_focal_reducer.dat: conflict
     TER_mirror_aluminium.dat: conflict
 MCIFU:
-  package_type: support
+  package_type: observation
   structure:
+    default_yaml: OK
     self_named_yaml: not found
-    no_files_referenced: '!NONE'
+    no_missing_files: '!OK'
   contents:
-    no_yaml_files: '!NONE'
+    all_yamls_readable: '!OK'
 METIS:
   package_type: observation
   structure:
@@ -125,6 +129,9 @@ METIS:
     FPA_linearity_Aquarius.dat: missing
   contents:
     all_yamls_readable: '!OK'
+    2023-06-20-spectra_Grism-L_band.dat: error
+    2023-06-20-spectra_Grism-M_band.dat: error
+    2023-06-20-spectra_Grism-N_band.dat: error
   dates:
     FPA_metis_img_lm_layout.dat: conflict
     FPA_metis_img_nq_aquarius_layout.dat: conflict
@@ -186,19 +193,21 @@ MORFEO:
     TER_MORFEO_mirror_aluminium.dat: conflict
     TER_MORFEO_mirror_mgf2agal.dat: conflict
 MUSE:
-  package_type: support
+  package_type: observation
   structure:
+    default_yaml: OK
     self_named_yaml: not found
-    no_files_referenced: '!NONE'
+    no_missing_files: '!OK'
   contents:
-    no_yaml_files: '!NONE'
+    all_yamls_readable: '!OK'
 NACO:
-  package_type: support
+  package_type: observation
   structure:
+    default_yaml: OK
     self_named_yaml: not found
-    no_files_referenced: '!NONE'
+    no_missing_files: '!OK'
   contents:
-    no_yaml_files: '!NONE'
+    all_yamls_readable: '!OK'
     NB_3.74.dat: error
     NB_4.05.dat: error
   dates: {}
@@ -243,12 +252,13 @@ test_package:
   dates:
     TC_filter_Ks.dat: conflict
 UVES:
-  package_type: support
+  package_type: observation
   structure:
+    default_yaml: OK
     self_named_yaml: not found
-    no_files_referenced: '!NONE'
+    no_missing_files: '!OK'
   contents:
-    no_yaml_files: '!NONE'
+    all_yamls_readable: '!OK'
 ViennaLT:
   package_type: observation
   structure:
@@ -259,12 +269,13 @@ ViennaLT:
   contents:
     all_yamls_readable: '!OK'
 VISIR:
-  package_type: support
+  package_type: observation
   structure:
+    default_yaml: OK
     self_named_yaml: not found
-    no_files_referenced: '!NONE'
+    no_missing_files: '!OK'
   contents:
-    no_yaml_files: '!NONE'
+    all_yamls_readable: '!OK'
 VLT:
   package_type: support
   structure:
