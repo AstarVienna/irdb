@@ -1,0 +1,47 @@
+---
+### METIS Warm Calibration Unit effects
+
+object: warm calibration unit
+alias : WCU
+name: METIS_WCU
+description: base configuration for METIS/WCU
+date_modified: 2024-11-25
+changes:
+  - 2024-09-03 (OC) file created
+  - 2024-11-06 (OC) add BlackBodySource
+  - 2024-11-25 (OC) config file, test TEL.area
+  - 2024-11-26 (OC) rename to WCUSource
+
+properties:
+  temperature: 15      # Celsius! needed for relay optics
+  config_file: "metis_wcu_config.yaml"
+
+effects:
+  - name: wcu_source
+    description: Source of the WCU
+    class: WCUSource
+    kwargs:
+      config_file: "!WCU.config_file"
+
+  - name:  wcu_relay_optics
+    description: surface list for METIS WCU relay optics
+    class: SurfaceList
+    kwargs:
+      filename: LIST_METIS_mirrors_wcu.dat
+
+  - name: pupil_masks
+    description: pupil masks (transmission only)
+    class: PupilMaskWheel
+    kwargs:
+      pupil_masks:
+        names: [APP-LMS, APP-LM, CLS-LMS, CLS-LM, CLS-N, PPS-LMS, PPS-LM, PPS-N, PPS-CFO2, RLS-LMS, RLS-LM, SPM-LMS, SPM-LM, SPM-N, open]
+        transmissions: [0.6098, 0.6312, 0.5879, 0.6073, 0.5795, 0.7342, 0.7509, 0.7429, 0.6170, 0.4362, 0.4476, 0.6098, 0.6312, 0.6076, 0.8201]
+      current_mask: "open"
+
+---
+# Required parameters to replace telescope
+alias: TEL
+properties:
+  #area: 975.23478998
+  area: 1354.593    #### TEST, needed to agree with RvB's calculation
+  temperature: "!WCU.temperature"  # Overrides !ATMO.temperature

@@ -1,0 +1,25 @@
+# ------------- User-settable parameters
+lamps:  ["bb", "laser", "none"]  # available lamps
+current_lamp: "bb"  # the lamp currently in use
+bb_temp: 1000       # [K] temperature of BB source  # Kelvin!
+is_temp:  300       # [K] temperature of the integratig sphere
+wcu_temp: 300       # [K] ambient temperature in the WCU
+bb_aperture: 1.0    # aperture of flux-controlling mask
+fpmasks:  ["open", "pinhole_lm", "pinhole_n", "grid_lm"]
+fpmask_filename_format: "wcu/fp_mask_{}.dat"
+current_fpmask: "open"
+fpmask_angle: 0
+fpmask_shift: [0, 0]
+
+# ------------- Data needed to describe the WCU
+bb_to_is:     "wcu/WCU_BB_to_IS_throughput.fits"
+is_reflect:   "wcu/WCU_IS_reflectivity.dat"
+tube_reflect: "wcu/WCU_tube_reflectivity.dat"
+mask_reflect: "wcu/WCU_mask_reflectivity.dat"
+emiss_bb:      0.98     # E-REP-MPIA-MET-1203
+diam_is_in:   25.4      # [mm] diameter of integrating sphere entrance port
+diam_is:     250        # [mm] diameter of integrating sphere
+diam_is_out: 100        # [mm] diameter if integrating sphere output port
+rho_is:        0.95     # [] reflectivity of integrating sphere
+rho_tube:      0.95     # [] reflectivity of tube between BB and IS
+emiss_mask:    1.00     # [] emissivity of focal-plane mask
