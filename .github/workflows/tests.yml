@@ -23,10 +23,6 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         python-version: ['3.10', '3.11', '3.12']
-        include:
-          - os: ubuntu-latest
-            python-version: '3.12'
-            upload-badges: True
 
     steps:
       - uses: actions/checkout@v4
@@ -42,8 +38,21 @@ jobs:
           pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git
       - name: Run Pytest
         run: pytest
+
+  badge_report:
+    name: Generate Badge Report
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+      - name: Install dependencies
+        run: pip install -r requirements.github_actions.txt
+      - name: Run Pytest for badges
+        run: pytest -m "badges"
       - name: Store badge report files
-        if: ${{ matrix.upload-badges }}
         uses: actions/upload-artifact@v4
         with:
           name: badge-report
