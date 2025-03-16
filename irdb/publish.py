@@ -8,7 +8,7 @@ import getpass
 from typing import Optional
 from warnings import warn
 from pathlib import Path
-from datetime import datetime as dt, UTC
+from datetime import datetime as dt, timezone
 from zipfile import ZIP_DEFLATED, ZipFile
 
 import yaml
@@ -18,6 +18,9 @@ try:
     from .publish_utils import _is_stable, get_stable, get_all_package_versions
 except ImportError:
     from publish_utils import _is_stable, get_stable, get_all_package_versions
+
+# After 3.11, can just import UTC directly from datetime
+UTC = timezone.utc
 
 PATH_HERE = Path(__file__).parent
 PKGS_DIR = PATH_HERE.parent
