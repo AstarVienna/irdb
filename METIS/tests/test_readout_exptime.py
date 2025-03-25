@@ -1,3 +1,4 @@
+"""Test whether giving exptime in readout() is respected."""
 import copy
 import os
 from matplotlib import pyplot as plt
@@ -10,8 +11,7 @@ sim.rc.__config__["!SIM.file.local_packages_path"] = PKGS_DIR
 
 PLOTS = False
 
-
-class TestReadoutExptime:
+def test_readout_exptime():
     """Test whether giving exptime in readout() is respected.
 
     The implementation of Quantization and Autoexposure has lead
@@ -33,6 +33,7 @@ class TestReadoutExptime:
 
     # The first readout might ignore the exptime.
     metis_l = sim.OpticalTrain(cmd_l)
+    metis_l["exposure_output"].set_mode("sum")
     metis_l.observe(star, update=True)
     result_first = metis_l.readout(exptime=100.)[0]
     # We need to copy the first readeout, because
@@ -41,6 +42,7 @@ class TestReadoutExptime:
 
     # The second readout might not properly have the detector reset.
     metis_l = sim.OpticalTrain(cmd_l)
+    metis_l["exposure_output"].set_mode("sum")
     metis_l.observe(star, update=True)
     result_temp = metis_l.readout(exptime=100.)[0]
     result_temp_copy = copy.deepcopy(result_temp)

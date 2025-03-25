@@ -72,6 +72,12 @@ effects:
       noise_std: "!DET.readout_noise"
       n_channels: 32
 
+  - name: exposure_output
+    description: Return average or sum over NDIT subexposures
+    class: ExposureOutput
+    kwargs:
+      mode: average
+
   - name: quantization
     description: Turn photon count into integers
     class: Quantization
