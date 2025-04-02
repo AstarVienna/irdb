@@ -138,13 +138,7 @@
           # TODO: Include a ReferencePixelBorder effect?
           #REF:
           #  ALL: "#border_reference_pixels.all"
-        TEL:
-          NAME: "ELT"
-          TELESCOP: "ELT"
-          TER:
-            FILENAME: "!TEL.ter_curve.filename"
-          REF:
-            FILENAME: "#telescope_reflection.filename"
+
         OCS:
           PXSCALE: "!INST.pixel_scale"
         OBS:
