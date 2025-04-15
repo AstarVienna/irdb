@@ -43,7 +43,7 @@ effects:
     class: ExtraFitsKeywords
     include: True
     kwargs:
-      filename: FITS_wcu_keywords.yaml
+      filename: headers/FITS_wcu_keywords.yaml
 ---
 # Required parameters to replace telescope
 alias: TEL
