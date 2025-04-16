@@ -5,19 +5,19 @@
       ESO:
         INS:
           OPTI17:               # WCU periscope arm
-            ID: "WCU periscope"
+            DESC: "WCU periscope"
             NAME: "IN"
           OPTI18:               # WCU PP1 masks
-            ID: "WCU PP1 masks"
+            DESC: "WCU PP1 masks"
             NAME: "#pupil_masks.current_mask"
           OPTI19:               # WCU BB exit aperture masks
-            ID: "WCU BB exit aperture"
+            DESC: "WCU BB exit aperture"
             NAME: "#wcu_source.bb_aperture"
           OPTI20:               # WCU FP2.1 mask wheel
-            ID: "WCU FP2.1 mask"
+            DESC: "WCU FP2.1 mask"
             NAME: "#wcu_source.current_fpmask"
           WCU_LAMP:             # WCU lamp TODO: made up keyword
-            ID: "WCU lamp"
+            DESC: "WCU lamp"
             NAME: "#wcu_source.current_lamp"
         SEQ:
           WCU_BB_TEMP: "#wcu_source.bb_temp"
