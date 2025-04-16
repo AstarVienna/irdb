@@ -9,7 +9,7 @@
             NAME: "open"
           OPTI10:               # IMG-LM science filter wheel
             ID: "IMG-LM science filter"
-            NAME: "#filter_wheel.current_filter"
+            NAME: "#filter_wheel.current_filter!"
           OPTI11:               # IMG-LM neutral density filter wheel
             ID: "IMG-LM neutral density filter"
-            NAME: "#nd_filter_wheel.current_filter"
+            NAME: "#nd_filter_wheel.current_filter!"
