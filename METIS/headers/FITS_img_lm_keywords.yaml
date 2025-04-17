@@ -4,7 +4,9 @@
     HIERARCH:
       ESO:
         INS:
-          MODE: "IMG_LM"
+          OPTI4:                # LMS beamsplitter pickoff wheel
+            DESC: "LMS pickoff"
+            NAME: "OUT"         # could be IN for parallel observing
           OPTI9:                # IMG-LM mask/grism wheel
             DESC: "IMG-LM mask/grism"
             NAME: "open"

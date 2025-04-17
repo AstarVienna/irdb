@@ -56,7 +56,12 @@ effects:
       col_number_start: 1
       slice_samples: 5    # number of samples along slice width
 
-
+  - name: lms_fits_keywords
+    description: FITS keywords specific to LMS elements
+    class: ExtraFitsKeywords
+    include: True
+    kwargs:
+      filename: headers/FITS_lms_keywords.yaml
 
 ---
 ### default simulation parameters needed for a METIS simulation
