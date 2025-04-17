@@ -38,6 +38,12 @@ effects:
         transmissions: [0.6098, 0.6312, 0.5879, 0.6073, 0.5795, 0.7342, 0.7509, 0.7429, 0.6170, 0.4362, 0.4476, 0.6098, 0.6312, 0.6076, 0.8201]
       current_mask: "open"
 
+  - name: wcu_fits_keywords
+    description: FITS keywords specific to the WCU
+    class: ExtraFitsKeywords
+    include: True
+    kwargs:
+      filename: headers/FITS_wcu_keywords.yaml
 ---
 # Required parameters to replace telescope
 alias: TEL
