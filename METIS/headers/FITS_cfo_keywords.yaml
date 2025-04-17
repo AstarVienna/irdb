@@ -1,0 +1,18 @@
+- ext_type: PrimaryHDU
+  keywords:
+
+    HIERARCH:
+      ESO:
+        INS:
+          OPTI1:                # CFO PP1 mask wheel
+            # TODO: There are no names yet. We use the
+            #       transmission, which is returned as an
+            #       inconvenient list.
+            DESC: "CFO PP1 mask wheel"
+            NAME: "#cold_stop.transmission!"
+          OPTI2:                # CFO PP1 ADC wheel
+            DESC: "ADC wheel"
+            NAME: "#adc_wheel.current_adc!"
+          OPTI3:                # CFO FP2 mask/slit wheel
+            DESC: "Slit wheel"
+            NAME: "#slit_wheel.current_slit!"
