@@ -34,6 +34,13 @@ effects:
       s_colname: "xi"
       col_number_start: 1
 
+  - name: lss_fits_keywords
+    descriptions: FITS keywords specific to LSS
+    class: ExtraFitsKeywords
+    include: True
+    kwargs:
+      filename: headers/FITS_lss_keywords.yaml
+
 ---
 ### default simulation parameters needed for a METIS simulation
 object: simulation
