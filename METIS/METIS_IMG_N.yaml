@@ -75,6 +75,14 @@ effects:
       wave_key: "WAVELENG"
       bkg_width: -1
 
+  - name: img_n_fits_keywords
+    descriptions: FITS keywords specific to IMG-N
+    class: ExtraFitsKeywords
+    include: True
+    kwargs:
+      filename: headers/FITS_img_n_keywords.yaml
+
+
 ---
 ### default simulation parameters needed for a METIS simulation
 object: simulation
