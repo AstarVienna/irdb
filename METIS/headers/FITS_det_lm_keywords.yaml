@@ -1,0 +1,23 @@
+- ext_type: PrimaryHDU
+  keywords:
+    HIERARCH:
+      ESO:
+        DET1:
+          DIT:        "!OBS.dit"
+          NDIT:       "!OBS.ndit"
+          CUBE:
+            MODE:    "F"
+
+- ext_type: ImageHDU
+  keywords:
+    HIERARCH:
+      ESO:
+        DET1:
+          CHIP:
+            ID:       "!DET.detector"
+            #MODE:     "#detector_readout_parameters.mode_properties"
+            MINDIT:   "!DET.mindit"
+            FULLWELL: "!DET.full_well"
+            RON:      "!DET.readout_noise"
+            DARK:     "!DET.dark_current"
+            #GAIN:     "!DET.gain"

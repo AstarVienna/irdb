@@ -108,3 +108,10 @@ effects:
     class: Quantization
     kwargs:
       dtype: uint16
+
+  - name: det_n_fits_keywords
+    descriptions: FITS keywords specific to N detector
+    class: ExtraFitsKeywords
+    include: True
+    kwargs:
+      filename: headers/FITS_det_n_keywords.yaml
