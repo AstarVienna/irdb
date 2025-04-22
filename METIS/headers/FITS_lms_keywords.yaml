@@ -4,7 +4,7 @@
     HIERARCH:
       ESO:
         DPR:
-          TECH:   "LMS"
+          TECH:   "IFU"
         INS:
           LMS:                  # LMS mode (Nominal or Extended)
             MODE: "Nominal"
