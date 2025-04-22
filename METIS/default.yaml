@@ -123,6 +123,8 @@ mode_yamls:
       efficiency_file: TER_grating_L.fits
       slit: C-38_1
       adc: const_90
+      grism_opti9: GRISM_L
+      grism_opti12: open
       filter_name: L_spec
       nd_filter_name: open
       detector_readout_mode: slow
@@ -146,6 +148,8 @@ mode_yamls:
       efficiency_file: TER_grating_M.fits
       slit: C-38_1
       adc: const_90
+      grism_opti9: GRISM_M
+      grism_opti12: open
       filter_name: M_spec
       nd_filter_name: open
       detector_readout_mode: slow
@@ -169,8 +173,12 @@ mode_yamls:
       efficiency_file: TER_grating_N.fits
       slit: D-57_1
       adc: false
+      grism_opti9: open
+      grism_opti12: GRISM_N
       filter_name: N_spec
       nd_filter_name: open
+      chop_offsets: [3, 0]  # perpendicular chopping and nodding
+      nod_offsets: [0, 3]
       detector_readout_mode: low_capacity
 
   - object: observation
@@ -265,6 +273,8 @@ mode_yamls:
       efficiency_file: TER_grating_L.fits
       slit: C-38_1
       adc: const_90
+      grism_opti9: GRISM_L
+      grism_opti12: open
       filter_name: L_spec
       nd_filter_name: open
       detector_readout_mode: slow
@@ -286,6 +296,8 @@ mode_yamls:
       efficiency_file: TER_grating_M.fits
       slit: C-38_1
       adc: const_90
+      grism_opti9: GRISM_M
+      grism_opti12: open
       filter_name: M_spec
       nd_filter_name: open
       detector_readout_mode: slow
@@ -307,8 +319,12 @@ mode_yamls:
       efficiency_file: TER_grating_N.fits
       slit: D-57_1
       adc: false
+      grism_opti9: open
+      grism_opti12: GRISM_N
       filter_name: N_spec
       nd_filter_name: open
+      chop_offsets: [3, 0]  # perpendicular chopping and nodding
+      nod_offsets: [0, 3]
       detector_readout_mode: low_capacity
 
   - object: observation
