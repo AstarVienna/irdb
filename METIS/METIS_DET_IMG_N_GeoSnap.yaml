@@ -4,12 +4,13 @@ object: detector
 alias: DET
 name: METIS_DET_IMG_N_GeoSnap
 description: Teledyne GeoSnap Detector
-date_modified: 2022-02-21
+date_modified: 2024-03-25
 changes:
   - 2021-12-16 (OC) some rearrangements, chopnod off by default
   - 2022-01-25 (KL, OC) added DetectorModePropertiesSetter effect
   - 2022-01-26 (OC) added DET.detector, linearity set explicitely
   - 2022-02-21 (OC) rename effects
+  - 2024-03-25 (FH) filename instead of file_name
 
 properties:
   detector: Teledyne GeoSnap
@@ -18,16 +19,16 @@ properties:
   dit: "!OBS.dit"
   ndit: "!OBS.ndit"
   layout:
-    file_name: "FPA_metis_img_n_geosnap_layout.dat"
+    filename: "FPA_metis_img_n_geosnap_layout.dat"
   qe_curve:
-    file_name: "QE_detector_geosnap.dat"
+    filename: "QE_detector_geosnap.dat"
 
 effects:
   - name: detector_array
     description: METIS IMG-N detector array list
     class: DetectorList
     kwargs:
-      filename: "!DET.layout.file_name"
+      filename: "!DET.layout.filename"
 
   - name: detector_readout_parameters
     description: Readout modes for Geosnap detector (high and low capacity)
@@ -55,7 +56,7 @@ effects:
     description: Quantum efficiency curves for each detector
     class: QuantumEfficiencyCurve
     kwargs:
-      filename: "!DET.qe_curve.file_name"
+      filename: "!DET.qe_curve.filename"
 
   - name: auto_exposure
     description: automatic determination of DIT and NDIT
