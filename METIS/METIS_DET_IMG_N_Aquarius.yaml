@@ -20,6 +20,7 @@ properties:
   full_well: !!float 1.e6  # electrons, low-capacity mode
   dark_current: 13         # [e-/s] E-REP-NOVA-MET-1191, v2-0
   readout_noise: 12
+  gain: 15    # wild guess to make full_well fit into int16
   layout:
     file_name: "FPA_metis_img_nq_aquarius_layout.dat"
   qe_curve:
@@ -100,8 +101,9 @@ effects:
       nod_offsets: "!OBS.nod_offsets"
       pixel_scale: "!INST.pixel_scale"
 
-  - name: quantization
-    description: Turn photon count into integers
-    class: Quantization
+  - name: ad_conversion
+    description: Apply gain and convert electron count into integers
+    class: ADConversion
     kwargs:
       dtype: uint16
+      gain: "!DET.gain"
