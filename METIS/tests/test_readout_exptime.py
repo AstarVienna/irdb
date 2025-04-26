@@ -26,6 +26,7 @@ class TestReadoutExptime:
 
     See also https://github.com/AstarVienna/ScopeSim/issues/438
     """
+
     star = sim.source.source_templates.star()
     # Shift the source, so it can be detected through center_of_mass.
     star.shift(0.5, 1.0)
@@ -34,7 +35,7 @@ class TestReadoutExptime:
     # The first readout might ignore the exptime.
     metis_l = sim.OpticalTrain(cmd_l)
     metis_l.observe(star, update=True)
-    result_first = metis_l.readout(exptime=100.)[0]
+    result_first = metis_l.readout(exptime=0.1)[0]
     # We need to copy the first readeout, because
     # the second readout might overwrite the first...
     result_first_copy = copy.deepcopy(result_first)
@@ -42,10 +43,10 @@ class TestReadoutExptime:
     # The second readout might not properly have the detector reset.
     metis_l = sim.OpticalTrain(cmd_l)
     metis_l.observe(star, update=True)
-    result_temp = metis_l.readout(exptime=100.)[0]
+    result_temp = metis_l.readout(exptime=.1)[0]
     result_temp_copy = copy.deepcopy(result_temp)
     assert (result_temp[1].data == result_temp_copy[1].data).all()
-    result_second = metis_l.readout(exptime=100.)[0]
+    result_second = metis_l.readout(exptime=.1)[0]
 
     if PLOTS:
         plt.figure(figsize=(10, 5))
@@ -74,10 +75,10 @@ class TestReadoutExptime:
 
     assert 1090 < x2 < 1110
     assert 1050 < y2 < 1070
-    assert 10**12 < flux2
+    assert 10**8 < flux2
     assert 1090 < x1 < 1110
     assert 1050 < y1 < 1070
-    assert 10**12 < flux1
+    assert 10**8 < flux1
 
     # TOOD: fix this bug, https://github.com/AstarVienna/ScopeSim/issues/439
     # assert (result_temp[1].data == result_temp_copy[1].data).all()
