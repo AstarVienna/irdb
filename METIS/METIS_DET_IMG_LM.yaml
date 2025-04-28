@@ -101,3 +101,10 @@ effects:
     kwargs:
       dtype: uint16
       gain: "!DET.gain"
+
+  - name: det_lm_fits_keywords
+    descriptions: FITS keywords specific to LM detector
+    class: ExtraFitsKeywords
+    include: True
+    kwargs:
+      filename: headers/FITS_det_lm_keywords.yaml

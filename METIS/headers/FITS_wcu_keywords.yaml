@@ -16,8 +16,12 @@
           OPTI20:               # WCU FP2.1 mask wheel
             DESC: "WCU FP2.1 mask"
             NAME: "#wcu_source.current_fpmask"
-          WCU_LAMP:             # WCU lamp TODO: made up keyword
-            DESC: "WCU lamp"
-            NAME: "#wcu_source.current_lamp"
         SEQ:
           WCU_BB_TEMP: "#wcu_source.bb_temp"
+          WCU:
+            LASER1: "ON"
+            LASER2: "ON"              # TODO: need a wavelength
+            LASER3: "ON"
+            LAMP:                     # WCU lamp TODO: made up keyword
+              DESC: "WCU lamp"
+              NAME: "#wcu_source.current_lamp"

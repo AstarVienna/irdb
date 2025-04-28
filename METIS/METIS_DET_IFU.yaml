@@ -84,3 +84,10 @@ effects:
     kwargs:
       dtype: uint16
       gain: "!DET.gain"
+
+  - name: det_ifu_fits_keywords
+    descriptions: FITS keywords specific to IFU detectors
+    class: ExtraFitsKeywords
+    include: True
+    kwargs:
+      filename: headers/FITS_det_ifu_keywords.yaml

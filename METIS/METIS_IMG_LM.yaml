@@ -12,6 +12,7 @@ changes:
   - 2022-01-12 (OC) change default bkg_width to -1
   - 2022-02-17 (OC) increase spectral_bin_width for imaging
   - 2022-02-21 (OC) renamed effects
+  - 2025-04-16 (OC) add ExtraFitsKeywords
 
 properties:
   pixel_scale: 0.00547         # arcsec / pixel, METIS_1097
@@ -80,6 +81,13 @@ effects:
       filename: "!OBS.psf_file"
       wave_key: "WAVELENG"
       bkg_width: -1
+
+  - name: img_lm_fits_keywords
+    descriptions: FITS keywords specific to IMG-LM
+    class: ExtraFitsKeywords
+    include: True
+    kwargs:
+      filename: headers/FITS_img_lm_keywords.yaml
 
 ---
 ### default simulation parameters needed for a METIS simulation
