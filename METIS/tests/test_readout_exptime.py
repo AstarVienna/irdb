@@ -11,7 +11,7 @@ sim.rc.__config__["!SIM.file.local_packages_path"] = PKGS_DIR
 PLOTS = False
 
 
-class TestReadoutExptime:
+def test_readout_exptime():
     """Test whether giving exptime in readout() is respected.
 
     The implementation of Quantization and Autoexposure has lead
