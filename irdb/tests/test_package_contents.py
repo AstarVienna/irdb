@@ -1,5 +1,6 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""Runs the badge reports tests."""
+
 import logging
 from pathlib import Path
 

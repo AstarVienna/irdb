@@ -80,7 +80,6 @@ def temp_zipfiles(tmp_path_factory):
     return tmpdir
 
 
-@pytest.mark.usefixtures("temp_zipfiles")
 class TestGetLocalPath:
     def test_stable(self, temp_zipfiles):
         with mock.patch("irdb.publish.ZIPPED_DIR", temp_zipfiles):
@@ -148,7 +147,6 @@ def fixture_default_argv():
 
 
 @pytest.mark.webtest
-@pytest.mark.usefixtures("default_argv", "temp_zipfiles")
 @pytest.mark.parametrize("argv, called, response", [
     (["-u"], False, None),
     (["-u", "-s", "--no-confirm"], False, None),
@@ -174,7 +172,6 @@ def test_call_confirm(default_argv, temp_zipfiles, argv, called, response):
                 assert mock_confirm.called == called
 
 
-@pytest.mark.usefixtures("default_argv")
 @pytest.mark.parametrize("argv, called, args", [
     ([], False, {}),
     (["-c"], True, {"stable": False, "keep_version": False}),
@@ -194,7 +191,6 @@ def test_make_package_called(default_argv, argv, called, args):
                 mock_mkpkg.assert_not_called()
 
 
-@pytest.mark.usefixtures("default_argv")
 @pytest.mark.parametrize("argv, called, args", [
     ([], False, {}),
     (["-u"], True, {"stable": False, "no_confirm": False}),
@@ -216,7 +212,6 @@ def test_push_to_server_called(default_argv, argv, called, args):
                 mock_phsvr.assert_not_called()
 
 
-@pytest.mark.usefixtures("default_argv")
 def test_multiple_packages(default_argv):
     argv = ["foo_package", "bar_package", "-c", "-u"]
     with mock.patch("sys.argv", default_argv + argv):
@@ -229,7 +224,6 @@ def test_multiple_packages(default_argv):
                 assert "bar_package" in mock_phsvr.call_args[0]
 
 
-@pytest.mark.usefixtures("default_argv", "caplog")
 def test_warning_no_action(default_argv, caplog):
     warnmsg = ("Neither `compile` nor `upload` was set. "
                "No action will be performed.")

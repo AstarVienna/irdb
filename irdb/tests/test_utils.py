@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 Tests for irdb.utils
@@ -23,20 +22,16 @@ def fixture_packages():
 
 
 class TestGetPackages:
-    @pytest.mark.usefixtures("packages")
     def test_includes_various_packages(self, packages):
         wanted = {"Armazones", "ELT", "METIS", "MICADO", "test_package"}
         assert all(pkg_name in packages.keys() for pkg_name in wanted)
 
-    @pytest.mark.usefixtures("packages")
     def test_doesnt_includes_specials(self, packages):
         wanted = {"irdb", "docs", "_REPORTS", ".github"}
         assert all(pkg_name not in packages.keys() for pkg_name in wanted)
 
-    @pytest.mark.usefixtures("packages")
     def test_values_are_path_objects(self, packages):
         assert isinstance(packages["test_package"], Path)
 
-    @pytest.mark.usefixtures("packages")
     def test_only_includes_dirs(self, packages):
         assert all(path.is_dir() for path in packages.values())
