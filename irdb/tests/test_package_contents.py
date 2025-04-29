@@ -1,24 +1,19 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""Runs the badge reports tests."""
+
 import logging
 from pathlib import Path
 
 import pytest
 import yaml
 
-from scopesim.effects.data_container import DataContainer
 from astropy.io.ascii import InconsistentTableError
 
-from irdb.utils import get_packages, recursive_filename_search
-from irdb.badges import BadgeReport
-from irdb.fileversions import IRDBFile
+from scopesim.effects.data_container import DataContainer
+from astar_utils import BadgeReport
 
-# HACK: This is necessary because scopesim has import side effects that mess up
-#       logging here, specifically capture. Once that's solved, the following
-#       lines should be removed!
-from importlib import reload
-logging.shutdown()
-reload(logging)
+from irdb.utils import get_packages, recursive_filename_search
+from irdb.fileversions import IRDBFile
 
 
 # Note: This module doesn't need to run always, so mark it.
@@ -172,8 +167,7 @@ class TestPackageDatFiles:
         for fn_dat in fns_dat:
             fn_loc = fn_dat.relative_to(pkg_dir)
             try:
-                # FIXME: DataContainer should be updated to support Path objects...
-                _ = DataContainer(str(fn_dat))
+                _ = DataContainer(fn_dat)
             except InconsistentTableError as err:
                 logging.error("%s InconsistentTableError %s", str(fn_loc), err)
                 bad_files.append(str(fn_loc))

@@ -1,9 +1,5 @@
-import os
-from os import path as pth
 from pathlib import Path
-import yaml
 
-from irdb.system_dict import SystemDict
 
 PKG_DIR = Path(__file__).parent.parent
 

@@ -58,6 +58,21 @@ jobs:
           name: badge-report
           path: _REPORTS
 
+  irdb_test:
+    name: Run internal tests
+    runs-on: ubuntu-latest
+    if: contains(github.event.pull_request.labels.*.name, 'irdb functionality')
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+      - name: Install dependencies
+        run: pip install -r requirements.github_actions.txt
+      - name: Run Pytest for badges
+        run: pytest -m "irdb"
+
   tests_devmaster:
     name: Test against ScopeSim main or PR branch
     runs-on: ${{ matrix.os }}
