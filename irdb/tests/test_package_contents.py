@@ -166,8 +166,7 @@ class TestPackageDatFiles:
         for fn_dat in fns_dat:
             fn_loc = fn_dat.relative_to(pkg_dir)
             try:
-                # FIXME: DataContainer should be updated to support Path objects...
-                _ = DataContainer(str(fn_dat))
+                _ = DataContainer(fn_dat)
             except InconsistentTableError as err:
                 logging.error("%s InconsistentTableError %s", str(fn_loc), err)
                 bad_files.append(str(fn_loc))
