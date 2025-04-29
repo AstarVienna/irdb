@@ -13,6 +13,10 @@ import pytest
 from irdb.utils import get_packages
 
 
+# Note: This module doesn't need to run always, so mark it.
+pytestmark = pytest.mark.irdb
+
+
 @pytest.fixture(name="packages", scope="class")
 def fixture_packages():
     return dict(get_packages())

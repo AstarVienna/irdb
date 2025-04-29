@@ -65,6 +65,9 @@ from .. import publish as pub
 #     # Put the original values back.
 #     PATH_TEST_PACKAGE_VERSION_YAML.write_bytes(b_yaml_test_package)
 
+# Note: This module doesn't need to run always, so mark it.
+pytestmark = pytest.mark.irdb
+
 
 @pytest.fixture(scope="module")
 def temp_zipfiles(tmp_path_factory):
