@@ -10,3 +10,4 @@ scopesim_templates
 jupytext
 ipykernel
 nbconvert
+astar-utils
