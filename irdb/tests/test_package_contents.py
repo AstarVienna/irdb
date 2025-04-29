@@ -15,14 +15,6 @@ from irdb.utils import get_packages, recursive_filename_search
 from irdb.fileversions import IRDBFile
 
 
-# HACK: This is necessary because scopesim has import side effects that mess up
-#       logging here, specifically capture. Once that's solved, the following
-#       lines should be removed!
-from importlib import reload
-logging.shutdown()
-reload(logging)
-
-
 # Note: This module doesn't need to run always, so mark it.
 pytestmark = pytest.mark.badges
 
