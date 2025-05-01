@@ -1,0 +1,15 @@
+---
+### KMOS package metadata
+alias: PKG
+name: KMOS
+description: NOT YET FUNCTIONAL PLACEHOLDER
+status: concept
+date_modified: 2024-12-12
+changes:
+  - 2024-12-12 (FH) initial creation
+
+packages:
+  - KMOS
+
+yamls:
+  - KMOS.yaml

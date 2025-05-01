@@ -1,10 +1,9 @@
-ERIS at the VLT
-===============
+# ERIS at the VLT
 
 ERIS is a combination of the SPIFFI IFU spectrograph from SINFONI and the NIX JHKLM imager with an AOF compatible WFS
 
-NIX Imager
-----------
+## NIX Imager
+
 * Wavelength: 1-5um (J,H,Ks,Lp,Mp)
 * Pixel scale: Wide 0.027"/pix, Zoom 0.013"/pix
 * FOV: Wide 54", Zoom 27"
@@ -12,7 +11,8 @@ NIX Imager
 * Detector: (2x2)k H2RG
 * LSS Slit: 12x86 mas
 
-Optics:
+### Optics
+
 * Dichroic to WFS
 * NIX selector mirror (45deg)
 * Entrance window
@@ -24,8 +24,8 @@ Optics:
 * H2RG
 
 
-SPIFFIER IFU
-------------
+## SPIFFIER IFU
+
 * FOV: 0.8", 3.2", 8"
 * Pixel scale: 12.5x25 mas, 50x100mas, 125x250mas
 * IFU: 32 Slices, each 64 pixels wide ?? Really=2048 pix exactly. What is the SINFONI detetor?
@@ -36,11 +36,12 @@ SPIFFIER IFU
 * Detector: H2RG
 * Saturation: 110k e-/DIT/pix
 * Dark: 0.15 e-/s
-* RON: 16e-   
+* RON: 16e-
 * Gain: 2.42 e-/ADU
 
 
-Optics
+### Optics
+
 * 2x Lens collimator
 * Pupil stop
 * Filter wheel

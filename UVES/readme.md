@@ -1,5 +1,5 @@
-UVES at the VLT
-===============
+# UVES at the VLT
+
 UVES - Ultraviolet and Visual Echelle Spectrograph (R-40000)
 Two arms: B 300-500m, R 420-1100mn
 Resolving power: B 0.0019 nm/pix, R 0.0025 nm/pix
@@ -19,6 +19,3 @@ RON 4 e-
 Zeus is the replacement of the old MIT CCD that
 was also known as 'Nigel' and that took place in early July 2009. Zeus is a thicker chip than
 Nigel was,
-
-
-
