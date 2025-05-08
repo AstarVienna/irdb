@@ -1,0 +1,77 @@
+---
+### METIS LMS NOMINAL MODE
+object: instrument
+alias: INST
+name: METIS_LMS
+description: base configuration for METIS LMS
+date_modified: 2024-05-08
+changes:
+  - 2024-05-08 (FH) create file as copy of METIS_LMS.yaml
+
+properties:
+  pixel_scale: 0.0082          # arcsec / pixel
+  plate_scale: 0.455555555556  # arcsec / mm
+  fp2_platescale: 0.303        # arcsec / mm
+  decouple_detector_from_sky_headers: True  # needed for spectroscopy
+  flatten: False  # cube output
+
+effects:
+  - name: metis_lms_surfaces
+    description: list of extra mirrors needed for the SPEC LMS mode
+    class: SurfaceList
+    kwargs:
+      filename: LIST_METIS_mirrors_lms.dat
+
+  - name: lms_efficiency
+    description: grating efficiency of METIS LMS
+    class: MetisLMSEfficiency
+    kwargs:
+      filename: "!OBS.trace_file"
+      wavelen: "!OBS.wavelen"
+
+  - name: lms_image_slicer
+    description: field of view of the image slicer
+    class: MetisLMSImageSlicer
+    kwargs:
+      filename: "!OBS.trace_file"
+      ext_id: "Aperture List"
+
+  - name: psf
+    description: field constant, wavelength dependent PSF for imaging mode
+    class: FieldConstantPSF
+    include: False
+    kwargs:
+      filename: "!OBS.psf_file"
+      wave_key: "WAVELENG"
+      bkg_width: -1
+
+  - name: lms_spectral_traces
+    description: list of spectral order trace geometry on the focal plane
+    class: MetisLMSSpectralTraceList
+    include: True
+    kwargs:
+      filename: "!OBS.trace_file"
+      wave_colname: "wavelength"
+      wavelen: "!OBS.wavelen"
+      s_colname: "xi"
+      col_number_start: 1
+      slice_samples: 5    # number of samples along slice width
+
+  - name: lms_fits_keywords
+    description: FITS keywords specific to LMS elements
+    class: ExtraFitsKeywords
+    include: False
+    kwargs:
+      filename: headers/FITS_lms_keywords.yaml
+
+---
+### default simulation parameters needed for a METIS simulation
+object: simulation
+alias: SIM
+name: METIS_simulation_parameters
+description: RC simulation parameters which need to change for a METIS run
+
+properties:
+  spectral:
+    spectral_bin_width: !!float 1E-5   # microns, defines fov wavelengths
+    spectral_resolution: 200000          # defines skycalc resolution
