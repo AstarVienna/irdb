@@ -360,6 +360,26 @@ mode_yamls:
       adc: false
       detector_readout_mode: slow
 
+  - object: observation
+    alias: OBS
+    name: lms_cube
+    description: "METIS LM-band integral-field spectroscopy, nominal mode, cube output"
+    status: experimental
+    yamls:
+      # - Armazones.yaml
+      - ELT.yaml
+      - METIS.yaml
+      - METIS_LMS_SMPL.yaml
+      - METIS_DET_IFU_SMPL.yaml
+    properties:
+      ins_mode: LMS          # use as FITS header keyword
+      psf_file: PSF_LM_9mag_06seeing.fits
+      slit: false
+      adc: false
+      trace_file: TRACE_LMS.fits
+      wavelen: 4.2
+      detector_readout_mode: slow
+
 ---
 ### default simulation parameters needed for a METIS simulation
 object: simulation
