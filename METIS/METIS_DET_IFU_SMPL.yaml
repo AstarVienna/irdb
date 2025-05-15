@@ -7,6 +7,7 @@ description: Simplified IFU cube detector
 date_modified: 2025-05-08
 changes:
   - 2025-05-08 (FH) create file as copy of METIS_DET_IFU.yaml
+  - 2025-05-15 (FH) update included effects
 
 properties:
   image_plane_id: 0
@@ -33,7 +34,6 @@ effects:
   - name: detector_array_list
     description: METIS LMS detector array list
     class: DetectorList3D
-    include: true
     kwargs:
       filename: "!DET.layout.file_name"
 
@@ -57,7 +57,6 @@ effects:
   - name: dark_current
     description: METIS LMS dark current
     class: DarkCurrent
-    include: False
     kwargs:
       value: "!DET.dark_current"
 
@@ -75,7 +74,6 @@ effects:
   - name: readout_noise
     description: Readout noise frames
     class: BasicReadoutNoise
-    include: False
     kwargs:
       noise_std: "!DET.readout_noise"
       n_channels: 32
@@ -87,10 +85,3 @@ effects:
     kwargs:
       dtype: uint16
       gain: "!DET.gain"
-
-  - name: det_ifu_fits_keywords
-    descriptions: FITS keywords specific to IFU detectors
-    class: ExtraFitsKeywords
-    include: False
-    kwargs:
-      filename: headers/FITS_det_ifu_keywords.yaml
