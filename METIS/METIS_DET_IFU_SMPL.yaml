@@ -4,9 +4,9 @@ object: detector
 alias: DET
 name: metis_lms_detector_array
 description: Simplified IFU cube detector
-date_modified: 2024-05-08
+date_modified: 2025-05-08
 changes:
-  - 2024-05-08 (FH) create file as copy of METIS_DET_IFU.yaml
+  - 2025-05-08 (FH) create file as copy of METIS_DET_IFU.yaml
 
 properties:
   image_plane_id: 0
