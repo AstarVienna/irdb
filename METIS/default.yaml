@@ -366,7 +366,7 @@ mode_yamls:
     description: "METIS LM-band integral-field spectroscopy, nominal mode, cube output"
     status: experimental
     yamls:
-      # - Armazones.yaml
+      - Armazones.yaml
       - ELT.yaml
       - METIS.yaml
       - METIS_LMS_SMPL.yaml
