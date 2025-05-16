@@ -7,7 +7,7 @@ description: Simplified IFU cube detector
 date_modified: 2025-05-08
 changes:
   - 2025-05-08 (FH) create file as copy of METIS_DET_IFU.yaml
-  - 2025-05-15 (FH) update included effects
+  - 2025-05-16 (FH) update included effects
 
 properties:
   image_plane_id: 0
@@ -16,11 +16,7 @@ properties:
   ndit: "!OBS.ndit"
   mindit: 1.3               # seconds, Roy van Boekel, pers. communication
   full_well: !!float 1.E5   # electrons, E-TNT-MPIA-1004, v1-0
-  gain:
-    1: 2.0            # electrons/ADU, email B.Serra 2024-10-09
-    2: 2.0
-    3: 2.0
-    4: 2.0
+  gain: 2
   dark_current: 0.1         # [e-/s]
   readout_noise: 70         # electrons, AI on RvB: check
   layout:
