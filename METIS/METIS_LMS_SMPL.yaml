@@ -7,7 +7,7 @@ description: base configuration for METIS LMS
 date_modified: 2025-05-08
 changes:
   - 2025-05-08 (FH) create file as copy of METIS_LMS.yaml
-  - 2025-05-15 (FH) remove unneeded effects
+  - 2025-05-16 (FH) remove unneeded effects, add flux binning effect
 
 properties:
   pixel_scale: 0.0082          # arcsec / pixel
@@ -37,6 +37,10 @@ effects:
       filename: "!OBS.psf_file"
       wave_key: "WAVELENG"
       bkg_width: -1
+
+  - name: flux_binning
+    description: turn per arcsec per um to ph per s
+    class: FluxBinning3D
 
 ---
 ### default simulation parameters needed for a METIS simulation
