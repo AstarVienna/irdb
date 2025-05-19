@@ -42,7 +42,7 @@ effects:
   - name: auto_exposure
     description: automatic determination of DIT and NDIT
     class: AutoExposure
-    include: False
+    include: True
     kwargs:
       fill_frac: "!OBS.auto_exposure.fill_frac"
 
@@ -77,7 +77,7 @@ effects:
   - name: ad_conversion
     description: Apply gain and convert electron count into integers
     class: ADConversion
-    include: False
+    include: True
     kwargs:
       dtype: uint16
       gain: "!DET.gain"
