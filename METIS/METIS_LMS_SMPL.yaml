@@ -38,6 +38,14 @@ effects:
       wave_key: "WAVELENG"
       bkg_width: -1
 
+  - name: lsf
+    description: line-spread function for spectroscopic domain
+    class: LineSpreadFunction
+    kwargs:
+      wavelen: "!OBS.wavelen"
+      fit_slope: 0.96       # pix/um    TODO: Change back to lambda
+      fit_intercept: -0.12  # pix
+
   - name: flux_binning
     description: turn per arcsec per um to ph per s
     class: FluxBinning3D
