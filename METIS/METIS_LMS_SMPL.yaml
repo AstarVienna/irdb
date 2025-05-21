@@ -13,6 +13,7 @@ properties:
   pixel_scale: 0.0082          # arcsec / pixel
   plate_scale: 0.455555555556  # arcsec / mm
   fp2_platescale: 0.303        # arcsec / mm
+  slice_width: 0.0207          # arcsec / slice
   decouple_detector_from_sky_headers: True  # needed for spectroscopy
   flatten: False  # cube output
 
