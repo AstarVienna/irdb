@@ -44,8 +44,11 @@ effects:
     class: LineSpreadFunction
     kwargs:
       wavelen: "!OBS.wavelen"
-      fit_slope: 0.96       # pix/um    TODO: Change back to lambda
-      fit_intercept: -0.12  # pix
+      fit_slope:      3.795e-06  # use to compute dlam_per_pix [um/pix] as
+      fit_intercept: -4.659e-07  #   a function of wavelength [um]
+      slice_width: "!INST.slice_width"
+      pixel_scale: "!INST.pixel_scale"
+      spec_binwidth: "!SIM.spectral.spectral_bin_width"
 
   - name: flux_binning
     description: turn per arcsec per um to ph per s
