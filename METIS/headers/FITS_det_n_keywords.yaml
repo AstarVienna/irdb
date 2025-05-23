@@ -1,0 +1,29 @@
+- ext_type: PrimaryHDU
+  keywords:
+    HIERARCH:
+      ESO:
+        DET2:
+          DIT:        "!OBS.dit"
+          NDIT:       "!OBS.ndit"
+          CUBE:
+            MODE:    "F"
+        SEQ:
+          CHOPNOD:
+            ST:      "#chop_nod.include"
+            OFFSCHOP: ["!OBS.chop_offsets", "[arcsec]"]
+            OFFSNOD:  ["!OBS.nod_offsets", "[arcsec"]
+
+- ext_type: ImageHDU
+  keywords:
+
+    HIERARCH:
+      ESO:
+        DET2:
+          CHIP:
+            ID:       "!DET.detector"
+            MODE:     "!OBS.detector_readout_mode!"
+            MINDIT:   "!DET.mindit"
+            FULLWELL: "!DET.full_well"
+            RON:      "!DET.readout_noise"
+            DARK:     "!DET.dark_current"
+            #GAIN

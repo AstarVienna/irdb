@@ -1,0 +1,20 @@
+- ext_type: PrimaryHDU
+  keywords:
+
+    HIERARCH:
+      ESO:
+        DPR:
+          TECH:   "IMAGE,LM"
+        INS:
+          OPTI4:                # LMS beamsplitter pickoff wheel
+            DESC: "LMS pickoff"
+            NAME: "OUT"         # could be IN for parallel observing
+          OPTI9:                # IMG-LM mask/grism wheel
+            DESC: "IMG-LM mask/grism"
+            NAME: "open"
+          OPTI10:               # IMG-LM science filter wheel
+            DESC: "IMG-LM science filter"
+            NAME: "#filter_wheel.current_filter!"
+          OPTI11:               # IMG-LM neutral density filter wheel
+            DESC: "IMG-LM neutral density filter"
+            NAME: "#nd_filter_wheel.current_filter!"

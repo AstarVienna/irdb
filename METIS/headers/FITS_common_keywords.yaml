@@ -87,7 +87,7 @@
           #
           # Many more are defined in E-LIS-KUL-MET-1002. Not all possible INS
           # keywords are applicable to all observation modes.
-          #
+          MODE:   "!OBS.ins_mode"    # Instrument mode
           # TODO: Add the OPTI keywords, but probably in separate yaml files
           #       for each mode.
           #OPTI6:
@@ -138,13 +138,7 @@
           # TODO: Include a ReferencePixelBorder effect?
           #REF:
           #  ALL: "#border_reference_pixels.all"
-        TEL:
-          NAME: "ELT"
-          TELESCOP: "ELT"
-          TER:
-            FILENAME: "!TEL.ter_curve.filename"
-          REF:
-            FILENAME: "#telescope_reflection.filename"
+
         OCS:
           PXSCALE: "!INST.pixel_scale"
         OBS:
