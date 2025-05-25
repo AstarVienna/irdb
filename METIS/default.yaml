@@ -374,8 +374,9 @@ mode_yamls:
       - METIS_LMS_SMPL.yaml
       - METIS_DET_IFU_SMPL.yaml
     properties:
-      ins_mode: LMS          # use as FITS header keyword
+      ins_mode: LMS_cube          # use as FITS header keyword
       psf_file: PSF_LM_9mag_06seeing.fits
+      interp_psf: False
       slit: false
       adc: false
       trace_file: TRACE_LMS.fits
