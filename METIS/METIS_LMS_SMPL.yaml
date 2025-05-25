@@ -13,6 +13,7 @@ properties:
   pixel_scale: 0.0082          # arcsec / pixel
   plate_scale: 0.455555555556  # arcsec / mm
   fp2_platescale: 0.303        # arcsec / mm
+  slice_width: 0.0207          # arcsec / slice
   decouple_detector_from_sky_headers: True  # needed for spectroscopy
   flatten: False  # cube output
 
@@ -37,6 +38,17 @@ effects:
       filename: "!OBS.psf_file"
       wave_key: "WAVELENG"
       bkg_width: -1
+
+  - name: lsf
+    description: line-spread function for spectroscopic domain
+    class: LineSpreadFunction
+    kwargs:
+      wavelen: "!OBS.wavelen"
+      fit_slope:      3.795e-06  # use to compute dlam_per_pix [um/pix] as
+      fit_intercept: -4.659e-07  #   a function of wavelength [um]
+      slice_width: "!INST.slice_width"
+      pixel_scale: "!INST.pixel_scale"
+      spec_binwidth: "!SIM.spectral.spectral_bin_width"
 
   - name: flux_binning
     description: turn per arcsec per um to ph per s

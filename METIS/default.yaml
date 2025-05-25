@@ -6,7 +6,7 @@ alias: OBS
 name: METIS_default_configuration
 description: default parameters needed for a METIS simulation
 status: development
-needs_scopesim: "0.9"
+needs_scopesim: "v0.9"
 date_modified: 2024-09-04
 changes:
   - 2021-12-16 (OC) chopnod defaults to perpendicular
@@ -366,7 +366,7 @@ mode_yamls:
     name: lms_cube
     description: "METIS LM-band integral-field spectroscopy, nominal mode, cube output"
     status: experimental
-    needs_scopesim: "0.10.0a1"
+    needs_scopesim: "v0.10.0a1"
     yamls:
       - Armazones.yaml
       - ELT.yaml
