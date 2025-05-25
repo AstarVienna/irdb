@@ -1,0 +1,22 @@
+name: Tests dev
+on:
+  push:
+    branches:
+      - dev_master
+
+  # Run every day at 5:00 UTC
+  schedule:
+    - cron: "0 5 * * *"
+
+jobs:
+  tests:
+    name: Tests
+    uses: ./.github/workflows/tests.yml
+
+  notebook_tests:
+    name: Notebook tests
+    uses: ./.github/workflows/notebooktests.yml
+
+  badge_report:
+    name: Badge Report
+    uses: ./.github/workflows/badge_report.yml
