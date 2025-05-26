@@ -106,12 +106,6 @@ effects:
     kwargs:
       mode: average
 
-  - name: quantization
-    description: Turn photon count into integers
-    class: Quantization
-    kwargs:
-      dtype: uint16
-
   - name: chop_nod
     descriptions: chopping and nodding
     class: ChopNodCombiner
