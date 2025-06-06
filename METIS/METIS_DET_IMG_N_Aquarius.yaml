@@ -98,6 +98,13 @@ effects:
     kwargs:
       mode: average
 
+  - name: ad_conversion
+    description: Apply gain and convert electron count into integers
+    class: ADConversion
+    kwargs:
+      dtype: uint16
+      gain: "!DET.gain"
+
   - name: chop_nod
     descriptions: chopping and nodding
     class: ChopNodCombiner
@@ -106,10 +113,3 @@ effects:
       chop_offsets: "!OBS.chop_offsets"
       nod_offsets: "!OBS.nod_offsets"
       pixel_scale: "!INST.pixel_scale"
-
-  - name: ad_conversion
-    description: Apply gain and convert electron count into integers
-    class: ADConversion
-    kwargs:
-      dtype: uint16
-      gain: "!DET.gain"
