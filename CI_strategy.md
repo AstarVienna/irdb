@@ -9,15 +9,16 @@ A brief guide to how the CI works here, because it's getting rather complex alre
 * Run normal tests
 * Run notebook tests when ready for review
 
-Both using corresponding branches in ScopeSim and ScopeSim_Templates if available.
+Both using corresponding branches (with the same name) in ScopeSim and ScopeSim_Templates if available.
 
 ### Into master
 
 * Run normal tests
 * Run notebook tests
 
-Both using released version of ScopeSim and ScopeSim_Templates, because once it's in master, it can and should become a new package relase and those need to work with the released versions.
-For anything that requires changes in more than one place, release the IRDB part last.
+Both using released version of ScopeSim and ScopeSim_Templates, because once it's in master, it can and should become a new IRDB package release and those need to work with the released versions of the software.
+For anything that requires changes in more than one place, please release the IRDB part last.
+This means that e.g. the new version of ScopeSim should be compatible with both the old and the new version of the IRDB.
 
 ## Pushes
 
