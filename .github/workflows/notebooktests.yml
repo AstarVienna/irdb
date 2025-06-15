@@ -64,8 +64,9 @@ jobs:
           pip install -r requirements.github_actions.txt
 
       - name: Install ScopeSim from repo
-        if: ${{ inputs.from_pypi == 'false' }}
+        if: ${{ inputs.from_pypi == false || inputs.from_pypi == 'false' }}
         run: |
+          echo "Re-installing ScopeSim from source" >> $GITHUB_STEP_SUMMARY
           pip uninstall -y scopesim scopesim_templates
           pip install git+https://github.com/AstarVienna/ScopeSim.git@${{ inputs.ScopeSim }}
           pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git@${{ inputs.ScopeSim_Templates }}
@@ -100,8 +101,9 @@ jobs:
           pip install -r requirements.github_actions.txt
 
       - name: Install ScopeSim from repo
-        if: ${{ inputs.from_pypi == 'false' }}
+        if: ${{ inputs.from_pypi == false || inputs.from_pypi == 'false' }}
         run: |
+          echo "Re-installing ScopeSim from source" >> $GITHUB_STEP_SUMMARY
           pip uninstall -y scopesim scopesim_templates
           pip install git+https://github.com/AstarVienna/ScopeSim.git@${{ inputs.ScopeSim }}
           pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git@${{ inputs.ScopeSim_Templates }}
