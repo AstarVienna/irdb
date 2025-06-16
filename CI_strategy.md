@@ -65,6 +65,8 @@ This allows to easily check a new branch there if it will destroy the notebooks,
 * The CI should get the instrument name from the tag, as well as dev/stable.
 * In principle it should be able to just run the publish script, with non-personalized credentials stored in a GitHub secret.
 
+test
+
 ## CI Badge?
 
 Currently, the test status badge is created from dev_master.
