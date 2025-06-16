@@ -78,6 +78,12 @@ effects:
       noise_std: "!DET.readout_noise"
       n_channels: 32
 
+  - name: exposure_output
+    description: Return average or sum over NDIT subexposures
+    class: ExposureOutput
+    kwargs:
+      mode: average
+
   - name: ad_conversion
     description: Apply gain and convert electron count into integers
     class: ADConversion
