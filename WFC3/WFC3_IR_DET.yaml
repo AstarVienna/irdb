@@ -32,9 +32,9 @@ effects:
       kwargs:
         filename: wfc3_ir_qe_003_syn.dat
 
-    - name: exposure_action
+    - name: exposure_integration
       description: Summing up sky signal for all DITs and NDITs
-      class: SummedExposure
+      class: ExposureIntegration
 
     - name: detector_border
       decription: blacks out the pixels at the edge of the detector

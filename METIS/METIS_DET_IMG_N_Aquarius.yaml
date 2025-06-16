@@ -65,9 +65,9 @@ effects:
     kwargs:
       fill_frac: "!OBS.auto_exposure.fill_frac"
 
-  - name: summed_exposure
+  - name: exposure_integration
     description: Summing up sky signal for all DITs and NDITs
-    class: SummedExposure
+    class: ExposureIntegration
 
   - name: dark_current
     description: METIS Aquarius dark current
