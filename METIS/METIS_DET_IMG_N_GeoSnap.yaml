@@ -110,7 +110,7 @@ effects:
     description: Apply gain and convert electron count into integers
     class: ADConversion
     kwargs:
-      dtype: uint16
+      dtype: float32
       gain: "!DET.gain"
 
   - name: chop_nod
