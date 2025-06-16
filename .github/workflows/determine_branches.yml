@@ -29,10 +29,10 @@ jobs:
           for p in ScopeSim ScopeSim_Templates; do
             branch=main
 
-            git ls-remote --exit-code --heads "https://github.com/AstarVienna/$p.git" ${{ inputs.branch }} > /dev/null
+            git ls-remote --exit-code --heads "https://github.com/AstarVienna/$p.git" "${{ inputs.branch }}" > /dev/null
 
             if [ $? -eq 0 ]; then
-              branch= ${{ inputs.branch }}
+              branch="${{ inputs.branch }}"
             fi
 
             echo "$p=$branch" >> "$GITHUB_OUTPUT"
