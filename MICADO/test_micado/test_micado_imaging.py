@@ -37,15 +37,27 @@ class TestLimiting:
     from Ric's excel doc (Signal_noise_estimator_MICADO_2018.04.03)
     [on google drive]
 
-                                            J       H       K
-    5-sigma @ 5hr EXPTIME   [Vega mags]     27.9    27.5    27.1
-    sky + instr. bkg 	    [e-/pixel/s]    5.0     28.4	78.7
-    sky + instr. bkg [ScopeSim]             6.5     38      60
-    Photometric aperture                    3x3     5x5     5x5     # orig 2x2, 3x3, 4x4
-    ScopeSim + MICADO (MCAO)                27.6    27.3    26.9
+    +--------------------------+----------+------+------+------+
+    |                          | Units    |    J |    H |    K |
+    +==========================+==========+======+======+======+
+    | 5-sigma @ 5hr EXPTIME    | Vega mag | 27.9 | 27.5 | 27.1 |
+    +--------------------------+----------+------+------+------+
+    | sky & instr. bkg         | e-/pix/s |  5.0 | 28.4 | 78.7 |
+    +--------------------------+----------+------+------+------+
+    | sky & instr. bkg         | ScopeSim |  6.5 | 38   | 60   |
+    +--------------------------+----------+------+------+------+
+    | Photometric aperture     |          |  3x3 |  5x5 |  5x5 |
+    +--------------------------+----------+------+------+------+
+    | Original phot. aperture  |          |  2x2 |  3x3 |  4x4 |
+    +--------------------------+----------+------+------+------+
+    | ScopeSim & MICADO (MCAO) |          | 27.6 | 27.3 | 26.9 |
+    +--------------------------+----------+------+------+------+
+    | Just out of interest:    |          |      |      |      |
+    |                          |          |      |      |      |
+    | ScopeSim & MICADO (SCAO) |          | 29.7 | 28.5 | 28.0 |
+    +--------------------------+----------+------+------+------+
 
-    Just out of interest:
-    ScopeSim + MICADO (SCAO)                29.7    28.5    28.0
+    .. todo:: Update ScopeSim values in this table!
 
     Tolerance for assert is 0.3 mag (to high?)
 
