@@ -79,5 +79,5 @@ effects:
     class: ADConversion
     include: True
     kwargs:
-      dtype: uint16
+      dtype: float32
       gain: "!DET.gain"
