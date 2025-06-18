@@ -1,7 +1,7 @@
 # author : Oliver Czoske
 # source : E-LIS-MPIA-MET-1208_1-0
-# date_created : 2025-02-12
-# date_modified : 2025-02-12
+# date_created : 2025-06-18
+# date_modified : 2025-06-18
 # status : Measurement
 # type : filter:transmission
 # wavelength_unit : um
@@ -1921,7 +1921,7 @@ wavelength  transmission
 3.908       0.916216083288110994
 3.909       0.915602893082805958
 3.910       0.914908065939878945
-3.911       0.914084764592414944
+3.911       0.914084764592415056
 3.912       0.913122090733755054
 3.913       0.912069108149078045
 3.914       0.911020022261331053

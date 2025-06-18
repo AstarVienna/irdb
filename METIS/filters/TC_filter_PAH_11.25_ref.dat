@@ -1,11 +1,11 @@
 # author : Oliver Czoske
 # source : E-LIS-MPIA-MET-1208_1-0
-# date_created : 2025-02-12
-# date_modified : 2025-02-12
+# date_created : 2025-06-18
+# date_modified : 2025-06-18
 # status : Measurement
 # type : filter:transmission
 # wavelength_unit : um
-# center : 11.250
+# center : 11.650
 # comment : PAH_11.25_ref filter, built by Materion, procured by MPIA
 # changes :
 #

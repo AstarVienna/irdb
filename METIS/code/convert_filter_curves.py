@@ -1,8 +1,8 @@
 """Conversion of MPIA provided filter curves to irdb format
 
 Input: two excel files
-            - METIS-IMG-LM-science-filters-transmission-data.xlsx
-            - METIS-IMG-N-science-filters-transmission-data.xlsx
+       - E-LIS-MPIA-MET-1208_1-0_IMG_LM_science-filter_transmission_data.xlsx
+       - E-LIS-MPIA-MET-1208_1-0_IMG_N_science-filter_transmission_data.xlsx
        with one sheet per filter. Each sheet has a table with two columns:
             - "nm": Wavelength in nanometers
             - "transmission"
@@ -12,7 +12,7 @@ Output: One ascii file per filter, with a two-column table ("wavelength",
 The variable `PLOT` turns on a plot method that shows the new and old filter
 curves (only works when the latter are available!)
 
-Author: Oliver Czoske , 2025-02-12
+Author: Oliver Czoske , 2025-02-12, adapted 2025-06-18
 """
 import textwrap
 from matplotlib import pyplot as plt
@@ -52,8 +52,8 @@ def convert_curves(wb, new):
             fd.write(textwrap.dedent(f"""\
             # author : Oliver Czoske
             # source : E-LIS-MPIA-MET-1208_1-0
-            # date_created : 2025-02-12
-            # date_modified : 2025-02-12
+            # date_created : 2025-06-18
+            # date_modified : 2025-06-18
             # status : Measurement
             # type : filter:transmission
             # wavelength_unit : um
@@ -87,7 +87,7 @@ def do_lm(plot=False):
               'CO_ref': '4,950um-CO-ref'}
 
     lm_old = {k: f"filters/TC_filter_{k}.dat" for k in lm_new}
-    lm_wb = pd.ExcelFile("METIS-IMG-LM-science-filters-transmission-data.xlsx")
+    lm_wb = pd.ExcelFile("E-LIS-MPIA-MET-1208_1-0_IMG_LM_science-filter_transmission_data.xlsx")
     if plot:
         plot_curves(lm_wb, lm_new, lm_old, "LM_filter_curves_compared.pdf")
     convert_curves(lm_wb, lm_new)
@@ -105,14 +105,14 @@ def do_n(plot=False):
         'S_IV': '10,500um-S-IV',
         'S_IV_ref': '10,795um-S-IV-ref',
         'PAH_11.25': '11,200um-PAH-11.25',
-        'PAH_11.25_ref': '11,250um-PAH-11.25-ref',
+        'PAH_11.25_ref': '11,650um-PAH-11.25-ref',
         'N2': '11,275um-N2',
         'N3': '12,300um-N3',
         'Ne_II': '12,820um-NeII',
         'Ne_II_ref': '13,120um-NeII-ref'}
 
     n_old = {k: f"filters/TC_filter_{k}.dat" for k in n_new}
-    n_wb = pd.ExcelFile("METIS-IMG-N-science-filters-transmission-data.xlsx")
+    n_wb = pd.ExcelFile("E-LIS-MPIA-MET-1208_1-0_IMG_N_science-filter_transmission_data.xlsx")
 
     if plot:
         plot_curves(n_wb, n_new, n_old, "N_filter_curves_compared.pdf")
