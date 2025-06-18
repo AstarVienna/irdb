@@ -64,7 +64,7 @@ def convert_curves(wb, new):
             """))
             fd.write("wavelength  transmission\n")
             for w, t in d_new.values:
-                fd.write(f"{w:.3f}       {t:.18f}\n")
+                fd.write(f"{w:.5f}       {t:.18f}\n")
 
 
 def do_lm(plot=False):
