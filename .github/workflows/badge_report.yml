@@ -1,0 +1,54 @@
+# Note: If no options are passed, this installs ScopeSim and Templates from
+# the main branch in either repo.
+
+name: Badge Report
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_call:
+    inputs:
+      from_pypi:
+        type: boolean
+        description: "Use plain pip install and ignore branch names below."
+        required: false
+        default: false
+      ScopeSim:
+        type: string
+        description: "Branch name to install ScopeSim from."
+        required: false
+        default: main
+      ScopeSim_Templates:
+        type: string
+        description: "Branch name to install ScopeSim_Templates from."
+        required: false
+        default: main
+
+jobs:
+  badge_report:
+    name: Generate Badges
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+
+      - name: Install dependencies
+        run: pip install -r requirements.github_actions.txt
+
+      - name: Install ScopeSim from repo
+        if: ${{ inputs.from_pypi == 'false' }}
+        run: |
+          pip uninstall -y scopesim scopesim_templates
+          pip install git+https://github.com/AstarVienna/ScopeSim.git@${{ inputs.ScopeSim }}
+          pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git@${{ inputs.ScopeSim_Templates }}
+
+      - name: Run Pytest for badges
+        run: pytest -m "badges"
+
+      - name: Store badge report files
+        uses: actions/upload-artifact@v4
+        with:
+          name: badge-report
+          path: _REPORTS
