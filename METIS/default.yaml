@@ -6,6 +6,7 @@ alias: OBS
 name: METIS_default_configuration
 description: default parameters needed for a METIS simulation
 status: development
+needs_scopesim: "v0.9"
 date_modified: 2024-09-04
 changes:
   - 2021-12-16 (OC) chopnod defaults to perpendicular
@@ -358,6 +359,28 @@ mode_yamls:
       ins_mode: LMS          # use as FITS header keyword
       slit: false
       adc: false
+      detector_readout_mode: slow
+
+  - object: observation
+    alias: OBS
+    name: lms_cube
+    description: "METIS LM-band integral-field spectroscopy, nominal mode, cube output"
+    status: experimental
+    needs_scopesim: "v0.10.0a1"
+    yamls:
+      - Armazones.yaml
+      - ELT.yaml
+      - METIS.yaml
+      - METIS_LMS_SMPL.yaml
+      - METIS_DET_IFU_SMPL.yaml
+    properties:
+      ins_mode: LMS_cube          # use as FITS header keyword
+      psf_file: PSF_LM_9mag_06seeing.fits
+      interp_psf: False
+      slit: false
+      adc: false
+      trace_file: TRACE_LMS.fits
+      wavelen: 4.2
       detector_readout_mode: slow
 
 ---
