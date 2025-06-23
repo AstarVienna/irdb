@@ -42,9 +42,9 @@ effects :
     kwargs :
         filename : QE_detector_H4RG.dat
 
--   name: exposure_action
+-   name: exposure_integration
     description: Summing up sky signal for all DITs and NDITs
-    class: SummedExposure
+    class: ExposureIntegration
 
 -   name: dark_current
     description : MICADO dark current
@@ -108,5 +108,3 @@ effects :
     include : True
     kwargs :
       filename: FITS_extra_keywords.yaml
-
-
