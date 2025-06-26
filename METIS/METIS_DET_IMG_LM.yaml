@@ -40,6 +40,7 @@ effects:
       mode_properties:
         fast:
           description: "HAWAII2RG, fast mode"
+          "!DET.mode": fast
           "!DET.mindit": 0.04
           "!DET.full_well": !!float 1e5
           "!DET.gain": 4.0     # e/ADU (email B.Serra)
@@ -47,6 +48,7 @@ effects:
           "!DET.dark_current": 0.05
         slow:
           description: "HAWAII2RG, slow mode"
+          "!DET.mode": slow
           "!DET.mindit": 1.3
           "!DET.full_well": !!float 1e5
           "!DET.gain":  2.5    # e/ADU (email B.Serra)

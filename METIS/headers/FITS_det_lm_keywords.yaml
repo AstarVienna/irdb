@@ -5,6 +5,7 @@
         DET1:
           DIT:        "!OBS.dit"
           NDIT:       "!OBS.ndit"
+          MODE:       "!DET.mode"
           CUBE:
             MODE:    "F"
 
