@@ -186,7 +186,7 @@ mode_yamls:
     alias: OBS
     name: lms
     description: "METIS LM-band integral-field spectroscopy, nominal mode"
-    status: experimental
+    status: development
     yamls:
       - Armazones.yaml
       - ELT.yaml
