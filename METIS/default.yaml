@@ -366,7 +366,6 @@ mode_yamls:
     name: lms_cube
     description: "METIS LM-band integral-field spectroscopy, nominal mode, cube output"
     status: experimental
-    needs_scopesim: "v0.10.0a1"
     yamls:
       - Armazones.yaml
       - ELT.yaml
