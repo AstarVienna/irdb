@@ -223,6 +223,7 @@ mode_yamls:
     alias: OBS
     name: wcu_img_lm
     description: "METIS LM-band imaging with WCU"
+    status: development
     yamls:
       - METIS_WCU.yaml
       - METIS.yaml
@@ -240,7 +241,8 @@ mode_yamls:
   - object: observation
     alias: OBS
     name: wcu_img_n
-    description: "METIS N-band imaging"
+    description: "METIS N-band imaging with WCU"
+    status: development
     yamls:
       - METIS_WCU.yaml
       - METIS.yaml
@@ -260,7 +262,8 @@ mode_yamls:
   - object: observation
     alias: OBS
     name: wcu_lss_l
-    description: "METIS L-band slit spectroscopy"
+    description: "METIS L-band slit spectroscopy with WCU"
+    status: development
     yamls:
       - METIS_WCU.yaml
       - METIS.yaml
@@ -283,7 +286,8 @@ mode_yamls:
   - object: observation
     alias: OBS
     name: wcu_lss_m
-    description: "METIS M-band slit spectroscopy"
+    description: "METIS M-band slit spectroscopy with WCU"
+    status: development
     yamls:
       - METIS_WCU.yaml
       - METIS.yaml
@@ -306,7 +310,8 @@ mode_yamls:
   - object: observation
     alias: OBS
     name: wcu_lss_n
-    description: "METIS N-band slit spectroscopy"
+    description: "METIS N-band slit spectroscopy with WCU"
+    status: development
     yamls:
       - METIS_WCU.yaml
       - METIS.yaml
@@ -331,7 +336,8 @@ mode_yamls:
   - object: observation
     alias: OBS
     name: wcu_lms
-    description: "METIS LM-band integral-field spectroscopy, nominal mode"
+    description: "METIS LM-band integral-field spectroscopy, nominal mode with WCU"
+    status: development
     yamls:
       - METIS_WCU.yaml
       - METIS.yaml
@@ -349,7 +355,8 @@ mode_yamls:
   - object: observation     # is this a separate mode from nominal LMS?
     alias: OBS
     name: wcu_lms_extended
-    description: "METIS LM-band integral-field spectroscopy, extended mode"
+    description: "METIS LM-band integral-field spectroscopy, extended mode with WCU"
+    status: experimental
     yamls:
       - METIS_WCU.yaml
       - METIS.yaml
