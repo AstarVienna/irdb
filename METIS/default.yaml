@@ -6,8 +6,8 @@ alias: OBS
 name: METIS_default_configuration
 description: default parameters needed for a METIS simulation
 status: development
-needs_scopesim: "v0.9"
-date_modified: 2024-09-04
+needs_scopesim: "v0.10.0b4"
+date_modified: 2025-06-27
 changes:
   - 2021-12-16 (OC) chopnod defaults to perpendicular
   - 2021-12-16 (OC) default slits renamed
@@ -18,6 +18,7 @@ changes:
   - 2022-02-21 (OC) linear interpolation, cosmetics
   - 2022-03-14 (OC) use single PSF file
   - 2024-09-04 (OC) rearrange to include WCU modes
+  - 2025-06-27 (FH) version bumps and status updates
 
 packages:
   - Armazones
@@ -186,7 +187,7 @@ mode_yamls:
     alias: OBS
     name: lms
     description: "METIS LM-band integral-field spectroscopy, nominal mode"
-    status: experimental
+    status: development
     yamls:
       - Armazones.yaml
       - ELT.yaml
@@ -223,6 +224,7 @@ mode_yamls:
     alias: OBS
     name: wcu_img_lm
     description: "METIS LM-band imaging with WCU"
+    status: development
     yamls:
       - METIS_WCU.yaml
       - METIS.yaml
@@ -240,7 +242,8 @@ mode_yamls:
   - object: observation
     alias: OBS
     name: wcu_img_n
-    description: "METIS N-band imaging"
+    description: "METIS N-band imaging with WCU"
+    status: development
     yamls:
       - METIS_WCU.yaml
       - METIS.yaml
@@ -260,7 +263,8 @@ mode_yamls:
   - object: observation
     alias: OBS
     name: wcu_lss_l
-    description: "METIS L-band slit spectroscopy"
+    description: "METIS L-band slit spectroscopy with WCU"
+    status: development
     yamls:
       - METIS_WCU.yaml
       - METIS.yaml
@@ -283,7 +287,8 @@ mode_yamls:
   - object: observation
     alias: OBS
     name: wcu_lss_m
-    description: "METIS M-band slit spectroscopy"
+    description: "METIS M-band slit spectroscopy with WCU"
+    status: development
     yamls:
       - METIS_WCU.yaml
       - METIS.yaml
@@ -306,7 +311,8 @@ mode_yamls:
   - object: observation
     alias: OBS
     name: wcu_lss_n
-    description: "METIS N-band slit spectroscopy"
+    description: "METIS N-band slit spectroscopy with WCU"
+    status: development
     yamls:
       - METIS_WCU.yaml
       - METIS.yaml
@@ -331,7 +337,8 @@ mode_yamls:
   - object: observation
     alias: OBS
     name: wcu_lms
-    description: "METIS LM-band integral-field spectroscopy, nominal mode"
+    description: "METIS LM-band integral-field spectroscopy, nominal mode with WCU"
+    status: development
     yamls:
       - METIS_WCU.yaml
       - METIS.yaml
@@ -349,7 +356,8 @@ mode_yamls:
   - object: observation     # is this a separate mode from nominal LMS?
     alias: OBS
     name: wcu_lms_extended
-    description: "METIS LM-band integral-field spectroscopy, extended mode"
+    description: "METIS LM-band integral-field spectroscopy, extended mode with WCU"
+    status: experimental
     yamls:
       - METIS_WCU.yaml
       - METIS.yaml
@@ -366,7 +374,6 @@ mode_yamls:
     name: lms_cube
     description: "METIS LM-band integral-field spectroscopy, nominal mode, cube output"
     status: experimental
-    needs_scopesim: "v0.10.0a1"
     yamls:
       - Armazones.yaml
       - ELT.yaml

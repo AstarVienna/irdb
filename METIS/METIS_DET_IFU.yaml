@@ -4,10 +4,11 @@ object: detector
 alias: DET
 name: metis_lms_detector_array
 description: A set of 4 H2RG detectors
-date_modified: 2021-12-16
+date_modified: 2025-06-16
 changes:
   - 2021-12-16 (OC) some rearrangements
   - 2024-10-11 (OC) add ADConversion, gain from B.Serra (2024-10-09)
+  - 2025-06-16 (OC) rename SummedExposure to ExposureIntegration
 
 properties:
   image_plane_id: 0

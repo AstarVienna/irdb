@@ -4,10 +4,11 @@ object: detector
 alias: DET
 name: metis_lms_detector_array
 description: Simplified IFU cube detector
-date_modified: 2025-05-08
+date_modified: 2025-06-27
 changes:
   - 2025-05-08 (FH) create file as copy of METIS_DET_IFU.yaml
   - 2025-05-16 (FH) update included effects
+  - 2025-06-27 (FH) fix exposure effects
 
 properties:
   image_plane_id: 0
@@ -48,7 +49,7 @@ effects:
 
   - name: exposure_action
     description: Summing up sky signal for all DITs and NDITs
-    class: SummedExposure
+    class: ExposureIntegration
 
   - name: dark_current
     description: METIS LMS dark current
@@ -73,6 +74,8 @@ effects:
     kwargs:
       noise_std: "!DET.readout_noise"
       n_channels: 32
+
+# TODO: add ExposureOutput here? Consider 6x drizzle...
 
   - name: ad_conversion
     description: Apply gain and convert electron count into integers
