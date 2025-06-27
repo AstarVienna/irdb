@@ -8,7 +8,7 @@
           CUBE:
             MODE:     "F"
 
-- ext_type: ImageHDU
+- ext_number: [1]
   keywords:
 
     HIERARCH:
@@ -20,4 +20,46 @@
             FULLWELL: "!DET.full_well"
             RON:      "!DET.readout_noise"
             DARK:     "!DET.dark_current"
-            #GAIN:     "!DET.gain"
+            GAIN:     "!DET.gain.1"
+
+- ext_number: [2]
+  keywords:
+
+    HIERARCH:
+      ESO:
+        DET3:
+          CHIP:
+            ID:       "!DET.detector"
+            MINDIT:   "!DET.mindit"
+            FULLWELL: "!DET.full_well"
+            RON:      "!DET.readout_noise"
+            DARK:     "!DET.dark_current"
+            GAIN:     "!DET.gain.2"
+
+- ext_number: [3]
+  keywords:
+
+    HIERARCH:
+      ESO:
+        DET3:
+          CHIP:
+            ID:       "!DET.detector"
+            MINDIT:   "!DET.mindit"
+            FULLWELL: "!DET.full_well"
+            RON:      "!DET.readout_noise"
+            DARK:     "!DET.dark_current"
+            GAIN:     "!DET.gain.3"
+
+- ext_number: [4]
+  keywords:
+
+    HIERARCH:
+      ESO:
+        DET3:
+          CHIP:
+            ID:       "!DET.detector"
+            MINDIT:   "!DET.mindit"
+            FULLWELL: "!DET.full_well"
+            RON:      "!DET.readout_noise"
+            DARK:     "!DET.dark_current"
+            GAIN:     "!DET.gain.4"
