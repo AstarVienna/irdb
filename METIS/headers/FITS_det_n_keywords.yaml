@@ -5,6 +5,7 @@
         DET2:
           DIT:        "!OBS.dit"
           NDIT:       "!OBS.ndit"
+          MODE:       "!DET.mode"
           CUBE:
             MODE:    "F"
         SEQ:
@@ -21,9 +22,9 @@
         DET2:
           CHIP:
             ID:       "!DET.detector"
-            MODE:     "!OBS.detector_readout_mode!"
+            MODE:     "!DET.mode"
             MINDIT:   "!DET.mindit"
             FULLWELL: "!DET.full_well"
             RON:      "!DET.readout_noise"
             DARK:     "!DET.dark_current"
-            #GAIN
+            GAIN:     "!DET.gain"

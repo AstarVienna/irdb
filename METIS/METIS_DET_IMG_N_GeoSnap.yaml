@@ -40,6 +40,7 @@ effects:
       mode_properties:
         high_capacity:
           description:               "Geosnap, high-capacity mode"
+          "!DET.mode":               "high_capacity"
           "!DET.mindit":             0.011          # seconds
           "!DET.full_well":          !!float 2.8e6  # electrons
           "!DET.gain":               201            # electron/ADU (email B.Serra)
@@ -49,6 +50,7 @@ effects:
           "!DET.linearity.measured": [0, !!float 2.8e6, !!float 2.8e6]
         low_capacity:
           description:               "Geosnap, low-capacity mode"
+          "!DET.mode":               "low_capacity"
           "!DET.mindit":             0.011          # seconds
           "!DET.full_well":          !!float 1.8e5  # electrons
           "!DET.gain":               14             # electron/ADU (email B.Serra)
