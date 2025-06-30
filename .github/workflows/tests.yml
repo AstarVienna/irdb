@@ -49,8 +49,6 @@ jobs:
   tests:
     name: Test against ScopeSim and Templates
     runs-on: ${{ matrix.os }}
-    # Run if our target is IRDB dev_master, or when this is ran manually.
-    if: github.base_ref == 'dev_master' || github.base_ref == ''
     strategy:
       fail-fast: false
       matrix:
