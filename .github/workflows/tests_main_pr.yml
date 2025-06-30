@@ -19,7 +19,6 @@ jobs:
 
   badge_report:
     name: Badge Report
-    needs: determine_branches
     uses: ./.github/workflows/badge_report.yml
     with:
       from_pypi: true
