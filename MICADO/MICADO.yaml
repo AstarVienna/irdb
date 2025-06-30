@@ -13,11 +13,11 @@ alias : INST
 name : MICADO
 description : Effects from the MICADO common optics
 
-properties : 
+properties:
     temperature : -190
     filter_file_format : "filters/TC_filter_{}.dat"
 
-effects : 
+effects:
 -   name: micado_static_surfaces
     description : surfaces list for wide field optics
     class: SurfaceList
@@ -49,7 +49,7 @@ effects :
             - J-long
         filename_format: "!INST.filter_file_format"
         current_filter: "!OBS.filter_name_fw1"
-        minimum_throughput: !!float 1.01E-4
+        minimum_throughput: 1.01e-4
         outer: 0.2
         outer_unit: "m"
 
@@ -75,7 +75,7 @@ effects :
             - xY1
         filename_format: "!INST.filter_file_format"
         current_filter: "!OBS.filter_name_fw2"
-        minimum_throughput: !!float 1.01E-4
+        minimum_throughput: 1.01e-4
         outer: 0.2
         outer_unit: "m"
 
@@ -96,6 +96,6 @@ effects :
             - open
         filename_format: "!INST.filter_file_format"
         current_filter: "!OBS.filter_name_pupil"
-        minimum_throughput: !!float 1.01E-4
+        minimum_throughput: 1.01e-4
         outer: 0.2
         outer_unit: "m"
