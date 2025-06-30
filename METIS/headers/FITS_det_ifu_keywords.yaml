@@ -8,17 +8,58 @@
           CUBE:
             MODE:     "F"
 
-- ext_type: ImageHDU
+- ext_number: [1]
   keywords:
-
+    BUNIT:            "ADU"
     HIERARCH:
       ESO:
         DET3:
           CHIP:
             ID:       "!DET.detector"
-            #MODE:     "#detector_readout_parameters.mode_properties"
             MINDIT:   "!DET.mindit"
             FULLWELL: "!DET.full_well"
             RON:      "!DET.readout_noise"
             DARK:     "!DET.dark_current"
-            #GAIN:     "!DET.gain"
+            GAIN:     "!DET.gain.1"
+
+- ext_number: [2]
+  keywords:
+    BUNIT:            "ADU"
+    HIERARCH:
+      ESO:
+        DET3:
+          CHIP:
+            ID:       "!DET.detector"
+            MINDIT:   "!DET.mindit"
+            FULLWELL: "!DET.full_well"
+            RON:      "!DET.readout_noise"
+            DARK:     "!DET.dark_current"
+            GAIN:     "!DET.gain.2"
+
+- ext_number: [3]
+  keywords:
+    BUNIT:            "ADU"
+    HIERARCH:
+      ESO:
+        DET3:
+          CHIP:
+            ID:       "!DET.detector"
+            MINDIT:   "!DET.mindit"
+            FULLWELL: "!DET.full_well"
+            RON:      "!DET.readout_noise"
+            DARK:     "!DET.dark_current"
+            GAIN:     "!DET.gain.3"
+
+- ext_number: [4]
+  keywords:
+    BUNIT:            "ADU"
+    HIERARCH:
+      ESO:
+        DET3:
+          CHIP:
+            ID:       "!DET.detector"
+            MINDIT:   "!DET.mindit"
+            FULLWELL: "!DET.full_well"
+            RON:      "!DET.readout_noise"
+            DARK:     "!DET.dark_current"
+            GAIN:     "!DET.gain.4"
