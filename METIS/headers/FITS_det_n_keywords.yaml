@@ -16,7 +16,7 @@
 
 - ext_type: ImageHDU
   keywords:
-
+    BUNIT:            "ADU"
     HIERARCH:
       ESO:
         DET2:
