@@ -33,7 +33,7 @@ effects:
     class: FilterWheel
     include: True
     kwargs:
-      minimum_throughput: !!float 0.
+      minimum_throughput: 0.
       filename_format: "gratings/{}.txt"
       current_filter: "!OBS.grating_name"
       filter_names: "!INST.grism_names"

@@ -63,5 +63,5 @@ description: RC simulation parameters which need to change for a METIS run
 
 properties:
   spectral:
-    spectral_bin_width: 1E-5  # microns, defines fov wavelengths
+    spectral_bin_width: 1.e-5    # microns, defines fov wavelengths
     spectral_resolution: 200000  # defines skycalc resolution

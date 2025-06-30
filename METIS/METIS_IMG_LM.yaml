@@ -27,7 +27,7 @@ effects:
       filename: LIST_METIS_mirrors_img_lm.dat
 
   - name: filter_wheel
-    description: IMG_LM science filters (E-REP-MPIA-MET-1008_1-0)
+    description: "IMG_LM science filters (E-REP-MPIA-MET-1008_1-0)"
     class: FilterWheel
     kwargs:
       filter_names:
@@ -51,13 +51,13 @@ effects:
         - HCI_M
       filename_format: "!INST.filter_file_format"
       current_filter: "!OBS.filter_name"
-      minimum_throughput: !!float 0.
+      minimum_throughput: 0.
       outer: 56                               # E-REP-MPIA-MET-1008_1-0
       outer_unit: "mm"
 
   - name: nd_filter_wheel
     class: FilterWheel
-    description: IMG_LM neutral density filters (E-REP-MPIA-MET-1008_1-0)
+    description: "IMG_LM neutral density filters (E-REP-MPIA-MET-1008_1-0)"
     kwargs:
       filter_names:
         # 11 positions (E-REP-MPIA-MET-1008_1-0)
@@ -70,7 +70,7 @@ effects:
         - ND_OD5
       filename_format: "!INST.filter_file_format"
       current_filter: "!OBS.nd_filter_name"
-      minimum_throughput: !!float 0.
+      minimum_throughput: 0.
       outer: 56                                # E-REP-MPIA-MET-1008_1-0
       outer_unit: "mm"
 
@@ -98,5 +98,5 @@ description: RC simulation parameters which need to change for a METIS run
 
 properties:
   spectral:
-    spectral_bin_width: !!float 1E-3   # microns, defines fov wavelengths
-    spectral_resolution: 5000          # defines skycalc resolution
+    spectral_bin_width: 1.e-3  # microns, defines fov wavelengths
+    spectral_resolution: 5000  # defines skycalc resolution

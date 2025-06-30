@@ -17,7 +17,7 @@ properties:
   dit: "!OBS.dit"
   ndit: "!OBS.ndit"
   mindit: 0.008            # seconds, E-REP-NOVA-MET-1191, v2-0
-  full_well: !!float 1.e6  # electrons, low-capacity mode
+  full_well: 1.e+6  # electrons, low-capacity mode
   dark_current: 13         # [e-/s] E-REP-NOVA-MET-1191, v2-0
   readout_noise: 12
   gain: 15    # wild guess to make full_well fit into int16
@@ -42,12 +42,12 @@ effects:
       mode_properties:
         low_gain:
           "!DET.mindit":    0.008        # seconds
-          "!DET.full_well": !!float 9e6  # electrons
+          "!DET.full_well": 9.e+6  # electrons
           "!DET.readout_noise": 1400     # electrons (DCS)
           "!DET.dark_current":  13       # electrons/second
         high_gain:
           "!DET.mindit":    0.008        # seconds
-          "!DET.full_well": !!float 1e6  # electrons
+          "!DET.full_well": 1.e+6  # electrons
           "!DET.readout_noise": 150      # electrons (DCS)
           "!DET.dark_current": 13        # electrons/second
 

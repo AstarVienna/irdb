@@ -16,7 +16,7 @@ properties:
   dit: "!OBS.dit"
   ndit: "!OBS.ndit"
   mindit: 1.3               # seconds, Roy van Boekel, pers. communication
-  full_well: !!float 1.E5   # electrons, E-TNT-MPIA-1004, v1-0
+  full_well: 1.e+5   # electrons, E-TNT-MPIA-1004, v1-0
   gain:
     1: 2.0            # electrons/ADU, email B.Serra 2024-10-09
     2: 2.0
