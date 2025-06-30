@@ -1,0 +1,40 @@
+name: Determine Branches
+on:
+  workflow_call:
+    inputs:
+      branch:
+        type: string
+        description: Branch (ref) to check for
+        required: true
+    outputs:
+      ScopeSim:
+        description: "ScopeSim branch ref"
+        value: ${{ jobs.determine_branches.outputs.ScopeSim }}
+      ScopeSim_Templates:
+        description: "ScopeSim_Templates branch ref"
+        value: ${{ jobs.determine_branches.outputs.ScopeSim_Templates }}
+
+jobs:
+  determine_branches:
+    name: Check for sister branches
+    runs-on: ubuntu-latest
+    outputs:
+      ScopeSim: ${{ steps.determine-branches.outputs.ScopeSim }}
+      ScopeSim_Templates: ${{ steps.determine-branches.outputs.ScopeSim_Templates }}
+    steps:
+      - name: Determine branches
+        id: determine-branches
+        shell: sh +e {0}
+        run: |
+          for p in ScopeSim ScopeSim_Templates; do
+            branch=main
+
+            git ls-remote --exit-code --heads "https://github.com/AstarVienna/$p.git" "${{ inputs.branch }}" > /dev/null
+
+            if [ $? -eq 0 ]; then
+              branch="${{ inputs.branch }}"
+            fi
+
+            echo "$p=$branch" >> "$GITHUB_OUTPUT"
+            echo "Using branch $branch for $p" >> $GITHUB_STEP_SUMMARY
+          done

@@ -1,0 +1,86 @@
+---
+### H2RG DETECTOR
+object: detector
+alias: DET
+name: metis_lms_detector_array
+description: Simplified IFU cube detector
+date_modified: 2025-06-27
+changes:
+  - 2025-05-08 (FH) create file as copy of METIS_DET_IFU.yaml
+  - 2025-05-16 (FH) update included effects
+  - 2025-06-27 (FH) fix exposure effects
+
+properties:
+  image_plane_id: 0
+  temperature: -233
+  dit: "!OBS.dit"
+  ndit: "!OBS.ndit"
+  mindit: 1.3               # seconds, Roy van Boekel, pers. communication
+  full_well: 1.e+5   # electrons, E-TNT-MPIA-1004, v1-0
+  gain: 2
+  dark_current: 0.1         # [e-/s]
+  readout_noise: 70         # electrons, AI on RvB: check
+  layout:
+    file_name: "FPA_metis_lms_smpl_layout.dat"
+  qe_curve:
+    file_name: "QE_detector_H2RG_METIS.dat"
+  linearity:
+    file_name: "FPA_linearity_HxRG.dat"
+
+effects:
+  - name: detector_array_list
+    description: METIS LMS detector array list
+    class: DetectorList3D
+    kwargs:
+      filename: "!DET.layout.file_name"
+
+  - name: quantum_efficiency
+    description: Quantum efficiency curves for each detector
+    class: QuantumEfficiencyCurve
+    kwargs:
+      filename: "!DET.qe_curve.file_name"
+
+  - name: auto_exposure
+    description: automatic determination of DIT and NDIT
+    class: AutoExposure
+    include: True
+    kwargs:
+      fill_frac: "!OBS.auto_exposure.fill_frac"
+
+  - name: exposure_action
+    description: Summing up sky signal for all DITs and NDITs
+    class: ExposureIntegration
+
+  - name: dark_current
+    description: METIS LMS dark current
+    class: DarkCurrent
+    kwargs:
+      value: "!DET.dark_current"
+
+  - name: shot_noise
+    description: apply poisson shot noise to images
+    class: ShotNoise
+
+  - name: detector_linearity
+    description: Linearity characteristics of H2RG chips
+    class: LinearityCurve
+    include: False
+    kwargs:
+      filename: "!DET.linearity.file_name"
+
+  - name: readout_noise
+    description: Readout noise frames
+    class: BasicReadoutNoise
+    kwargs:
+      noise_std: "!DET.readout_noise"
+      n_channels: 32
+
+# TODO: add ExposureOutput here? Consider 6x drizzle...
+
+  - name: ad_conversion
+    description: Apply gain and convert electron count into integers
+    class: ADConversion
+    include: True
+    kwargs:
+      dtype: float32
+      gain: "!DET.gain"

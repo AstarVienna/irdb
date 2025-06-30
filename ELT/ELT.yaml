@@ -21,6 +21,13 @@ effects :
     kwargs :
       filename : LIST_ELT_combined.tbl
 
+  - name : telescope_fits_keywords
+    description : FITS keywords specific to the telescope
+    class : ExtraFitsKeywords
+    include : True
+    kwargs :
+      filename: FITS_telescope_keywords.yaml
+
 #  - name : scope_vibration
 #    description : residual vibration of telescope
 #    class : Vibration
