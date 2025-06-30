@@ -96,7 +96,7 @@ For details on errors and conflicts, see badge report log file in this directory
 [![](https://img.shields.io/badge/package_type-support-deepskyblue)]()
 ### Structure
 * [![](https://img.shields.io/badge/self_named_yaml-found-green)]()
-* [![](https://img.shields.io/badge/#telescope_reflection.filename-missing-red)]()
+* [![](https://img.shields.io/badge/telescope_reflection.filename-missing-red)]()
 ### Contents
 * [![](https://img.shields.io/badge/all_yamls_readable-green)]()
 ### Dates
