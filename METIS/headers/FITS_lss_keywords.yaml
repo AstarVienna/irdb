@@ -1,0 +1,17 @@
+- ext_type: PrimaryHDU
+  keywords:
+
+    HIERARCH:
+      ESO:
+        DPR:
+          TECH:   "LSS"         # TODO: How to add the filter name?
+        INS:
+          OPTI4:                # LMS beamsplitter pickoff wheel
+            DESC: "LMS pickoff"
+            NAME: "OUT"         # could be IN for parallel observing
+          OPTI9:                # IMG-LM mask/grism wheel
+            DESC: "IMG-LM mask/grism"
+            NAME: "!OBS.grism_opti9"
+          OPTI12:               # IMG-N mask/grism wheel
+            DESC: "IMG-N mask/grism"
+            NAME: "!OBS.grism_opti12"

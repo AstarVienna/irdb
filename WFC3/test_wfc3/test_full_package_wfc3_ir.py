@@ -43,7 +43,7 @@ PLOTS = False
 #     for pkg_name in PKGS:
 #         if not os.path.isdir(os.path.join(rc_local_path, pkg_name)) and \
 #                 "irdb" not in rc_local_path:
-#             scopesim.download_package(PKGS[pkg_name])
+#             scopesim.download_packages(PKGS[pkg_name])
 #
 #
 # def teardown_module():
@@ -129,8 +129,8 @@ class TestMakeOpticalTrain:
 
         # test assert there are 1 detector
         hdu = opt.readout()[0]
-        assert len(opt.detector_arrays[0].detectors) == 1
-        for detector in opt.detector_arrays[0].detectors:
+        assert len(opt.detector_managers[0]) == 1
+        for detector in opt.detector_managers[0]:
             assert detector.hdu.header["NAXIS1"] == 1024
             assert detector.hdu.header["NAXIS2"] == 1024
 
@@ -171,7 +171,7 @@ class TestObserveOpticalTrain:
         hdu_av = np.average(hdu[1].data)
         exptime = cmd["!OBS.ndit"] * cmd["!OBS.dit"]
 
-        if not PLOTS:
+        if PLOTS:
             plt.subplot(1, 2, 1)
             plt.imshow(opt.image_planes[0].image[128:2048, 128:2048].T,
                        norm=LogNorm())

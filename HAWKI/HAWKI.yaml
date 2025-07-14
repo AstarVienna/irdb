@@ -51,8 +51,7 @@ effects:
               - NB2090
           filename_format: "!INST.filter_file_format"
           current_filter: "!OBS.filter_name"
-          minimum_throughput: !!float 0.
+          minimum_throughput: 0.
           outer: 56                        # Based on MICADO filter sizes
           outer_unit: "mm"
           action: "transmission"
-

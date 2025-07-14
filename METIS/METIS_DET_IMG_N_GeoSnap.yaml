@@ -10,6 +10,10 @@ changes:
   - 2022-01-25 (KL, OC) added DetectorModePropertiesSetter effect
   - 2022-01-26 (OC) added DET.detector, linearity set explicitely
   - 2022-02-21 (OC) rename effects
+  - 2024-08-22 (OC) rename quantization to ADConversion, add gain
+                    from Bowens2024 for high-capacity and a guess
+                    for low-capacity
+  - 2024-10-11 (OC) gain values from email by B.Serra (2024-10-09)
 
 properties:
   detector: Teledyne GeoSnap
@@ -36,20 +40,24 @@ effects:
       mode_properties:
         high_capacity:
           description:               "Geosnap, high-capacity mode"
+          "!DET.mode":               "high_capacity"
           "!DET.mindit":             0.011          # seconds
-          "!DET.full_well":          !!float 2.8e6  # electrons
+          "!DET.full_well":          2.8e+6  # electrons
+          "!DET.gain":               201            # electron/ADU (email B.Serra)
           "!DET.readout_noise":      300            # electrons (DCS)
-          "!DET.dark_current":       !!float 1e5    # electrons/second
-          "!DET.linearity.incident": [0, !!float 2.8e6, !!float 1e99]
-          "!DET.linearity.measured": [0, !!float 2.8e6, !!float 2.8e6]
+          "!DET.dark_current":       1.e+5    # electrons/second
+          "!DET.linearity.incident": [0, 2.8e+6, 1.e+99]
+          "!DET.linearity.measured": [0, 2.8e+6, 2.8e+6]
         low_capacity:
           description:               "Geosnap, low-capacity mode"
+          "!DET.mode":               "low_capacity"
           "!DET.mindit":             0.011          # seconds
-          "!DET.full_well":          !!float 1.8e5  # electrons
+          "!DET.full_well":          1.8e+5  # electrons
+          "!DET.gain":               14             # electron/ADU (email B.Serra)
           "!DET.readout_noise":      35             # electrons (DCS)
-          "!DET.dark_current":       !!float 1e5    # electrons/second
-          "!DET.linearity.incident": [0, !!float 1.8e5, !!float 1e99]
-          "!DET.linearity.measured": [0, !!float 1.8e5, !!float 1.8e5]
+          "!DET.dark_current":       1.e+5    # electrons/second
+          "!DET.linearity.incident": [0, 1.8e+5, 1.e+99]
+          "!DET.linearity.measured": [0, 1.8e+5, 1.8e+5]
 
   - name: quantum_efficiency
     description: Quantum efficiency curves for each detector
@@ -66,9 +74,9 @@ effects:
       full_well: "!DET.full_well"
       mindit: "!DET.mindit"
 
-  - name: summed_exposure
+  - name: exposure_integration
     description: Summing up sky signal for all DITs and NDITs
-    class: SummedExposure
+    class: ExposureIntegration
 
   - name: dark_current
     description: METIS GeoSnap dark current
@@ -94,6 +102,19 @@ effects:
       noise_std: "!DET.readout_noise"
       n_channels: 8
 
+  - name: exposure_output
+    description: Return average or sum over NDIT subexposures
+    class: ExposureOutput
+    kwargs:
+      mode: average
+
+  - name: ad_conversion
+    description: Apply gain and convert electron count into integers
+    class: ADConversion
+    kwargs:
+      dtype: float32
+      gain: "!DET.gain"
+
   - name: chop_nod
     descriptions: chopping and nodding
     class: ChopNodCombiner
@@ -102,3 +123,10 @@ effects:
       chop_offsets: "!OBS.chop_offsets"
       nod_offsets: "!OBS.nod_offsets"
       pixel_scale: "!INST.pixel_scale"
+
+  - name: det_n_fits_keywords
+    descriptions: FITS keywords specific to N detector
+    class: ExtraFitsKeywords
+    include: True
+    kwargs:
+      filename: headers/FITS_det_n_keywords.yaml

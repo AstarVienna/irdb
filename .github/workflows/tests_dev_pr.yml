@@ -1,0 +1,43 @@
+name: Tests PR dev
+on:
+  pull_request:
+    branches:
+      - dev_master
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
+
+jobs:
+  determine_branches:
+    name: Check for sister branches
+    uses: ./.github/workflows/determine_branches.yml
+    with:
+      # We only run on PR, so this is always set
+      branch: "$GITHUB_HEAD_REF"
+
+  tests:
+    name: Tests
+    needs: determine_branches
+    uses: ./.github/workflows/tests.yml
+    with:
+      ScopeSim: ${{ needs.determine_branches.outputs.ScopeSim }}
+      ScopeSIM_Templates: ${{ needs.determine_branches.outputs.ScopeSIM_Templates }}
+
+  notebook_tests:
+    name: Notebook tests
+    needs: determine_branches
+    if: ${{ !github.event.pull_request.draft }}
+    uses: ./.github/workflows/notebooktests.yml
+    with:
+      ScopeSim: ${{ needs.determine_branches.outputs.ScopeSim }}
+      ScopeSIM_Templates: ${{ needs.determine_branches.outputs.ScopeSIM_Templates }}
+
+  badge_report:
+    name: Badge Report
+    needs: determine_branches
+    uses: ./.github/workflows/badge_report.yml
+    with:
+      ScopeSim: ${{ needs.determine_branches.outputs.ScopeSim }}
+      ScopeSIM_Templates: ${{ needs.determine_branches.outputs.ScopeSIM_Templates }}

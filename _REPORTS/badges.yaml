@@ -1,46 +1,3 @@
-Armazones:
-  package_type: support
-  structure:
-    self_named_yaml: found
-    no_missing_files: '!OK'
-  contents:
-    all_yamls_readable: '!OK'
-  dates:
-    TER_armazones_default_NIR_IMG.dat: conflict
-ELT:
-  package_type: support
-  structure:
-    self_named_yaml: found
-    no_missing_files: '!OK'
-  contents:
-    all_yamls_readable: '!OK'
-  dates:
-    TER_ELT_5_mirror_clean.dat: conflict
-    TER_ELT_mirror_aluminium.dat: conflict
-    TER_ELT_mirror_mgf2agal.dat: conflict
-ERIS:
-  package_type: support
-  structure:
-    self_named_yaml: not found
-    no_files_referenced: '!NONE'
-  contents:
-    no_yaml_files: '!NONE'
-FORS:
-  package_type: support
-  structure:
-    self_named_yaml: not found
-    no_files_referenced: '!NONE'
-  contents:
-    no_yaml_files: '!NONE'
-GTC:
-  package_type: support
-  structure:
-    self_named_yaml: found
-    no_missing_files: '!OK'
-  contents:
-    all_yamls_readable: '!OK'
-  dates:
-    unity.dat: conflict
 HARMONI:
   package_type: support
   structure:
@@ -48,29 +5,20 @@ HARMONI:
     no_files_referenced: '!NONE'
   contents:
     no_yaml_files: '!NONE'
-HAWKI:
-  package_type: observation
+UVES:
+  package_type: support
   structure:
-    default_yaml: OK
-    self_named_yaml: found
-    no_missing_files: '!OK'
+    self_named_yaml: not found
+    no_files_referenced: '!NONE'
   contents:
-    all_yamls_readable: '!OK'
-  dates:
-    FPA_hawki_layout.dat: conflict
-    LIST_HAWKI_mirrors.dat: conflict
-    TER_mirror_gold.dat: conflict
-    TER_window.dat: conflict
-    TC_filter_BrGamma.dat: conflict
-    TC_filter_CH4.dat: conflict
-    TC_filter_H.dat: conflict
-    TC_filter_H2.dat: conflict
-    TC_filter_J.dat: conflict
-    TC_filter_Ks.dat: conflict
-    TC_filter_NB1060.dat: conflict
-    TC_filter_NB1190.dat: conflict
-    TC_filter_NB2090.dat: conflict
-    TC_filter_Y.dat: conflict
+    no_yaml_files: '!NONE'
+KMOS:
+  package_type: support
+  structure:
+    self_named_yaml: not found
+    no_files_referenced: '!NONE'
+  contents:
+    no_yaml_files: '!NONE'
 HST:
   package_type: support
   structure:
@@ -82,20 +30,25 @@ HST:
     TER_ELT_mirror_mgf2agal.dat: conflict
     wfc3_ir_primary_001_syn.dat: conflict
     wfc3_ir_secondary_001_syn.dat: conflict
-KMOS:
+MCIFU:
   package_type: support
   structure:
     self_named_yaml: not found
     no_files_referenced: '!NONE'
   contents:
     no_yaml_files: '!NONE'
-LaPalma:
+MORFEO:
   package_type: support
   structure:
     self_named_yaml: found
     no_missing_files: '!OK'
   contents:
     all_yamls_readable: '!OK'
+  dates:
+    TER_MORFEO_mirror_aluminium.dat: conflict
+    TER_mirror_silver.dat: conflict
+    TER_MORFEO_mirror_mgf2agal.dat: conflict
+    TER_MORFEO_entrance_window.dat: error
 LFOA:
   package_type: observation
   structure:
@@ -106,33 +59,50 @@ LFOA:
     all_yamls_readable: '!OK'
     TC_filter_Halpha_wide_old.dat: error
   dates:
-    TER_focal_reducer.dat: conflict
     TER_mirror_aluminium.dat: conflict
-MCIFU:
+    TER_focal_reducer.dat: conflict
+MUSE:
   package_type: support
   structure:
     self_named_yaml: not found
     no_files_referenced: '!NONE'
   contents:
     no_yaml_files: '!NONE'
-METIS:
-  package_type: observation
+VLT:
+  package_type: support
   structure:
-    default_yaml: OK
     self_named_yaml: found
-    TER_ELT_6_mirror_field_track.dat: missing
-    QE_detector_Aquarius.dat: missing
-    FPA_linearity_Aquarius.dat: missing
+    no_missing_files: '!OK'
   contents:
     all_yamls_readable: '!OK'
   dates:
-    FPA_metis_img_lm_layout.dat: conflict
-    FPA_metis_img_nq_aquarius_layout.dat: conflict
-    FPA_metis_img_n_geosnap_layout.dat: conflict
-    QE_detector_geosnap.dat: conflict
-    QE_detector_H2RG_METIS.dat: conflict
-    TER_img_dichroic.dat: conflict
-    TER_mirror_gold.dat: conflict
+    TC_mirror_aluminium.dat: conflict
+    LIST_VLT_mirrors.dat: conflict
+ERIS:
+  package_type: support
+  structure:
+    self_named_yaml: not found
+    no_files_referenced: '!NONE'
+  contents:
+    no_yaml_files: '!NONE'
+ELT:
+  package_type: support
+  structure:
+    self_named_yaml: found
+    '#telescope_reflection.filename': missing
+  contents:
+    all_yamls_readable: '!OK'
+  dates:
+    TER_ELT_mirror_mgf2agal.dat: conflict
+    TER_ELT_5_mirror_clean.dat: conflict
+    TER_ELT_mirror_aluminium.dat: conflict
+LaPalma:
+  package_type: support
+  structure:
+    self_named_yaml: found
+    no_missing_files: '!OK'
+  contents:
+    all_yamls_readable: '!OK'
 MICADO:
   package_type: observation
   structure:
@@ -142,113 +112,21 @@ MICADO:
   contents:
     all_yamls_readable: '!OK'
   dates:
+    MASK_slit_3000x50.dat: conflict
+    TER_SCAO_dichroic.dat: conflict
+    TER_entrance_window.dat: conflict
+    TER_mirror_gold.dat: conflict
+    TER_MICADO_mirror_mgf2agal.dat: conflict
     FPA_linearity.dat: conflict
     MASK_slit_3000x20.dat: conflict
-    MASK_slit_3000x50.dat: conflict
-    TER_entrance_window.dat: conflict
-    TER_MICADO_mirror_mgf2agal.dat: conflict
-    TER_mirror_gold.dat: conflict
-    TER_SCAO_dichroic.dat: conflict
-    TC_filter_blank.dat: conflict
-    TC_filter_block.dat: conflict
-    TC_filter_Ks2.dat: conflict
     TC_filter_ND1.dat: conflict
-    TC_filter_ND3.dat: conflict
-    TC_filter_open.dat: conflict
-    TC_filter_stop_IJH.dat: conflict
     TC_filter_stop_K.dat: conflict
-MICADO_Sci:
-  package_type: observation
-  structure:
-    default_yaml: OK
-    self_named_yaml: found
-    TER_armazones_default_NIR_IMG.dat: missing
-    TER_ELT_5_mirror.dat: missing
-    QE_detector_H2RG.dat: missing
-    FPA_linearity.dat: missing
-    MICADO_AnisoCADO_rms_map.fits: missing
-  contents:
-    all_yamls_readable: '!OK'
-  dates:
-    TER_MICADO_IMG_common.dat: conflict
-    TER_MICADO_RO.dat: conflict
-    TER_MORFEO_MMS.dat: conflict
-MORFEO:
-  package_type: support
-  structure:
-    self_named_yaml: found
-    no_missing_files: '!OK'
-  contents:
-    all_yamls_readable: '!OK'
-  dates:
-    TER_mirror_silver.dat: conflict
-    TER_MORFEO_entrance_window.dat: error
-    TER_MORFEO_mirror_aluminium.dat: conflict
-    TER_MORFEO_mirror_mgf2agal.dat: conflict
-MUSE:
-  package_type: support
-  structure:
-    self_named_yaml: not found
-    no_files_referenced: '!NONE'
-  contents:
-    no_yaml_files: '!NONE'
-NACO:
-  package_type: support
-  structure:
-    self_named_yaml: not found
-    no_files_referenced: '!NONE'
-  contents:
-    no_yaml_files: '!NONE'
-    NB_3.74.dat: error
-    NB_4.05.dat: error
-  dates: {}
-OSIRIS:
-  package_type: observation
-  structure:
-    default_yaml: OK
-    self_named_yaml: found
-    no_missing_files: '!OK'
-  contents:
-    all_yamls_readable: '!OK'
-    TRACE_R1000B.dat: error
-    TRACE_R1000R.dat: error
-    TRACE_R2000B.dat: error
-    TRACE_R2500I.dat: error
-    TRACE_R2500R.dat: error
-    TRACE_R2500U.dat: error
-    TRACE_R2500V.dat: error
-    TRACE_R300B.dat: error
-    TRACE_R300R.dat: error
-    TRACE_R500B.dat: error
-    TRACE_R500R.dat: error
-  dates:
-    QE_OSIRIS_new_detector.dat: conflict
-    QE_OSIRIS_old_detector_plus_M3.dat: conflict
-    unity.dat: conflict
-Paranal:
-  package_type: support
-  structure:
-    self_named_yaml: found
-    no_missing_files: '!OK'
-  contents:
-    all_yamls_readable: '!OK'
-test_package:
-  package_type: observation
-  structure:
-    default_yaml: OK
-    self_named_yaml: found
-    no_missing_files: '!OK'
-  contents:
-    all_yamls_readable: '!OK'
-  dates:
-    TC_filter_Ks.dat: conflict
-UVES:
-  package_type: support
-  structure:
-    self_named_yaml: not found
-    no_files_referenced: '!NONE'
-  contents:
-    no_yaml_files: '!NONE'
+    TC_filter_Ks2.dat: conflict
+    TC_filter_block.dat: conflict
+    TC_filter_open.dat: conflict
+    TC_filter_ND3.dat: conflict
+    TC_filter_blank.dat: conflict
+    TC_filter_stop_IJH.dat: conflict
 ViennaLT:
   package_type: observation
   structure:
@@ -265,16 +143,57 @@ VISIR:
     no_files_referenced: '!NONE'
   contents:
     no_yaml_files: '!NONE'
-VLT:
-  package_type: support
+test_package:
+  package_type: observation
   structure:
+    default_yaml: OK
     self_named_yaml: found
     no_missing_files: '!OK'
   contents:
     all_yamls_readable: '!OK'
   dates:
-    LIST_VLT_mirrors.dat: conflict
-    TC_mirror_aluminium.dat: conflict
+    TC_filter_Ks.dat: conflict
+OSIRIS:
+  package_type: observation
+  structure:
+    default_yaml: OK
+    self_named_yaml: found
+    no_missing_files: '!OK'
+  contents:
+    all_yamls_readable: '!OK'
+    TRACE_R500B.dat: error
+    TRACE_R500R.dat: error
+    TRACE_R2500R.dat: error
+    TRACE_R1000R.dat: error
+    TRACE_R300R.dat: error
+    TRACE_R2000B.dat: error
+    TRACE_R2500V.dat: error
+    TRACE_R300B.dat: error
+    TRACE_R2500U.dat: error
+    TRACE_R1000B.dat: error
+    TRACE_R2500I.dat: error
+  dates:
+    QE_OSIRIS_old_detector_plus_M3.dat: conflict
+    unity.dat: conflict
+    QE_OSIRIS_new_detector.dat: conflict
+METIS:
+  package_type: observation
+  structure:
+    default_yaml: OK
+    self_named_yaml: found
+  contents:
+    all_yamls_readable: '!OK'
+    2023-06-20-spectra_Grism-M_band.dat: error
+    2023-06-20-spectra_Grism-L_band.dat: error
+    2023-06-20-spectra_Grism-N_band.dat: error
+  dates:
+    FPA_metis_img_nq_aquarius_layout.dat: conflict
+    FPA_metis_img_n_geosnap_layout.dat: conflict
+    TER_img_dichroic.dat: conflict
+    TER_mirror_gold.dat: conflict
+    FPA_metis_img_lm_layout.dat: conflict
+    QE_detector_H2RG_METIS.dat: conflict
+    QE_detector_geosnap.dat: conflict
 WFC3:
   package_type: observation
   structure:
@@ -284,28 +203,109 @@ WFC3:
   contents:
     all_yamls_readable: '!OK'
   dates:
-    TER_filter_F098M.dat: conflict
-    TER_filter_F105W.dat: conflict
+    wfc3_ir_win_001_syn.dat: conflict
     TER_filter_F110W.dat: conflict
-    TER_filter_F125W.dat: conflict
-    TER_filter_F126N.dat: conflict
     TER_filter_F127M.dat: conflict
-    TER_filter_F128N.dat: conflict
-    TER_filter_F130N.dat: conflict
-    TER_filter_F132N.dat: conflict
+    TER_filter_F126N.dat: conflict
     TER_filter_F139M.dat: conflict
     TER_filter_F140W.dat: conflict
-    TER_filter_F153M.dat: conflict
-    TER_filter_F160W.dat: conflict
+    TER_filter_F128N.dat: conflict
+    TER_filter_F130N.dat: conflict
+    TER_filter_F098M.dat: conflict
     TER_filter_F164N.dat: conflict
-    TER_filter_F167N.dat: conflict
-    wfc3_ir_cor_004_syn.dat: conflict
-    wfc3_ir_csm_001_syn.dat: conflict
     wfc3_ir_dn_002_syn.dat: conflict
+    TER_filter_F105W.dat: conflict
     wfc3_ir_fold_001_syn.dat: conflict
-    wfc3_ir_mask_001_syn.dat: conflict
+    TER_filter_F153M.dat: conflict
     wfc3_ir_mir1_001_syn.dat: conflict
-    wfc3_ir_mir2_001_syn.dat: conflict
-    wfc3_ir_qe_003_syn.dat: conflict
     wfc3_ir_rcp_001_syn.dat: conflict
-    wfc3_ir_win_001_syn.dat: conflict
+    TER_filter_F160W.dat: conflict
+    TER_filter_F132N.dat: conflict
+    wfc3_ir_mask_001_syn.dat: conflict
+    wfc3_ir_mir2_001_syn.dat: conflict
+    TER_filter_F167N.dat: conflict
+    wfc3_ir_qe_003_syn.dat: conflict
+    wfc3_ir_cor_004_syn.dat: conflict
+    TER_filter_F125W.dat: conflict
+    wfc3_ir_csm_001_syn.dat: conflict
+Armazones:
+  package_type: support
+  structure:
+    self_named_yaml: found
+    no_missing_files: '!OK'
+  contents:
+    all_yamls_readable: '!OK'
+  dates:
+    TER_armazones_default_NIR_IMG.dat: conflict
+FORS:
+  package_type: support
+  structure:
+    self_named_yaml: not found
+    no_files_referenced: '!NONE'
+  contents:
+    no_yaml_files: '!NONE'
+HAWKI:
+  package_type: observation
+  structure:
+    default_yaml: OK
+    self_named_yaml: found
+    no_missing_files: '!OK'
+  contents:
+    all_yamls_readable: '!OK'
+  dates:
+    TER_window.dat: conflict
+    TER_mirror_gold.dat: conflict
+    FPA_hawki_layout.dat: conflict
+    LIST_HAWKI_mirrors.dat: conflict
+    TC_filter_NB1190.dat: conflict
+    TC_filter_NB1060.dat: conflict
+    TC_filter_NB2090.dat: conflict
+    TC_filter_H2.dat: conflict
+    TC_filter_H.dat: conflict
+    TC_filter_J.dat: conflict
+    TC_filter_CH4.dat: conflict
+    TC_filter_Ks.dat: conflict
+    TC_filter_BrGamma.dat: conflict
+    TC_filter_Y.dat: conflict
+Paranal:
+  package_type: support
+  structure:
+    self_named_yaml: found
+    no_missing_files: '!OK'
+  contents:
+    all_yamls_readable: '!OK'
+NACO:
+  package_type: support
+  structure:
+    self_named_yaml: not found
+    no_files_referenced: '!NONE'
+  contents:
+    no_yaml_files: '!NONE'
+    NB_4.05.dat: error
+    NB_3.74.dat: error
+  dates: {}
+GTC:
+  package_type: support
+  structure:
+    self_named_yaml: found
+    no_missing_files: '!OK'
+  contents:
+    all_yamls_readable: '!OK'
+  dates:
+    unity.dat: conflict
+MICADO_Sci:
+  package_type: observation
+  structure:
+    default_yaml: OK
+    self_named_yaml: found
+    MICADO_AnisoCADO_rms_map.fits: missing
+    TER_armazones_default_NIR_IMG.dat: missing
+    TER_ELT_5_mirror.dat: missing
+    QE_detector_H2RG.dat: missing
+    FPA_linearity.dat: missing
+  contents:
+    all_yamls_readable: '!OK'
+  dates:
+    TER_MICADO_RO.dat: conflict
+    TER_MICADO_IMG_common.dat: conflict
+    TER_MORFEO_MMS.dat: conflict

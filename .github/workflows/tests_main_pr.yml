@@ -1,0 +1,24 @@
+name: Tests PR main
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  tests:
+    name: Tests
+    uses: ./.github/workflows/tests.yml
+    with:
+      from_pypi: true
+
+  notebook_tests:
+    name: Notebook tests
+    uses: ./.github/workflows/notebooktests.yml
+    with:
+      from_pypi: true
+
+  badge_report:
+    name: Badge Report
+    uses: ./.github/workflows/badge_report.yml
+    with:
+      from_pypi: true

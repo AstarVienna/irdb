@@ -22,6 +22,6 @@ effects :
     kwargs:
         filter_name: "!OBS.filter_name"
         filename_format: "TER_filter_{}.dat"
-        minimum_throughput: !!float 1E-4
+        minimum_throughput: 1.e-4
         outer: 0.1
         outer_unit: "m"

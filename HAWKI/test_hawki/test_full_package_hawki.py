@@ -13,7 +13,6 @@ import pytest
 from pytest import approx
 import os
 import os.path as pth
-import shutil
 
 import numpy as np
 from astropy import units as u
@@ -62,6 +61,7 @@ class TestLoadUserCommands:
         assert len(stdout.out) == 0
 
 
+@pytest.mark.slow
 class TestMakeOpticalTrain:
     def test_works_seamlessly_for_hawki_package(self, capsys):
         cmd = scopesim.UserCommands(use_instrument="HAWKI")
@@ -126,8 +126,8 @@ class TestMakeOpticalTrain:
 
         # test assert there are 4 detectors, each 2048x2048 pixels
         hdu = opt.readout()[0]
-        assert len(opt.detector_arrays[0].detectors) == 4
-        for detector in opt.detector_arrays[0].detectors:
+        assert len(opt.detector_managers[0]) == 4
+        for detector in opt.detector_managers[0]:
             assert detector.hdu.header["NAXIS1"] == 2048
             assert detector.hdu.header["NAXIS2"] == 2048
 

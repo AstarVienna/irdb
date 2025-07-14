@@ -34,6 +34,13 @@ effects:
       s_colname: "xi"
       col_number_start: 1
 
+  - name: lss_fits_keywords
+    descriptions: FITS keywords specific to LSS
+    class: ExtraFitsKeywords
+    include: True
+    kwargs:
+      filename: headers/FITS_lss_keywords.yaml
+
 ---
 ### default simulation parameters needed for a METIS simulation
 object: simulation
@@ -43,5 +50,5 @@ description: RC simulation parameters which need to change for a METIS run
 
 properties:
   spectral:
-    spectral_bin_width: !!float 5E-4   # microns, defines fov wavelengths
-    spectral_resolution: 5000          # defines skycalc resolution
+    spectral_bin_width: 5.e-4  # microns, defines fov wavelengths
+    spectral_resolution: 5000  # defines skycalc resolution

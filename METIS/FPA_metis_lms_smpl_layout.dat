@@ -1,0 +1,21 @@
+# name : METIS LMS H2RG-18 FPA
+# author : Fabian Haberhauer
+# sources: NA
+# date_created : 2025-05-08
+# date_modified : 2025-05-08
+# x_cen_unit : mm
+# y_cen_unit : mm
+# z_cen_unit : um
+# x_size_unit : pix
+# y_size_unit : pix
+# z_size_unit : pix
+# pixel_size_unit : mm
+# angle_unit : deg
+# gain_unit : electron/adu
+# image_plane_id : 0
+#
+# changes:
+# - 2025-05-08 (FH) create file
+#
+id x_cen y_cen z_cen x_size y_size z_size pixel_size angle gain
+ 0     0     0     0    109    109   5600      0.018   0.0  1.0

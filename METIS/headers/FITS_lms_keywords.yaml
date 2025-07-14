@@ -1,0 +1,30 @@
+- ext_type: PrimaryHDU
+  keywords:
+
+    HIERARCH:
+      ESO:
+        DPR:
+          TECH:   "IFU"
+        INS:
+          LMS:                  # LMS mode (Nominal or Extended)
+            MODE: "Nominal"
+          WLEN:                 # LMS central wavelength and range
+            CEN:   ["!OBS.wavelen", "Central wavelength [um]"]
+            START: "TBD"  # "#lms_spectral_traces.wave_min" ain't workin'
+            END:   "TBD"
+          GRAT:
+            ANGLE: "TBD"
+          OPTI4:                # LMS beamsplitter pickoff wheel
+            DESC: "LMS pickoff"
+            NAME: "IN"
+          OPTI5:                # LMS PP1 mask wheel
+            DESC: "LMS PP1 mask wheel"
+            NAME: "open"        # TODO: not defined in irdb
+          OPTI6:                # LMS spectral IFU mechanism
+            DESC: "LMS spectral IFU mechanism"
+            NAME: "OUT"
+          OPTI7:                # LMS pre-disperser
+            DESC: "LMS pre-disperser"
+            NAME: "TBD"
+          OPTI8:                # LMS main disperser
+            NAME: "TBD"         # identical to GRAT.ANGLE?

@@ -21,6 +21,9 @@ logging.shutdown()
 reload(logging)
 
 
+# Note: This module doesn't need to run always, so mark it.
+pytestmark = pytest.mark.badges
+
 # TODO: some tests should be skipped if something else has failed.
 # howto: https://stackoverflow.com/questions/75377691/skip-test-case-if-above-test-case-failed-pytest
 # and: https://pytest-dependency.readthedocs.io/en/stable/advanced.html
@@ -38,7 +41,6 @@ def fixture_badges():
 
 
 @pytest.mark.parametrize("package", list(get_packages()))
-@pytest.mark.usefixtures("badges")
 class TestFileStructureOfPackages:
     def test_default_yaml_contains_packages_list(self, package, badges):
         pkg_name, pkg_path = package
@@ -52,8 +54,12 @@ class TestFileStructureOfPackages:
         with default_yaml.open(encoding="utf-8") as file:
             yaml_dict = next(yaml.full_load_all(file))
 
-        result = "packages" in yaml_dict and "yamls" in yaml_dict and \
-                 f"{pkg_name}.yaml" in yaml_dict["yamls"]
+        result = "packages" in yaml_dict
+
+        # METIS is special since in WCU mode it operates without METIS.
+        if pkg_name not in {"METIS"}:
+            result &= "yamls" in yaml_dict \
+                and f"{pkg_name}.yaml" in yaml_dict["yamls"]
         if result:
             badges[f"!{pkg_name}.structure.default_yaml"] = "OK"
         else:
@@ -150,7 +156,6 @@ class TestFileStructureOfPackages:
 
 
 @pytest.mark.parametrize("package", list(get_packages()))
-@pytest.mark.usefixtures("pkg_dir", "badges")
 class TestPackageDatFiles:
     @pytest.mark.xfail(
         reason=("Due to bad globbing, files in subfolders were not checked "

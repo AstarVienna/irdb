@@ -1,0 +1,11 @@
+- ext_type: PrimaryHDU
+  keywords:
+    HIERARCH:
+      WISE:
+        TEL:
+          NAME: "ELT"
+          TELESCOP: "ELT"
+          TER:
+            FILENAME: "!TEL.ter_curve.filename"
+          REF:
+            FILENAME: "#telescope_reflection.filename"

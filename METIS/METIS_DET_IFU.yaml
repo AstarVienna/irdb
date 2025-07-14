@@ -4,9 +4,11 @@ object: detector
 alias: DET
 name: metis_lms_detector_array
 description: A set of 4 H2RG detectors
-date_modified: 2021-12-16
+date_modified: 2025-06-16
 changes:
   - 2021-12-16 (OC) some rearrangements
+  - 2024-10-11 (OC) add ADConversion, gain from B.Serra (2024-10-09)
+  - 2025-06-16 (OC) rename SummedExposure to ExposureIntegration
 
 properties:
   image_plane_id: 0
@@ -14,7 +16,12 @@ properties:
   dit: "!OBS.dit"
   ndit: "!OBS.ndit"
   mindit: 1.3               # seconds, Roy van Boekel, pers. communication
-  full_well: !!float 1.E5   # electrons, E-TNT-MPIA-1004, v1-0
+  full_well: 1.e+5   # electrons, E-TNT-MPIA-1004, v1-0
+  gain:
+    1: 2.0            # electrons/ADU, email B.Serra 2024-10-09
+    2: 2.0
+    3: 2.0
+    4: 2.0
   dark_current: 0.1         # [e-/s]
   readout_noise: 70         # electrons, AI on RvB: check
   layout:
@@ -45,9 +52,9 @@ effects:
     kwargs:
       fill_frac: "!OBS.auto_exposure.fill_frac"
 
-  - name: exposure_action
+  - name: exposure_integration
     description: Summing up sky signal for all DITs and NDITs
-    class: SummedExposure
+    class: ExposureIntegration
 
   - name: dark_current
     description: METIS LMS dark current
@@ -71,3 +78,23 @@ effects:
     kwargs:
       noise_std: "!DET.readout_noise"
       n_channels: 32
+
+  - name: exposure_output
+    description: Return average or sum over NDIT subexposures
+    class: ExposureOutput
+    kwargs:
+      mode: average
+
+  - name: ad_conversion
+    description: Apply gain and convert electron count into integers
+    class: ADConversion
+    kwargs:
+      dtype: float32
+      gain: "!DET.gain"
+
+  - name: det_ifu_fits_keywords
+    descriptions: FITS keywords specific to IFU detectors
+    class: ExtraFitsKeywords
+    include: True
+    kwargs:
+      filename: headers/FITS_det_ifu_keywords.yaml

@@ -41,9 +41,6 @@ effects :
     kwargs:
         filter_name: "!OBS.filter_name"
         filename_format: "filters/{}.dat"
-        minimum_throughput: !!float 1.01E-4
+        minimum_throughput: 1.01e-4
         outer: 0.032
         outer_unit: "m"
-
-
-

@@ -1,0 +1,65 @@
+- ext_type: PrimaryHDU
+  keywords:
+    HIERARCH:
+      ESO:
+        DET3:
+          DIT:        "!OBS.dit"
+          NDIT:       "!OBS.ndit"
+          CUBE:
+            MODE:     "F"
+
+- ext_number: [1]
+  keywords:
+    BUNIT:            "ADU"
+    HIERARCH:
+      ESO:
+        DET3:
+          CHIP:
+            ID:       "!DET.detector"
+            MINDIT:   "!DET.mindit"
+            FULLWELL: "!DET.full_well"
+            RON:      "!DET.readout_noise"
+            DARK:     "!DET.dark_current"
+            GAIN:     "!DET.gain.1"
+
+- ext_number: [2]
+  keywords:
+    BUNIT:            "ADU"
+    HIERARCH:
+      ESO:
+        DET3:
+          CHIP:
+            ID:       "!DET.detector"
+            MINDIT:   "!DET.mindit"
+            FULLWELL: "!DET.full_well"
+            RON:      "!DET.readout_noise"
+            DARK:     "!DET.dark_current"
+            GAIN:     "!DET.gain.2"
+
+- ext_number: [3]
+  keywords:
+    BUNIT:            "ADU"
+    HIERARCH:
+      ESO:
+        DET3:
+          CHIP:
+            ID:       "!DET.detector"
+            MINDIT:   "!DET.mindit"
+            FULLWELL: "!DET.full_well"
+            RON:      "!DET.readout_noise"
+            DARK:     "!DET.dark_current"
+            GAIN:     "!DET.gain.3"
+
+- ext_number: [4]
+  keywords:
+    BUNIT:            "ADU"
+    HIERARCH:
+      ESO:
+        DET3:
+          CHIP:
+            ID:       "!DET.detector"
+            MINDIT:   "!DET.mindit"
+            FULLWELL: "!DET.full_well"
+            RON:      "!DET.readout_noise"
+            DARK:     "!DET.dark_current"
+            GAIN:     "!DET.gain.4"
