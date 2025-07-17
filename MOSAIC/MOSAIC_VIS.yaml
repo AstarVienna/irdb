@@ -1,0 +1,16 @@
+---
+### MOSAIC visual arm
+
+object: instrument
+alias: INST
+name: MOSAIC
+description: base configuration for MOSAIC VIS
+date_modified: 2025-07-17
+
+
+properties:
+  pixel_scale: 0.01    # not sure what this means for a fibre spectrograph
+  plate_scale: 0.5     #  -"-
+  temperature: -206    # TBC
+
+#effects:

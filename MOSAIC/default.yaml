@@ -3,25 +3,28 @@ object : configuration
 alias : OBS
 name : MOSAIC_default_configuration
 description : default parameters needed for a MOSAIC simulation
+needs_scopesim: "v0.10.0b4"
+date_modified: 2025-07-17
 
 packages :
-- Armazones
-- ELT
-- MOSAIC
+  - Armazones
+  - ELT
+  - MOSAIC
 
 yamls :
-# - Armazones.yaml
-- ELT.yaml
+  - Armazones.yaml
+  - ELT.yaml
 
 properties :
-  modes : ["MOS-NIR-LR-H"]
+  instrument: "MOSAIC"
+  modes : ["VIS-LR-R"]     # default mode
   airmass : 1.2
   declination : -30
   hour_angle : 0
   pupil_angle : 0
-  dit : 60
-  ndit : 1
-  instrument : MOSAIC
+  exptime: 60
+  #dit : 60
+  #ndit : 1
   ra : 0.0
   dec : 0.0
   psf_fwhm : 0.2
@@ -29,30 +32,53 @@ properties :
 
 
 mode_yamls :
-- object : instrument
-  alias: OBS
-  name : "MOS-NIR-LR-H"
-  description : "MVP system for a single MOSAIC config"
-  yamls :
-  - MOSAIC-MOS-NIR-LR-H.yaml
-  - MOSAIC_H_DET.yaml
+  - object: observation
+    alias: OBS
+    name: VIS-LR-R
+    description: "MOSAIC visual low resolution R band"
+    status: development
+    yamls:
+      - MOSAIC_VIS.yaml
+      - MOSAIC_DET_VIS_smpl.yaml
+    properties:
+      ins_mode: VIS-LR-R    # use as FITS header keyword
+      psf_file: PSF_GLAO_R.fits
+      trace_file: TRACE_MOSAIC_VIS_LR_R.fits
+
+  - object : instrument
+    alias: OBS
+    name : "MOS-NIR-LR-H"
+    description : "MVP system for a single MOSAIC config"
+    yamls :
+      - MOSAIC-MOS-NIR-LR-H.yaml
+      - MOSAIC_H_DET.yaml
 
 
 ---
-### default simulation parameters needed for a MICADO simulation
+### default simulation parameters needed for a MOSAIC simulation
 object : simulation
 alias : SIM
-name : MICADO_simulation_paramters
-description : RC simulation paramters which need to change for a MICADO run
+name : MOSAIC_simulation_parameters
+description : RC simulation paramters which need to change for a MOSAIC run
 
 properties :
   random :
     seed : None
 
   spectral :
-    wave_min : 1.42
-    wave_mid : 1.6
-    wave_max : 1.857
+    wave_min : 0.35
+    wave_mid : 1.125
+    wave_max : 1.9
 
   computing :
     preload_field_of_view : True
+
+---
+### default instrument parameters
+object: instrument
+alias: INST
+name: MOSAIC_instrument_parameters
+description: instrument parameters common to all MOSAIC modes
+
+properties:
+  decouple_detector_from_sky_headers: True
