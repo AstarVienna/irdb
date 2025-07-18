@@ -1,0 +1,31 @@
+# name: MOSAIC VIS B/R system transmission (simple version)
+# description : A 7-fibre bundle for the VIS-LR mode
+# author: Kieran Leschinski
+# sources: E-MOS-SYS-ANR-0063-V20_VIS_OptDesign_preSAR.pdf, adapted
+# date_created: 2025-07-18
+# date_modified: 2025-07-18
+# status : estimate
+# x_cen : 0
+# y_cen : 0
+# x_cen_unit : arcsec
+# y_cen_unit : arcsec
+# x_unit : arcsec
+# y_unit : arcsec
+# r_unit : arcsec
+# angle_unit : deg
+#
+# comments :
+#   - This file contains the positions of a single VIS-LR 7-fibre bundles.
+#   - The hexagon-height (flat-to-flat) is 0.234"
+#   - The central fibre is id=0, then id follows a unit circle (CCW)
+# changes:
+# - 2025-07-17 (OC) initialised
+#
+id      x       y       r       angle   conserve_image  shape
+0       0       0       0.117   90      False           hex
+1       0.234   0       0.117   90      False           hex
+2       0.117   0.202   0.117   90      False           hex
+3       -0.117  0.202   0.117   90      False           hex
+4       -0.234  0       0.117   90      False           hex
+5       -0.117  0.202   0.117   90      False           hex
+6       0.117   0.202   0.117   90      False           hex
