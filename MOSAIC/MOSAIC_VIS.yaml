@@ -19,8 +19,15 @@ effects:
     kwargs:
       filename: TER_VIS_system_transmission.dat
 
-  - name : psf
-    description : Seeing limited PSF
-    class : SeeingPSF
-    kwargs :
-      fwhm : "!OBS.psf_fwhm"       # [arcsec]
+  - name: psf
+    description: Seeing limited PSF
+    class: SeeingPSF
+    kwargs:
+      fwhm: "!OBS.psf_fwhm"       # [arcsec]
+
+  - name: fiber_bundle
+    description: field of view of fiber bundle
+    class: MetisLMSImageSlicer
+    kwargs:
+      filename: "!OBS.trace_file"
+      ext_id: "Aperture List"
