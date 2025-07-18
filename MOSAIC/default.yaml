@@ -43,7 +43,7 @@ mode_yamls :
     properties:
       ins_mode: VIS-LR-R    # use as FITS header keyword
       # psf_file: PSF_GLAO_R.fits
-      trace_file: TRACE_MOSAIC_VIS_LR_R.fits
+      trace_file: TRACE_MOS-VIS-LR-R.fits
 
   - object : instrument
     alias: OBS
