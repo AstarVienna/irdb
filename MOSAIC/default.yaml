@@ -42,7 +42,7 @@ mode_yamls :
       - MOSAIC_DET_VIS_smpl.yaml
     properties:
       ins_mode: VIS-LR-R    # use as FITS header keyword
-      psf_file: PSF_GLAO_R.fits
+      # psf_file: PSF_GLAO_R.fits
       trace_file: TRACE_MOSAIC_VIS_LR_R.fits
 
   - object : instrument
