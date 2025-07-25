@@ -85,8 +85,8 @@ class TestMakeOpticalTrain:
 
         # test that we have a system throughput
         wave = np.linspace(0.7, 1.8, 111) * u.um
-        tc = opt.optics_manager.surfaces_table.throughput
-        ec = opt.optics_manager.surfaces_table.emission
+        tc = opt.optics_manager.system_transmission
+        # ec = opt.optics_manager.surfaces_table.emission
         # ..todo:: something super wierd is going on here when running pytest in the top directory
         assert 0.4 < np.max(tc(wave)) < 0.6
 
@@ -94,9 +94,9 @@ class TestMakeOpticalTrain:
             plt.plot(wave, tc(wave))
             plt.show()
 
-        if PLOTS:
-            plt.plot(wave, ec(wave))
-            plt.show()
+        # if PLOTS:
+        #     plt.plot(wave, ec(wave))
+        #     plt.show()
 
         # test that we have the correct number of FOVs for Ks band
         assert len(opt.fov_manager.fovs) == 1
