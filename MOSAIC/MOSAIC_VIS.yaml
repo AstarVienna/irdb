@@ -31,3 +31,9 @@ effects:
     kwargs:
       filename: "!OBS.trace_file"
       ext_id: "Aperture List"
+
+  - name: vis_spectral_traces
+    description: mapping of spectra onto the detector
+    class: MosaicSpectralTraceList
+    kwargs:
+      filename: "!OBS.trace_file"

@@ -34,6 +34,46 @@ properties :
 mode_yamls :
   - object: observation
     alias: OBS
+    name: VIS-LR-B
+    description: "MOSAIC visual low resolution B band"
+    status: development
+    yamls:
+      - MOSAIC_VIS.yaml
+      - MOSAIC_DET_VIS_smpl.yaml
+    properties:
+      ins_mode: VIS-LR-B    # use as FITS header keyword
+      # psf_file: PSF_GLAO_R.fits
+      trace_file: TRACE_MOS-VIS-LR-B.fits
+      dispersion: 1.9e-5      # um/pixel on the output detector
+
+  - object: observation
+    alias: OBS
+    name: VIS-HR-B1
+    description: "MOSAIC visual high resolution B1 band"
+    status: development
+    yamls:
+      - MOSAIC_VIS.yaml
+      - MOSAIC_DET_VIS_smpl.yaml
+    properties:
+      ins_mode: VIS-HR-B1
+      trace_file: TRACE_MOS-VIS-HR-B1.fits
+      dispersion: 6.5e-6    # um/pixel on detector
+
+  - object: observation
+    alias: OBS
+    name: VIS-HR-B2
+    description: "MOSAIC visual high resolution B2 band"
+    status: development
+    yamls:
+      - MOSAIC_VIS.yaml
+      - MOSAIC_DET_VIS_smpl.yaml
+    properties:
+      ins_mode: VIS-HR-B2
+      trace_file: TRACE_MOS-VIS-HR-B2.fits
+      dispersion: 5e-6    # um/pixel on detector
+
+  - object: observation
+    alias: OBS
     name: VIS-LR-R
     description: "MOSAIC visual low resolution R band"
     status: development
@@ -44,6 +84,34 @@ mode_yamls :
       ins_mode: VIS-LR-R    # use as FITS header keyword
       # psf_file: PSF_GLAO_R.fits
       trace_file: TRACE_MOS-VIS-LR-R.fits
+      dispersion: 3e-5      # um/pixel on the output detector
+
+  - object: observation
+    alias: OBS
+    name: VIS-HR-R1
+    description: "MOSAIC visual high resolution R1 band"
+    status: development
+    yamls:
+      - MOSAIC_VIS.yaml
+      - MOSAIC_DET_VIS_smpl.yaml
+    properties:
+      ins_mode: VIS-HR-R1
+      trace_file: TRACE_MOS-VIS-HR-R1.fits
+      dispersion: 8e-6    # um/pixel on detector
+
+  - object: observation
+    alias: OBS
+    name: VIS-HR-R2
+    description: "MOSAIC visual high resolution R2 band"
+    status: development
+    yamls:
+      - MOSAIC_VIS.yaml
+      - MOSAIC_DET_VIS_smpl.yaml
+    properties:
+      ins_mode: VIS-HR-R2
+      trace_file: TRACE_MOS-VIS-HR-R2.fits
+      dispersion: 1e-5    # um/pixel on detector
+
 
   - object : instrument
     alias: OBS
@@ -69,9 +137,10 @@ properties :
     wave_min : 0.35
     wave_mid : 1.125
     wave_max : 1.9
+    spectral_bin_width: "!OBS.dispersion"
 
   computing :
-    preload_field_of_view : True
+    preload_field_of_views : True
 
 ---
 ### default instrument parameters
