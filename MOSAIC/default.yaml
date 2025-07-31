@@ -42,6 +42,7 @@ mode_yamls :
       - MOSAIC_DET_VIS_smpl.yaml
     properties:
       ins_mode: VIS-LR-B    # use as FITS header keyword
+      ter_file:   TER_VIS-LR-B.dat
       # psf_file: PSF_GLAO_R.fits
       trace_file: TRACE_MOS-VIS-LR-B.fits
       dispersion: 1.9e-5      # um/pixel on the output detector
@@ -56,6 +57,7 @@ mode_yamls :
       - MOSAIC_DET_VIS_smpl.yaml
     properties:
       ins_mode: VIS-HR-B1
+      ter_file:   TER_VIS-HR-B1.dat
       trace_file: TRACE_MOS-VIS-HR-B1.fits
       dispersion: 6.5e-6    # um/pixel on detector
 
@@ -69,6 +71,7 @@ mode_yamls :
       - MOSAIC_DET_VIS_smpl.yaml
     properties:
       ins_mode: VIS-HR-B2
+      ter_file:   TER_VIS-HR-B2.dat
       trace_file: TRACE_MOS-VIS-HR-B2.fits
       dispersion: 5e-6    # um/pixel on detector
 
@@ -82,6 +85,7 @@ mode_yamls :
       - MOSAIC_DET_VIS_smpl.yaml
     properties:
       ins_mode: VIS-LR-R    # use as FITS header keyword
+      ter_file:   TER_VIS-LR-R.dat
       # psf_file: PSF_GLAO_R.fits
       trace_file: TRACE_MOS-VIS-LR-R.fits
       dispersion: 3e-5      # um/pixel on the output detector
@@ -96,6 +100,7 @@ mode_yamls :
       - MOSAIC_DET_VIS_smpl.yaml
     properties:
       ins_mode: VIS-HR-R1
+      ter_file:   TER_VIS-HR-R1.dat
       trace_file: TRACE_MOS-VIS-HR-R1.fits
       dispersion: 8e-6    # um/pixel on detector
 
@@ -109,6 +114,7 @@ mode_yamls :
       - MOSAIC_DET_VIS_smpl.yaml
     properties:
       ins_mode: VIS-HR-R2
+      ter_file:   TER_VIS-HR-R2.dat
       trace_file: TRACE_MOS-VIS-HR-R2.fits
       dispersion: 1e-5    # um/pixel on detector
 
