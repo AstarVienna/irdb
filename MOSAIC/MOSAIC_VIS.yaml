@@ -14,10 +14,10 @@ properties:
   temperature: -206    # TBC
 
 effects:
-  - name: Unity system transmission
+  - name: System transmission
     class: TERCurve
     kwargs:
-      filename: TER_VIS_system_transmission.dat
+      filename: "!OBS.ter_file"
 
   - name: psf
     description: Seeing limited PSF
