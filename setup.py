@@ -39,6 +39,7 @@ def setup_package():
                             "lxml[html_clean]",
                             "pyyaml>5.1",
                             "pysftp",
+                            "paramiko<=3.5.1",
 
                             "synphot>=0.1.3",
                             "skycalc_ipy>=0.1.3",
