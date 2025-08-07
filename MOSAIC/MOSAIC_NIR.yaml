@@ -1,0 +1,44 @@
+---
+### MOSAIC near-infrared arm
+
+object: instrument
+alias: INST
+name: MOSAIC
+description: base configuration for MOSAIC NIR
+date_modified: 2025-08-07
+
+
+properties:
+  pixel_scale: 0.01    # not sure what this means for a fibre spectrograph
+  plate_scale: 0.5     #  -"-
+  temperature: -206    # TBC
+
+effects:
+  - name: Fibre transmission
+    class: TERCurve
+    kwargs:
+      filename: "!OBS.fibre_ter_file"
+
+  - name: Spectrograph transmission
+    class: TERCurve
+    kwargs:
+      filename: "!OBS.spec_ter_file"
+
+  - name: psf
+    description: Seeing limited PSF
+    class: SeeingPSF
+    kwargs:
+      fwhm: "!OBS.psf_fwhm"       # [arcsec]
+
+  - name: fiber_bundle
+    description: field of view of fiber bundle
+    class: MetisLMSImageSlicer
+    kwargs:
+      filename: "!OBS.trace_file"
+      ext_id: "Aperture List"
+
+  - name: vis_spectral_traces
+    description: mapping of spectra onto the detector
+    class: MosaicSpectralTraceList
+    kwargs:
+      filename: "!OBS.trace_file"
