@@ -17,7 +17,7 @@ yamls :
 
 properties :
   instrument: "MOSAIC"
-  modes : ["VIS-LR-R"]     # default mode
+  modes : ["MOS-LR-R"]     # default mode
   airmass : 1.2
   declination : -30
   hour_angle : 0
@@ -34,98 +34,174 @@ properties :
 mode_yamls :
   - object: observation
     alias: OBS
-    name: VIS-LR-B
+    name: MOS-LR-B
     description: "MOSAIC visual low resolution B band"
     status: development
     yamls:
       - MOSAIC_VIS.yaml
       - MOSAIC_DET_VIS_smpl.yaml
     properties:
-      ins_mode: VIS-LR-B    # use as FITS header keyword
-      ter_file:   TER_VIS-LR-B.dat
+      ins_mode: MOS-LR-B    # use as FITS header keyword
+      ter_file:   TER_sys_MOS-LR-B.dat
       # psf_file: PSF_GLAO_R.fits
       trace_file: TRACE_MOS-VIS-LR-B.fits
       dispersion: 1.9e-5      # um/pixel on the output detector
 
   - object: observation
     alias: OBS
-    name: VIS-HR-B1
+    name: MOS-HR-B1
     description: "MOSAIC visual high resolution B1 band"
     status: development
     yamls:
       - MOSAIC_VIS.yaml
       - MOSAIC_DET_VIS_smpl.yaml
     properties:
-      ins_mode: VIS-HR-B1
-      ter_file:   TER_VIS-HR-B1.dat
+      ins_mode: MOS-HR-B1
+      ter_file:   TER_sys_MOS-HR-B1.dat
       trace_file: TRACE_MOS-VIS-HR-B1.fits
       dispersion: 6.5e-6    # um/pixel on detector
 
   - object: observation
     alias: OBS
-    name: VIS-HR-B2
+    name: MOS-HR-B2
     description: "MOSAIC visual high resolution B2 band"
     status: development
     yamls:
       - MOSAIC_VIS.yaml
       - MOSAIC_DET_VIS_smpl.yaml
     properties:
-      ins_mode: VIS-HR-B2
-      ter_file:   TER_VIS-HR-B2.dat
+      ins_mode: MOS-HR-B2
+      ter_file:   TER_sys_MOS-HR-B2.dat
       trace_file: TRACE_MOS-VIS-HR-B2.fits
       dispersion: 5e-6    # um/pixel on detector
 
   - object: observation
     alias: OBS
-    name: VIS-LR-R
+    name: MOS-LR-R
     description: "MOSAIC visual low resolution R band"
     status: development
     yamls:
       - MOSAIC_VIS.yaml
       - MOSAIC_DET_VIS_smpl.yaml
     properties:
-      ins_mode: VIS-LR-R    # use as FITS header keyword
-      ter_file:   TER_VIS-LR-R.dat
+      ins_mode: MOS-LR-R    # use as FITS header keyword
+      ter_file:   TER_sys_MOS-LR-R.dat
       # psf_file: PSF_GLAO_R.fits
       trace_file: TRACE_MOS-VIS-LR-R.fits
       dispersion: 3e-5      # um/pixel on the output detector
 
   - object: observation
     alias: OBS
-    name: VIS-HR-R1
+    name: MOS-HR-R1
     description: "MOSAIC visual high resolution R1 band"
     status: development
     yamls:
       - MOSAIC_VIS.yaml
       - MOSAIC_DET_VIS_smpl.yaml
     properties:
-      ins_mode: VIS-HR-R1
-      ter_file:   TER_VIS-HR-R1.dat
+      ins_mode: MOS-HR-R1
+      ter_file:   TER_sys_MOS-HR-R1.dat
       trace_file: TRACE_MOS-VIS-HR-R1.fits
       dispersion: 8e-6    # um/pixel on detector
 
   - object: observation
     alias: OBS
-    name: VIS-HR-R2
+    name: MOS-HR-R2
     description: "MOSAIC visual high resolution R2 band"
     status: development
     yamls:
       - MOSAIC_VIS.yaml
       - MOSAIC_DET_VIS_smpl.yaml
     properties:
-      ins_mode: VIS-HR-R2
-      ter_file:   TER_VIS-HR-R2.dat
+      ins_mode: MOS-HR-R2
+      ter_file:   TER_sys_MOS-HR-R2.dat
       trace_file: TRACE_MOS-VIS-HR-R2.fits
       dispersion: 1e-5    # um/pixel on detector
 
+  - object : instrument
+    alias: OBS
+    name : MOS-LR-J
+    description : "MOSAIC near-infrared low resolution J band"
+    yamls :
+      - MOSAIC-NIR.yaml
+      - MOSAIC_DET_NIR.yaml
+    properties:
+      ins_mode: MOS-LR-J
+      fibre_ter_file: TER_mos_LR-J.dat
+      spec_ter_file:  TER_spec_LR-J.dat
+      trace_file: TRACE_MOS_NIR-LR-J.fits
+      dispersion: 9.5e-5    # um/pixel on detector
 
   - object : instrument
     alias: OBS
-    name : "MOS-NIR-LR-H"
-    description : "MVP system for a single MOSAIC config"
+    name : MOS-LR-H
+    description : "MOSAIC near-infrared low resolution H band"
     yamls :
-      - MOSAIC-MOS-NIR-LR-H.yaml
-      - MOSAIC_H_DET.yaml
+      - MOSAIC-NIR.yaml
+      - MOSAIC_DET_NIR.yaml
+    properties:
+      ins_mode: MOS-LR-H
+      fibre_ter_file: TER_mos_LR-H.dat
+      spec_ter_file:  TER_spec_LR-H.dat
+      trace_file: TRACE_MOS_NIR-LR-H.fits
+      dispersion: 9.e-5     # um/pixel on detector
+
+  - object : instrument
+    alias: OBS
+    name : MOS-HR-H
+    description : "MOSAIC near-infrared high resolution H band"
+    yamls :
+      - MOSAIC-NIR.yaml
+      - MOSAIC_DET_NIR.yaml
+    properties:
+      ins_mode: MOS-HR-H
+      fibre_ter_file: TER_mos_HR-H.dat
+      spec_ter_file:  TER_spec_HR-H.dat
+      trace_file: TRACE_MOS_NIR-HR-H.fits
+      dispersion: 2.4e-5    # um/pixel on detector
+
+  - object : instrument
+    alias: OBS
+    name : mIFU-LR-J
+    description : "MOSAIC near-infrared low resolution J band"
+    yamls :
+      - MOSAIC-NIR.yaml
+      - MOSAIC_DET_NIR.yaml
+    properties:
+      ins_mode: mIFU-LR-J
+      fibre_ter_file: TER_mIFU_LR-J.dat
+      spec_ter_file:  TER_spec_LR-J.dat
+      trace_file: TRACE_mIFU-LR-J.fits
+      dispersion: 9.5e-5    # um/pixel on detector
+
+  - object : instrument
+    alias: OBS
+    name : mIFU-LR-H
+    description : "MOSAIC near-infrared low resolution H band"
+    yamls :
+      - MOSAIC-NIR.yaml
+      - MOSAIC_DET_NIR.yaml
+    properties:
+      ins_mode: mIFU-LR-H
+      fibre_ter_file: TER_mIFU_LR-H.dat
+      spec_ter_file:  TER_spec_LR-H.dat
+      trace_file: TRACE_mIFU-LR-H.fits
+      dispersion: 9.e-5     # um/pixel on detector
+
+  - object : instrument
+    alias: OBS
+    name : mIFU-HR-H
+    description : "MOSAIC near-infrared high resolution H band"
+    yamls :
+      - MOSAIC-NIR.yaml
+      - MOSAIC_DET_NIR.yaml
+    properties:
+      ins_mode: mIFU-HR-H
+      fibre_ter_file: TER_mIFU_HR-H.dat
+      spec_ter_file:  TER_spec_NIR_HR_H.dat
+      trace_file: TRACE_mIFU_NIR-HR-H.fits
+      dispersion: 2.4e-5    # um/pixel on detector
+
 
 
 ---
