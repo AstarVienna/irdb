@@ -1,5 +1,18 @@
+# author: Oliver Czoske
+# source: Throughput_VIS_20240508.xlsx, Walter Seifert
+# description: MOSAIC visual arm system transmission
+# date_created: 2025-07-31
+# date_modified: 2025-08-08
+# status: pre-PDR
+# wavelength_unit: um
+# changes:
+#   - 2025-07-31 (OC) extracted from spreadsheet
+#   - 2025-08-08 (OC) added meta data
+#
 wavelength      transmission
-590             0.27
-774             0.36
-875             0.24
-947             0.10
+0.580           0.
+0.590           0.27
+0.774           0.36
+0.875           0.24
+0.947           0.10
+0.960           0.
