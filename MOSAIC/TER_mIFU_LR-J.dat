@@ -1,18 +1,31 @@
+# author: Oliver Czoske
+# source: MOSAIC-NIRchannel-throughput-20250120.xlsx, Ana Perez
+# date_created:  2025-08-07
+# date_modified: 2025-08-08
+# status: pre-PDR
+# wavelength_unit: um
+# description: MOSAIC mIFU fibre throughput
+# changes:
+#  - 2025-08-07 (OC) extracted from spreadsheet
+#  - 2025-08-08 (OC) added metadata
+#
 wavelength transmission
-0.950 0.605
-0.975 0.606
-1.000 0.607
-1.025 0.608
-1.050 0.608
-1.075 0.608
-1.100 0.608
-1.125 0.609
-1.150 0.609
-1.175 0.609
-1.200 0.609
-1.225 0.610
-1.250 0.610
-1.275 0.610
-1.300 0.611
-1.325 0.609
-1.340 0.607
+0.925      0.
+0.950      0.605
+0.975      0.606
+1.000      0.607
+1.025      0.608
+1.050      0.608
+1.075      0.608
+1.100      0.608
+1.125      0.609
+1.150      0.609
+1.175      0.609
+1.200      0.609
+1.225      0.610
+1.250      0.610
+1.275      0.610
+1.300      0.611
+1.325      0.609
+1.340      0.607
+1.350      0.
