@@ -1,18 +1,31 @@
+# author: Oliver Czoske
+# source: MOSAIC-NIRchannel-throughput-20250120.xlsx, Ana Perez
+# date_created:  2025-08-07
+# date_modified: 2025-08-08
+# status: pre-PDR
+# wavelength_unit: um
+# description: MOSAIC NIR spectrograph throughput
+# changes:
+#  - 2025-08-07 (OC) extracted from spreadsheet
+#  - 2025-08-08 (OC) added metadata
+#
 wavelength transmission
-0.950 0.505
-0.975 0.534
-1.000 0.563
-1.025 0.577
-1.050 0.592
-1.075 0.613
-1.100 0.621
-1.125 0.635
-1.150 0.628
-1.175 0.628
-1.200 0.621
-1.225 0.590
-1.250 0.599
-1.275 0.577
-1.300 0.570
-1.325 0.556
-1.340 0.541
+0.940      0.
+0.950      0.505
+0.975      0.534
+1.000      0.563
+1.025      0.577
+1.050      0.592
+1.075      0.613
+1.100      0.621
+1.125      0.635
+1.150      0.628
+1.175      0.628
+1.200      0.621
+1.225      0.590
+1.250      0.599
+1.275      0.577
+1.300      0.570
+1.325      0.556
+1.340      0.541
+1.350      0.
