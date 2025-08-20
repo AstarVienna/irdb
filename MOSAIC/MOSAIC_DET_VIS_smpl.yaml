@@ -46,3 +46,9 @@ effects:
     kwargs:
       dtype: float32
       gain: "!DET.gain"
+
+  - name: collapse_1d
+    description: Collapse fiber bundle to 1D spectrum
+    class: MosaicCollapseSpectralTraces
+    kwargs:
+      filename: "!OBS.trace_file"

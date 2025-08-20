@@ -42,7 +42,7 @@ effects:
     class: AutoExposure
     include: true
     kwargs:
-      fill_frac: "!OBS.auto_exposure.fill_frac"
+      fill_frac: 0.75     #"!OBS.auto_exposure.fill_frac"
       full_well: "!DET.full_well"
       mindit: "!DET.mindit"
 
@@ -91,6 +91,13 @@ effects:
     kwargs:
       dtype: float32
       gain: "!DET.gain"
+
+  - name: collapse_1d
+    description: Collapse fiber bundle to 1D spectrum
+    class: MosaicCollapseSpectralTraces
+    include:  "!OBS.do_collapse_1d"
+    kwargs:
+      filename: "!OBS.trace_file"
 
 #  - name: det_nir_fits_keywords
 #    description: FITS keywords specific to NIR detector

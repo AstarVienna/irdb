@@ -29,7 +29,7 @@ properties :
   dec : 0.0
   psf_fwhm : 0.2
   include_fibres : True
-
+  do_collapse_1d: True
 
 mode_yamls :
   - object: observation
@@ -177,6 +177,7 @@ mode_yamls :
       spec_ter_file:  TER_spec_LR-J.dat
       trace_file: TRACE_mIFU-LR-J.fits
       dispersion: 9.5e-5    # um/pixel on detector
+      do_collapse_1d: False
 
   - object : instrument
     alias: OBS
@@ -192,6 +193,7 @@ mode_yamls :
       spec_ter_file:  TER_spec_LR-H.dat
       trace_file: TRACE_mIFU-LR-H.fits
       dispersion: 9.e-5     # um/pixel on detector
+      do_collapse_1d: False
 
   - object : instrument
     alias: OBS
@@ -207,6 +209,7 @@ mode_yamls :
       spec_ter_file:  TER_spec_NIR_HR_H.dat
       trace_file: TRACE_mIFU_NIR-HR-H.fits
       dispersion: 2.4e-5    # um/pixel on detector
+      do_collapse_1d: False
 
 
 
