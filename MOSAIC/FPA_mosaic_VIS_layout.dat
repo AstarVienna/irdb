@@ -16,4 +16,4 @@
 # - 2025-07-17 (OC) initialised
 #
 id  x_cen   y_cen   x_size   y_size   pixel_size     angle    gain
- 0      0       0    13000      100        0.015       0.0     1.0
+ 0      0       0    13000      160        0.015       0.0     1.0
