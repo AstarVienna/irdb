@@ -3,8 +3,7 @@ numpy
 matplotlib
 astropy
 pyyaml
-pysftp
-paramiko<=3.5.1
+paramiko
 photutils
 scopesim
 scopesim_templates

@@ -7,7 +7,6 @@ docutils
 requests
 beautifulsoup4
 pyyaml
-pysftp
 
 # git+https://github.com/AstarVienna/ScopeSim.git@master_rtd
 scopesim

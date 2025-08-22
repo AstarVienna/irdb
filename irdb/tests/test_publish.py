@@ -158,7 +158,7 @@ def test_call_confirm(default_argv, temp_zipfiles, argv, called, response):
                         mock.Mock(return_value=response)) as mock_confirm:
             with mock.patch("irdb.publish.ZIPPED_DIR", temp_zipfiles):
                 # Catch exception raised by fake login credentials
-                authex = pub.pysftp.paramiko.ssh_exception.AuthenticationException
+                authex = pub.paramiko.ssh_exception.AuthenticationException
 
                 if called and not response:
                     # Should abort -> no authex raised
