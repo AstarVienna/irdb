@@ -14,10 +14,7 @@ from zipfile import ZIP_DEFLATED, ZipFile
 import yaml
 import paramiko
 
-try:
-    from .publish_utils import _is_stable, get_stable, get_all_package_versions
-except ImportError:
-    from publish_utils import _is_stable, get_stable, get_all_package_versions
+from scopesim.server import database as db
 
 # After 3.11, can just import UTC directly from datetime
 UTC = timezone.utc
@@ -162,7 +159,7 @@ def _get_local_path(pkg_name: str, stable: bool) -> Path:
     try:
         zipped_versions = (
             path for path in ZIPPED_DIR.glob(pattern)
-            if _is_stable(path.stem) == stable
+            if db._is_stable(path.stem) == stable
         )
         local_path = max(zipped_versions, key=lambda path: path.stem)
     except ValueError as err:
@@ -215,7 +212,7 @@ def _get_server_path(pkg_name: str, local_name: str) -> str:
 def confirm(pkg_name: str) -> bool:
     """Ask for explicit user confirmation before pushing stable package."""
     try:
-        current_stable = get_stable(get_all_package_versions()[pkg_name])
+        current_stable = db.get_stable(db.get_all_package_versions()[pkg_name])
     except (KeyError, ValueError):
         current_stable = "<does not exist>"
 
