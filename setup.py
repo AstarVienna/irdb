@@ -38,8 +38,7 @@ def setup_package():
                             "beautifulsoup4>=4.4",
                             "lxml[html_clean]",
                             "pyyaml>5.1",
-                            "pysftp",
-                            "paramiko<=3.5.1",
+                            "paramiko",
 
                             "synphot>=0.1.3",
                             "skycalc_ipy>=0.1.3",
