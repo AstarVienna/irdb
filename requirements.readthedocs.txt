@@ -4,11 +4,8 @@ matplotlib
 astropy
 
 docutils
-requests
-beautifulsoup4
 pyyaml
 
-# git+https://github.com/AstarVienna/ScopeSim.git@master_rtd
 scopesim
 
 sphinx>=4.3.0
