@@ -12,7 +12,7 @@ from datetime import datetime as dt, timezone
 from zipfile import ZIP_DEFLATED, ZipFile
 
 import yaml
-import pysftp
+import paramiko
 
 try:
     from .publish_utils import _is_stable, get_stable, get_all_package_versions
@@ -263,6 +263,7 @@ def push_to_server(
     if password is None:
         raise ValueError("Password is None. Check email for password")
 
+    hostname = "webspace-access.univie.ac.at"
     local_path = _get_local_path(pkg_name, stable)
     server_path = _get_server_path(pkg_name, local_path.name)
 
@@ -273,16 +274,13 @@ def push_to_server(
     ):
         return
 
-    cnopts = pysftp.CnOpts()
-    cnopts.hostkeys = None
-    sftp = pysftp.Connection(host="webspace-access.univie.ac.at",
-                             username=login, password=password.value,
-                             cnopts=cnopts)
+    with paramiko.Transport((hostname, 22)) as transport:
+        transport.connect(username=login, password=password.value)
 
-    with sftp.cd("scopesimu68/html/InstPkgSvr/"):
-        if sftp.exists(server_path):
-            sftp.remove(server_path)
-        sftp.put(local_path, server_path)
+        with paramiko.SFTPClient.from_transport(transport) as sftp:
+            sftp.chdir("scopesimu68/html/InstPkgSvr/")
+            sftp.put(local_path, server_path, confirm=True)
+
         now = dt.now().strftime("%Y-%m-%d %H:%M:%S")
         print(f"[{now}]: Pushed to server: {pkg_name}")
     return
