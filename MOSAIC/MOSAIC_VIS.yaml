@@ -13,4 +13,14 @@ properties:
   plate_scale: 0.5     #  -"-
   temperature: -206    # TBC
 
-#effects:
+effects:
+  - name: Unity system transmission
+    class: TERCurve
+    kwargs:
+      filename: TER_VIS_system_transmission.dat
+
+  - name : psf
+    description : Seeing limited PSF
+    class : SeeingPSF
+    kwargs :
+      fwhm : "!OBS.psf_fwhm"       # [arcsec]

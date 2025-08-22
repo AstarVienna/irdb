@@ -1,0 +1,16 @@
+# name: MOSAIC VIS B/R system transmission (simple version)
+# description : Full VIS camera transmission, incl fibres, adc, mirrors, etc
+# author: Kieran Leschinski
+# sources: E-MOS-SYS-ANR-0063-V20_VIS_OptDesign_preSAR.pdf, adapted
+# date_created: 2025-07-18
+# date_modified: 2025-07-18
+# status : estimate
+# action: transmission
+# wavelength_unit : um
+#
+# changes:
+# - 2025-07-17 (OC) initialised
+#
+wavelength  transmission
+0.3         1.0
+0.95        1.0

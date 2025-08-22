@@ -17,6 +17,8 @@ properties:
   layout:
     file_name: "FPA_mosaic_VIS_layout.dat"
     qe_curve: "!OBS.qe_curve"
+  qe_curve:
+    file_name: "QE_VIS_ML2_depleted.dat"
 
 effects:
   - name: detector_array
@@ -24,6 +26,12 @@ effects:
     class: DetectorList
     kwargs:
       filename: "!DET.layout.file_name"
+
+  - name: quantum_efficiency
+    description: Quantum efficiency curves for each detector
+    class: QuantumEfficiencyCurve
+    kwargs:
+      filename: "!DET.qe_curve.file_name"
 
   - name: exposure_integration
     description: Summing up sky signal for all DITs and NDITs
