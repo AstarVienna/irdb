@@ -101,13 +101,17 @@ def make_package(pkg_name: str, stable: bool = False,
         Name of the package's compiled zip file.
 
     """
-    suffix = ".dev" if not stable else ""
+    suffix = "dev" if not stable else None
     pkg_version_path = PKGS_DIR / pkg_name / "version.yaml"
     if not keep_version:
         # Collect the info for the version.yaml file
         time = dt.now(UTC)
         version_dict = {
-            "version": f"{time.date()}{suffix}",
+            "version": (
+                f"{time.date()}.{suffix}"
+                if suffix is not None
+                else str(time.date())
+            ),
             "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
             "release": "stable" if stable else "dev",
         }
@@ -121,7 +125,7 @@ def make_package(pkg_name: str, stable: bool = False,
         time = dt.fromisoformat(version_dict["timestamp"])
 
     # Make the zip file
-    zip_name = f"{pkg_name}.{time.date()}{suffix}.zip"
+    zip_name = db._unparse_package_version(pkg_name, time.date(), suffix)
     zip_package_folder(pkg_name, zip_name)
     logging.info(
         "[%s]: Compiled package: %s",
