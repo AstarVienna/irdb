@@ -8,7 +8,6 @@ deal with this...
 
 import re
 import logging
-from datetime import date
 from typing import List, Tuple, Set, Dict
 from collections.abc import Iterator, Iterable, Mapping
 
@@ -68,19 +67,9 @@ def get_server_folder_contents(
     return pkgs
 
 
-def _parse_raw_version(raw_version: str) -> str:
-    """Catch initial package version which has no date info
-
-    Set initial package version to basically "minus infinity".
-    """
-    if raw_version in ("", "zip"):
-        return str(date(1, 1, 1))
-    return raw_version.strip(".zip")
-
-
 def _parse_package_version(package: str) -> Tuple[str, str]:
     p_name, p_version = package.split(".", maxsplit=1)
-    return p_name, _parse_raw_version(p_version)
+    return p_name, p_version.strip(".zip")
 
 
 def _is_stable(package_version: str) -> bool:
