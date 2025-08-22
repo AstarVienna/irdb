@@ -228,7 +228,7 @@ def test_multiple_packages(default_argv):
 
 @pytest.mark.usefixtures("default_argv", "caplog")
 def test_warning_no_action(default_argv, caplog):
-    warnmsg = ("Neither `compile` nor `upload` was set. "
+    warnmsg = ("Neither `compile` nor `upload` option was set. "
                "No action will be performed.")
     with mock.patch("sys.argv", default_argv):
         pub.main()
