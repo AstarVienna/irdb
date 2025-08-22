@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Publish and upload irdb packages"""
+"""Publish and upload irdb packages."""
 
 import argparse
 import logging
@@ -31,6 +31,7 @@ PATH_FOLDERS_YAML = PATH_HERE / "server_folders.yaml"
 
 class Password:
     """Used for secure pwd promt."""
+
     DEFAULT = "Prompt if not specified"
 
     def __init__(self, value):
@@ -47,7 +48,7 @@ class Password:
 def publish(pkg_names=None, compilezip=False, upload=True,
             login=None, password=None, update_version=True):
     """
-    Should be as easy as just calling this function to republish all packages
+    Should be as easy as just calling this function to republish all packages.
 
     Parameters
     ----------

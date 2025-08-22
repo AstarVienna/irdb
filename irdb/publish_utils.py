@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Copied directly from ScopeSim. This is obviously not ideal and should use some
-form of common sub-package to deal with this...
+Copied directly from ScopeSim.
+
+This is obviously not ideal and should use some form of common sub-package to
+deal with this...
 """
+
 import re
 import logging
 from datetime import date
@@ -17,7 +20,6 @@ from requests.adapters import HTTPAdapter
 import bs4
 
 from scopesim import rc
-# from .download_utils import initiate_download, handle_download, handle_unzipping
 
 _GrpVerType = Mapping[str, Iterable[str]]
 _GrpItrType = Iterator[Tuple[str, List[str]]]
@@ -30,13 +32,18 @@ class ServerError(Exception):
     """Some error with the server or connection to the server."""
 
 
-def get_server_folder_contents(dir_name: str,
-                               unique_str: str = ".zip$") -> Iterator[str]:
+def get_server_folder_contents(
+    dir_name: str,
+    unique_str: str = ".zip$",
+) -> Iterator[str]:
+    """Find all hrefs (i.e. files) in server folder."""
     url = rc.__config__["!SIM.file.server_base_url"] + dir_name
 
-    retry_strategy = Retry(total=2,
-                           status_forcelist=HTTP_RETRY_CODES,
-                           allowed_methods=["GET"])
+    retry_strategy = Retry(
+        total=2,
+        status_forcelist=HTTP_RETRY_CODES,
+        allowed_methods=["GET"],
+    )
     adapter = HTTPAdapter(max_retries=retry_strategy)
 
     try:
@@ -86,16 +93,18 @@ def get_stable(versions: Iterable[str]) -> str:
 
 
 def group_package_versions(all_packages: Iterable[Tuple[str, str]]) -> _GrpItrType:
-    """Group different versions of packages by package name"""
-    version_groups = groupby_transform(sorted(all_packages),
-                                       keyfunc=first,
-                                       valuefunc=last,
-                                       reducefunc=list)
+    """Group different versions of packages by package name."""
+    version_groups = groupby_transform(
+        sorted(all_packages),
+        keyfunc=first,
+        valuefunc=last,
+        reducefunc=list,
+    )
     return version_groups
 
 
 def crawl_server_dirs() -> Iterator[Tuple[str, Set[str]]]:
-    """Search all folders on server for .zip files"""
+    """Search all folders on server for .zip files."""
     for dir_name in get_server_folder_contents("", "/"):
         logging.info("Searching folder '%s'", dir_name)
         try:
@@ -108,7 +117,7 @@ def crawl_server_dirs() -> Iterator[Tuple[str, Set[str]]]:
 
 
 def get_all_package_versions() -> Dict[str, List[str]]:
-    """Gather all versions for all packages present in any folder on server"""
+    """Gather all versions for all packages present in any folder on server."""
     grouped = {}
     folders = list(dict(crawl_server_dirs()).keys())
     for dir_name in folders:
