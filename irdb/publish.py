@@ -288,22 +288,6 @@ def push_to_server(
     return
 
 
-def push_packages_yaml_to_server(login, password):
-    """
-    Sync the packages.yaml file on the server with the current local one
-
-    Parameters
-    ----------
-    login, password : str
-        Univie u:space username and password
-
-    """
-    warn(("ANY use of packages.yaml is deprecated. "
-          "No upload will be performed. "
-          "This function will be removed in the next major release."),
-         DeprecationWarning, stacklevel=2)
-
-
 def main():
     """Execute main CLI script."""
     parser = argparse.ArgumentParser(
