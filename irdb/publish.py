@@ -63,9 +63,8 @@ def publish(pkg_names=None, compilezip=False, upload=True,
         False: use version in <pkg_name>/version.yaml
         See make_package().
     """
-    warn(("This function is only kept for backwards compatibility and might "
-          "be fully deprecated in the future."),
-         PendingDeprecationWarning, stacklevel=2)
+    warn(("This function is deprecated and will be removed by the end of 2025."),
+         FutureWarning, stacklevel=2)
     for pkg_name in pkg_names:
         if compilezip:
             make_package(pkg_name,
