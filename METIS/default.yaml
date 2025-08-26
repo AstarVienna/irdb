@@ -19,6 +19,7 @@ changes:
   - 2022-03-14 (OC) use single PSF file
   - 2024-09-04 (OC) rearrange to include WCU modes
   - 2025-06-27 (FH) version bumps and status updates
+  - 2025-08-26 (OC) modes for Leiden sky observations
 
 packages:
   - Armazones
@@ -222,6 +223,28 @@ mode_yamls:
 
   - object: observation
     alias: OBS
+    name: lms_cube
+    description: "METIS LM-band integral-field spectroscopy, nominal mode, cube output"
+    status: experimental
+    yamls:
+      - Armazones.yaml
+      - ELT.yaml
+      - METIS.yaml
+      - METIS_LMS_SMPL.yaml
+      - METIS_DET_IFU_SMPL.yaml
+    properties:
+      ins_mode: LMS_cube          # use as FITS header keyword
+      psf_file: PSF_LM_9mag_06seeing.fits
+      interp_psf: False
+      slit: false
+      adc: false
+      trace_file: TRACE_LMS.fits
+      wavelen: 4.2
+      detector_readout_mode: slow
+
+######## AIT Modes using WCU
+  - object: observation
+    alias: OBS
     name: wcu_img_lm
     description: "METIS LM-band imaging with WCU"
     status: development
@@ -369,25 +392,116 @@ mode_yamls:
       adc: false
       detector_readout_mode: slow
 
+
+
+####################  AIT Leiden sky observations
   - object: observation
     alias: OBS
-    name: lms_cube
-    description: "METIS LM-band integral-field spectroscopy, nominal mode, cube output"
-    status: experimental
+    name: leiden_lss_l
+    description: "METIS L-band slit spectroscopy with Leiden sky"
+    status: development
     yamls:
-      - Armazones.yaml
-      - ELT.yaml
+      - Leiden_sky.yaml
       - METIS.yaml
-      - METIS_LMS_SMPL.yaml
-      - METIS_DET_IFU_SMPL.yaml
+      - METIS_IMG_LM.yaml
+      - METIS_LSS.yaml
+      - METIS_DET_IMG_LM.yaml
     properties:
-      ins_mode: LMS_cube          # use as FITS header keyword
-      psf_file: PSF_LM_9mag_06seeing.fits
-      interp_psf: False
+      ins_mode: LSS_L        # use as FITS header keyword
+      psf_file: PSF_LM_9mag_06seeing.fits    # REPLACE!
+      trace_file: TRACE_LSS_L.fits
+      efficiency_file: TER_grating_L.fits
+      slit: C-38_1
+      adc: const_90
+      grism_opti9: GRISM_L
+      grism_opti12: open
+      filter_name: L_spec
+      nd_filter_name: open
+      detector_readout_mode: slow
+
+  - object: observation
+    alias: OBS
+    name: leiden_lss_m
+    description: "METIS M-band slit spectroscopy with Leiden sky"
+    status: development
+    yamls:
+      - Leiden_sky.yaml
+      - METIS.yaml
+      - METIS_IMG_LM.yaml
+      - METIS_LSS.yaml
+      - METIS_DET_IMG_LM.yaml
+    properties:
+      ins_mode: LSS_M        # use as FITS header keyword
+      psf_file: PSF_LM_9mag_06seeing.fits    # REPLACE!
+      trace_file: TRACE_LSS_M.fits
+      efficiency_file: TER_grating_M.fits
+      slit: C-38_1
+      adc: const_90
+      grism_opti9: GRISM_M
+      grism_opti12: open
+      filter_name: M_spec
+      nd_filter_name: open
+      detector_readout_mode: slow
+
+  - object: observation
+    alias: OBS
+    name: leiden_lss_n
+    description: "METIS N-band slit spectroscopy with Leiden sky"
+    status: development
+    yamls:
+      - Leiden_sky.yaml
+      - METIS.yaml
+      - METIS_IMG_N.yaml
+      - METIS_LSS.yaml
+      - METIS_DET_IMG_N_GeoSnap.yaml
+    properties:
+      ins_mode: LSS_N        # use as FITS header keyword
+      psf_file: PSF_N_9mag_06seeing.fits    # REPLACE!
+      trace_file: TRACE_LSS_N.fits
+      efficiency_file: TER_grating_N.fits
+      slit: D-57_1
+      adc: false
+      grism_opti9: open
+      grism_opti12: GRISM_N
+      filter_name: N_spec
+      nd_filter_name: open
+      chop_offsets: [3, 0]  # perpendicular chopping and nodding
+      nod_offsets: [0, 3]
+      detector_readout_mode: low_capacity
+
+  - object: observation
+    alias: OBS
+    name: leiden_lms
+    description: "METIS LM-band integral-field spectroscopy, nominal mode with Leiden sky"
+    status: development
+    yamls:
+      - Leiden_sky.yaml
+      - METIS.yaml
+      - METIS_LMS.yaml
+      - METIS_DET_IFU.yaml
+    properties:
+      ins_mode: LMS          # use as FITS header keyword
+      psf_file: PSF_LM_9mag_06seeing.fits    # REPLACE!
       slit: false
       adc: false
       trace_file: TRACE_LMS.fits
       wavelen: 4.2
+      detector_readout_mode: slow
+
+  - object: observation     # is this a separate mode from nominal LMS?
+    alias: OBS
+    name: leiden_lms_extended
+    description: "METIS LM-band integral-field spectroscopy, extended mode with Leiden sky"
+    status: experimental
+    yamls:
+      - Leiden_sky.yaml
+      - METIS.yaml
+      - METIS_LMS_EXT.yaml
+      - METIS_DET_IFU.yaml
+    properties:
+      ins_mode: LMS          # use as FITS header keyword
+      slit: false
+      adc: false
       detector_readout_mode: slow
 
 ---
