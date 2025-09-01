@@ -1,0 +1,15 @@
+# description: Leiden AIT relay optics for sky observations
+# author: Oliver Czoske
+# source: Remko Stuik Mattermost AIT channel 2025-08-28
+# date_created: 2025-08-28
+# date_modified: 2025-08-28
+# status: Guess
+# outer_unit: m
+# inner_unit: m
+# angle_unit: degree
+# temperature_unit: deg_C
+# changes:
+#    - 2025-08-28 (OC) Initialised based on rough guess
+#
+name    outer   inner   angle   temperature action     filename
+AITtel  1.      0.      45.     10.         reflection !TEL.ter_curve.filename
