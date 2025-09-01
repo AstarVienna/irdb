@@ -5,7 +5,9 @@ object: instrument
 alias: INST
 name: MOSAIC
 description: base configuration for MOSAIC VIS
-date_modified: 2025-07-17
+date_modified: 2025-09-01
+changes:
+  - 2025-09-01 (OC) add line-spread function
 
 
 properties:
@@ -24,6 +26,12 @@ effects:
     class: SeeingPSF
     kwargs:
       fwhm: "!OBS.psf_fwhm"       # [arcsec]
+
+  - name: lsf
+    description: Line-spread function
+    class: LineSpreadFunction
+    kwargs:
+      lsfwidth: 4.5  # rough guess, E-MOS-SYS-ANR-0063-V20_VIS_OptDesign_preSAR.pdf
 
   - name: fiber_bundle
     description: field of view of fiber bundle

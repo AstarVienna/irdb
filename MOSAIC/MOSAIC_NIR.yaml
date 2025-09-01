@@ -5,7 +5,9 @@ object: instrument
 alias: INST
 name: MOSAIC
 description: base configuration for MOSAIC NIR
-date_modified: 2025-08-07
+date_modified: 2025-09-01
+changes:
+  - 2025-09-01 (OC) add line-spread function
 
 
 properties:
@@ -29,6 +31,12 @@ effects:
     class: SeeingPSF
     kwargs:
       fwhm: "!OBS.psf_fwhm"       # [arcsec]
+
+  - name: lsf
+    description: Line-spread function
+    class: LineSpreadFunction
+    kwargs:
+      lsfwidth: 2.75         # 41 um on 15um pixels (NIRspec-20250804.pptx)
 
   - name: fiber_bundle
     description: field of view of fiber bundle
