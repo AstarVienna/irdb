@@ -16,12 +16,12 @@ properties:
   temperature: -206    # TBC
 
 effects:
-  - name: Fibre transmission
+  - name: fibre transmission
     class: TERCurve
     kwargs:
       filename: "!OBS.fibre_ter_file"
 
-  - name: Spectrograph transmission
+  - name: spectrograph transmission
     class: TERCurve
     kwargs:
       filename: "!OBS.spec_ter_file"
@@ -45,7 +45,7 @@ effects:
       filename: "!OBS.trace_file"
       ext_id: "Aperture List"
 
-  - name: vis_spectral_traces
+  - name: spectral_traces
     description: mapping of spectra onto the detector
     class: MosaicSpectralTraceList
     kwargs:

@@ -16,7 +16,7 @@ properties:
   temperature: -206    # TBC
 
 effects:
-  - name: System transmission
+  - name: system transmission
     class: TERCurve
     kwargs:
       filename: "!OBS.ter_file"
@@ -40,7 +40,7 @@ effects:
       filename: "!OBS.trace_file"
       ext_id: "Aperture List"
 
-  - name: vis_spectral_traces
+  - name: spectral_traces
     description: mapping of spectra onto the detector
     class: MosaicSpectralTraceList
     kwargs:

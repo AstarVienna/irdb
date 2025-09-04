@@ -2,9 +2,9 @@
 ### MOSAIC VISUAL detector (simple)
 object: detector
 alias: DET
-name: MOSAIC_DET_VIS_smpl
-description: simple virtual detector for one fiber bundle
-data_modified: 2025-07-17
+name: MOSAIC_DET_VIS
+description: virtual detector for one fiber bundle
+data_modified: 2025-09-04
 
 
 properties:

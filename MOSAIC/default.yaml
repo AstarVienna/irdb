@@ -41,7 +41,7 @@ mode_yamls :
     status: development
     yamls:
       - MOSAIC_VIS.yaml
-      - MOSAIC_DET_VIS_smpl.yaml
+      - MOSAIC_DET_VIS.yaml
     properties:
       ins_mode: MOS-LR-B    # use as FITS header keyword
       ter_file:   TER_sys_MOS-LR-B.dat
@@ -57,7 +57,7 @@ mode_yamls :
     status: development
     yamls:
       - MOSAIC_VIS.yaml
-      - MOSAIC_DET_VIS_smpl.yaml
+      - MOSAIC_DET_VIS.yaml
     properties:
       ins_mode: MOS-HR-B1
       ter_file:   TER_sys_MOS-HR-B1.dat
@@ -72,7 +72,7 @@ mode_yamls :
     status: development
     yamls:
       - MOSAIC_VIS.yaml
-      - MOSAIC_DET_VIS_smpl.yaml
+      - MOSAIC_DET_VIS.yaml
     properties:
       ins_mode: MOS-HR-B2
       ter_file:   TER_sys_MOS-HR-B2.dat
@@ -87,7 +87,7 @@ mode_yamls :
     status: development
     yamls:
       - MOSAIC_VIS.yaml
-      - MOSAIC_DET_VIS_smpl.yaml
+      - MOSAIC_DET_VIS.yaml
     properties:
       ins_mode: MOS-LR-R    # use as FITS header keyword
       ter_file:   TER_sys_MOS-LR-R.dat
@@ -103,7 +103,7 @@ mode_yamls :
     status: development
     yamls:
       - MOSAIC_VIS.yaml
-      - MOSAIC_DET_VIS_smpl.yaml
+      - MOSAIC_DET_VIS.yaml
     properties:
       ins_mode: MOS-HR-R1
       ter_file:   TER_sys_MOS-HR-R1.dat
@@ -118,7 +118,7 @@ mode_yamls :
     status: development
     yamls:
       - MOSAIC_VIS.yaml
-      - MOSAIC_DET_VIS_smpl.yaml
+      - MOSAIC_DET_VIS.yaml
     properties:
       ins_mode: MOS-HR-R2
       ter_file:   TER_sys_MOS-HR-R2.dat
