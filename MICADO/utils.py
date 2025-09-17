@@ -5,10 +5,23 @@ import anisocado as aniso
 def make_standard_scao_constpsf():
     waves = [1.2, 1.6, 2.15]
     psfs = []
+    N = 1024
+    offset = 5
+
+    # override header to place PSF in the centre of the WCS
+    hdukeys = {
+        "CRPIX1" : int(N/2) + 1,
+        "CRPIX2" : int(N/2) + 1,
+        "CRVAL1" : 0,
+        "CRVAL2" : 0,
+    }
+
     for wave in waves:
-        psf = aniso.AnalyticalScaoPsf(pixelSize=0.004, N=256, wavelength=wave)
-        psf.shift_off_axis(0, 5)
-        psfs += [psf.hdu]
+        psf = aniso.AnalyticalScaoPsf(pixelSize=0.004, N=N, wavelength=wave)
+        psf.shift_off_axis(0, offset)
+        hdr = psf.hdu.header
+        hdr.update(hdukeys)
+        psfs += [fits.ImageHDU(psf.hdu.data, header=hdr)]
 
     keys = {"AUTHOR" : "Kieran Leschinski",
             "DATE_CRE" : "2019-07-30",
@@ -19,13 +32,15 @@ def make_standard_scao_constpsf():
             "ECAT" : (-1, "Field constant. No layer catalogue"),
             "EDATA" : (1, "PSFs begin from EXT 1"),
             "XOFFSET": (0, "[arcsec] offset from NGS"),
-            "YOFFSET": (5, "[arcsec] offset from NGS"),
+            "YOFFSET": (offset, "[arcsec] offset from NGS"),
             }
 
     pri = fits.PrimaryHDU()
     pri.header.update(keys)
 
     hdus = fits.HDUList([pri] + psfs)
-    hdus.writeto("SCAO_ConstPSF_5off.fits", clobber=True)
+    hdus.writeto(f"SCAO_ConstPSF_{offset}off_{N}.fits", overwrite=True)
     print(hdus.info())
 
+if __name__ == "__main__":
+    make_standard_scao_constpsf()
