@@ -6,7 +6,6 @@ description : Simple stand-alone relay optics module
 
 properties :
     temperature : "!ATMO.temperature"
-
     psf_file: "PSF_SCAO_ConstPSF_0_5off.fits"
 
 effects :
