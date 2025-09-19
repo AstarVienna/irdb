@@ -4,8 +4,6 @@
 [![Tests](https://github.com/AstarVienna/irdb/actions/workflows/tests_dev.yml/badge.svg)](https://github.com/AstarVienna/irdb/actions/workflows/tests_dev.yml)
 [![Server Status](https://img.shields.io/website.svg?label=IRDB%20Package%20Server&url=https%3A%2F%2Fscopesim.univie.ac.at%2FInstPkgSvr)](https://scopesim.univie.ac.at/InstPkgSvr)
 
-[![Python Version Support](http://github-actions.40ants.com/AstarVienna/irdb/matrix.svg?only=Tests.job_master)](https://github.com/AstarVienna/irdb)
-
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 This repository contains the data files needed by ``ScopeSim`` to create a model of
