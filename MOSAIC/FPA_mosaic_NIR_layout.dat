@@ -1,0 +1,19 @@
+# name: MOSAIC VIS NIR FPA
+# author: Oliver Czoske
+# sources: NIRspec-20250804.pptx, Ana Perez
+# date_created: 2025-08-08
+# date_modified: 2025-08-08
+# x_cen_unit: mm
+# y_cen_unit: mm
+# x_size_unit: pix
+# y_size_unit: pix
+# pixel_size_unit: mm
+# angle_unit: deg
+# gain_unit: electron/adu
+# image_plane_id: 0
+#
+# changes:
+# - 2025-08-08 (OC) initialised
+#
+id  x_cen   y_cen   x_size   y_size   pixel_size     angle    gain
+ 0      0       0     4096     4096        0.015       0.0     1.0

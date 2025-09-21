@@ -1,0 +1,17 @@
+# name : HAWAII-2RG linearity curve
+# author : Oliver Czoske
+# sources: E-TNT-MPIA-MET-1004
+# date_created : 2021-04-01
+# date_modified : 2021-04-01
+# type : detector:linearity
+# status : rough guess
+# incident_unit : ph
+# measured_unit : ph
+# ndit : 1
+#
+# changes :
+#
+incident    measured
+0           0
+1e5         1e5
+1e99        1e5
