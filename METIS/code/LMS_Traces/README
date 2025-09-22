@@ -1,0 +1,9 @@
+This directory contains a script `write_aperture_list.py`, which converts
+Alistair Glasse's LMS distortion files into FITS format as required by
+Scopesim. The required input files `lms_dist_poly.txt` and `lms_dist_wcal.txt`
+for the nominal distortion solution are provided (gunzip before use).
+
+The file `TRACE_LMS.fits` that is included in the METIS instrument package was
+originally created using the script (2021-09-08). The second extension was
+edited by hand on 2022-05-13 to reflect a change in the slice length (columns
+`xi_min` and `xi_max`). The script includes that change.
