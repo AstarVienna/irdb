@@ -7,7 +7,7 @@
           NDIT:       "!OBS.ndit"
           MODE:       "!DET.mode"
           CUBE:
-            MODE:    "F"
+            MODE:    false
 
 - ext_type: ImageHDU
   keywords:
