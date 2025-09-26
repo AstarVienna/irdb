@@ -280,3 +280,7 @@ class TestObserves:
             plt.show()
 
         assert mx > med + 3 * std
+
+        # This should not be here, but putting it into a separate test would work
+        # better if the simulation were done in a fixture
+        assert isinstance(hdus[0][1].header["INHERIT"], bool)

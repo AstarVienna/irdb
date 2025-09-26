@@ -81,7 +81,7 @@
             NAME: "TODO"
           CUBE:
             # TODO: Allow cube mode in ScopeSim.
-            MODE: "F"
+            MODE: false
         INS:
           # Keywords from the instrument subsystem.
           #
@@ -151,7 +151,7 @@
 - ext_type: ImageHDU
   # Keyword for extension HDUs.
   keywords:
-    INHERIT: "T"
+    INHERIT: true
     # Will resolve to e.g. DET1.DATA, DET2.DATA etc. This allows us to reorder
     # the extensions in case they are shuffled.
     EXTNAME: "DET§.DATA"

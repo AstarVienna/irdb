@@ -112,6 +112,6 @@
             ALL: "#border_reference_pixels.all"
 - ext_type: ImageHDU
   keywords:
-    INHERIT: "T"
+    INHERIT: true
     # Will resolve to e.g. DET1.DATA, DET2.DATA etc., as required by ESO.
     EXTNAME: "DET§.DATA"
