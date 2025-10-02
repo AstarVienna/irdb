@@ -1,15 +1,19 @@
 # description: Leiden AIT relay optics for sky observations
 # author: Oliver Czoske
-# source: Remko Stuik Mattermost AIT channel 2025-08-28
+# source: Zemax model
 # date_created: 2025-08-28
-# date_modified: 2025-08-28
-# status: Guess
-# outer_unit: m
-# inner_unit: m
+# date_modified: 2025-10-02
+# status: Zemax model
+# outer_unit: mm
+# inner_unit: mm
 # angle_unit: degree
 # temperature_unit: deg_C
 # changes:
 #    - 2025-08-28 (OC) Initialised based on rough guess
+#    - 2025-10-02 (OC) Zemax model, discussed with J.Brink
 #
 name    outer   inner   angle   temperature action     filename
-AITtel  1.      0.      45.     10.         reflection !TEL.ter_curve.filename
+Ldn_M4  660.    0.      42.5    10.         reflection !TEL.ter_curve.filename
+Ldn_M3  160.9   0.      0.      10.         reflection !TEL.ter_curve.filename
+Ldn_M2   89.6   0.      17.     10.         reflection !TEL.ter_curve.filename
+Ldn_M1   66.0   0.      45.     10.         reflection !TEL.ter_curve.filename
