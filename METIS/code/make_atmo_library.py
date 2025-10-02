@@ -17,6 +17,7 @@ from astropy.io import fits
 from astropy.table import Table
 
 OUTFILE = "Leiden_atmo_ter.fits"
+SMALLFILE = "atmo_ter_library.fits"
 
 def make_mef_fits(pwvs):
     """Arrange TERcurve for varying pwv values in many BinTableHDUs"""
@@ -25,7 +26,7 @@ def make_mef_fits(pwvs):
                 dtype=("i2", "f2", "S8"))
 
     extid = 1
-    toc.add_row([extid, -999, "Catalogue"])
+    toc.add_row([extid, np.nan, "Catalogue"])
 
     reffile = "leiden_spectra/LBL_A10_w0100_R0120000_ALL_Leiden_LM_R.fits"
 
@@ -38,7 +39,7 @@ def make_mef_fits(pwvs):
     wavehdu = fits.BinTableHDU.from_columns([wavecol])
     wavehdu.header["EXTNAME"] = "WAVELENGTH"
     hdulist.append(wavehdu)
-    toc.add_row([extid, -999, "WAVELENGTH"])
+    toc.add_row([extid, np.nan, "WAVELENGTH"])
 
     # extension 3+: ter curves
     extid += 1
@@ -77,8 +78,8 @@ def make_mef_fits(pwvs):
         "author": "Oliver Czoske",
         "source": "Wolfgang Kausch",
         "descript": "Leiden sky emission and transmission",
-        "date-cre": "2025-09-30",
-        "date-mod": "2025-09-30",
+        "date-cre": "2025-10-02",
+        "date-mod": "2025-10-02",
         "status": "Finished for AIT"
     }
     phdu.header.update(meta)
@@ -90,6 +91,80 @@ def make_mef_fits(pwvs):
     hdulist[0] = phdu
     hdulist = fits.HDUList(hdulist)
     hdulist.writeto(OUTFILE, overwrite=True)
+
+
+def make_small_fits(pwvs):
+    """Make a small file as test mock"""
+    # extension 1: table of contents
+    toc = Table(names=("extension_id", "pwv", "extension_name"),
+                dtype=("i2", "f2", "S8"))
+
+    extid = 1
+    toc.add_row([extid, np.nan, "Catalogue"])
+
+    reffile = "leiden_spectra/LBL_A10_w0100_R0120000_ALL_Leiden_LM_R.fits"
+
+    # extension 2: table of wavelengths
+    extid += 1
+    hdulist = [0, 0]    # contains wavehdu and pwvhdus, but not toc
+    wavelengths = fits.getdata(reffile)['lam'][:10]
+    wavecol = fits.Column(name="wavelength", array=wavelengths,
+                          format="E", unit="um")
+    wavehdu = fits.BinTableHDU.from_columns([wavecol])
+    wavehdu.header["EXTNAME"] = "WAVELENGTH"
+    hdulist.append(wavehdu)
+    toc.add_row([extid, np.nan, "WAVELENGTH"])
+
+    # extension 3+: ter curves
+    extid += 1
+    for p in pwvs:
+        transfile = f"leiden_spectra/LBL_A10_w{int(100*p):04d}_R0120000_ALL_Leiden_LM_T.fits"
+        transdata = fits.getdata(transfile)
+        transcol = fits.Column(name="transmission", array=transdata['flux'][:10],
+                               format="E")
+
+        emissfile = f"leiden_spectra/LBL_A10_w{int(100*p):04d}_R0120000_ALL_Leiden_LM_R.fits"
+        emissdata = fits.getdata(emissfile)
+        emisscol = fits.Column(name="emission", array=emissdata['flux'][:10],
+                               format="E", unit="ph s-1 m-2 um-1 arcsec-2")
+
+        pwvhdu = fits.BinTableHDU.from_columns([transcol, emisscol])
+        extname = f"PWV_{int(p):02d}"
+        pwvhdu.header['EXTNAME'] = extname
+        pwvhdu.header['PWV'] = (p, "Precipitable Water Vapour [mm]")
+        pwvhdu.header['EMITFILE'] = emissfile[15:]
+        pwvhdu.header['TRNSFILE'] = transfile[15:]
+        hdulist.append(pwvhdu)
+        toc.add_row([extid, p, extname])
+        extid += 1
+
+    tochdu = fits.BinTableHDU(toc)
+    tochdu.header['EXTNAME'] = "Catalogue"
+    hdulist[1] = tochdu
+
+
+    phdu = fits.PrimaryHDU()    # Fill with stuff
+
+    phdu.header["ECAT"] = 1
+    phdu.header["EDATA"] = 3
+
+    meta = {
+        "author": "Donald Duck",
+        "source": "Dagobert Duck",
+        "descript": "Test file",
+        "date-cre": "2025-10-02",
+        "date-mod": "2025-10-02",
+        "status": "Mock data"
+    }
+    phdu.header.update(meta)
+
+    refheader = fits.getheader(reffile, ext=0)
+    _ = refheader.pop("PWV")
+    phdu.header.update(refheader)
+
+    hdulist[0] = phdu
+    hdulist = fits.HDUList(hdulist)
+    hdulist.writeto(SMALLFILE, overwrite=True)
 
 def plot_leiden_sky(filename=OUTFILE):
     """Plot a selection of the Leiden sky spectra
@@ -126,3 +201,6 @@ if __name__ == "__main__":
         make_mef_fits(pwvlist)
     elif sys.argv[1] == "plot":
         plot_leiden_sky()
+    elif sys.argv[1] == "small":
+        pwvlist = np.array([1, 23, 24, 50], dtype=np.float32)
+        make_small_fits(pwvlist)
