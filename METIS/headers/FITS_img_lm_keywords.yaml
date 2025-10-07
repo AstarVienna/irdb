@@ -10,7 +10,7 @@
             DEVSIM: [true, "Device simulation flag"]
             ID: ["cfo-lms", "CFO_LMS ID"]
             NAME: ["   ", "CFO_LMS NAME"]
-            POS: [0, "CFO_LMS position"]    # TODO
+            POS: [180, "CFO_LMS position"]
             POSNAME: ["OUT", "CFO_LMS position"]
             STAT: ["Standstill", "CFO_LMS status"]
 
@@ -19,7 +19,7 @@
             ID: ["img-lm-pw", "IMG_LM_PW ID"]
             NAME: ["    ", "IMG_LM_PW NAME"]
             POS: [0, "IMG_LM_PW position"]                  # TODO
-            POSNAME: ["PPS-LM", "IMG_LM_PW named position"] # TODO
+            POSNAME: ["open", "IMG_LM_PW named position"]
             STAT: ["Standstill", "IMG_LM_PW status"]
 
           OPTI10:               # IMG-LM science filter wheel
