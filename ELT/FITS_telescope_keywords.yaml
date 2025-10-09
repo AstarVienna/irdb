@@ -1,6 +1,21 @@
 - ext_type: PrimaryHDU
   keywords:
     HIERARCH:
+      ESO:
+        TEL:
+          ALT: [24.5, "Dummy value"]
+          AZ: [-1.3, "Dummy value"]
+          GEOELEV: 3046.0
+          GEOLAT: -24.58928          # Google maps, check
+          GEOLON: -70.19166
+          TARG:
+            DEC: ["!OBS.dec", "Dummy value"]
+            RA: ["!OBS.ra", "Dummy value"]
+            EPOCH: 2000.0
+            EPOCHSYSTEM: "J"
+            PARALLAX: [0.0, "Dummy value"]
+            RADVEL: [0.0, "Dummy value"]
+
       WISE:
         TEL:
           NAME: "ELT"

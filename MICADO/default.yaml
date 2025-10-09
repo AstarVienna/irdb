@@ -7,10 +7,11 @@ name: MICADO_default_configuration
 description: default parameters needed for a MICADO simulation
 status: development
 needs_scopesim: "v0.10.0b4"
-date_modified: 2025-06-27
+date_modified: 2025-10-09
 changes:
   - 2023-07-13 (OC) add modes for FDR slits, deprecate pre-FDR slits
   - 2025-06-27 (FH) add needs_scopesim keyword
+  - 2025-10-09 (OC) proper MJD value
 
 packages:
 - Armazones
@@ -37,7 +38,7 @@ properties :
   tech : IMAGE
   type : OBJECT
   # Should be datetimes, but is copied verbatim, so should work.
-  mjdobs : "2022-05-04T02:30:00"
+  mjdobs : 61529.104
   tplstart : "2022-05-04T02:30:00"
   tplexpno : 0
   tplno : 0
