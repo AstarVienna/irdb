@@ -11,11 +11,8 @@
 
           WLEN:                 # LMS central wavelength and range
             CEN:   ["!OBS.wavelen", "Central wavelength [um]"]
-            START: "TBD"  # "#lms_spectral_traces.wave_min" ain't workin'
-            END:   "TBD"
-
-          GRAT:
-            ANGLE: "TBD"
+            START: ["#lms_spectral_traces.wave_min", "Start wavelength [um]"]
+            END:   ["#lms_spectral_traces.wave_max", "End wavelength [um]"]
 
           OPTI4:                # LMS beamsplitter pickoff wheel
             DEVSIM: [true, "Device simulation flag"]
@@ -45,12 +42,13 @@
             DEVSIM: [true, "Device simulation flag"]
             ID: ["lms-pra", "LMS-PRA ID"]
             NAME: ["     ", "LMS-PRA NAME"]
-            POS: [0, "LMS-PRA position"]             # TODO
+            POS: ["#lms_spectral_traces.predisperser", "LMS-PRA position [deg]"]
             STAT: ["Standstill", "LMS-PRA status"]   # no POSNAME?
 
           OPTI8:                # LMS main disperser
             DEVSIM: [true, "Device simulation flag"]
             ID: ["lms-msa", "LMS-MSA ID"]
             NAME: ["     ", "LMS-MSA NAME"]
-            POS: [0, "LMS-MSA position"]             # TODO
+            POS: ["#lms_spectral_traces.echelle", "LMS-MSA position [deg]"]
+            ORDER: ["#lms_spectral_traces.order", "Spectral order (non-ESO keyword)"]
             STAT: ["Standstill", "LMS-MSA status"]   # no POSNAME?
