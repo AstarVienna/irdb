@@ -1,19 +1,13 @@
-import os
-import warnings
 import numpy as np
-from astropy import units as u
-from astropy.io.fits import HDUList
+import pytest
 from matplotlib import pyplot as plt
 from matplotlib.colors import LogNorm
 import scopesim
 from astropy.convolution import Gaussian2DKernel
-from scopesim.utils import quantify
 from scopesim import rc
-from scopesim_templates.stellar import star_field, star_grid
-from scopesim.optics.fov_manager import FOVManager
+from scopesim_templates.stellar import star_field
 
 print("Done with all the library installation")
-
 
 
 PLOTS = True
@@ -21,6 +15,7 @@ PLOTS = True
 # ----------------------------------------------------
 # Define VibrationPSF for vibration-affected PSF
 # ----------------------------------------------------
+
 
 class VibrationPSF:
     """
@@ -90,11 +85,11 @@ class VibrationPSF:
         # Define axis values in arcseconds instead of pixels
         size = kernel.shape[0]  # Assuming the kernel is square
         arcsec_extent = size * pixel_scale / 2  # Half the extent for centered plot
-        x = np.linspace(-arcsec_extent, arcsec_extent, size)
-        y = np.linspace(-arcsec_extent, arcsec_extent, size)
+        extent = (-arcsec_extent, arcsec_extent, -arcsec_extent, arcsec_extent)
 
         plt.figure(figsize=(8, 6))
-        plt.imshow(kernel, origin='lower', extent=[x[0], x[-1], y[0], y[-1]], cmap='plasma',norm=LogNorm(vmin=1e-6, vmax=1))  # Adjust vmin and vmax as necessary
+        # Adjust vmin and vmax as necessary
+        plt.imshow(kernel, origin='lower', extent=extent, cmap='plasma', norm=LogNorm(vmin=1e-6, vmax=1))
         plt.colorbar(label='Intensity')
         plt.title(f"Vibration PSF (FWHM = {self.fwhm} arcsec, Axis = {self.vibration_axis})")
         plt.xlabel("X [arcseconds]")
@@ -111,41 +106,47 @@ class VibrationPSF:
 if rc.__config__["!SIM.tests.run_integration_tests"] is False:
     pytestmark = pytest.mark.skip("Ignoring DREAMS integration tests")
 
-# Initialize DREAMS optical train
-dreams = scopesim.OpticalTrain("DREAMS")
-assert isinstance(dreams, scopesim.OpticalTrain)
-print("scopesim package loaded successfully.")
 
-# Create a star field as the source
-src = star_field(500, 10, 20, width=100)
+def main():
+    # Initialize DREAMS optical train
+    dreams = scopesim.OpticalTrain("DREAMS")
+    assert isinstance(dreams, scopesim.OpticalTrain)
+    print("scopesim package loaded successfully.")
 
-# Set up user commands for the DREAMS simulation
-cmds = scopesim.UserCommands(use_instrument="DREAMS")
-cmds["!OBS.dit"] = 8
-cmds["!OBS.ndit"] = 1
-cmds["!DET.bin_size"] = 1
-cmds["!OBS.sky.bg_mag"] = 14.9  # J-band magnitude
-cmds["!OBS.sky.filter_name"] = "J"
-cmds["SIM.sub_pixel.flag"] = True
+    # Create a star field as the source
+    src = star_field(500, 10, 20, width=100)
 
-# Reinitialize the optical train with the user commands
-dreams = scopesim.OpticalTrain(cmds)
-dreams["detector_linearity"].include = False
+    # Set up user commands for the DREAMS simulation
+    cmds = scopesim.UserCommands(use_instrument="DREAMS")
+    cmds["!OBS.dit"] = 8
+    cmds["!OBS.ndit"] = 1
+    cmds["!DET.bin_size"] = 1
+    cmds["!OBS.sky.bg_mag"] = 14.9  # J-band magnitude
+    cmds["!OBS.sky.filter_name"] = "J"
+    cmds["SIM.sub_pixel.flag"] = True
 
-# Perform observation
-dreams.observe(src)
-hdus = dreams.readout("vibration_analysis.fits")
-print(f"Observation completed. HDUList type: {type(hdus[0])}")
+    # Reinitialize the optical train with the user commands
+    dreams = scopesim.OpticalTrain(cmds)
+    dreams["detector_linearity"].include = False
 
-# ----------------------------------------------------
-# Apply the VibrationPSF to DREAMS Simulation Results
-# ----------------------------------------------------
+    # Perform observation
+    dreams.observe(src)
+    hdus = dreams.readout("vibration_analysis.fits")
+    print(f"Observation completed. HDUList type: {type(hdus[0])}")
 
-# Define the pixel scale for DREAMS
-pixel_scale = 2.48  # Arcseconds per pixel for DREAMS
+    # ----------------------------------------------------
+    # Apply the VibrationPSF to DREAMS Simulation Results
+    # ----------------------------------------------------
 
-# Instantiate the VibrationPSF class
-vibration_psf = VibrationPSF(fwhm=5, amplitude=1.5, vibration_axis="x")  # Elongation along the x-axis
+    # Define the pixel scale for DREAMS
+    pixel_scale = 2.48  # Arcseconds per pixel for DREAMS
 
-# Plot the vibration-affected PSF
-vibration_psf.plot(pixel_scale=pixel_scale)
+    # Instantiate the VibrationPSF class
+    vibration_psf = VibrationPSF(fwhm=5, amplitude=1.5, vibration_axis="x")  # Elongation along the x-axis
+
+    # Plot the vibration-affected PSF
+    vibration_psf.plot(pixel_scale=pixel_scale)
+
+
+if __name__ == '__main__':
+    main()
