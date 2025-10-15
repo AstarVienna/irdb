@@ -9,31 +9,19 @@ import scopesim
 from scopesim import rc
 from scopesim.source.source_templates import star_field
 import scopesim_templates as sim_tp
-from scopesim.optics.fov_manager import FOVManager
 
 PLOTS = True
 
 if rc.__config__["!SIM.tests.run_integration_tests"] is False:
     pytestmark = pytest.mark.skip("Ignoring DREAMS integration tests")
 
-# Set TOP_PATH to the directory containing the DREAMS package
-TOP_PATH = "/Users/anjali/github"
-rc.__config__["!SIM.file.local_packages_path"] = TOP_PATH
-
-# Adjust the PKGS dictionary to reflect the correct path
-PKGS = {"DREAMS": os.path.join(TOP_PATH, "DREAMS")}
-
-# Verify the path to the DREAMS package
-if not os.path.exists(PKGS["DREAMS"]):
-    raise FileNotFoundError(f"DREAMS package not found at {PKGS['DREAMS']}")
-else:
-    print("DREAMS package found at:", PKGS["DREAMS"])
 
 class TestLoads:
     def test_scopesim_loads_package(self):
         dreams = scopesim.OpticalTrain("DREAMS")
         assert isinstance(dreams, scopesim.OpticalTrain)  # Corrected syntax
         print("scopesim package loaded successfully.")
+
 
 class TestObserves:
     def test_something_comes_out(self):
@@ -54,25 +42,7 @@ class TestObserves:
         dreams = scopesim.OpticalTrain(cmds)
         dreams["detector_linearity"].include = False
 
-        # Hackish workaround to get a larger Field of View.
-        # This problem is fixed in https://github.com/AstarVienna/ScopeSim/pull/433
-        # This hack can thus be removed once that is merged and a new
-        # ScopeSim version is released.
-        # First recreate the fov_manager without preloading the field of
-        # views with the wrong values.
-        dreams.fov_manager = FOVManager(dreams.optics_manager.fov_setup_effects, cmds=dreams.cmds, preload_fovs=False)
-        # Then make the initial field of view 10 times larges than normal.
-        dreams.fov_manager.volumes_list[0]["x_min"] = -18000  # arcsec
-        dreams.fov_manager.volumes_list[0]["x_max"] = 18000
-        dreams.fov_manager.volumes_list[0]["y_min"] = -18000
-        dreams.fov_manager.volumes_list[0]["y_max"] = 18000
-        # Finally, shrink the field of view to the detector size.
-        dreams.fov_manager._fovs_list = list(dreams.fov_manager.generate_fovs_list())
-
-        # We now need to put update=False here, because otherwise the hacked
-        # fov_manager gets reinitialized. dreams can therefor only be used
-        # once, and needs to be recreated for the next simulation.
-        dreams.observe(src, update=False)
+        dreams.observe(src)
 
         hdus = dreams.readout("dreams.fits")
 
@@ -81,7 +51,7 @@ class TestObserves:
         if PLOTS:
             plt.subplot(121)
             wave = np.arange(3000, 11000)
-            plt.plot(wave, dreams.optics_manager.surfaces_table.throughput(wave))
+            plt.plot(wave, dreams.optics_manager.system_transmission(wave))
 
             plt.subplot(122)
             im = hdus[0][1].data
@@ -93,13 +63,18 @@ class TestObserves:
             plt.grid()
             plt.show()
 
-            #detector_order = [2, 1, 4, 3, 6, 5]
-            #plt.figure(figsize=(20, 20))
-            #for plot_number, hdu_number in enumerate(detector_order, 1):
-                #plt.subplot(3, 2, plot_number)
-                #plt.imshow(hdus[0][hdu_number].data, origin="lower", norm=LogNorm())
-                #plt.colorbar()
-            #plt.show()
+            detector_order = [2, 1, 4, 3, 6, 5]
+            plt.figure(figsize=(20, 20))
+            for plot_number, hdu_number in enumerate(detector_order, 1):
+                plt.subplot(3, 2, plot_number)
+                data = hdus[0][hdu_number].data
+                med = np.median(data)
+                std = np.std(data)
+                vmin = med
+                vmax = med + 5 * std
+                plt.imshow(data, origin="lower", norm=LogNorm(vmin=vmin, vmax=vmax))
+                plt.colorbar()
+            plt.show()
 
     @pytest.mark.slow
     def test_observes_from_scopesim_templates(self):
@@ -132,9 +107,12 @@ class TestObserves:
         assert os.path.exists("GNANU.fits")
         print("Readout saved to GNANU.fits.")
 
+
 def run_test_and_plot():
     test_observes = TestObserves()
     test_observes.test_something_comes_out()
 
+
 # Run the test and plot as soon as the module is imported
-run_test_and_plot()
+if __name__ == '__main__':
+    run_test_and_plot()
