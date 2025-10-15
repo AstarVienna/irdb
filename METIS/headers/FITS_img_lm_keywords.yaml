@@ -7,14 +7,33 @@
           TECH:   "IMAGE,LM"
         INS:
           OPTI4:                # LMS beamsplitter pickoff wheel
-            DESC: "LMS pickoff"
-            NAME: "OUT"         # could be IN for parallel observing
+            DEVSIM: [true, "Device simulation flag"]
+            ID: ["cfo-lms", "CFO_LMS ID"]
+            NAME: ["   ", "CFO_LMS NAME"]
+            POS: [180, "CFO_LMS position"]
+            POSNAME: ["OUT", "CFO_LMS position"]
+            STAT: ["Standstill", "CFO_LMS status"]
+
           OPTI9:                # IMG-LM mask/grism wheel
-            DESC: "IMG-LM mask/grism"
-            NAME: "open"
+            DEVSIM: [true, "Device simulation flag"]
+            ID: ["img-lm-pw", "IMG_LM_PW ID"]
+            NAME: ["    ", "IMG_LM_PW NAME"]
+            POS: [0, "IMG_LM_PW position"]                  # TODO
+            POSNAME: ["open", "IMG_LM_PW named position"]
+            STAT: ["Standstill", "IMG_LM_PW status"]
+
           OPTI10:               # IMG-LM science filter wheel
-            DESC: "IMG-LM science filter"
-            NAME: "#filter_wheel.current_filter!"
+            DEVSIM: [true, "Device simulation flag"]
+            ID: ["img-lm-fw", "IMG_LM_FW ID"]
+            NAME: ["     ", "IMG_LM_FW NAME"]
+            POS: [0, "IMG_LM_FW position"]                  # TODO
+            POSNAME: ["#filter_wheel.current_filter!", "IMG_LM_FW named position"]
+            STAT: ["Standstill", "IMG_LM_FW status"]
+
           OPTI11:               # IMG-LM neutral density filter wheel
-            DESC: "IMG-LM neutral density filter"
-            NAME: "#nd_filter_wheel.current_filter!"
+            DEVSIM: [true, "Device simulation flag"]
+            ID: ["img-lm-ndw", "IMG_LM_NDW ID"]
+            NAME: ["    ", "IMG_LM_NDW NAME"]
+            POS: [0, "IMG_LM_NDW position"]                 # TODO
+            POSNAME: ["#nd_filter_wheel.current_filter!", "IMG_LM_NDW named position"]
+            STAT: ["Standstill", "IMG_LM_NDW status"]
