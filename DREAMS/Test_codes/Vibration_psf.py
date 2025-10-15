@@ -132,16 +132,8 @@ cmds["SIM.sub_pixel.flag"] = True
 dreams = scopesim.OpticalTrain(cmds)
 dreams["detector_linearity"].include = False
 
-# Set up the Field of View (FOV) for the simulation
-dreams.fov_manager = FOVManager(dreams.optics_manager.fov_setup_effects, cmds=dreams.cmds, preload_fovs=False)
-dreams.fov_manager.volumes_list[0]["x_min"] = -18000
-dreams.fov_manager.volumes_list[0]["x_max"] = 18000
-dreams.fov_manager.volumes_list[0]["y_min"] = -18000
-dreams.fov_manager.volumes_list[0]["y_max"] = 18000
-dreams.fov_manager._fovs_list = list(dreams.fov_manager.generate_fovs_list())
-
 # Perform observation
-dreams.observe(src, update=False)
+dreams.observe(src)
 hdus = dreams.readout("vibration_analysis.fits")
 print(f"Observation completed. HDUList type: {type(hdus[0])}")
 
