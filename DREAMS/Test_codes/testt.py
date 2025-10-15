@@ -68,7 +68,7 @@ class TestObserves:
         if PLOTS:
             plt.subplot(121)
             wave = np.arange(3000, 11000)
-            plt.plot(wave, dreams.optics_manager.surfaces_table.throughput(wave))
+            plt.plot(wave, dreams.optics_manager.system_transmission(wave))
 
             plt.subplot(122)
             im = hdus[0][1].data
