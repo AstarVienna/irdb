@@ -9,18 +9,19 @@ import scopesim
 from scopesim import rc
 from scopesim.source.source_templates import star_field
 import scopesim_templates as sim_tp
-from scopesim.optics.fov_manager import FOVManager
 
 PLOTS = True
 
 if rc.__config__["!SIM.tests.run_integration_tests"] is False:
     pytestmark = pytest.mark.skip("Ignoring DREAMS integration tests")
 
+
 class TestLoads:
     def test_scopesim_loads_package(self):
         dreams = scopesim.OpticalTrain("DREAMS")
         assert isinstance(dreams, scopesim.OpticalTrain)  # Corrected syntax
         print("scopesim package loaded successfully.")
+
 
 class TestObserves:
     def test_something_comes_out(self):
@@ -106,9 +107,12 @@ class TestObserves:
         assert os.path.exists("GNANU.fits")
         print("Readout saved to GNANU.fits.")
 
+
 def run_test_and_plot():
     test_observes = TestObserves()
     test_observes.test_something_comes_out()
 
+
 # Run the test and plot as soon as the module is imported
-run_test_and_plot()
+if __name__ == '__main__':
+    run_test_and_plot()
