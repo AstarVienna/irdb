@@ -41,25 +41,7 @@ class TestObserves:
         dreams = scopesim.OpticalTrain(cmds)
         dreams["detector_linearity"].include = False
 
-        # Hackish workaround to get a larger Field of View.
-        # This problem is fixed in https://github.com/AstarVienna/ScopeSim/pull/433
-        # This hack can thus be removed once that is merged and a new
-        # ScopeSim version is released.
-        # First recreate the fov_manager without preloading the field of
-        # views with the wrong values.
-        dreams.fov_manager = FOVManager(dreams.optics_manager.fov_setup_effects, cmds=dreams.cmds, preload_fovs=False)
-        # Then make the initial field of view 10 times larges than normal.
-        dreams.fov_manager.volumes_list[0]["x_min"] = -18000  # arcsec
-        dreams.fov_manager.volumes_list[0]["x_max"] = 18000
-        dreams.fov_manager.volumes_list[0]["y_min"] = -18000
-        dreams.fov_manager.volumes_list[0]["y_max"] = 18000
-        # Finally, shrink the field of view to the detector size.
-        dreams.fov_manager._fovs_list = list(dreams.fov_manager.generate_fovs_list())
-
-        # We now need to put update=False here, because otherwise the hacked
-        # fov_manager gets reinitialized. dreams can therefor only be used
-        # once, and needs to be recreated for the next simulation.
-        dreams.observe(src, update=False)
+        dreams.observe(src)
 
         hdus = dreams.readout("dreams.fits")
 

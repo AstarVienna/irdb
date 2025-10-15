@@ -28,14 +28,6 @@ cmds["!OBS.sky.filter_name"] = "J"
 cmds["SIM.sub_pixel.flag"] = True
 dreams = scopesim.OpticalTrain(cmds)
 dreams["detector_linearity"].include = False
-dreams.fov_manager = FOVManager(dreams.optics_manager.fov_setup_effects, cmds=dreams.cmds, preload_fovs=False)
-# Then make the initial field of view 10 times larges than normal.
-dreams.fov_manager.volumes_list[0]["x_min"] = -18000  # arcsec
-dreams.fov_manager.volumes_list[0]["x_max"] = 18000
-dreams.fov_manager.volumes_list[0]["y_min"] = -18000
-dreams.fov_manager.volumes_list[0]["y_max"] = 18000
-# Finally, shrink the field of view to the detector size.
-dreams.fov_manager._fovs_list = list(dreams.fov_manager.generate_fovs_list())
 
 print("scopesim package loaded successfully.")
 x, y = np.meshgrid(np.arange(100), np.arange(100))
@@ -52,7 +44,7 @@ bb = synphot.models.BlackBody1D(temperature=5000)
 sp = synphot.SourceSpectrum(synphot.Empirical1D, points=wave, lookup_table=bb(wave))
 src = Source(image_hdu=hdu, spectra=sp)
 src.shift(10, 10)
-dreams.observe(src, update=False)
+dreams.observe(src)
 print("yessss anjali")
 hdus = dreams.readout()
 #dreams.readout(filename="Han.fits")
