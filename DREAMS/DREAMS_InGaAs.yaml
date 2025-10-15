@@ -14,6 +14,8 @@ properties:
   height: 1024
   x: 0
   y: 0
+  bin_size: 1
+
 effects:
 -   name: full_detector_array
     description: THe full DREAMS detector array list
