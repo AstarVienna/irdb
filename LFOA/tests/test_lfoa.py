@@ -38,7 +38,7 @@ class TestObserves:
         if PLOTS:
             plt.subplot(121)
             wave = np.arange(3000, 11000)
-            plt.plot(wave, lfoa.optics_manager.system_tranmission(wave))
+            plt.plot(wave, lfoa.optics_manager.system_transmission(wave))
 
             plt.subplot(122)
             im = hdus[0][1].data
