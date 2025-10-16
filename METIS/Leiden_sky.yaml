@@ -20,10 +20,12 @@ properties:
 effects:
   - name:        leiden_sky
     description: atmospheric emission and transmission
-    class:       AtmosphericTERCurve
+    class:       AtmoLibraryTERCurve
     include:     True
     kwargs:
-      pwv:          "!OBS.pwv"
+      pwv:       "!OBS.pwv"
+      url:       "https://scopesim.univie.ac.at/InstPkgSvr/atmo/Leiden_atmo_ter.fits"
+      hash:      "16b5faa1bc4e75ba2d34cad02f302223b8a788306cd34b9809c3e895b46132b0"
 
   - name:        telescope
     description: reflection curve
