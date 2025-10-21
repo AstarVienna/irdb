@@ -82,6 +82,7 @@ mode_yamls :
     filter_name_fw1: open
     filter_name_fw2: Ks
     filter_name_pupil: open
+    fits_ins_filt: Ks
 
 - object : observation
   alias: OBS
@@ -94,6 +95,7 @@ mode_yamls :
     filter_name_fw1: open
     filter_name_fw2: Ks
     filter_name_pupil: open
+    fits_ins_filt: Ks
 
 - object : observation
   alias: OBS
@@ -117,6 +119,7 @@ mode_yamls :
     filter_name_fw2 : open
     filter_name_pupil : open
     fits_ins_filt : Spec_HK
+    fits_ins_slit : "Long"
 
 - object : observation
   alias: OBS
@@ -132,6 +135,7 @@ mode_yamls :
     filter_name_fw2 : open
     filter_name_pupil : open
     fits_ins_filt : Spec_HK
+    fits_ins_slit : "Wide"
 
 - object : observation
   alias : OBS
@@ -147,6 +151,7 @@ mode_yamls :
     filter_name_fw2 : open
     filter_name_pupil : open
     fits_ins_filt : Spec_IJ
+    fits_ins_slit : "Short"
 
 - object : observation
   alias: OBS
@@ -166,6 +171,7 @@ mode_yamls :
     filter_name_fw2: open
     filter_name_pupil: open
     fits_ins_filt : Spec_HK
+    fits_ins_slit : "Long"
 
 - object : observation
   alias: OBS
@@ -185,6 +191,7 @@ mode_yamls :
     filter_name_fw2: open
     filter_name_pupil: open
     fits_ins_filt : Spec_HK
+    fits_ins_slit : "Wide"
 
 - object : observation
   alias: OBS
@@ -204,6 +211,7 @@ mode_yamls :
     filter_name_fw2: open
     filter_name_pupil: open
     fits_ins_filt : Spec_HK
+    fits_ins_slit : "Short"
 
 ---
 ### default simulation parameters needed for a MICADO simulation
