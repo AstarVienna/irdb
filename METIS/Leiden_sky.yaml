@@ -1,0 +1,40 @@
+---
+### METIS AIT Leiden sky and telescope
+
+object: Leiden sky
+alias: OBS
+name: Leiden_sky
+description: Leiden sky and telescope
+data_modified: 2025-08-26
+changes:
+  - 2025-08-26 (OC) file created
+
+properties:
+  location:    Leiden
+  longitude:    4.45842
+  latitude:    52.16897
+  airmass:     1.0
+
+effects:
+  - name:        leiden_sky
+    description: atmospheric emission and transmission
+    class:       AtmoLibraryTERCurve
+    include:     True
+    kwargs:
+      pwv:       "!ATMO.pwv"
+      remote_filename: "!ATMO.spectrum.filename"
+
+  - name:        telescope
+    description: reflection curve
+    class:       SurfaceList
+    include:     True
+    kwargs:
+      filename:  LIST_Leiden_telescope.tbl
+
+---
+alias: ATMO
+properties:
+  temperature: 15   # Celsius!
+  pwv:         1.0  # mm
+  spectrum:
+    filename: Leiden_atmo_ter.fits
