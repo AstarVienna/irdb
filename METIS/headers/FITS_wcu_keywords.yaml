@@ -5,17 +5,46 @@
       ESO:
         INS:
           OPTI17:               # WCU periscope arm
-            DESC: "WCU periscope"
-            NAME: "IN"
+            DEVSIM: [true, "Device simulation flag"]
+            ID: ["wcu-per", "OPTI17 ID"]
+            NAME: ["     ", "OPTI17 NAME"]
+            POS: [0, "OPTI17 position"]         # TODO
+            POSNAME: ["IN", "OPTI17 named position"]  # added by OC
+            STAT: ["Standstill", "OPTI17 status"]
+
           OPTI18:               # WCU PP1 masks
-            DESC: "WCU PP1 masks"
-            NAME: "#pupil_masks.current_mask"
+            DEVSIM: [true, "Device simulation flag"]
+            ID: ["wcu-pp1", "WCU OPTI18 ID"]
+            NAME: ["     ", "WCU OPTI18 NAME"]
+            POS:  [0, "WCU OPTI18 position"]     # TODO
+            POSNAME: ["#pupil_masks.current_mask", "WCU OPTI18 named position"]   # added by OC
+            STAT: ["Standstill", "WCU OPTI18 status"]
+
           OPTI19:               # WCU BB exit aperture masks
-            DESC: "WCU BB exit aperture"
-            NAME: "#wcu_source.bb_aperture"
+            DEVSIM: [true, "Device simulation flag"]
+            ID: ["wcu-bb-aperture-mask", "OPTI19 ID"]
+            NAME: ["      ", "OPTI19 NAME"]
+            POS: [0, "OPTI10 position"]          # TODO
+            POSNAME: ["#wcu_source.bb_aperture", "OPTI19 named position"]               # added by OC
+            STAT: ["Standstill", "OPTI19 status"]
+
           OPTI20:               # WCU FP2.1 mask wheel
-            DESC: "WCU FP2.1 mask"
-            NAME: "#wcu_source.current_fpmask"
+            DEVSIM: [true, "Device simulation flag"]
+            ID: ["wcu-fp2-1", "WCU OPTI20 ID"]
+            NAME: ["       ", "WCU OPTI20 NAME"]
+            POS: [0, "WCU OPTI20 position"]      # TODO
+            POSNAME: ["#wcu_source.current_fpmask", "WCU OPTI20 named position"]
+            STAT: ["Standstill", "WCU OPTI20 status"]
+
+          WCU_BB:
+            AMBIENTTEMP: ["#wcu_source.wcu_temp_c", "[C] Blackbody ambient temperature [C]"]
+            DEVSIM: [true, "Device simulation flag"]
+            HWSTATUS: ["Hot", "Blackbody source status"]
+            ID: ["wcu-bb", "WCU_BB ID"]
+            NAME: ["    ", "WCU_BB NAME"]
+            SOURCESETP: ["#wcu_source.bb_temp_c", "[C] Blackbody setpoint temperature [C]"]
+            SOURCETEMP: ["#wcu_source.bb_temp_c", "[C] Blackbody source temperature"]
+
         SEQ:
           WCU_BB_TEMP: "#wcu_source.bb_temp"
           WCU:

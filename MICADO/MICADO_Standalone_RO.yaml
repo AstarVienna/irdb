@@ -6,13 +6,14 @@ description : Simple stand-alone relay optics module
 
 properties :
     temperature : "!ATMO.temperature"
+    psf_file: "PSF_SCAO_ConstPSF_0_5off.fits"
 
 effects :
 -   name : relay_psf
     description : SCAO PSF
     class : FieldConstantPSF
     kwargs:
-        filename : PSF_SCAO_ConstPSF_0_5off.fits
+        filename : "!RO.psf_file"
         warning : "Default PSF is NOT field varying. See documentation."
 
 -   name: relay_surface_list

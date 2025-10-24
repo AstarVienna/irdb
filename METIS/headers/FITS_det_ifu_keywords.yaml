@@ -6,7 +6,7 @@
           DIT:        "!OBS.dit"
           NDIT:       "!OBS.ndit"
           CUBE:
-            MODE:     "F"
+            MODE:     false
 
 - ext_number: [1]
   keywords:

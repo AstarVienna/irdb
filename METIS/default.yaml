@@ -6,8 +6,8 @@ alias: OBS
 name: METIS_default_configuration
 description: default parameters needed for a METIS simulation
 status: development
-needs_scopesim: "v0.10.0b4"
-date_modified: 2025-06-27
+needs_scopesim: "v0.11.1a1"
+date_modified: 2025-10-09
 changes:
   - 2021-12-16 (OC) chopnod defaults to perpendicular
   - 2021-12-16 (OC) default slits renamed
@@ -20,6 +20,8 @@ changes:
   - 2024-09-04 (OC) rearrange to include WCU modes
   - 2025-06-27 (FH) version bumps and status updates
   - 2025-08-26 (OC) modes for Leiden sky observations
+  - 2025-09-29 (OC) version bump
+  - 2025-10-09 (OC) proper MJD value
 
 packages:
   - Armazones
@@ -53,7 +55,7 @@ properties:
   tech: "IMAGE,LM"
   type: "OBJECT"
   # More default properties for the observation
-  mjdobs: "2027-05-04T02:30:00"
+  mjdobs: "61529.104"
   tplstart: "2027-05-04T02:30:00"
   tplno: 0
   tplexpno: 0
