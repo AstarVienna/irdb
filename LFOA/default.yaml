@@ -13,6 +13,7 @@ yamls :
 - LFOA_SBIG.yaml
 
 properties :
+  instrument: LFOA
   airmass : 1.2
   declination : +30
   hour_angle : 0
