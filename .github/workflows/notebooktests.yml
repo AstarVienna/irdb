@@ -85,6 +85,40 @@ jobs:
             /usr/bin/time -v jupytext --execute --update "${fn}"
           done
 
+  mosaic_notebooks:
+    name: Run MOSAIC Notebooks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          # No matrix is used since this is a time-consuming task.
+          python-version: 3.11
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.github_actions.txt
+
+      - name: Install ScopeSim from repo
+        if: ${{ inputs.from_pypi == false || inputs.from_pypi == 'false' }}
+        run: |
+          echo "Re-installing ScopeSim from source" >> $GITHUB_STEP_SUMMARY
+          pip uninstall -y scopesim scopesim_templates
+          pip install git+https://github.com/AstarVienna/ScopeSim.git@${{ inputs.ScopeSim }}
+          pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git@${{ inputs.ScopeSim_Templates }}
+      - name: Run Notebooks
+        env:
+          PYDEVD_DISABLE_FILE_VALIDATION: 1
+        run: |
+          echo "## MOSAIC Notebooks tested" >> $GITHUB_STEP_SUMMARY
+          for fn in MOSAIC/docs/example_notebooks/*.ipynb
+          do
+            echo "${fn}"
+            echo "- ${fn}" >> $GITHUB_STEP_SUMMARY
+            /usr/bin/time -v jupytext --execute --update "${fn}"
+          done
+
   metis_notebooks:
     name: Run METIS Notebooks
     runs-on: ubuntu-latest
