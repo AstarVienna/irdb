@@ -31,3 +31,13 @@ effects :
         efficiency: 1
         wave_mid: "!SIM.spectral.wave_mid"
         quick_adc: True
+
+### set observation mode
+---
+object: observation
+alias : OBS
+name : MICADO_IMG_LR
+
+properties :
+    obs_mode: "IMG_4mas"
+    fits_ins_mode: "LRI"

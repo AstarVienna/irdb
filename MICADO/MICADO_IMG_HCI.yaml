@@ -25,3 +25,15 @@ effects :
     class: CoronagraphPSF
     kwargs:
         filename: None
+
+### set observation mode
+---
+object: observation
+alias : OBS
+name : MICADO_IMG_HCI
+
+properties :
+    obs_mode: "IMG_HCI"
+    fits_ins_mode: "LRI"
+    fits_ins_coro: "CLC-15"
+    fits_ins_mask: "HighContrast"

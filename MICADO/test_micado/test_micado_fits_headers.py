@@ -16,4 +16,4 @@ class TestHeaders:
 
         for i, hdu in enumerate(hdul):
             if isinstance(hdu, fits.ImageHDU):
-                assert hdu.header["EXTNAME"] == f"DET{i}.DATA"
+                assert hdu.header["EXTNAME"] == f"DET{i}.IMG"

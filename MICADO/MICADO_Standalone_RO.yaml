@@ -38,3 +38,12 @@ effects :
 #    include : False
 #    kwargs:
 #        filename : None
+
+### set instrument mode
+---
+object: observation
+alias : OBS
+name : SCAO
+
+properties :
+    ins_mode: "SCAO"

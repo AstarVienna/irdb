@@ -3,7 +3,7 @@
     MJD-OBS: "!OBS.mjdobs"
     RA: "!OBS.ra"
     DEC: "!OBS.dec"
-    INSTRUME: ""
+    INSTRUME: "MICADO"
     HIERARCH:
       ESO:
         DPR:
@@ -13,15 +13,48 @@
         DET:
           DIT: "!OBS.dit"
           NDIT: "!OBS.ndit"
+          NEXP: 1
           READOUT: "CDS"
+          SUBARRAY: "FULL"
         INS:
+          MODE:
+            NAME: "!OBS.fits_ins_mode"
+          MASK:
+            NAME: "!OBS.fits_ins_mask"
+          SLIT:
+            NAME: "!OBS.fits_ins_slit"
+          CORO:
+            NAME: "!OBS.fits_ins_coro"
+          STOP:
+            NAME: "!OBS.fits_ins_stop"
+          FILT:
+            NAME: "!OBS.fits_ins_filt"
           FILT1:
             NAME: "!OBS.filter_name_fw1"
           FILT2:
             NAME: "!OBS.filter_name_fw2"
-          #  STOP:
-          #    NAME: "!OBS.filter_name_fw2"
-          DROT: 0
+          DROT:
+            MODE: "SKY"
+            POSANG: 0.0
+            AVG: 0.0
+            BEGIN: 0.0
+            END: 0.0
+          OPTI1:
+            NAME: "OPEN"
+          LAMP1:
+            ST: "OFF"
+          LAMP2:
+            ST: "OFF"
+          LAMP3:
+            ST: "OFF"
+          LAMP4:
+            ST: "OFF"
+          LAMP5:
+            ST: "OFF"
+          LAMP6:
+            ST: "OFF"
+          LAMP7:
+            ST: "OFF"
         TPL:
           START: "!OBS.tplstart"
           EXPNO: "!OBS.tplexpno"
@@ -29,6 +62,7 @@
           TPLNO: "!OBS.tplno"
           INSTRUME: "MICADO"
           NAME: "!OBS.obsname"
+          MODE: "!OBS.obs_mode"
       WISE:
         ATM:
           LOCATION: "!ATMO.location"
@@ -53,12 +87,11 @@
             WUNIT: "#skycalc_atmosphere.wunit"
             WGRIDMOD: "#skycalc_atmosphere.wgrid_mode"
         INS:
-          MODE: "IMAGING"
+          MODE: "!OBS.ins_mode"
           NAME: "MICADO"
           TEMPERAT: "!INST.temperature"
           FILT:
-            # TODO: do something sensible for INS FILT NAME?
-            NAME: "open"
+            NAME: "!OBS.fits_ins_filt"
           FILT1:
             MINIMUM_: "#filter_wheel_1.minimum_throughput"
             OUTER: "#filter_wheel_1.outer"
@@ -113,5 +146,5 @@
 - ext_type: ImageHDU
   keywords:
     INHERIT: true
-    # Will resolve to e.g. DET1.DATA, DET2.DATA etc., as required by ESO.
-    EXTNAME: "DET§.DATA"
+    # Will resolve to e.g. DET1.IMG, DET2.IMG etc., as required by ESO.
+    EXTNAME: "DET§.IMG"
