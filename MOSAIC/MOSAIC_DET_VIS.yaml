@@ -4,7 +4,7 @@ object: detector
 alias: DET
 name: MOSAIC_DET_VIS
 description: virtual detector for one fiber bundle
-data_modified: 2025-09-04
+data_modified: 2025-10-24
 
 
 properties:
@@ -14,6 +14,10 @@ properties:
   dit: "!OBS.exptime"
   ndit: 1              # this is a CCD which should only know exptime
   gain: 1.0
+  dark_current: 0.005  # e/s per fibre. E-MOS-SYS-ANR-0063: 3 e/hr/pixel
+                       # assume about 6 pixels per fibre
+  readout_noise: 7.    # e per read (E-MOS-SYS-ANR-0063_2-0: 2.5
+                       # scaled by sqrt(6) (pixels per fibre)
   layout:
     file_name: "FPA_mosaic_VIS_layout.dat"
   qe_curve:
@@ -36,9 +40,22 @@ effects:
     description: Summing up sky signal for all DITs and NDITs
     class: ExposureIntegration
 
+  - name: dark_current
+    description: Dark current
+    class: DarkCurrent
+    kwargs:
+      value: "!DET.dark_current"
+
   - name: shot_noise
     description: apply poisson shot noise to images
     class: ShotNoise
+
+  - name: readout_noise
+    description: Readout noise
+    class: BasicReadoutNoise
+    kwargs:
+      noise_std: "!DET.readout_noise"
+      n_channels: 2
 
   - name: ad_conversion
     description: Apply gain and convert electron counts

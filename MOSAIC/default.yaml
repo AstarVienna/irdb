@@ -4,7 +4,7 @@ object : configuration
 alias : OBS
 name : MOSAIC_default_configuration
 description : default parameters needed for a MOSAIC simulation
-needs_scopesim: "v0.10.0b4"
+needs_scopesim: "v0.11.0"
 date_modified: 2025-09-01
 changes:
   - 2025-09-01 (OC) adjusted resolutions for modes
