@@ -13,8 +13,6 @@ properties:
   location:    Leiden
   longitude:    4.45842
   latitude:    52.16897
-  temperature: 15   # Celsius!
-  pwv:         1.0  # mm
   airmass:     1.0
 
 effects:
@@ -23,9 +21,8 @@ effects:
     class:       AtmoLibraryTERCurve
     include:     True
     kwargs:
-      pwv:       "!OBS.pwv"
-      url:       "https://scopesim.univie.ac.at/InstPkgSvr/atmo/Leiden_atmo_ter.fits"
-      hash:      "16b5faa1bc4e75ba2d34cad02f302223b8a788306cd34b9809c3e895b46132b0"
+      pwv:       "!ATMO.pwv"
+      remote_filename: "!ATMO.spectrum.filename"
 
   - name:        telescope
     description: reflection curve
@@ -33,3 +30,11 @@ effects:
     include:     True
     kwargs:
       filename:  LIST_Leiden_telescope.tbl
+
+---
+alias: ATMO
+properties:
+  temperature: 15   # Celsius!
+  pwv:         1.0  # mm
+  spectrum:
+    filename: Leiden_atmo_ter.fits
