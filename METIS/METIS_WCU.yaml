@@ -49,5 +49,8 @@ effects:
 alias: TEL
 properties:
   #area: 975.23478998
+  telescope: none (WCU)
+  ter_curve:
+    filename: none
   area: 1354.593    #### TEST, needed to agree with RvB's calculation
   temperature: "!WCU.temperature"  # Overrides !ATMO.temperature

@@ -6,15 +6,35 @@
         DPR:
           TECH:   "IMAGE,N"
         INS:
+
           OPTI4:                # LMS beamsplitter pickoff wheel
-            DESC: "LMS pickoff"
-            NAME: "OUT"         # could be IN for parallel observing
-          OPTI12:                # IMG-N mask/grism wheel
-            DESC: "IMG-N mask/grism"
-            NAME: "open"
+            DEVSIM: [true, "Device simulation flag"]
+            ID: ["cfo-lms", "CFO_LMS ID"]
+            NAME: ["     ", "CFO_LMS NAME"]
+            POS: [180, "CFO_LMS position"]
+            POSNAME: ["OUT", "CFO_LMS named position"]
+            STAT: ["Standstill", "CFO_LMS status"]
+
+          OPTI12:                # IMG-N pupil mask wheel
+            DEVSIM: [true, "Device simulation flag"]
+            ID: ["img-n-pw", "IMG_N_PW ID"]
+            NAME: ["    ", "IMG_N_PW NAME"]
+            POS: [0, "IMG_N_PW position"]           # TODO
+            POSNAME: ["open", "IMG_N_PW named position"]
+            STAT: ["Standstill", "IMG_N_PW status"]
+
           OPTI13:               # IMG-N science filter wheel
-            DESC: "IMG-N science filter"
-            NAME: "#filter_wheel.current_filter!"
+            DEVSIM: [true, "Device simulation flag"]
+            ID: ["img-n-fw", "IMG_N_FW ID"]
+            NAME: ["      ", "IMG_N_FW NAME"]
+            POS:  [0, "IMG_N_FW position"]          # TODO
+            POSNAME: ["#filter_wheel.current_filter!", "IMG_N_FW named position"]
+            STAT: ["Standstill", "IMG_N_FW status"]
+
           OPTI14:               # IMG-N neutral-density filter wheel
-            DESC: "IMG-N neutral density filter"
-            NAME: "#nd_filter_wheel.current_filter!"
+            DEVSIM: [true, "Device simulation flag"]
+            ID: ["img-n-ndw", "IMG_N_NDW ID"]
+            NAME: ["      ", "IMG_N_NDW NAME"]
+            POS: [0, "IMG_N_NDW position"]          # TODO
+            POSNAME: ["#nd_filter_wheel.current_filter!", "IMG_N_NDW named position"]
+            STAT: ["Standstill", "IMG_N_NDW status"]

@@ -4,15 +4,37 @@
     HIERARCH:
       ESO:
         INS:
+          CFO_DROT:             # derotator
+            DEVSIM: [true, "Device simulation flag"]
+            ID:     ["cfo-drot", "Derotator ID"]
+            MODE:   ["eng", "Derotator mode"]   # other values?
+            NAME:   [" ", "Derotator name"]     # no name?
+            POS:    [0, "Derotator position"]   # TODO: change
+            STAT:   ["Standstill", "Derotator status"]
+
           OPTI1:                # CFO PP1 mask wheel
-            # TODO: There are no names yet. We use the
+            # TODO: There are no position names yet. We use the
             #       transmission, which is returned as an
             #       inconvenient list.
-            DESC: "CFO PP1 mask wheel"
-            NAME: "#cold_stop.transmission!"
-          OPTI2:                # CFO PP1 ADC wheel
-            DESC: "ADC wheel"
-            NAME: "#adc_wheel.current_adc!"
+            DEVSIM: [true, "Device simulation flag"]
+            ID:   ["cfo-pp1", "CFP_PP1 ID"]
+            NAME: ["    ", "CFO_PP1 NAME"]
+            POS:  "#cold_stop.transmission!"
+            POSNAME: ["ignore", "CFO_PP1 named position"]
+            STAT: ["Standstill", "CFO_PP1 status"]
+
+          OPTI2:                # CFO ADC wheel
+            DEVSIM: [true, "Device simulation flag"]
+            ID: ["cfo-adc", "CFO_ADC ID"]
+            NAME: ["   ", "CFO_ADC NAME"]
+            POS: [0, "CFO_ADC position"]  # TODO wheel position number
+            POSNAME: ["#adc_wheel.current_adc!", "CFO_ADC named position"]
+            STAT: ["Standstill", "CFO_ADC status"]
+
           OPTI3:                # CFO FP2 mask/slit wheel
-            DESC: "Slit wheel"
-            NAME: "#slit_wheel.current_slit!"
+            DEVSIM: [true, "Device simulation flag"]
+            ID: ["cfo-fp2", "CFO_FP2 ID"]
+            NAME: ["    ", "CFO_FP2 NAME"]
+            POS: [0, "CFP_FP2 position"]   # TODO number of position
+            POSNAME: ["#slit_wheel.current_slit!", "CFO_FP2 named position"]
+            STAT: ["Standstill", "CFO_FP2 named position"]

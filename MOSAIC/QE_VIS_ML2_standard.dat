@@ -1,0 +1,20 @@
+# name: ML2 Standard CCD QE
+# author: Kieran Leschinski
+# sources: E-MOS-SYS-ANR-0063-V20_VIS_OptDesign_preSAR.pdf, adapted
+# date_created: 2025-07-18
+# date_modified: 2025-07-18
+# status : estimate
+# action : transmission
+# wavelength_unit : um
+#
+# changes:
+# - 2025-07-18 (KL) initialised
+#
+wavelength  transmission
+0.3         0.25
+0.4         0.9
+0.65        0.9
+0.75        0.8
+0.93        0.2
+1.0         0.05
+1.05        0

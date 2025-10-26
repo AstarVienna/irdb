@@ -8,23 +8,47 @@
         INS:
           LMS:                  # LMS mode (Nominal or Extended)
             MODE: "Nominal"
+
           WLEN:                 # LMS central wavelength and range
             CEN:   ["!OBS.wavelen", "Central wavelength [um]"]
-            START: "TBD"  # "#lms_spectral_traces.wave_min" ain't workin'
-            END:   "TBD"
-          GRAT:
-            ANGLE: "TBD"
+            START: ["#lms_spectral_traces.wave_min", "Start wavelength [um]"]
+            END:   ["#lms_spectral_traces.wave_max", "End wavelength [um]"]
+
           OPTI4:                # LMS beamsplitter pickoff wheel
-            DESC: "LMS pickoff"
-            NAME: "IN"
+            DEVSIM: [true, "Device simulation flag"]
+            ID: ["cfo-lms", "CFO_LMS ID"]
+            NAME: ["     ", "CFO_LMS NAME"]
+            POS: [0, "CFO_LMS position"]
+            POSNAME: ["IN", "CFO_LMS named position"]
+            STAT: ["Standstill", "CFO_LMS status"]
+
           OPTI5:                # LMS PP1 mask wheel
-            DESC: "LMS PP1 mask wheel"
-            NAME: "open"        # TODO: not defined in irdb
+            DEVSIM: [true, "Device simulation flag"]
+            ID: ["lms-pwa", "LMS_PWA ID"]
+            NAME: ["      ", "LMS_PWA NAME"]
+            POS: [0, "LMS_PWA position"]                  # TODO
+            POSNAME: ["open", "LMS_PWA named position"]
+            STAT: ["Standstill", "LMS_PWA status"]
+
           OPTI6:                # LMS spectral IFU mechanism
-            DESC: "LMS spectral IFU mechanism"
-            NAME: "OUT"
+            DEVSIM: [true, "Device simulation flag"]
+            ID: ["lms-gra", "LMS_GRA ID"]
+            NAME: ["      ", "LMS_GRA NAME"]
+            POS: [0, "LMS_GRA position"]
+            POSNAME: ["OUT", "LMS_GRA named position"]
+            STAT: ["Standstill", "LMS_GRA status"]
+
           OPTI7:                # LMS pre-disperser
-            DESC: "LMS pre-disperser"
-            NAME: "TBD"
+            DEVSIM: [true, "Device simulation flag"]
+            ID: ["lms-pra", "LMS-PRA ID"]
+            NAME: ["     ", "LMS-PRA NAME"]
+            POS: ["#lms_spectral_traces.predisperser", "LMS-PRA position [deg]"]
+            STAT: ["Standstill", "LMS-PRA status"]   # no POSNAME?
+
           OPTI8:                # LMS main disperser
-            NAME: "TBD"         # identical to GRAT.ANGLE?
+            DEVSIM: [true, "Device simulation flag"]
+            ID: ["lms-msa", "LMS-MSA ID"]
+            NAME: ["     ", "LMS-MSA NAME"]
+            POS: ["#lms_spectral_traces.echelle", "LMS-MSA position [deg]"]
+            ORDER: ["#lms_spectral_traces.order", "Spectral order (non-ESO keyword)"]
+            STAT: ["Standstill", "LMS-MSA status"]   # no POSNAME?

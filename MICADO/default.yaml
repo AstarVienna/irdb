@@ -7,10 +7,12 @@ name: MICADO_default_configuration
 description: default parameters needed for a MICADO simulation
 status: development
 needs_scopesim: "v0.10.0b4"
-date_modified: 2025-06-27
+date_modified: 2025-10-09
 changes:
   - 2023-07-13 (OC) add modes for FDR slits, deprecate pre-FDR slits
   - 2025-06-27 (FH) add needs_scopesim keyword
+  - 2025-10-09 (OC) proper MJD value
+  - 2025-10-17 (JB) add parametes for FITS keywords, tplstart as MJD
 
 packages:
 - Armazones
@@ -37,13 +39,20 @@ properties :
   tech : IMAGE
   type : OBJECT
   # Should be datetimes, but is copied verbatim, so should work.
-  mjdobs : "2022-05-04T02:30:00"
-  tplstart : "2022-05-04T02:30:00"
+  mjdobs : 61529.104
+  tplstart : 61529.104
   tplexpno : 0
   tplno : 0
   obsname : "MyScienceTest"
   ra : 0.0
   dec : 0.0
+  # default FITS parameters
+  fits_ins_mode: "LRI"
+  fits_ins_mask: "Large"
+  fits_ins_slit: ""
+  fits_ins_coro: ""
+  fits_ins_stop: ""
+  fits_ins_filt: ""
 
 mode_yamls :
 - object : instrument
@@ -59,6 +68,8 @@ mode_yamls :
   description : "MCAO optical system"
   yamls :
   - MORFEO.yaml
+  properties :
+    ins_mode: "MCAO"
 
 - object : observation
   alias: OBS
@@ -71,6 +82,7 @@ mode_yamls :
     filter_name_fw1: open
     filter_name_fw2: Ks
     filter_name_pupil: open
+    fits_ins_filt: Ks
 
 - object : observation
   alias: OBS
@@ -83,6 +95,7 @@ mode_yamls :
     filter_name_fw1: open
     filter_name_fw2: Ks
     filter_name_pupil: open
+    fits_ins_filt: Ks
 
 - object : observation
   alias: OBS
@@ -102,9 +115,11 @@ mode_yamls :
   properties :
     trace_file : TRACE_MICADO.fits
     slit_file : MASK_slit_15000x20.dat
-    filter_name_fw1: Spec_HK
-    filter_name_fw2: open
-    filter_name_pupil: open
+    filter_name_fw1 : Spec_HK
+    filter_name_fw2 : open
+    filter_name_pupil : open
+    fits_ins_filt : Spec_HK
+    fits_ins_slit : "Long"
 
 - object : observation
   alias: OBS
@@ -116,9 +131,11 @@ mode_yamls :
   properties :
     trace_file : TRACE_MICADO.fits
     slit_file : MASK_slit_3000x48.dat
-    filter_name_fw1: Spec_HK
-    filter_name_fw2: open
-    filter_name_pupil: open
+    filter_name_fw1 : Spec_HK
+    filter_name_fw2 : open
+    filter_name_pupil : open
+    fits_ins_filt : Spec_HK
+    fits_ins_slit : "Wide"
 
 - object : observation
   alias : OBS
@@ -133,6 +150,8 @@ mode_yamls :
     filter_name_fw1 : Spec_IJ
     filter_name_fw2 : open
     filter_name_pupil : open
+    fits_ins_filt : Spec_IJ
+    fits_ins_slit : "Short"
 
 - object : observation
   alias: OBS
@@ -151,6 +170,8 @@ mode_yamls :
     filter_name_fw1: Spec_HK
     filter_name_fw2: open
     filter_name_pupil: open
+    fits_ins_filt : Spec_HK
+    fits_ins_slit : "Long"
 
 - object : observation
   alias: OBS
@@ -169,6 +190,8 @@ mode_yamls :
     filter_name_fw1: Spec_HK
     filter_name_fw2: open
     filter_name_pupil: open
+    fits_ins_filt : Spec_HK
+    fits_ins_slit : "Wide"
 
 - object : observation
   alias: OBS
@@ -187,7 +210,8 @@ mode_yamls :
     filter_name_fw1: Spec_HK
     filter_name_fw2: open
     filter_name_pupil: open
-
+    fits_ins_filt : Spec_HK
+    fits_ins_slit : "Short"
 
 ---
 ### default simulation parameters needed for a MICADO simulation

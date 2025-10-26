@@ -48,3 +48,14 @@ properties:
   spectral:
     spectral_bin_width: 2.e-5  # microns, defines fov wavelengths
     spectral_resolution: 5000  # defines skycalc resolution
+
+### set observation mode
+---
+object: observation
+alias : OBS
+name : SPEC
+
+properties :
+    obs_mode: "SPEC"
+    fits_ins_mode: "SPE"
+    fits_ins_mask: ""

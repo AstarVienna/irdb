@@ -1,0 +1,52 @@
+---
+### MOSAIC near-infrared arm
+
+object: instrument
+alias: INST
+name: MOSAIC
+description: base configuration for MOSAIC NIR
+date_modified: 2025-09-01
+changes:
+  - 2025-09-01 (OC) add line-spread function
+
+
+properties:
+  pixel_scale: 0.01    # not sure what this means for a fibre spectrograph
+  plate_scale: 0.5     #  -"-
+  temperature: -206    # TBC
+
+effects:
+  - name: fibre transmission
+    class: TERCurve
+    kwargs:
+      filename: "!OBS.fibre_ter_file"
+
+  - name: spectrograph transmission
+    class: TERCurve
+    kwargs:
+      filename: "!OBS.spec_ter_file"
+
+  - name: psf
+    description: Seeing limited PSF
+    class: SeeingPSF
+    kwargs:
+      fwhm: "!OBS.psf_fwhm"       # [arcsec]
+
+  - name: lsf
+    description: Line-spread function
+    class: LineSpreadFunction
+    kwargs:
+      lsfwidth: 2.75         # 41 um on 15um pixels (NIRspec-20250804.pptx)
+
+  - name: fiber_bundle
+    description: field of view of fiber bundle
+    class: MetisLMSImageSlicer
+    kwargs:
+      filename: "!OBS.trace_file"
+      ext_id: "Aperture List"
+
+  - name: spectral_traces
+    description: mapping of spectra onto the detector
+    class: MosaicSpectralTraceList
+    kwargs:
+      filename: "!OBS.trace_file"
