@@ -69,7 +69,7 @@ numpydoc_show_class_members = False
 
 # nbsphinx settings
 nbsphinx_allow_errors = True
-nbsphinx_execute = "never"
+nbsphinx_execute = "auto"
 
 # add_hidden_cell_to_ipynb_files()
 
