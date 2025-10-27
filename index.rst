@@ -19,6 +19,7 @@ Instrument-Specific "Getting Started" Guides
 
    METIS + ScopeSim <METIS/docs/readme>
    MICADO + ScopeSim <MICADO/docs/readme>
+   MOSAIC + ScopeSim <MOSAIC/docs/example_notebooks/MOSAIC_demo>
 
 
 Instrument Packages in the IRDB
