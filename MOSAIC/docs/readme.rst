@@ -1,14 +1,14 @@
-.. |pic1| image:: metis_scopesim_logo.png
+.. |pic1| image:: mosaic_scopesim_logo.png
    :width: 600px
-   :alt: METIS + ScopeSim
+   :alt: MOSAIC + ScopeSim
 
 |pic1|
 ======
 
 Introduction
 ------------
-The METIS data simulator is based on the generic simulator software Scopesim, a descendant of the older SimCado/SimMETIS interface. METIS itself is handled as an instrument package that contains configuration files for the various instrument modes as well as data files describing the components of the instruments.
-The new METIS data simulator currently supports the imaging and long-slit modes. The LM-band high-resolution IFU (LMS) mode will be offered soon.
+The MOSAIC ETC is built on the generic simulator software Scopesim.
+MOSAIC itself is handled as an instrument package that contains configuration files for the various instrument modes as well as data files describing the components of the instruments.
 
 
 Prerequisites
@@ -16,12 +16,12 @@ Prerequisites
 
 - A working installation of a recent Python version
 - A working installation of Jupyter if you want to run the simulator from notebooks. This is necessary to run the example notebooks contained in the instrument package.
-- A working installation of the Python package installer pip
+- A working installation of the Python package installer ``pip``
 
 .. note::
 
    If you come across a bug or get stuck with a certain aspect of ScopeSim or
-   the METIS package, please get in touch with us (email addresses below).
+   the MOSAIC package, please get in touch with us (GitHub issue, or email addresses below).
 
    **Your feedback is the only way we know** what needs to be changed/improved
    with the package and the simulator.
@@ -32,7 +32,7 @@ Prerequisites
 Installation & setup
 --------------------
 
-This is a short overview of the installation and setup procedure; for a more detailed presentation see `Introduction_to_Scopesim_for_METIS <example_notebooks/Introduction_to_Scopesim_for_METIS.ipynb>`_.
+This is a short overview of the installation and setup procedure; for a more detailed presentation see `Introduction_to_Scopesim_for_MOSAIC <example_notebooks/Introduction_to_Scopesim_for_MOSAIC.ipynb>`_.
 
 1. Install ``scopesim`` in your python environment::
 
@@ -51,15 +51,15 @@ This is a short overview of the installation and setup procedure; for a more det
 
     $ python
     >> import scopesim
-    >> scopesim.download_packages(["METIS", "ELT", "Armazones"])
+    >> scopesim.download_packages(["MOSAIC", "ELT", "Armazones"])
 
    This will install the packages in the subdirectory ``./inst_pkgs``.
 
-4. The METIS package includes a number of tutorial notebooks in the directory ``./inst_pkgs/METIS/docs/example_notebooks/`` (see `Python notebooks`_).
+4. The MOSAIC package includes a number of tutorial notebooks in the directory ``./inst_pkgs/MOSAIC/docs/example_notebooks/`` (see `Python notebooks`_).
 
    Copy notebooks to the working directory (i.e. ``./``) to run them.::
 
-    $ cp ./inst_pkgs/METIS/docs/example_notebooks/<Notebook-Name.ipynb> .
+    $ cp ./inst_pkgs/MOSAIC/docs/example_notebooks/<Notebook-Name.ipynb> .
 
 5. In a terminal, execute the notebook by calling::
 
@@ -75,8 +75,8 @@ Python notebooks
 
 These notebooks can be found either:
 
-- [locally] in the METIS instrument package in ``docs/example_notebooks``, or
-- [download] in the `METIS/docs section of the IRDB Github repository <https://github.com/AstarVienna/irdb/tree/master/METIS/docs/example_notebooks>`_
+- [locally] in the MOSAIC instrument package in ``docs/example_notebooks``, or
+- [download] in the `MOSAIC/docs section of the IRDB Github repository <https://github.com/AstarVienna/irdb/tree/master/MOSAIC/docs/example_notebooks>`_
 
 
 .. warning::
@@ -90,7 +90,7 @@ Ideally your folder structure should look like this::
     |- <desired notebook>.iypnb
     |
     |- inst_pkgs
-      |- METIS
+      |- MOSAIC
       |  |- docs
       |     |- example_notebooks
       |        |- <desired notebook>.iypnb      # copy out to working-dir
@@ -108,66 +108,15 @@ Introductory notebooks
 
    * - Name
      - Description
-   * - | `Introduction_to_Scopesim_for_METIS.ipynb <example_notebooks/Introduction_to_Scopesim_for_METIS.ipynb>`_
-       | `Introduction_to_Scopesim_for_METIS.pdf <example_notebooks/Introduction_to_Scopesim_for_METIS.pdf>`_
+   * - | `MOSAIC_demo.ipynb <example_notebooks/MOSAIC_demo.ipynb>`_
      - Introductory overview of how to run simulations in Scopesim
-
-Scientific use-case notebooks
-+++++++++++++++++++++++++++++
-
-.. list-table::
-   :widths: 25 75
-   :width: 900px
-   :header-rows: 1
-
-   * - Name
-     - Description
-   * - `IMG_L_N-examples.ipynb <example_notebooks/IMG_L_N-examples.ipynb>`_
-     - Imaging observations of HL Tau and an AGN model in the L and N band
-   * - `LSS-YSO_model_simulation.ipynb <example_notebooks/LSS-YSO_model_simulation.ipynb>`_
-     - Long-slit spectroscopy in the L-band of three models of a young stellar object
-   * - | `LSS_AGN-01_preparation.ipynb <example_notebooks/LSS_AGN-01_preparation.ipynb>`_
-       | `LSS_AGN-02_simulation.ipynb <example_notebooks/LSS_AGN-02_simulation.ipynb>`_
-     - | Long-slit spectroscopy in the N-band of an AGN model. The first notebook describes
-       | how the input data are prepared for Scopesim, the second runs the simulation.
-
-Notebooks on individual effects
-+++++++++++++++++++++++++++++++
-
-These notebooks can be found in ``docs/example_notebooks/demos``.
-
-.. list-table::
-   :widths: 25 75
-   :width: 900px
-   :header-rows: 1
-
-   * - Name
-     - Description
-   * - `demo_adc_wheel.ipynb <example_notebooks/demos/demo_adc_wheel.ipynb>`_
-     - How to use the atmospheric dispersion correctors.
-   * - `demo_auto_exposure.ipynb <example_notebooks/demos/demo_auto_exposure.ipynb>`_
-     - How to select `dit`/`ndit` automatically.
-   * - `demo_chopping_and_nodding.ipynb <example_notebooks/demos/demo_chopping_and_nodding.ipynb>`_
-     - How to produce chop-nod difference images in the N band.
-   * - `demo_detector_modes.ipynb <example_notebooks/demos/demo_detector_modes.ipynb>`_
-     - How to set detector readout modes.
-   * - `demo_filter_wheel.ipynb <example_notebooks/demos/demo_filter_wheel.ipynb>`_
-     - How to use the filter wheel(s).
-   * - `demo_lss_simple.ipynb <example_notebooks/demos/demo_lss_simple.ipynb>`_
-     - Basic procedure for long-slit spectroscopy.
-   * - `demo_grating_efficiency.ipynb <example_notebooks/demos/demo_grating_efficiency.ipynb>`_
-     - Demonstration of spectral (grating) efficiency.
-   * - `demo_slit_wheel.ipynb <example_notebooks/demos/demo_slit_wheel.ipynb>`_
-     - How to use the slit wheel for spectroscopy (and imaging)
-   * - `demo_rectify_traces.ipynb <example_notebooks/demos/demo_rectify_traces.ipynb>`_
-     - How to obtain wavelength-calibrated and rectified 2D spectra.
 
 Documentation and useful references
 -----------------------------------
 
 - `ScopeSim documentation <https://scopesim.readthedocs.io/en/latest/>`_
 - `Sky Object Templates documentation <https://scopesim-templates.readthedocs.io/en/latest/>`_
-- `METIS homepage <https://metis.strw.leidenuniv.nl/>`_
+- `MOSAIC homepage <https://mosaic-elt.eu/index.php/instrument/>`_
 - For experts: GitHub repositories:
 
   + `simulator package ScopeSim <https://github.com/AstarVienna/scopesim>`_

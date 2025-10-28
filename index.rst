@@ -19,7 +19,7 @@ Instrument-Specific "Getting Started" Guides
 
    METIS + ScopeSim <METIS/docs/readme>
    MICADO + ScopeSim <MICADO/docs/readme>
-   MOSAIC + ScopeSim <MOSAIC/docs/example_notebooks/MOSAIC_demo>
+   MOSAIC + ScopeSim <MOSAIC/docs/readme>
 
 
 Instrument Packages in the IRDB
@@ -31,6 +31,8 @@ Instrument Packages in the IRDB
 | Armazones | ELT        | MICADO     |
 |           |            +------------+
 |           |            | METIS      |
+|           |            +------------+
+|           |            | MOSAIC     |
 +-----------+------------+------------+
 | Paranal   | VLT        | HAWKI      |
 +-----------+------------+------------+
