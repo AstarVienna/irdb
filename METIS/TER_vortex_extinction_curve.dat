@@ -1,0 +1,15 @@
+# METIS Vortex Corograph Radial Extinction Curve
+lamD    Transmission
+0.0     0.00
+1.0     0.30
+2.0     0.54
+3.0     0.70
+4.0     0.78
+5.0     0.83
+6.0     0.87
+7.0     0.90
+8.0     0.92
+9.0     0.93
+10.0    0.94
+15.0    0.98
+20.0    1.00
