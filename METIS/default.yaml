@@ -257,7 +257,9 @@ mode_yamls:
       - METIS_DET_IMG_LM.yaml
     properties:
       ins_mode: IMG_LM        # use as FITS header keyword
-      psf_file: PSF_SCAO_9mag_06seeing.fits  # REPLACE!
+      pupil_mask: PPS-LM
+      psf_file: none
+      psf_name: "!OBS.pupil_mask"
       filter_name: Lp
       nd_filter_name: open
       slit: false
