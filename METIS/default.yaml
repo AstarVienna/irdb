@@ -63,6 +63,7 @@ properties:
   ra: 0.0
   dec: 0.0
   # These defaults are overruled by the individual modes:
+  psf_name: none
   filter_name: open
   nd_filter_name: open
 
@@ -257,7 +258,9 @@ mode_yamls:
       - METIS_DET_IMG_LM.yaml
     properties:
       ins_mode: IMG_LM        # use as FITS header keyword
-      psf_file: PSF_SCAO_9mag_06seeing.fits  # REPLACE!
+      pupil_mask: PPS-LM
+      psf_file: none
+      psf_name: "!OBS.pupil_mask"
       filter_name: Lp
       nd_filter_name: open
       slit: false
@@ -276,7 +279,9 @@ mode_yamls:
       - METIS_DET_IMG_N_GeoSnap.yaml
     properties:
       ins_mode: IMG_N          # use as FITS header keyword
-      psf_file: PSF_SCAO_9mag_06seeing.fits    # REPLACE!
+      pupil_mask: PPS-N
+      psf_file: none
+      psf_name: "!OBS.pupil_mask"
       filter_name: N2
       nd_filter_name: open
       slit: false
@@ -298,7 +303,9 @@ mode_yamls:
       - METIS_DET_IMG_LM.yaml
     properties:
       ins_mode: LSS_L        # use as FITS header keyword
-      psf_file: PSF_LM_9mag_06seeing.fits    # REPLACE!
+      pupil_mask: PPS-CFO2
+      psf_file: none
+      psf_name: "!OBS.pupil_mask"
       trace_file: TRACE_LSS_L.fits
       efficiency_file: TER_grating_L.fits
       slit: C-38_1
@@ -322,7 +329,9 @@ mode_yamls:
       - METIS_DET_IMG_LM.yaml
     properties:
       ins_mode: LSS_M        # use as FITS header keyword
-      psf_file: PSF_LM_9mag_06seeing.fits    # REPLACE!
+      pupil_mask: PPS-CFO2
+      psf_file: none
+      psf_name: "!OBS.pupil_mask"
       trace_file: TRACE_LSS_M.fits
       efficiency_file: TER_grating_M.fits
       slit: C-38_1
@@ -346,7 +355,9 @@ mode_yamls:
       - METIS_DET_IMG_N_GeoSnap.yaml
     properties:
       ins_mode: LSS_N        # use as FITS header keyword
-      psf_file: PSF_N_9mag_06seeing.fits    # REPLACE!
+      pupil_mask: PPS-CFO2
+      psf_file: none
+      psf_name: "!OBS.pupil_mask"
       trace_file: TRACE_LSS_N.fits
       efficiency_file: TER_grating_N.fits
       slit: D-57_1
@@ -371,7 +382,9 @@ mode_yamls:
       - METIS_DET_IFU.yaml
     properties:
       ins_mode: LMS          # use as FITS header keyword
-      psf_file: PSF_LM_9mag_06seeing.fits    # REPLACE!
+      pupil_mask: PPS-LMS
+      psf_file: none
+      psf_name: "!OBS.pupil_mask"
       slit: false
       adc: false
       trace_file: TRACE_LMS.fits
@@ -390,6 +403,9 @@ mode_yamls:
       - METIS_DET_IFU.yaml
     properties:
       ins_mode: LMS          # use as FITS header keyword
+      pupil_mask: PPS-LMS
+      psf_file: none
+      psf_name: "!OBS.pupil_mask"
       slit: false
       adc: false
       detector_readout_mode: slow

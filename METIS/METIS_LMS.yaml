@@ -42,6 +42,9 @@ effects:
     class: FieldConstantPSF
     kwargs:
       filename: "!OBS.psf_file"
+      psf_name: "!OBS.psf_name"
+      psf_path: "METIS_psfs/"
+      filename_format: "METIS_psfs/PSF_{}.fits"
       wave_key: "WAVELENG"
       bkg_width: -1
 
