@@ -63,6 +63,7 @@ properties:
   ra: 0.0
   dec: 0.0
   # These defaults are overruled by the individual modes:
+  psf_name: none
   filter_name: open
   nd_filter_name: open
 
