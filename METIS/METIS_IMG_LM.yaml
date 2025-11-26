@@ -80,7 +80,8 @@ effects:
     kwargs:
       filename: "!OBS.psf_file"
       psf_name: "!OBS.psf_name"
-      filename_format: "psfs/PSF_{}.fits"
+      psf_path: "METIS_psfs/"
+      filename_format: "METIS_psfs/PSF_{}.fits"
       wave_key: "WAVELENG"
       bkg_width: -1
 
