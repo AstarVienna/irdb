@@ -6,6 +6,7 @@ astropy
 docutils
 pyyaml
 
+astar-utils
 scopesim
 
 sphinx>=4.3.0

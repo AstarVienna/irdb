@@ -4,6 +4,7 @@ matplotlib
 astropy
 pyyaml
 paramiko
+astar-utils
 scopesim
 scopesim_templates
 jupytext
