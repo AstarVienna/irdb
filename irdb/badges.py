@@ -1,11 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Everything to do with report badges and more!
-"""
+"""Everything to do with report badges and more."""
 
 import logging
-from warnings import warn
 from pathlib import Path
 from typing import TextIO
 from numbers import Number
@@ -70,6 +67,7 @@ class Badge():
     colour : str
         The (auto-assigned) colour of the badge.
     """
+
     pattern = Template("[![](https://img.shields.io/badge/$key-$val-$col)]()")
     colour = "lightgrey"
 
@@ -89,14 +87,16 @@ class Badge():
         self.value = _fix_badge_str(value) if isinstance(value, str) else value
 
     def write(self, stream: TextIO) -> None:
-        """Write formatted pattern to I/O stream"""
+        """Write formatted pattern to I/O stream."""
         _dict = {"key": self.key, "val": self.value, "col": self.colour}
         stream.write(self.pattern.substitute(_dict))
 
 
 class BoolBadge(Badge):
     """Key-value Badge for bool values, True -> green, False -> red."""
+
     colour = "red"
+
     def __init__(self, key: str, value: bool):
         super().__init__(key, value)
         if self.value:
@@ -105,11 +105,13 @@ class BoolBadge(Badge):
 
 class NumBadge(Badge):
     """Key-value Badge for numerical values, lightblue."""
+
     colour = "lightblue"
 
 
 class StrBadge(Badge):
     """Key-value Badge for string values, colour based on special strings."""
+
     special_strings = {
         "observation": "blueviolet",
         "support": "deepskyblue",
@@ -131,6 +133,7 @@ class StrBadge(Badge):
 
 class MsgOnlyBadge(StrBadge):
     """Key-only Badge for string values, colour based on special strings."""
+
     pattern = Template("[![](https://img.shields.io/badge/$key-$col)]()")
 
     def __init__(self, key: str, value: str):
@@ -199,12 +202,14 @@ class BadgeReport(NestedMapping):
     logs : list of logging.LogRecord
         List of logging.LogRecord objects to be saved to `logs_filename`.
     """
-    def __init__(self,
-            filename: str = "badges.yaml",
-            report_filename: str = "badges.md",
-            logs_filename: str = "badge_report_log.txt",
-            save_logs: bool = True,
-        ):
+
+    def __init__(
+        self,
+        filename: str = "badges.yaml",
+        report_filename: str = "badges.md",
+        logs_filename: str = "badge_report_log.txt",
+        save_logs: bool = True,
+    ) -> None:
         logging.debug("REPORT INIT")
         base_path = Path(PKG_DIR, "_REPORTS")
 
@@ -221,6 +226,7 @@ class BadgeReport(NestedMapping):
         super().__init__()
 
     def __enter__(self):
+        """Context manager setup."""
         logging.debug("REPORT ENTER")
         # try:
         #     # TODO: WHY do we actually load this first? It caused some issues
@@ -234,6 +240,7 @@ class BadgeReport(NestedMapping):
         return self
 
     def __exit__(self, exc_type, exc_value, exc_traceback):
+        """Context manager teardown."""
         logging.debug("REPORT EXIT")
         self.write_yaml()
         self.generate_report()
