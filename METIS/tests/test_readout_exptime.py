@@ -36,6 +36,7 @@ def test_readout_exptime():
     # The first readout might ignore the exptime.
     metis_l = sim.OpticalTrain(cmd_l)
     metis_l["exposure_output"].set_mode("sum")
+    metis_l["reference_pixel_mask"].include = False
     metis_l.observe(star, update=True)
     result_first = metis_l.readout(exptime=0.1)[0]
     # We need to copy the first readeout, because
@@ -45,6 +46,7 @@ def test_readout_exptime():
     # The second readout might not properly have the detector reset.
     metis_l = sim.OpticalTrain(cmd_l)
     metis_l["exposure_output"].set_mode("sum")
+    metis_l["reference_pixel_mask"].include = False
     metis_l.observe(star, update=True)
     result_temp = metis_l.readout(exptime=.1)[0]
     result_temp_copy = copy.deepcopy(result_temp)
