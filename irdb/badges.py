@@ -1,11 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Everything to do with report badges and more!
-"""
+"""Everything to do with report badges and more."""
 
 import logging
-from warnings import warn
 from pathlib import Path
 from typing import TextIO
 from numbers import Number
@@ -15,7 +12,7 @@ from collections.abc import Mapping
 
 import yaml
 
-from irdb.system_dict import SystemDict
+from astar_utils import NestedMapping
 
 # After 3.11, can just import UTC directly from datetime
 UTC = timezone.utc
@@ -70,6 +67,7 @@ class Badge():
     colour : str
         The (auto-assigned) colour of the badge.
     """
+
     pattern = Template("[![](https://img.shields.io/badge/$key-$val-$col)]()")
     colour = "lightgrey"
 
@@ -89,14 +87,16 @@ class Badge():
         self.value = _fix_badge_str(value) if isinstance(value, str) else value
 
     def write(self, stream: TextIO) -> None:
-        """Write formatted pattern to I/O stream"""
+        """Write formatted pattern to I/O stream."""
         _dict = {"key": self.key, "val": self.value, "col": self.colour}
         stream.write(self.pattern.substitute(_dict))
 
 
 class BoolBadge(Badge):
     """Key-value Badge for bool values, True -> green, False -> red."""
+
     colour = "red"
+
     def __init__(self, key: str, value: bool):
         super().__init__(key, value)
         if self.value:
@@ -105,11 +105,13 @@ class BoolBadge(Badge):
 
 class NumBadge(Badge):
     """Key-value Badge for numerical values, lightblue."""
+
     colour = "lightblue"
 
 
 class StrBadge(Badge):
     """Key-value Badge for string values, colour based on special strings."""
+
     special_strings = {
         "observation": "blueviolet",
         "support": "deepskyblue",
@@ -131,6 +133,7 @@ class StrBadge(Badge):
 
 class MsgOnlyBadge(StrBadge):
     """Key-only Badge for string values, colour based on special strings."""
+
     pattern = Template("[![](https://img.shields.io/badge/$key-$col)]()")
 
     def __init__(self, key: str, value: str):
@@ -138,7 +141,7 @@ class MsgOnlyBadge(StrBadge):
         super().__init__(key, value)
 
 
-class BadgeReport(SystemDict):
+class BadgeReport(NestedMapping):
     """Context manager class for collection and generation of report badges.
 
     Intended usage is in a pytest fixture with a scope that covers all tests
@@ -156,7 +159,7 @@ class BadgeReport(SystemDict):
     >>> def test_something(self, badges):
     >>>     badges[f"!foo.bar.baz"] = "OK"
 
-    Because `BadgeReport` inherits from ``SystemDict``, the use of '!'-type
+    Because `BadgeReport` inherits from ``NestedMapping``, the use of '!'-type
     "bang-strings" is supported.
 
     Additionally, any logging generated within a test can be captured and
@@ -199,12 +202,14 @@ class BadgeReport(SystemDict):
     logs : list of logging.LogRecord
         List of logging.LogRecord objects to be saved to `logs_filename`.
     """
-    def __init__(self,
-            filename: str = "badges.yaml",
-            report_filename: str = "badges.md",
-            logs_filename: str = "badge_report_log.txt",
-            save_logs: bool = True,
-        ):
+
+    def __init__(
+        self,
+        filename: str = "badges.yaml",
+        report_filename: str = "badges.md",
+        logs_filename: str = "badge_report_log.txt",
+        save_logs: bool = True,
+    ) -> None:
         logging.debug("REPORT INIT")
         base_path = Path(PKG_DIR, "_REPORTS")
 
@@ -221,6 +226,7 @@ class BadgeReport(SystemDict):
         super().__init__()
 
     def __enter__(self):
+        """Context manager setup."""
         logging.debug("REPORT ENTER")
         # try:
         #     # TODO: WHY do we actually load this first? It caused some issues
@@ -234,6 +240,7 @@ class BadgeReport(SystemDict):
         return self
 
     def __exit__(self, exc_type, exc_value, exc_traceback):
+        """Context manager teardown."""
         logging.debug("REPORT EXIT")
         self.write_yaml()
         self.generate_report()
@@ -268,79 +275,6 @@ class BadgeReport(SystemDict):
         with self.report_path.open("w", encoding="utf-8") as file:
             file.write(self._make_preamble())
             make_entries(file, self.dic)
-
-
-def load_badge_yaml(filename=None):
-    """
-    Gets the badge yaml file - should be called at the beginning of a test file
-
-    Parameters
-    ----------
-    filename : str
-        Defaults to <IRDB>/_REPORTS/badges.yaml
-
-    Returns
-    -------
-    badges : SystemDict
-
-    """
-    warn(("Using this function directly is deprecated, use BadgeReport "
-          "context manager instead."), DeprecationWarning, stacklevel=2)
-    if filename is None:
-        filename = "badges.yaml"
-
-    badges = SystemDict()
-
-    try:
-        with Path(PKG_DIR, "_REPORTS", filename).open(encoding="utf-8") as file:
-            badges.update(yaml.full_load(file))
-    except FileNotFoundError:
-        logging.warning("%s not found, init empty dict", filename)
-
-    return badges
-
-
-def write_badge_yaml(badge_yaml, filename=None):
-    """
-    Writes the badges yaml dict out to file - should be called during teardown
-
-    Parameters
-    ----------
-    badge_yaml : SystemDict
-        The dictionary of badges.
-
-    filename : str
-        Defaults to <IRDB>/_REPORTS/badges.yaml
-
-    """
-    warn(("Using this function directly is deprecated, use BadgeReport "
-          "context manager instead."), DeprecationWarning, stacklevel=2)
-    if filename is None:
-        filename = "badges.yaml"
-
-    if isinstance(badge_yaml, SystemDict):
-        badge_yaml = badge_yaml.dic
-
-    path = Path(PKG_DIR, "_REPORTS", filename)
-    path.write_text(yaml.dump(badge_yaml), encoding="utf-8")
-
-
-def make_badge_report(badge_filename=None, report_filename=None):
-    """
-    Generates the badges.md file which describes the state of the packages
-    """
-    warn(("Using this function directly is deprecated, use BadgeReport "
-          "context manager instead."), DeprecationWarning, stacklevel=2)
-    if badge_filename is None:
-        badge_filename = "badges.yaml"
-    if report_filename is None:
-        report_filename = "badges.md"
-
-    badge_dict = load_badge_yaml(badge_filename)
-
-    path = Path(PKG_DIR, "_REPORTS", report_filename)
-    with path.open("w", encoding="utf-8") as file:
-        make_entries(file, badge_dict.dic)
 
 
 def _get_nested_header(key: str, level: int) -> str:
@@ -382,7 +316,3 @@ def make_entries(stream: TextIO, entry, level=0) -> None:
             if level > 1:
                 stream.write("* ")
             Badge(key, value).write(stream)
-
-
-if __name__ == "__main__":
-    make_badge_report()

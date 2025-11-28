@@ -1,16 +1,15 @@
-import os
-from os import path as pth
-from pathlib import Path
-import yaml
+# -*- coding: utf-8 -*-
+"""TBA."""
 
-from irdb.system_dict import SystemDict
+from pathlib import Path
+
 
 PKG_DIR = Path(__file__).parent.parent
 
 
 def get_packages():
     """
-    Returns a dictionary with all packages in the IRDB
+    Return a dictionary with all packages in the IRDB.
 
     Returns
     -------
@@ -25,15 +24,17 @@ def get_packages():
         #       to 'slip under the radar' by the tests, and also defeated the
         #       purpose of test_all_packages_have_a_self_named_yaml.
         # if (pkg_path / f"{pkg_path.name}.yaml").exists():
-        if (pkg_path.is_dir()
+        if (
+            pkg_path.is_dir()
             and not pkg_path.name.startswith((".", "_"))
-            and not pkg_path.name in specials):
+            and pkg_path.name not in specials
+        ):
             yield pkg_path.name, pkg_path
 
 
 def recursive_filename_search(entry):
     """
-    Search through a yaml dict looking for the keyword "filename"
+    Search through a yaml dict looking for the keyword "filename".
 
     Parameters
     ----------
