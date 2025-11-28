@@ -15,7 +15,7 @@ from collections.abc import Mapping
 
 import yaml
 
-from irdb.system_dict import SystemDict
+from astar_utils import NestedMapping
 
 # After 3.11, can just import UTC directly from datetime
 UTC = timezone.utc
@@ -138,7 +138,7 @@ class MsgOnlyBadge(StrBadge):
         super().__init__(key, value)
 
 
-class BadgeReport(SystemDict):
+class BadgeReport(NestedMapping):
     """Context manager class for collection and generation of report badges.
 
     Intended usage is in a pytest fixture with a scope that covers all tests
@@ -156,7 +156,7 @@ class BadgeReport(SystemDict):
     >>> def test_something(self, badges):
     >>>     badges[f"!foo.bar.baz"] = "OK"
 
-    Because `BadgeReport` inherits from ``SystemDict``, the use of '!'-type
+    Because `BadgeReport` inherits from ``NestedMapping``, the use of '!'-type
     "bang-strings" is supported.
 
     Additionally, any logging generated within a test can be captured and

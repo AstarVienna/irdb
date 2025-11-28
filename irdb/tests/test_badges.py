@@ -10,9 +10,15 @@ from unittest import mock
 import yaml
 import pytest
 
-from irdb.badges import BadgeReport, Badge, BoolBadge, NumBadge, StrBadge, \
-    MsgOnlyBadge
-from irdb.system_dict import SystemDict
+from irdb.badges import (
+    BadgeReport,
+    Badge,
+    BoolBadge,
+    NumBadge,
+    StrBadge,
+    MsgOnlyBadge,
+)
+from astar_utils import NestedMapping
 
 
 @pytest.fixture(name="temp_dir", scope="module")
@@ -113,7 +119,7 @@ class TestReport:
                 report["!foo.bar"] = "bogus"
             path = temp_dir / "_REPORTS/test.yaml"
             with path.open(encoding="utf-8") as file:
-                dic = SystemDict(yaml.full_load(file))
+                dic = NestedMapping(yaml.full_load(file))
                 assert "!foo.bar" in dic
                 assert dic["!foo.bar"] == "bogus"
 
