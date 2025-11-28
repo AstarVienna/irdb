@@ -270,79 +270,6 @@ class BadgeReport(NestedMapping):
             make_entries(file, self.dic)
 
 
-def load_badge_yaml(filename=None):
-    """
-    Gets the badge yaml file - should be called at the beginning of a test file
-
-    Parameters
-    ----------
-    filename : str
-        Defaults to <IRDB>/_REPORTS/badges.yaml
-
-    Returns
-    -------
-    badges : SystemDict
-
-    """
-    warn(("Using this function directly is deprecated, use BadgeReport "
-          "context manager instead."), DeprecationWarning, stacklevel=2)
-    if filename is None:
-        filename = "badges.yaml"
-
-    badges = SystemDict()
-
-    try:
-        with Path(PKG_DIR, "_REPORTS", filename).open(encoding="utf-8") as file:
-            badges.update(yaml.full_load(file))
-    except FileNotFoundError:
-        logging.warning("%s not found, init empty dict", filename)
-
-    return badges
-
-
-def write_badge_yaml(badge_yaml, filename=None):
-    """
-    Writes the badges yaml dict out to file - should be called during teardown
-
-    Parameters
-    ----------
-    badge_yaml : SystemDict
-        The dictionary of badges.
-
-    filename : str
-        Defaults to <IRDB>/_REPORTS/badges.yaml
-
-    """
-    warn(("Using this function directly is deprecated, use BadgeReport "
-          "context manager instead."), DeprecationWarning, stacklevel=2)
-    if filename is None:
-        filename = "badges.yaml"
-
-    if isinstance(badge_yaml, SystemDict):
-        badge_yaml = badge_yaml.dic
-
-    path = Path(PKG_DIR, "_REPORTS", filename)
-    path.write_text(yaml.dump(badge_yaml), encoding="utf-8")
-
-
-def make_badge_report(badge_filename=None, report_filename=None):
-    """
-    Generates the badges.md file which describes the state of the packages
-    """
-    warn(("Using this function directly is deprecated, use BadgeReport "
-          "context manager instead."), DeprecationWarning, stacklevel=2)
-    if badge_filename is None:
-        badge_filename = "badges.yaml"
-    if report_filename is None:
-        report_filename = "badges.md"
-
-    badge_dict = load_badge_yaml(badge_filename)
-
-    path = Path(PKG_DIR, "_REPORTS", report_filename)
-    with path.open("w", encoding="utf-8") as file:
-        make_entries(file, badge_dict.dic)
-
-
 def _get_nested_header(key: str, level: int) -> str:
     if level > 2:
         return f"* {key}: "
@@ -382,7 +309,3 @@ def make_entries(stream: TextIO, entry, level=0) -> None:
             if level > 1:
                 stream.write("* ")
             Badge(key, value).write(stream)
-
-
-if __name__ == "__main__":
-    make_badge_report()
