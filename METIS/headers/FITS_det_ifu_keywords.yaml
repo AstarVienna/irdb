@@ -3,7 +3,7 @@
     HIERARCH:
       ESO:
         DET3:
-          DIT:        "!OBS.dit"
+          DIT:        ["!OBS.dit", "[s]"]
           NDIT:       "!OBS.ndit"
           CUBE:
             MODE:     false
@@ -16,11 +16,12 @@
         DET3:
           CHIP:
             ID:       "!DET.detector"
-            MINDIT:   "!DET.mindit"
-            FULLWELL: "!DET.full_well"
-            RON:      "!DET.readout_noise"
-            DARK:     "!DET.dark_current"
-            GAIN:     "!DET.gain.1"
+            MINDIT:   ["!DET.mindit", "[s]"]
+            FULLWELL: ["!DET.full_well", "[e]"]
+            RON:      ["!DET.readout_noise", "[e] per CDS readout"]
+            DARK:     ["!DET.dark_current", "[e/s]"]
+            GAIN:     ["!DET.gain.1", "[e/ADU]"]
+            REFPIX:   ["!DET.border.1", "b l t r"]
 
 - ext_number: [2]
   keywords:
@@ -30,11 +31,12 @@
         DET3:
           CHIP:
             ID:       "!DET.detector"
-            MINDIT:   "!DET.mindit"
-            FULLWELL: "!DET.full_well"
-            RON:      "!DET.readout_noise"
-            DARK:     "!DET.dark_current"
-            GAIN:     "!DET.gain.2"
+            MINDIT:   ["!DET.mindit", "[s]"]
+            FULLWELL: ["!DET.full_well", "[e]"]
+            RON:      ["!DET.readout_noise", "[e] per CDS readout"]
+            DARK:     ["!DET.dark_current", "[e/s]"]
+            GAIN:     ["!DET.gain.2", "[e/ADU]"]
+            REFPIX:   ["!DET.border.2", "b l t r"]
 
 - ext_number: [3]
   keywords:
@@ -44,11 +46,12 @@
         DET3:
           CHIP:
             ID:       "!DET.detector"
-            MINDIT:   "!DET.mindit"
-            FULLWELL: "!DET.full_well"
-            RON:      "!DET.readout_noise"
-            DARK:     "!DET.dark_current"
-            GAIN:     "!DET.gain.3"
+            MINDIT:   ["!DET.mindit", "[s]"]
+            FULLWELL: ["!DET.full_well", "[e]"]
+            RON:      ["!DET.readout_noise", "[e] per CDS readout"]
+            DARK:     ["!DET.dark_current", "[e/s]"]
+            GAIN:     ["!DET.gain.3", "[e/ADU]"]
+            REFPIX:   ["!DET.border.3", "b l t r"]
 
 - ext_number: [4]
   keywords:
@@ -58,8 +61,9 @@
         DET3:
           CHIP:
             ID:       "!DET.detector"
-            MINDIT:   "!DET.mindit"
-            FULLWELL: "!DET.full_well"
-            RON:      "!DET.readout_noise"
-            DARK:     "!DET.dark_current"
-            GAIN:     "!DET.gain.4"
+            MINDIT:   ["!DET.mindit", "[s]"]
+            FULLWELL: ["!DET.full_well", "[e]"]
+            RON:      ["!DET.readout_noise", "[e] per CDS readout"]
+            DARK:     ["!DET.dark_current", "[e/s]"]
+            GAIN:     ["!DET.gain.4", "[e/ADU]"]
+            REFPIX:   ["!DET.border.4", "b l t r"]
