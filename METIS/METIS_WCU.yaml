@@ -36,7 +36,8 @@ effects:
       pupil_masks:
         names: [APP-LMS, APP-LM, CLS-LMS, CLS-LM, CLS-N, PPS-LMS, PPS-LM, PPS-N, PPS-CFO2, RLS-LMS, RLS-LM, SPM-LMS, SPM-LM, SPM-N, open]
         transmissions: [0.6098, 0.6312, 0.5879, 0.6073, 0.5795, 0.7342, 0.7509, 0.7429, 0.6170, 0.4362, 0.4476, 0.6098, 0.6312, 0.6076, 0.8201]
-      current_mask: "open"
+      current_mask: "!OBS.pupil_mask"
+      message: "\nPupil mask has been changed; don't forget to update the PSF:\n\t metis['psf'].update(pupil_mask=\"%s\")"
 
   - name: wcu_fits_keywords
     description: FITS keywords specific to the WCU
