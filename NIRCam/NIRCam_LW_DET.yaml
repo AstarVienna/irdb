@@ -14,7 +14,7 @@ effects:
   - name: detector_array
     class: DetectorList
     kwargs:
-      filename: DET_LW_layout.dat
+      filename: DET_LW_layout_simple.dat
 
   - name: detector_border
     class: ReferencePixelBorder
