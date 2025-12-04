@@ -1,0 +1,62 @@
+object: instrument
+alias: INST
+
+properties:
+  temperature: -240
+  pixel_scale: 0.063  # arcsec / pixel
+  plate_scale: 3.5    # arcsec / mm
+  filter_file_format : "filters/long_wl/TC_filter_{}.dat"
+
+effects:
+  # - name: nircam_ir_channel_surfaces
+  #   class: SurfaceList
+  #   kwargs:
+  #     filename: LIST_NIRCam_mirrors_IR.dat
+
+  # - name: pupil_wheel
+  #   class: FilterWheel
+  #   kwargs:
+  #     filter_names:
+  #       - CLEAR
+  #       - Dark
+  #       - "F405N Br-alpha"
+  #       - F323N H2
+  #       - Lyot round
+  #       - Grism R V2
+  #       - F466N CO
+  #       - Grism C V3
+  #       - F470N H2
+  #       - Lyot bar
+  #     filename_format: "!INST.filter_file_format"
+  #     current_filter: "CLEAR"
+  #     minimum_throughput: 0.
+  #     outer:
+  #     outer_unit: "mm"
+
+  # - name: filter_wheel
+  #   class: FilterWheel
+  #   kwargs:
+  #     filter_names:
+  #       - F277W
+  #       - F356W
+  #       - F444W
+  #       - F300M
+  #       - F480M
+  #       - F410M
+  #       - F360M
+  #       - F430M
+  #       - F460M
+  #       - F250M
+  #       - F335M
+  #       - F322W2
+  #     filename_format: "!INST.filter_file_format"
+  #     current_filter: "!OBS.filter_name"
+  #     minimum_throughput: 0.
+  #     outer:
+  #     outer_unit: "mm"
+
+  - name: psf
+    class: FieldConstantPSF
+    kwargs:
+      filename: "psfs/PSF_NIRCam_in_flight_opd_filter_F322W2.fits"
+      wave_key: "WAVELEN"
