@@ -20,7 +20,7 @@ effects:
   #       - CLEAR
   #       - Dark
   #       - Lyot round
-  #       - F162M CO
+  #       - F162M
   #       - Lyot bar
   #       - F164N
   #     filename_format: "!INST.filter_file_format"
@@ -29,26 +29,26 @@ effects:
   #     outer:
   #     outer_unit: "mm"
 
-  # - name: filter_wheel
-  #   class: FilterWheel
-  #   kwargs:
-  #     filter_names:
-  #       - F070W
-  #       - F090W
-  #       - F115W
-  #       - F150W
-  #       - F200W
-  #       - F212N H2
-  #       - "F187N Pa-alpha"
-  #       - F210M
-  #       - F182M
-  #       - F140M
-  #       - F150W2
-  #     filename_format: "!INST.filter_file_format"
-  #     current_filter: "!OBS.filter_name"
-  #     minimum_throughput: 0.
-  #     outer:
-  #     outer_unit: "mm"
+  - name: filter_wheel
+    class: FilterWheel
+    kwargs:
+      filter_names:
+        - F070W
+        - F090W
+        - F115W
+        - F150W
+        - F200W
+        - F212N
+        - F187N
+        - F210M
+        - F182M
+        - F140M
+        - F150W2
+      filename_format: "!INST.filter_file_format"
+      current_filter: F150W2
+      minimum_throughput: 0.
+      outer: 500  # SWAG value
+      outer_unit: "mm"
 
   - name: psf
     class: FieldConstantPSF

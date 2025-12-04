@@ -19,13 +19,13 @@ effects:
   #     filter_names:
   #       - CLEAR
   #       - Dark
-  #       - "F405N Br-alpha"
-  #       - F323N H2
+  #       - F405N
+  #       - F323N
   #       - Lyot round
   #       - Grism R V2
-  #       - F466N CO
+  #       - F466N
   #       - Grism C V3
-  #       - F470N H2
+  #       - F470N
   #       - Lyot bar
   #     filename_format: "!INST.filter_file_format"
   #     current_filter: "CLEAR"
@@ -33,27 +33,27 @@ effects:
   #     outer:
   #     outer_unit: "mm"
 
-  # - name: filter_wheel
-  #   class: FilterWheel
-  #   kwargs:
-  #     filter_names:
-  #       - F277W
-  #       - F356W
-  #       - F444W
-  #       - F300M
-  #       - F480M
-  #       - F410M
-  #       - F360M
-  #       - F430M
-  #       - F460M
-  #       - F250M
-  #       - F335M
-  #       - F322W2
-  #     filename_format: "!INST.filter_file_format"
-  #     current_filter: "!OBS.filter_name"
-  #     minimum_throughput: 0.
-  #     outer:
-  #     outer_unit: "mm"
+  - name: filter_wheel
+    class: FilterWheel
+    kwargs:
+      filter_names:
+        - F277W
+        - F356W
+        - F444W
+        - F300M
+        - F480M
+        - F410M
+        - F360M
+        - F430M
+        - F460M
+        - F250M
+        - F335M
+        - F322W2
+      filename_format: "!INST.filter_file_format"
+      current_filter: F322W2
+      minimum_throughput: 0.
+      outer: 500  # SWAG value
+      outer_unit: "mm"
 
   - name: psf
     class: FieldConstantPSF
