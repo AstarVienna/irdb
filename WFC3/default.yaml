@@ -31,6 +31,7 @@ mode_yamls:
     - WFC3_UVIS_DET.yaml
 
 properties:
+  instrument: WFC3
   modes: [IR_channel]
   filter_name: F160W
   dit: 60
