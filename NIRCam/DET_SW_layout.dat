@@ -1,0 +1,26 @@
+# author: Fabian Haberhauer
+# sources: https://jwst-docs.stsci.edu/jwst-near-infrared-camera/nircam-instrumentation/nircam-detector-overview
+# date_created: 2025-12-04
+# date_modified: 2025-12-04
+# x_cen_unit: mm
+# y_cen_unit: mm
+# x_size_unit: pix
+# y_size_unit: pix
+# pixel_size_unit: mm
+# angle_unit: deg
+# gain_unit: electron/adu
+# dark_unit: electron/ks
+# image_plane_id: 0
+#
+# changes:
+# - 2025-12-04 (FH) initialised
+#
+id  x_cen  y_cen  x_size  y_size  pixel_size  angle  gain  dark  name
+ 1  +70    -307   2048    2048    0.018       0.0    2.08  0.3   A1
+ 2  +70    -268   2048    2048    0.018       0.0    2.02  2.7   A2
+ 3  +31    -307   2048    2048    0.018       0.0    2.17  2.8   A3
+ 4  +31    -268   2048    2048    0.018       0.0    2.02  3.3   A4
+ 5  -70    -268   2048    2048    0.018       0.0    2.01  2.2   B1
+ 6  -70    -307   2048    2048    0.018       0.0    2.14  0.8   B2
+ 7  -31    -268   2048    2048    0.018       0.0    1.94  1.7   B3
+ 8  -31    -307   2048    2048    0.018       0.0    2.03  1.1   B4
