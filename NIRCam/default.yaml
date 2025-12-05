@@ -1,0 +1,67 @@
+---
+object: configuration
+alias: OBS
+name: NIRCam
+status: experimental
+needs_scopesim: "v0.11.1"
+date_modified: 2025-12-04
+changes:
+  - 2025-12-04 (FH) initial version created
+
+packages:
+  - JWST
+  - NIRCam
+
+yamls:
+  - JWST.yaml
+  - NIRCam.yaml
+
+properties:
+  instrument: "NIRCam"
+  modes: ["IMG_LW"]
+  dit: 60
+  ndit: 1
+
+mode_yamls:
+  - object: observation
+    alias: OBS
+    name: IMG_SW
+    description: "0.6–2.3 um imaging at 31 mas/pix"
+    status: experimental
+    yamls:
+      - NIRCam_SW.yaml
+      - NIRCam_SW_DET.yaml
+
+  - object: observation
+    alias: OBS
+    name: IMG_LW
+    description: "2.4–5.0 um imaging at 63 mas/pix"
+    status: experimental
+    yamls:
+      - NIRCam_LW.yaml
+      - NIRCam_LW_DET.yaml
+
+  - object: observation
+    alias: OBS
+    name: HCI
+    description: "Coronagraphic imaging"
+    status: concept
+
+  - object: observation
+    alias: OBS
+    name: WFSS
+    description: "Wide field slitless spectroscopy"
+    status: concept
+
+---
+object: simulation
+alias: SIM
+
+properties:
+  random:
+    seed: None                         # 9001
+
+  spectral:
+    wave_min: 0.6
+    wave_mid: 2.8
+    wave_max: 5.0
