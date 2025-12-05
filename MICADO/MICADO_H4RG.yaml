@@ -68,7 +68,7 @@ effects:
     description: Blanks the signal on N edge row and column pixels
     class: ReferencePixelBorder
     kwargs:
-        all: 0
+      border: [0, 0, 0, 0]
 
   - name: readout_noise
     description: Readout noise frames
