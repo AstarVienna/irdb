@@ -19,8 +19,7 @@ effects:
   - name: detector_border
     class: ReferencePixelBorder
     kwargs:
-      width: 4
-      edges: ["all"]
+      border: [4, 4, 4, 4]
 
   # - name: qe_curve
   #   description: Quantum efficiency curve
