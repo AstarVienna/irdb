@@ -25,3 +25,9 @@ effects:
       minimum_throughput: 1.e-4
       outer: 0.1
       outer_unit: "m"
+
+  - name: psf
+    class: FieldVaryingPSF
+    kwargs:
+      filename: "PSF_WFC3_IR_FV.fits"
+      wave_key: "WAVELENG"
