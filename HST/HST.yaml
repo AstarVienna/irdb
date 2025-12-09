@@ -13,3 +13,9 @@ effects :
     class : SurfaceList
     kwargs :
         filename : LIST_mirrors_HST.tbl
+
+---
+alias: ATMO
+description: "Fake !ATMO.location to avoid confusing ScopeSim"
+properties:
+  location: Space
