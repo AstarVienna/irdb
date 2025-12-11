@@ -1,18 +1,18 @@
-### HST TELESCOPE
-object : telescope
-alias : TEL
-name : HST
-description : The Hubble Space Telescope common optics
+object: telescope
+alias: TEL
+name: HST
+description: The Hubble Space Telescope common optics
 
-properties :
-    temperature : 15
+properties:
+  temperature: 15
+  telescope: HST
 
-effects :
--   name : scope_surface_list
-    description : list of HST surfaces
-    class : SurfaceList
-    kwargs :
-        filename : LIST_mirrors_HST.tbl
+effects:
+  - name: scope_surface_list
+    description: list of HST surfaces
+    class: SurfaceList
+    kwargs:
+      filename: LIST_mirrors_HST.tbl
 
 ---
 alias: ATMO

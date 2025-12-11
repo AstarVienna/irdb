@@ -3,54 +3,64 @@
 # all spectral curves found on the stsynphot site
 # https://stsynphot.readthedocs.io/en/latest/stsynphot/data_hst.html
 
-object : configuration
-alias : OBS
-name : HST_WFC3_default_config
-description : defatult configuration for HST WFC3 UVIS and NIR imaging
+object: configuration
+alias: OBS
+name: HST_WFC3_default_config
+description: defatult configuration for HST WFC3 UVIS and NIR imaging
 status: experimental
+needs_scopesim: "v0.11.2a2"
+date_modified: 2025-12-05
+changes:
+  - 2019-11-20 (KL) initial version
+  - 2020-04-22 (KL) harmonize modes format
+  - 2024-11-19 (FH) add package status keyword
+  - 2025-12-05 (FH) clean up yaml
 
 packages:
-- HST
-- WFC3
+  - HST
+  - WFC3
 
 yamls:
-- HST.yaml
-- WFC3.yaml
-
-mode_yamls:
--   name: IR_channel
-    description: The NIR imaging channel
-    yamls:
-    - WFC3_IR.yaml
-    - WFC3_IR_DET.yaml
-
--   name: UVIS_channel
-    description: The UV and Visual imaging channel
-    yamls:
-    - WFC3_UVIS.yaml
-    - WFC3_UVIS_DET.yaml
+  - HST.yaml
+  - WFC3.yaml
 
 properties:
   instrument: WFC3
   modes: [IR_channel]
-  filter_name: F160W
+  filter_name: F160W  # default needed by effect
   dit: 60
   ndit: 1
 
+mode_yamls:
+  - object: observation
+    alias: OBS
+    name: IR_channel
+    description: The NIR imaging channel
+    status: experimental
+    yamls:
+      - WFC3_IR.yaml
+      - WFC3_IR_DET.yaml
+
+  - object: observation
+    alias: OBS
+    name: UVIS_channel
+    description: The UV and Visual imaging channel
+    status: concept
+    yamls:
+      - WFC3_UVIS.yaml
+      - WFC3_UVIS_DET.yaml
 
 ---
+object: simulation
+alias: SIM
+name: WFC3_simulation_paramters
+description: RC simulation paramters which need to change for a WFC3
 
-# default simulation parameters
-object : simulation
-alias : SIM
-name : WFC3_simulation_paramters
-description : RC simulation paramters which need to change for a WFC3
+properties:
+  random:
+    seed: 9001
 
-properties :
-  random :
-    seed : 9001
-
-  spectral :
-    wave_min : 0.8
-    wave_mid : 1.3
-    wave_max : 1.8
+  spectral:
+    wave_min: 0.8
+    wave_mid: 1.3
+    wave_max: 1.8

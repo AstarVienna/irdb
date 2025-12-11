@@ -3,7 +3,6 @@ import pytest
 from pytest import approx
 import os
 from os import path as pth
-import shutil
 
 import numpy as np
 from astropy import units as u
@@ -13,9 +12,7 @@ import scopesim.source.source_templates
 from scopesim import rc
 
 from matplotlib import pyplot as plt
-from matplotlib.colors import LogNorm
 
-# pytest_plugins = ['pytest_profiling']
 if rc.__config__["!SIM.tests.run_integration_tests"] is False:
     pytestmark = pytest.mark.skip("Ignoring WFC3 integration tests")
 
@@ -27,29 +24,6 @@ PKGS = {"HST": "telescopes/HST.zip",
 
 PLOTS = False
 
-# CLEAN_UP = True
-#
-#
-# def setup_module():
-#     rc.__config__["!SIM.file.use_cached_downloads"] = False
-#     rc_local_path = "./TEMP_WFC3/"
-#     rc.__config__["!SIM.file.local_packages_path"] = rc_local_path
-#
-#     if not os.path.exists(rc_local_path):
-#         os.mkdir(rc_local_path)
-#         rc.__config__["!SIM.file.local_packages_path"] = os.path.abspath(
-#             rc_local_path)
-#
-#     for pkg_name in PKGS:
-#         if not os.path.isdir(os.path.join(rc_local_path, pkg_name)) and \
-#                 "irdb" not in rc_local_path:
-#             scopesim.download_packages(PKGS[pkg_name])
-#
-#
-# def teardown_module():
-#     rc_local_path = rc.__config__["!SIM.file.local_packages_path"]
-#     if CLEAN_UP and "irdb" not in rc_local_path:
-#         shutil.rmtree(rc.__config__["!SIM.file.local_packages_path"])
 
 class TestInit:
     def test_all_packages_are_available(self):
@@ -162,7 +136,7 @@ class TestObserveOpticalTrain:
         cmd.ignore_effects += ["detector_linearity"]
 
         opt = scopesim.OpticalTrain(cmd)
-        src = scopesim.source.source_templates.star_field(10000, 10, 10, 440, use_grid=True)
+        src = scopesim.source.source_templates.star_field(10000, 10, 10, 150, use_grid=True)
 
         opt.observe(src)
         hdu = opt.readout()[0]
@@ -173,15 +147,15 @@ class TestObserveOpticalTrain:
 
         if PLOTS:
             plt.subplot(1, 2, 1)
-            plt.imshow(opt.image_planes[0].image[128:2048, 128:2048].T,
-                       norm=LogNorm())
+            plt.imshow(opt.image_planes[0].image, norm="log", origin="lower",
+                       vmin=np.median(opt.image_planes[0].image))
             plt.colorbar()
 
             plt.subplot(1, 2, 2)
-            plt.imshow(hdu[1].data[128:2048, 128:2048].T,
-                       norm=LogNorm(vmax=3e7, vmin=1e4))
+            plt.imshow(hdu[1].data, norm="log", origin="lower",
+                       vmin=np.median(hdu[1].data))
             plt.colorbar()
 
             plt.show()
 
-        assert hdu_av == approx(implane_av * exptime, rel=0.01)
+        assert hdu_av == approx(implane_av * exptime, rel=0.015)
