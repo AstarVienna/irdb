@@ -66,25 +66,4 @@ def make_micado_rst_files():
     summary_effects(opt_man, filename="pipe_summary.rst")
 
 
-def make_micado_sci_rst_files():
-    all_modes = ["SCAO", "MCAO", "IMG_1.5mas", "IMG_4mas", "SPEC"]
-
-    cmd = sim.UserCommands(use_instrument="MICADO_Sci", set_modes=all_modes)
-    rc.__currsys__ = cmd
-
-    opt_els = []
-    for yaml in cmd.yaml_dicts:
-        if yaml["alias"] in ["INST", "DET"]:
-            opt_el = sim.optics.OpticalElement(yaml_dict=yaml)
-            opt_els += [opt_el]
-            fname = pth.join(rc.__config__["!SIM.reports.rst_path"],
-                             "sci_{}.rst".format(opt_el.meta["name"]))
-            opt_el.report(filename=fname)
-
-    opt_man = sim.optics.OpticsManager(None)
-    opt_man.optical_elements = opt_els
-    summary_effects(opt_man, filename="sci_summary.rst")
-
-
 make_micado_rst_files()
-# make_micado_sci_rst_files()

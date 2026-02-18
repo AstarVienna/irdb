@@ -142,7 +142,7 @@
           #   NOISESTD: "#readout_noise.noise_std"
           #   NCHANNEL: "#readout_noise.n_channels"
           REF:
-            ALL: "#border_reference_pixels.all"
+            NPIX: "#border_reference_pixels.border"
 - ext_type: ImageHDU
   keywords:
     INHERIT: true

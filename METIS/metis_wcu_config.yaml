@@ -1,5 +1,5 @@
 # ------------- User-settable parameters
-lamps:  ["bb", "laser", "none"]  # available lamps
+lamps:  ["bb", "laser", "off"]  # available lamps
 current_lamp: "bb"  # the lamp currently in use
 bb_temp: 1000       # [K] temperature of BB source  # Kelvin!
 is_temp:  300       # [K] temperature of the integratig sphere

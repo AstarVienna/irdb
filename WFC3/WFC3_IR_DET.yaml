@@ -1,67 +1,72 @@
-### WFC3 IR DETECTOR
-object : detector
-alias : DET
-name : wfc3_ir_detector_array
-description : A single 1014x1014 HgCdTe detector
+object: detector
+alias: DET
+name: wfc3_ir_detector_array
+description: A single 1014x1014 HgCdTe detector
 source: "https://hst-docs.stsci.edu/display/WFC3IHB/5.7+IR+Detector+Characteristics+and+Performance"
 
 properties:
-    image_plane_id: 0
-    temperature: -85
-    dit: "!OBS.dit"
-    ndit: "!OBS.ndit"
+  image_plane_id: 0
+  temperature: -85
+  dit: "!OBS.dit"
+  ndit: "!OBS.ndit"
 
 effects:
-    - name: WFC3_IR_Detector
-      class: DetectorList
-      include: True
-      kwargs:
-        array_dict: {id: [1], pixsize: [0.01], angle: [0.], gain: [1.0],
-                     x_cen: [0], y_cen: [0], xhw: [5.12], yhw: [5.12]}
-        x_cen_unit: mm
-        y_cen_unit: mm
-        xhw_unit: mm
-        yhw_unit: mm
-        pixsize_unit: mm
-        angle_unit: deg
-        gain_unit: electron/adu
+  - name: WFC3_IR_Detector
+    class: DetectorList
+    include: True
+    kwargs:
+      array_dict:
+        id: [1]
+        pixsize: [0.01]
+        angle: [0.]
+        gain: [1.0]
+        x_cen: [0]
+        y_cen: [0]
+        xhw: [5.12]
+        yhw: [5.12]
+      x_cen_unit: mm
+      y_cen_unit: mm
+      xhw_unit: mm
+      yhw_unit: mm
+      pixsize_unit: mm
+      angle_unit: deg
+      gain_unit: electron/adu
 
-    - name: qe_curve
-      description: Quantum efficiency curve
-      class: QuantumEfficiencyCurve
-      kwargs:
-        filename: wfc3_ir_qe_003_syn.dat
+  - name: qe_curve
+    description: Quantum efficiency curve
+    class: QuantumEfficiencyCurve
+    kwargs:
+      filename: wfc3_ir_qe_003_syn.dat
 
-    - name: exposure_integration
-      description: Summing up sky signal for all DITs and NDITs
-      class: ExposureIntegration
+  - name: exposure_integration
+    description: Summing up sky signal for all DITs and NDITs
+    class: ExposureIntegration
 
-    - name: detector_border
-      decription: blacks out the pixels at the edge of the detector
-      class: ReferencePixelBorder
-      kwargs:
-        width: 5
-        edges: ["all"]
+  - name: detector_border
+    decription: blacks out the pixels at the edge of the detector
+    class: ReferencePixelBorder
+    kwargs:
+      border: [5, 5, 5, 5]
 
-    - name: dark_current
-      description: WFC3-IR dark current
-      class: DarkCurrent
-      # [e-/s] level of dark current for each detector
-      kwargs:
-        value: 0.048
+  - name: dark_current
+    description: WFC3-IR dark current
+    class: DarkCurrent
+    # [e-/s] level of dark current for each detector
+    kwargs:
+      value: 0.048
 
-    - name: detector_linearity
-      description : Linearity characteristics of H4RG chips
-      class: LinearityCurve
-      kwargs:
-          filename : FPA_linearity.dat
+  - name: detector_linearity
+    description: Linearity characteristics of H4RG chips
+    class: LinearityCurve
+    kwargs:
+      filename: FPA_linearity.dat
 
-    - name: shot_noise
-      description : apply poisson shot noise to images
-      class: ShotNoise
+  - name: shot_noise
+    description: apply poisson shot noise to images
+    class: ShotNoise
 
-    - name : readout_noise
-      description : Readout noise frames
-      class : BasicReadoutNoise
-      kwargs :
-          noise_std : 12      # as high as 20 for a single read cycle
+  - name: readout_noise
+    description: Readout noise frames
+    class: BasicReadoutNoise
+    kwargs:
+      noise_std: 12  # as high as 20 for a single read cycle

@@ -29,12 +29,12 @@ properties :
 ### default simulation parameters needed for a LFAO simulation
 object : simulation
 alias : SIM
-name : LFAO_simulation_paramters
-description : RC simulation paramters
+name : LFAO_simulation_parameters
+description : RC simulation parameters
 
 properties :
   random :
-    seed : 9001
+    seed : None           # 9001
 
   spectral :
     wave_min : 0.3

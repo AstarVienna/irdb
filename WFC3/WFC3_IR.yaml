@@ -1,27 +1,33 @@
-###
-object : instrument
-alias : INST
-name : WFC3
-description : base configuration for WFC3
+object: instrument
+alias: INST
+name: WFC3
+description: base configuration for WFC3
 
-properties :
-    temperature : -49
-    pixel_scale: 0.13         # arcsec / pixel
-    plate_scale: 13           # arcsec / mm
+properties:
+  temperature: -49
+  pixel_scale: 0.13  # arcsec / pixel
+  plate_scale: 13    # arcsec / mm
 
-effects :
--   name: wfc3_ir_channel_surfaces
-    description : surfaces list for the IR channel
+effects:
+  - name: wfc3_ir_channel_surfaces
+    description: surfaces list for the IR channel
     class: SurfaceList
     kwargs:
-        filename: LIST_WFC3_mirrors_IR.dat
+      filename: LIST_WFC3_mirrors_IR.dat
 
--   name: wfc3_ir_filter
-    description : transmission curve for filter
+  - name: wfc3_ir_filter
+    description: transmission curve for filter
+    # TODO: Replace with proper FilterWheel effect
     class: FilterCurve
     kwargs:
-        filter_name: "!OBS.filter_name"
-        filename_format: "TER_filter_{}.dat"
-        minimum_throughput: 1.e-4
-        outer: 0.1
-        outer_unit: "m"
+      filter_name: "!OBS.filter_name"
+      filename_format: "filters/TER_filter_{}.dat"
+      minimum_throughput: 1.e-4
+      outer: 0.1
+      outer_unit: "m"
+
+  - name: psf
+    class: FieldVaryingPSF
+    kwargs:
+      filename: "PSF_WFC3_IR_FV.fits"
+      wave_key: "WAVELENG"

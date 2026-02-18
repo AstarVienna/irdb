@@ -2,7 +2,7 @@
 # author : Oliver Czoske
 # sources: E-REP-ATC-MET-1003_1
 # date_created : 2019-08-18
-# date_modified : 2022-04-22
+# date_modified : 2026-01-22
 # type : detector:chip_list
 # x_cen_unit : mm
 # y_cen_unit : mm
@@ -18,9 +18,10 @@
 # - 2020-02-03 (OC) updated meta data to new format
 # - 2020-07-22 (KL) added image_plane_id = 0
 # - 2022-04-22 (OC) changed column names from _len to _size, removed columns xhw, yhw
+# - 2026-01-22 (OC) swap dets 1 and 2 as requested by A Glasse
 #
 id  x_cen    y_cen     x_size  y_size  pixel_size  angle   gain
- 1  +19.547  +19.547   2048    2048    0.018       0.0     1.0
- 2  -19.547  +19.547   2048    2048    0.018       0.0     1.0
+ 1  -19.547  +19.547   2048    2048    0.018       0.0     1.0
+ 2  +19.547  +19.547   2048    2048    0.018       0.0     1.0
  3  -19.547  -19.547   2048    2048    0.018       0.0     1.0
  4  +19.547  -19.547   2048    2048    0.018       0.0     1.0

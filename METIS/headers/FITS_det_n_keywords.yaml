@@ -3,7 +3,7 @@
     HIERARCH:
       ESO:
         DET2:
-          DIT:        "!OBS.dit"
+          DIT:        ["!OBS.dit", "[s]"]
           NDIT:       "!OBS.ndit"
           MODE:       "!DET.mode"
           CUBE:
@@ -22,9 +22,10 @@
         DET2:
           CHIP:
             ID:       "!DET.detector"
-            MODE:     "!DET.mode"
-            MINDIT:   "!DET.mindit"
-            FULLWELL: "!DET.full_well"
-            RON:      "!DET.readout_noise"
-            DARK:     "!DET.dark_current"
-            GAIN:     "!DET.gain"
+            MODE:     ["!DET.mode", "Readout mode"]
+            MINDIT:   ["!DET.mindit", "[s]"]
+            FULLWELL: ["!DET.full_well", "[e]"]
+            RON:      ["!DET.readout_noise", "[e] per CDS readout"]
+            DARK:     ["!DET.dark_current", "[e/s]"]
+            GAIN:     ["!DET.gain", "[e/ADU]"]
+            REFPIX:   ["#reference_pixel_mask.border", "b l t r"]

@@ -13,6 +13,7 @@ changes:
   - 2025-06-27 (FH) add needs_scopesim keyword
   - 2025-10-09 (OC) proper MJD value
   - 2025-10-17 (JB) add parametes for FITS keywords, tplstart as MJD
+  - 2026-01-02 (OC) random seed to None
 
 packages:
 - Armazones
@@ -153,76 +154,16 @@ mode_yamls :
     fits_ins_filt : Spec_IJ
     fits_ins_slit : "Short"
 
-- object : observation
-  alias: OBS
-  name : SPEC_15000x50
-  description : "spectrograph : slit size 15000x50mas"
-  status: deprecated
-  deprecate : "Deprecated instrument mode. For spectroscopy use
-  - SPEC_3000x16
-  - SPEC_3000x48
-  - SPEC_15000x20"
-  yamls :
-  - MICADO_SPEC.yaml
-  properties :
-    trace_file : TRACE_MICADO.fits
-    slit_file : MASK_slit_15000x50.dat
-    filter_name_fw1: Spec_HK
-    filter_name_fw2: open
-    filter_name_pupil: open
-    fits_ins_filt : Spec_HK
-    fits_ins_slit : "Long"
-
-- object : observation
-  alias: OBS
-  name : SPEC_3000x50
-  description : "spectrograph : slit size 3000x50mas"
-  status: deprecated
-  deprecate : "Deprecated instrument mode. For spectroscopy use
-  - SPEC_3000x16
-  - SPEC_3000x48
-  - SPEC_15000x20"
-  yamls :
-  - MICADO_SPEC.yaml
-  properties :
-    trace_file : TRACE_MICADO.fits
-    slit_file : MASK_slit_3000x50.dat
-    filter_name_fw1: Spec_HK
-    filter_name_fw2: open
-    filter_name_pupil: open
-    fits_ins_filt : Spec_HK
-    fits_ins_slit : "Wide"
-
-- object : observation
-  alias: OBS
-  name : SPEC_3000x20
-  description : "spectrograph : slit size 3000x20mas"
-  status: deprecated
-  deprecate : "Deprecated instrument mode. For spectroscopy use
-  - SPEC_3000x16
-  - SPEC_3000x48
-  - SPEC_15000x20"
-  yamls :
-  - MICADO_SPEC.yaml
-  properties :
-    trace_file : TRACE_MICADO.fits
-    slit_file : MASK_slit_3000x20.dat
-    filter_name_fw1: Spec_HK
-    filter_name_fw2: open
-    filter_name_pupil: open
-    fits_ins_filt : Spec_HK
-    fits_ins_slit : "Short"
-
 ---
 ### default simulation parameters needed for a MICADO simulation
 object : simulation
 alias : SIM
-name : MICADO_simulation_paramters
-description : RC simulation paramters which need to change for a MICADO run
+name : MICADO_simulation_parameters
+description : RC simulation parameters which need to change for a MICADO run
 
 properties :
   random :
-    seed : 9001
+    seed : None                 # 9001
 
   spectral :
     wave_min : 0.7

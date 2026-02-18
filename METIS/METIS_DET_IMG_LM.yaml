@@ -25,6 +25,7 @@ properties:
     file_name: "QE_detector_H2RG_METIS.dat"
   linearity:
     file_name: "FPA_linearity_HxRG.dat"
+  border: [64, 64, 64, 64]
 
 effects:
   - name: detector_array
@@ -69,6 +70,13 @@ effects:
       fill_frac: "!OBS.auto_exposure.fill_frac"
       full_well: "!DET.full_well"
       mindit: "!DET.mindit"
+
+  - name: reference_pixel_mask
+    description: Mask for reference pixels
+    class: ReferencePixelBorder
+    include: True
+    kwargs:
+      border: "!DET.border"
 
   - name: exposure_integration
     description: Summing up sky signal for all DITs and NDITs

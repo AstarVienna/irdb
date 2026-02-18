@@ -50,7 +50,7 @@ jobs:
     name: Run MICADO Notebooks
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -89,9 +89,9 @@ jobs:
     name: Run MOSAIC Notebooks
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           # No matrix is used since this is a time-consuming task.
           python-version: 3.13
@@ -123,7 +123,7 @@ jobs:
     name: Run METIS Notebooks
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
@@ -146,14 +146,40 @@ jobs:
           PYDEVD_DISABLE_FILE_VALIDATION: 1
         run: |
           echo "## METIS Notebooks tested" >> $GITHUB_STEP_SUMMARY
-          echo "### Example Notebooks" >> $GITHUB_STEP_SUMMARY
           for fn in METIS/docs/example_notebooks/*.ipynb
           do
             echo "${fn}"
             echo "- ${fn}" >> $GITHUB_STEP_SUMMARY
             /usr/bin/time -v jupytext --execute --update "${fn}"
           done
-          echo "## Demo Notebooks" >> $GITHUB_STEP_SUMMARY
+
+  metis_demo_notebooks:
+    name: Run METIS Demo Notebooks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          # No matrix is used since this is a time-consuming task.
+          python-version: 3.13
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.github_actions.txt
+
+      - name: Install ScopeSim from repo
+        if: ${{ inputs.from_pypi == false || inputs.from_pypi == 'false' }}
+        run: |
+          echo "Re-installing ScopeSim from source" >> $GITHUB_STEP_SUMMARY
+          pip uninstall -y scopesim scopesim_templates
+          pip install git+https://github.com/AstarVienna/ScopeSim.git@${{ inputs.ScopeSim }}
+          pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git@${{ inputs.ScopeSim_Templates }}
+      - name: Run Notebooks
+        env:
+          PYDEVD_DISABLE_FILE_VALIDATION: 1
+        run: |
+          echo "## METIS Demo Notebooks tested" >> $GITHUB_STEP_SUMMARY
           for fn in METIS/docs/example_notebooks/demos/*.ipynb
           do
             echo "${fn}"

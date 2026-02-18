@@ -24,7 +24,7 @@
             DEVSIM: [true, "Device simulation flag"]
             ID: ["wcu-bb-aperture-mask", "OPTI19 ID"]
             NAME: ["      ", "OPTI19 NAME"]
-            POS: [0, "OPTI10 position"]          # TODO
+            POS: [0, "OPTI19 position"]          # TODO
             POSNAME: ["#wcu_source.bb_aperture", "OPTI19 named position"]               # added by OC
             STAT: ["Standstill", "OPTI19 status"]
 

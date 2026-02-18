@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Tests that the MICADO package runs with observe, readout flawlessly
 
@@ -23,7 +24,6 @@ import scopesim
 from scopesim import rc
 
 from matplotlib import pyplot as plt
-from matplotlib.colors import LogNorm
 
 PATH_HERE = Path(__file__).parent
 PATH_IRDB = PATH_HERE.parent.parent
@@ -57,14 +57,15 @@ class TestLoadUserCommands:
 
     def test_user_commands_can_change_modes(self):
         cmd = scopesim.UserCommands(use_instrument="MICADO")
-        cmd.set_modes(["MCAO", "SPEC_3000x50"])
+        cmd.set_modes("MCAO", "SPEC_3000x48")
 
         assert "MORFEO" in [yd["name"] for yd in cmd.yaml_dicts]
         assert "MICADO_SPEC" in [yd["name"] for yd in cmd.yaml_dicts]
 
     def test_user_commands_can_change_modes_via_init(self):
-        cmd = scopesim.UserCommands(use_instrument="MICADO",
-                                    set_modes=["MCAO", "SPEC_3000x50"])
+        cmd = scopesim.UserCommands(
+            use_instrument="MICADO", set_modes=["MCAO", "SPEC_3000x48"]
+        )
 
         assert "MORFEO" in [yd["name"] for yd in cmd.yaml_dicts]
         assert "MICADO_SPEC" in [yd["name"] for yd in cmd.yaml_dicts]
@@ -72,9 +73,11 @@ class TestLoadUserCommands:
 
 class TestMakeOpticalTrain:
     def test_works_seamlessly_for_micado_wide_mode(self):
-        cmd = scopesim.UserCommands(use_instrument="MICADO",
-                                    set_modes=["SCAO", "IMG_4mas"],
-                                    properties={"!OBS.filter_name": "Ks"})
+        cmd = scopesim.UserCommands(
+            use_instrument="MICADO",
+            set_modes=["SCAO", "IMG_4mas"],
+            properties={"!OBS.filter_name": "Ks"},
+        )
         opt = scopesim.OpticalTrain(cmd)
         assert isinstance(opt, scopesim.OpticalTrain)
 
@@ -85,10 +88,14 @@ class TestMakeOpticalTrain:
         assert isinstance(hdu_list, fits.HDUList)
 
     def test_works_seamlessly_for_micado_zoom_mode(self):
-        cmd = scopesim.UserCommands(use_instrument="MICADO",
-                                    set_modes=["SCAO", "IMG_1.5mas"],
-                                    properties={"!OBS.filter_name_fw1": "J",
-                                                "!OBS.filter_name_fw2": "open"})
+        cmd = scopesim.UserCommands(
+            use_instrument="MICADO",
+            set_modes=["SCAO", "IMG_1.5mas"],
+            properties={
+                "!OBS.filter_name_fw1": "J",
+                "!OBS.filter_name_fw2": "open",
+            },
+        )
         micado = scopesim.OpticalTrain(cmd)
         assert isinstance(micado, scopesim.OpticalTrain)
 
@@ -102,9 +109,10 @@ class TestMakeOpticalTrain:
 class TestDetector:
     @pytest.mark.parametrize("ndit, dit", [(1, 3600)])
     def test_returns_ndit_dit_scaled_image(self, ndit, dit):
-        cmd = scopesim.UserCommands(use_instrument="MICADO",
-                                    properties={"!OBS.dit": dit,
-                                                "!OBS.ndit": ndit})
+        cmd = scopesim.UserCommands(
+            use_instrument="MICADO",
+            properties={"!OBS.dit": dit, "!OBS.ndit": ndit},
+        )
         micado = scopesim.OpticalTrain(cmd)
         micado["skycalc_atmosphere"].include = False
         micado["detector_linearity"].include = False
@@ -121,11 +129,11 @@ class TestDetector:
 
         if PLOTS:
             plt.subplot(121)
-            plt.imshow(implane_image, norm=LogNorm())
+            plt.imshow(implane_image, norm="log")
             plt.colorbar()
 
             plt.subplot(122)
-            plt.imshow(readout_image, norm=LogNorm())
+            plt.imshow(readout_image, norm="log")
             plt.colorbar()
 
             plt.show()

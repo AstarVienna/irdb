@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """Unit tests for irdb/ELT"""
 # pylint: disable=no-self-use, missing-class-docstring
 # pylint: disable=missing-function-docstring
@@ -35,8 +36,6 @@ def test_eso_vs_scopesim_throughput():
         plt.show()
 
 
-## .todo: the values are not correct
-@pytest.mark.xfail(reason="Does fail with ScopeSim 0.7.1. TODO: Remove mark when 0.8.0 is released.")
 def test_eso_vs_scopesim_emission():
     cmds = UserCommands(properties={
         "!ATMO.temperature": 0.,
@@ -45,9 +44,11 @@ def test_eso_vs_scopesim_emission():
     })
 
     slist = sim.effects.SurfaceList(filename="LIST_mirrors_ELT.tbl", cmds=cmds)
-    ter = sim.effects.TERCurve(filename="TER_ELT_5_mirror.dat",
-                               temperature="!ATMO.temperature",
-                               cmds=cmds)
+    ter = sim.effects.TERCurve(
+        filename="TER_ELT_5_mirror.dat",
+        temperature="!ATMO.temperature",
+        cmds=cmds,
+    )
 
     wave = np.linspace(0.3, 12.5, 100) * u.um
     sl_flux = slist.emission(wave)
@@ -82,9 +83,11 @@ def fixture_elt_configs():
         "TER_ELT_6_mirror_field_track.dat"
     slist_6f = sim.effects.SurfaceList(filename="LIST_ELT_combined.tbl")
 
-    return {'5 mirror': slist_5,
-            '6 mirror pupil': slist_6p,
-            '6 mirror field': slist_6f}
+    return {
+        "5 mirror": slist_5,
+        "6 mirror pupil": slist_6p,
+        "6 mirror field": slist_6f,
+    }
 
 
 class TestELTConfigurations:

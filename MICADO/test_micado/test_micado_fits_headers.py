@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from os import path as p
 from astropy.io import fits
 import scopesim as sim

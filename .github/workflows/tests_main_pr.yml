@@ -11,6 +11,12 @@ jobs:
     with:
       from_pypi: true
 
+  internal_tests:
+    name: Internal Tests
+    uses: ./.github/workflows/internal_tests.yml
+    with:
+      from_pypi: true
+
   notebook_tests:
     name: Notebook tests
     uses: ./.github/workflows/notebooktests.yml

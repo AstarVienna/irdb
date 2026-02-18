@@ -3,11 +3,11 @@ numpy
 matplotlib
 astropy
 pyyaml
-pysftp
-paramiko<=3.5.1
-photutils
+paramiko
+astar-utils
 scopesim
 scopesim_templates
 jupytext
 ipykernel
 nbconvert
+astar-utils

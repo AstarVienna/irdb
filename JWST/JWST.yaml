@@ -1,0 +1,21 @@
+object: telescope
+alias: TEL
+name: JWST
+description: The JWST common optics
+
+properties:
+  telescope: JWST
+  temperature: -220
+
+effects:
+  - name: scope_surface_list
+    description: list of JWST surfaces
+    class: SurfaceList
+    kwargs:
+      filename: LIST_mirrors_JWST.tbl
+
+---
+alias: ATMO
+description: "Fake !ATMO.location to avoid confusing ScopeSim"
+properties:
+  location: Space

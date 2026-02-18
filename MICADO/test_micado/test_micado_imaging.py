@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 """
 Tests the MCAO limiting magnitudes against the values from from Ric's excel doc
 [Signal_noise_estimator_MICADO_2018.04.03]
@@ -23,7 +23,6 @@ from scopesim import rc
 from scopesim.source import source_templates as st
 
 from matplotlib import pyplot as plt
-from matplotlib.colors import LogNorm
 
 PATH_HERE = Path(__file__).parent
 PATH_IRDB = PATH_HERE.parent.parent
@@ -62,19 +61,35 @@ class TestLimiting:
     Tolerance for assert is 0.3 mag (to high?)
 
     """
+
     @pytest.mark.parametrize(
-        ("fw1", "fw2", "r0", "rics_lim_mag", "abslim"),
-        [pytest.param("J", "open", 1, 27.9, .3, marks=pytest.mark.xfail(reason="something changed in ScopeSim...")),
-         pytest.param("open", "H", 2, 27.5, .3, marks=pytest.mark.xfail(reason="something changed in ScopeSim...")),
-         ("open", "Ks", 2, 27.1, .3)])
-    def test_MCAO_IMG_4mas(self, fw1, fw2, r0, rics_lim_mag, abslim, ao_mode="MCAO"):
+        ("fw1", "fw2", "r0", "rics_lim_mag", "abslim"), [
+            pytest.param(
+                "J", "open", 1, 27.9, 0.3,
+                marks=pytest.mark.xfail(
+                    reason="something changed in ScopeSim..."
+                    ),
+                ),
+            pytest.param(
+                "open", "H", 2, 27.5, 0.3,
+                marks=pytest.mark.xfail(
+                    reason="something changed in ScopeSim..."
+                    ),
+                ),
+            ("open", "Ks", 2, 27.1, 0.3),
+        ],
+    )
+    def test_MCAO_IMG_4mas(
+        self, fw1, fw2, r0, rics_lim_mag, abslim, ao_mode="MCAO"
+    ):
 
         n_stars, mmin, mmax = 400, 25, 30
-        r1, r2 = 10, 15              # aperture radii  r0 (sig), r1-r2 (noise)
+        r1, r2 = 10, 15  # aperture radii  r0 (sig), r1-r2 (noise)
         src = st.star_field(n_stars, mmin, mmax, width=3, use_grid=True)
 
-        cmds = sim.UserCommands(use_instrument="MICADO",
-                                set_modes=[ao_mode, "IMG_4mas"])
+        cmds = sim.UserCommands(
+            use_instrument="MICADO", set_modes=[ao_mode, "IMG_4mas"]
+        )
         micado = sim.OpticalTrain(cmds)
         micado.cmds["!OBS.dit"] = 18000
         micado["filter_wheel_1"].change_filter(fw1)
@@ -88,12 +103,14 @@ class TestLimiting:
         imp = micado.image_planes[0].hdu.data  # e-/pixel/s
         if PLOTS:
             plt.subplot(131)
-            plt.imshow(imp, norm=LogNorm(vmin=np.median(imp), vmax=1.01*np.median(imp)))
+            plt.imshow(imp, norm="log", vmin=np.median(imp),
+                       vmax=1.01*np.median(imp))
 
             plt.subplot(132)
-            plt.imshow(det, norm=LogNorm(vmin=np.median(det), vmax=1.01*np.median(det)))
+            plt.imshow(det, norm="log", vmin=np.median(det),
+                       vmax=1.01*np.median(det))
 
-        xpix, ypix = src.fields[0]["x"].data, src.fields[0]["y"].data
+        xpix, ypix = src.fields[0].field["x"].data, src.fields[0].field["y"].data
         xpix = xpix / 0.004 + 512
         ypix = ypix / 0.004 + 512
         mags = np.round(np.linspace(mmin, mmax, n_stars), 1)
@@ -120,7 +137,7 @@ class TestLimiting:
             # bg_std = np.sqrt(bg_median)
             noise = bg_std * np.sqrt(np.prod(sig_im.shape)) * np.sqrt(2)        # sqrt(2) comes from BG subtraction (see Rics doc)
             signal = np.sum(sig_im - bg_median)
-            snr = signal/noise
+            snr = signal / noise
             snrs += [snr]
 
             if PLOTS:

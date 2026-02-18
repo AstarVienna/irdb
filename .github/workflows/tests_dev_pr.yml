@@ -25,6 +25,15 @@ jobs:
       ScopeSim: ${{ needs.determine_branches.outputs.ScopeSim }}
       ScopeSIM_Templates: ${{ needs.determine_branches.outputs.ScopeSIM_Templates }}
 
+  internal_tests:
+    name: Internal Tests
+    needs: determine_branches
+    if: contains(github.event.pull_request.labels.*.name, 'irdb functionality')
+    uses: ./.github/workflows/internal_tests.yml
+    with:
+      ScopeSim: ${{ needs.determine_branches.outputs.ScopeSim }}
+      ScopeSIM_Templates: ${{ needs.determine_branches.outputs.ScopeSIM_Templates }}
+
   notebook_tests:
     name: Notebook tests
     needs: determine_branches
