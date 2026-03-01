@@ -113,6 +113,7 @@ Table
 +++++
 
 .. needtable::
+   :columns: id, result, time
 
 Table of cases
 ++++++++++++++
