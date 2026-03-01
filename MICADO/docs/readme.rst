@@ -118,7 +118,7 @@ Table of cases
 ++++++++++++++
 
 .. needtable::
-   :type: test-case
+   :types: test-case
 
 List
 ++++
@@ -129,7 +129,7 @@ List of cases
 +++++++++++++
 
 .. needlist::
-   :type: test-case
+   :types: test-case
 
 Documentation and useful references
 -----------------------------------
