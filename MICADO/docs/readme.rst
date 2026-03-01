@@ -110,13 +110,6 @@ Validation
    :classname: MICADO.test_micado.test_micado_imaging.TestLimiting
 
 
-Report
-++++++
-
-.. test-report:: Validation Report
-   :id: REPORT
-   :file: validation_results.xml
-
 Results
 +++++++
 
