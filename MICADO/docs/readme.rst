@@ -115,6 +115,20 @@ Results
 
 .. test-results:: validation_results.xml
 
+File
+++++
+
+.. test-file:: My Test Data
+   :file: validation_results.xml
+   :id: TESTFILE_1
+
+Table
++++++
+
+.. needtable::
+   :types: test-file
+   :columns: id, file, suites, cases, passed
+
 Documentation and useful references
 -----------------------------------
 
