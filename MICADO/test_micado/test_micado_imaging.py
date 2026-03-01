@@ -31,6 +31,7 @@ rc.__config__["!SIM.file.local_packages_path"] = str(PATH_IRDB)
 PLOTS = False
 
 
+@pytest.mark.validation
 class TestLimiting:
     """
     from Ric's excel doc (Signal_noise_estimator_MICADO_2018.04.03)
