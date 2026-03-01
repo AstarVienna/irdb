@@ -10,7 +10,7 @@ build:
     python: "3.11"
   jobs:
     post_install:
-      - pytest -m validation --junit-xml=validation_results.xml || true
+      - pytest -m validation --junit-xml=validation_results.xml --tb=short || true
 
 sphinx:
    configuration: conf.py
