@@ -109,25 +109,27 @@ Validation
    :case: test_MCAO_IMG_4mas[open-Ks-2-27.1-0.3]
    :classname: MICADO.test_micado.test_micado_imaging.TestLimiting
 
-
-Results
-+++++++
-
-.. test-results:: validation_results.xml
-
-File
-++++
-
-.. test-file:: My Test Data
-   :file: validation_results.xml
-   :id: TESTFILE_1
-
 Table
 +++++
 
 .. needtable::
-   :types: test-file
-   :columns: id, file, suites, cases, passed
+
+Table of cases
+++++++++++++++
+
+.. needtable::
+   :types: test-case
+
+List
+++++
+
+.. needlist::
+
+List of cases
++++++++++++++
+
+.. needlist::
+   :types: test-case
 
 Documentation and useful references
 -----------------------------------
