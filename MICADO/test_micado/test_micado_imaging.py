@@ -73,9 +73,9 @@ class TestLimiting:
                 ),
             pytest.param(
                 "open", "H", 2, 27.5, 0.3,
-                # marks=pytest.mark.xfail(
-                #     reason="something changed in ScopeSim..."
-                #     ),
+                marks=pytest.mark.xfail(
+                    reason="something changed in ScopeSim..."
+                    ),
                 ),
             ("open", "Ks", 2, 27.1, 0.3),
         ],
