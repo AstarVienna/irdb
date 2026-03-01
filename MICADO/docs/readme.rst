@@ -109,9 +109,22 @@ Validation
    :case: test_MCAO_IMG_4mas[open-Ks-2-27.1-0.3]
    :classname: MICADO.test_micado.test_micado_imaging.TestLimiting
 
+.. test-case:: MICADO imaging limiting magnitudes
+   :id: MICADO_img_validation_all
+   :file: validation_results.xml
+   :suite: pytest
+   :case: test_MCAO_IMG_4mas
+   :classname: MICADO.test_micado.test_micado_imaging.TestLimiting
+
+Report
+++++++
+
 .. test-report:: Validation Report
    :id: REPORT
    :file: validation_results.xml
+
+Results
++++++++
 
 .. test-results:: validation_results.xml
 
