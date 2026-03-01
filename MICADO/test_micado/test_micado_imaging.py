@@ -81,8 +81,11 @@ class TestLimiting:
         ],
     )
     def test_MCAO_IMG_4mas(
-        self, fw1, fw2, r0, rics_lim_mag, abslim, ao_mode="MCAO"
+        self, record_property, fw1, fw2, r0, rics_lim_mag, abslim, ao_mode="MCAO",
     ):
+        record_property("filter", fw1 if fw1 != "open" else fw2)
+        record_property("expected mag", rics_lim_mag)
+        record_property("tolerance", abslim)
 
         n_stars, mmin, mmax = 400, 25, 30
         r1, r2 = 10, 15  # aperture radii  r0 (sig), r1-r2 (noise)
@@ -172,6 +175,8 @@ class TestLimiting:
 
             plt.show()
 
-        # J-band fails because ScopeSIm is 0.5 mags lower Ric's estimate. Why?!?
         print(f"expected: {rics_lim_mag:.2f}, obtained: {lim_mag:.2f}, delta: {lim_mag-rics_lim_mag:.3f}")
+        record_property("tolerance", round(lim_mag, 2))
+        record_property("difference", round(lim_mag-rics_lim_mag, 3))
+
         assert lim_mag == approx(rics_lim_mag, abs=abslim)
