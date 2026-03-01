@@ -58,6 +58,7 @@ extensions = [
     # 'sphinxcontrib.apidoc',
     "sphinx_needs",
     "sphinxcontrib.test_reports",
+    "sphinxcontrib.plantuml",
 ]
 
 # numpydoc settings
