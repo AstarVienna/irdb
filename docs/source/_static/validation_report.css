@@ -24,6 +24,10 @@ tr.pytest-skipped {
     background-color: #f0f4ff;
 }
 
+.clickable-row a {
+    color: inherit;
+    text-decoration: none;
+}
 
 /* Misc */
 
