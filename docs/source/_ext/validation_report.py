@@ -75,9 +75,6 @@ class PytestReportDirective(Directive):
             props = tc["properties"]
 
             row = nodes.row(classes=[f"pytest-{tc['status']}"])
-            if (link := props.get("link")) is not None:
-                row["classes"].append("clickable-row")
-                row["data-href"] = link
 
             values = [
                 props.get("ao_mode", ""),
@@ -86,13 +83,23 @@ class PytestReportDirective(Directive):
                 f"{props.get('expected', '')} +/- {props.get('tolerance', '')}",
                 props.get("obtained", ""),
                 props.get("difference", ""),
-                tc["status"],
             ]
 
             for v in values:
                 entry = nodes.entry(classes=["nowrap"])
                 entry += nodes.Text(str(v))
                 row += entry
+
+            entry = nodes.entry()
+            if (url := props.get("link")) is not None:
+                print(url)
+                row["classes"].append("clickable-row")
+                link = nodes.reference("", "", refuri=url)
+                link += nodes.Text(tc["status"])
+                entry += link
+            else:
+                entry += nodes.Text(tc["status"])
+            row += entry
 
             tbody += row
 
