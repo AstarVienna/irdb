@@ -91,21 +91,21 @@ Validation
 .. test-case:: MICADO imaging limiting magnitudes
    :id: MICADO_img_validation_J
    :file: validation_results.xml
-   :suite: pytest
+   :suite: MICADO_VALIDATION
    :case: test_MCAO_IMG_4mas[J-open-1-27.9-0.3]
    :classname: MICADO.test_micado.test_micado_imaging.TestLimiting
 
 .. test-case:: MICADO imaging limiting magnitudes
    :id: MICADO_img_validation_H
    :file: validation_results.xml
-   :suite: pytest
+   :suite: MICADO_VALIDATION
    :case: test_MCAO_IMG_4mas[open-H-2-27.5-0.3]
    :classname: MICADO.test_micado.test_micado_imaging.TestLimiting
 
 .. test-case:: MICADO imaging limiting magnitudes
    :id: MICADO_img_validation_K
    :file: validation_results.xml
-   :suite: pytest
+   :suite: MICADO_VALIDATION
    :case: test_MCAO_IMG_4mas[open-Ks-2-27.1-0.3]
    :classname: MICADO.test_micado.test_micado_imaging.TestLimiting
 
@@ -136,7 +136,7 @@ Suite
 
 .. test-suite:: MICADO imaging limiting magnitudes
    :file: validation_results.xml
-   :suite: pytest
+   :suite: MICADO_VALIDATION
    :id: MICADO_TESTS
 
    Test results for MICADO.
