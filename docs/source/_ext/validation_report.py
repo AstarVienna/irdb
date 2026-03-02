@@ -47,7 +47,7 @@ class PytestReportDirective(Directive):
         report = ValidationReport(self.arguments[0])
 
         headers = ["AO mode", "IMG mode", "Filter", "Expected", "Obtained", "Difference", "Status"]
-        units = {"Expected": "[mag]", "Obtained": "[mag]", "Difference": "[mag]"}
+        units = {"Expected": "mag", "Obtained": "mag", "Difference": "mag"}
 
         table = nodes.table()
         tgroup = nodes.tgroup(cols=len(headers))
@@ -63,7 +63,8 @@ class PytestReportDirective(Directive):
             entry = nodes.entry()
             entry += nodes.Text(header)
             if (unit := units.get(header)) is not None:
-                entry += nodes.Text(unit)
+                entry += nodes.raw("", "<br>", format="html")
+                entry += nodes.Text(f"[{unit}]")
             header_row += entry
         thead += header_row
 
