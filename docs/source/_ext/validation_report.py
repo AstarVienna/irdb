@@ -94,7 +94,7 @@ class PytestReportDirective(Directive):
             if (url := props.get("link")) is not None:
                 # eg _static/plots/MICADO/limmag/MCAO_IMG_4mas_H.pdf
                 row["classes"].append("clickable-row")
-                entry += nodes.raw("", f"<a class='row-anchor' href='{url}'>{tc['status']}</a>", format="html")
+                entry += nodes.raw("", f"<a class='row-anchor' href='../../{url}'>{tc['status']}</a>", format="html")
             else:
                 entry += nodes.Text(tc["status"])
             row += entry
