@@ -87,7 +87,7 @@ class PytestReportDirective(Directive):
             ]
 
             for v in values:
-                entry = nodes.entry()
+                entry = nodes.entry(classes=["nowrap"])
                 entry += nodes.Text(str(v))
                 row += entry
 
