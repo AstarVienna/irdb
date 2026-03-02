@@ -87,6 +87,8 @@ Scientific use-case notebooks
 
 Validation
 ----------
+The following table shows an overview of the test results for limiting magnitudes.
+Click on each row for a plot of the test results.
 
 .. validation-report:: ./MICADO/test_micado/validation_results.xml
 
