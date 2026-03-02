@@ -40,7 +40,7 @@ class ValidationReport:
         return data
 
 
-class PytestReportDirective(Directive):
+class ValidationReportDirective(Directive):
     required_arguments = 1  # path to xml
 
     def run(self):
@@ -105,4 +105,4 @@ class PytestReportDirective(Directive):
 
 
 def setup(app):
-    app.add_directive("pytest-report", PytestReportDirective)
+    app.add_directive("validation-report", ValidationReportDirective)

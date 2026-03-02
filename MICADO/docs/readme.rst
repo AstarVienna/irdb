@@ -88,7 +88,7 @@ Scientific use-case notebooks
 Validation
 ----------
 
-.. pytest-report:: validation_results.xml
+.. validation-report:: ./MICADO/test_micado/validation_results.xml
 
 
 
