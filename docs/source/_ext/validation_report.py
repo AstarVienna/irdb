@@ -94,9 +94,9 @@ class ValidationReportDirective(Directive):
             if (url := props.get("link")) is not None:
                 row["classes"].append("clickable-row")
                 href_html = (
-                    "<a class='row-anchor' "
-                    "target='_blank' rel='noopener noreferrer'"
-                    f"href='../../{url}'>{tc['status']}</a>"
+                    "<a class=\"row-anchor\" "
+                    "target=\"_blank\" rel=\"noopener noreferrer\" "
+                    f"href=\"../../{url}\">{tc['status']}</a>"
                 )
                 entry += nodes.raw("", href_html, format="html")
             else:
