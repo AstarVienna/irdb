@@ -113,7 +113,7 @@ Table
 +++++
 
 .. needtable::
-   :columns: id, result, time
+   :columns: case_name, case_parameter, result
 
 Table of cases
 ++++++++++++++
@@ -121,16 +121,21 @@ Table of cases
 .. needtable::
    :types: test-case
 
-List
-++++
+Results
++++++++
 
-.. needlist::
+.. test-results:: validation_results.xml
 
-List of cases
-+++++++++++++
+Suite
++++++
 
-.. needlist::
-   :types: test-case
+.. test-suite:: MICADO imaging limiting magnitudes
+   :file: validation_results.xml
+   :suite: pytest
+   :id: TESTSUITE_1
+
+   Test results for MICADO.
+
 
 Documentation and useful references
 -----------------------------------
