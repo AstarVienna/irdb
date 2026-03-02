@@ -1,0 +1,13 @@
+/* Light row backgrounds */
+
+tr.pytest-passed {
+    background-color: #e8f5e9;   /* light green */
+}
+
+tr.pytest-failed {
+    background-color: #fdecea;   /* light red */
+}
+
+tr.pytest-skipped {
+    background-color: #fff8e1;   /* light yellow */
+}
