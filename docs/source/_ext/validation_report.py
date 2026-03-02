@@ -75,6 +75,9 @@ class PytestReportDirective(Directive):
             props = tc["properties"]
 
             row = nodes.row(classes=[f"pytest-{tc['status']}"])
+            if (link := props.get("link")) is not None:
+                row["classes"].append("clickable-row")
+                row["data-href"] = link
 
             values = [
                 props.get("ao_mode", ""),
