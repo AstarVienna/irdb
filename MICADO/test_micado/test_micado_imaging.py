@@ -191,9 +191,10 @@ class TestLimiting:
             snr_ax.legend()
             snr_ax.set_title(f"S/N for MICADO {ao_mode} {img_mode}")
 
-            fig_path = str(PATH_HERE / f"_plot/{ao_mode}_{img_mode}_{filt}.pdf")
+            fig_path = PATH_HERE / f"_plot/{ao_mode}_{img_mode}_{filt}.pdf"
+            fig_path.parent.mkdir(parents=True, exist_ok=True)
             fig.savefig(fig_path)
-            record_property("link", fig_path)
+            record_property("link", str(fig_path))
 
             plt.show()
 
