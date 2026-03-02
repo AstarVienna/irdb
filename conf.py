@@ -56,7 +56,7 @@ extensions = [
     # 'sphinx.ext.autodoc',
     # 'jupyter_sphinx.execute',
     # 'sphinxcontrib.apidoc',
-    "docs.source._ext.pytest_report",
+    "docs.source._ext.validation_report",
 ]
 
 # numpydoc settings
