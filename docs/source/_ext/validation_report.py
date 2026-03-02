@@ -47,7 +47,7 @@ class PytestReportDirective(Directive):
     def run(self):
         report = PytestReport(self.arguments[0])
 
-        headers = ["Filter", "Expected", "Obtained", "Difference", "Status"]
+        headers = ["AO mode", "IMG mode", "Filter", "Expected", "Obtained", "Difference", "Status"]
 
         table = nodes.table()
         tgroup = nodes.tgroup(cols=len(headers))
@@ -75,9 +75,11 @@ class PytestReportDirective(Directive):
 
             values = [
                 props.get("filter", ""),
-                props.get("expected", ""),
-                props.get("obtained", ""),
-                props.get("difference", ""),
+                props.get("ao_mode", ""),
+                props.get("img_mode", ""),
+                f"{props.get('expected', '')} mag",
+                f"{props.get('obtained', '')} mag",
+                f"{props.get('difference', '')} mag",
                 tc["status"],
             ]
 
