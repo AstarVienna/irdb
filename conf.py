@@ -178,6 +178,9 @@ html_favicon = 'docs/source/_static/logos/T_favicon.png'
 html_css_files = [
     "validation_report.css",
 ]
+html_js_files = [
+    "clickable_rows.js",
+]
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
