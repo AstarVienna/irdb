@@ -114,6 +114,7 @@ Table
 
 .. needtable::
    :columns: case_name, case_parameter, result
+   :style_row: tr_[[copy('result')]]
 
 Table for all
 +++++++++++++
@@ -138,8 +139,6 @@ Suite
    :file: validation_results.xml
    :suite: MICADO_VALIDATION
    :id: MICADO_TESTS
-
-   Test results for MICADO.
 
 
 Documentation and useful references
