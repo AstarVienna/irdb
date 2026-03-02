@@ -85,10 +85,12 @@ class TestLimiting:
         ],
     )
     def test_MCAO_IMG_4mas(
-        self, record_property, fw1, fw2, r0, rics_lim_mag, abslim, ao_mode="MCAO",
+        self, record_property, fw1, fw2, r0, rics_lim_mag, abslim, ao_mode="MCAO", img_mode="IMG_4mas",
     ):
         filt = fw1 if fw1 != "open" else fw2
         record_property("filter", filt)
+        record_property("ao_mode", ao_mode)
+        record_property("img_mode", img_mode)
         record_property("expected", rics_lim_mag)
         record_property("tolerance", abslim)
 
@@ -96,7 +98,6 @@ class TestLimiting:
         r1, r2 = 10, 15  # aperture radii  r0 (sig), r1-r2 (noise)
         src = st.star_field(n_stars, mmin, mmax, width=3, use_grid=True)
 
-        img_mode = "IMG_4mas"
         cmds = sim.UserCommands(
             use_instrument="MICADO", set_modes=[ao_mode, img_mode]
         )
