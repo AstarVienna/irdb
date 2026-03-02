@@ -74,10 +74,10 @@ class PytestReportDirective(Directive):
             row = nodes.row(classes=[f"pytest-{tc['status']}"])
 
             values = [
-                props.get("filter", ""),
                 props.get("ao_mode", ""),
                 props.get("img_mode", ""),
-                f"{props.get('expected', '')} mag",
+                props.get("filter", ""),
+                f"{props.get('expected', '')} +/- {props.get('tolerance', '')} mag",
                 f"{props.get('obtained', '')} mag",
                 f"{props.get('difference', '')} mag",
                 tc["status"],
