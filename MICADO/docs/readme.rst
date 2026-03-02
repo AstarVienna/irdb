@@ -88,57 +88,8 @@ Scientific use-case notebooks
 Validation
 ----------
 
-.. test-case:: MICADO imaging limiting magnitudes
-   :id: MICADO_img_validation_J
-   :file: validation_results.xml
-   :suite: MICADO_VALIDATION
-   :case: test_MCAO_IMG_4mas[J-open-1-27.9-0.3]
-   :classname: MICADO.test_micado.test_micado_imaging.TestLimiting
+.. pytest-report:: validation_results.xml
 
-.. test-case:: MICADO imaging limiting magnitudes
-   :id: MICADO_img_validation_H
-   :file: validation_results.xml
-   :suite: MICADO_VALIDATION
-   :case: test_MCAO_IMG_4mas[open-H-2-27.5-0.3]
-   :classname: MICADO.test_micado.test_micado_imaging.TestLimiting
-
-.. test-case:: MICADO imaging limiting magnitudes
-   :id: MICADO_img_validation_K
-   :file: validation_results.xml
-   :suite: MICADO_VALIDATION
-   :case: test_MCAO_IMG_4mas[open-Ks-2-27.1-0.3]
-   :classname: MICADO.test_micado.test_micado_imaging.TestLimiting
-
-Table
-+++++
-
-.. needtable::
-   :columns: case_name, case_parameter, result
-   :style_row: tr_[[copy('result')]]
-
-Table for all
-+++++++++++++
-
-.. needtable::
-
-Table of cases
-++++++++++++++
-
-.. needtable::
-   :types: testcase
-
-Results
-+++++++
-
-.. test-results:: validation_results.xml
-
-Suite
-+++++
-
-.. test-suite:: MICADO imaging limiting magnitudes
-   :file: validation_results.xml
-   :suite: MICADO_VALIDATION
-   :id: MICADO_TESTS
 
 
 Documentation and useful references
