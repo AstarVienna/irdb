@@ -125,7 +125,7 @@ Table of cases
 ++++++++++++++
 
 .. needtable::
-   :types: test-case
+   :types: testcase
 
 Results
 +++++++
