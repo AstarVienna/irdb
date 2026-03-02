@@ -114,7 +114,7 @@ class TestLimiting:
         imp = micado.image_planes[0].hdu.data  # e-/pixel/s
 
         if PLOTS:
-            fig, (img_ax, det_ax, snr_ax) = plt.subplots(1, 3)
+            fig, (img_ax, det_ax, snr_ax) = plt.subplots(1, 3, figsize=(20, 8), layout="constrained")
             fig.suptitle(f"MICADO {ao_mode} {img_mode} {filt}-band")
 
             img_ax.imshow(
@@ -194,7 +194,7 @@ class TestLimiting:
             fig_path = PATH_IRDB / f"docs/source/_static/plots/MICADO/limmag/{ao_mode}_{img_mode}_{filt}.pdf"
             fig_path.parent.mkdir(parents=True, exist_ok=True)
             fig.savefig(fig_path)
-            record_property("link", str(fig_path))
+            record_property("link", str(fig_path.relative_to(PATH_IRDB / "docs/source")))
 
             plt.show()
 
