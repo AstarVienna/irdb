@@ -47,7 +47,8 @@ class PytestReportDirective(Directive):
     def run(self):
         report = PytestReport(self.arguments[0])
 
-        headers = ["AO mode", "IMG mode", "Filter", "Expected\n[mag]", "Obtained\n[mag]", "Difference\n[mag]", "Status"]
+        headers = ["AO mode", "IMG mode", "Filter", "Expected", "Obtained", "Difference", "Status"]
+        units = {"Expected": "[mag]", "Obtained": "[mag]", "Difference": "[mag]"}
 
         table = nodes.table()
         tgroup = nodes.tgroup(cols=len(headers))
@@ -59,9 +60,11 @@ class PytestReportDirective(Directive):
         thead = nodes.thead()
         tgroup += thead
         header_row = nodes.row()
-        for h in headers:
+        for header in headers:
             entry = nodes.entry()
-            entry += nodes.paragraph(text=h)
+            entry += nodes.paragraph(text=header)
+            if (unit := units.get(header)) is not None:
+                entry += nodes.paragraph(text=unit)
             header_row += entry
         thead += header_row
 
@@ -84,8 +87,8 @@ class PytestReportDirective(Directive):
             ]
 
             for v in values:
-                entry = nodes.entry()
-                entry += nodes.paragraph(text=str(v))
+                entry = nodes.entry(text=str(v))
+                # entry += nodes.paragraph(text=str(v))
                 row += entry
 
             tbody += row
