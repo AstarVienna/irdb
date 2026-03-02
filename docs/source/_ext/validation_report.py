@@ -92,16 +92,11 @@ class PytestReportDirective(Directive):
 
             entry = nodes.entry()
             if (url := props.get("link")) is not None:
-                print("+++++++++++++++++++++++++++++++++++++++++++++++++++")
-                print("+++++++++++++++++++++++++++++++++++++++++++++++++++")
-                print("+++++++++++++++++++++++++++++++++++++++++++++++++++")
-                print(url)
+                # eg _static/plots/MICADO/limmag/MCAO_IMG_4mas_H.pdf
                 row["classes"].append("clickable-row")
-                link = nodes.reference("", "", refuri=url)
-            #     link += nodes.Text(tc["status"])
-                entry += link
-            # else:
-            entry += nodes.Text(tc["status"])
+                entry += nodes.raw("", f"<a class='row-anchor' href='{url}'>{tc['status']}</a>", format="html")
+            else:
+                entry += nodes.Text(tc["status"])
             row += entry
 
             tbody += row
