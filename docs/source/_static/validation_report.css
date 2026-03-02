@@ -13,6 +13,18 @@ tr.pytest-skipped {
 }
 
 
+/* Link on rows */
+
+.clickable-row {
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.clickable-row:hover {
+    background-color: #f0f4ff;
+}
+
+
 /* Misc */
 
 .nowrap {
