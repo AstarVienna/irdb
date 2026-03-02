@@ -89,7 +89,7 @@ class TestLimiting:
     ):
         filt = fw1 if fw1 != "open" else fw2
         record_property("filter", filt)
-        record_property("expected mag", rics_lim_mag)
+        record_property("expected", rics_lim_mag)
         record_property("tolerance", abslim)
 
         n_stars, mmin, mmax = 400, 25, 30
@@ -191,7 +191,7 @@ class TestLimiting:
             plt.show()
 
         print(f"expected: {rics_lim_mag:.2f}, obtained: {lim_mag:.2f}, delta: {lim_mag-rics_lim_mag:.3f}")
-        record_property("tolerance", round(lim_mag, 2))
+        record_property("obtained", round(lim_mag, 2))
         record_property("difference", round(lim_mag-rics_lim_mag, 3))
 
         lim_mag = round(lim_mag, 4)  # for nicer output msg
