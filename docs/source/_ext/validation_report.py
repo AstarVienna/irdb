@@ -96,10 +96,10 @@ class PytestReportDirective(Directive):
                 print("+++++++++++++++++++++++++++++++++++++++++++++++++++")
                 print("+++++++++++++++++++++++++++++++++++++++++++++++++++")
                 print(url)
-            #     row["classes"].append("clickable-row")
-            #     link = nodes.reference("", "", refuri=url)
+                row["classes"].append("clickable-row")
+                link = nodes.reference("", "", refuri=url)
             #     link += nodes.Text(tc["status"])
-            #     entry += link
+                entry += link
             # else:
             entry += nodes.Text(tc["status"])
             row += entry
