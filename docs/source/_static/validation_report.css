@@ -11,3 +11,10 @@ tr.pytest-failed {
 tr.pytest-skipped {
     background-color: #fff8e1;   /* light yellow */
 }
+
+
+/* Misc */
+
+.nowrap {
+    white-space: nowrap;
+}
