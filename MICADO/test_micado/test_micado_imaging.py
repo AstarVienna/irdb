@@ -189,6 +189,10 @@ class TestLimiting:
             snr_ax.legend()
             snr_ax.set_title(f"S/N for MICADO {ao_mode} {img_mode}")
 
+            fig_path = str(PATH_HERE / f"_plot/{ao_mode}_{img_mode}_{filt}.pdf")
+            fig.savefig(fig_path)
+            record_property("link", fig_path)
+
             plt.show()
 
         print(f"expected: {rics_lim_mag:.2f}, obtained: {lim_mag:.2f}, delta: {lim_mag-rics_lim_mag:.3f}")
