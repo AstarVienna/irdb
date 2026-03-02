@@ -10,7 +10,7 @@ build:
     python: "3.11"
   jobs:
     post_install:
-      - pytest -m validation --junit-xml=validation_results.xml --tb=line || true
+      - pytest ./MICADO/test_micado/ -m validation --junit-xml=validation_results.xml --tb=line -o junit_suite_name=MICADO_VALIDATION || true
 
 sphinx:
    configuration: conf.py
