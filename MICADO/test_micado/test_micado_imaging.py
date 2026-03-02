@@ -11,7 +11,7 @@ Comments
 
 """
 
-# integration test using everything and the MICADO package
+import os
 from pathlib import Path
 import pytest
 from pytest import approx
@@ -30,7 +30,7 @@ PATH_HERE = Path(__file__).parent
 PATH_IRDB = PATH_HERE.parent.parent
 
 rc.__config__["!SIM.file.local_packages_path"] = str(PATH_IRDB)
-PLOTS = False
+PLOTS = os.environ.get("READTHEDOCS", False)  # Run plots on RTD
 if PLOTS:
     mpl.style.use("seaborn-v0_8")
 
@@ -71,13 +71,15 @@ class TestLimiting:
         ("fw1", "fw2", "r0", "rics_lim_mag", "abslim"), [
             pytest.param(
                 "J", "open", 1, 27.9, 0.3,
-                # marks=pytest.mark.xfail(
-                #     reason="something changed in ScopeSim..."
-                #     ),
+                marks=pytest.mark.xfail(
+                    not os.environ.get("READTHEDOCS"),
+                    reason="something changed in ScopeSim..."
+                    ),
                 ),
             pytest.param(
                 "open", "H", 2, 27.5, 0.3,
                 marks=pytest.mark.xfail(
+                    not os.environ.get("READTHEDOCS"),
                     reason="something changed in ScopeSim..."
                     ),
                 ),
