@@ -7,31 +7,30 @@ from docutils import nodes
 from docutils.parsers.rst import Directive
 
 
-class PytestReport:
-    def __init__(self, xml_path):
-        self.tree = ET.parse(Path(xml_path))
-        self.root = self.tree.getroot()
+class ValidationReport:
+    """XML Parser for Validation Report from Pytest."""
 
-    @property
-    def testsuite(self):
-        return self.root.find("testsuite")
+    def __init__(self, xml_path):
+        tree = ET.parse(Path(xml_path))
+        root = tree.getroot()
+        self.suite = root.find("testsuite")
 
     def iter_testcases(self):
-        for tc in self.testsuite.findall("testcase"):
-            yield self._parse_testcase(tc)
+        for testcase in self.suite.findall("testcase"):
+            yield self._parse_testcase(testcase)
 
-    def _parse_testcase(self, tc):
+    def _parse_testcase(self, testcase):
         data = {
             "status": "passed",
             "properties": {},
         }
 
-        if tc.find("failure") is not None:
+        if testcase.find("failure") is not None:
             data["status"] = "failed"
-        elif tc.find("skipped") is not None:
+        elif testcase.find("skipped") is not None:
             data["status"] = "skipped"
 
-        props = tc.find("properties")
+        props = testcase.find("properties")
         if props is not None:
             for prop in props.findall("property"):
                 name = prop.attrib.get("name")
@@ -45,7 +44,7 @@ class PytestReportDirective(Directive):
     required_arguments = 1  # path to xml
 
     def run(self):
-        report = PytestReport(self.arguments[0])
+        report = ValidationReport(self.arguments[0])
 
         headers = ["AO mode", "IMG mode", "Filter", "Expected", "Obtained", "Difference", "Status"]
         units = {"Expected": "[mag]", "Obtained": "[mag]", "Difference": "[mag]"}
@@ -62,9 +61,9 @@ class PytestReportDirective(Directive):
         header_row = nodes.row()
         for header in headers:
             entry = nodes.entry()
-            entry += nodes.paragraph(text=header)
+            entry += nodes.Text(header)
             if (unit := units.get(header)) is not None:
-                entry += nodes.paragraph(text=unit)
+                entry += nodes.Text(unit)
             header_row += entry
         thead += header_row
 
@@ -87,8 +86,8 @@ class PytestReportDirective(Directive):
             ]
 
             for v in values:
-                entry = nodes.entry(text=str(v))
-                # entry += nodes.paragraph(text=str(v))
+                entry = nodes.entry()
+                entry += nodes.Text(str(v))
                 row += entry
 
             tbody += row
