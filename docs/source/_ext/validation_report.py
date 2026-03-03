@@ -117,24 +117,23 @@ class ValidationReportDirective(Directive):
         return [table]
 
     def _collect_rows(self):
-        for tc in self.report.iter_testcases():
-            props = tc["properties"]
+        for testcase in self.report.iter_testcases():
+            props = testcase["properties"]
 
-            row = nodes.row(classes=[f"pytest-{tc['status']}"])
+            row = nodes.row(classes=[f"pytest-{testcase['status']}"])
 
-            values = [
-                props.get("ao_mode", ""),
-                props.get("img_mode", ""),
-                props.get("filter", ""),
-                f"{props.get('expected', '')} +/- {props.get('tolerance', '')}",
-                props.get("obtained", ""),
-                props.get("difference", ""),
-            ]
+            self._add_cell_from_properties(row, testcase, "ao_mode")
+            self._add_cell_from_properties(row, testcase, "img_mode")
+            self._add_cell_from_properties(row, testcase, "filter")
 
-            for v in values:
-                entry = nodes.entry(classes=["nowrap"])
-                entry += nodes.Text(str(v))
-                row += entry
+            entry = nodes.entry(classes=["nowrap"])
+            entry += nodes.Text(f"{props.get('expected', '')} +/- ")
+            entry += nodes.raw("", "&plusmn;", format="html")
+            entry += nodes.Text(f"{props.get('tolerance', '')}")
+            row += entry
+
+            self._add_cell_from_properties(row, testcase, "obtained")
+            self._add_cell_from_properties(row, testcase, "difference")
 
             entry = nodes.entry()
             if (url := props.get("link")) is not None:
@@ -142,14 +141,20 @@ class ValidationReportDirective(Directive):
                 href_html = (
                     "<a class=\"row-anchor\" "
                     "target=\"_blank\" rel=\"noopener noreferrer\" "
-                    f"href=\"../../{url}\">{tc['status']}</a>"
+                    f"href=\"../../{url}\">{testcase['status']}</a>"
                 )
                 entry += nodes.raw("", href_html, format="html")
             else:
-                entry += nodes.Text(tc["status"])
+                entry += nodes.Text(testcase["status"])
             row += entry
 
             yield row
+
+    @staticmethod
+    def _add_cell_from_properties(row, testcase, key: str) -> None:
+        entry = nodes.entry(classes=["nowrap"])
+        entry += nodes.Text(testcase["properties"].get(key, ""))
+        row += entry
 
 
 def setup(app):
