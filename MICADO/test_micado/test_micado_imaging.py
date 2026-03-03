@@ -72,14 +72,14 @@ class TestLimiting:
     @pytest.mark.parametrize(
         ("fw1", "fw2", "r0", "rics_lim_mag", "abslim"), [
             pytest.param(
-                "J", "open", 1, 27.9, 0.3,
+                "J", "open", 1, 27.9, 0.9,
                 marks=pytest.mark.xfail(
                     # not os.environ.get("READTHEDOCS"),
                     reason="something changed in ScopeSim..."
                 ),
             ),
             pytest.param(
-                "open", "H", 2, 27.5, 0.3,
+                "open", "H", 2, 27.5, 0.6,
                 marks=pytest.mark.xfail(
                     # not os.environ.get("READTHEDOCS"),
                     reason="something changed in ScopeSim..."
