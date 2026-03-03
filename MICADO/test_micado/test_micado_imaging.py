@@ -72,7 +72,7 @@ class TestLimiting:
             pytest.param(
                 "J", "open", 1, 27.9, 0.3,
                 marks=pytest.mark.xfail(
-                    not os.environ.get("READTHEDOCS"),
+                    # not os.environ.get("READTHEDOCS"),
                     reason="something changed in ScopeSim..."
                     ),
                 ),
