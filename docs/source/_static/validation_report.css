@@ -8,9 +8,14 @@ tr.pytest-failed {
     background-color: #fdecea;   /* light red */
 }
 
-tr.pytest-skipped {
+tr.pytest-xfailed {
     background-color: #fff8e1;   /* light yellow */
 }
+
+tr.pytest-skipped {
+    background-color: #dddddd;   /* light gray */
+}
+
 
 
 /* Link on rows */
