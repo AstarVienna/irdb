@@ -120,21 +120,8 @@ class ValidationReportDirective(Directive):
 
     def _collect_rows(self):
         for testcase in self.report.iter_testcases():
-            print(testcase)
             row = nodes.row(classes=[f"pytest-{testcase['status']}"])
-
-            self._add_cell_from_properties(row, testcase, "ao_mode")
-            self._add_cell_from_properties(row, testcase, "img_mode")
-            self._add_cell_from_properties(row, testcase, "filter")
-
-            entry = nodes.entry(classes=["nowrap"])
-            self._add_text_from_properties(entry, testcase, "expected")
-            self._add_raw_html(entry, " &plusmn; ")
-            self._add_text_from_properties(entry, testcase, "tolerance")
-            row += entry
-
-            self._add_cell_from_properties(row, testcase, "obtained")
-            self._add_cell_from_properties(row, testcase, "difference")
+            self._add_properties_to_row(row, testcase)
 
             entry = nodes.entry()
             if (url := testcase["properties"].get("link")) is not None:
@@ -150,6 +137,22 @@ class ValidationReportDirective(Directive):
             row += entry
 
             yield row
+
+    def _add_properties_to_row(self, row, testcase) -> None:
+        if not testcase["properties"]:
+            return  # skip
+        self._add_cell_from_properties(row, testcase, "ao_mode")
+        self._add_cell_from_properties(row, testcase, "img_mode")
+        self._add_cell_from_properties(row, testcase, "filter")
+
+        entry = nodes.entry(classes=["nowrap"])
+        self._add_text_from_properties(entry, testcase, "expected")
+        self._add_raw_html(entry, " &plusmn; ")
+        self._add_text_from_properties(entry, testcase, "tolerance")
+        row += entry
+
+        self._add_cell_from_properties(row, testcase, "obtained")
+        self._add_cell_from_properties(row, testcase, "difference")
 
     def _add_cell_from_properties(self, row, testcase, key: str) -> None:
         entry = nodes.entry(classes=["nowrap"])
