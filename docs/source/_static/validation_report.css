@@ -13,7 +13,7 @@ tr.pytest-xfailed {
 }
 
 tr.pytest-skipped {
-    background-color: #dddddd;   /* light gray */
+    background-color: #aaaaaa;   /* light gray */
 }
 
 
