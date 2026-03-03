@@ -88,7 +88,9 @@ Scientific use-case notebooks
 Validation
 ----------
 The following table shows an overview of the test results for limiting magnitudes.
-Click on each row for a plot of the test results.
+Green (passed) means a result within the given tolerances, yellow (xfailed) means an *expected* deviation, red (failed) means an *unexpected* issue.
+
+**Click** on each row for a plot of the test results.
 
 .. validation-report:: ./MICADO/test_micado/validation_results.xml
 
