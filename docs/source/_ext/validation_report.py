@@ -112,7 +112,7 @@ class ValidationReportDirective(Directive):
 
         tbody = nodes.tbody()
         tgroup += tbody
-        tbody.extend(sum(self._collect_rows()))
+        tbody.extend(list(self._collect_rows()))
 
         return [table]
 
