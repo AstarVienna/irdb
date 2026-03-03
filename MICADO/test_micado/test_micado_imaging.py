@@ -74,22 +74,19 @@ class TestLimiting:
             pytest.param(
                 "J", "open", 1, 27.9, 1.0,
                 marks=pytest.mark.xfail(
-                    # not os.environ.get("READTHEDOCS"),
-                    reason="something changed in ScopeSim..."
+                    reason="most likely PSF contamination of nearby sources"
                 ),
             ),
             pytest.param(
                 "open", "H", 2, 27.5, 0.6,
                 marks=pytest.mark.xfail(
-                    # not os.environ.get("READTHEDOCS"),
-                    reason="something changed in ScopeSim..."
+                    reason="most likely PSF contamination of nearby sources"
                 ),
             ),
             pytest.param(
                 "open", "Ks", 2, 27.1, 0.3,
                 marks=pytest.mark.xfail(
-                    # not os.environ.get("READTHEDOCS"),
-                    reason="something changed in ScopeSim..."
+                    reason="most likely PSF contamination of nearby sources"
                 ),
             ),
         ],
