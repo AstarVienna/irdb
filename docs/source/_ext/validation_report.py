@@ -93,6 +93,11 @@ class ValidationReportDirective(Directive):
         self.report = ValidationReport(self.arguments[0])
 
     def run(self):
+        summary = nodes.paragraph(text=(
+            f"Results from {self.report.summary['tests']} "
+            f"tests for {self.report.name}"
+        ))
+
         table = nodes.table()
         tgroup = nodes.tgroup(cols=len(self.headers))
         table += tgroup
@@ -116,7 +121,7 @@ class ValidationReportDirective(Directive):
         tgroup += tbody
         tbody.extend(list(self._collect_rows()))
 
-        return [table]
+        return [summary, table]
 
     def _collect_rows(self):
         for testcase in self.report.iter_testcases():
