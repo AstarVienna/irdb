@@ -67,6 +67,7 @@ class TestLimiting:
 
     """
 
+    @pytest.mark.parametrize("img_mode", ["IMG_4mas", "IMG_1.5mas"])
     @pytest.mark.parametrize("ao_mode", ["MCAO", "SCAO"])
     @pytest.mark.parametrize(
         ("fw1", "fw2", "r0", "rics_lim_mag", "abslim"), [
@@ -88,7 +89,7 @@ class TestLimiting:
         ],
     )
     def test_MCAO_IMG_4mas(
-        self, record_property, fw1, fw2, r0, rics_lim_mag, abslim, ao_mode, img_mode="IMG_4mas",
+        self, record_property, fw1, fw2, r0, rics_lim_mag, abslim, ao_mode, img_mode,
     ):
         filt = fw1 if fw1 != "open" else fw2
         record_property("filter", filt)
