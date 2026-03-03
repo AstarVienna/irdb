@@ -217,11 +217,11 @@ class TestLimiting:
     def _photometry(xpix, ypix, mags, r0, r1, r2, det):
         for x, y, mag in zip(xpix, ypix, mags):
             sig_im = np.copy(det[y-r0:y+r0+1, x-r0:x+r0+1])
-            bg_im  = np.copy(det[y-r2:y+r2+1, x-r2:x+r2+1])
-            bg_im[r1:-r1, r1:-r1] = 0
+            bkg_im = np.copy(det[y-r2:y+r2+1, x-r2:x+r2+1])
+            bkg_im[r1:-r1, r1:-r1] = 0  # use masked array?
 
-            bg_median = np.median(bg_im[bg_im > 0])
-            bg_std = np.std(bg_im[bg_im > 0])
+            bg_median = np.median(bkg_im[bkg_im > 0])
+            bg_std = np.std(bkg_im[bkg_im > 0])
             # bg_std = np.sqrt(bg_median)
             noise = bg_std * np.sqrt(np.prod(sig_im.shape)) * np.sqrt(2)  # sqrt(2) comes from BG subtraction (see Rics doc)
             signal = np.sum(sig_im - bg_median)
