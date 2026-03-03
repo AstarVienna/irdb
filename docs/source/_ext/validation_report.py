@@ -94,7 +94,7 @@ class ValidationReportDirective(Directive):
 
     def run(self):
         summary = nodes.paragraph(text=(
-            f"Results from {self.report.summary['tests']} "
+            f"Showing results from {self.report.summary['tests']} "
             f"tests for {self.report.name}"
         ))
 
@@ -121,7 +121,15 @@ class ValidationReportDirective(Directive):
         tgroup += tbody
         tbody.extend(list(self._collect_rows()))
 
-        return [summary, table]
+        footnote = nodes.paragraph(text=(
+            "Difference is calculated as obtained - expected, meaning a "
+            "positive difference indicates ScopeSim reached a fainter limiting "
+            "magnitude than the reference document, while a negative difference"
+            " means ScopeSim did not reach the reference magnitude in that "
+            "combination of modes and filter."
+        ))
+
+        return [summary, table, footnote]
 
     def _collect_rows(self):
         for testcase in self.report.iter_testcases():
