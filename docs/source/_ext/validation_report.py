@@ -57,7 +57,9 @@ class ValidationReport:
             data["message"] = failure.get("message")
             data["text"] = failure.text
         elif (skipped := testcase.find("skipped")) is not None:
-            data["status"] = skipped.get("type").removeprefix("pytest.") + "ed"
+            status = skipped.get("type").removeprefix("pytest.")
+            status = status + "ped" if status == "skip" else status + "ed"
+            data["status"] = status
             data["message"] = skipped.get("message")
         # Note: xfail is a type of skip, Xpass looks identical to pass in xml
 
@@ -118,6 +120,7 @@ class ValidationReportDirective(Directive):
 
     def _collect_rows(self):
         for testcase in self.report.iter_testcases():
+            print(testcase)
             row = nodes.row(classes=[f"pytest-{testcase['status']}"])
 
             self._add_cell_from_properties(row, testcase, "ao_mode")
