@@ -1,0 +1,41 @@
+/* Light row backgrounds */
+
+tr.pytest-passed {
+    background-color: #e8f5e9;   /* light green */
+}
+
+tr.pytest-failed {
+    background-color: #fdecea;   /* light red */
+}
+
+tr.pytest-xfailed {
+    background-color: #fff8e1;   /* light yellow */
+}
+
+tr.pytest-skipped {
+    background-color: #aaaaaa;   /* light gray */
+}
+
+
+
+/* Link on rows */
+
+.clickable-row {
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.clickable-row:hover {
+    background-color: #f0f4ff;
+}
+
+.clickable-row a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Misc */
+
+.nowrap {
+    white-space: nowrap;
+}

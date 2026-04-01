@@ -27,7 +27,7 @@
             ID: ["lms-pwa", "LMS_PWA ID"]
             NAME: ["      ", "LMS_PWA NAME"]
             POS: [0, "LMS_PWA position"]                  # TODO
-            POSNAME: ["open", "LMS_PWA named position"]
+            POSNAME: ["#lms-pp1.current_filter", "LMS_PWA named position"]
             STAT: ["Standstill", "LMS_PWA status"]
 
           OPTI6:                # LMS spectral IFU mechanism

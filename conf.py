@@ -56,6 +56,7 @@ extensions = [
     # 'sphinx.ext.autodoc',
     # 'jupyter_sphinx.execute',
     # 'sphinxcontrib.apidoc',
+    "docs.source._ext.validation_report",
 ]
 
 # numpydoc settings
@@ -174,7 +175,12 @@ html_theme_options = {"body_max_width": "900px"}
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['docs/source/_static']      # 'METIS/docs/example_notebooks'
 html_favicon = 'docs/source/_static/logos/T_favicon.png'
-
+html_css_files = [
+    "validation_report.css",
+]
+html_js_files = [
+    "clickable_rows.js",
+]
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.

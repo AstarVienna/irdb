@@ -1,0 +1,19 @@
+# author : Oliver Czoske
+# source : Oliver Czoske
+# date_created : 2026-03-16
+# date_modified : 2026-03-16
+# status : Closed filter (0% transmission)
+# type : filter:transmission
+# wavelength_unit : um
+# center : 11.3
+# width : 17.5
+# blue_cutoff : 2.5
+# red_cutoff : 20.1
+# comment : for closed positions of filter wheels
+# changes :
+#
+wavelength  transmission
+2.5   0.0
+2.6   1.e-32
+20.0  1.e-32
+20.1  0.0

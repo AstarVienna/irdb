@@ -31,6 +31,7 @@ effects:
       filter_names:
         # 18 positions (E-REP-MPIA-MET-1008_1-0)
         - open
+        - closed
         - N1
         - N2
         - N3
@@ -57,6 +58,7 @@ effects:
         # 11 positions (E-REP-MPIA-MET-1008_1-0)
         # OD = optical density, transmissivity 10^{-OD}
         - open
+        - closed
         - ND_OD1
         - ND_OD2
         - ND_OD3

@@ -4,9 +4,9 @@ on:
     branches:
       - dev_master
 
-  # Run every day at 5:00 UTC
+  # Runs at 05:00 UTC, Monday through Friday
   schedule:
-    - cron: "0 5 * * *"
+    - cron: "0 5 * * MON-FRI"
 
 jobs:
   tests:
