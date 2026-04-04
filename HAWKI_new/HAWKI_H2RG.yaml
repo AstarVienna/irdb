@@ -1,0 +1,89 @@
+### HAWKI Detector - 4x Hawaii-2RG mosaic
+---
+object: detector
+alias: DET
+name: HAWKI_detector_array
+description: 4x H2RG detectors in 2x2 mosaic for HAWKI
+date_modified: 2026-04-03
+changes:
+  - 2026-04-03 Created HAWKI_new detector config from scratch
+
+properties:
+  image_plane_id: 0
+  temperature: -198           # 75K detector operating temperature [deg C]
+  dit: "!OBS.dit"
+  ndit: "!OBS.ndit"
+  width: 2048
+  height: 2048
+  x: 0
+  y: 0
+  gain: 1.0
+
+effects:
+  - name: detector_array_list
+    description: HAWKI 4-chip H2RG mosaic layout
+    class: DetectorList
+    kwargs:
+      filename: FPA_hawki_layout.dat
+      active_detectors: "all"
+
+  - name: detector_window
+    description: single-chip convenience window for quick simulations
+    class: DetectorWindow
+    include: False
+    kwargs:
+      image_plane_id: 0
+      pixel_size: 0.010
+      x: "!DET.x"
+      y: "!DET.y"
+      width: "!DET.width"
+      height: "!DET.height"
+
+  - name: qe_curve
+    description: H2RG quantum efficiency curve
+    class: QuantumEfficiencyCurve
+    kwargs:
+      filename: QE_H2RG.dat
+
+  - name: exposure_action
+    description: summing up sky signal for all DITs and NDITs
+    class: ExposureIntegration
+
+  - name: dark_current
+    description: HAWKI dark current at 75K
+    class: DarkCurrent
+    kwargs:
+      value: 0.10
+
+  - name: detector_linearity
+    description: H2RG detector non-linearity and saturation
+    class: LinearityCurve
+    kwargs:
+      filename: FPA_hawki_linearity.dat
+
+  - name: shot_noise
+    description: Poisson shot noise
+    class: ShotNoise
+
+  - name: border_reference_pixels
+    description: H2RG 4-pixel reference border
+    class: ReferencePixelBorder
+    kwargs:
+      border: [4, 4, 4, 4]
+
+  - name: readout_noise
+    description: H2RG correlated readout noise
+    class: PoorMansHxRGReadoutNoise
+    kwargs:
+      noise_std: 12
+      n_channels: 32
+
+  - name: exposure_output
+    description: return sum over NDIT sub-exposures
+    class: ExposureOutput
+
+  - name: ad_conversion
+    description: convert electrons to ADU
+    class: ADConversion
+    kwargs:
+      dtype: float32

@@ -1,0 +1,25 @@
+/* ######################################################################################################
+** # "Yet Another Multicolum Layout" (c) by Dirk Jesse (http://www.yaml.de) #############################
+** ######################################################################################################
+** 
+**  YAML Version: 2.5
+**  Dateiversion: 18.06.06  
+**  Datei       : layout_test_shinybuttons.css
+**  Funktion    : Zentrales Stylesheet f�r den Test der Hauptnavigation "Shiny Buttons"
+**
+*/
+
+@import url(main/base.css);
+@import url(main/jquery-ui.css);
+@import url(modifications/basemod_2col_left.css);
+/* @import url(main/content.css);!replaced by eso2007.css */
+@import url(eso2008.css); 
+@import url(navigation/nav_vlist.css); /* left navigation */
+@import url(navigation/nav_shinybuttons.css); 
+
+@import url(eso/header.css); /* header */
+/* @import url(eso/cols.css);!replaced by eso2007.css */
+@import url(eso/navmain.css); /* top navigation */
+@import url(eso/footer.css);  /* footer */
+@import url(eso/frontpage.css);  /* frontpage */
+@import url(print/print_003.css);

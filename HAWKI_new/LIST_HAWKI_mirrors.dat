@@ -1,0 +1,19 @@
+# author : HAWKI_new package
+# source : VLT-MAN-ESO-14800-3486_v116.2.pdf
+# date_created  : 2026-04-03
+# date_modified : 2026-04-03
+# status : development
+# type : mirror:list
+# description : HAWKI internal optics entrance window and 4 gold mirrors
+# outer_unit : m
+# inner_unit : m
+# angle_unit : degree
+# temperature_unit : deg_C
+# changes :
+# - 2026-04-03 Created for HAWKI_new package
+name        outer  inner  angle  temperature  action        filename
+H0_EntrWin  0.4    0.0    0      10           transmission  TER_window.dat
+H1_Fold     0.4    0.0    20     -153         reflection    TER_mirror_gold.dat
+H2_Img1     0.3    0.0    20     -153         reflection    TER_mirror_gold.dat
+H3_ReImg1   0.05   0.0    20     -153         reflection    TER_mirror_gold.dat
+H4_ReImg2   0.2    0.0    10     -153         reflection    TER_mirror_gold.dat

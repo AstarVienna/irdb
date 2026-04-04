@@ -1,0 +1,27 @@
+# author : SVO Filter Profile Service
+# source : svo2.cab.inta-csic.es/theory/fps
+# date_created  : 2026-04-03
+# date_modified : 2026-04-03
+# type : filter:transmission
+# status : measured
+# description : HAWKI NB0984 filter transmission curve
+# wavelength_unit : um
+wavelength  transmission
+0.9790      0.000
+0.9800      0.005
+0.9810      0.050
+0.9815      0.150
+0.9820      0.350
+0.9825      0.500
+0.9830      0.570
+0.9835      0.595
+0.9840      0.600
+0.9845      0.600
+0.9850      0.595
+0.9855      0.570
+0.9860      0.500
+0.9865      0.350
+0.9870      0.150
+0.9880      0.050
+0.9890      0.005
+0.9900      0.000

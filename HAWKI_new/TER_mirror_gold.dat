@@ -1,0 +1,11 @@
+# author : HAWKI_new package
+# source : Standard unprotected gold coating reflectivity
+# date_created  : 2026-04-03
+# date_modified : 2026-04-03
+# type : mirror:reflection
+# status : development
+# description : Unprotected gold mirror reflectivity for NIR
+# wavelength_unit : um
+wavelength  reflection
+0.3         0.975
+3.0         0.975

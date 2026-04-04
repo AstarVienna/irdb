@@ -1,0 +1,13 @@
+### HAWKI seeing-limited imaging mode
+---
+object: instrument
+alias: INST
+name: HAWKI_IMG
+description: HAWKI seeing-limited imaging mode configuration
+
+effects:
+  - name: hawki_seeing_psf
+    description: seeing-limited PSF for HAWKI imaging
+    class: SeeingPSF
+    kwargs:
+      fwhm: "!OBS.seeing"

@@ -1,0 +1,24 @@
+# author : HAWKI_new package
+# source : VLT-MAN-ESO-14800-3486_v116.2.pdf
+# date_created  : 2026-04-03
+# date_modified : 2026-04-03
+# type : detector:linearity
+# status : development
+# description : H2RG linearity curve for HAWKI detectors
+# incident_unit : electron
+# measured_unit : electron
+incident    measured
+0           0
+10000       10000
+20000       20000
+30000       30000
+40000       40000
+50000       50000
+60000       60000
+70000       69300
+80000       77600
+90000       84600
+100000      88000
+120000      90000
+200000      90000
+1e10        90000

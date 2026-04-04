@@ -1,0 +1,23 @@
+# name : HAWKI H2RG focal plane array layout
+# author : HAWKI_new package
+# source : VLT-MAN-ESO-14800-3486_v116.2.pdf
+# date_created  : 2026-04-03
+# date_modified : 2026-04-03
+# type : detector:chip_list
+# status : development
+# description : 4x Hawaii-2RG detectors in a 2x2 mosaic
+# x_cen_unit : mm
+# y_cen_unit : mm
+# x_size_unit : pix
+# y_size_unit : pix
+# pixel_size_unit : mm
+# angle_unit : deg
+# gain_unit : electron/adu
+# image_plane_id : 0
+# changes :
+# - 2026-04-03 Created for HAWKI_new package
+id  x_cen    y_cen    x_size  y_size  pixel_size  angle  gain
+1   -11.390  -11.400  2048    2048    0.010       0.00   1.979
+2    10.615  -11.375  2048    2048    0.010       0.13   2.133
+3    10.660   10.520  2048    2048    0.010       0.04   1.991
+4   -11.340   10.495  2048    2048    0.010       0.03   2.429

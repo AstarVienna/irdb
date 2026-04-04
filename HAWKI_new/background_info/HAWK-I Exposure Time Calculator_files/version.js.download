@@ -1,0 +1,51 @@
+$(window).on('load', function () {
+
+	var path  = "/observing/etc/doc/versions.json";
+	$.getJSON(path, function(dict) {
+		var html_section = $('#version_section');
+		var instrument_name = html_section.attr('title');
+
+		var content = "";
+		content = content + "<ul>";
+
+		// Process the current version
+		var current_version = dict["current"]["version"];
+		var current_date = dict["current"]["date"];
+		var current_comment = [];
+		if (instrument_name in dict["current"]) {
+			current_comment = dict["current"][instrument_name];
+		}
+		else {
+			current_comment = dict["current"]["others"];
+		}
+
+		content = content + "  <li>";
+		content = content + "    <b>Version " + current_version + " (" + current_date + ")</b><br>";
+		for (var index = 0; index < current_comment.length; ++index) {
+			var c = current_comment[index];
+			content = content + "    " + c + "<br>";
+		}
+		content = content + "  </li><br>";
+
+		// Process history
+		histo = dict["history"][instrument_name];
+		for (var index = 0; index < histo.length; ++index) {
+			var version = histo[index]["version"];
+			var date = histo[index]["date"];
+			var comments = histo[index]["comments"];
+			content = content + "  <li>";
+			content = content + "    <b>Version " + version + " (" + date + ")</b><br>";
+			for (var indexc = 0; indexc < comments.length; ++indexc) {
+				var c = comments[indexc];
+				content = content + "    " + c + "<br>";
+			}
+			content = content + "  </li><br>";
+		}
+
+		content = content + "</ul>"
+
+		// Set the content of the version section
+		html_section.html(content);
+	});
+
+});

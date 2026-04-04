@@ -1,0 +1,51 @@
+### HAWKI - High Acuity Wide field K-band Imager
+object: instrument
+alias: INST
+name: HAWKI
+description: base configuration for HAWKI at VLT UT4
+date_modified: 2026-04-03
+changes:
+  - 2026-04-03 Created HAWKI_new package from scratch
+
+properties:
+  temperature: -153           # 120K instrument operating temperature [deg C]
+  pixel_scale: 0.1064         # [arcsec/pixel]
+  plate_scale: 10.6           # [arcsec/mm]
+  image_plane_id: 0
+  filter_file_format: "filters/TC_filter_{}.dat"
+
+effects:
+  - name: hawki_field_of_view
+    description: HAWKI 7.5 x 7.5 arcmin field of view
+    class: ApertureMask
+    kwargs:
+      array_dict:
+        x: [-225, 225, 225, -225]
+        y: [-225, -225, 225, 225]
+      x_unit: arcsec
+      y_unit: arcsec
+
+  - name: hawki_mirror_list
+    description: HAWKI internal optics - entrance window + 4 gold mirrors
+    class: SurfaceList
+    kwargs:
+      filename: LIST_HAWKI_mirrors.dat
+
+  - name: filter_wheel
+    description: HAWKI filter wheel with broadband and narrowband filters
+    class: FilterWheel
+    kwargs:
+      filter_names:
+        - Y
+        - J
+        - H
+        - Ks
+        - BrGamma
+        - CH4
+        - H2
+        - NB0984
+        - NB1060
+        - NB1190
+        - NB2090
+      filename_format: "!INST.filter_file_format"
+      current_filter: "!OBS.filter_name"

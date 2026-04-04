@@ -1,0 +1,56 @@
+---
+object: configuration
+alias: OBS
+name: HAWKI_default_configuration
+description: default parameters needed for a HAWKI simulation
+status: development
+date_modified: 2026-04-03
+changes:
+  - 2026-04-03 Created HAWKI_new package from scratch
+
+packages:
+  - Paranal
+  - VLT
+  - HAWKI_new
+
+yamls:
+  - Paranal.yaml
+  - VLT.yaml
+  - HAWKI.yaml
+  - HAWKI_H2RG.yaml
+
+properties:
+  instrument: HAWKI
+  modes: ["IMG"]
+  filter_name: Ks
+  airmass: 1.2
+  declination: -30
+  hour_angle: 0
+  pupil_angle: 0
+  dit: 60
+  ndit: 1
+  seeing: 0.8
+
+mode_yamls:
+  - object: observation
+    alias: OBS
+    name: IMG
+    description: "HAWKI seeing-limited wide-field imaging"
+    yamls:
+      - HAWKI_IMG.yaml
+    properties:
+      filter_name: Ks
+
+---
+object: simulation
+alias: SIM
+name: HAWKI_simulation_parameters
+description: simulation parameters for a HAWKI run
+
+properties:
+  random:
+    seed:
+  spectral:
+    wave_min: 0.85
+    wave_mid: 1.6
+    wave_max: 2.5
