@@ -1,0 +1,32 @@
+---
+### MICADO IFU mode
+object: instrument
+alias: INST
+name: MICADO_IFU
+description: additional effects for the IFU mode
+date_modified: 2026-04-07
+changes:
+  - 2026-04-07 (OC) include image slicer
+
+properties:
+  pixel_scale: 0.004          # arcsec / pixel
+  plate_scale: 0.266666666666 # arcsec / pixel
+  decouple_detector_from_sky_headers: True   # needed for spectroscopy
+
+effects:
+  - name: image_slicer
+    description: field of view of the image slicer
+    class: MetisLMSImageSlicer
+    kwargs:
+      filename: MICADO_IFU_Apertures.fits
+      ext_id: "Aperture List"
+
+---
+### set observation mode
+object: observation
+alias: OBS
+name: MICADO_IFU
+
+properties:
+  obs_mode: "IFU"
+  fits_ins_mode: "IFU"

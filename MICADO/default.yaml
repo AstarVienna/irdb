@@ -106,6 +106,20 @@ mode_yamls :
   yamls :
   - MICADO_IMG_HCI.yaml
 
+- object: observation
+  alias: OBS
+  name: IFU
+  description: "Integral-field spectroscopy"
+  status: experimental
+  yamls:
+  - MICADO_IFU.yaml
+  properties:
+    trace_file: TRACE_MICADO.fits
+    filter_name_fw1: Spec_HK
+    filter_name_fw2: open
+    filter_name_pupil: open
+    fits_ins_filt: Spec_HK
+
 - object : observation
   alias: OBS
   name : SPEC_15000x20
