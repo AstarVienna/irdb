@@ -21,6 +21,15 @@ effects:
       filename: MICADO_IFU_Apertures.fits
       ext_id: "Aperture List"
 
+  - name: spectral_traces
+    description: spectral order trace geometry on the focal plane
+    class: SpectralTraceList
+    kwargs:
+      filename: "!OBS.trace_file"
+      wave_colname: "wavelength"
+      s_colname: "xi"
+      col_number_start: 1
+
 ---
 ### set observation mode
 object: observation
