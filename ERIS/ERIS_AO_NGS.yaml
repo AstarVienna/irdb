@@ -1,0 +1,12 @@
+### ERIS NGS AO mode
+object: instrument
+alias: INST
+name: ERIS_AO_NGS
+description: Natural Guide Star AO mode for ERIS
+
+effects:
+  - name: eris_ao_psf
+    description: NGS AO PSF placeholder (approx K-band Strehl 60pct)
+    class: SeeingPSF
+    kwargs:
+      fwhm: 0.1

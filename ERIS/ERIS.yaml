@@ -1,0 +1,15 @@
+### ERIS common fore-optics
+object: instrument
+alias: INST
+name: ERIS
+description: ERIS AO warm optics common to all modes
+
+properties:
+  temperature: 10           # warm optics at ambient [deg C]
+
+effects:
+  - name: eris_warm_optics
+    description: ERIS AO module relay optics (dichroic, derotator, fold mirrors, NIX selector)
+    class: SurfaceList
+    kwargs:
+      filename: LIST_ERIS_warm_optics.dat

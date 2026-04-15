@@ -1,0 +1,20 @@
+# author : ERIS package
+# source : Davies et al. 2023 A&A 674 A207 and ESO-476500 ERIS User Manual v117.1
+# date_created  : 2026-04-15
+# date_modified : 2026-04-15
+# status : development
+# type : mirror:list
+# description : ERIS AO warm optics and NIX selector mirror
+# outer_unit : m
+# inner_unit : m
+# angle_unit : degree
+# temperature_unit : deg_C
+# changes :
+# - 2026-04-15 Created for ERIS package
+name              outer  inner  angle  temperature  action        filename
+AO_dichroic       0.4    0.0    45     10           transmission  TER_dichroic_nir.dat
+AO_fold1          0.4    0.0    45     10           reflection    TC_mirror_aluminium.dat
+AO_derotator_1    0.4    0.0    30     10           reflection    TC_mirror_aluminium.dat
+AO_derotator_2    0.4    0.0    30     10           reflection    TC_mirror_aluminium.dat
+AO_derotator_3    0.4    0.0    30     10           reflection    TC_mirror_aluminium.dat
+NIX_selector      0.4    0.0    45     10           reflection    TER_mirror_gold.dat

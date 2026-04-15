@@ -1,0 +1,39 @@
+---
+### ERIS NIX JHK 27mas/pix imaging mode
+object: instrument
+alias: INST
+name: ERIS_NIX_IMG_JHK27
+description: NIX JHK-band 27mas/pix imaging mode (55.4 arcsec FoV)
+
+properties:
+  pixel_scale: 0.02692        # arcsec/pixel (26.92 mas/pix measured)
+  plate_scale: 1.4956         # arcsec/mm (18um pixels -> 26.92mas)
+
+effects:
+  - name: nix_field_of_view
+    description: NIX JHK-27mas field of view (55.4 x 55.4 arcsec)
+    class: ApertureMask
+    kwargs:
+      array_dict:
+        x: [-27.7, 27.7, 27.7, -27.7]
+        y: [-27.7, -27.7, 27.7, 27.7]
+      x_unit: arcsec
+      y_unit: arcsec
+
+  - name: nix_camera_optics
+    description: NIX JHK-27mas camera barrel (3 lenses + fold mirror)
+    class: SurfaceList
+    kwargs:
+      filename: LIST_ERIS_nix_optics_jhk13.dat
+
+---
+### Override simulation spectral range for JHK modes
+object: simulation
+alias: SIM
+name: ERIS_NIX_JHK27_sim_params
+
+properties:
+  spectral:
+    wave_min: 0.9
+    wave_mid: 1.6
+    wave_max: 2.6

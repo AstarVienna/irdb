@@ -1,0 +1,12 @@
+### ERIS No-AO (seeing limited) mode
+object: instrument
+alias: INST
+name: ERIS_AO_NOAO
+description: No AO correction (seeing limited)
+
+effects:
+  - name: eris_ao_psf
+    description: Seeing limited PSF
+    class: SeeingPSF
+    kwargs:
+      fwhm: "!OBS.seeing"

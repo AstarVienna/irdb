@@ -1,0 +1,20 @@
+# author : ERIS package
+# source : Pearson et al. 2016 SPIE 9908 99083F and ERIS User Manual v117.1
+# date_created  : 2026-04-15
+# date_modified : 2026-04-15
+# status : development
+# type : mirror:list
+# description : ERIS NIX JHK-13mas camera optics (3 lenses plus fold mirrors)
+# outer_unit : m
+# inner_unit : m
+# angle_unit : degree
+# temperature_unit : deg_C
+# changes :
+# - 2026-04-15 Created for ERIS package. Target instrument throughput 70-75pct JHK
+name              outer  inner  angle  temperature  action        filename
+NIX_entrance_win  0.2    0.0    0      -198         transmission  TER_entrance_window_CaF2.dat
+NIX_lens1_BaF2    0.1    0.0    0      -198         transmission  TER_entrance_window_CaF2.dat
+NIX_lens2_IRG2    0.1    0.0    0      -198         transmission  TER_entrance_window_CaF2.dat
+NIX_lens3_ZnSe    0.1    0.0    0      -198         transmission  TER_entrance_window_CaF2.dat
+NIX_fold1         0.1    0.0    45     -198         reflection    TER_mirror_gold.dat
+NIX_fold2         0.1    0.0    45     -198         reflection    TER_mirror_gold.dat

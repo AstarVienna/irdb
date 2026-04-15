@@ -1,0 +1,20 @@
+# name : ERIS NIX H2RG focal plane array layout
+# author : ERIS package
+# source : ESO-476500 ERIS User Manual v117.1
+# date_created  : 2026-04-15
+# date_modified : 2026-04-15
+# type : detector:chip_list
+# status : development
+# description : Single Hawaii-2RG 5um cutoff detector for ERIS NIX
+# x_cen_unit : mm
+# y_cen_unit : mm
+# x_size_unit : pix
+# y_size_unit : pix
+# pixel_size_unit : mm
+# angle_unit : deg
+# gain_unit : electron/adu
+# image_plane_id : 0
+# changes :
+# - 2026-04-15 Created for ERIS package
+id  x_cen   y_cen   x_size  y_size  pixel_size  angle  gain
+1   0.000   0.000   2048    2048    0.018       0.0    5.2

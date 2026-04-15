@@ -1,0 +1,12 @@
+### ERIS Seeing Enhancer mode
+object: instrument
+alias: INST
+name: ERIS_AO_SE
+description: Seeing Enhancer mode (LGS without tip-tilt star)
+
+effects:
+  - name: eris_ao_psf
+    description: Seeing Enhancer PSF placeholder (partially corrected)
+    class: SeeingPSF
+    kwargs:
+      fwhm: 0.3

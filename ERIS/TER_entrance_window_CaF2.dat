@@ -1,0 +1,23 @@
+# author : ERIS package
+# source : CaF2 optical properties
+# date_created  : 2026-04-15
+# date_modified : 2026-04-15
+# type : window:transmission
+# status : development
+# description : ERIS NIX CaF2 cryostat entrance window transmission
+# wavelength_unit : um
+# changes :
+# - 2026-04-15 Created for ERIS package. CaF2 transmits 0.2-8um at approx 93pct
+wavelength  transmission  reflection  emissivity
+0.50        0             1           0
+0.80        0.93          0.04        0.03
+1.00        0.93          0.04        0.03
+2.00        0.93          0.04        0.03
+3.00        0.93          0.04        0.03
+4.00        0.93          0.04        0.03
+5.00        0.93          0.04        0.03
+5.50        0.93          0.04        0.03
+6.00        0.90          0.05        0.05
+7.00        0.80          0.05        0.15
+8.00        0.50          0.05        0.45
+9.00        0             1           0

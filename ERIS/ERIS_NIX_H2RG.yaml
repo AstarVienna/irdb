@@ -1,0 +1,96 @@
+---
+### ERIS NIX H2RG detector
+object: detector
+alias: DET
+name: ERIS_NIX_detector
+description: ERIS NIX Hawaii-2RG detector (5um cutoff, 35K)
+date_modified: 2026-04-15
+changes:
+  - 2026-04-15 (KL) Initial skeleton
+
+properties:
+  detector: HAWAII2RG
+  image_plane_id: 0
+  temperature: -238           # 35K detector operating temperature [deg C]
+  dit: "!OBS.dit"
+  ndit: "!OBS.ndit"
+  pixel_size: 0.018           # mm (18um)
+
+effects:
+  - name: detector_array
+    description: Single H2RG 2048x2048 detector
+    class: DetectorList
+    kwargs:
+      filename: FPA_nix_layout.dat
+
+  - name: detector_readout_parameters
+    description: Readout modes for NIX H2RG (slow and fast)
+    class: DetectorModePropertiesSetter
+    kwargs:
+      mode_properties:
+        slow:
+          description: "NIX H2RG slow readout mode (SLOW_GR_UTR)"
+          "!DET.mode": slow
+          "!DET.mindit": 0.79
+          "!DET.full_well": 85000
+          "!DET.gain": 5.2
+          "!DET.readout_noise": 12
+          "!DET.dark_current": 0.1
+        fast:
+          description: "NIX H2RG fast readout mode (FAST_UNCORR)"
+          "!DET.mode": fast
+          "!DET.mindit": 0.0087
+          "!DET.full_well": 85000
+          "!DET.gain": 2.6
+          "!DET.readout_noise": 50
+          "!DET.dark_current": 0.1
+
+  - name: qe_curve
+    description: H2RG 5um cutoff quantum efficiency
+    class: QuantumEfficiencyCurve
+    kwargs:
+      filename: QE_H2RG_5um.dat
+
+  - name: exposure_action
+    description: summing up sky signal for all DITs and NDITs
+    class: ExposureIntegration
+
+  - name: dark_current
+    description: NIX dark current at 35K
+    class: DarkCurrent
+    kwargs:
+      value: "!DET.dark_current"
+
+  - name: detector_linearity
+    description: H2RG non-linearity (approx 3pct at 5k ADU slow mode)
+    class: LinearityCurve
+    kwargs:
+      filename: FPA_nix_linearity.dat
+
+  - name: shot_noise
+    description: Poisson shot noise
+    class: ShotNoise
+
+  - name: border_reference_pixels
+    description: H2RG 4-pixel reference border on all sides
+    class: ReferencePixelBorder
+    kwargs:
+      border: [4, 4, 4, 4]
+
+  - name: readout_noise
+    description: H2RG 32-channel correlated readout noise
+    class: BasicReadoutNoise
+    kwargs:
+      noise_std: "!DET.readout_noise"
+      n_channels: 32
+
+  - name: exposure_output
+    description: return sum over NDIT sub-exposures
+    class: ExposureOutput
+
+  - name: ad_conversion
+    description: convert electrons to ADU
+    class: ADConversion
+    kwargs:
+      dtype: float32
+      gain: "!DET.gain"

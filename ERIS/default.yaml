@@ -1,0 +1,122 @@
+---
+### default configuration for ERIS simulations
+
+object: configuration
+alias: OBS
+name: ERIS_default_configuration
+description: default parameters needed for an ERIS simulation
+status: development
+date_modified: 2026-04-15
+changes:
+  - 2026-04-15 (KL) Initial skeleton package for ERIS NIX
+
+packages:
+  - Paranal
+  - VLT
+  - ERIS
+
+properties:
+  instrument: ERIS
+  modes: ["NGS", "nixIMG_JHK13"]
+  airmass: 1.2
+  declination: -30
+  hour_angle: 0
+  pupil_angle: 0
+  dit: 60
+  ndit: 1
+  seeing: 0.8
+  filter_name: Ks
+  detector_readout_mode: slow
+
+mode_yamls:
+  # ---- AO modes (select one) ---- #
+  - object: instrument
+    alias: OBS
+    name: NGS
+    description: "Natural Guide Star AO"
+    yamls:
+      - Paranal.yaml
+      - VLT.yaml
+      - ERIS.yaml
+      - ERIS_AO_NGS.yaml
+
+  - object: instrument
+    alias: OBS
+    name: LGS
+    description: "Laser Guide Star AO"
+    yamls:
+      - Paranal.yaml
+      - VLT.yaml
+      - ERIS.yaml
+      - ERIS_AO_LGS.yaml
+
+  - object: instrument
+    alias: OBS
+    name: SE
+    description: "Seeing Enhancer (LGS without tip-tilt star)"
+    yamls:
+      - Paranal.yaml
+      - VLT.yaml
+      - ERIS.yaml
+      - ERIS_AO_SE.yaml
+
+  - object: instrument
+    alias: OBS
+    name: NOAO
+    description: "No AO correction (seeing limited)"
+    yamls:
+      - Paranal.yaml
+      - VLT.yaml
+      - ERIS.yaml
+      - ERIS_AO_NOAO.yaml
+
+  # ---- NIX imaging modes (select one) ---- #
+  - object: observation
+    alias: OBS
+    name: nixIMG_JHK13
+    description: "NIX JHK 13mas/pix imaging (26.4 arcsec FoV)"
+    yamls:
+      - ERIS_NIX.yaml
+      - ERIS_NIX_IMG_JHK13.yaml
+      - ERIS_NIX_H2RG.yaml
+    properties:
+      filter_name: Ks
+
+  - object: observation
+    alias: OBS
+    name: nixIMG_JHK27
+    description: "NIX JHK 27mas/pix imaging (55.4 arcsec FoV)"
+    yamls:
+      - ERIS_NIX.yaml
+      - ERIS_NIX_IMG_JHK27.yaml
+      - ERIS_NIX_H2RG.yaml
+    properties:
+      filter_name: Ks
+
+  - object: observation
+    alias: OBS
+    name: nixIMG_LM13
+    description: "NIX LM 13mas/pix imaging (26.4 arcsec FoV)"
+    yamls:
+      - ERIS_NIX.yaml
+      - ERIS_NIX_IMG_LM13.yaml
+      - ERIS_NIX_H2RG.yaml
+    properties:
+      filter_name: Lp
+      detector_readout_mode: fast
+
+---
+### simulation parameters for ERIS
+
+object: simulation
+alias: SIM
+name: ERIS_simulation_parameters
+description: simulation parameters for an ERIS run
+
+properties:
+  random:
+    seed:
+  spectral:
+    wave_min: 0.9
+    wave_mid: 2.2
+    wave_max: 5.3

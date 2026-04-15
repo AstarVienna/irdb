@@ -1,0 +1,36 @@
+### ERIS NIX imager common optics and filter wheel
+object: instrument
+alias: INST
+name: ERIS_NIX
+description: ERIS NIX imager common optics, filter wheel
+
+properties:
+  temperature: -198           # 75K instrument operating temperature [deg C]
+  image_plane_id: 0
+  filter_file_format: "filters/TC_filter_{}.dat"
+
+effects:
+  - name: nix_filter_wheel
+    description: NIX filter wheel with 17 broad and narrow band filters
+    class: FilterWheel
+    kwargs:
+      filter_names:
+        - J
+        - H
+        - Ks
+        - Short-Lp
+        - Lp
+        - L-Broad
+        - Mp
+        - Pa-b
+        - Fe-II
+        - H2-cont
+        - H2-1-0S
+        - Br-g
+        - K-peak
+        - IB-2.42
+        - IB-2.48
+        - Br-a-cont
+        - Br-a
+      filename_format: "!INST.filter_file_format"
+      current_filter: "!OBS.filter_name"

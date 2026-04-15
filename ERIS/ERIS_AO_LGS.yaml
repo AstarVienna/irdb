@@ -1,0 +1,12 @@
+### ERIS LGS AO mode
+object: instrument
+alias: INST
+name: ERIS_AO_LGS
+description: Laser Guide Star AO mode for ERIS
+
+effects:
+  - name: eris_ao_psf
+    description: LGS AO PSF placeholder (approx K-band Strehl 50pct)
+    class: SeeingPSF
+    kwargs:
+      fwhm: 0.12

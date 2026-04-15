@@ -1,0 +1,39 @@
+---
+### ERIS NIX LM 13mas/pix imaging mode
+object: instrument
+alias: INST
+name: ERIS_NIX_IMG_LM13
+description: NIX LM-band 13mas/pix imaging mode (26.4 arcsec FoV)
+
+properties:
+  pixel_scale: 0.01303        # arcsec/pixel (13.03 mas/pix measured)
+  plate_scale: 0.7239         # arcsec/mm (18um pixels -> 13.03mas)
+
+effects:
+  - name: nix_field_of_view
+    description: NIX LM-13mas field of view (26.4 x 26.4 arcsec)
+    class: ApertureMask
+    kwargs:
+      array_dict:
+        x: [-13.2, 13.2, 13.2, -13.2]
+        y: [-13.2, -13.2, 13.2, 13.2]
+      x_unit: arcsec
+      y_unit: arcsec
+
+  - name: nix_camera_optics
+    description: NIX LM-13mas camera barrel (3 lenses + fold mirrors)
+    class: SurfaceList
+    kwargs:
+      filename: LIST_ERIS_nix_optics_jhk13.dat
+
+---
+### Override simulation spectral range for LM modes
+object: simulation
+alias: SIM
+name: ERIS_NIX_LM_sim_params
+
+properties:
+  spectral:
+    wave_min: 2.5
+    wave_mid: 4.0
+    wave_max: 5.3

@@ -1,0 +1,29 @@
+# author : ERIS package
+# source : ESO-476500 ERIS User Manual v117.1
+# date_created  : 2026-04-15
+# date_modified : 2026-04-15
+# type : detector:linearity
+# status : development
+# description : H2RG linearity curve for ERIS NIX detector (slow mode)
+# incident_unit : electron
+# measured_unit : electron
+# changes :
+# - 2026-04-15 Created for ERIS package. Approx 3pct nonlinearity at 5k ADU (26k e-) in slow mode
+incident    measured
+0           0
+5000        5000
+10000       10000
+15000       15000
+20000       20000
+25000       24875
+30000       29700
+40000       39200
+50000       48500
+60000       57600
+70000       66500
+80000       74800
+85000       78000
+90000       80000
+100000      82000
+200000      85000
+1e10        85000
