@@ -37,7 +37,7 @@ properties:
     2: [32, 0, 32, 64]
     3: [32, 64, 32, 0]
     4: [32, 0, 32, 64]
-
+  include_illumination: False
 effects:
   - name: detector_array_list
     description: METIS LMS detector array list
@@ -128,3 +128,8 @@ effects:
     include: True
     kwargs:
       filename: headers/FITS_det_ifu_keywords.yaml
+
+  - name: illumination
+    description: Large-scale illumination variation across the image plane
+    class: Illumination
+    include: "!DET.include_illumination"
