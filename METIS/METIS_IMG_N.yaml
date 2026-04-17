@@ -92,9 +92,7 @@ effects:
     description: Large-scale illumination variation across the image plane
     class: Illumination
     include: "!INST.include_illumination"
-
-
-
+    
 ---
 ### default simulation parameters needed for a METIS simulation
 object: simulation
