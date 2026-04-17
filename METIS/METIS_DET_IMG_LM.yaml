@@ -27,7 +27,6 @@ properties:
   linearity:
     file_name: "FPA_linearity_HxRG.dat"
   border: [64, 64, 64, 64]
-  include_illumination: False
 
 effects:
   - name: detector_array
@@ -143,8 +142,3 @@ effects:
     include: True
     kwargs:
       filename: headers/FITS_det_lm_keywords.yaml
-
-  - name: illumination
-    description: Large-scale illumination variation across the image plane
-    class: Illumination
-    include: "!DET.include_illumination"

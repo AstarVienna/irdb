@@ -27,7 +27,6 @@ properties:
     file_name: "FPA_metis_img_n_geosnap_layout.dat"
   qe_curve:
     file_name: "QE_detector_geosnap.dat"
-  include_illumination: False
 
 
 effects:
@@ -149,8 +148,3 @@ effects:
     include: True
     kwargs:
       filename: headers/FITS_det_n_keywords.yaml
-
-  - name: illumination
-    description: Large-scale illumination variation across the image plane
-    class: Illumination
-    include: "!DET.include_illumination"
