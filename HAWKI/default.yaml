@@ -21,6 +21,7 @@ yamls:
   - HAWKI_H2RG.yaml
 
 properties :
+  instrument: HAWKI
   filter_name : Ks
   airmass : 1.2
   declination : -30

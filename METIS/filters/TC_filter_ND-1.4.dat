@@ -1,0 +1,16 @@
+# author : Oliver Czoske
+# source : E-REP-ATC-MET-1003_3-0
+# date_created : 2026-03-16
+# date_modified : 2026-03-16
+# status : neutral density filter (3.5 mag attenuation = 3.98% transmission)
+# type : filter:transmission
+# wavelength_unit : um
+# blue_cutoff : 2.55
+# red_cutoff : 5.45
+# changes :
+#
+wavelength  transmission
+2.5  0.0
+2.6  0.0398
+5.4  0.0398
+5.5  0.0

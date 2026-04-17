@@ -19,6 +19,7 @@ properties:
   temperature: -230
   dit: "!OBS.dit"
   ndit: "!OBS.ndit"
+  include_prnu: False     
   layout:
     file_name: "FPA_metis_img_lm_layout.dat"
   qe_curve:
@@ -81,6 +82,14 @@ effects:
   - name: exposure_integration
     description: Summing up sky signal for all DITs and NDITs
     class: ExposureIntegration
+
+  - name: prnu
+    description: Pixel-to-pixel response non-uniformity
+    class: PixelResponseNonUniformity
+    include: "!DET.include_prnu"
+    kwargs:
+      prnu_std: 0.005
+      prnu_seed: 42
 
   - name: dark_current
     description: METIS LM dark current

@@ -18,6 +18,7 @@ properties:
   pixel_scale: 0.00547         # arcsec / pixel, METIS_1097
   plate_scale: 0.30389         # arcsec / mm
   filter_file_format: "filters/TC_filter_{}.dat"
+  include_illumination: False     
 
 effects:
   - name: img_lm_optics
@@ -33,6 +34,7 @@ effects:
       filter_names:
         # 18 positions (E-REP-MPIA-MET-1008_1-0)
         - open
+        - closed
         - Lp
         - short-L
         - L_spec
@@ -63,6 +65,7 @@ effects:
         # 11 positions (E-REP-MPIA-MET-1008_1-0)
         # OD = optical density, transmissivity 10^{-OD}.
         - open
+        - closed
         - ND_OD1
         - ND_OD2
         - ND_OD3
@@ -92,6 +95,11 @@ effects:
     kwargs:
       filename: headers/FITS_img_lm_keywords.yaml
 
+  - name: illumination
+    description: Large-scale illumination variation across the image plane
+    class: Illumination
+    include: "!INST.include_illumination"
+    
 ---
 ### default simulation parameters needed for a METIS simulation
 object: simulation

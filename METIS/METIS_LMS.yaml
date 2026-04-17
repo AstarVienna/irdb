@@ -15,6 +15,7 @@ properties:
   plate_scale: 0.455555555556  # arcsec / mm
   fp2_platescale: 0.303        # arcsec / mm
   decouple_detector_from_sky_headers: True  # needed for spectroscopy
+  filter_file_format: "filters/TC_filter_{}.dat"
 
 effects:
   - name: metis_lms_surfaces
@@ -22,6 +23,22 @@ effects:
     class: SurfaceList
     kwargs:
       filename: LIST_METIS_mirrors_lms.dat
+
+  - name: lms-pp1
+    description: LMS-PP1 Pupil mask wheel
+    class: FilterWheel
+    kwargs:
+      filter_names:
+        # only filters; pupil masks only in wcu (METIS-3639)
+        - open
+        - closed
+        - ND-2.8
+        - ND-1.4
+      filename_format: "!INST.filter_file_format"
+      current_filter: "!OBS.nd_filter_name"
+      minimum_throughput: 0.
+      outer: 19.9           # E-REP-ATC-MET-1003_3-0
+      outer_unit: "mm"
 
   - name: lms_efficiency
     description: grating efficiency of METIS LMS

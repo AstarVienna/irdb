@@ -48,7 +48,7 @@ jobs:
         run: pytest -m "badges"
 
       - name: Store badge report files
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: badge-report
           path: _REPORTS

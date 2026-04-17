@@ -6,7 +6,7 @@ alias: OBS
 name: MICADO_default_configuration
 description: default parameters needed for a MICADO simulation
 status: development
-needs_scopesim: "v0.10.0b4"
+needs_scopesim: "v0.11.3"
 date_modified: 2025-10-09
 changes:
   - 2023-07-13 (OC) add modes for FDR slits, deprecate pre-FDR slits
@@ -14,6 +14,7 @@ changes:
   - 2025-10-09 (OC) proper MJD value
   - 2025-10-17 (JB) add parametes for FITS keywords, tplstart as MJD
   - 2026-01-02 (OC) random seed to None
+  - 2026-04-09 (OC) new SPEC mode, rename slits
 
 packages:
 - Armazones
@@ -34,6 +35,7 @@ properties :
   declination : -30
   hour_angle : 0
   pupil_angle : 0
+  slit: false   # overridden in spectroscopic modes
   dit : 60
   ndit : 1
   catg : SCIENCE
@@ -106,53 +108,70 @@ mode_yamls :
   yamls :
   - MICADO_IMG_HCI.yaml
 
+- object: observation
+  alias: OBS
+  name: SPEC
+  description: "spectrograph: all slits"
+  status: development
+  yamls:
+  - MICADO_SPEC.yaml
+  properties:       # Todo: these parameters all need to be changeable
+    trace_file: TRACE_MICADO.fits
+    slit: Short
+    filter_name_fw1: Spec_IJ
+    filter_name_fw2: open
+    filter_name_pupil: open
+    tech: SPEC
+    fits_ins_mode: SPE
+    fits_ins_filt: Spec_IJ
+
 - object : observation
   alias: OBS
   name : SPEC_15000x20
   description : "spectrograph : slit size 15000x20mas"
-  status: development
+  status: deprecated
+  deprecate: "Deprecated mode, use SPEC with '!OBS.slit'='Long' instead"
   yamls :
   - MICADO_SPEC.yaml
   properties :
     trace_file : TRACE_MICADO.fits
-    slit_file : MASK_slit_15000x20.dat
+    slit : Long
     filter_name_fw1 : Spec_HK
     filter_name_fw2 : open
     filter_name_pupil : open
     fits_ins_filt : Spec_HK
-    fits_ins_slit : "Long"
 
 - object : observation
   alias: OBS
   name : SPEC_3000x48
   description : "spectrograph : slit size 3000x48mas"
-  status: development
+  status: deprecated
+  deprecate: "Deprecated mode, use SPEC with '!OBS.slit'='Wide' instead"
   yamls :
   - MICADO_SPEC.yaml
   properties :
     trace_file : TRACE_MICADO.fits
-    slit_file : MASK_slit_3000x48.dat
+    slit : Wide
     filter_name_fw1 : Spec_HK
     filter_name_fw2 : open
     filter_name_pupil : open
     fits_ins_filt : Spec_HK
-    fits_ins_slit : "Wide"
 
 - object : observation
   alias : OBS
   name : SPEC_3000x16
   description : "spectrograph : slit size 3000x16mas"
-  status: development
+  status: deprecated
+  deprecate: "Deprecated mode, use SPEC with '!OBS.slit'='Short' instead"
   yamls :
   - MICADO_SPEC.yaml
   properties :
     trace_file : TRACE_MICADO.fits
-    slit_file : MASK_slit_3000x16.dat
+    slit: Short
     filter_name_fw1 : Spec_IJ
     filter_name_fw2 : open
     filter_name_pupil : open
     fits_ins_filt : Spec_IJ
-    fits_ins_slit : "Short"
 
 ---
 ### default simulation parameters needed for a MICADO simulation
@@ -169,6 +188,9 @@ properties :
     wave_min : 0.7
     wave_mid : 1.6
     wave_max : 2.5
+
+  sub_pixel:
+    flag: True
 
   computing :
     preload_field_of_views : True

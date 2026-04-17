@@ -1,165 +1,369 @@
-ERROR::LFOA/filters/old_filters/TC_filter_Halpha_wide_old.dat ValeError dictionary update sequence element #0 has length 49; 2 is required
-ERROR::OSIRIS/traces/TRACE_R500B.dat ValeError dictionary update sequence element #0 has length 1; 2 is required
-ERROR::OSIRIS/traces/TRACE_R500R.dat ValeError dictionary update sequence element #0 has length 1; 2 is required
-ERROR::OSIRIS/traces/TRACE_R2500R.dat ValeError dictionary update sequence element #0 has length 1; 2 is required
-ERROR::OSIRIS/traces/TRACE_R1000R.dat ValeError dictionary update sequence element #0 has length 1; 2 is required
-ERROR::OSIRIS/traces/TRACE_R300R.dat ValeError dictionary update sequence element #0 has length 1; 2 is required
-ERROR::OSIRIS/traces/TRACE_R2000B.dat ValeError dictionary update sequence element #0 has length 1; 2 is required
-ERROR::OSIRIS/traces/TRACE_R2500V.dat ValeError dictionary update sequence element #0 has length 1; 2 is required
-ERROR::OSIRIS/traces/TRACE_R300B.dat ValeError dictionary update sequence element #0 has length 1; 2 is required
-ERROR::OSIRIS/traces/TRACE_R2500U.dat ValeError dictionary update sequence element #0 has length 1; 2 is required
-ERROR::OSIRIS/traces/TRACE_R1000B.dat ValeError dictionary update sequence element #0 has length 1; 2 is required
-ERROR::OSIRIS/traces/TRACE_R2500I.dat ValeError dictionary update sequence element #0 has length 1; 2 is required
-ERROR::METIS/code/2023-06-20-spectra_Grism-M_band.dat ValeError dictionary update sequence element #0 has length 32; 2 is required
-ERROR::METIS/code/2023-06-20-spectra_Grism-L_band.dat ValeError dictionary update sequence element #0 has length 32; 2 is required
-ERROR::METIS/code/2023-06-20-spectra_Grism-N_band.dat ValeError dictionary update sequence element #0 has length 32; 2 is required
-ERROR::NACO/filters/NB_4.05.dat ValeError dictionary update sequence element #0 has length 85; 2 is required
-ERROR::NACO/filters/NB_3.74.dat ValeError chr() arg not in range(0x110000)
-ERROR::HST/TER_ELT_mirror_mgf2agal.dat ValeError date_last_change=2019-07-25 not equal to date_modified=2018-11-19
-ERROR::HST/wfc3_ir_primary_001_syn.dat ValeError Modified date set but no changes listed.
-ERROR::HST/wfc3_ir_secondary_001_syn.dat ValeError Modified date set but no changes listed.
-ERROR::MORFEO/TER_MORFEO_mirror_aluminium.dat ValeError date_last_change=2019-07-25 not equal to date_modified=2018-11-19
-ERROR::MORFEO/TER_mirror_silver.dat ValeError date_last_change=2020-06-23 not equal to date_modified=2020-06-22
-ERROR::MORFEO/TER_MORFEO_mirror_mgf2agal.dat ValeError date_last_change=2020-08-25 not equal to date_modified=2018-11-19
-ERROR::MORFEO/TER_MORFEO_entrance_window.dat Unexpected Exception <class 'TypeError'> '<' not supported between instances of 'datetime.date' and 'int'
-ERROR::LFOA/TER_mirror_aluminium.dat ValeError date_last_change=2019-07-25 not equal to date_modified=2018-11-19
-ERROR::LFOA/TER_focal_reducer.dat ValeError Modified date set but no changes listed.
-ERROR::LFOA/filters/old_filters/TC_filter_Halpha_wide_old.dat Error reading dat file expected '<document start>', but found '<block mapping start>'
-  in "<unicode string>", line 2, column 1:
-    wavelength_unit : nm
-    ^
-ERROR::VLT/TC_mirror_aluminium.dat ValeError date_last_change=2019-08-13 not equal to date_modified=2018-11-19
-ERROR::VLT/LIST_VLT_mirrors.dat ValeError date_last_change=2020-10-06 not equal to date_modified=2019-08-13
-ERROR::ELT/TER_ELT_mirror_mgf2agal.dat ValeError date_last_change=2020-08-25 not equal to date_modified=2018-11-19
-ERROR::ELT/TER_ELT_5_mirror_clean.dat ValeError date_last_change=2020-08-17 not equal to date_modified=2019-06-11
-ERROR::ELT/TER_ELT_mirror_aluminium.dat ValeError date_last_change=2020-08-25 not equal to date_modified=2018-11-19
-ERROR::MICADO/QE_detector_H4RG.dat Error reading dat file 'NoneType' object is not iterable
-ERROR::MICADO/MASK_slit_3000x50.dat ValeError date_last_change=2020-03-24 not equal to date_modified=2019-07-10
-ERROR::MICADO/TER_SCAO_dichroic.dat ValeError date_last_change=2023-07-04 not equal to date_modified=2023-06-13
-ERROR::MICADO/TER_entrance_window.dat ValeError Changes listed but no modified date set.
-ERROR::MICADO/TER_mirror_gold.dat ValeError date_last_change=2023-07-13 not equal to date_modified=2023-07-23
-ERROR::MICADO/TER_MICADO_mirror_mgf2agal.dat ValeError date_last_change=2019-07-25 not equal to date_modified=2018-11-19
-ERROR::MICADO/FPA_linearity.dat ValeError date_last_change=2022-03-17 not equal to date_modified=2018-11-19
-ERROR::MICADO/MASK_slit_3000x20.dat ValeError date_last_change=2020-03-24 not equal to date_modified=2019-07-10
-ERROR::MICADO/filters/TC_filter_ND1.dat ValeError Modified date set but no changes listed.
-ERROR::MICADO/filters/TC_filter_stop_K.dat ValeError Modified date set but no changes listed.
-ERROR::MICADO/filters/TC_filter_Ks2.dat ValeError Modified date set but no changes listed.
-ERROR::MICADO/filters/TC_filter_block.dat ValeError Modified date set but no changes listed.
-ERROR::MICADO/filters/TC_filter_open.dat ValeError Modified date set but no changes listed.
-ERROR::MICADO/filters/TC_filter_ND3.dat ValeError Modified date set but no changes listed.
-ERROR::MICADO/filters/TC_filter_blank.dat ValeError Modified date set but no changes listed.
-ERROR::MICADO/filters/TC_filter_stop_IJH.dat ValeError Modified date set but no changes listed.
-ERROR::test_package/TC_filter_Ks.dat ValeError date_last_change=2019-11-09 not equal to date_modified=2018-01-28
-ERROR::OSIRIS/QE_OSIRIS_old_detector_plus_M3.dat ValeError Modified date set but no changes listed.
-ERROR::OSIRIS/unity.dat ValeError date_last_change=2022-03-02 not equal to date_modified=22022-03-02
-ERROR::OSIRIS/QE_OSIRIS_new_detector.dat ValeError date_last_change=2022-06-14 not equal to date_modified=2022-03-12
-ERROR::OSIRIS/traces/TRACE_R500B.dat Error reading dat file string indices must be integers, not 'str'
-ERROR::OSIRIS/traces/TRACE_R500B.dat ValeError date_last_change=2022-06-14 not equal to date_modified=2022-03-12
-ERROR::OSIRIS/traces/TRACE_R500R.dat Error reading dat file string indices must be integers, not 'str'
-ERROR::OSIRIS/traces/TRACE_R500R.dat ValeError date_last_change=2022-06-14 not equal to date_modified=2022-03-12
-ERROR::OSIRIS/traces/TRACE_R2500R.dat Error reading dat file string indices must be integers, not 'str'
-ERROR::OSIRIS/traces/TRACE_R2500R.dat ValeError date_last_change=2022-06-14 not equal to date_modified=2022-03-12
-ERROR::OSIRIS/traces/TRACE_R1000R.dat Error reading dat file string indices must be integers, not 'str'
-ERROR::OSIRIS/traces/TRACE_R1000R.dat ValeError date_last_change=2022-06-14 not equal to date_modified=2022-03-12
-ERROR::OSIRIS/traces/TRACE_R300R.dat Error reading dat file string indices must be integers, not 'str'
-ERROR::OSIRIS/traces/TRACE_R300R.dat ValeError date_last_change=2022-06-14 not equal to date_modified=2022-03-12
-ERROR::OSIRIS/traces/TRACE_R2000B.dat Error reading dat file string indices must be integers, not 'str'
-ERROR::OSIRIS/traces/TRACE_R2000B.dat ValeError date_last_change=2022-06-14 not equal to date_modified=2022-03-12
-ERROR::OSIRIS/traces/TRACE_R2500V.dat Error reading dat file string indices must be integers, not 'str'
-ERROR::OSIRIS/traces/TRACE_R2500V.dat ValeError date_last_change=2022-06-14 not equal to date_modified=2022-03-12
-ERROR::OSIRIS/traces/TRACE_R300B.dat Error reading dat file string indices must be integers, not 'str'
-ERROR::OSIRIS/traces/TRACE_R300B.dat ValeError date_last_change=2022-06-14 not equal to date_modified=2022-03-12
-ERROR::OSIRIS/traces/TRACE_R2500U.dat Error reading dat file string indices must be integers, not 'str'
-ERROR::OSIRIS/traces/TRACE_R2500U.dat ValeError date_last_change=2022-06-14 not equal to date_modified=2022-03-12
-ERROR::OSIRIS/traces/TRACE_R1000B.dat Error reading dat file string indices must be integers, not 'str'
-ERROR::OSIRIS/traces/TRACE_R1000B.dat ValeError date_last_change=2022-06-14 not equal to date_modified=2022-03-12
-ERROR::OSIRIS/traces/TRACE_R2500I.dat Error reading dat file string indices must be integers, not 'str'
-ERROR::OSIRIS/traces/TRACE_R2500I.dat ValeError date_last_change=2022-06-14 not equal to date_modified=2022-03-12
-ERROR::OSIRIS/code/OSIRIS_stitchedArc.dat Error reading dat file 'comments'
-ERROR::OSIRIS/code/OSIRIS_stitchedArc.dat ValeError date_last_change=2022-06-14 not equal to date_modified=2022-03-12
-ERROR::OSIRIS/tests/test_data/OSIRIS_stitchedArc.dat Error reading dat file 'comments'
-ERROR::OSIRIS/tests/test_data/OSIRIS_stitchedArc.dat ValeError date_last_change=2022-06-14 not equal to date_modified=2022-03-12
-ERROR::OSIRIS/tests/test_data/fg191b2b.dat Error reading dat file 'comments'
-ERROR::OSIRIS/tests/test_data/fg191b2b.dat ValeError date_last_change=2022-06-14 not equal to date_modified=2022-03-12
-ERROR::METIS/TER_lms_grism_min.dat Error reading dat file 'NoneType' object is not iterable
-ERROR::METIS/FPA_metis_img_nq_aquarius_layout.dat ValeError date_last_change=2022-04-22 not equal to date_modified=2022-04-26
-ERROR::METIS/FPA_metis_img_n_geosnap_layout.dat ValeError date_last_change=2022-02-26 not equal to date_modified=2022-04-26
-ERROR::METIS/TER_img_dichroic.dat ValeError Modified date set but no changes listed.
-ERROR::METIS/TER_ADC_const_90.dat Error reading dat file 'NoneType' object is not iterable
-ERROR::METIS/FPA_linearity_GeoSnap_low_capacity.dat Error reading dat file 'NoneType' object is not iterable
-ERROR::METIS/LIST_METIS_mirrors_img_n.dat Error reading dat file 'NoneType' object is not iterable
-ERROR::METIS/TER_mirror_gold.dat ValeError Modified date set but no changes listed.
-ERROR::METIS/FPA_linearity_HxRG.dat Error reading dat file 'NoneType' object is not iterable
-ERROR::METIS/FPA_linearity_HxRG.dat ValeError Modified date set but no changes listed.
-ERROR::METIS/FPA_metis_img_lm_layout.dat ValeError date_last_change=2022-04-22 not equal to date_modified=2020-02-04
-ERROR::METIS/QE_detector_H2RG_METIS.dat ValeError date_last_change=2020-07-23 not equal to date_modified=2020-07-14
-ERROR::METIS/TER_lms_grism_max.dat Error reading dat file 'NoneType' object is not iterable
-ERROR::METIS/LIST_ifu_apertures.dat Error reading dat file month must be in 1..12
-ERROR::METIS/QE_detector_geosnap.dat ValeError date_last_change=2020-07-23 not equal to date_modified=2020-07-14
-ERROR::METIS/filters/TC_filter_ND_OD2.dat Error reading dat file 'NoneType' object is not iterable
-ERROR::METIS/filters/TC_filter_L.dat Error reading dat file 'dict' object has no attribute 'split'
-ERROR::METIS/filters/TC_filter_ND_OD5.dat Error reading dat file 'NoneType' object is not iterable
-ERROR::METIS/filters/TC_filter_Q1.dat Error reading dat file 'dict' object has no attribute 'split'
-ERROR::METIS/filters/TC_filter_ND_OD3.dat Error reading dat file 'NoneType' object is not iterable
-ERROR::METIS/filters/TC_filter_ND_OD4.dat Error reading dat file 'NoneType' object is not iterable
-ERROR::METIS/filters/TC_filter_HCI_M.dat Error reading dat file 'NoneType' object is not iterable
-ERROR::METIS/filters/TC_filter_ND_OD1.dat Error reading dat file 'NoneType' object is not iterable
-ERROR::METIS/wcu/fp_mask_grid_lm.dat Error reading dat file 'NoneType' object is not iterable
-ERROR::METIS/wcu/fp_mask_pinhole_n.dat Error reading dat file 'NoneType' object is not iterable
-ERROR::METIS/wcu/fp_mask_pinhole_lm.dat Error reading dat file 'NoneType' object is not iterable
-ERROR::METIS/code/2023-06-20-spectra_Grism-M_band.dat Error reading dat file mapping values are not allowed here
-  in "<unicode string>", line 10, column 50:
-     ... n of coordinates at the detector: Detector sensitive surface, bo ... 
-                                         ^
-ERROR::METIS/code/2023-06-20-spectra_Grism-L_band.dat Error reading dat file mapping values are not allowed here
-  in "<unicode string>", line 10, column 50:
-     ... n of coordinates at the detector: Detector sensitive surface, bo ... 
-                                         ^
-ERROR::METIS/code/2023-06-20-spectra_Grism-N_band.dat Error reading dat file mapping values are not allowed here
-  in "<unicode string>", line 10, column 50:
-     ... n of coordinates at the detector: Detector sensitive surface, bo ... 
-                                         ^
-ERROR::WFC3/wfc3_ir_win_001_syn.dat ValeError Modified date set but no changes listed.
-ERROR::WFC3/TER_filter_F110W.dat ValeError Modified date set but no changes listed.
-ERROR::WFC3/TER_filter_F127M.dat ValeError Modified date set but no changes listed.
-ERROR::WFC3/TER_filter_F126N.dat ValeError Modified date set but no changes listed.
-ERROR::WFC3/TER_filter_F139M.dat ValeError Modified date set but no changes listed.
-ERROR::WFC3/TER_filter_F140W.dat ValeError Modified date set but no changes listed.
-ERROR::WFC3/TER_filter_F128N.dat ValeError Modified date set but no changes listed.
-ERROR::WFC3/TER_filter_F130N.dat ValeError Modified date set but no changes listed.
-ERROR::WFC3/TER_filter_F098M.dat ValeError Modified date set but no changes listed.
-ERROR::WFC3/TER_filter_F164N.dat ValeError Modified date set but no changes listed.
-ERROR::WFC3/wfc3_ir_dn_002_syn.dat ValeError Modified date set but no changes listed.
-ERROR::WFC3/TER_filter_F105W.dat ValeError Modified date set but no changes listed.
-ERROR::WFC3/wfc3_ir_fold_001_syn.dat ValeError Modified date set but no changes listed.
-ERROR::WFC3/TER_filter_F153M.dat ValeError Modified date set but no changes listed.
-ERROR::WFC3/wfc3_ir_mir1_001_syn.dat ValeError Modified date set but no changes listed.
-ERROR::WFC3/wfc3_ir_rcp_001_syn.dat ValeError Modified date set but no changes listed.
-ERROR::WFC3/TER_filter_F160W.dat ValeError Modified date set but no changes listed.
-ERROR::WFC3/TER_filter_F132N.dat ValeError Modified date set but no changes listed.
-ERROR::WFC3/wfc3_ir_mask_001_syn.dat ValeError Modified date set but no changes listed.
-ERROR::WFC3/wfc3_ir_mir2_001_syn.dat ValeError Modified date set but no changes listed.
-ERROR::WFC3/TER_filter_F167N.dat ValeError Modified date set but no changes listed.
-ERROR::WFC3/wfc3_ir_qe_003_syn.dat ValeError Modified date set but no changes listed.
-ERROR::WFC3/wfc3_ir_cor_004_syn.dat ValeError Modified date set but no changes listed.
-ERROR::WFC3/TER_filter_F125W.dat ValeError Modified date set but no changes listed.
-ERROR::WFC3/wfc3_ir_csm_001_syn.dat ValeError Modified date set but no changes listed.
-ERROR::Armazones/TER_armazones_default_NIR_IMG.dat ValeError date_last_change=2020-10-29 not equal to date_modified=2019-08-09
-ERROR::HAWKI/TER_window.dat ValeError date_last_change=2020-10-06 not equal to date_modified=2018-11-19
-ERROR::HAWKI/TER_mirror_gold.dat ValeError date_last_change=2020-10-06 not equal to date_modified=2019-01-28
-ERROR::HAWKI/FPA_hawki_layout.dat ValeError date_last_change=2018-11-19 not equal to date_modified=2019-08-13
-ERROR::HAWKI/LIST_HAWKI_mirrors.dat ValeError date_last_change=2020-10-06 not equal to date_modified=2019-08-13
-ERROR::HAWKI/filters/TC_filter_NB1190.dat ValeError date_last_change=2019-08-13 not equal to date_modified=2018-03-21
-ERROR::HAWKI/filters/TC_filter_NB1060.dat ValeError date_last_change=2019-08-13 not equal to date_modified=2018-03-21
-ERROR::HAWKI/filters/TC_filter_NB2090.dat ValeError date_last_change=2019-08-13 not equal to date_modified=2018-03-21
-ERROR::HAWKI/filters/TC_filter_H2.dat ValeError date_last_change=2019-08-13 not equal to date_modified=2018-03-21
-ERROR::HAWKI/filters/TC_filter_H.dat ValeError date_last_change=2019-08-13 not equal to date_modified=2018-03-21
-ERROR::HAWKI/filters/TC_filter_J.dat ValeError date_last_change=2019-08-13 not equal to date_modified=2018-03-21
-ERROR::HAWKI/filters/TC_filter_CH4.dat ValeError date_last_change=2019-08-13 not equal to date_modified=2018-03-21
-ERROR::HAWKI/filters/TC_filter_Ks.dat ValeError date_last_change=2019-08-13 not equal to date_modified=2018-03-21
-ERROR::HAWKI/filters/TC_filter_BrGamma.dat ValeError date_last_change=2019-08-13 not equal to date_modified=2018-03-21
-ERROR::HAWKI/filters/TC_filter_Y.dat ValeError date_last_change=2019-08-13 not equal to date_modified=2018-03-21
-ERROR::GTC/unity.dat ValeError Modified date set but no changes listed.
-ERROR::MICADO_Sci/TER_MICADO_RO.dat ValeError Modified date set but no changes listed.
-ERROR::MICADO_Sci/TER_MICADO_IMG_common.dat ValeError Modified date set but no changes listed.
-ERROR::MICADO_Sci/TER_MORFEO_MMS.dat ValeError Modified date set but no changes listed.
+ERROR::Armazones\TER_armazones_default_FULL_IMG.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::Armazones\TER_armazones_default_MIR_IMG.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::Armazones\TER_armazones_default_NIR_IMG.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::Armazones\TER_armazones_default_OPT_IMG.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+INFO::{'inconsistent_table_error': [], 'value_error': [], 'unexpected_error': ['Armazones\\TER_armazones_default_FULL_IMG.dat', 'Armazones\\TER_armazones_default_MIR_IMG.dat', 'Armazones\\TER_armazones_default_NIR_IMG.dat', 'Armazones\\TER_armazones_default_OPT_IMG.dat']}
+ERROR::ELT\TER_ELT_5_mirror.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::ELT\TER_ELT_5_mirror_clean.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::ELT\TER_ELT_6_mirror_field_track.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::ELT\TER_ELT_6_mirror_field_track_clean.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::ELT\TER_ELT_6_mirror_pupil_track.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::ELT\TER_ELT_6_mirror_pupil_track_clean.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::ELT\TER_ELT_mirror_aluminium.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::ELT\TER_ELT_mirror_mgf2agal.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+INFO::{'inconsistent_table_error': [], 'value_error': [], 'unexpected_error': ['ELT\\TER_ELT_5_mirror.dat', 'ELT\\TER_ELT_5_mirror_clean.dat', 'ELT\\TER_ELT_6_mirror_field_track.dat', 'ELT\\TER_ELT_6_mirror_field_track_clean.dat', 'ELT\\TER_ELT_6_mirror_pupil_track.dat', 'ELT\\TER_ELT_6_mirror_pupil_track_clean.dat', 'ELT\\TER_ELT_mirror_aluminium.dat', 'ELT\\TER_ELT_mirror_mgf2agal.dat']}
+ERROR::GTC\reflectivity_GTC.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::GTC\unity.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+INFO::{'inconsistent_table_error': [], 'value_error': [], 'unexpected_error': ['GTC\\reflectivity_GTC.dat', 'GTC\\unity.dat']}
+ERROR::HAWKI\FPA_hawki_layout.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::HAWKI\FPA_linearity.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::HAWKI\LIST_HAWKI_mirrors.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::HAWKI\QE_detector_H2RG.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::HAWKI\TC_dichroic.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::HAWKI\TER_mirror_gold.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::HAWKI\TER_window.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::HAWKI\filters\TC_filter_BrGamma.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::HAWKI\filters\TC_filter_CH4.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::HAWKI\filters\TC_filter_H.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::HAWKI\filters\TC_filter_H2.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::HAWKI\filters\TC_filter_J.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::HAWKI\filters\TC_filter_Ks.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::HAWKI\filters\TC_filter_NB1060.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::HAWKI\filters\TC_filter_NB1190.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::HAWKI\filters\TC_filter_NB2090.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::HAWKI\filters\TC_filter_Y.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::HAWKI\test_hawki\hawki_eso_etc\BG_total_BrGamma.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::HAWKI\test_hawki\hawki_eso_etc\BG_total_J.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::HAWKI\test_hawki\hawki_eso_etc\BG_total_Ks.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::HAWKI\test_hawki\hawki_eso_etc\ESO_ETC_bg_fluxes.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::HAWKI\test_hawki\hawki_eso_etc\TER_system_BrGamma.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::HAWKI\test_hawki\hawki_eso_etc\TER_system_CH4.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::HAWKI\test_hawki\hawki_eso_etc\TER_system_H.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::HAWKI\test_hawki\hawki_eso_etc\TER_system_J.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::HAWKI\test_hawki\hawki_eso_etc\TER_system_Ks.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::HAWKI\test_hawki\hawki_eso_etc\TER_system_Y.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+INFO::{'inconsistent_table_error': [], 'value_error': [], 'unexpected_error': ['HAWKI\\FPA_hawki_layout.dat', 'HAWKI\\FPA_linearity.dat', 'HAWKI\\LIST_HAWKI_mirrors.dat', 'HAWKI\\QE_detector_H2RG.dat', 'HAWKI\\TC_dichroic.dat', 'HAWKI\\TER_mirror_gold.dat', 'HAWKI\\TER_window.dat', 'HAWKI\\filters\\TC_filter_BrGamma.dat', 'HAWKI\\filters\\TC_filter_CH4.dat', 'HAWKI\\filters\\TC_filter_H.dat', 'HAWKI\\filters\\TC_filter_H2.dat', 'HAWKI\\filters\\TC_filter_J.dat', 'HAWKI\\filters\\TC_filter_Ks.dat', 'HAWKI\\filters\\TC_filter_NB1060.dat', 'HAWKI\\filters\\TC_filter_NB1190.dat', 'HAWKI\\filters\\TC_filter_NB2090.dat', 'HAWKI\\filters\\TC_filter_Y.dat', 'HAWKI\\test_hawki\\hawki_eso_etc\\BG_total_BrGamma.dat', 'HAWKI\\test_hawki\\hawki_eso_etc\\BG_total_J.dat', 'HAWKI\\test_hawki\\hawki_eso_etc\\BG_total_Ks.dat', 'HAWKI\\test_hawki\\hawki_eso_etc\\ESO_ETC_bg_fluxes.dat', 'HAWKI\\test_hawki\\hawki_eso_etc\\TER_system_BrGamma.dat', 'HAWKI\\test_hawki\\hawki_eso_etc\\TER_system_CH4.dat', 'HAWKI\\test_hawki\\hawki_eso_etc\\TER_system_H.dat', 'HAWKI\\test_hawki\\hawki_eso_etc\\TER_system_J.dat', 'HAWKI\\test_hawki\\hawki_eso_etc\\TER_system_Ks.dat', 'HAWKI\\test_hawki\\hawki_eso_etc\\TER_system_Y.dat']}
+ERROR::HST\TER_ELT_mirror_mgf2agal.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::HST\wfc3_ir_primary_001_syn.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::HST\wfc3_ir_secondary_001_syn.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+INFO::{'inconsistent_table_error': [], 'value_error': [], 'unexpected_error': ['HST\\TER_ELT_mirror_mgf2agal.dat', 'HST\\wfc3_ir_primary_001_syn.dat', 'HST\\wfc3_ir_secondary_001_syn.dat']}
+ERROR::JWST\TER_mirror_gold.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+INFO::{'inconsistent_table_error': [], 'value_error': [], 'unexpected_error': ['JWST\\TER_mirror_gold.dat']}
+ERROR::LaPalma\orm_extinct.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+INFO::{'inconsistent_table_error': [], 'value_error': [], 'unexpected_error': ['LaPalma\\orm_extinct.dat']}
+ERROR::LFOA\LIST_LFOA_mirrors_static.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::LFOA\QE_SBIG.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::LFOA\TER_atmosphere.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::LFOA\TER_focal_reducer.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::LFOA\TER_mirror_aluminium.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::LFOA\filters\B.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::LFOA\filters\Halpha_narrow.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::LFOA\filters\Halpha_wide.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::LFOA\filters\Hbeta.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::LFOA\filters\I.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::LFOA\filters\OIII.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::LFOA\filters\R.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::LFOA\filters\SII.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::LFOA\filters\sloan_g.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::LFOA\filters\sloan_i.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::LFOA\filters\sloan_r.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::LFOA\filters\sloan_u.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::LFOA\filters\sloan_z.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::LFOA\filters\U.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::LFOA\filters\V.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::LFOA\filters\old_filters\TC_filter_Halpha_narrow_old.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::LFOA\filters\old_filters\TC_filter_Halpha_wide_old.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::LFOA\filters\old_filters\TC_filter_Hbeta_old.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::LFOA\filters\old_filters\TC_filter_OIII_old.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::LFOA\filters\old_filters\TC_filter_SII_old.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+INFO::{'inconsistent_table_error': [], 'value_error': [], 'unexpected_error': ['LFOA\\LIST_LFOA_mirrors_static.dat', 'LFOA\\QE_SBIG.dat', 'LFOA\\TER_atmosphere.dat', 'LFOA\\TER_focal_reducer.dat', 'LFOA\\TER_mirror_aluminium.dat', 'LFOA\\filters\\B.dat', 'LFOA\\filters\\Halpha_narrow.dat', 'LFOA\\filters\\Halpha_wide.dat', 'LFOA\\filters\\Hbeta.dat', 'LFOA\\filters\\I.dat', 'LFOA\\filters\\OIII.dat', 'LFOA\\filters\\R.dat', 'LFOA\\filters\\SII.dat', 'LFOA\\filters\\sloan_g.dat', 'LFOA\\filters\\sloan_i.dat', 'LFOA\\filters\\sloan_r.dat', 'LFOA\\filters\\sloan_u.dat', 'LFOA\\filters\\sloan_z.dat', 'LFOA\\filters\\U.dat', 'LFOA\\filters\\V.dat', 'LFOA\\filters\\old_filters\\TC_filter_Halpha_narrow_old.dat', 'LFOA\\filters\\old_filters\\TC_filter_Halpha_wide_old.dat', 'LFOA\\filters\\old_filters\\TC_filter_Hbeta_old.dat', 'LFOA\\filters\\old_filters\\TC_filter_OIII_old.dat', 'LFOA\\filters\\old_filters\\TC_filter_SII_old.dat']}
+ERROR::METIS\FPA_linearity_GeoSnap_high_capacity.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\FPA_linearity_GeoSnap_low_capacity.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\FPA_linearity_HxRG.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\FPA_metis_img_lm_layout.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\FPA_metis_img_nq_aquarius_layout.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\FPA_metis_img_n_geosnap_layout.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\FPA_metis_lms_layout.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\FPA_metis_lms_smpl_layout.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\LIST_ifu_apertures.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\LIST_METIS_mirrors_cfo.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\LIST_METIS_mirrors_img_lm.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\LIST_METIS_mirrors_img_n.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\LIST_METIS_mirrors_lms.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\LIST_METIS_mirrors_wcu.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\MASK_slit_A-19_0.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\MASK_slit_B-28_6.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\MASK_slit_C-38_1.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\MASK_slit_D-57_1.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\MASK_slit_E-114_2.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\QE_detector_geosnap.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\QE_detector_H2RG_METIS.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\TER_ADC_const_90.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\TER_entrance_window.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\TER_img_dichroic.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\TER_lms_grism_max.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\TER_lms_grism_min.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\TER_lms_predisperser_prism.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\TER_mirror_aluminium.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\TER_mirror_gold.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\TER_sca_dichroic.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\code\2023-06-20-spectra_Grism-L_band.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\code\2023-06-20-spectra_Grism-M_band.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\code\2023-06-20-spectra_Grism-N_band.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_Br_alpha.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_Br_alpha_ref.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_CO_1-0_ice.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_CO_ref.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_H2O-ice.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_HCI_L_long.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_HCI_L_short.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_HCI_M.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_IB_4.05.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_L.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_Lp.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_L_spec.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_Mp.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_M_spec.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_N1.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_N2.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_N3.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_ND_OD1.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_ND_OD2.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_ND_OD3.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_ND_OD4.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_ND_OD5.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_Ne_II.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_Ne_II_ref.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_N_spec.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_open.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_PAH_11.25.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_PAH_11.25_ref.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_PAH_3.3.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_PAH_3.3_ref.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_PAH_8.6.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_PAH_8.6_ref.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_Q1.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_short-L.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_S_IV.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\filters\TC_filter_S_IV_ref.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\wcu\fp_mask_grid_lm.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\wcu\fp_mask_pinhole_lm.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::METIS\wcu\fp_mask_pinhole_n.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+INFO::{'inconsistent_table_error': [], 'value_error': [], 'unexpected_error': ['METIS\\FPA_linearity_GeoSnap_high_capacity.dat', 'METIS\\FPA_linearity_GeoSnap_low_capacity.dat', 'METIS\\FPA_linearity_HxRG.dat', 'METIS\\FPA_metis_img_lm_layout.dat', 'METIS\\FPA_metis_img_nq_aquarius_layout.dat', 'METIS\\FPA_metis_img_n_geosnap_layout.dat', 'METIS\\FPA_metis_lms_layout.dat', 'METIS\\FPA_metis_lms_smpl_layout.dat', 'METIS\\LIST_ifu_apertures.dat', 'METIS\\LIST_METIS_mirrors_cfo.dat', 'METIS\\LIST_METIS_mirrors_img_lm.dat', 'METIS\\LIST_METIS_mirrors_img_n.dat', 'METIS\\LIST_METIS_mirrors_lms.dat', 'METIS\\LIST_METIS_mirrors_wcu.dat', 'METIS\\MASK_slit_A-19_0.dat', 'METIS\\MASK_slit_B-28_6.dat', 'METIS\\MASK_slit_C-38_1.dat', 'METIS\\MASK_slit_D-57_1.dat', 'METIS\\MASK_slit_E-114_2.dat', 'METIS\\QE_detector_geosnap.dat', 'METIS\\QE_detector_H2RG_METIS.dat', 'METIS\\TER_ADC_const_90.dat', 'METIS\\TER_entrance_window.dat', 'METIS\\TER_img_dichroic.dat', 'METIS\\TER_lms_grism_max.dat', 'METIS\\TER_lms_grism_min.dat', 'METIS\\TER_lms_predisperser_prism.dat', 'METIS\\TER_mirror_aluminium.dat', 'METIS\\TER_mirror_gold.dat', 'METIS\\TER_sca_dichroic.dat', 'METIS\\code\\2023-06-20-spectra_Grism-L_band.dat', 'METIS\\code\\2023-06-20-spectra_Grism-M_band.dat', 'METIS\\code\\2023-06-20-spectra_Grism-N_band.dat', 'METIS\\filters\\TC_filter_Br_alpha.dat', 'METIS\\filters\\TC_filter_Br_alpha_ref.dat', 'METIS\\filters\\TC_filter_CO_1-0_ice.dat', 'METIS\\filters\\TC_filter_CO_ref.dat', 'METIS\\filters\\TC_filter_H2O-ice.dat', 'METIS\\filters\\TC_filter_HCI_L_long.dat', 'METIS\\filters\\TC_filter_HCI_L_short.dat', 'METIS\\filters\\TC_filter_HCI_M.dat', 'METIS\\filters\\TC_filter_IB_4.05.dat', 'METIS\\filters\\TC_filter_L.dat', 'METIS\\filters\\TC_filter_Lp.dat', 'METIS\\filters\\TC_filter_L_spec.dat', 'METIS\\filters\\TC_filter_Mp.dat', 'METIS\\filters\\TC_filter_M_spec.dat', 'METIS\\filters\\TC_filter_N1.dat', 'METIS\\filters\\TC_filter_N2.dat', 'METIS\\filters\\TC_filter_N3.dat', 'METIS\\filters\\TC_filter_ND_OD1.dat', 'METIS\\filters\\TC_filter_ND_OD2.dat', 'METIS\\filters\\TC_filter_ND_OD3.dat', 'METIS\\filters\\TC_filter_ND_OD4.dat', 'METIS\\filters\\TC_filter_ND_OD5.dat', 'METIS\\filters\\TC_filter_Ne_II.dat', 'METIS\\filters\\TC_filter_Ne_II_ref.dat', 'METIS\\filters\\TC_filter_N_spec.dat', 'METIS\\filters\\TC_filter_open.dat', 'METIS\\filters\\TC_filter_PAH_11.25.dat', 'METIS\\filters\\TC_filter_PAH_11.25_ref.dat', 'METIS\\filters\\TC_filter_PAH_3.3.dat', 'METIS\\filters\\TC_filter_PAH_3.3_ref.dat', 'METIS\\filters\\TC_filter_PAH_8.6.dat', 'METIS\\filters\\TC_filter_PAH_8.6_ref.dat', 'METIS\\filters\\TC_filter_Q1.dat', 'METIS\\filters\\TC_filter_short-L.dat', 'METIS\\filters\\TC_filter_S_IV.dat', 'METIS\\filters\\TC_filter_S_IV_ref.dat', 'METIS\\wcu\\fp_mask_grid_lm.dat', 'METIS\\wcu\\fp_mask_pinhole_lm.dat', 'METIS\\wcu\\fp_mask_pinhole_n.dat']}
+ERROR::MICADO\FPA_array_layout.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\FPA_linearity.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\INST_MICADO_wavefront_error_budget.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\LIST_MICADO_mirrors_spec.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\LIST_MICADO_mirrors_static.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\LIST_MICADO_mirrors_wide.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\LIST_MICADO_mirrors_zoom.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\LIST_RO_SCAO_mirrors.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\MASK_slit_15000x20.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\MASK_slit_3000x16.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\MASK_slit_3000x48.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\QE_detector_H2RG.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\QE_detector_H4RG.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\TER_coating_antireflection.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\TER_entrance_window.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\TER_full_adc.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\TER_grating.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\TER_MICADO_mirror_mgf2agal.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\TER_mirror_gold.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\TER_SCAO_dichroic.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_blank.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_block.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_Br-gamma.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_FeII.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_H-cont.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_H-long.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_H-short.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_H.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_H2_1-0S1.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_He-I.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_I-long.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_J-long.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_J-short.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_J.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_K-cont.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_K-long.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_K-mid.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_K-short.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_Ks.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_Ks2.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_ND1.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_ND3.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_open.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_Pa-beta.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_Spec_HK.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_Spec_IJ.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_stop_IJH.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_stop_K.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_xH1.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_xH2.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_xI1.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_xI2.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_xJ1.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_xJ2.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_xK1.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_xK2.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_xY1.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_xY2.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MICADO\filters\TC_filter_Y.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+INFO::{'inconsistent_table_error': [], 'value_error': [], 'unexpected_error': ['MICADO\\FPA_array_layout.dat', 'MICADO\\FPA_linearity.dat', 'MICADO\\INST_MICADO_wavefront_error_budget.dat', 'MICADO\\LIST_MICADO_mirrors_spec.dat', 'MICADO\\LIST_MICADO_mirrors_static.dat', 'MICADO\\LIST_MICADO_mirrors_wide.dat', 'MICADO\\LIST_MICADO_mirrors_zoom.dat', 'MICADO\\LIST_RO_SCAO_mirrors.dat', 'MICADO\\MASK_slit_15000x20.dat', 'MICADO\\MASK_slit_3000x16.dat', 'MICADO\\MASK_slit_3000x48.dat', 'MICADO\\QE_detector_H2RG.dat', 'MICADO\\QE_detector_H4RG.dat', 'MICADO\\TER_coating_antireflection.dat', 'MICADO\\TER_entrance_window.dat', 'MICADO\\TER_full_adc.dat', 'MICADO\\TER_grating.dat', 'MICADO\\TER_MICADO_mirror_mgf2agal.dat', 'MICADO\\TER_mirror_gold.dat', 'MICADO\\TER_SCAO_dichroic.dat', 'MICADO\\filters\\TC_filter_blank.dat', 'MICADO\\filters\\TC_filter_block.dat', 'MICADO\\filters\\TC_filter_Br-gamma.dat', 'MICADO\\filters\\TC_filter_FeII.dat', 'MICADO\\filters\\TC_filter_H-cont.dat', 'MICADO\\filters\\TC_filter_H-long.dat', 'MICADO\\filters\\TC_filter_H-short.dat', 'MICADO\\filters\\TC_filter_H.dat', 'MICADO\\filters\\TC_filter_H2_1-0S1.dat', 'MICADO\\filters\\TC_filter_He-I.dat', 'MICADO\\filters\\TC_filter_I-long.dat', 'MICADO\\filters\\TC_filter_J-long.dat', 'MICADO\\filters\\TC_filter_J-short.dat', 'MICADO\\filters\\TC_filter_J.dat', 'MICADO\\filters\\TC_filter_K-cont.dat', 'MICADO\\filters\\TC_filter_K-long.dat', 'MICADO\\filters\\TC_filter_K-mid.dat', 'MICADO\\filters\\TC_filter_K-short.dat', 'MICADO\\filters\\TC_filter_Ks.dat', 'MICADO\\filters\\TC_filter_Ks2.dat', 'MICADO\\filters\\TC_filter_ND1.dat', 'MICADO\\filters\\TC_filter_ND3.dat', 'MICADO\\filters\\TC_filter_open.dat', 'MICADO\\filters\\TC_filter_Pa-beta.dat', 'MICADO\\filters\\TC_filter_Spec_HK.dat', 'MICADO\\filters\\TC_filter_Spec_IJ.dat', 'MICADO\\filters\\TC_filter_stop_IJH.dat', 'MICADO\\filters\\TC_filter_stop_K.dat', 'MICADO\\filters\\TC_filter_xH1.dat', 'MICADO\\filters\\TC_filter_xH2.dat', 'MICADO\\filters\\TC_filter_xI1.dat', 'MICADO\\filters\\TC_filter_xI2.dat', 'MICADO\\filters\\TC_filter_xJ1.dat', 'MICADO\\filters\\TC_filter_xJ2.dat', 'MICADO\\filters\\TC_filter_xK1.dat', 'MICADO\\filters\\TC_filter_xK2.dat', 'MICADO\\filters\\TC_filter_xY1.dat', 'MICADO\\filters\\TC_filter_xY2.dat', 'MICADO\\filters\\TC_filter_Y.dat']}
+ERROR::MORFEO\TER_mirror_silver.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MORFEO\TER_MORFEO_entrance_window.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MORFEO\TER_MORFEO_lgs_dichroic.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MORFEO\TER_MORFEO_mirror_aluminium.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MORFEO\TER_MORFEO_mirror_gold.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MORFEO\TER_MORFEO_mirror_mgf2agal.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MORFEO\TER_MORFEO_mirror_silver.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+INFO::{'inconsistent_table_error': [], 'value_error': [], 'unexpected_error': ['MORFEO\\TER_mirror_silver.dat', 'MORFEO\\TER_MORFEO_entrance_window.dat', 'MORFEO\\TER_MORFEO_lgs_dichroic.dat', 'MORFEO\\TER_MORFEO_mirror_aluminium.dat', 'MORFEO\\TER_MORFEO_mirror_gold.dat', 'MORFEO\\TER_MORFEO_mirror_mgf2agal.dat', 'MORFEO\\TER_MORFEO_mirror_silver.dat']}
+ERROR::MOSAIC\FPA_linearity_HxRG.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MOSAIC\FPA_mosaic_NIR_layout.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MOSAIC\FPA_mosaic_VIS_layout.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MOSAIC\QE_detector_NIR.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MOSAIC\QE_VIS_ML2_depleted.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MOSAIC\QE_VIS_ML2_standard.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MOSAIC\TER_grating_VIS_LR_B.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MOSAIC\TER_mIFU_HR-H.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MOSAIC\TER_mIFU_LR-H.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MOSAIC\TER_mIFU_LR-J.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MOSAIC\TER_mos_HR-H.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MOSAIC\TER_mos_LR-H.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MOSAIC\TER_mos_LR-J.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MOSAIC\TER_spec_HR-H.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MOSAIC\TER_spec_LR-H.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MOSAIC\TER_spec_LR-J.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MOSAIC\TER_sys_MOS-HR-B1.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MOSAIC\TER_sys_MOS-HR-B2.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MOSAIC\TER_sys_MOS-HR-R1.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MOSAIC\TER_sys_MOS-HR-R2.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MOSAIC\TER_sys_MOS-LR-B.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::MOSAIC\TER_sys_MOS-LR-R.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+INFO::{'inconsistent_table_error': [], 'value_error': [], 'unexpected_error': ['MOSAIC\\FPA_linearity_HxRG.dat', 'MOSAIC\\FPA_mosaic_NIR_layout.dat', 'MOSAIC\\FPA_mosaic_VIS_layout.dat', 'MOSAIC\\QE_detector_NIR.dat', 'MOSAIC\\QE_VIS_ML2_depleted.dat', 'MOSAIC\\QE_VIS_ML2_standard.dat', 'MOSAIC\\TER_grating_VIS_LR_B.dat', 'MOSAIC\\TER_mIFU_HR-H.dat', 'MOSAIC\\TER_mIFU_LR-H.dat', 'MOSAIC\\TER_mIFU_LR-J.dat', 'MOSAIC\\TER_mos_HR-H.dat', 'MOSAIC\\TER_mos_LR-H.dat', 'MOSAIC\\TER_mos_LR-J.dat', 'MOSAIC\\TER_spec_HR-H.dat', 'MOSAIC\\TER_spec_LR-H.dat', 'MOSAIC\\TER_spec_LR-J.dat', 'MOSAIC\\TER_sys_MOS-HR-B1.dat', 'MOSAIC\\TER_sys_MOS-HR-B2.dat', 'MOSAIC\\TER_sys_MOS-HR-R1.dat', 'MOSAIC\\TER_sys_MOS-HR-R2.dat', 'MOSAIC\\TER_sys_MOS-LR-B.dat', 'MOSAIC\\TER_sys_MOS-LR-R.dat']}
+ERROR::NACO\filters\H_CONICA.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\IB_2.00.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\IB_2.03.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\IB_2.06.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\IB_2.09.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\IB_2.12.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\IB_2.15.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\IB_2.18.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\IB_2.21.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\IB_2.24.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\IB_2.27.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\IB_2.30.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\IB_2.33.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\IB_2.36.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\IB_2.39.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\IB_2.42.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\IB_2.45.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\IB_2.48.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\J_CONICA.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\Ks_CONICA.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\L_prime.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\M_prime.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\NB_1.04.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\NB_1.08.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\NB_1.09.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\NB_1.24.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\NB_1.26.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\NB_1.28.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\NB_1.64.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\NB_1.75.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\NB_2.12.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\NB_2.17.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\NB_3.74.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NACO\filters\NB_4.05.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+INFO::{'inconsistent_table_error': [], 'value_error': [], 'unexpected_error': ['NACO\\filters\\H_CONICA.dat', 'NACO\\filters\\IB_2.00.dat', 'NACO\\filters\\IB_2.03.dat', 'NACO\\filters\\IB_2.06.dat', 'NACO\\filters\\IB_2.09.dat', 'NACO\\filters\\IB_2.12.dat', 'NACO\\filters\\IB_2.15.dat', 'NACO\\filters\\IB_2.18.dat', 'NACO\\filters\\IB_2.21.dat', 'NACO\\filters\\IB_2.24.dat', 'NACO\\filters\\IB_2.27.dat', 'NACO\\filters\\IB_2.30.dat', 'NACO\\filters\\IB_2.33.dat', 'NACO\\filters\\IB_2.36.dat', 'NACO\\filters\\IB_2.39.dat', 'NACO\\filters\\IB_2.42.dat', 'NACO\\filters\\IB_2.45.dat', 'NACO\\filters\\IB_2.48.dat', 'NACO\\filters\\J_CONICA.dat', 'NACO\\filters\\Ks_CONICA.dat', 'NACO\\filters\\L_prime.dat', 'NACO\\filters\\M_prime.dat', 'NACO\\filters\\NB_1.04.dat', 'NACO\\filters\\NB_1.08.dat', 'NACO\\filters\\NB_1.09.dat', 'NACO\\filters\\NB_1.24.dat', 'NACO\\filters\\NB_1.26.dat', 'NACO\\filters\\NB_1.28.dat', 'NACO\\filters\\NB_1.64.dat', 'NACO\\filters\\NB_1.75.dat', 'NACO\\filters\\NB_2.12.dat', 'NACO\\filters\\NB_2.17.dat', 'NACO\\filters\\NB_3.74.dat', 'NACO\\filters\\NB_4.05.dat']}
+ERROR::NIRCam\DET_LW_layout.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NIRCam\DET_LW_layout_simple.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NIRCam\DET_SW_layout.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NIRCam\filters\long_wl\TC_filter_F250M.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NIRCam\filters\long_wl\TC_filter_F277W.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NIRCam\filters\long_wl\TC_filter_F300M.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NIRCam\filters\long_wl\TC_filter_F322W2.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NIRCam\filters\long_wl\TC_filter_F323N.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NIRCam\filters\long_wl\TC_filter_F335M.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NIRCam\filters\long_wl\TC_filter_F356W.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NIRCam\filters\long_wl\TC_filter_F360M.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NIRCam\filters\long_wl\TC_filter_F405N.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NIRCam\filters\long_wl\TC_filter_F410M.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NIRCam\filters\long_wl\TC_filter_F430M.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NIRCam\filters\long_wl\TC_filter_F444W.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NIRCam\filters\long_wl\TC_filter_F460M.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NIRCam\filters\long_wl\TC_filter_F466N.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NIRCam\filters\long_wl\TC_filter_F470N.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NIRCam\filters\long_wl\TC_filter_F480M.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NIRCam\filters\short_wl\TC_filter_F070W.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NIRCam\filters\short_wl\TC_filter_F090W.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NIRCam\filters\short_wl\TC_filter_F115W.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NIRCam\filters\short_wl\TC_filter_F140M.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NIRCam\filters\short_wl\TC_filter_F150W.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NIRCam\filters\short_wl\TC_filter_F150W2.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NIRCam\filters\short_wl\TC_filter_F162M.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NIRCam\filters\short_wl\TC_filter_F164N.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NIRCam\filters\short_wl\TC_filter_F182M.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NIRCam\filters\short_wl\TC_filter_F187N.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NIRCam\filters\short_wl\TC_filter_F200W.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NIRCam\filters\short_wl\TC_filter_F210M.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::NIRCam\filters\short_wl\TC_filter_F212N.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+INFO::{'inconsistent_table_error': [], 'value_error': [], 'unexpected_error': ['NIRCam\\DET_LW_layout.dat', 'NIRCam\\DET_LW_layout_simple.dat', 'NIRCam\\DET_SW_layout.dat', 'NIRCam\\filters\\long_wl\\TC_filter_F250M.dat', 'NIRCam\\filters\\long_wl\\TC_filter_F277W.dat', 'NIRCam\\filters\\long_wl\\TC_filter_F300M.dat', 'NIRCam\\filters\\long_wl\\TC_filter_F322W2.dat', 'NIRCam\\filters\\long_wl\\TC_filter_F323N.dat', 'NIRCam\\filters\\long_wl\\TC_filter_F335M.dat', 'NIRCam\\filters\\long_wl\\TC_filter_F356W.dat', 'NIRCam\\filters\\long_wl\\TC_filter_F360M.dat', 'NIRCam\\filters\\long_wl\\TC_filter_F405N.dat', 'NIRCam\\filters\\long_wl\\TC_filter_F410M.dat', 'NIRCam\\filters\\long_wl\\TC_filter_F430M.dat', 'NIRCam\\filters\\long_wl\\TC_filter_F444W.dat', 'NIRCam\\filters\\long_wl\\TC_filter_F460M.dat', 'NIRCam\\filters\\long_wl\\TC_filter_F466N.dat', 'NIRCam\\filters\\long_wl\\TC_filter_F470N.dat', 'NIRCam\\filters\\long_wl\\TC_filter_F480M.dat', 'NIRCam\\filters\\short_wl\\TC_filter_F070W.dat', 'NIRCam\\filters\\short_wl\\TC_filter_F090W.dat', 'NIRCam\\filters\\short_wl\\TC_filter_F115W.dat', 'NIRCam\\filters\\short_wl\\TC_filter_F140M.dat', 'NIRCam\\filters\\short_wl\\TC_filter_F150W.dat', 'NIRCam\\filters\\short_wl\\TC_filter_F150W2.dat', 'NIRCam\\filters\\short_wl\\TC_filter_F162M.dat', 'NIRCam\\filters\\short_wl\\TC_filter_F164N.dat', 'NIRCam\\filters\\short_wl\\TC_filter_F182M.dat', 'NIRCam\\filters\\short_wl\\TC_filter_F187N.dat', 'NIRCam\\filters\\short_wl\\TC_filter_F200W.dat', 'NIRCam\\filters\\short_wl\\TC_filter_F210M.dat', 'NIRCam\\filters\\short_wl\\TC_filter_F212N.dat']}
+ERROR::OSIRIS\GTC_im_efficiency.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::OSIRIS\MAAT_APERTURES.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::OSIRIS\QE_OSIRIS_new_detector.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::OSIRIS\QE_OSIRIS_old_detector_plus_M3.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::OSIRIS\unity.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::OSIRIS\code\OSIRIS_stitchedArc.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::OSIRIS\traces\TRACE_R1000B.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::OSIRIS\traces\TRACE_R1000R.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::OSIRIS\traces\TRACE_R2000B.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::OSIRIS\traces\TRACE_R2500I.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::OSIRIS\traces\TRACE_R2500R.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::OSIRIS\traces\TRACE_R2500U.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::OSIRIS\traces\TRACE_R2500V.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::OSIRIS\traces\TRACE_R300B.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::OSIRIS\traces\TRACE_R300R.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::OSIRIS\traces\TRACE_R500B.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::OSIRIS\traces\TRACE_R500R.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::OSIRIS\tests\test_data\fg191b2b.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::OSIRIS\tests\test_data\OSIRIS_stitchedArc.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+INFO::{'inconsistent_table_error': [], 'value_error': [], 'unexpected_error': ['OSIRIS\\GTC_im_efficiency.dat', 'OSIRIS\\MAAT_APERTURES.dat', 'OSIRIS\\QE_OSIRIS_new_detector.dat', 'OSIRIS\\QE_OSIRIS_old_detector_plus_M3.dat', 'OSIRIS\\unity.dat', 'OSIRIS\\code\\OSIRIS_stitchedArc.dat', 'OSIRIS\\traces\\TRACE_R1000B.dat', 'OSIRIS\\traces\\TRACE_R1000R.dat', 'OSIRIS\\traces\\TRACE_R2000B.dat', 'OSIRIS\\traces\\TRACE_R2500I.dat', 'OSIRIS\\traces\\TRACE_R2500R.dat', 'OSIRIS\\traces\\TRACE_R2500U.dat', 'OSIRIS\\traces\\TRACE_R2500V.dat', 'OSIRIS\\traces\\TRACE_R300B.dat', 'OSIRIS\\traces\\TRACE_R300R.dat', 'OSIRIS\\traces\\TRACE_R500B.dat', 'OSIRIS\\traces\\TRACE_R500R.dat', 'OSIRIS\\tests\\test_data\\fg191b2b.dat', 'OSIRIS\\tests\\test_data\\OSIRIS_stitchedArc.dat']}
+ERROR::Paranal\TER_paranal_default_NIR_IMG.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+INFO::{'inconsistent_table_error': [], 'value_error': [], 'unexpected_error': ['Paranal\\TER_paranal_default_NIR_IMG.dat']}
+ERROR::test_package\TC_filter_Ks.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+INFO::{'inconsistent_table_error': [], 'value_error': [], 'unexpected_error': ['test_package\\TC_filter_Ks.dat']}
+ERROR::ViennaLT\FPA_ViLT_layout.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::ViennaLT\LIST_ViLT_mirrors_static.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+INFO::{'inconsistent_table_error': [], 'value_error': [], 'unexpected_error': ['ViennaLT\\FPA_ViLT_layout.dat', 'ViennaLT\\LIST_ViLT_mirrors_static.dat']}
+ERROR::VLT\LIST_VLT_mirrors.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::VLT\TC_mirror_aluminium.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+INFO::{'inconsistent_table_error': [], 'value_error': [], 'unexpected_error': ['VLT\\LIST_VLT_mirrors.dat', 'VLT\\TC_mirror_aluminium.dat']}
+ERROR::WFC3\FPA_linearity.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::WFC3\LIST_WFC3_mirrors_IR.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::WFC3\wfc3_ir_cor_004_syn.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::WFC3\wfc3_ir_csm_001_syn.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::WFC3\wfc3_ir_dn_002_syn.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::WFC3\wfc3_ir_fold_001_syn.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::WFC3\wfc3_ir_mask_001_syn.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::WFC3\wfc3_ir_mir1_001_syn.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::WFC3\wfc3_ir_mir2_001_syn.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::WFC3\wfc3_ir_qe_003_syn.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::WFC3\wfc3_ir_rcp_001_syn.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::WFC3\wfc3_ir_win_001_syn.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::WFC3\filters\TER_filter_F098M.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::WFC3\filters\TER_filter_F105W.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::WFC3\filters\TER_filter_F110W.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::WFC3\filters\TER_filter_F125W.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::WFC3\filters\TER_filter_F126N.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::WFC3\filters\TER_filter_F127M.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::WFC3\filters\TER_filter_F128N.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::WFC3\filters\TER_filter_F130N.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::WFC3\filters\TER_filter_F132N.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::WFC3\filters\TER_filter_F139M.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::WFC3\filters\TER_filter_F140W.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::WFC3\filters\TER_filter_F153M.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::WFC3\filters\TER_filter_F160W.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::WFC3\filters\TER_filter_F164N.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+ERROR::WFC3\filters\TER_filter_F167N.dat Unexpected Exception <class 'AttributeError'> 'WindowsPath' object has no attribute 'lower'
+INFO::{'inconsistent_table_error': [], 'value_error': [], 'unexpected_error': ['WFC3\\FPA_linearity.dat', 'WFC3\\LIST_WFC3_mirrors_IR.dat', 'WFC3\\wfc3_ir_cor_004_syn.dat', 'WFC3\\wfc3_ir_csm_001_syn.dat', 'WFC3\\wfc3_ir_dn_002_syn.dat', 'WFC3\\wfc3_ir_fold_001_syn.dat', 'WFC3\\wfc3_ir_mask_001_syn.dat', 'WFC3\\wfc3_ir_mir1_001_syn.dat', 'WFC3\\wfc3_ir_mir2_001_syn.dat', 'WFC3\\wfc3_ir_qe_003_syn.dat', 'WFC3\\wfc3_ir_rcp_001_syn.dat', 'WFC3\\wfc3_ir_win_001_syn.dat', 'WFC3\\filters\\TER_filter_F098M.dat', 'WFC3\\filters\\TER_filter_F105W.dat', 'WFC3\\filters\\TER_filter_F110W.dat', 'WFC3\\filters\\TER_filter_F125W.dat', 'WFC3\\filters\\TER_filter_F126N.dat', 'WFC3\\filters\\TER_filter_F127M.dat', 'WFC3\\filters\\TER_filter_F128N.dat', 'WFC3\\filters\\TER_filter_F130N.dat', 'WFC3\\filters\\TER_filter_F132N.dat', 'WFC3\\filters\\TER_filter_F139M.dat', 'WFC3\\filters\\TER_filter_F140W.dat', 'WFC3\\filters\\TER_filter_F153M.dat', 'WFC3\\filters\\TER_filter_F160W.dat', 'WFC3\\filters\\TER_filter_F164N.dat', 'WFC3\\filters\\TER_filter_F167N.dat']}

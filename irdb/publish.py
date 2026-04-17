@@ -125,7 +125,8 @@ def make_package(pkg_name: str, stable: bool = False,
         time = dt.fromisoformat(version_dict["timestamp"])
 
     # Make the zip file
-    zip_name = db._unparse_package_version(pkg_name, time.date(), suffix)
+    # zip_name = db._unparse_package_version(pkg_name, time.date(), suffix)
+    zip_name = f"{pkg_name}.{time.date()}.zip"
     zip_package_folder(pkg_name, zip_name)
     logging.info(
         "[%s]: Compiled package: %s",

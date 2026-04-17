@@ -1,7 +1,7 @@
 # author : Oliver Czoske
 # source : E-SPE-NOVA-MET-1049_4-0 (METIS transmission budget)
 # date_created : 2020-04-13
-# date_modified : 2022-05-11
+# date_modified : 2026-03-31
 # status : version 4.0
 # type : prism:transmission
 # wavelength_unit : um
@@ -9,8 +9,19 @@
 # comment : extracted from excel sheet "CFO+LMS"
 # changes :
 #  - 2022-05-11 (OC) updated to 4.0
+#  - 2026-03-31 (OC) extend below 2.7um for order 41
 #
 wavelength	transmission	reflection	emissivity
+2.60	0.867	0.133	0
+2.61	0.867	0.133	0
+2.62	0.867	0.133	0
+2.63	0.867	0.133	0
+2.64	0.867	0.133	0
+2.65	0.867	0.133	0
+2.66	0.867	0.133	0
+2.67	0.867	0.133	0
+2.68	0.867	0.133	0
+2.69	0.867	0.133	0
 2.70	0.867	0.133	0
 2.71	0.867	0.133	0
 2.72	0.867	0.133	0

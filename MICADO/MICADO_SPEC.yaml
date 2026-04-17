@@ -10,17 +10,6 @@ properties :
     decouple_detector_from_sky_headers: True  # needed for slit spectroscopy
 
 effects :
--   name : spec_mode_optics
-    description : list of extra mirrors needed for the spectroscopy mode
-    class : SurfaceList
-    kwargs :
-        filename : LIST_MICADO_mirrors_spec.dat
-
-- name : spectroscopic_slit_aperture
-  class : ApertureMask
-  kwargs :
-    filename : "!OBS.slit_file"
-
 - name : grating_efficiency
   description : grating efficiency for spectral orders
   class : SpectralEfficiency
@@ -58,4 +47,4 @@ name : SPEC
 properties :
     obs_mode: "SPEC"
     fits_ins_mode: "SPE"
-    fits_ins_mask: ""
+    fits_ins_mask: "Small"

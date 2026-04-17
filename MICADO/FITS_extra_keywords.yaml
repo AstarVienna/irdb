@@ -22,7 +22,7 @@
           MASK:
             NAME: "!OBS.fits_ins_mask"
           SLIT:
-            NAME: "!OBS.fits_ins_slit"
+            NAME: "#slit_wheel.current_slit!"
           CORO:
             NAME: "!OBS.fits_ins_coro"
           STOP:

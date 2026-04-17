@@ -9,19 +9,21 @@ Mp band (Mp=0mag) -->  268e6 ph/s/m2
 """
 
 # integration test using everything and the HAWKI package
-import pytest
-from pytest import approx
 import os
 import os.path as pth
 
+import pytest
+from pytest import approx
+
 import numpy as np
 from astropy import units as u
-from astropy.io import ascii
+from astropy.io import ascii as ioascii
 
 import scopesim
 import scopesim.source.source_templates
 from scopesim.tests.mocks.py_objects.source_objects import _single_table_source
 from scopesim import rc
+from scopesim.optics.image_plane_utils import calc_footprint
 
 from matplotlib import pyplot as plt
 from matplotlib.colors import LogNorm
@@ -41,29 +43,27 @@ PKGS = {"Paranal": "locations/Paranal.zip",
         "VLT": "telescopes/VLT.zip",
         "HAWKI": "instruments/HAWKI.zip"}
 
+# pylint: disable=missing-class-docstring,missing-function-docstring
 
-class TestInit:
-    def test_all_packages_are_available(self):
-        rc_local_path = rc.__config__["!SIM.file.local_packages_path"]
-        print("irdb" not in rc_local_path)
-        for pkg_name in PKGS:
-            assert os.path.isdir(os.path.join(rc_local_path, pkg_name))
+def test_all_packages_are_available():
+    rc_local_path = rc.__config__["!SIM.file.local_packages_path"]
+    print("irdb" not in rc_local_path)
+    for pkg_name in PKGS:
+        assert os.path.isdir(os.path.join(rc_local_path, pkg_name))
 
+def test_user_commands_loads_without_throwing_errors(capsys):
+    cmd = scopesim.UserCommands(use_instrument="HAWKI")
+    assert isinstance(cmd, scopesim.UserCommands)
+    for key in ["SIM", "OBS", "ATMO", "TEL", "INST", "DET"]:
+        assert key in cmd and len(cmd[key]) > 0
 
-class TestLoadUserCommands:
-    def test_user_commands_loads_without_throwing_errors(self, capsys):
-        cmd = scopesim.UserCommands(use_instrument="HAWKI")
-        assert isinstance(cmd, scopesim.UserCommands)
-        for key in ["SIM", "OBS", "ATMO", "TEL", "INST", "DET"]:
-            assert key in cmd and len(cmd[key]) > 0
-
-        stdout = capsys.readouterr()
-        assert len(stdout.out) == 0
+    stdout = capsys.readouterr()
+    assert len(stdout.out) == 0
 
 
 @pytest.mark.slow
 class TestMakeOpticalTrain:
-    def test_works_seamlessly_for_hawki_package(self, capsys):
+    def test_works_seamlessly_for_hawki_package(self):
         cmd = scopesim.UserCommands(use_instrument="HAWKI")
         opt = scopesim.OpticalTrain(cmd)
         opt["detector_1024_window"].include = False
@@ -80,7 +80,7 @@ class TestMakeOpticalTrain:
 
         # test that we have a system throughput
         wave = np.linspace(0.7, 2.5, 181) * u.um
-        tc = opt.optics_manager.system_transmission
+        tc = opt.optics_manager.system_transmission()
         # ec = opt.optics_manager.surfaces_table.emission
         # ..todo:: something super wierd is going on here when running pytest in the top directory
         # ..todo:: perhaps this is has to be relaxed due to different filter
@@ -102,7 +102,6 @@ class TestMakeOpticalTrain:
 
         if PLOTS:
             fovs = opt.fov_manager.fovs
-            from scopesim.optics.image_plane_utils import calc_footprint
             plt.subplot(121)
             for fov in fovs:
                 x, y = calc_footprint(fov.hdu.header)
@@ -143,7 +142,7 @@ class TestMakeOpticalTrain:
 
     def test_system_transmission_is_similar_to_eso_etc(self):
         """
-        A ~20% discrepency between the ESO and ScopeSim system throughputs
+        A ~20% discrepancy between the ESO and ScopeSim system throughputs
         """
 
         for filt_name in ["Y", "J", "H", "Ks", "BrGamma", "CH4"]:
@@ -158,9 +157,9 @@ class TestMakeOpticalTrain:
             opt.observe(src)
 
             if PLOTS:
-                fname = "hawki_eso_etc/TER_system_{}.dat".format(filt_name)
+                fname = f"hawki_eso_etc/TER_system_{filt_name}.dat"
                 dname = os.path.dirname(__file__)
-                etc_tbl = ascii.read(os.path.join(dname, fname))
+                etc_tbl = ioascii.read(os.path.join(dname, fname))
                 etc_wave = etc_tbl["wavelength"] * 1e-3 * u.um
                 etc_thru = etc_tbl["transmission"] * 1e-2
                 # plt.plot(etc_wave, etc_thru, c="b", label="ESO/ETC")
@@ -267,8 +266,9 @@ class TestObserveOpticalTrain:
         if PLOTS:
             wave = np.arange(0.7, 2.5, 0.001) * u.um
             specs = opt._last_source.spectra
-            for i in range(len(specs)):
-                flux = specs[i](wave)
+            #for i in range(len(specs)):
+            for spec in specs:
+                flux = spec(wave)
                 plt.plot(wave, flux)
             plt.show()
 

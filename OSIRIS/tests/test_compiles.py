@@ -1,3 +1,4 @@
+"""Tests for the OSIRIS instrument"""
 from pathlib import Path
 import pytest
 
@@ -13,6 +14,7 @@ sim.rc.__config__["!SIM.file.local_packages_path"] = str(PATH_HERE.parent.parent
 
 PLOTS = False
 
+# pylint: disable=missing-class-docstring,missing-function-docstring
 
 class TestOsirisImagingCompiles:
     def test_everything_is_read_in_nicely(self):
@@ -31,13 +33,13 @@ class TestOsirisImagingCompiles:
         cmds = sim.UserCommands(use_instrument="OSIRIS")
         osiris = sim.OpticalTrain(cmds)
         wave = np.arange(0.3, 1.0, 0.001) * u.um
-        trans = osiris.optics_manager.system_transmission(wave)
+        trans = osiris.optics_manager.system_transmission()
 
         if PLOTS:
-            plt.plot(wave, trans)
+            plt.plot(wave, trans(wave))
             plt.show()
 
-        assert trans.sum() > 0
+        assert trans(wave).sum() > 0
 
     @pytest.mark.slow
     def test_run_imaging_simulation(self):

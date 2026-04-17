@@ -6,7 +6,7 @@ alias: OBS
 name: METIS_default_configuration
 description: default parameters needed for a METIS simulation
 status: development
-needs_scopesim: "v0.11.1a1"
+needs_scopesim: "v0.11.3"
 date_modified: 2025-10-09
 changes:
   - 2021-12-16 (OC) chopnod defaults to perpendicular
@@ -22,6 +22,7 @@ changes:
   - 2025-08-26 (OC) modes for Leiden sky observations
   - 2025-09-29 (OC) version bump
   - 2025-10-09 (OC) proper MJD value
+  - 2026-03-31 (OC) set wave_min to 2.65um for bluest LMS settings
 
 packages:
   - Armazones
@@ -534,7 +535,7 @@ properties:
     seed: None                         # 9001
 
   spectral:
-    wave_min: 2.85
+    wave_min: 2.65
     wave_mid: 8.425
     wave_max: 14.0
 

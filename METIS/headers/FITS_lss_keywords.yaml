@@ -29,3 +29,6 @@
             POS: [0, "IMG_N_PW position"]           # TODO
             POSNAME: ["!OBS.grism_opti12", "IMG_N_PW named position"]
             STAT: ["Standstill", "IMG_N_PW status"]
+
+          DRS:
+            SLIT: ["#slit_wheel.current_slit!", "Slit name"]
