@@ -1,8 +1,7 @@
 # name : DREAMS 1280SCICAM
 # author : Anjali Shivani Reddy
-# sources : https://github.com/Astrogirlanajli/DREAMS/blob/main/5240-0001%20Scicam%20FPA%20Drawing%20mm%20v1.pdf
+# sources : 5240-0001 Scicam FPA Drawing mm v1.pdf
 # date_created : 2024-05-04
-# type : detector:chip_list
 # x_cen_unit : mm
 # y_cen_unit : mm
 # x_size_unit : pix
