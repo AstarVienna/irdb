@@ -1,4 +1,5 @@
-#cluster in the LMC
+"""A cluster in the LMC."""
+
 import os
 import pytest
 import numpy as np
@@ -35,20 +36,24 @@ print("scopesim package loaded successfully.")
 src = sim_tp.stellar.clusters.cluster(mass=10000,  distance=1800, core_radius=500, seed=9002)
 
 dreams.observe(src)
-print("yessss anjali")
-hdus = dreams.readout()
-#dreams.readout(filename="Han.fits")
-plt.subplot(121)
-wave = np.arange(3000, 11000)
-plt.plot(wave, dreams.optics_manager.system_transmission(wave))
-plt.subplot(122)
-im = hdus[0][1].data
+hdus = dreams.readout("LMC.fits")
+
+dreams.optics_manager.system_transmission(plot=True)
+
 # detector_order = [2, 1, 4, 3, 6, 5]
 detector_order = [1, 2, 3, 4, 5, 6]
+
 plt.figure(figsize=(20, 20))
+# Nothing visible here because the sources are too small.
 for plot_number, hdu_number in enumerate(detector_order, 1):
     plt.subplot(3, 2, plot_number)
-    plt.imshow(hdus[0][hdu_number].data, norm=LogNorm(), cmap="hot")
+    plt.imshow(hdus[0][hdu_number].data, norm='log', cmap="hot")
     plt.colorbar()
-    
+
+# Does show something.
+plt.figure(figsize=(20, 20))
+plt.subplot(1, 1, 1)
+plt.imshow(hdus[0][2].data, norm='log', cmap="hot")
+plt.colorbar()
+
 plt.show()
