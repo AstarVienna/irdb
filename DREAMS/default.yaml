@@ -1,4 +1,3 @@
----
 ### default observation parameters needed for DREAMS simulation
 object : configuration
 alias : OBS
@@ -14,7 +13,7 @@ yamls :
   - DREAMS_InGaAs.yaml
 properties :
   airmass : 1.2
-  declination : -31.273 
+  declination : -31.273
   hour_angle : 0
   pupil_angle : 0
   dit : 8
@@ -25,15 +24,16 @@ properties :
     filter_name : J
 
 ---
+
 ### default simulation parameters needed for DREAMS simulation
 object : simulation
 alias : OBS
-name : LFAO_simulation_paramters
+name : simulation_paramters
 description : RC simulation paramters
 
 properties :
   random :
-    seed : 9001
+    seed : None
 
   spectral :
     wave_min : 1.17
