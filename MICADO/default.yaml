@@ -133,10 +133,11 @@ mode_yamls :
   yamls:
   - MICADO_IFU.yaml
   properties:
-    trace_file: TRACE_MICADO.fits
+    trace_file: TRACE_MICADO_IFU.fits
     filter_name_fw1: Spec_HK
     filter_name_fw2: open
     filter_name_pupil: open
+    fits_ins_mode: IFU
     fits_ins_filt: Spec_HK
 
 #### Deprecated modes

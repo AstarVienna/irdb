@@ -18,12 +18,12 @@ effects:
     description: field of view of the image slicer
     class: MetisLMSImageSlicer
     kwargs:
-      filename: MICADO_IFU_Apertures.fits
+      filename: "!OBS.trace_file"
       ext_id: "Aperture List"
 
   - name: spectral_traces
     description: spectral order trace geometry on the focal plane
-    class: SpectralTraceList
+    class: MicadoIFUSpectralTraceList
     kwargs:
       filename: "!OBS.trace_file"
       wave_colname: "wavelength"
