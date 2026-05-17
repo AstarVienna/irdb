@@ -31,6 +31,22 @@ effects:
         pixel_scale : "!INST.pixel_scale"
         filename : "INST_MICADO_wavefront_error_budget.dat"
 
+
+- name: slit_wheel
+  description: collection of field masks and slits
+  class: SlitWheel
+  kwargs:
+    slit_names:
+      - Short
+      - Short_offset
+      - Wide
+      - Wide_offset
+      - Long
+      - Long_offset
+    filename_format: MASK_slit_{}.dat
+    current_slit: "!OBS.slit"
+    include: "!OBS.slit"
+
 -   name: filter_wheel_1
     description: upper filter wheel
     class: FilterWheel
@@ -75,7 +91,7 @@ effects:
             - xY1
         filename_format: "!INST.filter_file_format"
         current_filter: "!OBS.filter_name_fw2"
-        minimum_throughput: 1.01e-4
+        minimum_throughput: 1.01e-33
         outer: 0.2
         outer_unit: "m"
 

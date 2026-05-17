@@ -1,4 +1,4 @@
-# wavelength_unit : micron
+# wavelength_unit : um
 wavelength  throughput
     0.5                  1
     2.5                  1

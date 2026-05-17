@@ -16,6 +16,7 @@ properties:
   pixel_scale: 0.00679         # arcsec / pixel, METIS-1097
   plate_scale: 0.377222222222  # arcsec / mm
   filter_file_format: "filters/TC_filter_{}.dat"
+  include_illumination: False
 
 effects:
   - name: img_n_optics
@@ -86,8 +87,12 @@ effects:
     include: True
     kwargs:
       filename: headers/FITS_img_n_keywords.yaml
-
-
+  
+  - name: illumination
+    description: Large-scale illumination variation across the image plane
+    class: Illumination
+    include: "!INST.include_illumination"
+    
 ---
 ### default simulation parameters needed for a METIS simulation
 object: simulation

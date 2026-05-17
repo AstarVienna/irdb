@@ -1,8 +1,10 @@
-# integration test using everything and the HAWKI package
-import pytest
-from pytest import approx
+"""Integration test using everything and the WFC3 package"""
+
 import os
 from os import path as pth
+
+import pytest
+from pytest import approx
 
 import numpy as np
 from astropy import units as u
@@ -10,6 +12,7 @@ from astropy import units as u
 import scopesim
 import scopesim.source.source_templates
 from scopesim import rc
+from scopesim.optics.image_plane_utils import calc_footprint
 
 from matplotlib import pyplot as plt
 
@@ -24,28 +27,26 @@ PKGS = {"HST": "telescopes/HST.zip",
 
 PLOTS = False
 
+# pylint: disable=missing-class-docstring,missing-function-docstring
 
-class TestInit:
-    def test_all_packages_are_available(self):
-        rc_local_path = rc.__config__["!SIM.file.local_packages_path"]
-        print("irdb" not in rc_local_path)
-        for pkg_name in PKGS:
-            assert os.path.isdir(os.path.join(rc_local_path, pkg_name))
+def test_all_packages_are_available():
+    rc_local_path = rc.__config__["!SIM.file.local_packages_path"]
+    print("irdb" not in rc_local_path)
+    for pkg_name in PKGS:
+        assert os.path.isdir(os.path.join(rc_local_path, pkg_name))
 
+def test_user_commands_loads_without_throwing_errors(capsys):
+    cmd = scopesim.UserCommands(use_instrument="WFC3")
+    assert isinstance(cmd, scopesim.UserCommands)
+    for key in ["SIM", "OBS", "TEL", "INST", "DET"]:
+        assert key in cmd and len(cmd[key]) > 0
 
-class TestLoadUserCommands:
-    def test_user_commands_loads_without_throwing_errors(self, capsys):
-        cmd = scopesim.UserCommands(use_instrument="WFC3")
-        assert isinstance(cmd, scopesim.UserCommands)
-        for key in ["SIM", "OBS", "TEL", "INST", "DET"]:
-            assert key in cmd and len(cmd[key]) > 0
-
-        stdout = capsys.readouterr()
-        assert len(stdout.out) == 0
+    stdout = capsys.readouterr()
+    assert len(stdout.out) == 0
 
 
 class TestMakeOpticalTrain:
-    def test_works_seamlessly_for_wfc3_package(self, capsys):
+    def test_works_seamlessly_for_wfc3_package(self):
         cmd = scopesim.UserCommands(use_instrument="WFC3")
         opt = scopesim.OpticalTrain(cmd)
 
@@ -59,9 +60,9 @@ class TestMakeOpticalTrain:
 
         # test that we have a system throughput
         wave = np.linspace(0.7, 1.8, 111) * u.um
-        tc = opt.optics_manager.system_transmission
+        tc = opt.optics_manager.system_transmission()
         # ec = opt.optics_manager.surfaces_table.emission
-        # ..todo:: something super wierd is going on here when running pytest in the top directory
+        # ..todo:: something super weird is going on here when running pytest in the top directory
         assert 0.4 < np.max(tc(wave)) < 0.6
 
         if PLOTS:
@@ -77,7 +78,6 @@ class TestMakeOpticalTrain:
 
         if PLOTS:
             fovs = opt.fov_manager.fovs
-            from scopesim.optics.image_plane_utils import calc_footprint
             plt.subplot(121)
             for fov in fovs:
                 x, y = calc_footprint(fov.hdu.header)

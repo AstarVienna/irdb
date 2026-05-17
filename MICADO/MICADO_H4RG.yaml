@@ -52,7 +52,7 @@ effects:
     class: DarkCurrent
     # [e-/s] level of dark current for each detector
     kwargs:
-        value: 0.1
+        value: 0.01   # ELT-TRE-MCD-56300-0173_1-4
 
   - name: shot_noise
     description: apply poisson shot noise to images
@@ -67,6 +67,7 @@ effects:
   - name: border_reference_pixels
     description: Blanks the signal on N edge row and column pixels
     class: ReferencePixelBorder
+    include: False
     kwargs:
       border: [0, 0, 0, 0]
 

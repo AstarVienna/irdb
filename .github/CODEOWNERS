@@ -1,0 +1,13 @@
+# This defines "ownership" of files in the repo, which is used for PR review requests among other things.
+# Last matching pattern takes precedence.
+# The syntax is defined here: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Global default
+*  @AstarVienna/scopesim-devs
+
+/.github/  @hugobuddel @teutoburg
+/irdb/  @teutoburg
+
+# Specific instrument packages managed by individual people
+/MOSAIC/ @oczoske
+/NIRCam/ @teutoburg

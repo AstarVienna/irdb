@@ -1,7 +1,7 @@
 pytest
 numpy
 matplotlib
-astropy
+astropy[jupyter]
 pyyaml
 paramiko
 astar-utils

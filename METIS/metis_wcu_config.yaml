@@ -23,3 +23,4 @@ diam_is_out: 100        # [mm] diameter if integrating sphere output port
 rho_is:        0.95     # [] reflectivity of integrating sphere
 rho_tube:      0.95     # [] reflectivity of tube between BB and IS
 emiss_mask:    1.00     # [] emissivity of focal-plane mask
+fibre_transmission: 0.1 # [] transmission of fibres injecting laser into IS
