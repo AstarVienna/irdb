@@ -1,0 +1,784 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0065)https://www.eso.org/sci/facilities/develop/instruments/MAVIS.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Reply-to" content="webteam@eso.org">
+<meta name="robots" content="index,follow">
+<meta name="description" content="ESO is the European Organisation for Astronomical Research in the Southern Hemisphere. It operates the La Silla Paranal Observatory in Chile and has its headquarters in Garching, near Munich, Germany.">
+<meta name="MSSmartTagsPreventParsing" content="TRUE">
+<meta name="author" content="webteam@eso.org">
+<meta name="page-topic" content="Astronomy">
+<meta name="page-type" content="Research Organisation">
+<meta name="organisation" content="ESO, European Organisation for Astronomical Research in the Southern Hemisphere">
+<meta name="Content-Language" content="en">
+<meta name="Language" content="en">
+<meta name="publisher" content="ESO">
+<meta name="copyright" content="1999-2008 ESO">
+<meta name="revisit-after" content="1 day">
+<meta name="keywords" content="ESO, eso.org, Astronomy, Astrophysics, Astronomie, Suedsternwarte, telescopes, detectors, comets, planets, stars, galaxies, nebulae, universe, NTT, VLT, VLTI, ALMA, E-ELT, La Silla, Paranal, Garching, Chile">
+
+
+
+<title>ESO - MAVIS</title>
+
+<script type="text/javascript" async="" defer="" src="./ESO - MAVIS_files/piwik.js.Download"></script><script type="text/javascript" src="./ESO - MAVIS_files/functions.js.Download"></script>
+
+<link rel="stylesheet" href="./ESO - MAVIS_files/w3.css">
+
+<link href="./ESO - MAVIS_files/layout_eso_2007.css" rel="stylesheet" type="text/css">
+
+
+
+
+<link href="https://www.eso.org/fcc/news.xml" rel="alternate" type="application/rss+xml" title="ESO Top News">
+<link href="https://www.eso.org/fcc/announcements.xml" rel="alternate" type="application/rss+xml" title="ESO Announcements">
+<link href="https://feeds.feedburner.com/ESOcast" rel="alternate" type="application/rss+xml" title="ESOCast">
+<link href="https://recruitment.eso.org/jobs.rss" rel="alternate" type="application/rss+xml" title="Jobs@ESO">
+
+
+<link href="./ESO - MAVIS_files/static.css" rel="stylesheet" type="text/css">
+<link href="./ESO - MAVIS_files/eso.css" rel="stylesheet" type="text/css">
+
+
+<!--[if lte IE 7]>
+   <link href="/etc/designs/eso/resources/explorer/iehacks_2col_left.css" rel="stylesheet" type="text/css" />
+   <style type="text/css" media="screen">
+        body {behavior: url(/etc/designs/eso/resources/csshover.htc); }
+   #menu ul li a {height: 1%;} 
+   </style>
+<![endif]-->
+
+<!--[if IE 8]>
+   <link href="/etc/designs/eso/resources/explorer/iehacks_ie8.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+
+
+<script src="./ESO - MAVIS_files/jquery.min.js.Download"></script>
+<script src="./ESO - MAVIS_files/utils.min.js.Download"></script>
+<script src="./ESO - MAVIS_files/granite.min.js.Download"></script>
+<script src="./ESO - MAVIS_files/jquery.min(1).js.Download"></script>
+<script src="./ESO - MAVIS_files/modernizr.min.js.Download"></script>
+<script src="./ESO - MAVIS_files/jquerycommon.min.js.Download"></script>
+<script src="./ESO - MAVIS_files/jquery.min(2).js.Download"></script>
+<script src="./ESO - MAVIS_files/json2.min.js.Download"></script>
+<script src="./ESO - MAVIS_files/jsonpath.min.js.Download"></script>
+
+<script type="text/javascript" src="./ESO - MAVIS_files/swfobject.js.Download"></script>
+<script type="text/javascript" src="./ESO - MAVIS_files/flash.js.Download"></script>
+<script type="text/javascript">
+
+    var attribWithoutAll="location=no,menubar=no,toolbar=no,status=no";
+    attribWithoutAll+=",resizable=no,scrollbars=no,width=1000,height=750";
+    var subwindow=0;
+    var firstTeaserID="";
+
+    function ClosePopUp()
+    {
+        if (!subwindow)
+            return;
+        if (subwindow.closed)
+            return;
+        subwindow.close();
+    }
+
+
+    function PopUpWithoutAll()
+    {
+        ClosePopUp()
+        subwindow=window.open("outreach\/bond\/","popup",attribWithoutAll);
+        subwindow.moveTo(10,50);
+    }
+    function PopUpWithoutAll2()
+    {
+        ClosePopUp()
+        subwindow=window.open("outreach\/bond\/\Flash007\/","popup",attribWithoutAll);
+        subwindow.moveTo(10,50);
+    }
+
+    function getCookie(c_name)
+    {
+        var i,x,y,ARRcookies=document.cookie.split(";");
+        for (i=0;i<ARRcookies.length;i++)
+        {
+            x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+            y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+            x=x.replace(/^\s+|\s+$/g,"");
+            if (x==c_name)
+            {
+                return unescape(y);
+            }
+        }
+    }
+
+    function redirectToInstrumentSelectorFromCookie(currentPageName)
+    {
+        var instrumentSelector=getCookie("eso-phase2-instrument-selector");
+        if (instrumentSelector != null && instrumentSelector != "")
+        {
+            location.href = currentPageName + "." + instrumentSelector + ".html";
+        }
+    }
+
+    var sPath = window.location.pathname;
+    if (sPath.indexOf("/sci/observing/phase2") != -1) {
+        var sPage = sPath.substring(sPath.lastIndexOf('/') + 1);
+        var sPageName = sPage.substring(0, sPage.indexOf('.'));
+        var selectors = sPage.substring(sPageName.length, sPage.lastIndexOf('.'));
+        if (selectors.length == 0) {
+            redirectToInstrumentSelectorFromCookie(sPageName);
+        }
+    }
+
+</script>
+</head>
+
+
+
+<body><div id="cboxOverlay" style="display: none;"></div><div id="colorbox" class="" style="padding-bottom: 0px; padding-right: 0px; display: none;"><div id="cboxWrapper"><div><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxLoadedContent" style="width: 0px; height: 0px; overflow: hidden; float: left;"></div><div id="cboxLoadingOverlay" style="float: left;"></div><div id="cboxLoadingGraphic" style="float: left;"></div><div id="cboxTitle" style="float: left;"></div><div id="cboxCurrent" style="float: left;"></div><div id="cboxNext" style="float: left;"></div><div id="cboxPrevious" style="float: left;"></div><div id="cboxSlideshow" style="float: left;"></div><a id="cboxClose" href="https://www.eso.org/sci/facilities/develop/instruments/MAVIS.html#" aria-role="button"></a></div><div id="cboxMiddleRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none;"></div></div>
+
+<div id="headerbg">
+	<div id="headerbg_inner1">&nbsp;</div>
+	<div id="headerbg_inner2">&nbsp;</div>
+</div>
+<div id="page_margins">
+    <div id="page" class="hold_floats">
+        <div class="header">
+
+
+
+
+
+<div id="header">
+<div id="eso_header">
+<table width="100%">
+    <tbody>
+        <tr>
+            <td class="esologo"><a href="https://www.eso.org/public.html" title="ESO">
+            <img src="./ESO - MAVIS_files/esologo.png" width="61" height="80" alt="European Southern Observatory"></a></td>
+            <td class="esologotext" width="120" valign="top"><br><p>European<br>Southern<br>Observatory<br></p></td>
+            <td class="headcenter"></td>
+            <td class="headright">
+            <div class="pagetitle">
+            <h1></h1>
+			<div id="slogan">
+				   <h2>ESO — Reaching New Heights in Astronomy</h2>
+						   <div id="flags">
+										<a href="https://www.eso.org/public/austria/?lang"><img class="nopadding" src="./ESO - MAVIS_files/austria.gif" title="Austria" alt="Austria" border="0" width="24" height="16"></a>
+										   			       			 				      <img class="nopadding" src="./ESO - MAVIS_files/sep1.gif" width="4"><a href="https://www.eso.org/public/belgium/?lang"><img class="nopadding" src="./ESO - MAVIS_files/belgium.gif" title="Belgium" alt="Belgium" border="0" width="24" height="16"></a>
+																				      	   		     				       		 <img class="nopadding" src="./ESO - MAVIS_files/sep1.gif" width="4"><a href="https://www.eso.org/public/czechrepublic/?lang"><img class="nopadding" src="./ESO - MAVIS_files/czechrepublic.gif" title="Czech Republic" alt="Czech Republic" border="0" width="24" height="16"></a>
+																													      							  	    <img class="nopadding" src="./ESO - MAVIS_files/sep1.gif" width="4"><a href="https://www.eso.org/public/denmark/?lang"><img class="nopadding" src="./ESO - MAVIS_files/denmark.gif" title="Denmark" alt="Denmark" border="0" width="24" height="16"></a>
+																																					    	 		   				     	       <img class="nopadding" src="./ESO - MAVIS_files/sep1.gif" width="4"><a href="https://www.eso.org/public/finland/?lang"><img class="nopadding" src="./ESO - MAVIS_files/finland.gif" title="Finland" alt="Finland" border="0" width="26" height="16"></a>
+																																													       	    		      						  <img class="nopadding" src="./ESO - MAVIS_files/sep1.gif" width="4"><a href="https://www.eso.org/public/france/?lang"><img class="nopadding" src="./ESO - MAVIS_files/france.gif" title="France" alt="France" border="0" width="24" height="16"></a>
+																																																						       			 				   	     <img class="nopadding" src="./ESO - MAVIS_files/sep1.gif" width="4"><a href="https://www.eso.org/public/germany/?lang"><img class="nopadding" src="./ESO - MAVIS_files/germany.gif" title="Germany" alt="Germany" border="0" width="24" height="16"></a>
+																																																														     	  		    				      		<img class="nopadding" src="./ESO - MAVIS_files/sep1.gif" width="4"><a href="https://www.eso.org/public/ireland/?lang"><img class="nopadding" src="./ESO - MAVIS_files/ireland.gif" title="Ireland" alt="Ireland" border="0" width="24" height="16"></a>
+                    <img class="nopadding" src="./ESO - MAVIS_files/sep1.gif" width="4"><a href="https://www.eso.org/public/italy/?lang"><img class="nopadding" src="./ESO - MAVIS_files/italy.gif" title="Italy" alt="Italy" border="0" width="24" height="16"></a>
+		    	 		   				     	       <img class="nopadding" src="./ESO - MAVIS_files/sep1.gif" width="4"><a href="https://www.eso.org/public/netherlands/?lang"><img class="nopadding" src="./ESO - MAVIS_files/netherlands.gif" title="Netherlands" alt="Netherlands" border="0" width="24" height="16"></a>
+										       	    		      					    <img class="nopadding" src="./ESO - MAVIS_files/sep1.gif" width="4"><a href="https://www.eso.org/public/poland/?lang"><img class="nopadding" src="./ESO - MAVIS_files/poland.gif" title="Poland" alt="Poland" border="0" width="24" height="16"></a>
+																		    	 		   				         <img class="nopadding" src="./ESO - MAVIS_files/sep1.gif" width="4"><a href="https://www.eso.org/public/portugal/?lang"><img class="nopadding" src="./ESO - MAVIS_files/portugal.gif" title="Portugal" alt="Portugal" border="0" width="24" height="16"></a>
+																										      							  	    <img class="nopadding" src="./ESO - MAVIS_files/sep1.gif" width="4"><a href="https://www.eso.org/public/spain/?lang"><img class="nopadding" src="./ESO - MAVIS_files/spain.gif" title="Spain" alt="Spain" border="0" width="24" height="16"></a>
+																																		    	 		   				     	       <img class="nopadding" src="./ESO - MAVIS_files/sep1.gif" width="4"><a href="https://www.eso.org/public/sweden/?lang"><img class="nopadding" src="./ESO - MAVIS_files/sweden.gif" title="Sweden" alt="Sweden" border="0" width="24" height="16"></a>
+																																										       	    		      						  <img class="nopadding" src="./ESO - MAVIS_files/sep1.gif" width="4"><a href="https://www.eso.org/public/switzerland/?lang"><img class="nopadding" src="./ESO - MAVIS_files/switzerland.gif" title="Switzerland" alt="Switzerland" border="0" width="24" height="16"></a>
+																																																			       			 				   	     <img class="nopadding" src="./ESO - MAVIS_files/sep1.gif" width="4"><a href="https://www.eso.org/public/unitedkingdom/?lang"><img class="nopadding" src="./ESO - MAVIS_files/unitedkingdom.gif" title="UK" alt="UK" border="0" width="24" height="16"></a>
+																																																											     	  		    				      		<img class="nopadding" src="./ESO - MAVIS_files/sep2.gif" width="20"><a href="https://www.eso.org/public/chile/?lang"><img class="nopadding" src="./ESO - MAVIS_files/chile.gif" title="Chile" alt="Chile" border="0" width="24" height="16"></a>
+																																																																				     		          </div>
+ 																																																																							        </div>            
+            </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<!-- eso_header --></div>
+<!-- header -->
+</div>
+
+        <div class="topnav">
+
+
+
+
+
+<script>
+	$(document).ready(function() {
+
+		$('#logout').click(function() {
+			//Use JQuery AJAX request to post data to the ESO Logout Servlet
+			$.ajax({
+				type: 'POST',
+				url:'/sci/facilities/develop/instruments/MAVIS.esologout.html',
+				data:'',
+				success: function(data){
+					setTimeout(function(){
+						location.reload();
+					}, 1000);
+				}
+			});
+		});
+
+	}); // end ready
+</script>
+
+<!-- #nav: Hauptnavigation -->
+
+    
+    
+    
+        <form action="https://www.eso.org/public/about-eso/search.html" id="cse-search-box" method="get" name="search_top" class="search">
+    
+
+<div id="nav"><!--	<a id="navigation" name="navigation"></a> --> <!-- Skiplink-Anker: Navigation -->
+    <div id="nav_main">
+        <ul>
+            <li id="first">&nbsp;</li>
+            
+                <li><a href="https://www.eso.org/public.html" title="Public">Public</a></li>
+            
+            
+                <li class="topnavSelected"><a href="https://www.eso.org/sci.html" title="Science">Science</a></li>
+            
+            <li><a href="https://www.eso.org/UserPortal/">User&nbsp;Portal</a></li>
+            
+        </ul>
+        <ul class="topnav_right">
+			
+            <li><a href="https://www.eso.org/sci/contacts.html" title="Contact">Contact</a></li>
+            <!-- <li><a href="/public/sitemap/" title="Site Map">Site&nbsp;Map</a></li> -->
+            <li class="search">&nbsp;
+
+  
+ 
+     <input type="text" name="q" size="18" id="query" value="Search" onfocus="javascript:clearField(&#39;query&#39;,&#39;Search&#39;);" onblur="javascript:setField(&#39;query&#39;,&#39;Search&#39;);">
+          <input type="hidden" name="output" value="xml_no_dtd">
+          <input type="hidden" name="site" value="default_collection">
+          <input type="hidden" name="client" value="default_frontend">
+         <input type="hidden" name="proxystylesheet" value="default_frontend">
+   
+
+
+            </li>
+            <li class="go">
+                <!--[IF lt IE 7]>
+                <a href="#" class="iehover">
+                <![endif]-->
+
+ 
+ 
+   <button type="submit" value="Go!" class="subm" name="searchthis">Go!</button>
+ 
+
+                <!--[IF lt IE 7]>
+                </a>
+                <![endif]--></li>
+        </ul>
+    </div>
+</div>
+</form>
+
+<!-- #nav: - Ende -->
+</div>
+
+        <div class="breadcrumb">
+
+
+
+
+
+<!-- #Breadcrumb: - Beginn -->
+<div id="bread">
+<div id="navpager">    
+    
+        <a href="https://www.eso.org/sci.html">Science Users Information</a>
+        &nbsp;&gt;&nbsp;
+    
+        <a href="https://www.eso.org/sci/facilities.html">Observing Facilities</a>
+        &nbsp;&gt;&nbsp;
+    
+        <a href="https://www.eso.org/sci/facilities/develop.html">Instrumentation Development</a>
+        &nbsp;&gt;&nbsp;
+    
+        <a href="https://www.eso.org/sci/facilities/develop/instruments.html">Instruments Projects</a>
+        &nbsp;&gt;&nbsp;
+    
+        <a href="https://www.eso.org/sci/facilities/develop/instruments/MAVIS.html">MAVIS</a>
+        
+    
+</div>
+<div id="navdate">&nbsp;<a href="https://www.eso.org/public/events/special-evt/" title="Calendar">
+    17 May 2026</a></div>
+</div>
+<!-- #Breadcrumb: - Ende -->  	
+</div>
+
+        
+<a class="skip" href="https://www.eso.org/sci/facilities/develop/instruments/MAVIS.html#navigation" title="jump to navigation">jump to navigation</a>
+<a class="skip" href="https://www.eso.org/sci/facilities/develop/instruments/MAVIS.html#content" title="jump to content ">jump to content</a><div id="outer_wrapper">
+
+<!-- #main: Beginn Inhaltsbereich -->
+<div id="main">
+    
+<!-- #col1: Erste Float-Spalte des Inhaltsbereiches -->
+<div id="col1">
+  <div id="col1_content" class="clearfix">
+		<div class="leftnavi navigation">
+
+
+
+
+
+<!-- leftmenu -->
+<div class="smenu"><a id="navigation" name="navigation"></a>
+<ul id="leftmenu">
+<li class="title"><a href="https://www.eso.org/sci.html">Science Users Information</a></li>
+<li><!--1-->
+<ul id="leftnav">
+<li class="curr0s"><a href="https://www.eso.org/sci/facilities.html">Observing Facilities</a><ul class="sub1">
+<li class="std1"><a href="https://www.eso.org/sci/facilities/lpo.html">La Silla Paranal Observatory</a><ul class="sub2">
+<li class="std2"><a href="https://www.eso.org/sci/facilities/lpo/safety.html">Safety Information</a></li>
+<li class="std2"><a href="https://www.eso.org/sci/facilities/lpo/cfp/cfp117.html">Call for Proposals</a></li>
+<li class="std2"><a href="https://www.eso.org/sci/facilities/lpo/news.html">News</a></li>
+<li class="std2"><a href="https://www.eso.org/sci/facilities/lpo/contact.html">Contact Information</a></li>
+<li class="std2"><a href="https://www.eso.org/sci/facilities/paranal.html">Paranal Facilities</a></li>
+<li class="std2"><a href="https://www.eso.org/sci/facilities/lasilla.html">La Silla Facilities</a></li>
+<li class="std2"><a href="http://www.apex-telescope.org/">APEX</a></li>
+<li class="std2"><a href="https://www.eso.org/sci/facilities/lpo/misc.html">Miscellaneous Information</a></li>
+</ul>
+</li>
+<li class="std1"><a href="https://www.eso.org/sci/facilities/paranal.html">Paranal Facilities</a><ul class="sub2">
+<li class="std2"><a href="https://www.eso.org/sci/facilities/paranal/contact.html">Contact Information</a></li>
+<li class="std2"><a href="https://www.eso.org/sci/facilities/paranal/sciops.html">Paranal Science Operations</a></li>
+<li class="std2"><a href="https://www.eso.org/sci/facilities/paranal/quality-control.html">Quality Control</a></li>
+<li class="std2"><a href="https://www.eso.org/sci/facilities/paranal/cfp/cfp117.html">Call for Proposals</a></li>
+<li class="std2"><a href="https://www.eso.org/sci/facilities/paranal/telescopes.html">Paranal Telescopes</a></li>
+<li class="std2"><a href="https://www.eso.org/sci/facilities/paranal/instruments.html">Paranal Instrumentation</a></li>
+<li class="std2"><a href="https://www.eso.org/sci/facilities/paranal/decommissioned.html">Decommissioned Instruments</a></li>
+<li class="std2"><a href="https://www.eso.org/sci/facilities/paranal/astroclimate.html">Paranal ASM Website</a></li>
+<li class="std2"><a href="https://www.eso.org/sci/facilities/paranal/site.html">Paranal Site Information, Logistics, Safety</a></li>
+</ul>
+</li>
+<li class="std1"><a href="https://www.eso.org/sci/facilities/lasilla.html">La Silla Facilities</a><ul class="sub2">
+<li class="std2"><a href="https://www.eso.org/sci/facilities/lasilla/site/emergencyprocedures">Emergency Procedures</a></li>
+<li class="std2"><a href="https://www.eso.org/sci/facilities/lasilla/cfp/cfp117.html">Call for Proposals</a></li>
+<li class="std2"><a href="https://www.eso.org/sci/facilities/lasilla/news.html">La Silla News</a></li>
+<li class="std2"><a href="https://www.eso.org/sci/facilities/lasilla/contact.html">Contact Information</a></li>
+<li class="std2"><a href="https://www.eso.org/sci/facilities/lasilla/telescopes.html">La Silla Telescopes Overview</a></li>
+<li class="std2"><a href="https://www.eso.org/sci/facilities/lasilla/instruments.html">La Silla Instrumentation</a></li>
+<li class="std2"><a href="https://www.eso.org/sci/facilities/lasilla/decommissioned.html">Decommissioned Instruments</a></li>
+<li class="std2"><a href="https://www.eso.org/sci/facilities/lasilla/site.html">Site Information and Logistics</a></li>
+<li class="std2"><a href="https://www.eso.org/sci/facilities/lasilla/astclim.html">La Silla Astroclimatology</a></li>
+<li class="std2"><a href="https://www.eso.org/sci/facilities/lasilla/sciops.html">La Silla Science Operations</a></li>
+</ul>
+</li>
+<li class="std1"><a href="http://www.apex-telescope.org/">APEX</a><ul class="sub2">
+<li class="std2"><a href="http://www.apex-telescope.org/safety/emergency/">Emergency Procedures</a></li>
+<li class="std2"><a href="https://www.eso.org/sci/facilities/apex/cfp/cfp111.html">Call for Proposals</a></li>
+<li class="std2"><a href="http://www.apex-telescope.org/news/">News</a></li>
+<li class="std2"><a href="http://www.apex-telescope.org/people/phone/">People at APEX</a></li>
+<li class="std2"><a href="http://www.apex-telescope.org/telescope/">Telescope Overview</a></li>
+<li class="std2"><a href="http://www.apex-telescope.org/instruments/">APEX Instrumentation</a></li>
+<li class="std2"><a href="https://www.eso.org/sci/facilities/apex/instruments/apex-visitor.html">APEX Visitor Instrument</a></li>
+<li class="std2"><a href="http://www.apex-telescope.org/sites/chajnantor/">APEX Site Information</a></li>
+<li class="std2"><a href="http://www.apex-telescope.org/weather/">APEX Weather Monitor</a></li>
+<li class="std2"><a href="http://www.apex-telescope.org/observing/">APEX Observing</a></li>
+</ul>
+</li>
+<li class="std1"><a href="https://www.eso.org/sci/facilities/alma.html">ALMA</a><ul class="sub2">
+<li class="std2"><a href="https://www.eso.org/sci/facilities/alma/news.html">ALMA News</a></li>
+<li class="std2"><a href="https://www.eso.org/sci/facilities/alma/about-alma.html">About ALMA</a></li>
+<li class="std2"><a href="http://www.almaobservatory.org/">ALMA Observatory</a></li>
+<li class="std2"><a href="https://almascience.eso.org/">ALMA Science Portal</a></li>
+<li class="std2"><a href="https://almascience.eso.org/proposing/call-for-proposals">Observing with ALMA</a></li>
+<li class="std2"><a href="https://www.eso.org/sci/facilities/alma/development-studies.html">European Development Studies</a></li>
+<li class="std2"><a href="https://www.eso.org/sci/facilities/alma/arc.html">European ALMA Regional Centre</a></li>
+<li class="std2"><a href="https://www.eso.org/sci/facilities/alma/employment.html">Employment</a></li>
+<li class="std2"><a href="https://www.eso.org/sci/facilities/alma/adp.html">ALMA Advanced Data Products</a></li>
+<li class="std2"><a href="https://www.eso.org/sci/facilities/alma/wsu.html">WSU</a></li>
+</ul>
+</li>
+<li class="std1"><a href="http://www.eso.org/sci/facilities/eelt/">E-ELT</a><ul class="sub2">
+<li class="std2"><a href="https://www.eso.org/sci/facilities/eelt/science/">Science with the ELT</a></li>
+<li class="std2"><a href="http://www.eso.org/sci/facilities/eelt/telescope/">The Telescope</a></li>
+<li class="std2"><a href="http://www.eso.org/sci/facilities/eelt/instrumentation">Instrumentation</a></li>
+<li class="std2"><a href="http://www.eso.org/sci/facilities/eelt/site/">Site</a></li>
+<li class="std2"><a href="http://www.eso.org/sci/facilities/eelt/docs">Publications and Documentation</a></li>
+<li class="std2"><a href="http://www.eso.org/sci/facilities/eelt/links/">Gallery and Links</a></li>
+<li class="std2"><a href="http://www.eso.org/sci/facilities/eelt/internal/">Internal Access</a></li>
+</ul>
+</li>
+<li class="curr1"><a href="https://www.eso.org/sci/facilities/develop.html">Instrumentation Development</a><ul class="sub2">
+<li class="std2"><a href="https://www.eso.org/sci/facilities/develop/detectors.html">Detectors and Controllers</a></li>
+
+
+
+<li class="std2"><a href="https://www.eso.org/sci/facilities/develop/ao.html">Adaptive Optics</a></li>
+<li class="std2"><a href="https://www.eso.org/sci/facilities/develop/MICS.html">Instruments and Cryogenic Systems Group</a></li>
+
+
+
+
+
+
+
+
+
+<li class="std2"><a href="https://www.eso.org/sci/facilities/develop/4LGSF.html">Laser Guide Stars Facility</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="std0"><a href="https://www.eso.org/sci/facilities/future.html">Future Facilities and Development</a><ul class="sub1">
+<li class="std1"><a href="http://www.eso.org/sci/facilities/eelt/">ELT</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/facilities/develop.html">Instrumentation Development</a></li>
+</ul>
+</li>
+<li class="std0"><a href="https://www.eso.org/sci/observing.html">Observing with ESO Telescopes</a><ul class="sub1">
+<li class="std1"><a href="https://www.eso.org/sci/observing/policies.html">Policies and Procedures</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/observing/teles-alloc.html">Telescope Time Allocation</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/observing/phase1.html">Phase 1 Proposals</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/observing/phase2.html">Phase 2 Preparation</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/observing/phase3.html">Phase 3</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/observing/PublicSurveys.html">Public Surveys</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/observing/tools.html">Observing Tools and Services</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/observing/visas.html">Visiting Astronomers</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/observing/observatory-statistics.html">Observatory Statistics</a></li>
+</ul>
+</li>
+<li class="std0"><a href="https://www.eso.org/sci/software.html">Science Software</a><ul class="sub1">
+<li class="std1"><a href="http://www.eso.org/sci/software/pipelines/">Instrument Pipelines</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/software/esoreflex/">ESO Reflex</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/software/edps.html">ESO Data Processing System</a></li>
+<li class="std1"><a href="http://www.eso.org/sci/software/cpl/">Common Pipeline Library</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/software/legacy.html">Legacy Software</a></li>
+</ul>
+</li>
+<li class="std0"><a href="http://archive.eso.org/">Science Archive Facility</a><ul class="sub1">
+<li class="std1"><a href="http://archive.eso.org/cms/data-portal.html">Data Portal</a></li>
+<li class="std1"><a href="http://archive.eso.org/cms/eso-data.html">ESO Data</a></li>
+<li class="std1"><a href="http://archive.eso.org/cms/hubble-space-telescope-data.html">Hubble Space Telescope Data</a></li>
+<li class="std1"><a href="http://archive.eso.org/cms/virtual-observatory-tools.html">Virtual Observatory Tools</a></li>
+<li class="std1"><a href="http://archive.eso.org/cms/catalogs-dss.html">Catalogues, Plates and DSS</a></li>
+<li class="std1"><a href="http://archive.eso.org/cms/tools-documentation.html">Tools and Documentation</a></li>
+<li class="std1"><a href="http://archive.eso.org/cms/related-external-services.html">Related External Services</a></li>
+<li class="std1"><a href="http://archive.eso.org/cms/eso-hst-image-galleries.html">ESO &amp; HST Image Galleries</a></li>
+<li class="std1"><a href="http://archive.eso.org/cms/eso-archive-news.html">News and Updates</a></li>
+<li class="std1"><a href="http://archive.eso.org/cms/faq.html">FAQ</a></li>
+<li class="std1"><a href="http://archive.eso.org/cms/eso-data-access-policy.html">ESO Data Access Policy</a></li>
+</ul>
+</li>
+<li class="std0"><a href="https://www.eso.org/sci/activities.html">Science Activities</a><ul class="sub1">
+<li class="std1"><a href="https://www.eso.org/sci/activities/apexsv.html">APEX Science Verification</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/activities/Science_in_GAR_and_SCL.html">Science in Garching and Santiago</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/activities/garching.html">Science in Garching</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/activities/santiago.html">Science in Santiago</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/activities/questions.html">Special Visitor Programme for Scientists working in Ukraine</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/activities/fellowships-and-studentships.html">Fellowships and Studentships</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/activities/thesis-topics.html">PhD Thesis Topics offered by ESO Faculty Members</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/activities/instcomm.html">Instrument Commissioning</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/activities/vltsv.html">VLT/VLTI Science Verification</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/activities/vistasv.html">VISTA Science Verification</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/activities/fellows50.html">50 years of the ESO Fellowship</a></li>
+</ul>
+</li>
+<li class="std0"><a href="https://www.eso.org/sci/publications.html">Science Publications</a><ul class="sub1">
+<li class="std1"><a href="https://www.eso.org/sci/publications/announcements.html">Science Announcements</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/publications/newsletter.html">ESO Science Newsletter</a></li>
+<li class="std1"><a href="https://messenger.eso.org/">The Messenger</a></li>
+<li class="std1"><a href="https://www.eso.org/public/products/annualreports/">ESO Annual Reports</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/publications/old_announcements.html">Old Science Announcements</a></li>
+</ul>
+</li>
+<li class="std0"><a href="https://www.eso.org/sci/meetings.html">Science and Technical  Meetings</a><ul class="sub1">
+<li class="std1"><a href="https://www.eso.org/sci/meetings/garching.html">Seminars at ESO Garching</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/meetings/santiago.html">Seminars at ESO Santiago</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/meetings/conferences.html">Conferences and Workshops</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/meetings/2026.html">Conferences 2026</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/meetings/2025.html">Conferences 2025</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/meetings/2024.html">Conferences 2024</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/meetings/2023.html">Conferences 2023</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/meetings/2022.html">Conferences 2022</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/meetings/past-meetings-europe1.html">Past Conferences and  Workshops in Europe</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/meetings/past-meetings-chile1.html">Past Conferences and Workshops in Chile and Latin America</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/meetings/CodeofConductWorkshops.html">ESO Code of Conduct for Workshops &amp; Conferences</a></li>
+</ul>
+</li>
+<li class="std0"><a href="https://www.eso.org/sci/itservices.html">IT Services</a></li>
+<li class="std0"><a href="https://www.eso.org/sci/libraries.html">Library, Documentation &amp; Information Services</a><ul class="sub1">
+<li class="std1"><a href="https://www.eso.org/sci/libraries/pdm-public.html">Information Repository (PDM)</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/libraries/telbib_info.html">ESO Telescope Bibliography</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/libraries/econtent.html">eContent</a></li>
+<li class="std1"><a href="https://www.eso.org/sci/libraries/publishing-support.html">Publishing Support</a></li>
+</ul>
+</li>
+<li class="std0"><a href="https://recruitment.eso.org/">Vacancies</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<!-- smenu --></div>
+
+	</div> <!-- col1_content -->
+</div> <!-- col1 -->
+
+    <a id="content" name="content"></a>
+    <div id="col3">
+      <div id="col3_content" class="clearfix">
+        <div class="subcolumns">
+         
+<div class="par parsys"><div class="title section">
+
+
+
+
+
+
+
+	
+	
+		<h1>
+
+
+
+
+
+
+
+
+
+
+
+MAVIS - MCAO-Assisted Visible Imager and Spectrograph </h1>
+	
+
+
+</div>
+<div class="parsys_column cq-colctrl-lt0"><div class="parsys_column cq-colctrl-lt0-c0"><div class="richtext text parbase section">
+
+<link rel="stylesheet" href="./ESO - MAVIS_files/accessibility.min.css" type="text/css">
+<h2>Content<br>
+</h2>
+<p>•&nbsp;&nbsp; &nbsp;<a adhocenable="false" href="https://www.eso.org/sci/facilities/develop/instruments/MAVIS.html#BasSpec">Baseline Specification</a><br>
+•&nbsp;&nbsp; &nbsp;<a adhocenable="false" href="https://www.eso.org/sci/facilities/develop/instruments/MAVIS.html#Sched">Schedule</a><br>
+•&nbsp;&nbsp; &nbsp;<a adhocenable="false" href="https://www.eso.org/sci/facilities/develop/instruments/MAVIS.html#InsDesc">Instrument description</a><br>
+•&nbsp;&nbsp; &nbsp;<a adhocenable="false" href="https://www.eso.org/sci/facilities/develop/instruments/MAVIS.html#Sci">Science with MAVIS</a><br>
+•&nbsp;&nbsp; &nbsp;<a adhocenable="false" href="https://www.eso.org/sci/facilities/develop/instruments/MAVIS.html#MCAO">Adaptive Optics and Multi-Conjugate Adaptive Optics</a></p>
+<p>MAVIS is intended to be installed at the Nasmyth A focus of the VLT UT4 (replacing Hawk-I/GRAAL) with the AOF and is made of two main parts: an Adaptive Optics (AO) system that cancels the image blurring induced by atmospheric turbulence and its post focal instrumentation, an imager and an IFU spectrograph, both covering the visible part of the light spectrum.</p>
+</div>
+</div><div class="parsys_column cq-colctrl-lt0-c1"><div class="image parbase primage_left section"><div id="cq-image-jsp-/content/eso/en/sci/facilities/develop/instruments/MAVIS/jcr:content/par/image"><img src="./ESO - MAVIS_files/1634821376515.png" alt="file" title="" class="cq-dd-image"></div>
+</div>
+</div></div><div style="clear:both"></div><div class="richtext text parbase section">
+
+<table cellspacing="0" cellpadding="1" border="1">
+<tbody><tr><td>Principle Investigator&nbsp;<br>
+</td>
+<td>Francois Rigaut</td>
+</tr><tr><td>Consortium</td>
+<td><ul>
+<li><a adhocenable="false" href="https://www.anu.edu.au/">Australian National University</a></li>
+<li><a adhocenable="false" href="https://researchers.mq.edu.au/en/">Macquarie University</a></li>
+<li><a adhocenable="false" href="https://www.arcetri.inaf.it/en/">Osservatorio Astrofisico Di Arcetri</a></li>
+<li><a adhocenable="false" href="https://www.oapd.inaf.it/">Università degli Studi di Padova</a></li>
+<li><a adhocenable="false" href="http://www.brera.inaf.it/">Osservatorio Astronomico di Brera</a><br>
+</li>
+<li><a adhocenable="false" href="https://www.oacn.inaf.it/">Osservatorio Astronomico di Capodimonte</a></li>
+<li><a adhocenable="false" href="https://www.lam.fr/?lang=en">LAM Laboratoire d’Astrophysique de Marseille</a></li>
+<li>ESO</li>
+</ul>
+</td>
+</tr><tr><td>Project manager<br>
+</td>
+<td><a adhocenable="false" href="mailto:Andreas.Foerster@eso.org">Andreas Förster</a></td>
+</tr><tr><td>Project scientist&nbsp;<br>
+</td>
+<td><a adhocenable="false" href="mailto:hkuntsch@eso.org">Harald Kuntschner</a></td>
+</tr><tr><td>Project system engineer<br>
+</td>
+<td><a adhocenable="false" href="mailto:useemann@eso.org">Ulf Seemann</a></td>
+</tr><tr><td>Instrument approval</td>
+<td>December 2020</td>
+</tr><tr><td>Project status<br>
+</td>
+<td>Final Design Review (Phase B)&nbsp;</td>
+</tr><tr><td>Location</td>
+<td>Nasmyth A of UT4</td>
+</tr></tbody></table>
+</div>
+<div class="richtext text parbase section">
+
+<h2><a></a><a id="BasSpec"></a>Baseline Specification</h2>
+</div>
+<div class="richtext text parbase section">
+
+<table cellspacing="0" cellpadding="1" border="1">
+<tbody><tr><td colspan="2"><h3>General Properties + AO Module&nbsp;</h3>
+</td>
+<td colspan="2"><h3>Imager</h3>
+</td>
+</tr><tr><td>Focus</td>
+<td>Nasmyth A VLT-AOF (UT4)<br>
+</td>
+<td>Field of View</td>
+<td>30"x30"</td>
+</tr><tr><td>NGS Field of View</td>
+<td>120" diameter disk</td>
+<td>Pixel Scale</td>
+<td>7.36mas/pix</td>
+</tr><tr><td>Number of NGS</td>
+<td>Up to 3</td>
+<td>Sensitivity</td>
+<td>V&gt;29mag(5σ) in 1hr</td>
+</tr><tr><td>Limiting magnitude</td>
+<td>H<sub>mag</sub>⩾18.5</td>
+<td>Filters</td>
+<td>u'g'r'i'z', various narrow bands</td>
+</tr><tr><td>LGS beacons</td>
+<td>Up to 8 on a circle of 17.5" ⌀<br>
+</td>
+<td colspan="2" headers="1"><h3>Spectrograph</h3>
+</td>
+</tr><tr><td>Sky coverage</td>
+<td>⩾50% at the South Galactic Pole</td>
+<td>IFU Spaxel and FoV, fine</td>
+<td>20-25mas spaxels, 2.5"x3.6" FoV</td>
+</tr><tr><td>Ensquared energy</td>
+<td>&gt;15% within 50mas at 550nm</td>
+<td>IFU Spaxel and FoV, coarse</td>
+<td>40-50mas spaxels, 5"x7.2" FoV</td>
+</tr><tr><td>Strehl</td>
+<td>&gt;8% (12% goal) in V-band</td>
+<td>LR-Blue Spectral Config.</td>
+<td><i>R</i>=5,900 λ/Δλ, 370-720nm</td>
+</tr><tr><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>LR-Red Spectral Config.</td>
+<td><i>R</i>=5,900 λ/Δλ, 510-935nm</td>
+</tr><tr><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>HR-Blue Spectral Config.</td>
+<td><i>R</i>=14,700 λ/Δλ, 425-550nm</td>
+</tr><tr><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>HR-Red Spectral Config.</td>
+<td><i>R</i>=11,500 λ/Δλ, 630-880nm</td>
+</tr></tbody></table>
+</div>
+<div class="richtext text parbase section">
+
+<h2 id="cq-gen614"><a id="Sched"></a>Schedule</h2>
+<ul id="cq-gen615">
+<li>First light at the telescope – 2031</li>
+<li>Preliminary Acceptance Europe (PAE/A) – 2030</li>
+</ul>
+<ul id="cq-gen615">
+<li>Final Design Review (FDR) – October 2025<br>
+</li>
+<li>Long Lead Items Review (LLI) – 2023 (Completed)<br>
+</li>
+<li>Preliminary Design Review (PDR) – 2023 (Completed)<br>
+</li>
+<li>ESO project approval – December, 2020 (Approveded)<br>
+</li>
+<li>Phase A study review meeting – May 26th, 2020 (Completed)<br>
+</li>
+</ul>
+</div>
+<div class="richtext text parbase section">
+
+<h2><a id="InsDesc"></a>Instrument description</h2>
+<p>MAVIS will take advantage of the superb performance of the AOF (powerful Laser Guide Stars and Deformable Secondary Mirror). MAVIS will push AO toward the visible, and, using the Multi-Conjugate AO concept, will provide a 30”x30” wide field of view at an angular resolution close to the diffraction limit of the 8-m aperture. This is unprecedented in ground-based instrumentation.</p>
+<p>The figure on the below gives a 3D view of how MAVIS will fit on the AOF Nasmyth platform, opposite to MUSE.<br>
+</p>
+</div>
+<div class="image parbase section"><div id="cq-image-jsp-/content/eso/en/sci/facilities/develop/instruments/MAVIS/jcr:content/par/image_1447278216"><img src="./ESO - MAVIS_files/1634823062960.png" alt="MAVISrender.png" title="MAVISrender.png" class="cq-dd-image"></div>
+</div>
+<div class="richtext text parbase section">
+
+<h2><a id="Sci"></a>Science with MAVIS</h2>
+<p>MAVIS will be a unique facility. With an angular resolution of down to 18 milliarcseconds (close to 50 times better than the seeing limited conditions encountered without Adaptive Optics) and powerful and sensitive post-focal instrumentation, MAVIS will be instrumental to bring answers to a number of astrophysical science questions regarding stellar evolution and star formation, physical composition of mid-redshift galaxies, how early galaxies assemble, or closer to us, weather monitoring on our solar system planets and moons.<br>
+The Science Case (<a adhocenable="false" href="https://arxiv.org/abs/2009.09242">https://arxiv.org/abs/2009.09242</a>) has been developed during phase A. A call for white papers was widely answered by the community, resulting in over 50 white papers involving 150 researchers from across the international astronomy community.<br>
+</p>
+<p>&nbsp;</p>
+</div>
+<div class="textimage parbase section"><div class="image" id="cq-textimage-jsp-/content/eso/en/sci/facilities/develop/instruments/MAVIS/jcr:content/par/textimage"><img src="./ESO - MAVIS_files/1634894217172.png" alt="file" title="" class="cq-dd-image "></div><div class="clear"></div><div class="text cq-dd-image"><p style="text-align: center;">Comparison of MAVIS with existing (solid line) and future (dashed line, or dotted where performance is less certain) general-purpose observing facilities. Data were extracted from public sources (instrument handbooks, performance simulators, and exposure time calculators). Left: Limiting point-source sensitivity as a function of wavelength for a 10σ measurement with 10ksec of integration. The approximate region for MAVIS is indicated, based on the MAVIS ETC. Right: Angular resolution as a function of wavelength, with MAVIS operating at or near the VLT diffraction limit. MAVIS compares favourably with ELT-class facilities for sensitivity at optical wavelengths, and uniquely combines this with high angular resolution.</p>
+</div><div class="clear"></div><div class="clear"></div>
+</div>
+<div class="textimage parbase section"><div class="image" id="cq-textimage-jsp-/content/eso/en/sci/facilities/develop/instruments/MAVIS/jcr:content/par/textimage_594590021"><img src="./ESO - MAVIS_files/1634826867273.png" alt="file" title="" class="cq-dd-image "></div><div class="clear"></div><div class="text cq-dd-image"><p style="text-align: center;">Example of a morphological study of an high-z galaxy as observed with HST, ELT-MICADO, JWST-NIRCam and MAVIS in I band. Based on the z=5 high resolution simulated “Althaea” galaxy (Pallottini et al. 2017), shown in the first panel. The other panels show instead how the same target of 25 AB magnitude would appear in I-band if observed with different facilities for a fixed exposure time (1h). In the VLT/MAVIS image, clumpy regions as faint as 29th AB mag are detected with a signal-to-noise-ratio 5.</p>
+</div><div class="clear"></div><div class="clear"></div>
+</div>
+<div class="richtext text parbase section">
+
+<h2>&nbsp;</h2>
+<h2><a id="MCAO"></a>Adaptive Optics and Multi-Conjugate Adaptive Optics</h2>
+<p>Adaptive Optics (AO) is a technique to compensate quickly varying optical aberrations in an optical system. In astronomy, telescope images from astronomical objects are blurred by atmospheric turbulence. By using AO, astronomers can cancel out these blurs and restore images close to the ultimate image quality imposed by the telescope, something called diffraction limit (and given by the ratio of the imaging wavelength and the telescope aperture diameter, λ/D). The light coming from a star through atmospheric turbulence, after being collected by the telescope, bounces off a deformable mirror (DM) that is shaped to compensate the corrugation of the light wave. A Wavefront Sensor (WFS) measures the aberrated light wave, and, through a control computer, is used to control the shape of the DM. The resulting compensated light can be captured by regular post focal instrumentation, imagers or spectrographs, with greatly improved clarity (angular resolution) with respect to the natural seeing limit imposed by atmospheric turbulence.</p>
+<p>One of the limitation of AO is that the correction is only valid in a very small patch of sky (depending on the wavelength, from a few arcsec to a few tens of arcsec). Multi-Conjugate Adaptive Optics, or MCAO as used in MAVIS, solves this problem by using a series of DMs to compensate the turbulence in volume. To do so, MCAO uses several guide stars to measure the light wave aberrations in several directions, and using a tomographic reconstruction process, determine the best commands to apply to the DMs, as illustrated in the figure on the right/below.</p>
+<p>The net result of MCAO is that the corrected field of view is much enlarged with respect to what can be produced with regular AO, typically by a factor of 10 to 20 in area. In addition, one can tweak the uniformity of the output image quality (IQ) to obtain the most uniform IQ, something important for the extraction of quantitative photometry and astrometry from the post-focal instrumentation data (images and spectra).<br>
+</p>
+<p>&nbsp;</p>
+</div>
+<div class="image parbase section"><div id="cq-image-jsp-/content/eso/en/sci/facilities/develop/instruments/MAVIS/jcr:content/par/image_887140336"><img src="./ESO - MAVIS_files/0.gif" alt="" title="" class="cq-dd-image cq-image-placeholder"></div>
+</div>
+</div>
+
+        </div>
+      </div>
+    </div>
+</div> <!-- #main: - Ende -->
+        <div class="footer">
+
+
+
+
+
+<!-- #Footer: Beginn FuÃzeile -->
+<div id="footer">
+
+
+
+<div id="footerupdate">
+<table>
+	<tbody>
+		<tr>
+			<th>Last Update: 12.11.25 © ESO</th>
+			<td><a href="mailto:bristowp@eso.org"> Comments on this page to: Paul Bristow</a> |
+			 <a href="https://www.eso.org/sci/publications/newsletter.html">Subscribe to Newsletter</a> |
+			 <a href="https://www.eso.org/sci/privacy.html">Privacy Statement</a></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+</div>
+<!-- #Footer: Ende -->
+</div>
+
+    </div> <!-- page -->
+</div> <!-- page_margins -->
+
+	
+
+<!-- Matomo Piwik Alalytics -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="/mtmo/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+
+<script src="./ESO - MAVIS_files/pa-5a1c4fe32e1d7c699d7b23c6.js.Download" async=""></script>
+
+<!-- End Matomo Code -->
+
+
+
+
+
+
+</div></body></html>

@@ -1,0 +1,34 @@
+### MAVIS - MCAO Assisted Visible Imager and Spectrograph
+object: instrument
+alias: INST
+name: MAVIS
+description: >
+  MAVIS common instrument configuration at VLT UT4 Nasmyth A.
+  Includes the MCAO AO Module (AOM) optics and field aperture.
+date_modified: 2026-05-18
+changes:
+  - 2026-05-18 (KL) Initial MAVIS package
+
+properties:
+  temperature: 20            # [deg C] AO module operates near ambient temperature
+  pixel_scale: 0.00736       # [arcsec/pixel] 7.36 mas/pixel
+  plate_scale: 0.736         # [arcsec/mm] derived from pixel scale / pixel pitch
+  image_plane_id: 0
+  filter_file_format: "filters/TC_filter_{}.dat"
+
+effects:
+  - name: mavis_field_of_view
+    description: MAVIS imager 30x30 arcsec field of view
+    class: ApertureMask
+    kwargs:
+      array_dict:
+        x: [-15, 15, 15, -15]
+        y: [-15, -15, 15, 15]
+      x_unit: arcsec
+      y_unit: arcsec
+
+  - name: mavis_aom_optics
+    description: MAVIS AO Module (AOM) internal optics throughput
+    class: SurfaceList
+    kwargs:
+      filename: LIST_MAVIS_optics.dat

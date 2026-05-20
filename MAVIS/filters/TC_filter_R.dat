@@ -1,0 +1,15 @@
+# author : MAVIS package
+# source : Cousins R-band filter profile (approximate top-hat)
+# date_created : 2026-05-18
+# type : filter:transmission
+# status : development
+# description : Cousins R broadband filter, top-hat approximation (replace with measured curve)
+# wavelength_unit : um
+wavelength  transmission
+0.300 0.000
+0.570 0.000
+0.580 0.950
+0.720 0.950
+0.730 0.400
+0.740 0.000
+1.100 0.000

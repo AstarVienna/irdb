@@ -1,0 +1,15 @@
+# author : MAVIS package
+# source : MAVISIM test_parameters.py
+# date_created  : 2026-05-18
+# date_modified : 2026-05-18
+# type : mirror:list
+# status : development
+# description : MAVIS AO Module optics throughput (all surfaces combined)
+# outer_unit : m
+# inner_unit : m
+# angle_unit : degree
+# temperature_unit : deg_C
+# changes :
+# - 2026-05-18 Created for MAVIS package
+name       outer  inner  angle  temperature  action        filename
+MAVIS_AOM  0.20   0.0    45     20           transmission  TER_aom_throughput.dat

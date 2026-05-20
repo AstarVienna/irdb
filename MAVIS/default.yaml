@@ -1,0 +1,60 @@
+---
+### default configuration for MAVIS simulations
+
+object: configuration
+alias: OBS
+name: MAVIS_default_configuration
+description: default parameters for a MAVIS imaging simulation
+status: development
+date_modified: 2026-05-18
+changes:
+  - 2026-05-18 (KL) Initial MAVIS imager package
+
+packages:
+  - Paranal
+  - VLT
+  - MAVIS
+
+properties:
+  instrument: MAVIS
+  modes: ["IMG"]
+  airmass: 1.2
+  declination: -30
+  hour_angle: 0
+  pupil_angle: 0
+  dit: 60
+  ndit: 1
+  seeing: 0.8
+  filter_name: V
+  detector_readout_mode: slow
+
+mode_yamls:
+  # ---- Imager mode ---- #
+  - object: observation
+    alias: OBS
+    name: IMG
+    description: "MAVIS imager (30x30 arcsec, 7.36 mas/pix)"
+    yamls:
+      - Paranal.yaml
+      - VLT.yaml
+      - MAVIS.yaml
+      - MAVIS_IMG.yaml
+      - MAVIS_CCD.yaml
+    properties:
+      filter_name: V
+
+---
+### simulation parameters for MAVIS
+
+object: simulation
+alias: SIM
+name: MAVIS_simulation_parameters
+description: simulation parameters for a MAVIS run
+
+properties:
+  random:
+    seed:
+  spectral:
+    wave_min: 0.32
+    wave_mid: 0.55
+    wave_max: 1.00

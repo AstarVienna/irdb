@@ -1,0 +1,27 @@
+# author : MAVIS package
+# source : MAVISIM test_parameters.py (full_well_capacity = 90000 e-)
+# date_created  : 2026-05-18
+# date_modified : 2026-05-18
+# type : detector:linearity
+# status : development
+# description : CCD linearity and saturation, linear to 70k e-, full well 90k e-
+# incident_unit : electron
+# measured_unit : electron
+# changes :
+# - 2026-05-18 Created for MAVIS package
+incident    measured
+0           0
+10000       10000
+20000       20000
+30000       30000
+40000       40000
+50000       50000
+60000       60000
+70000       70000
+75000       74700
+80000       78800
+85000       81500
+88000       83200
+90000       84000
+100000      85000
+1e10        85000

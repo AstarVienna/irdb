@@ -1,0 +1,35 @@
+### MAVIS imager mode
+object: instrument
+alias: INST
+name: MAVIS_IMG
+description: >
+  MAVIS imager mode. 30x30 arcsec FoV, 7.36 mas/pixel, visible wavelengths.
+  Filters: Bessel BVRI and SDSS u'g'r'i'z'.
+
+effects:
+  - name: mavis_ao_psf
+    description: >
+      MAVIS MCAO PSF (placeholder Gaussian). Replace with real PSF FITS from
+      MAVISIM (Monty et al. 2021) or LAM End-to-End simulations for
+      science-grade results. Real PSF files available via the MAVIS consortium.
+    class: FieldConstantPSF
+    kwargs:
+      filename: PSF_MAVIS_placeholder.fits
+      warning: "Placeholder Gaussian PSF. Substitute with real MCAO PSF FITS."
+
+  - name: mavis_filter_wheel
+    description: MAVIS imager filter wheel (Bessel BVRI + SDSS u'g'r'i'z')
+    class: FilterWheel
+    kwargs:
+      filter_names:
+        - B
+        - V
+        - R
+        - I
+        - u
+        - g
+        - r_SDSS
+        - i_SDSS
+        - z
+      filename_format: "!INST.filter_file_format"
+      current_filter: "!OBS.filter_name"

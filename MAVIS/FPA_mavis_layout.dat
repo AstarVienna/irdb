@@ -1,0 +1,20 @@
+# name : MAVIS CCD imager focal plane array layout
+# author : MAVIS package
+# source : MAVISIM test_parameters.py (Monty et al. 2021)
+# date_created  : 2026-05-18
+# date_modified : 2026-05-18
+# type : detector:chip_list
+# status : development
+# description : Single back-illuminated CCD, 4096x4004 pixels, 10 um pitch
+# x_cen_unit : mm
+# y_cen_unit : mm
+# x_size_unit : pix
+# y_size_unit : pix
+# pixel_size_unit : mm
+# angle_unit : deg
+# gain_unit : electron/adu
+# image_plane_id : 0
+# changes :
+# - 2026-05-18 Created for MAVIS package
+id  x_cen   y_cen   x_size  y_size  pixel_size  angle  gain
+1   0.000   0.000   4096    4004    0.010       0.0    1.0

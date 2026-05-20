@@ -1,0 +1,22 @@
+# author : MAVIS package
+# source : SDSS g-band filter profile (approximate)
+# date_created  : 2026-05-18
+# type : filter:transmission
+# status : development
+# description : SDSS g-band filter, centre 469 nm FWHM 133 nm, approx (replace with measured)
+# wavelength_unit : um
+wavelength  transmission
+0.380 0.000
+0.395 0.000
+0.400 0.200
+0.410 0.700
+0.420 0.950
+0.460 0.950
+0.500 0.950
+0.520 0.950
+0.540 0.940
+0.550 0.800
+0.555 0.400
+0.560 0.100
+0.565 0.000
+0.650 0.000

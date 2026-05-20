@@ -1,0 +1,15 @@
+# author : MAVIS package
+# source : SDSS r-prime filter profile (approximate top-hat)
+# date_created : 2026-05-18
+# type : filter:transmission
+# status : development
+# description : SDSS r-prime broadband filter, top-hat approximation (replace with measured curve)
+# wavelength_unit : um
+wavelength  transmission
+0.300 0.000
+0.550 0.000
+0.560 0.950
+0.700 0.950
+0.710 0.400
+0.720 0.000
+1.100 0.000

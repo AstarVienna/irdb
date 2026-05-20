@@ -1,0 +1,22 @@
+# author : MAVIS package
+# source : MAVISIM test_parameters.py (centre 550 nm, width 88 nm)
+# date_created  : 2026-05-18
+# type : filter:transmission
+# status : development
+# description : Bessel V filter, centre 550 nm FWHM 88 nm per MAVISIM (replace with measured)
+# wavelength_unit : um
+wavelength  transmission
+0.470 0.000
+0.490 0.000
+0.500 0.200
+0.506 0.700
+0.510 0.920
+0.540 0.950
+0.550 0.950
+0.560 0.950
+0.580 0.950
+0.590 0.920
+0.594 0.700
+0.600 0.200
+0.610 0.000
+0.650 0.000

@@ -1,0 +1,671 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html  lang="en">
+
+
+<head>
+
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=7" /><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="Reply-to" content="webteam@eso.org" />
+<meta name="robots" content="index,follow" />
+<meta name="description" content="ESO is the European Organisation for Astronomical Research in the Southern Hemisphere. It operates the La Silla Paranal Observatory in Chile and has its headquarters in Garching, near Munich, Germany." />
+<meta name="MSSmartTagsPreventParsing" content="TRUE" />
+<meta name="author" content="webteam@eso.org" />
+<meta name="page-topic" content="Astronomy" />
+<meta name="page-type" content="Research Organisation" />
+<meta name="organisation" content="ESO, European Organisation for Astronomical Research in the Southern Hemisphere" />
+<meta name="Content-Language" content="en" />
+<meta name="Language" content="en" />
+<meta name="publisher" content="ESO" />
+<meta name="copyright" content="1999-2008 ESO" />
+<meta name="revisit-after" content="1 day" />
+<meta name="keywords" content="ESO, eso.org, Astronomy, Astrophysics, Astronomie, Suedsternwarte, telescopes, detectors, comets, planets, stars, galaxies, nebulae, universe, NTT, VLT, VLTI, ALMA, E-ELT, La Silla, Paranal, Garching, Chile" />
+
+
+
+<title>ESO - Login</title>
+
+<script type="text/javascript" src="/etc/designs/eso/resources/functions.js"></script>
+
+<link rel="stylesheet" href="/etc/designs/eso/resources/eso/w3.css">
+
+<link href="/etc/designs/eso/resources/layout_eso_2007.css" rel="stylesheet" type="text/css">
+
+
+
+
+<link href="https://www.eso.org/fcc/news.xml" rel="alternate" type="application/rss+xml" title="ESO Top News"/>
+<link href="https://www.eso.org/fcc/announcements.xml" rel="alternate" type="application/rss+xml" title="ESO Announcements"/>
+<link href="https://feeds.feedburner.com/ESOcast" rel="alternate" type="application/rss+xml" title="ESOCast"/>
+<link href="https://recruitment.eso.org/jobs.rss" rel="alternate" type="application/rss+xml" title="Jobs@ESO"/>
+
+
+<link href="/etc/designs/eso/static.css" rel="stylesheet" type="text/css">
+<link href="/etc/designs/eso.css" rel="stylesheet" type="text/css">
+
+
+<!--[if lte IE 7]>
+   <link href="/etc/designs/eso/resources/explorer/iehacks_2col_left.css" rel="stylesheet" type="text/css" />
+   <style type="text/css" media="screen">
+        body {behavior: url(/etc/designs/eso/resources/csshover.htc); }
+   #menu ul li a {height: 1%;} 
+   </style>
+<![endif]-->
+
+<!--[if IE 8]>
+   <link href="/etc/designs/eso/resources/explorer/iehacks_ie8.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+
+
+<script src="/etc.clientlibs/clientlibs/granite/jquery.min.js"></script>
+<script src="/etc.clientlibs/clientlibs/granite/utils.min.js"></script>
+<script src="/etc.clientlibs/clientlibs/granite/jquery/granite.min.js"></script>
+<script src="/etc.clientlibs/foundation/clientlibs/jquery.min.js"></script>
+<script src="/etc/clientlibs/eso/modernizr.min.js"></script>
+<script src="/etc/clientlibs/eso/jquerycommon.min.js"></script>
+<script src="/etc/clientlibs/eso/jquery.min.js"></script>
+<script src="/etc/clientlibs/eso/json2.min.js"></script>
+<script src="/etc/clientlibs/eso/jsonpath.min.js"></script>
+
+<script type="text/javascript" src="/etc/designs/eso/resources/swfobject.js"></script>
+<script type="text/javascript" src="/etc/designs/eso/resources/flash.js"></script>
+<script type="text/javascript">
+
+    var attribWithoutAll="location=no,menubar=no,toolbar=no,status=no";
+    attribWithoutAll+=",resizable=no,scrollbars=no,width=1000,height=750";
+    var subwindow=0;
+    var firstTeaserID="";
+
+    function ClosePopUp()
+    {
+        if (!subwindow)
+            return;
+        if (subwindow.closed)
+            return;
+        subwindow.close();
+    }
+
+
+    function PopUpWithoutAll()
+    {
+        ClosePopUp()
+        subwindow=window.open("outreach\/bond\/","popup",attribWithoutAll);
+        subwindow.moveTo(10,50);
+    }
+    function PopUpWithoutAll2()
+    {
+        ClosePopUp()
+        subwindow=window.open("outreach\/bond\/\Flash007\/","popup",attribWithoutAll);
+        subwindow.moveTo(10,50);
+    }
+
+    function getCookie(c_name)
+    {
+        var i,x,y,ARRcookies=document.cookie.split(";");
+        for (i=0;i<ARRcookies.length;i++)
+        {
+            x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+            y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+            x=x.replace(/^\s+|\s+$/g,"");
+            if (x==c_name)
+            {
+                return unescape(y);
+            }
+        }
+    }
+
+    function redirectToInstrumentSelectorFromCookie(currentPageName)
+    {
+        var instrumentSelector=getCookie("eso-phase2-instrument-selector");
+        if (instrumentSelector != null && instrumentSelector != "")
+        {
+            location.href = currentPageName + "." + instrumentSelector + ".html";
+        }
+    }
+
+    var sPath = window.location.pathname;
+    if (sPath.indexOf("/sci/observing/phase2") != -1) {
+        var sPage = sPath.substring(sPath.lastIndexOf('/') + 1);
+        var sPageName = sPage.substring(0, sPage.indexOf('.'));
+        var selectors = sPage.substring(sPageName.length, sPage.lastIndexOf('.'));
+        if (selectors.length == 0) {
+            redirectToInstrumentSelectorFromCookie(sPageName);
+        }
+    }
+
+</script>
+</head>
+
+
+
+<body>
+
+<div id="headerbg">
+	<div id="headerbg_inner1">&nbsp;</div>
+	<div id="headerbg_inner2">&nbsp;</div>
+</div>
+<div id="page_margins">
+    <div id="page" class="hold_floats">
+        <div class="header">
+
+
+
+
+
+<div id="header">
+<div id="eso_header">
+<table width="100%">
+    <tbody>
+        <tr>
+            <td class="esologo"><a href="/public.html" title="ESO">
+            <img src="/i/esologo.png" width="61" height="80" alt="European Southern Observatory"></a></td>
+            <td class="esologotext" width="120" valign="top"><br><p>European<br>Southern<br>Observatory<br></p></td>
+            <td class="headcenter"></td>
+            <td class="headright">
+            <div class="pagetitle">
+            <h1></h1>
+			<div id="slogan">
+				   <h2>ESO &mdash; Reaching New Heights in Astronomy</h2>
+						   <div id="flags">
+										<a href="/public/austria/?lang"><img class="nopadding" src="/i/austria.gif" title="Austria" alt="Austria" border="0" width="24" height="16"/></a>
+										   			       			 				      <img class="nopadding" src="/i/sep1.gif" width="4"/><a href="/public/belgium/?lang"><img class="nopadding" src="/i/belgium.gif" title="Belgium" alt="Belgium" border="0" width="24" height="16"/></a>
+																				      	   		     				       		 <img class="nopadding" src="/i/sep1.gif" width="4"/><a href="/public/czechrepublic/?lang"><img class="nopadding" src="/i/czechrepublic.gif" title="Czech Republic" alt="Czech Republic" border="0" width="24" height="16"/></a>
+																													      							  	    <img class="nopadding" src="/i/sep1.gif" width="4"/><a href="/public/denmark/?lang"><img class="nopadding" src="/i/denmark.gif" title="Denmark" alt="Denmark" border="0" width="24" height="16"/></a>
+																																					    	 		   				     	       <img class="nopadding" src="/i/sep1.gif" width="4"/><a href="/public/finland/?lang"><img class="nopadding" src="/i/finland.gif" title="Finland" alt="Finland" border="0" width="26" height="16"/></a>
+																																													       	    		      						  <img class="nopadding" src="/i/sep1.gif" width="4"/><a href="/public/france/?lang"><img class="nopadding" src="/i/france.gif" title="France" alt="France" border="0" width="24" height="16"/></a>
+																																																						       			 				   	     <img class="nopadding" src="/i/sep1.gif" width="4"/><a href="/public/germany/?lang"><img class="nopadding" src="/i/germany.gif" title="Germany" alt="Germany" border="0" width="24" height="16"/></a>
+																																																														     	  		    				      		<img class="nopadding" src="/i/sep1.gif" width="4"/><a href="/public/ireland/?lang"><img class="nopadding" src="/i/ireland.gif" title="Ireland" alt="Ireland" border="0" width="24" height="16"/></a>
+                    <img class="nopadding" src="/i/sep1.gif" width="4"/><a href="/public/italy/?lang"><img class="nopadding" src="/i/italy.gif" title="Italy" alt="Italy" border="0" width="24" height="16"/></a>
+		    	 		   				     	       <img class="nopadding" src="/i/sep1.gif" width="4"/><a href="/public/netherlands/?lang"><img class="nopadding" src="/i/netherlands.gif" title="Netherlands" alt="Netherlands" border="0" width="24" height="16"/></a>
+										       	    		      					    <img class="nopadding" src="/i/sep1.gif" width="4"/><a href="/public/poland/?lang"><img class="nopadding" src="/i/poland.gif" title="Poland" alt="Poland" border="0" width="24" height="16"/></a>
+																		    	 		   				         <img class="nopadding" src="/i/sep1.gif" width="4"/><a href="/public/portugal/?lang"><img class="nopadding" src="/i/portugal.gif" title="Portugal" alt="Portugal" border="0" width="24" height="16"/></a>
+																										      							  	    <img class="nopadding" src="/i/sep1.gif" width="4"/><a href="/public/spain/?lang"><img class="nopadding" src="/i/spain.gif" title="Spain" alt="Spain" border="0" width="24" height="16"/></a>
+																																		    	 		   				     	       <img class="nopadding" src="/i/sep1.gif" width="4"/><a href="/public/sweden/?lang"><img class="nopadding" src="/i/sweden.gif" title="Sweden" alt="Sweden" border="0" width="24" height="16"/></a>
+																																										       	    		      						  <img class="nopadding" src="/i/sep1.gif" width="4"/><a href="/public/switzerland/?lang"><img class="nopadding" src="/i/switzerland.gif" title="Switzerland" alt="Switzerland" border="0" width="24" height="16"/></a>
+																																																			       			 				   	     <img class="nopadding" src="/i/sep1.gif" width="4"/><a href="/public/unitedkingdom/?lang"><img class="nopadding" src="/i/unitedkingdom.gif" title="UK" alt="UK" border="0" width="24" height="16"/></a>
+																																																											     	  		    				      		<img class="nopadding" src="/i/sep2.gif" width="20"/><a href="/public/chile/?lang"><img class="nopadding" src="/i/chile.gif" title="Chile" alt="Chile" border="0" width="24" height="16"/></a>
+																																																																				     		          </div>
+ 																																																																							        </div>            
+            </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<!-- eso_header --></div>
+<!-- header -->
+</div>
+
+        <div class="topnav">
+
+
+
+
+
+<script>
+	$(document).ready(function() {
+
+		$('#logout').click(function() {
+			//Use JQuery AJAX request to post data to the ESO Logout Servlet
+			$.ajax({
+				type: 'POST',
+				url:'/public/login.esologout.html',
+				data:'',
+				success: function(data){
+					setTimeout(function(){
+						location.reload();
+					}, 1000);
+				}
+			});
+		});
+
+	}); // end ready
+</script>
+
+<!-- #nav: Hauptnavigation -->
+
+    
+    
+    
+        <form action="/public/about-eso/search.html" id="cse-search-box" method="get" name="search_top" class="search">
+    
+
+<div id="nav"><!--	<a id="navigation" name="navigation"></a> --> <!-- Skiplink-Anker: Navigation -->
+    <div id="nav_main">
+        <ul>
+            <li id="first">&nbsp;</li>
+            
+                <li class="topnavSelected"><a href="/public.html" title="Public">Public</a></li>
+            
+            
+                <li><a href="/sci.html" title="Science">Science</a></li>
+            
+            <li><a href="https://www.eso.org/UserPortal/">User&nbsp;Portal</a></li>
+            
+        </ul>
+        <ul class="topnav_right">
+			
+            <li><a href="/public/about-eso/contacts.html" title="Contact">Contact</a></li>
+            <!-- <li><a href="/public/sitemap/" title="Site Map">Site&nbsp;Map</a></li> -->
+            <li class="search">&nbsp;
+
+  
+ 
+     <input type="text" name="q" size="18" id="query" value="Search"
+         onfocus="javascript:clearField('query','Search');"
+         onblur="javascript:setField('query','Search');"/>
+          <input type="hidden" name="output" value="xml_no_dtd">
+          <input type="hidden" name="site" value="default_collection">
+          <input type="hidden" name="client" value="default_frontend">
+         <input type="hidden" name="proxystylesheet" value="default_frontend">
+   
+
+
+            </li>
+            <li class="go">
+                <!--[IF lt IE 7]>
+                <a href="#" class="iehover">
+                <![endif]-->
+
+ 
+ 
+   <button type="submit" value="Go!" class="subm" name="searchthis">Go!</button>
+ 
+
+                <!--[IF lt IE 7]>
+                </a>
+                <![endif]--></li>
+        </ul>
+    </div>
+</div>
+</form>
+
+<!-- #nav: - Ende -->
+</div>
+
+        <div class="breadcrumb">
+
+
+
+
+
+<!-- #Breadcrumb: - Beginn -->
+<div id="bread">
+<div id="navpager">    
+    
+        <a href="/public.html">ESO for the Public</a>
+        &nbsp;&gt;&nbsp;
+    
+        <a href="/public/login.html">Login</a>
+        
+    
+</div>
+<div id="navdate">&nbsp;<a href="https://www.eso.org/public/events/special-evt/" title="Calendar">
+    17 May 2026</a></div>
+</div>
+<!-- #Breadcrumb: - Ende -->  	
+</div>
+
+        
+<a class="skip" href="#navigation" title="jump to navigation">jump to navigation</a>
+<a class="skip" href="#content" title="jump to content ">jump to content</a><div id="outer_wrapper">
+
+<!-- #main: Beginn Inhaltsbereich -->
+<div id="main">
+    
+<!-- #col1: Erste Float-Spalte des Inhaltsbereiches -->
+<div id="col1">
+  <div id="col1_content" class="clearfix">
+		<div class="leftnavi navigation">
+
+
+
+
+
+<!-- leftmenu -->
+<div class="smenu"><a id="navigation" name="navigation"></a>
+<ul id="leftmenu">
+<li class="title"><a href="/public.html">ESO for the Public</a></li>
+<li><!--1-->
+<ul id="leftnav">
+<li class="std0"><a href="/public/about-eso/index.html">About ESO</a><ul class="sub1">
+<li class="std1"><a href="/public/about-eso/committees.html">ESO's Governing Bodies</a></li>
+<li class="std1"><a href="/public/about-eso/esoglance.html">ESO, the European Southern Observatory</a></li>
+<li class="std1"><a href="/public/about-eso/organisation.html">Organisation</a></li>
+<li class="std1"><a href="/public/about-eso/dg-office.html">Director General</a></li>
+<li class="std1"><a href="/public/about-eso/memberstates.html">Member States</a></li>
+<li class="std1"><a href="/public/about-eso/visitors.html">Visits to ESO Sites</a></li>
+<li class="std1"><a href="/public/about-eso/acronyms.html">ESO Acronyms</a></li>
+<li class="std1"><a href="http://www.eso.cl/">ESO Chile</a></li>
+<li class="std1"><a href="/public/about-eso/timeline.html">Timeline</a></li>
+<li class="std1"><a href="/public/about-eso/faq.html">Frequently Asked Questions</a></li>
+</ul>
+</li>
+<li class="std0"><a href="http://www.eso.org/public/images/">Images</a><ul class="sub1">
+<li class="std1"><a href="http://www.eso.org/public/images/viewall/">View All</a></li>
+<li class="std1"><a href="http://www.eso.org/public/images/archive/top100/">Top 100</a></li>
+<li class="std1"><a href="http://www.eso.org/public/images/archive/category/solarsystem/">Solar System</a></li>
+<li class="std1"><a href="http://www.eso.org/public/images/archive/category/stars/">Stars</a></li>
+<li class="std1"><a href="http://www.eso.org/public/images/archive/category/starclusters/">Star Clusters</a></li>
+<li class="std1"><a href="http://www.eso.org/public/images/archive/category/exoplanets/">Exoplanets</a></li>
+<li class="std1"><a href="http://www.eso.org/public/images/archive/category/nebulae/">Nebulae</a></li>
+<li class="std1"><a href="http://www.eso.org/public/images/archive/category/galaxies/">Galaxies</a></li>
+<li class="std1"><a href="http://www.eso.org/public/images/archive/category/galaxyclusters/">Galaxy Clusters</a></li>
+<li class="std1"><a href="http://www.eso.org/public/images/archive/category/blackholes/">Quasars and Black Holes</a></li>
+<li class="std1"><a href="http://www.eso.org/public/images/archive/category/cosmology/">Cosmology</a></li>
+<li class="std1"><a href="http://www.eso.org/public/images/archive/category/lasilla/">La Silla</a></li>
+<li class="std1"><a href="http://www.eso.org/public/images/archive/category/paranal/">Paranal</a></li>
+<li class="std1"><a href="http://www.eso.org/public/images/archive/category/apex/">APEX</a></li>
+<li class="std1"><a href="http://www.eso.org/public/images/archive/category/alma/">ALMA</a></li>
+<li class="std1"><a href="http://www.eso.org/public/images/archive/category/e-elt/">E-ELT</a></li>
+<li class="std1"><a href="http://www.eso.org/public/images/archive/category/surveytelescopes/">Survey Telescopes</a></li>
+<li class="std1"><a href="http://www.eso.org/public/images/archive/category/premises/">Premises</a></li>
+<li class="std1"><a href="http://www.eso.org/public/images/archive/category/chile/">Chile</a></li>
+<li class="std1"><a href="http://www.eso.org/public/images/archive/category/illustrations/">Illustrations</a></li>
+<li class="std1"><a href="http://www.eso.org/public/images/archive/category/peopleandevents/">People and Events</a></li>
+<li class="std1"><a href="http://www.eso.org/public/images/archive/wallpapers/">Wallpapers</a></li>
+<li class="std1"><a href="http://www.eso.org/public/images/archive/zoomable/">Zoomable</a></li>
+<li class="std1"><a href="http://www.eso.org/public/images/search/">Advanced Search</a></li>
+<li class="std1"><a href="http://www.eso.org/public/images/potw/">Picture of the Week</a></li>
+<li class="std1"><a href="http://www.eso.org/public/images/comparisons/">Image Comparisons</a></li>
+<li class="std1"><a href="/public/outreach/copyright.html">Usage of ESO Images and Videos</a></li>
+</ul>
+</li>
+<li class="std0"><a href="http://www.eso.org/public/videos/">Videos</a><ul class="sub1">
+<li class="std1"><a href="http://www.eso.org/public/videos/archive/category/solarsystem/">Solar System</a></li>
+<li class="std1"><a href="http://www.eso.org/public/videos/archive/category/stars/">Stars</a></li>
+<li class="std1"><a href="http://www.eso.org/public/videos/archive/category/starclusters/">Star Clusters</a></li>
+<li class="std1"><a href="http://www.eso.org/public/videos/archive/category/exoplanets/">Exoplanets</a></li>
+<li class="std1"><a href="http://www.eso.org/public/videos/archive/category/nebulae/">Nebulae</a></li>
+<li class="std1"><a href="http://www.eso.org/public/videos/archive/category/galaxies/">Galaxies</a></li>
+<li class="std1"><a href="http://www.eso.org/public/videos/archive/category/galaxyclusters/">Galaxy Clusters</a></li>
+<li class="std1"><a href="http://www.eso.org/public/videos/archive/category/blackholes/">Quasars and Black Holes</a></li>
+<li class="std1"><a href="http://www.eso.org/public/videos/archive/category/cosmology/">Cosmology</a></li>
+<li class="std1"><a href="http://www.eso.org/public/videos/archive/category/lasilla/">La Silla</a></li>
+<li class="std1"><a href="http://www.eso.org/public/videos/archive/category/paranal/">Paranal</a></li>
+<li class="std1"><a href="http://www.eso.org/public/videos/archive/category/apex/">APEX</a></li>
+<li class="std1"><a href="http://www.eso.org/public/videos/archive/category/alma/">ALMA</a></li>
+<li class="std1"><a href="http://www.eso.org/public/videos/archive/category/e-elt/">E-ELT</a></li>
+<li class="std1"><a href="http://www.eso.org/public/videos/archive/category/abouteso/">About ESO</a></li>
+<li class="std1"><a href="http://www.eso.org/public/videos/archive/category/events/">Events</a></li>
+<li class="std1"><a href="http://www.eso.org/public/videos/archive/category/esocast/">ESOcast</a></li>
+<li class="std1"><a href="http://www.eso.org/public/videos/archive/category/vnr/">Video News Releases</a></li>
+<li class="std1"><a href="http://www.eso.org/public/videos/archive/category/compilations/">Compilations</a></li>
+<li class="std1"><a href="http://www.eso.org/public/videos/archive/category/featuremovies/">Feature Movies</a></li>
+<li class="std1"><a href="http://www.eso.org/public/videos/archive/category/premises/">Premises</a></li>
+<li class="std1"><a href="/public/esocast.html">About ESOcast</a></li>
+<li class="std1"><a href="/public/videoformats.html">Video Formats</a></li>
+<li class="std1"><a href="/public/soft_subtitles.html">Translate ESO Videos</a></li>
+<li class="std1"><a href="/public/outreach/copyright.html">Usage of ESO Images and Videos</a></li>
+</ul>
+</li>
+<li class="std0"><a href="http://www.eso.org/public/news/">News</a><ul class="sub1">
+<li class="std1"><a href="http://www.eso.org/public/news/">Press Releases</a></li>
+<li class="std1"><a href="http://www.eso.org/public/announcements/">Announcements</a></li>
+<li class="std1"><a href="/public/outreach/pressmedia.html">Press Room</a></li>
+<li class="std1"><a href="/public/outreach/newsletters.html">ESO Newsletters</a></li>
+<li class="std1"><a href="http://www.eso.org/public/announcements/webupdates/">New on eso.org</a></li>
+<li class="std1"><a href="/public/outreach/presscoverage.html">Press Coverage</a></li>
+</ul>
+</li>
+<li class="std0"><a href="/public/teles-instr.html">Telescopes and Instrumentation</a><ul class="sub1">
+<li class="std1"><a href="/public/teles-instr/vlt.html">Very Large Telescope</a></li>
+<li class="std1"><a href="/public/teles-instr/lasilla.html">La Silla</a></li>
+<li class="std1"><a href="/public/teles-instr/apex.html">APEX</a></li>
+<li class="std1"><a href="/public/teles-instr/surveytelescopes.html">Survey Telescopes</a></li>
+<li class="std1"><a href="/public/teles-instr/alma.html">ALMA</a></li>
+<li class="std1"><a href="/public/teles-instr/e-elt.html">E-ELT</a></li>
+<li class="std1"><a href="/public/teles-instr/technology.html">Technology for Telescopes</a></li>
+</ul>
+</li>
+<li class="std0"><a href="/public/science.html">Science with ESO Telescopes</a><ul class="sub1">
+<li class="std1"><a href="/public/science/top10.html">Top 10 Discoveries</a></li>
+<li class="std1"><a href="/public/science/exoplanets.html">Exoplanets</a></li>
+<li class="std1"><a href="/public/science/stars.html">Very Old Stars</a></li>
+<li class="std1"><a href="/public/science/gc.html">Black Hole at the Galactic Centre</a></li>
+<li class="std1"><a href="/public/science/grb.html">Gamma-Ray Bursts</a></li>
+<li class="std1"><a href="/public/science/archive.html">Science Archive</a></li>
+</ul>
+</li>
+<li class="std0"><a href="/public/events.html">Events, Exhibitions & Campaigns</a><ul class="sub1">
+<li class="std1"><a href="http://www.eso.org/public/events/starsateso/">Stars@ESO</a></li>
+<li class="std1"><a href="http://www.eso.org/public/events/press-evt/">ESO Press Conferences and Events</a></li>
+<li class="std1"><a href="http://www.eso.org/public/events/special-evt/">Special Events</a></li>
+<li class="std1"><a href="http://www.eso.org/public/events/exhibitions/">Exhibitions</a></li>
+<li class="std1"><a href="/public/events/astro-evt.html">Astronomical Events</a></li>
+<li class="std1"><a href="/public/events/seminars.html">Astronomy Communication Seminars</a></li>
+<li class="std1"><a href="/public/events/your_eso_pictures.html">Your ESO Pictures</a></li>
+<li class="std1"><a href="/public/events/astroprize.html">European Astronomy Journalism Prize</a></li>
+</ul>
+</li>
+<li class="std0"><a href="/public/outreach.html">Outreach</a><ul class="sub1">
+<li class="std1"><a href="/public/outreach/eduoff.html">Education</a></li>
+<li class="std1"><a href="/public/outreach/partnerships.html">Partnerships</a></li>
+<li class="std1"><a href="/public/outreach/communication-resources.html">Astronomy Communication Resources</a></li>
+<li class="std1"><a href="http://www.eso.org/public/outreach/hiddentreasures/index.html">Hidden Treasures</a></li>
+<li class="std1"><a href="http://www.spacetelescope.org/">The Hubble Space Telescope</a></li>
+<li class="std1"><a href="/public/outreach/gems.html">Cosmic Gems</a></li>
+<li class="std1"><a href="/public/outreach/social.html">Social Media</a></li>
+</ul>
+</li>
+<li class="std0"><a href="http://www.eso.org/public/outreach/products/">Products</a><ul class="sub1">
+<li class="std1"><a href="http://www.eso.org/public/products/annualreports/">Annual Reports</a></li>
+<li class="std1"><a href="http://www.eso.org/public/products/books/">Books</a></li>
+<li class="std1"><a href="http://www.eso.org/public/products/brochures/">Brochures</a></li>
+<li class="std1"><a href="http://www.eso.org/public/products/calendars/">Calendars</a></li>
+<li class="std1"><a href="http://www.eso.org/public/products/dvds/">DVDs/Bluray/CDs</a></li>
+<li class="std1"><a href="http://www.eso.org/public/products/education/">Educational Material</a></li>
+<li class="std1"><a href="http://www.eso.org/public/products/electroniccards/">Electronic Cards</a></li>
+<li class="std1"><a href="http://www.eso.org/public/products/exhibitions/">Exhibition Panels</a></li>
+<li class="std1"><a href="http://www.eso.org/public/products/imaxfilms/">IMAX Films</a></li>
+<li class="std1"><a href="http://www.eso.org/public/products/logos/">Logos</a></li>
+<li class="std1"><a href="http://www.eso.org/public/products/merchandise/">Merchandise</a></li>
+<li class="std1"><a href="http://www.eso.org/public/products/minisites/">Mini-sites</a></li>
+<li class="std1"><a href="http://www.eso.org/public/products/mountedimages/">Mounted Images</a></li>
+<li class="std1"><a href="http://www.eso.org/public/products/papermodels/">Paper Models</a></li>
+<li class="std1"><a href="http://www.eso.org/public/products/periodicals/">Periodicals</a></li>
+<li class="std1"><a href="http://www.eso.org/public/products/planetariumshows/">Planetarium Shows</a></li>
+<li class="std1"><a href="http://www.eso.org/public/products/postcards/">Postcards</a></li>
+<li class="std1"><a href="http://www.eso.org/public/products/posters/">Posters</a></li>
+<li class="std1"><a href="http://www.eso.org/public/products/presentations/">Presentations</a></li>
+<li class="std1"><a href="http://www.eso.org/public/products/presskits/">Press Kits</a></li>
+<li class="std1"><a href="http://www.eso.org/public/products/reports/">Reports</a></li>
+<li class="std1"><a href="http://www.eso.org/public/products/stickers/">Stickers</a></li>
+<li class="std1"><a href="http://www.eso.org/public/outreach/products/virtualtours/">Virtual Tours</a></li>
+<li class="std1"><a href="http://www.eso.org/public/shop/">Order in ESOshop</a></li>
+</ul>
+</li>
+<li class="std0"><a href="/public/industry.html">Doing Business with ESO</a><ul class="sub1">
+<li class="std1"><a href="/public/industry/cp.html">Procurement at ESO</a></li>
+<li class="std1"><a href="/public/industry/techtrans.html">Technology Transfer</a></li>
+<li class="std1"><a href="/public/industry/projects.html">Future Projects</a></li>
+<li class="std1"><a href="/public/industry/safety.html">Safety</a></li>
+<li class="std1"><a href="https://www.eso.org/public/industry/events/">IndustryEvents</a></li>
+<li class="std1"><a href="https://www.eso.org/public/industry/contact/">Contact Information</a></li>
+</ul>
+</li>
+<li class="std0"><a href="/public/employment.html">Working at ESO</a><ul class="sub1">
+<li class="std1"><a href="http://jobs.eso.org/">Recruitment</a></li>
+<li class="std1"><a href="/public/employment/conditions.html">Employment Conditions</a></li>
+<li class="std1"><a href="/public/employment/pes.html">Human Resources</a></li>
+</ul>
+</li>
+<li class="std0"><a href="https://www.eso.org/public/outreach/partnerships/eson.html">ESO in your Language</a><ul class="sub1">
+<li class="std1"><a href="/public/austria.html">Austria (Deutsch)</a></li>
+<li class="std1"><a href="/public/belgium.html">Belgium (Nederlands/Fran&ccedil;ais/Deutsch)</a></li>
+<li class="std1"><a href="/public/brazil.html">Brazil (Portugu&ecirc;s)</a></li>
+<li class="std1"><a href="/public/czechrepublic.html">Czech Republic (Čeština)</a></li>
+<li class="std1"><a href="/public/finland.html">Finland (Suomi)</a></li>
+<li class="std1"><a href="/public/denmark.html">Denmark (Dansk)</a></li>
+<li class="std1"><a href="/public/france.html">France (Fran&ccedil;ais)</a></li>
+<li class="std1"><a href="/public/germany.html">Germany (Deutsch)</a></li>
+<li class="std1"><a href="/public/italy.html">Italy (Italiano)</a></li>
+<li class="std1"><a href="/public/netherlands.html">Netherlands (Nederlands)</a></li>
+<li class="std1"><a href="/public/portugal.html">Portugal (Portugu&ecirc;s)</a></li>
+<li class="std1"><a href="/public/spain.html">Spain (Espa&ntilde;ol)</a></li>
+<li class="std1"><a href="/public/sweden.html">Sweden (Svenska)</a></li>
+<li class="std1"><a href="/public/switzerland.html">Switzerland (Deutsch/Fran&ccedil;ais/Italiano)</a></li>
+<li class="std1"><a href="/public/unitedkingdom.html">United Kingdom (English)</a></li>
+<li class="std1"><a href="http://www.eso.cl/"><i>Chile (Espa&ntilde;ol)</i></a></li>
+<li class="std1"><a href="/public/albania.html"><i>Albania (Shqip)</i></a></li>
+<li class="std1"><a href="http://www.eso.org/public/hungary/">Hungary (Magyar)</a></li>
+<li class="std1"><a href="/public/iceland.html"><i>Iceland (Íslenska)</i></a></li>
+<li class="std1"><a href="/public/ireland.html"><i>Ireland (English)</i></a></li>
+<li class="std1"><a href="http://www.eso.org/public/latvia/">Latvia (Latviešu valoda)</a></li>
+<li class="std1"><a href="/public/norway.html"><i>Norway (Norsk)</i></a></li>
+<li class="std1"><a href="http://www.eso.org/public/romania.html"><i>Romania (limba română)</i></a></li>
+<li class="std1"><a href="/public/russia.html"><i>Russia (Русский)</i></a></li>
+<li class="std1"><a href="/public/turkey.html"><i>Turkey (T&uuml;rk&ccedil;e)</i></a></li>
+<li class="std1"><a href="/public/ukraine.html"><i>Ukraine (Українська)</i></a></li>
+<li class="std1"><a href="/public/usa.html"><i>United States (English)</i></a></li>
+</ul>
+</li>
+<li class="std0"><a href="https://www.eso.org/public/shop/">ESOshop</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<!-- smenu --></div>
+
+	</div> <!-- col1_content -->
+</div> <!-- col1 -->
+
+    <a id="content" name="content"></a>
+    <div id="col3">
+      <div id="col3_content" class="clearfix">
+        <div class="subcolumns">
+         
+<div class="par parsys"><div class="title section">
+
+
+
+
+
+
+
+	
+	
+		<h1>Login</h1>
+	
+
+
+</div>
+<div class="richtext text parbase section">
+
+<link rel="stylesheet" href="/etc.clientlibs/wcm/foundation/clientlibs/accessibility.min.css" type="text/css"/>
+<p>In order to access the requested information authentication is required.</p>
+<p>Please enter an AEM username and password below. If you do not know the AEM username/password, please contact servicedesk@eso.org, specifying the Web address which you'd like to access.</p>
+<p>&nbsp;</p>
+</div>
+<div class="login parbase section">
+<script type="text/javascript">
+    function cq5forms_validate_login() {
+        if (CQ_Analytics) {
+            var u = document.forms['login']['j_username'].value;
+        
+            if (CQ_Analytics.ProfileDataMgr) {
+                CQ_Analytics.ProfileDataMgr.clear();
+            }
+            return true;    
+        
+        }
+    }
+</script>
+<form id="login" name="login"
+        		method="POST" action="/public/login/j_security_check" enctype="multipart/form-data"
+        		onsubmit="return cq5forms_validate_login();">
+            <input type="hidden" name="resource" value="/libs/settings/wcm/designs/default/resources/0.gif">
+            <input type="hidden" name="_charset_" value="UTF-8"/>
+            <table class="login-form">
+                <tr>
+                    <td class="label"></td>
+                    <td>Please login</td>
+                </tr>
+                <tr>
+                    <td class="label"></td>
+                    <td> Please enter your username and password below:</td>
+                </tr>
+                <tr>
+                    <td class="label"><label for="login_username">Username</label></td>
+                    <td><input id="login_username"
+                           class="form_field form_field_text form_login_username"
+                           name="j_username"/></td>
+                </tr>
+                <tr>
+                    <td class="label"><label for="login_password">Password</label></td>
+                    <td><input id="login_password"
+                               class="form_field form_field_text form_login_password"
+                       type="password" autocomplete="off" name="j_password"/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input class="form_button_submit" type="submit" value="Sign In"></td>
+                </tr>
+            </table>
+        </form></div>
+</div>
+
+        </div>
+      </div>
+    </div>
+</div> <!-- #main: - Ende -->
+        <div class="footer">
+
+
+
+
+
+<!-- #Footer: Beginn FuÃzeile -->
+<div id="footer">
+
+
+
+<div id="footerupdate">
+<table>
+	<tbody>
+		<tr>
+			<th>Last Update: 10.02.20 &copy; ESO</th>
+			<td><a href="mailto:information@eso.org"> Send us your comments</a> |
+			 <a href="/public/outreach/newsletters/esonews.html">Subscribe to Newsletter</a> |
+			 <a href="https://www.eso.org/public/copyright/">Privacy Statement</a></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+</div>
+<!-- #Footer: Ende -->
+</div>
+
+    </div> <!-- page -->
+</div> <!-- page_margins -->
+
+	
+
+<!-- Matomo Piwik Alalytics -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="/mtmo/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+
+<script src="//rum-static.pingdom.net/pa-5a1c4fe32e1d7c699d7b23c6.js" async></script>
+
+<!-- End Matomo Code -->
+
+
+
+</body>
+
+</html>

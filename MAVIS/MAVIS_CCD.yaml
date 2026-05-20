@@ -1,0 +1,89 @@
+---
+### MAVIS CCD detector
+object: detector
+alias: DET
+name: MAVIS_CCD
+description: >
+  MAVIS imager CCD detector. Single back-illuminated CCD, 4096x4004 pixels,
+  10 um pixel pitch. Two readout modes: slow (3 e- RON) and fast (5 e- RON).
+date_modified: 2026-05-18
+changes:
+  - 2026-05-18 (KL) Initial MAVIS package
+
+properties:
+  detector: CCD
+  image_plane_id: 0
+  temperature: -100          # [deg C] approximate CCD operating temperature
+  dit: "!OBS.dit"
+  ndit: "!OBS.ndit"
+  pixel_size: 0.010          # [mm] 10 um pixel pitch
+
+effects:
+  - name: detector_array
+    description: Single CCD 4096x4004 pixel detector
+    class: DetectorList
+    kwargs:
+      filename: FPA_mavis_layout.dat
+
+  - name: detector_readout_parameters
+    description: Readout modes for MAVIS CCD (slow and fast)
+    class: DetectorModePropertiesSetter
+    kwargs:
+      mode_properties:
+        slow:
+          description: "MAVIS CCD slow readout mode"
+          "!DET.mode": slow
+          "!DET.full_well": 90000
+          "!DET.gain": 1.0
+          "!DET.readout_noise": 3
+          "!DET.dark_current": 0.001
+        fast:
+          description: "MAVIS CCD fast readout mode"
+          "!DET.mode": fast
+          "!DET.full_well": 90000
+          "!DET.gain": 1.0
+          "!DET.readout_noise": 5
+          "!DET.dark_current": 0.001
+
+  - name: qe_curve
+    description: MAVIS CCD quantum efficiency (back-illuminated, peak ~89% at 550 nm)
+    class: QuantumEfficiencyCurve
+    kwargs:
+      filename: QE_mavis_ccd.dat
+
+#  - name: exposure_action
+#    description: summing up sky signal for all DITs and NDITs
+#    class: ExposureIntegration
+
+  - name: dark_current
+    description: MAVIS CCD dark current at operating temperature
+    class: DarkCurrent
+    kwargs:
+      value: "!DET.dark_current"
+
+  - name: detector_linearity
+    description: CCD linearity and saturation at 90,000 e- full well
+    class: LinearityCurve
+    kwargs:
+      filename: FPA_mavis_linearity.dat
+
+  - name: shot_noise
+    description: Poisson shot noise
+    class: ShotNoise
+
+  - name: readout_noise
+    description: CCD readout noise
+    class: BasicReadoutNoise
+    kwargs:
+      noise_std: "!DET.readout_noise"
+
+  - name: exposure_output
+    description: return sum over NDIT sub-exposures
+    class: ExposureOutput
+
+  - name: ad_conversion
+    description: convert electrons to ADU
+    class: ADConversion
+    kwargs:
+      dtype: float32
+      gain: "!DET.gain"
