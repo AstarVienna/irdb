@@ -29,6 +29,7 @@ effects:
       wave_colname: "wavelength"
       s_colname: "xi"
       col_number_start: 1
+      slice_samples: 5  # number of samples along slice width
 
 ---
 ### set observation mode
