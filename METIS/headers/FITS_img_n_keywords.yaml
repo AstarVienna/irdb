@@ -4,7 +4,7 @@
     HIERARCH:
       ESO:
         DPR:
-          TECH:   "IMAGE,N"
+          TECH: "!OBS.tech"  # duplicate from FITS_common_keywords.yaml
         INS:
 
           OPTI4:                # LMS beamsplitter pickoff wheel

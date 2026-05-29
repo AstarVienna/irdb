@@ -7,7 +7,7 @@ name: MICADO_default_configuration
 description: default parameters needed for a MICADO simulation
 status: development
 needs_scopesim: "v0.11.3"
-date_modified: 2025-10-09
+date_modified: 2026-05-29
 changes:
   - 2023-07-13 (OC) add modes for FDR slits, deprecate pre-FDR slits
   - 2025-06-27 (FH) add needs_scopesim keyword
@@ -15,6 +15,7 @@ changes:
   - 2025-10-17 (JB) add parametes for FITS keywords, tplstart as MJD
   - 2026-01-02 (OC) random seed to None
   - 2026-04-09 (OC) new SPEC mode, rename slits
+  - 2026-05-29 (FH) added tech keyword to most modes
 
 packages:
 - Armazones
@@ -39,7 +40,6 @@ properties :
   dit : 60
   ndit : 1
   catg : SCIENCE
-  tech : IMAGE
   type : OBJECT
   # Should be datetimes, but is copied verbatim, so should work.
   mjdobs : 61529.104
@@ -85,6 +85,7 @@ mode_yamls :
     filter_name_fw1: open
     filter_name_fw2: Ks
     filter_name_pupil: open
+    tech: IMAGE
     fits_ins_filt: Ks
 
 - object : observation
@@ -98,6 +99,7 @@ mode_yamls :
     filter_name_fw1: open
     filter_name_fw2: Ks
     filter_name_pupil: open
+    tech: IMAGE
     fits_ins_filt: Ks
 
 - object : observation
@@ -139,6 +141,7 @@ mode_yamls :
     filter_name_fw1 : Spec_HK
     filter_name_fw2 : open
     filter_name_pupil : open
+    tech: SPEC
     fits_ins_filt : Spec_HK
 
 - object : observation
@@ -155,6 +158,7 @@ mode_yamls :
     filter_name_fw1 : Spec_HK
     filter_name_fw2 : open
     filter_name_pupil : open
+    tech: SPEC
     fits_ins_filt : Spec_HK
 
 - object : observation
@@ -171,6 +175,7 @@ mode_yamls :
     filter_name_fw1 : Spec_IJ
     filter_name_fw2 : open
     filter_name_pupil : open
+    tech: SPEC
     fits_ins_filt : Spec_IJ
 
 ---
