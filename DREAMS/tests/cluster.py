@@ -10,7 +10,7 @@ from scopesim import rc
 from scopesim.source.source_templates import star_field
 import scopesim_templates as sim_tp
 
-PLOTS = True
+PLOTS = False
 
 if rc.__config__["!SIM.tests.run_integration_tests"] is False:
     pytestmark = pytest.mark.skip("Ignoring DREAMS integration tests")
@@ -116,3 +116,4 @@ def run_test_and_plot():
 # Run the test and plot as soon as the module is imported
 if __name__ == '__main__':
     run_test_and_plot()
+    
