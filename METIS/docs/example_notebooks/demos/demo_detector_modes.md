@@ -12,9 +12,6 @@ kernelspec:
 ---
 
 # Selecting detector modes in METIS
-
-+++
-
 This notebook demonstrates the effect `detector_readout_parameters`, which selects between the different detector readout modes. These are `fast` and `slow` for the HAWAII2RG detectors, and `high_capacity` and `low_capacity` for the Geosnap detector.
 
 ```{code-cell} ipython3
@@ -86,10 +83,7 @@ metis.cmds["!DET"]
 metis.cmds[metis['readout_noise'].meta['noise_std']]
 ```
 
-# Test: detector noise level (LSS-L)
-
-+++
-
+## Test: detector noise level (LSS-L)
 To investigate the behaviour of the detector readout modes, we look at the L-band long-slit mode where the areas of the detector outside the spectral trace contain only readout noise and dark current. The default mode for long-slit spectroscopy is the `slow` mode, and we'll switch to the `fast` mode afterwards.
 
 ```{code-cell} ipython3
@@ -141,7 +135,7 @@ Fast: ndit  = {ndit_fast}     dit = {dit_fast:.2f}
       noise = {noise_fast:5.1f}  expected: {noise_fast_expected:5.1f}""")
 print(f"""
 Slow: ndit  = {ndit_slow}     dit = {dit_slow:.2f}
-      bg    = {bg_slow:5.1f}   expected: {bg_slow_expected:5.1f}   
+      bg    = {bg_slow:5.1f}   expected: {bg_slow_expected:5.1f}
       noise = {noise_slow:5.1f}   expected: {noise_slow_expected:.1f}""")
 ```
 
@@ -151,11 +145,9 @@ Finally, we can let Scopesim automatically select the "best" mode.
 hdul_auto = metis.readout(detector_readout_mode="auto", exptime=1000)[0]
 ```
 
-The advantage of the "slow" mode of the H2RG detector is the low readout noise. The "fast" mode permit smaller DITs and would be selected for bright sources that would saturate the detector at the minimum DIT of the "slow" mode. 
+The advantage of the "slow" mode of the H2RG detector is the low readout noise. The "fast" mode permit smaller DITs and would be selected for bright sources that would saturate the detector at the minimum DIT of the "slow" mode.
 
-+++
-
-# Test: Full well (IMG-N) 
+## Test: Full well (IMG-N)
 This demonstrates the high- and low-capacity modes of the Geosnap detector. The setup uses a neutral-density filter to ensure that the background does not saturate the detector in the low-capacity mode. The source is a very bright star, which saturates in the low-capacity mode but does not in the high-capacity mode.
 
 ```{code-cell} ipython3

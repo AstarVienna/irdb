@@ -12,8 +12,7 @@ kernelspec:
 ---
 
 # Slit Wheel
-
-This notebook demonstrates how to use the various slits in METIS. They are defined in a `SlitWheel` effect, which works in the same way as `FilterWheel`. The notebook uses imaging mode to show the slits directly. 
+This notebook demonstrates how to use the various slits in METIS. They are defined in a `SlitWheel` effect, which works in the same way as `FilterWheel`. The notebook uses imaging mode to show the slits directly.
 
 ```{code-cell} ipython3
 from matplotlib import pyplot as plt
@@ -77,7 +76,7 @@ newslit = sim.effects.ApertureMask(
     array_dict={
         "x": [-1, 1, 1, -1],
         "y": [-1, -1, 1, 1]
-    }, 
+    },
     x_unit="arcsec",
     y_unit="arcsec",
 )

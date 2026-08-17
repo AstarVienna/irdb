@@ -12,9 +12,8 @@ kernelspec:
 ---
 
 # Rectification
-
-This notebook demonstrates how to rectify a detector readout from a spectroscopic simulation using Scopesim. "Rectification" means the transformation of a spectral trace from the detector onto a rectangular pixel grid of wavelength and spatial position along the slit. Wavelength calibration and rectification are major tasks of the spectroscopic data-reduction pipeline. For convenience, Scopesim includes functionality to perform these tasks by reversing the *known* mapping that was used for the simulation, resulting in easily analysable 2D spectra that include all the noise and background components but neglect the uncertainties of a wavelength calibration as it would be performed during the reduction of real data. 
-Rectification is demonstrated on a METIS long-slit simulation, but the procedure applies to MICADO spectroscopic simulations as well (but more expensive to simulate and rectify). METIS IFU simulations have to be treated differently. 
+This notebook demonstrates how to rectify a detector readout from a spectroscopic simulation using Scopesim. "Rectification" means the transformation of a spectral trace from the detector onto a rectangular pixel grid of wavelength and spatial position along the slit. Wavelength calibration and rectification are major tasks of the spectroscopic data-reduction pipeline. For convenience, Scopesim includes functionality to perform these tasks by reversing the *known* mapping that was used for the simulation, resulting in easily analysable 2D spectra that include all the noise and background components but neglect the uncertainties of a wavelength calibration as it would be performed during the reduction of real data.
+Rectification is demonstrated on a METIS long-slit simulation, but the procedure applies to MICADO spectroscopic simulations as well (but more expensive to simulate and rectify). METIS IFU simulations have to be treated differently.
 
 ```{code-cell} ipython3
 import numpy as np
@@ -41,9 +40,6 @@ If you haven’t got the instrument packages yet, uncomment the following cell.
 ```
 
 ## Creation of a source - lamp with equally spaced lines
-
-+++
-
 As an example, we use a calibration lamp with equally spaced and equally strong emission lines, covering the L band. The line list is turned into a spectrum by placing a narrow Gaussian at each line position. To simulate the lamp, we (ab)use the `flatlamp` function and replace the default spectrum (a black body) by the line spectrum.
 
 ```{code-cell} ipython3
@@ -58,13 +54,10 @@ for line in lines:
 spec = SourceSpectrum(Empirical1D, points=wave*u.um, lookup_table=flux)
 
 src_linelamp = flatlamp()
-src_linelamp.fields[0].spectra[0] = spec     # NB: Do not try to set src_linelamp.spectra[0], this has no effect. 
+src_linelamp.fields[0].spectra[0] = spec     # NB: Do not try to set src_linelamp.spectra[0], this has no effect.
 ```
 
 ## Simulation of an observation
-
-+++
-
 We use METIS in the L-band long-slit spectroscopic mode, using a fairly narrow slit. We explicitely request the realistic spectral mapping with non-linear dispersion.
 
 ```{code-cell} ipython3
@@ -96,9 +89,6 @@ plt.imshow(readout[1].data, origin="lower");
 ```
 
 ## Rectification of the spectrum
-
-+++
-
 The non-linearity in the dispersion in METIS is small and not readily apparent.Still, rectification is necessary to arrive at a 2D spectrum with well-defined wavelength and spatial coordinates. The method to use is `rectify_traces` and belongs to the `SpectralTraceList` effect, which is accessible in the METIS `OpticalTrain` as `"spectral_traces"` (in MICADO it would be `"micado_spectral_traces"`. Currently, it is necessary to specify the spatial extent of the slit when calling the method. The long slit in METIS has a length of 8 arcsec and extends from -4 arcsec to +4 arcsec.
 
 ```{code-cell} ipython3

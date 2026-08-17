@@ -12,9 +12,6 @@ kernelspec:
 ---
 
 # Simulating long-slit spectroscopy in METIS
-
-+++
-
 This notebook shows the most basic setup for long-slit spectroscopy, using a star as the source.
 
 ```{code-cell} ipython3
@@ -61,8 +58,8 @@ plt.imshow(result[1].data, origin="lower", vmin=100, norm="log")
 plt.colorbar();
 ```
 
-# Rectifying the spectrum
-The default configuration for METIS applies a non-linear mapping of the two-dimensional spectrum onto the detector as determined from ray-tracing simulations of the optical system. The mapping can be reversed to obtain a rectified version of the 2D spectrum that is linear in both wavelength and spatial position and can easily be analysed. Note that this is optimistic compared to an actual data reduction process, where the mapping parameters would have to be estimated from data with some uncertainty. 
+## Rectifying the spectrum
+The default configuration for METIS applies a non-linear mapping of the two-dimensional spectrum onto the detector as determined from ray-tracing simulations of the optical system. The mapping can be reversed to obtain a rectified version of the 2D spectrum that is linear in both wavelength and spatial position and can easily be analysed. Note that this is optimistic compared to an actual data reduction process, where the mapping parameters would have to be estimated from data with some uncertainty.
 
 ```{code-cell} ipython3
 tracelist = metis["spectral_traces"]
@@ -72,7 +69,7 @@ tracelist = metis["spectral_traces"]
 rectified = tracelist.rectify_traces(result, -4, 4)
 ```
 
-`rectified` is again an `HDUList` with the data in the first extension. The header of this extension contains the WCS keywords needed to translate from pixels to wavelength and spatial position. 
+`rectified` is again an `HDUList` with the data in the first extension. The header of this extension contains the WCS keywords needed to translate from pixels to wavelength and spatial position.
 
 ```{code-cell} ipython3
 from astropy.wcs import WCS

@@ -11,7 +11,8 @@ kernelspec:
   name: python3
 ---
 
-This notebook demonstrates the use of the `FilterWheel` in Scopesim. The METIS configuration contains two instances of this effect, named `filter_wheel` (for science filters) and `nd_filter_wheel` (for neutral-density filters). Each filter wheel contains a number of predefined filters, with different filter sets for the LM- and N-band imagers. 
+# Filter Wheel
+This notebook demonstrates the use of the `FilterWheel` in Scopesim. The METIS configuration contains two instances of this effect, named `filter_wheel` (for science filters) and `nd_filter_wheel` (for neutral-density filters). Each filter wheel contains a number of predefined filters, with different filter sets for the LM- and N-band imagers.
 
 ```{code-cell} ipython3
 import numpy as np
@@ -72,7 +73,7 @@ metis["filter_wheel"].change_filter("PAH_3.3")
 print(metis["filter_wheel"].current_filter)
 ```
 
-# Observing the same source in different filters
+## Observing the same source in different filters
 
 ```{code-cell} ipython3
 src = sim.source.source_templates.empty_sky()
@@ -97,8 +98,7 @@ print("Background in Lp:      {:8.1f} counts/s".format(np.median(img_Lp)))
 print("Background in PAH_3.3: {:8.1f} counts/s".format(np.median(img_PAH)))
 ```
 
-# Using the neutral-density filter wheel
-
+## Using the neutral-density filter wheel
 METIS also has neutral-density filters that can be inserted and changed using the `nd_filter_wheel` effect. The transmission of the filter `ND_ODx` is $10^{-x}$.
 
 ```{code-cell} ipython3
@@ -165,7 +165,7 @@ A custom filter that is not in the default filter set can be added to the wheel 
 
 ```{code-cell} ipython3
 newfilter = sim.effects.ter_curves.TopHatFilterCurve(
-    transmission=0.9, blue_cutoff=3.8, red_cutoff=3.9, 
+    transmission=0.9, blue_cutoff=3.8, red_cutoff=3.9,
     name="custom_tophat")
 metis["filter_wheel"].add_filter(newfilter)
 metis["filter_wheel"].filters.keys()

@@ -12,7 +12,6 @@ kernelspec:
 ---
 
 # Grating Efficiency
-
 This notebook demonstrates and tests the `SpectralEfficiency` effect for the METIS long-slit spectroscopic modes. Lacking real data, the grating effciencies used here (and available in the irdb) are pure fantasy.
 
 ```{code-cell} ipython3
@@ -64,7 +63,7 @@ metis_l = sim.OpticalTrain(cmd_l)
 
 ```{code-cell} ipython3
 metis_l["psf"].include = False                # PSF is not necessary for slit-filling source
-metis_l["skycalc_atmosphere"].include = False # sky lines obscure flat spectrum 
+metis_l["skycalc_atmosphere"].include = False # sky lines obscure flat spectrum
 ```
 
 Observe the source with and without the grating efficiency. The ratio between the two results (we look at the image plane, which is noise free) shows directly the efficiency.
@@ -109,7 +108,7 @@ metis_m = sim.OpticalTrain(cmd_m)
 
 ```{code-cell} ipython3
 metis_m["psf"].include = False                # PSF is not necessary for slit-filling source
-metis_m["skycalc_atmosphere"].include = False # sky lines obscure flat spectrum 
+metis_m["skycalc_atmosphere"].include = False # sky lines obscure flat spectrum
 ```
 
 ```{code-cell} ipython3
@@ -151,7 +150,7 @@ metis_n = sim.OpticalTrain(cmd_n)
 
 ```{code-cell} ipython3
 metis_n["psf"].include = False                # PSF is not necessary for slit-filling source
-metis_n["skycalc_atmosphere"].include = False # sky lines obscure flat spectrum 
+metis_n["skycalc_atmosphere"].include = False # sky lines obscure flat spectrum
 ```
 
 ```{code-cell} ipython3

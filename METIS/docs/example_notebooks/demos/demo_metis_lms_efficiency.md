@@ -12,7 +12,6 @@ kernelspec:
 ---
 
 # METIS LMS Efficiency
-
 This notebook demonstrates the effect `MetisLMSEfficiency`. Here we use it standalone to reproduce Figure 6 from E-REP-ATC-MET-1016 (v1.0) to show that the effect computes the efficiency correctly.
 
 ```{code-cell} ipython3
@@ -67,8 +66,4 @@ for order in np.arange(22, 37):
     lammax = lam[np.argmax(effic)]
     p = plt.plot(lam.to(u.um), eff.surface.transmission(lam))
     plt.text(lammax.to(u.um).value, 0.76, str(order), ha="center", color=p[0].get_color())
-```
-
-```{code-cell} ipython3
-
 ```

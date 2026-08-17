@@ -11,6 +11,7 @@ kernelspec:
   name: python3
 ---
 
+# Inter-Pixel Capacitance
 This notebook demonstrates the ScopeSim effect `InterPixelCapacitance`. Inter-pixel capacitance correlates the voltages or data values measured in adjacent pixels of an infrared detector. The effect implements the three-parameter model of Kannawadi et al. (2016) (PASP 128, 095001) and applies the following convolution kernel (in their notation) to the detector readout:
 $$ K(\alpha, \alpha^\prime, \alpha_{+}) = \begin{pmatrix}
    \alpha^\prime & \alpha - \alpha_{+} & \alpha^\prime \\
@@ -24,10 +25,10 @@ The correspondence between these parameters and those of the Scopesim effect is 
 - $\alpha^\prime$ -- ``alpha_corner``: gives the influence of the four pixels sharing a corner with the target pixel.
 - $\alpha_{+}$ -- ``alpha_aniso``: gives a difference in the influence of neighbouring pixels along rows and along columns
 
-The default setting in the instrument package sets these parameter with literature values typical for HxRG detectors. 
+The default setting in the instrument package sets these parameter with literature values typical for HxRG detectors.
 It is also possible to set the kernel directly in the yaml file. This allows using kernels that are larger than $3\times 3$.
 
-When the $\alpha$ parameters are used to define the IPC kernel it is automatically normalised to unit sum. When the kernel is provided it is normalised by ScopeSim when its sum is greater than one. When it is less than one (but larger than zero), it is accepted as is, which then leads to loss of flux -- it is the user's responsibility to ensure the kernel is normalised unless this flux loss is intended. Kernels with negative sum are rejected and raise a `ValueError`.   
+When the $\alpha$ parameters are used to define the IPC kernel it is automatically normalised to unit sum. When the kernel is provided it is normalised by ScopeSim when its sum is greater than one. When it is less than one (but larger than zero), it is accepted as is, which then leads to loss of flux -- it is the user's responsibility to ensure the kernel is normalised unless this flux loss is intended. Kernels with negative sum are rejected and raise a `ValueError`.
 
 ```{code-cell} ipython3
 import numpy as np

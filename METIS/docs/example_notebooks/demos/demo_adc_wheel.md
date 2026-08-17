@@ -12,7 +12,6 @@ kernelspec:
 ---
 
 # Test ADC wheel
-
 This notebook demonstrates how to use the various atmospheric dispersion correctors in METIS. Note that the action of an adc is currently restricted to a transmission loss. The implementation of the geometric differential refraction residuals will follow at a later stage.
 
 ```{code-cell} ipython3
@@ -20,7 +19,7 @@ import scopesim as sim
 sim.bug_report()
 
 # Edit this path if you have a custom install directory, otherwise comment it out.
-sim.link_irdb("../../../../") 
+sim.link_irdb("../../../../")
 ```
 
 ```{code-cell} ipython3
@@ -30,7 +29,7 @@ import numpy as np
 If you haven't got the instrument packages yet, uncomment the following cell
 
 ```{code-cell} ipython3
-# sim.download_packages(["METIS", "ELT", "Armazones"]) 
+# sim.download_packages(["METIS", "ELT", "Armazones"])
 ```
 
 ```{code-cell} ipython3

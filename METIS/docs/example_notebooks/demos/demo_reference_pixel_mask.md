@@ -11,6 +11,7 @@ kernelspec:
   name: python3
 ---
 
+# Reference pixel mask
 The METIS detectors have a number of masked rows and pixels around their borders. These pixels do not see any signal but do have dark current, readout noise and other detector effects. This notebook shows what the effect `ReferencePixelBorder` does and how it is set up for METIS. It also explains how the dimensions of the mask can be changed and of course how the mask can be switched off entirely.
 
 ```{code-cell} ipython3
@@ -30,9 +31,6 @@ sim.link_irdb("../../../../")
 ```
 
 ## Imager detectors
-
-+++
-
 The Imager detectors (H2RG for IMG-LM, Geosnap for IMG-N) have equal width masks all around, with 64 pixels for the H2RG and 28 pixels for the Geosnap. We look at the H2RG here and simulate a WCU flat field for simplicity.
 
 ```{code-cell} ipython3
@@ -76,10 +74,7 @@ ax2.set_title("Row 250");
 
 Note that with a gain of 4 e/ADU, the reference level of 2500 ADU corresponds to 10000 electrons, as expected.
 
-+++
-
 ## LMS detector array
-
 The LMS detector array consists of 4 H2RG detectors. In the y-direction all detectors have 32 reference rows at the bottom and top. In the x-direction (the dispersion direction) only the outsides are masked with 64 columns, while there are no reference pixels on the inside. (The simulation takes several minutes.)
 
 ```{code-cell} ipython3

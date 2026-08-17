@@ -12,7 +12,6 @@ kernelspec:
 ---
 
 # The `SkycalcTERCurve` effect in ScopeSim
-
 This notebook demonstrates how to work with the skycalc effect, `SkycalcTERCurve`. This effect provides the atmospheric emission and transmission that are applied to a source object in ScopeSim. The effect is based on `skycalc_ipy`, a python wrapper to ESO’s SkyCalc tool.
 
 ```{code-cell} ipython3
@@ -28,7 +27,7 @@ import scopesim as sim
 # sim.download_packages(["Armazones", "ELT", "METIS"])
 ```
 
-We use the `SkycalcTERCurve` in the context of METIS/LMS, although sky mode of any other instrument would do as well. 
+We use the `SkycalcTERCurve` in the context of METIS/LMS, although sky mode of any other instrument would do as well.
 
 ```{code-cell} ipython3
 cmd = sim.UserCommands(use_instrument="METIS", set_modes=["lms"])
@@ -119,7 +118,7 @@ plt.figure()
 lam = np.linspace(7, 12, 1001) * u.um
 for pwv in pwv_values:
     sky.update(pwv=pwv)
-    plt.plot(sky.surface.table['wavelength'].to(u.um), sky.surface.table['emission'], label=f"pwv = {pwv}", alpha=0.7) 
+    plt.plot(sky.surface.table['wavelength'].to(u.um), sky.surface.table['emission'], label=f"pwv = {pwv}", alpha=0.7)
     metis.observe()
     bg_level.append(np.median(metis.image_planes[0].data))
 plt.legend();

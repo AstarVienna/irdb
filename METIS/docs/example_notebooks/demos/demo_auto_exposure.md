@@ -12,7 +12,6 @@ kernelspec:
 ---
 
 # Auto Exposure
-
 This is a setup/test/demonstration notebook for the `AutoExposure` effect in Scopesim. This effect splits the requested total exposure time into NDIT subexposures of integration time DIT such that the maximum counts in a single subexposure does not exceed a certain fill fraction of the detector full well. The final readout is the sum over the NDIT subexposures, i.e. corresponds to the total requested exposure time.
 
 The notebook uses the `irdb/METIS` configuration. The observed source is blank sky, except for the last example where a star of 0 mag is used (Vega).
@@ -26,7 +25,7 @@ sim.bug_report()
 sim.link_irdb("../../../../")
 ```
 
-If you haven't got the instrument packages yet, uncomment the following cell. 
+If you haven't got the instrument packages yet, uncomment the following cell.
 
 ```{code-cell} ipython3
 # sim.download_packages(["METIS", "ELT", "Armazones"])
@@ -43,7 +42,7 @@ metis = sim.OpticalTrain(cmd)
 metis.observe()
 ```
 
-For `AutoExposure` to work the exposure time has to be given explicitely as a parameter to the `readout` method. If this is not done, the default values for `DIT` and `NDIT` will be used. The following is for an exposure time of 1 second. The resulting readout is divided by `NDIT` to produce the average over the `NDIT` subexposures. After application of the gain to convert from ADU to electrons this allows direct comparison to the detector full well. 
+For `AutoExposure` to work the exposure time has to be given explicitely as a parameter to the `readout` method. If this is not done, the default values for `DIT` and `NDIT` will be used. The following is for an exposure time of 1 second. The resulting readout is divided by `NDIT` to produce the average over the `NDIT` subexposures. After application of the gain to convert from ADU to electrons this allows direct comparison to the detector full well.
 
 ```{code-cell} ipython3
 outhdul = metis.readout(exptime=1)[0]
@@ -183,8 +182,6 @@ print("Number of saturated pixels:", npix)
 ```
 
 The default values for the detector full well in the various modes reflects our current best knowledge of the properties of the actual METIS detectors. These values can be changed as in the following example, but be aware that this makes the simulations unrealistic.
-
-+++
 
 **NB: There's something wrong with this example, please ignore for the time being.**
 

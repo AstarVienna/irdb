@@ -11,7 +11,8 @@ kernelspec:
   name: python3
 ---
 
-This notebook is targeted at the AIT team who use Scopesim to simulate observations with the warm calibration unit (WCU). It demonstrates how to select point-spread functions that correspond to a pupil-mask that is inserted in the optical path. This is an interplay between two effects in ScopeSim, an instance of `PupilMaskWheel` and an instance of `FieldConstantPSF`. Note that the instrument configuration for ScopeSim currently has a single pupil-mask wheel which is placed in the WCU. This differs from the real instrument, which will have a pupil-mask wheel in both imager arms as well as one in the common fore optics (CFO), and means that the functionality presented here can only be used with the WCU modes. The sky modes still use the SCAO PSFs as they always did. 
+# WCU (AIT)
+This notebook is targeted at the AIT team who use Scopesim to simulate observations with the warm calibration unit (WCU). It demonstrates how to select point-spread functions that correspond to a pupil-mask that is inserted in the optical path. This is an interplay between two effects in ScopeSim, an instance of `PupilMaskWheel` and an instance of `FieldConstantPSF`. Note that the instrument configuration for ScopeSim currently has a single pupil-mask wheel which is placed in the WCU. This differs from the real instrument, which will have a pupil-mask wheel in both imager arms as well as one in the common fore optics (CFO), and means that the functionality presented here can only be used with the WCU modes. The sky modes still use the SCAO PSFs as they always did.
 
 ```{code-cell} ipython3
 import scopesim as sim

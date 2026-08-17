@@ -11,6 +11,7 @@ kernelspec:
   name: python3
 ---
 
+# Leiden sky (AIT)
 ```{code-cell} ipython3
 from matplotlib import pyplot as plt
 import numpy as np
@@ -29,7 +30,7 @@ sim.link_irdb("../../../../")
 #sim.download_packages(["METIS"])
 ```
 
-The available modes using the Leiden sky are `leiden_lss_l`, `leiden_lss_m`, `leiden_lss_n` and `leiden_lms`. We will simulate an LSS_M observation, using a PWV value of 10 mm. 
+The available modes using the Leiden sky are `leiden_lss_l`, `leiden_lss_m`, `leiden_lss_n` and `leiden_lms`. We will simulate an LSS_M observation, using a PWV value of 10 mm.
 
 ```{code-cell} ipython3
 cmd = sim.UserCommands(use_instrument="METIS", set_modes=['leiden_lss_m'])
@@ -44,7 +45,7 @@ metis = sim.OpticalTrain(cmd)
 metis.effects.pprint_all()
 ```
 
-The `leiden_` modes replace the `ELT` and `Armazones` packages with two effects, `leiden_sky`, which creates the background source using the atmospheric spectra for the selected PWV, and `telescope`, which models the relay optics. 
+The `leiden_` modes replace the `ELT` and `Armazones` packages with two effects, `leiden_sky`, which creates the background source using the atmospheric spectra for the selected PWV, and `telescope`, which models the relay optics.
 
 `telescope` has no user-modifiable parameters; its configuration can be inspected as follows:
 
@@ -91,7 +92,7 @@ metis['leiden_sky'].update(pwv=50)
 metis['leiden_sky'].plot(which="te", wavelength=np.linspace(3, 6, 1001)*u.um);
 ```
 
-# Comparison to Armazones/ELT
+## Comparison to Armazones/ELT
 The following compares the Leiden spectrum with a spectrum of the Armazones sky and METIS at the ELT.
 
 ```{code-cell} ipython3
@@ -151,7 +152,7 @@ plt.legend()
 ```
 
 ```{code-cell} ipython3
-rlam_leiden = lam_leiden[(lam_leiden > 4.6*u.um) * (lam_leiden < 4.8*u.um)] 
+rlam_leiden = lam_leiden[(lam_leiden > 4.6*u.um) * (lam_leiden < 4.8*u.um)]
 ```
 
 ```{code-cell} ipython3
