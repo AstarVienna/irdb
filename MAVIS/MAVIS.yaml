@@ -32,3 +32,20 @@ effects:
     class: SurfaceList
     kwargs:
       filename: LIST_MAVIS_optics.dat
+
+---
+### MAVIS overrides to the VLT support package
+object: telescope
+alias: TEL
+name: VLT_for_MAVIS
+description: >
+  The MAVIS PSF is a delivered, AO-corrected PSF: it already contains the
+  telescope wavefront and the diffraction pattern of the VLT pupil. Convolving
+  it with the generic poppy PSF shipped by the VLT package would broaden it a
+  second time, so that effect is switched off here.
+date_modified: 2026-08-19
+changes:
+  - 2026-08-19 (KL) Disable the generic VLT PSF for MAVIS
+
+properties:
+  include_generic_psf: False

@@ -15,14 +15,15 @@ packages:
   - VLT
   - MAVIS
 
-# Base load order. Modes below override/extend this. Required by
-# irdb/tests/test_package_contents.py, which checks that <PKG>.yaml is listed here.
+# Base load order: only what every mode shares. Mode-specific yamls are
+# listed under mode_yamls below and are *added* to this list, so anything
+# named in both would have its effects applied twice.
+# Required by irdb/tests/test_package_contents.py, which checks that
+# <PKG>.yaml appears here.
 yamls:
   - Paranal.yaml
   - VLT.yaml
   - MAVIS.yaml
-  - MAVIS_IMG.yaml
-  - MAVIS_CCD.yaml
 
 properties:
   instrument: MAVIS
@@ -44,9 +45,6 @@ mode_yamls:
     name: IMG
     description: "MAVIS imager (30x30 arcsec, 7.36 mas/pix)"
     yamls:
-      - Paranal.yaml
-      - VLT.yaml
-      - MAVIS.yaml
       - MAVIS_IMG.yaml
       - MAVIS_CCD.yaml
     properties:
@@ -64,6 +62,11 @@ properties:
   random:
     seed:
   spectral:
+    # Full range the imager is sensitive over. Note that SkycalcTERCurve
+    # returns a grid whose last point falls a fraction of a step short of
+    # wave_max, so the atmospheric transmission evaluated exactly at wave_max
+    # extrapolates to zero. That is generic ScopeSim/skycalc behaviour, not
+    # specific to this range, and it only affects the final ~0.3 Angstrom.
     wave_min: 0.32
     wave_mid: 0.55
     wave_max: 1.00

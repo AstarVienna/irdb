@@ -17,6 +17,10 @@ properties:
   dit: "!OBS.dit"
   ndit: "!OBS.ndit"
   pixel_size: 0.010          # [mm] 10 um pixel pitch
+  # ESTIMATE. Only feeds the MINDIT FITS keyword and the AutoExposure /
+  # saturation logic, neither of which MAVIS uses. Shutter-limited minimum
+  # for a science CCD; replace once the real value is known.
+  mindit: 1.0                # [s]
 
 effects:
   - name: detector_array
@@ -51,9 +55,9 @@ effects:
     kwargs:
       filename: QE_mavis_ccd.dat
 
-#  - name: exposure_action
-#    description: summing up sky signal for all DITs and NDITs
-#    class: ExposureIntegration
+  - name: exposure_integration
+    description: summing up sky signal for all DITs and NDITs
+    class: ExposureIntegration
 
   - name: dark_current
     description: MAVIS CCD dark current at operating temperature
@@ -80,6 +84,8 @@ effects:
   - name: exposure_output
     description: return sum over NDIT sub-exposures
     class: ExposureOutput
+    kwargs:
+      mode: sum
 
   - name: ad_conversion
     description: convert electrons to ADU

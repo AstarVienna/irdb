@@ -172,17 +172,23 @@ dependent pixel scale) or rebinned to **7.5 mas** pixels — neither matches the
 (known-limitations)=
 ## Known limitations
 
-- **PSF** is a placeholder Gaussian, not an MCAO PSF.
-- **Filter curves** are approximate top-hat profiles. Measured curves from ESO
-  or the SVO Filter Profile Service are preferred.
-- **AO module throughput** is a flat approximation from the 550 nm nominal
-  value; a wavelength-resolved curve from the consortium is preferred.
+- **PSF** is an analytic model, not an end-to-end simulation. It reproduces
+  the published Strehl and ensquared energy and the correct core, rings and
+  halo, but has no field variability, no anisoplanatism and no PSF elongation
+  towards the field edge.
+- **Filter curves** are the standard passbands MAVIS is expected to carry
+  (ESO/FORS2 Bessell BVRI and the SDSS primed set), not measured MAVIS
+  hardware — which does not exist yet.
+- **AO module throughput** is a smooth approximation anchored on the 550 nm
+  nominal value; a wavelength-resolved curve from the consortium is preferred.
 - **QE curve** is approximate; manufacturer data preferred.
-- **Dark current** (0.001 e⁻/s) is an estimate, not a characterisation.
+- **Dark current** (0.001 e⁻/s) and **MINDIT** (1 s) are estimates, not
+  characterisations.
 - **Narrow-band filters** are not included.
 - **IFU spectrograph modes** are not implemented.
-- The `VLT` support package installs its own `FieldConstantPSF`
-  (`PSF_VLT_poppy.fits`) in addition to the MAVIS PSF.
+- The **sky** comes from `skycalc` with its default moon and airglow settings,
+  which are brighter than dark time. Expect an implied V surface brightness
+  near 20.5 mag/arcsec², not the canonical 21.6.
 
 ## Validation
 

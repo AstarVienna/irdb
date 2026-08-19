@@ -5,7 +5,12 @@ name: VLT
 description : The very large telescope UT4
 
 properties:
+  telescope: VLT
   temperture: "!ATMO.temperature"
+  # Instruments that supply their own delivered PSF (e.g. an AO-corrected one,
+  # which already contains the telescope wavefront) should switch this off in
+  # their own package, otherwise the two PSFs are convolved together.
+  include_generic_psf: True
 
 effects:
 - name: vlt_mirror_list
@@ -16,6 +21,7 @@ effects:
 - name: vlt_generic_psf
   description: Field constant PSF
   class: FieldConstantPSF
+  include: "!TEL.include_generic_psf"
   kwargs:
     filename: PSF_VLT_poppy.fits
     warning: "Default PSF was generated Poppy for a UT4 optical system"

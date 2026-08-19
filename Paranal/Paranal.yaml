@@ -9,6 +9,7 @@ changes:
   - 2022-02-21 (MV) changed effect name to be consistent with Armazones. Commented out alt effects
 
 properties :
+    location :      Paranal
     altitude :      2635        # m
     longitude :     -70.4042    # deg
     latitude :      -24.6272    # deg

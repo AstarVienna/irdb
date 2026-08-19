@@ -53,11 +53,14 @@ class RadiometryReport:
             "This file holds only the numbers measured by the test suite.\n\n"
         )
         sections.append(
-            "**Note:** the PSF in this package is a placeholder Gaussian and "
-            "the filter curves are top-hat approximations. This report is a "
-            "consistency check, not a science-grade performance "
-            "prediction.\n\n"
+            "**Note:** the PSF is an analytic MCAO model rather than an "
+            "end-to-end simulation, and the filter curves are the standard "
+            "passbands MAVIS is expected to carry rather than measured MAVIS "
+            "hardware. This report is a consistency check, not a "
+            "science-grade performance prediction.\n\n"
         )
+
+        self._write_validation(sections)
 
         if self.throughput:
             self._plot_throughput(plt, sections)
@@ -76,6 +79,57 @@ class RadiometryReport:
 
         report_path = DOCS_DIR / "radiometry_report.md"
         report_path.write_text("".join(sections), encoding="utf-8")
+
+    def _write_validation(self, sections):
+        """Table the measured numbers against the published MAVIS values."""
+        rows = []
+
+        for filt, data in sorted(self.background.items()):
+            rows.append((
+                f"Sky background, {filt} band",
+                f"{data['measured']:.0f} e-/s/arcsec2",
+                f"{data['expected']:.0f} e-/s/arcsec2, from integrating the "
+                "skycalc emission spectrum through the system throughput "
+                "by hand",
+            ))
+
+        for filt, data in sorted(self.lim_mag.items()):
+            hours = data["exptime"] / 3600.0
+            rows.append((
+                f"Limiting magnitude, {filt} band",
+                f"{data['limiting_mag']:.2f} mag",
+                f"> 29 mag published, at {data['snr']:.0f} sigma in "
+                f"{hours:.0f} hr; measured in a "
+                f"{data['aperture_mas']:.0f} mas aperture",
+            ))
+
+        if not rows:
+            sections.append(
+                "*Radiometry validation not run. Use "
+                "`pytest MAVIS/tests/ -m slow` to include it.*\n\n"
+            )
+            return
+
+        sections.append("## Validation against published numbers\n\n")
+        sections.append("| Quantity | Measured | Reference |\n")
+        sections.append("|---|---|---|\n")
+        for name, measured, reference in rows:
+            sections.append(f"| {name} | {measured} | {reference} |\n")
+        sections.append("\n")
+        sections.append(
+            "The sky comparison is an end-to-end check of the photon "
+            "bookkeeping: emission, collecting area, throughput, QE, "
+            "integration time and gain, against the same quantities "
+            "integrated directly.\n\n"
+        )
+        sections.append(
+            "The limiting magnitude is measured in a fixed 50 mas aperture, "
+            "the box the ensquared-energy specification refers to. The "
+            "published figure assumes optimal PSF-weighted extraction and "
+            "dark time, whereas skycalc is queried with its default (not "
+            "dark) moon and airglow settings, so the number here is expected "
+            "to come out a magnitude or so brighter.\n\n"
+        )
 
     def _plot_throughput(self, plt, sections):
         fig, ax = plt.subplots(figsize=(8, 5))
