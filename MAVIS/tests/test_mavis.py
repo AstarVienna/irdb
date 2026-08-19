@@ -119,8 +119,8 @@ class TestFilterWheel:
 class TestPhotometry:
     def test_point_source_above_sky(self, mavis_opt):
         """A bright star should produce signal well above sky background."""
-        from scopesim.source import source_templates as st
-        src = st.star(filter_name="V", magnitude=15)
+        from scopesim_templates.stellar import star
+        src = star(filter_name="V", amplitude=15 * u.mag, spec_type="A0V")
         mavis_opt.observe(src, update=True)
         hdus = mavis_opt.readout()
         img = hdus[0][1].data.astype(float)

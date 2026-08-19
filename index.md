@@ -63,6 +63,7 @@ Supports imaging and long-slit spectroscopy. LMS IFU mode in development.
 | Armazones | ELT       | [MICADO](MICADO/docs/README) | ✓          |
 | Armazones | ELT       | [METIS](METIS/docs/README)   | ✓          |
 | Armazones | ELT       | [MOSAIC](MOSAIC/docs/README) | ✓          |
+| Paranal   | VLT       | [MAVIS](MAVIS/docs/README)   | ✓          |
 | Paranal   | VLT       | HAWKI                        |            |
 | LFOA      | -         | -                            |            |
 
@@ -74,4 +75,5 @@ Supports imaging and long-slit spectroscopy. LMS IFU mode in development.
 METIS + ScopeSim <METIS/docs/README>
 MICADO + ScopeSim <MICADO/docs/README>
 MOSAIC + ScopeSim <MOSAIC/docs/README>
+MAVIS + ScopeSim <MAVIS/docs/README>
 ```

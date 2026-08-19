@@ -15,6 +15,15 @@ packages:
   - VLT
   - MAVIS
 
+# Base load order. Modes below override/extend this. Required by
+# irdb/tests/test_package_contents.py, which checks that <PKG>.yaml is listed here.
+yamls:
+  - Paranal.yaml
+  - VLT.yaml
+  - MAVIS.yaml
+  - MAVIS_IMG.yaml
+  - MAVIS_CCD.yaml
+
 properties:
   instrument: MAVIS
   modes: ["IMG"]
