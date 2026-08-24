@@ -3,6 +3,9 @@
 from pathlib import Path
 
 import numpy as np
+
+# numpy 2.0 renamed trapz to trapezoid; support both
+trapezoid = getattr(np, "trapezoid", np.trapz)
 import pytest
 from astropy import units as u
 
@@ -142,22 +145,31 @@ class TestPhotometry:
 # ---------------------------------------------------------------------------
 
 class TestPSF:
-    """The analytic MCAO PSF must reproduce the published MAVIS performance.
+    """The MCAO PSF must match MAVISIM at 550 nm and meet the ESO spec.
 
-    Specs, from background_info/mavis_baseline_specification.md:
-      Strehl at 550 nm            > 8 %  (goal 12 %)
-      Ensquared energy in 50 mas  > 15 % at 550 nm
+    The 550 nm plane is the on-axis end-to-end MCAO PSF from MAVISIM
+    (LQG tomography simulations), measured at:
+      Strehl at 550 nm            = 0.35
+      Ensquared energy in 50 mas  = 0.40
+    Both comfortably exceed the published floors (>8 % and >15 %,
+    from background_info/mavis_baseline_specification.md).
     """
 
     @pytest.fixture(scope="class")
     def psf_hdus(self):
         from astropy.io import fits
-        with fits.open(MAVIS_DIR / "PSF_MAVIS_analytic.fits") as hdul:
+        with fits.open(MAVIS_DIR / "PSF_MAVIS_mcao.fits") as hdul:
             yield [(h.header["WAVE0"], h.header, h.data.copy())
                    for h in hdul[1:]]
 
     def test_psf_file_exists(self):
-        assert (MAVIS_DIR / "PSF_MAVIS_analytic.fits").exists()
+        assert (MAVIS_DIR / "PSF_MAVIS_mcao.fits").exists()
+
+    def test_550nm_plane_matches_mavisim(self, psf_hdus):
+        """V-band photometry must track MAVISIM: same EE(50 mas)."""
+        hdr = {w: h for w, h, _ in psf_hdus}[0.55]
+        assert hdr["STREHL"] == pytest.approx(0.348, abs=0.01)
+        assert hdr["EE50MAS"] == pytest.approx(0.399, abs=0.01)
 
     def test_every_plane_carries_unit_energy(self, psf_hdus):
         for wave, _, data in psf_hdus:
@@ -195,6 +207,14 @@ class TestPSF:
         rows = {r["name"]: r["included"] for r in mavis_opt.effects}
         assert not rows["vlt_generic_psf"]
         assert rows["mavis_ao_psf"]
+
+    def test_tiptop_psf_is_available_but_disabled(self, mavis_opt):
+        """The TipTop alternative must be present, off by default, and must
+        never contact the TipTop server just by building the train."""
+        rows = {r["name"]: r["included"] for r in mavis_opt.effects}
+        assert not rows["mavis_tiptop_psf"]
+        from scopesim.effects import TipTopPSF
+        assert isinstance(mavis_opt["mavis_tiptop_psf"], TipTopPSF)
 
 
 # ---------------------------------------------------------------------------
@@ -246,8 +266,8 @@ class TestFilterCurves:
         trans = np.asarray(tbl["transmission"], dtype=float)
         resp = trans * np.interp(wave, qe_wave, qe_trans, left=0.0, right=0.0)
 
-        lam_eff = float(np.trapezoid(wave * resp, wave)
-                        / np.trapezoid(resp, wave))
+        lam_eff = float(trapezoid(wave * resp, wave)
+                        / trapezoid(resp, wave))
         expected = FILTER_LAM_EFF[name]
         assert lam_eff == pytest.approx(expected, abs=LAM_EFF_TOL), \
             f"{name}: lambda_eff {lam_eff:.4f} um, expected {expected} um"
@@ -446,7 +466,7 @@ class TestRadiometry:
                         dtype=float)
 
         tp = _system_transmission(train, self.WAVE, with_atmosphere=False)
-        expected = float(np.trapezoid(em * tp, self.WAVE)) * TEL_AREA_CM2
+        expected = float(trapezoid(em * tp, self.WAVE)) * TEL_AREA_CM2
 
         report.background["V"] = {"measured": measured_sky,
                                   "expected": expected}
@@ -465,7 +485,7 @@ class TestRadiometry:
         """
         tp = _system_transmission(train, self.WAVE, with_atmosphere=False)
         # e-/s/arcsec2 that a V = 0 mag/arcsec2 surface would produce
-        zp = float(np.trapezoid(
+        zp = float(trapezoid(
             F0_V / _photon_energy(self.WAVE) * tp, self.WAVE)) * TEL_AREA_CM2
         sky_mag = -2.5 * np.log10(measured_sky / zp)
 
@@ -497,7 +517,7 @@ class TestRadiometry:
 
         # a point source is seen through the atmosphere, the sky is not
         tp_src = _system_transmission(train, self.WAVE, with_atmosphere=True)
-        zp_rate = float(np.trapezoid(
+        zp_rate = float(trapezoid(
             F0_V / _photon_energy(self.WAVE) * tp_src, self.WAVE)) \
             * TEL_AREA_CM2
 
@@ -506,7 +526,7 @@ class TestRadiometry:
         em = np.asarray(atmo.surface.emission(self.WAVE * u.AA).value,
                         dtype=float)
         tp_sky = _system_transmission(train, self.WAVE, with_atmosphere=False)
-        sky_rate = float(np.trapezoid(em * tp_sky, self.WAVE)) \
+        sky_rate = float(trapezoid(em * tp_sky, self.WAVE)) \
             * TEL_AREA_CM2 * box ** 2
 
         background = (sky_rate * exptime
