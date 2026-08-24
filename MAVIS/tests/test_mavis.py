@@ -505,7 +505,7 @@ class TestRadiometry:
         """
         from astropy.io import fits
 
-        with fits.open(MAVIS_DIR / "PSF_MAVIS_analytic.fits") as hdul:
+        with fits.open(MAVIS_DIR / "PSF_MAVIS_mcao.fits") as hdul:
             ee50 = {h.header["WAVE0"]: h.header["EE50MAS"]
                     for h in hdul[1:]}[0.55]
 
