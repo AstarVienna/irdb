@@ -10,7 +10,9 @@ a 30″ × 30″ field of view. First light at the telescope is currently schedu
 for 2031.
 
 This package currently implements the **imager only**. The IFU spectrograph
-modes are not yet available.
+modes are not yet available; the published science parameters and a staged
+implementation plan are in
+[`../background_info/planning/`](../background_info/planning/README.md).
 
 ```{warning}
 **This package is under development and is not yet science-grade.**
@@ -209,7 +211,12 @@ MAVISIM itself, or resample it into a ScopeSim `FieldVaryingPSF`.
 - **Dark current** (0.001 e⁻/s) and **MINDIT** (1 s) are estimates, not
   characterisations.
 - **Narrow-band filters** are not included.
-- **IFU spectrograph modes** are not implemented.
+- **IFU spectrograph modes** are not implemented. The spectrograph's optical
+  layout — slice count, detector format, dispersion geometry — is not
+  published, so a dispersed-image mode cannot be built without inventing it.
+  A cube-output mode *is* buildable from the published spaxel scales, fields
+  of view and resolving powers; see
+  [the planning documents](../background_info/planning/README.md).
 - The **sky** comes from `skycalc` with its default moon and airglow settings,
   which are brighter than dark time. Expect an implied V surface brightness
   near 20.5 mag/arcsec², not the canonical 21.6.
