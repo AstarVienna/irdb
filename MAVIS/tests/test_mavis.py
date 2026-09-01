@@ -547,3 +547,369 @@ class TestRadiometry:
             f"5-sigma limiting magnitude in 1 hr is V = {lim_mag:.2f}, "
             "which is not consistent with the published V > 29"
         )
+
+
+# ---------------------------------------------------------------------------
+# IFU cube modes
+# ---------------------------------------------------------------------------
+
+# key, published R, default wavelen [um], arm wave_min, arm wave_max
+IFU_CONFIGS = [
+    ("IFU_LR_BLUE", 5900, 0.550, 0.370, 0.720),
+    ("IFU_LR_RED", 5900, 0.700, 0.510, 0.935),
+    ("IFU_HR_BLUE", 14700, 0.518, 0.425, 0.550),
+    ("IFU_HR_RED", 11500, 0.700, 0.630, 0.880),
+]
+
+# scale mode -> (spaxel [arcsec], FoV width, FoV height)
+IFU_SCALES = {
+    "IFU_FINE": (0.025, 2.5, 3.6),
+    "IFU_COARSE": (0.050, 5.0, 7.2),
+}
+
+IFU_NX, IFU_NY, IFU_NZ = 100, 144, 2048
+
+# Wavelength planes of PSF_MAVIS_mcao.fits, and the midpoints at which a PSF
+# effect splits the FieldOfView.
+PSF_PLANES = (0.40, 0.55, 0.70, 0.85, 1.00)
+PSF_SPLIT_EDGES = [0.5 * (a + b) for a, b in zip(PSF_PLANES[:-1],
+                                                 PSF_PLANES[1:])]
+
+_ifu_cube_cache = {}
+
+
+def _emission_line_cube(scale, config, resolving_power, wavelen):
+    """Observe an unresolved emission line and return (data, header).
+
+    Cached: building the train and observing a 2048-plane cube is slow, and
+    several tests want the same product.
+    """
+    key = (scale, config)
+    if key in _ifu_cube_cache:
+        return _ifu_cube_cache[key]
+
+    from synphot import SourceSpectrum, Empirical1D
+
+    cmd = scopesim.UserCommands(use_instrument="MAVIS",
+                               set_modes=[scale, config])
+    opt = scopesim.OpticalTrain(cmd)
+    atmo = opt["skycalc_atmosphere"]
+    atmo = atmo[0] if isinstance(atmo, list) else atmo
+    atmo.include = False
+    opt.update()
+
+    # much narrower than a resolution element, so the measured width is the
+    # instrument line-spread function
+    wave = np.linspace(wavelen - 0.05, wavelen + 0.05, 200001)
+    sigma = wavelen / (resolving_power * 40.0)
+    flux = 1e-13 * np.exp(-0.5 * ((wave - wavelen) / sigma) ** 2) + 1e-18
+    spec = SourceSpectrum(Empirical1D, points=wave * u.um,
+                          lookup_table=flux * u.Unit("erg s-1 cm-2 AA-1"))
+    src = scopesim.Source(spectra=[spec], x=[0], y=[0], ref=[0], weight=[1])
+
+    opt.observe(src, update=True)
+    hdu = opt.readout()[0][1]
+    result = (hdu.data.astype(float), hdu.header)
+    _ifu_cube_cache[key] = result
+    return result
+
+
+def _wavelength_axis(header):
+    """Cube wavelength axis in um."""
+    n = header["NAXIS3"]
+    return (header["CRVAL3"]
+            + (np.arange(n) + 1 - header["CRPIX3"]) * header["CDELT3"]) * 1e6
+
+
+class TestIFUConfiguration:
+    """Checks that need no observation, so they stay fast."""
+
+    @pytest.mark.parametrize("config, res_pow, wavelen, arm_lo, arm_hi",
+                             IFU_CONFIGS)
+    def test_mode_loads(self, config, res_pow, wavelen, arm_lo, arm_hi):
+        cmd = scopesim.UserCommands(use_instrument="MAVIS",
+                                   set_modes=["IFU_FINE", config])
+        assert cmd["!OBS.wavelen"] == pytest.approx(wavelen)
+        assert cmd["!INST.resolving_power"] == res_pow
+        assert cmd["!INST.wave_min_arm"] == pytest.approx(arm_lo)
+        assert cmd["!INST.wave_max_arm"] == pytest.approx(arm_hi)
+
+    @pytest.mark.parametrize("scale, spaxel, width, height",
+                             [(k, *v) for k, v in IFU_SCALES.items()])
+    def test_spatial_scale(self, scale, spaxel, width, height):
+        cmd = scopesim.UserCommands(use_instrument="MAVIS",
+                                   set_modes=[scale, "IFU_LR_BLUE"])
+        assert cmd["!INST.pixel_scale"] == pytest.approx(spaxel)
+        assert cmd["!OBS.ifu_fov_width"] == pytest.approx(width)
+        assert cmd["!OBS.ifu_fov_height"] == pytest.approx(height)
+        # the field of view must be exactly the cube's spaxel grid
+        assert width == pytest.approx(IFU_NX * spaxel)
+        assert height == pytest.approx(IFU_NY * spaxel)
+
+    def test_cube_output_is_enabled(self):
+        """Without these the FieldOfView is collapsed to 2D."""
+        cmd = scopesim.UserCommands(use_instrument="MAVIS",
+                                   set_modes=["IFU_FINE", "IFU_LR_BLUE"])
+        assert cmd["!INST.flatten"] is False
+        assert cmd["!INST.decouple_detector_from_sky_headers"] is True
+
+    @pytest.mark.parametrize("config, res_pow, wavelen, arm_lo, arm_hi",
+                             IFU_CONFIGS)
+    def test_window_lies_inside_the_arm(self, config, res_pow, wavelen,
+                                        arm_lo, arm_hi):
+        cmd = scopesim.UserCommands(use_instrument="MAVIS",
+                                   set_modes=["IFU_FINE", config])
+        half = 0.5 * IFU_NZ * cmd["!SIM.spectral.spectral_bin_width"]
+        assert arm_lo <= wavelen - half, f"{config} window starts below the arm"
+        assert wavelen + half <= arm_hi, f"{config} window ends above the arm"
+
+    @pytest.mark.parametrize("config, res_pow, wavelen, arm_lo, arm_hi",
+                             IFU_CONFIGS)
+    def test_window_avoids_psf_plane_boundaries(self, config, res_pow,
+                                                wavelen, arm_lo, arm_hi):
+        """The cube modes cannot survive a wavelength split.
+
+        A PSF effect splits the FieldOfView at the midpoints between the
+        wavelength planes of its FITS file. Every sub-FieldOfView is then
+        checked against the single DetectorList3D NAXIS3 and the run aborts
+        on an assertion, so the window has to sit between two midpoints.
+        """
+        cmd = scopesim.UserCommands(use_instrument="MAVIS",
+                                   set_modes=["IFU_FINE", config])
+        half = 0.5 * IFU_NZ * cmd["!SIM.spectral.spectral_bin_width"]
+        lo, hi = wavelen - half, wavelen + half
+        crossed = [edge for edge in PSF_SPLIT_EDGES if lo < edge < hi]
+        assert not crossed, (
+            f"{config} window {lo:.4f}-{hi:.4f} um crosses PSF plane "
+            f"boundaries at {crossed}; the mode will not run"
+        )
+
+    @pytest.mark.parametrize("config, res_pow, wavelen, arm_lo, arm_hi",
+                             IFU_CONFIGS)
+    def test_bin_width_survives_the_plane_count_truncation(
+            self, config, res_pow, wavelen, arm_lo, arm_hi):
+        """Guards the floating-point trap in FieldOfView.make_hdu.
+
+        The number of cube planes is int((wave_max - wave_min) / bin_width),
+        computed after DetectorList3D has rounded the range to 7 decimals.
+        For most bin widths that quotient comes out as 2047.9999999999998 and
+        the truncation loses a plane, which aborts the run. The values in the
+        configuration yamls are chosen by background_info/tune_ifu_binning.py
+        to land on the safe side.
+        """
+        cmd = scopesim.UserCommands(use_instrument="MAVIS",
+                                   set_modes=["IFU_FINE", config])
+        dwave = cmd["!SIM.spectral.spectral_bin_width"]
+        quotient = round(IFU_NZ * dwave, 7) / dwave
+        assert int(quotient) == IFU_NZ, (
+            f"{config}: plane count truncates to {int(quotient)} instead of "
+            f"{IFU_NZ} (quotient {quotient!r}). Rerun "
+            "background_info/tune_ifu_binning.py."
+        )
+
+    @pytest.mark.parametrize("config, res_pow, wavelen, arm_lo, arm_hi",
+                             IFU_CONFIGS)
+    def test_bin_width_matches_the_declared_resolving_power(
+            self, config, res_pow, wavelen, arm_lo, arm_hi):
+        """The bin width, R and LSF width must stay consistent.
+
+        One resolution element is !INST.lsf_fwhm_bins bins wide, so the bin
+        width has to be wavelen / (R * lsf_fwhm_bins). Catches a bin width
+        edited without rerunning background_info/tune_ifu_binning.py.
+        """
+        cmd = scopesim.UserCommands(use_instrument="MAVIS",
+                                   set_modes=["IFU_FINE", config])
+        dwave = cmd["!SIM.spectral.spectral_bin_width"]
+        fwhm_bins = cmd["!INST.lsf_fwhm_bins"]
+        expected = wavelen / (res_pow * fwhm_bins)
+        assert dwave == pytest.approx(expected, rel=0.002), (
+            f"{config}: bin width {dwave:.6e} implies R = "
+            f"{wavelen / (fwhm_bins * dwave):.0f}, not {res_pow}"
+        )
+
+    def test_effects_are_not_applied_twice(self):
+        cmd = scopesim.UserCommands(use_instrument="MAVIS",
+                                   set_modes=["IFU_FINE", "IFU_LR_BLUE"])
+        opt = scopesim.OpticalTrain(cmd)
+        rows = [(el.meta.get("name"), eff.display_name)
+                for el in opt.optics_manager.optical_elements
+                for eff in el.effects]
+        assert len(rows) == len(set(rows)), \
+            f"duplicated effects: {sorted(r for r in rows if rows.count(r) > 1)}"
+
+    def test_exposure_effects_are_configured(self):
+        """ExposureIntegration must be present and ExposureOutput must sum."""
+        cmd = scopesim.UserCommands(use_instrument="MAVIS",
+                                   set_modes=["IFU_FINE", "IFU_LR_BLUE"])
+        opt = scopesim.OpticalTrain(cmd)
+        names = [str(r["name"]) for r in opt.effects]
+        assert any("exposure_integration" in n for n in names)
+        assert any("sum" in n for n in names if "exposure_output" in n)
+
+    def test_vlt_generic_psf_is_disabled(self):
+        cmd = scopesim.UserCommands(use_instrument="MAVIS",
+                                   set_modes=["IFU_FINE", "IFU_LR_BLUE"])
+        opt = scopesim.OpticalTrain(cmd)
+        rows = {r["name"]: r["included"] for r in opt.effects}
+        assert not rows["vlt_generic_psf"]
+        assert rows["mavis_ifu_psf"]
+
+
+@pytest.mark.slow
+class TestIFUCube:
+    """Checks that need an actual cube."""
+
+    @pytest.mark.parametrize("config, res_pow, wavelen, arm_lo, arm_hi",
+                             IFU_CONFIGS)
+    def test_cube_has_the_expected_shape(self, config, res_pow, wavelen,
+                                         arm_lo, arm_hi):
+        data, _ = _emission_line_cube("IFU_FINE", config, res_pow, wavelen)
+        assert data.shape == (IFU_NZ, IFU_NY, IFU_NX)
+
+    @pytest.mark.parametrize("scale, spaxel, width, height",
+                             [(k, *v) for k, v in IFU_SCALES.items()])
+    def test_spaxel_scale_on_sky(self, scale, spaxel, width, height):
+        _, header = _emission_line_cube(scale, "IFU_LR_BLUE", 5900, 0.550)
+        assert header["CUNIT1"].lower() == "deg"
+        assert header["CDELT1"] * 3600 == pytest.approx(spaxel, rel=1e-6)
+        assert header["NAXIS1"] * header["CDELT1"] * 3600 == \
+            pytest.approx(width, rel=1e-6)
+        assert header["NAXIS2"] * header["CDELT2"] * 3600 == \
+            pytest.approx(height, rel=1e-6)
+
+    @pytest.mark.parametrize("config, res_pow, wavelen, arm_lo, arm_hi",
+                             IFU_CONFIGS)
+    def test_wavelength_axis(self, config, res_pow, wavelen, arm_lo, arm_hi):
+        _, header = _emission_line_cube("IFU_FINE", config, res_pow, wavelen)
+        lam = _wavelength_axis(header)
+        assert header["CTYPE3"] == "WAVE"
+        assert 0.5 * (lam[0] + lam[-1]) == pytest.approx(wavelen, abs=1e-4)
+        assert arm_lo <= lam[0] and lam[-1] <= arm_hi
+
+    @pytest.mark.parametrize("config, res_pow, wavelen, arm_lo, arm_hi",
+                             IFU_CONFIGS)
+    def test_wavelength_calibration(self, config, res_pow, wavelen,
+                                    arm_lo, arm_hi):
+        """An emission line must come out at the wavelength it went in."""
+        data, header = _emission_line_cube("IFU_FINE", config, res_pow,
+                                           wavelen)
+        lam = _wavelength_axis(header)
+        spectrum = data.sum(axis=(1, 2))
+        peak = lam[int(np.argmax(spectrum - np.median(spectrum)))]
+        assert peak == pytest.approx(wavelen, abs=2 * header["CDELT3"] * 1e6)
+
+    @pytest.mark.parametrize("config, res_pow, wavelen, arm_lo, arm_hi",
+                             IFU_CONFIGS)
+    def test_resolving_power(self, config, res_pow, wavelen, arm_lo, arm_hi,
+                             report):
+        """Measured R against the published value.
+
+        The tolerance is 10 %: the line-spread function is a box convolved
+        with a fixed Gaussian and its FWHM is only tunable in steps, so the
+        design lands within 0.1 % but the measurement on a discrete grid
+        scatters by a few per cent.
+        """
+        data, header = _emission_line_cube("IFU_FINE", config, res_pow,
+                                           wavelen)
+        lam = _wavelength_axis(header)
+        spectrum = data.sum(axis=(1, 2))
+        spectrum = spectrum - np.median(spectrum)
+
+        # sub-bin FWHM
+        grid = np.linspace(0, len(spectrum) - 1, len(spectrum) * 40)
+        interp = np.interp(grid, np.arange(len(spectrum)), spectrum)
+        above = grid[interp >= interp.max() / 2]
+        fwhm = (above[-1] - above[0]) * header["CDELT3"] * 1e6
+        peak = lam[int(np.argmax(spectrum))]
+        delivered = peak / fwhm
+
+        report.ifu[config] = {"resolving_power": float(delivered),
+                              "target": res_pow, "wavelen": wavelen,
+                              "wave_min": float(lam[0]),
+                              "wave_max": float(lam[-1]),
+                              "shape": tuple(int(n) for n in data.shape)}
+
+        assert delivered == pytest.approx(res_pow, rel=0.10), (
+            f"{config}: delivered R = {delivered:.0f}, published {res_pow}"
+        )
+
+
+@pytest.mark.slow
+@pytest.mark.webtest
+class TestIFURadiometry:
+    """The cube must carry the same photons the imager does."""
+
+    def test_sky_level_matches_hand_integrated_skycalc(self, report):
+        """End-to-end photon bookkeeping for the cube path.
+
+        Detector noise is switched off so that only the sky term is
+        compared. Note that DarkCurrent in a cube is applied per *voxel*,
+        which is correct for a dispersed spectrograph -- one voxel is one
+        detector pixel -- but it means the dark term is multiplied by the
+        2048 spectral bins and dominates the sky in these windows. See
+        background_info/planning/step3_ifu_throughput_and_detectors.md.
+        """
+        from scopesim.source import source_templates as st
+
+        dit = 60.0
+        cmd = scopesim.UserCommands(
+            use_instrument="MAVIS", set_modes=["IFU_FINE", "IFU_LR_BLUE"],
+            properties={"!OBS.dit": dit, "!OBS.ndit": 1})
+        opt = scopesim.OpticalTrain(cmd)
+        for name in ("dark_current", "shot_noise", "readout_noise"):
+            eff = opt[name]
+            eff = eff[0] if isinstance(eff, list) else eff
+            eff.include = False
+        opt.update()
+
+        opt.observe(st.empty_sky(), update=True)
+        hdu = opt.readout()[0][1]
+        cube, header = hdu.data.astype(float), hdu.header
+        spaxel = header["CDELT1"] * 3600
+        lam = _wavelength_axis(header)
+
+        # gain is 1.0 ADU/e-, so ADU == electrons
+        measured = float(np.median(cube.sum(axis=0))) / dit / spaxel ** 2
+
+        atmo = opt["skycalc_atmosphere"]
+        atmo = atmo[0] if isinstance(atmo, list) else atmo
+        emission = np.asarray(atmo.surface.emission(lam * u.um).value,
+                              dtype=float)
+        atmo.include = False
+        opt.update()
+        trans = np.asarray(
+            opt.optics_manager.system_transmission(plot=False)(
+                lam * u.um).value, dtype=float)
+        expected = float(np.trapezoid(emission * trans, lam * 1e4)) \
+            * TEL_AREA_CM2
+
+        report.ifu_background["IFU_LR_BLUE"] = {
+            "measured": measured, "expected": expected,
+            "wave_min": float(lam[0]), "wave_max": float(lam[-1])}
+
+        assert measured == pytest.approx(expected, rel=0.02), (
+            f"IFU sky {measured:.1f} e-/s/arcsec2 vs hand-integrated "
+            f"{expected:.1f} e-/s/arcsec2"
+        )
+
+    def test_signal_scales_with_dit_and_ndit(self):
+        from scopesim.source import source_templates as st
+
+        levels = {}
+        for dit, ndit in ((60.0, 1), (120.0, 1), (60.0, 2)):
+            cmd = scopesim.UserCommands(
+                use_instrument="MAVIS", set_modes=["IFU_FINE", "IFU_LR_BLUE"],
+                properties={"!OBS.dit": dit, "!OBS.ndit": ndit})
+            opt = scopesim.OpticalTrain(cmd)
+            for name in ("shot_noise", "readout_noise"):
+                eff = opt[name]
+                eff = eff[0] if isinstance(eff, list) else eff
+                eff.include = False
+            opt.update()
+            opt.observe(st.empty_sky(), update=True)
+            cube = opt.readout()[0][1].data.astype(float)
+            levels[(dit, ndit)] = float(np.median(cube.sum(axis=0)))
+
+        base = levels[(60.0, 1)]
+        assert levels[(120.0, 1)] == pytest.approx(2 * base, rel=0.05)
+        assert levels[(60.0, 2)] == pytest.approx(2 * base, rel=0.05)

@@ -1,0 +1,22 @@
+# name : MAVIS IFU cube sampling grid
+# author : MAVIS package
+# source : ESO MAVIS baseline page (IFU spaxel scales and fields of view)
+# date_created  : 2026-08-30
+# date_modified : 2026-08-30
+# type : detector:chip_list
+# status : development
+# description : Pseudo-detector for the simple-IFU cube modes. Not the real MAVIS spectrograph focal plane, which is unpublished; this is the sampling grid of the output datacube. x_size x y_size are spaxels, giving the published 2.5x3.6 arcsec fine field at 25 mas and the 5x7.2 arcsec coarse field at 50 mas. z_size is the number of spectral bins in the simultaneous window, centred on !OBS.wavelen and z_size x !SIM.spectral.spectral_bin_width wide. See background_info/planning/step1_ifu_cube_mode.md
+# x_cen_unit : mm
+# y_cen_unit : mm
+# z_cen_unit : um
+# x_size_unit : pix
+# y_size_unit : pix
+# z_size_unit : pix
+# pixel_size_unit : mm
+# angle_unit : deg
+# gain_unit : electron/adu
+# image_plane_id : 0
+# changes :
+# - 2026-08-30 (KL) Created for the MAVIS IFU cube modes
+id  x_cen  y_cen  z_cen  x_size  y_size  z_size  pixel_size  angle  gain
+1   0.0    0.0    0.0    100     144     2048    0.010       0.0    1.0

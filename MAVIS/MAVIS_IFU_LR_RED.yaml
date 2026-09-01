@@ -1,0 +1,58 @@
+### MAVIS IFU spectrograph - LR-Red configuration
+object: instrument
+alias: INST
+name: MAVIS_IFU_LR_RED
+description: >
+  MAVIS IFU LR-Red spectral configuration: R = 5900 over
+  0.510-0.935 um (ESO baseline).
+
+  The simultaneous window is 80.5 nm wide, centred on !OBS.wavelen
+  (0.7 um by default), not the full 425 nm of the arm.
+  Whether the published range is observed in one shot or tuned across is not
+  stated in the public material (see
+  background_info/planning/step1_ifu_cube_mode.md, task 1.2), so the window
+  is a declared model parameter: its width is z_size x spectral_bin_width
+  from FPA_mavis_ifu_layout.dat, and !OBS.wavelen moves it within the arm.
+  Covering the whole arm at once would need 10786 spectral bins and a
+  0.58 GiB cube.
+date_modified: 2026-08-30
+changes:
+  - 2026-08-30 (KL) Initial IFU cube modes
+
+properties:
+  resolving_power: 5900          # lambda / dlambda, ESO baseline
+  wave_min_arm: 0.51            # [um] blue end of this arm
+  wave_max_arm: 0.935            # [um] red end of this arm
+
+---
+### simulation parameters for the MAVIS IFU LR-Red configuration
+object: simulation
+alias: SIM
+name: MAVIS_IFU_LR_RED_simulation_parameters
+description: >
+  Spectral sampling for the LR-Red configuration.
+
+properties:
+  spectral:
+    # One resolution element at the default !OBS.wavelen = 0.7 um is
+    # !INST.lsf_fwhm_bins = 3.016 bins wide, so the delivered resolving power
+    # is 5906 against the published 5900 (+0.10 %). See the
+    # lsf_width note in MAVIS_IFU.yaml. Because the bin width is fixed, R
+    # scales as lambda / 0.7 if the window is retuned.
+    #
+    # DO NOT round this value, and do not hand-edit it. Both the exact digits
+    # and the default wavelen above are chosen together by
+    # background_info/tune_ifu_binning.py, which also has to dodge a ScopeSim
+    # floating-point trap: the cube plane count is computed as
+    # int((wave_max - wave_min) / spectral_bin_width) after the range has been
+    # rounded to 7 decimals, and for most bin widths that evaluates to
+    # 2047.9999999999998, losing a plane and aborting the run on an internal
+    # NAXIS3 assertion. This value lands on the safe side (quotient - 2048 =
+    # 0.0012). Rerun that script if z_size, wavelen or R changes.
+    spectral_bin_width: 3.9299e-05
+    # Comfortably above the instrument resolving power, so the skycalc sky
+    # spectrum is not the limiting resolution.
+    spectral_resolution: 50000
+    wave_min: 0.51
+    wave_mid: 0.7
+    wave_max: 0.935

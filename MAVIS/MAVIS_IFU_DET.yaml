@@ -1,0 +1,83 @@
+---
+### MAVIS IFU cube "detector"
+object: detector
+alias: DET
+name: MAVIS_IFU_cube
+description: >
+  Pseudo-detector for the MAVIS IFU cube modes. DetectorList3D turns the
+  FieldOfView cube into the output datacube; there is no real detector
+  geometry here, because the MAVIS spectrograph's focal plane is unpublished.
+  See background_info/planning/step2_ifu_slicer_and_traces.md.
+
+  The noise properties are ESTIMATES borrowed from the imager CCD
+  (MAVIS_CCD.yaml). The IFU detectors are not characterised in the public
+  material; a visible-light CCD of the same generation is the least-bad
+  stand-in. See background_info/planning/step3_ifu_throughput_and_detectors.md.
+date_modified: 2026-08-30
+changes:
+  - 2026-08-30 (KL) Initial IFU cube modes
+
+properties:
+  detector: CCD
+  image_plane_id: 0
+  temperature: -100          # [deg C] ESTIMATE, as for the imager CCD
+  dit: "!OBS.dit"
+  ndit: "!OBS.ndit"
+  pixel_size: 0.010          # [mm] as for the imager CCD
+  mindit: 1.0                # [s] ESTIMATE, see MAVIS_CCD.yaml
+  full_well: 90000           # [e-] ESTIMATE, as for the imager CCD
+  gain: 1.0                  # [ADU/e-]
+  readout_noise: 3           # [e-] ESTIMATE, imager slow-mode value
+  dark_current: 0.001        # [e-/s/pixel] ESTIMATE, as for the imager CCD
+
+effects:
+  - name: ifu_cube_grid
+    description: Cube sampling grid (spaxels x spaxels x spectral bins)
+    class: DetectorList3D
+    kwargs:
+      filename: FPA_mavis_ifu_layout.dat
+
+  - name: qe_curve
+    description: >
+      Detector QE. Reuses the imager CCD curve; the IFU detector is not
+      characterised publicly.
+    class: QuantumEfficiencyCurve
+    kwargs:
+      filename: QE_mavis_ccd.dat
+
+  # Without ExposureIntegration the readout comes back per-second and DIT
+  # does nothing. See the note in MAVIS_CCD.yaml.
+  - name: exposure_integration
+    description: summing up sky signal for all DITs and NDITs
+    class: ExposureIntegration
+
+  - name: dark_current
+    description: IFU detector dark current
+    class: DarkCurrent
+    kwargs:
+      value: "!DET.dark_current"
+
+  - name: shot_noise
+    description: Poisson shot noise
+    class: ShotNoise
+
+  - name: readout_noise
+    description: detector readout noise
+    class: BasicReadoutNoise
+    kwargs:
+      noise_std: "!DET.readout_noise"
+
+  # ExposureOutput defaults to mode: average, which makes NDIT do nothing to
+  # the signal. Sum, as MICADO and the MAVIS imager do.
+  - name: exposure_output
+    description: return sum over NDIT sub-exposures
+    class: ExposureOutput
+    kwargs:
+      mode: sum
+
+  - name: ad_conversion
+    description: convert electrons to ADU
+    class: ADConversion
+    kwargs:
+      dtype: float32
+      gain: "!DET.gain"

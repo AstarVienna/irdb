@@ -18,6 +18,8 @@ class RadiometryReport:
         self.lim_mag = {}
         self.background = {}
         self.star_field = {}
+        self.ifu = {}
+        self.ifu_background = {}
 
     def write(self):
         """Generate the full report with plots."""
@@ -122,6 +124,8 @@ class RadiometryReport:
             "integration time and gain, against the same quantities "
             "integrated directly.\n\n"
         )
+
+        self._write_ifu(sections)
         sections.append(
             "The limiting magnitude is measured in a fixed 50 mas aperture, "
             "the box the ensquared-energy specification refers to. The "
@@ -130,6 +134,54 @@ class RadiometryReport:
             "dark) moon and airglow settings, so the number here is expected "
             "to come out a magnitude or so brighter.\n\n"
         )
+
+    def _write_ifu(self, sections):
+        """Measured IFU cube geometry and resolving power."""
+        if not self.ifu and not self.ifu_background:
+            return
+
+        sections.append("## IFU cube modes\n\n")
+
+        if self.ifu:
+            sections.append(
+                "| Configuration | Cube (z, y, x) | Window [um] | "
+                "Measured R | Published R | Deviation |\n")
+            sections.append("|---|---|---|---|---|---|\n")
+            for name, data in sorted(self.ifu.items()):
+                shape = " x ".join(str(n) for n in data["shape"])
+                dev = 100 * (data["resolving_power"] / data["target"] - 1)
+                sections.append(
+                    f"| {name} | {shape} | "
+                    f"{data['wave_min']:.4f}-{data['wave_max']:.4f} | "
+                    f"{data['resolving_power']:.0f} | {data['target']} | "
+                    f"{dev:+.1f} % |\n")
+            sections.append("\n")
+            sections.append(
+                "Measured from an unresolved emission line, at the fine "
+                "25 mas spaxel scale. The window is a fraction of each arm, "
+                "centred on `!OBS.wavelen`; the spectrograph's optical layout "
+                "is unpublished, so these are cube-output modes rather than "
+                "dispersed frames. See "
+                "[../background_info/planning/step1_ifu_cube_mode.md]"
+                "(../background_info/planning/step1_ifu_cube_mode.md).\n\n")
+
+        for name, data in sorted(self.ifu_background.items()):
+            ratio = data["measured"] / data["expected"]
+            sections.append(
+                f"IFU sky level in {name} over "
+                f"{data['wave_min']:.4f}-{data['wave_max']:.4f} um: "
+                f"**{data['measured']:.1f} e-/s/arcsec2** measured against "
+                f"**{data['expected']:.1f}** from integrating the skycalc "
+                f"emission spectrum through the system throughput by hand "
+                f"(ratio {ratio:.4f}), with detector noise switched off.\n\n")
+            sections.append(
+                "Note that dark current in a cube is applied per voxel, which "
+                "is right for a dispersed spectrograph -- one voxel is one "
+                "detector pixel -- but means the dark term is multiplied by "
+                "the number of spectral bins and dominates the sky in these "
+                "windows. The dark current value is an estimate inherited "
+                "from the imager CCD, so IFU sensitivity estimates are only "
+                "as good as that guess.\n\n")
 
     def _plot_throughput(self, plt, sections):
         fig, ax = plt.subplots(figsize=(8, 5))

@@ -50,6 +50,99 @@ mode_yamls:
     properties:
       filter_name: V
 
+  # ---- IFU spectrograph, cube output ---- #
+  #
+  # The IFU needs TWO modes: one spatial scale and one spectral
+  # configuration, e.g.
+  #
+  #     modes: ["IFU_FINE", "IFU_LR_BLUE"]
+  #
+  # Select exactly one from each group. Selecting two from the same group
+  # loads the same yamls twice, which duplicates every optical element and
+  # squares the throughput.
+  #
+  # The output is a datacube, not a dispersed detector frame; the
+  # spectrograph's optical layout is unpublished. See
+  # background_info/planning/.
+
+  # -- spatial scales -- #
+  - object: observation
+    alias: OBS
+    name: IFU_FINE
+    description: "MAVIS IFU fine scale (25 mas spaxels, 2.5 x 3.6 arcsec)"
+    yamls:
+      - MAVIS_IFU.yaml
+      - MAVIS_IFU_DET.yaml
+    properties:
+      ifu_pixel_scale: 0.025      # [arcsec/spaxel] published range 20-25 mas
+      ifu_plate_scale: 2.5        # [arcsec/mm] pixel_scale / 0.010 mm
+      ifu_fov_width: 2.5          # [arcsec] 100 spaxels x 25 mas
+      ifu_fov_height: 3.6         # [arcsec] 144 spaxels x 25 mas
+
+  - object: observation
+    alias: OBS
+    name: IFU_COARSE
+    description: "MAVIS IFU coarse scale (50 mas spaxels, 5 x 7.2 arcsec)"
+    yamls:
+      - MAVIS_IFU.yaml
+      - MAVIS_IFU_DET.yaml
+    properties:
+      ifu_pixel_scale: 0.050      # [arcsec/spaxel] published range 40-50 mas
+      ifu_plate_scale: 5.0        # [arcsec/mm] pixel_scale / 0.010 mm
+      ifu_fov_width: 5.0          # [arcsec] 100 spaxels x 50 mas
+      ifu_fov_height: 7.2         # [arcsec] 144 spaxels x 50 mas
+
+  # -- spectral configurations -- #
+  #
+  # wavelen is the centre of the simultaneous window. The defaults below are
+  # NOT the arm centres: each sits on one of the PSF file's wavelength planes
+  # (0.40, 0.55, 0.70, 0.85, 1.00 um), which is where the window has the most
+  # room.
+  #
+  # A PSF effect splits the FieldOfView at the midpoints between its planes
+  # (0.475, 0.625, 0.775, 0.925 um here). The cube modes cannot survive such a
+  # split - every sub-FieldOfView is then checked against the single
+  # DetectorList3D NAXIS3 and the run aborts on an assertion. So the window,
+  # wavelen +/- z_size * spectral_bin_width / 2, must lie entirely between two
+  # of those midpoints. Retuning wavelen is fine, but stay inside one
+  # interval; TestIFU::test_default_windows_avoid_psf_plane_boundaries
+  # documents and checks the safe ranges.
+  - object: observation
+    alias: OBS
+    name: IFU_LR_BLUE
+    description: "MAVIS IFU LR-Blue (R = 5900, 0.370-0.720 um)"
+    yamls:
+      - MAVIS_IFU_LR_BLUE.yaml
+    properties:
+      wavelen: 0.550          # [um] PSF plane 0.55, the MAVISIM e2e one; window 0.519-0.581
+
+  - object: observation
+    alias: OBS
+    name: IFU_LR_RED
+    description: "MAVIS IFU LR-Red (R = 5900, 0.510-0.935 um)"
+    yamls:
+      - MAVIS_IFU_LR_RED.yaml
+    properties:
+      wavelen: 0.700          # [um] PSF plane 0.70; window 0.659-0.742
+
+  - object: observation
+    alias: OBS
+    name: IFU_HR_BLUE
+    description: "MAVIS IFU HR-Blue (R = 14700, 0.425-0.550 um)"
+    yamls:
+      - MAVIS_IFU_HR_BLUE.yaml
+    properties:
+      wavelen: 0.518          # [um] centre of the safe range; window 0.507-0.529
+
+  - object: observation
+    alias: OBS
+    name: IFU_HR_RED
+    description: "MAVIS IFU HR-Red (R = 11500, 0.630-0.880 um)"
+    yamls:
+      - MAVIS_IFU_HR_RED.yaml
+    properties:
+      wavelen: 0.700          # [um] PSF plane 0.70; window 0.678-0.722
+
 ---
 ### simulation parameters for MAVIS
 

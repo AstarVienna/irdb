@@ -1,0 +1,100 @@
+### MAVIS IFU spectrograph - common configuration for the cube modes
+object: instrument
+alias: INST
+name: MAVIS_IFU
+description: >
+  MAVIS IFU spectrograph, cube-output modes. Uses ScopeSim's simple-IFU path
+  (LineSpreadFunction + DetectorList3D + FluxBinning3D), the same one METIS
+  uses for its lms_cube mode, so no image slicer or spectral trace list is
+  involved and the output is a datacube rather than a dispersed detector
+  frame.
+
+  This is deliberate. The published MAVIS material gives the IFU spaxel
+  scales, fields of view, resolving powers and wavelength ranges, but none of
+  the spectrograph's optical layout - slice count and width, detector format
+  and count, or dispersion geometry. A dispersed-image mode would have to
+  invent all of that. The cube modes need none of it.
+
+  See background_info/planning/step1_ifu_cube_mode.md for the derivation of
+  every number here, and step2/step3 for what is still missing.
+date_modified: 2026-08-30
+changes:
+  - 2026-08-30 (KL) Initial IFU cube modes
+
+properties:
+  # Spaxel scale and the matching plate scale are set by the spatial mode
+  # (IFU_FINE / IFU_COARSE) in default.yaml.
+  pixel_scale: "!OBS.ifu_pixel_scale"      # [arcsec/spaxel]
+  plate_scale: "!OBS.ifu_plate_scale"      # [arcsec/mm]
+  image_plane_id: 0
+
+  # Cube output: do not collapse the FieldOfView along the spectral axis, and
+  # keep the detector headers independent of the sky headers. Both are
+  # required by the simple-IFU path; see METIS_LMS_SMPL.yaml.
+  flatten: False
+  decouple_detector_from_sky_headers: True
+
+  # Width of the line-spread function, in spectral bins.
+  #
+  # LineSpreadFunction convolves a Box1DKernel(lsf_width) with a fixed
+  # Gaussian1DKernel(stddev=1 bin), so the delivered FWHM is not lsf_width
+  # itself. Box1DKernel discretises to odd integer arrays, which makes the
+  # delivered FWHM a step function of lsf_width: measured with astropy, any
+  # value in 1.5-2.5 gives 3.016 bins. 2.0 sits in the middle of that
+  # plateau, so the delivered resolution is insensitive to small changes in
+  # astropy's discretisation.
+  #
+  # The spectral bin width of each configuration is then set to
+  # wavelen / (R * 3.016), so that one resolution element is 3.016 bins wide
+  # and the delivered resolving power equals the published R at the default
+  # !OBS.wavelen. Because the bin width is fixed per configuration, R scales
+  # as lambda / wavelen if the window is retuned.
+  # TestIFUConfiguration::test_bin_width_matches_the_declared_resolving_power
+  # checks the arithmetic and TestIFUCube::test_resolving_power measures the
+  # delivered value; both fail if this coupling ever breaks.
+  lsf_width: 2.0
+  lsf_fwhm_bins: 3.016     # measured FWHM of the kernel above, for the tests
+
+effects:
+  - name: mavis_ifu_field_of_view
+    description: >
+      IFU field stop. 100 x 144 spaxels, so 2.5 x 3.6 arcsec at the fine
+      25 mas scale and 5 x 7.2 arcsec at the coarse 50 mas scale, matching
+      the published fields of view. Without this the 30 arcsec AO field
+      mask from MAVIS.yaml would set the FieldOfView size and the cube
+      would be enormous.
+    class: RectangularApertureMask
+    kwargs:
+      x: 0
+      y: 0
+      width: "!OBS.ifu_fov_width"     # [arcsec] 100 spaxels
+      height: "!OBS.ifu_fov_height"   # [arcsec] 144 spaxels
+      x_unit: arcsec
+      y_unit: arcsec
+
+  - name: mavis_ifu_psf
+    description: >
+      MAVIS MCAO PSF, shared with the imager. The 550 nm plane is the on-axis
+      end-to-end MAVISIM PSF; the other planes are analytic and calibrated to
+      it. Field constancy is a better approximation here than for the imager,
+      because the IFU field is a small fraction of the 30 arcsec AO-corrected
+      field, but it is still an approximation.
+    class: FieldConstantPSF
+    kwargs:
+      filename: PSF_MAVIS_mcao.fits
+      warning: "On-axis PSF only: no field variability or anisoplanatism."
+
+  - name: mavis_ifu_lsf
+    description: >
+      Line-spread function. Sets the spectral resolution; see the lsf_width
+      note in the properties above.
+    class: LineSpreadFunction
+    kwargs:
+      lsfwidth: "!INST.lsf_width"
+
+  - name: mavis_ifu_flux_binning
+    description: >
+      Convert the cube from per-arcsec2 per-um surface brightness to photons
+      per second per voxel. Stands in for the flux binning a
+      SpectralTraceList would otherwise do.
+    class: FluxBinning3D

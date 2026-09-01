@@ -1,5 +1,12 @@
 # Step 1: IFU cube modes
 
+> **Status: implemented, 2026-08-30.** Six modes ship: `IFU_FINE` /
+> `IFU_COARSE` for the spatial scale, and `IFU_LR_BLUE` / `IFU_LR_RED` /
+> `IFU_HR_BLUE` / `IFU_HR_RED` for the spectral configuration. Select one from
+> each. See `MAVIS/docs/README.md` for usage, and the *What was actually
+> built* section at the bottom for the decisions taken and the two ScopeSim
+> traps that shaped them. Steps 2 and 3 remain blocked.
+
 ## Goal
 
 Give MAVIS working IFU modes that output a **datacube** (x, y, λ) rather than
@@ -191,3 +198,100 @@ All exist; no ScopeSim changes needed.
 - The PSF is the imager's on-axis MCAO PSF. The IFU field is much smaller
   than the imager's, so field constancy is a better approximation here than
   it is for the imager — but it is still an approximation.
+
+---
+
+## What was actually built
+
+Implemented 2026-08-30. This section records what was decided and what the
+plan above got wrong.
+
+### Files
+
+| File | Contents |
+|---|---|
+| `MAVIS_IFU.yaml` | Common IFU optics: spaxel scale, field stop, MCAO PSF, `LineSpreadFunction`, `FluxBinning3D`, and the `flatten` / `decouple_detector_from_sky_headers` flags |
+| `MAVIS_IFU_LR_BLUE.yaml` and three siblings | Per-configuration R, arm limits and spectral sampling |
+| `MAVIS_IFU_DET.yaml` | `DetectorList3D` plus the detector chain |
+| `FPA_mavis_ifu_layout.dat` | The cube sampling grid, 100 x 144 x 2048 |
+| `background_info/tune_ifu_binning.py` | Chooses the default wavelength and bin width per configuration |
+
+Six modes, in two groups. The spatial scale and the spectral configuration are
+orthogonal, so they are separate modes selected together
+(`set_modes=["IFU_FINE", "IFU_LR_BLUE"]`), the same pattern the ERIS branch
+uses for AO mode plus imaging mode. One layout file serves both spatial
+scales, because 100 x 144 spaxels gives the published field at either scale.
+
+### Decisions the plan left open
+
+**Task 1.1, spectral sampling.** The plan assumed 2 pixels per resolution
+element. That turned out to be impossible: `LineSpreadFunction` convolves a
+`Box1DKernel` with a *fixed* `Gaussian1DKernel(stddev=1 bin)`, so the smallest
+achievable FWHM is about 2.45 bins and the delivered FWHM is a step function
+of `lsf_width` because `Box1DKernel` discretises to odd integer arrays. The
+implementation uses `lsf_width = 2.0`, in the middle of a plateau at
+**3.016 bins**, and sizes the bin width to `wavelen / (R * 3.016)`. Delivered
+R is within 0.1 % of published by design, and measures within a few per cent.
+
+**Task 1.2, simultaneous versus tunable.** Implemented as tunable, as the plan
+recommended. `!OBS.wavelen` centres a fixed 2048-bin window inside the arm.
+
+**Mitigation choice.** Mitigation 1 (a wavelength sub-band) was adopted. Cubes
+are 118 MB rather than the 0.4-0.7 GiB a full arm would need.
+
+**Spaxel scales.** 25 mas and 50 mas, the coarse end of each published range,
+as recommended.
+
+### Two ScopeSim traps
+
+Neither was anticipated, and both constrain the numbers in the yamls. Both are
+worth fixing upstream; until then the tests guard against them.
+
+**1. The cube modes cannot survive a wavelength split.** A PSF effect splits
+the `FieldOfView` at the midpoints between the wavelength planes of its FITS
+file (0.475, 0.625, 0.775, 0.925 um for `PSF_MAVIS_mcao.fits`). Each
+sub-field is then compared against the single `DetectorList3D` NAXIS3 and
+`FieldOfView.make_hdu` aborts on an assertion. The window therefore has to lie
+between two midpoints, which is why the default wavelengths sit *on* PSF
+planes rather than at the arm centres. `!OBS.interp_psf: False` does not help:
+it only affects kernel construction, not the split.
+
+**2. The plane count truncates.** `FieldOfView.make_hdu` computes
+
+```python
+n_wave = int((wave_max - wave_min) / spectral_bin_width)
+```
+
+after `DetectorList3D` has rounded the range to 7 decimals. The range *is*
+`z_size * spectral_bin_width` by construction, so the quotient should be
+exactly `z_size`; in IEEE-754 it usually comes out as `2047.9999999999998`,
+the truncation drops a plane, and the same assertion fires. About half of all
+candidate bin widths fail. The available margin is bounded by the rounding
+granularity divided by the bin width — a few thousandths of a bin — so there
+is no structurally safe choice and changing `z_size` does not help.
+`tune_ifu_binning.py` searches for a bin width that lands on the safe side.
+
+The upstream fix for the second is a one-liner (`round` instead of `int`, or
+take the count from the detector header). The first needs the cube path to
+tolerate a split, or a way to pin a PSF to one plane.
+
+### Verification results
+
+| Check | Result |
+|---|---|
+| Cube geometry | 100 x 144 x 2048 for all four configurations, both scales |
+| Spaxel scale on sky | 0.0250" and 0.0500", fields 2.5x3.6" and 5x7.2" |
+| Wavelength calibration | Emission line recovered at its input wavelength to within a bin |
+| Resolving power | Within a few per cent of published for all four configurations |
+| Sky photon budget | Cube sky matches a hand integration of the skycalc emission spectrum to **0.004 %** |
+| DIT / NDIT | Both scale the signal |
+
+### One thing the plan understated
+
+Dark current in a cube is applied **per voxel**, which is correct — one voxel
+is one detector pixel in a real dispersed spectrograph — but it means the dark
+term is multiplied by the 2048 spectral bins. With the imager CCD's estimated
+0.001 e-/s it comes out several times the sky in these windows. IFU
+sensitivity is therefore dominated by a number that is a guess, which raises
+the priority of the detector characterisation in
+[step3](step3_ifu_throughput_and_detectors.md).

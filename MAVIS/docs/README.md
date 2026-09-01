@@ -9,10 +9,11 @@ the Adaptive Optics Facility. MAVIS uses a Multi-Conjugate Adaptive Optics
 a 30″ × 30″ field of view. First light at the telescope is currently scheduled
 for 2031.
 
-This package currently implements the **imager only**. The IFU spectrograph
-modes are not yet available; the published science parameters and a staged
-implementation plan are in
-[`../background_info/planning/`](../background_info/planning/README.md).
+The package implements the **imager** and **cube-output IFU modes**. The IFU
+modes produce a datacube rather than a dispersed detector frame, because the
+spectrograph's optical layout is unpublished — see
+[IFU spectrograph](#ifu-spectrograph) below and the
+[implementation plan](../background_info/planning/README.md).
 
 ```{warning}
 **This package is under development and is not yet science-grade.**
@@ -196,6 +197,100 @@ cases use the full field-varying MAVISIM PSF grid (11×11 positions, 1.7 GB:
 <https://www.mso.anu.edu.au/~jcranney/mavisim_data/v1_1.tar.gz>) with
 MAVISIM itself, or resample it into a ScopeSim `FieldVaryingPSF`.
 
+(ifu-spectrograph)=
+## IFU spectrograph
+
+The IFU modes use ScopeSim's simple-IFU path (`LineSpreadFunction` +
+`DetectorList3D` + `FluxBinning3D`), the same one METIS uses for its
+`lms_cube` mode. **The output is a datacube** with axes (wavelength, y, x) —
+there is no image slicer and no spectral trace list, so no dispersed detector
+frame.
+
+That is deliberate. The published material gives the IFU spaxel scales, fields
+of view, resolving powers and wavelength ranges, but none of the spectrograph's
+optical layout. A dispersed-image mode would have to invent the slice count,
+the detector format and the dispersion geometry. The cube modes need none of
+it, and everything they do need is either published or a stated sampling
+convention.
+
+### Selecting a mode
+
+An IFU simulation needs **two** modes: one spatial scale and one spectral
+configuration.
+
+```python
+import scopesim
+
+cmd = scopesim.UserCommands(use_instrument="MAVIS",
+                            set_modes=["IFU_FINE", "IFU_LR_BLUE"])
+mavis = scopesim.OpticalTrain(cmd)
+mavis.observe(src)
+cube = mavis.readout()[0][1].data      # (2048, 144, 100)
+```
+
+```{warning}
+Pick exactly one from each group. Selecting two spatial scales, or two
+spectral configurations, loads the same yamls twice, which duplicates every
+optical element and squares the system throughput.
+```
+
+### Spatial scales
+
+| Mode | Spaxel | Field of view | Spaxels |
+|---|---|---|---|
+| `IFU_FINE` | 25 mas | 2.5″ × 3.6″ | 100 × 144 |
+| `IFU_COARSE` | 50 mas | 5″ × 7.2″ | 100 × 144 |
+
+The published spaxel sizes are ranges (20–25 mas fine, 40–50 mas coarse)
+because the design was not frozen. The coarse end of each range is adopted.
+
+### Spectral configurations
+
+| Mode | R | Arm | Default `!OBS.wavelen` | Simultaneous window |
+|---|---|---|---|---|
+| `IFU_LR_BLUE` | 5 900 | 0.370–0.720 µm | 0.550 µm | 0.5184–0.5816 µm |
+| `IFU_LR_RED` | 5 900 | 0.510–0.935 µm | 0.700 µm | 0.6598–0.7402 µm |
+| `IFU_HR_BLUE` | 14 700 | 0.425–0.550 µm | 0.518 µm | 0.5060–0.5300 µm |
+| `IFU_HR_RED` | 11 500 | 0.630–0.880 µm | 0.700 µm | 0.6793–0.7207 µm |
+
+Each cube is 100 × 144 × 2048 voxels, about 118 MB as float32.
+
+```{note}
+**The window is not the arm.** Whether MAVIS observes a whole arm at once or
+tunes across it is not stated publicly, and the numbers make a single-shot arm
+implausible: R = 5900 over 370–720 nm is ~3900 resolution elements, which at
+14 400 spaxels needs a MUSE-like multi-detector spectrograph. So the window is
+a declared model parameter — 2048 bins wide — and `!OBS.wavelen` moves it
+within the arm. Covering a whole arm at once would need ~11 800 bins and a
+0.6 GiB cube.
+```
+
+### Retuning the observed wavelength
+
+`!OBS.wavelen` can be moved, with two constraints.
+
+```{warning}
+The window must stay between two PSF wavelength-plane midpoints — at 0.475,
+0.625, 0.775 and 0.925 µm for `PSF_MAVIS_mcao.fits`. A PSF effect splits the
+`FieldOfView` at those wavelengths, and the cube modes cannot survive a split:
+each sub-field is checked against the single `DetectorList3D` and the run
+aborts on an assertion. The defaults above sit on a PSF plane, which is where
+there is most room.
+```
+
+The spectral bin width is fixed per configuration, so the delivered resolving
+power scales as `wavelen / default` if you retune — a few per cent over a
+typical move. `background_info/tune_ifu_binning.py` recomputes a consistent
+(wavelength, bin width) pair and checks both constraints.
+
+### Verification
+
+The test suite measures the delivered resolving power from an unresolved
+emission line and checks it against the published R, verifies the cube
+geometry and wavelength calibration, and closes the sky photon budget against
+a hand integration of the skycalc emission spectrum. Results land in
+[`radiometry_report.md`](radiometry_report.md).
+
 (known-limitations)=
 ## Known limitations
 
@@ -211,12 +306,20 @@ MAVISIM itself, or resample it into a ScopeSim `FieldVaryingPSF`.
 - **Dark current** (0.001 e⁻/s) and **MINDIT** (1 s) are estimates, not
   characterisations.
 - **Narrow-band filters** are not included.
-- **IFU spectrograph modes** are not implemented. The spectrograph's optical
-  layout — slice count, detector format, dispersion geometry — is not
-  published, so a dispersed-image mode cannot be built without inventing it.
-  A cube-output mode *is* buildable from the published spaxel scales, fields
-  of view and resolving powers; see
+- **IFU modes output a datacube, not a dispersed frame.** The spectrograph's
+  optical layout — slice count, detector format, dispersion geometry — is not
+  published, so nothing about slice geometry, inter-slice gaps or
+  detector-level artefacts is modelled. See
   [the planning documents](../background_info/planning/README.md).
+- **IFU spectrograph throughput and grating efficiency are missing entirely**,
+  so IFU fluxes are optimistic by whatever the spectrograph costs.
+- **IFU detector properties are the imager CCD's**, themselves estimates. This
+  matters more than it sounds: dark current is applied per voxel, correctly
+  for a dispersed spectrograph, so it is multiplied by the 2048 spectral bins
+  and dominates the sky in these windows.
+- **The IFU simultaneous window is a model parameter, not a published one.**
+  Each configuration covers a slice of its arm centred on `!OBS.wavelen`, not
+  the whole arm; see below.
 - The **sky** comes from `skycalc` with its default moon and airglow settings,
   which are brighter than dark time. Expect an implied V surface brightness
   near 20.5 mag/arcsec², not the canonical 21.6.
