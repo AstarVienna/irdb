@@ -156,7 +156,8 @@ class TestPSF:
     """
 
     @pytest.fixture(scope="class")
-    def psf_hdus(self):
+    @staticmethod
+    def psf_hdus():
         from astropy.io import fits
         with fits.open(MAVIS_DIR / "PSF_MAVIS_mcao.fits") as hdul:
             yield [(h.header["WAVE0"], h.header, h.data.copy())
@@ -295,7 +296,8 @@ class TestAtmosphere:
     """
 
     @pytest.fixture(scope="class")
-    def atmo(self):
+    @staticmethod
+    def atmo():
         cmd = scopesim.UserCommands(use_instrument="MAVIS")
         opt = scopesim.OpticalTrain(cmd)
         effect = opt["skycalc_atmosphere"]
@@ -386,7 +388,8 @@ class TestRadiometry:
     WAVE = np.linspace(4500.0, 7000.0, 2501)   # [Angstrom], brackets V
 
     @pytest.fixture(scope="class")
-    def train(self):
+    @staticmethod
+    def train():
         cmd = scopesim.UserCommands(
             use_instrument="MAVIS",
             properties={"!OBS.filter_name": "V", "!OBS.dit": 60,
@@ -395,7 +398,8 @@ class TestRadiometry:
         return scopesim.OpticalTrain(cmd)
 
     @pytest.fixture(scope="class")
-    def measured_sky(self):
+    @staticmethod
+    def measured_sky():
         """Sky level from an empty-sky readout, in e-/s/arcsec2."""
         from scopesim.source import source_templates as st
         cmd = scopesim.UserCommands(
