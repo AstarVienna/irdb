@@ -7,14 +7,18 @@
 # type : aperture:slit_geometry
 # x_unit : arcsec
 # y_unit : arcsec
+# offset_type : detector
+# offset_x : 0
+# offset_y : 4.5
 # changes :
 # - 2019-07-10 (KL) Created the file
 # - 2020-03-24 (KL) Changed geometry to 3000x20mas
 # - 2023-07-13 (OC) Changed geometry to 3000x16mas
 # - 2026-02-03 (OC) Initialised from MASK_slit_3000x16.dat
+# - 2026-05-07 (OC) Put offset into meta data
 #
 x       y
--1.5    1.192
-1.5     1.192
-1.5     1.208
--1.5    1.208
+-1.5    -0.008
++1.5     -0.008
++1.5     +0.008
+-1.5    +0.008
