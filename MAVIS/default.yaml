@@ -72,10 +72,9 @@ mode_yamls:
     description: "MAVIS IFU fine scale (25 mas spaxels, 2.5 x 3.6 arcsec)"
     yamls:
       - MAVIS_IFU.yaml
+      - MAVIS_IFU_FINE.yaml
       - MAVIS_IFU_DET.yaml
     properties:
-      ifu_pixel_scale: 0.025      # [arcsec/spaxel] published range 20-25 mas
-      ifu_plate_scale: 2.5        # [arcsec/mm] pixel_scale / 0.010 mm
       ifu_fov_width: 2.5          # [arcsec] 100 spaxels x 25 mas
       ifu_fov_height: 3.6         # [arcsec] 144 spaxels x 25 mas
 
@@ -85,10 +84,9 @@ mode_yamls:
     description: "MAVIS IFU coarse scale (50 mas spaxels, 5 x 7.2 arcsec)"
     yamls:
       - MAVIS_IFU.yaml
+      - MAVIS_IFU_COARSE.yaml
       - MAVIS_IFU_DET.yaml
     properties:
-      ifu_pixel_scale: 0.050      # [arcsec/spaxel] published range 40-50 mas
-      ifu_plate_scale: 5.0        # [arcsec/mm] pixel_scale / 0.010 mm
       ifu_fov_width: 5.0          # [arcsec] 100 spaxels x 50 mas
       ifu_fov_height: 7.2         # [arcsec] 144 spaxels x 50 mas
 

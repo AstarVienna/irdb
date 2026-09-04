@@ -1,0 +1,24 @@
+### MAVIS IFU spectrograph - coarse spaxel scale
+object: instrument
+alias: INST
+name: MAVIS_IFU_COARSE
+description: >
+  Spaxel and plate scale for the MAVIS IFU coarse spatial scale: 50 mas
+  spaxels, giving 5.0 x 7.2 arcsec over the 100 x 144 spaxel field.
+  Published range is 40-50 mas.
+
+  These two numbers live in their own yaml, rather than as bang-references
+  to !OBS properties in MAVIS_IFU.yaml, because ScopeSim reads
+  "!INST.pixel_scale" in OpticsManager.set_derived_parameters with a
+  non-resolving lookup. astar-utils only follows a chain of bang-references
+  when the key carries a trailing "!" (see astar_utils.is_resolving_key), so
+  a value of "!OBS.ifu_pixel_scale" arrives as the literal string and dies
+  on "unsupported operand type(s) for <<: 'str' and 'Unit'". Keeping the
+  value literal here sidesteps that entirely.
+date_modified: 2026-09-02
+changes:
+  - 2026-09-02 (KL) Split out of MAVIS_IFU.yaml so pixel_scale is a literal
+
+properties:
+  pixel_scale: 0.050      # [arcsec/spaxel] 50 mas
+  plate_scale: 5.0        # [arcsec/mm] pixel_scale / 0.010 mm

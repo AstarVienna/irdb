@@ -22,12 +22,38 @@ properties:
   # for a science CCD; replace once the real value is known.
   mindit: 1.0                # [s]
 
+  # Optional windowed readout, see the detector_window effect below. The
+  # window is centred on the optical axis and disabled by default, so the
+  # full array is read out unless it is explicitly switched on.
+  x: 0                        # [pixel] window centre w.r.t. the optical axis
+  y: 0                        # [pixel]
+  width: 1024                 # [pixel]
+  height: 1024                # [pixel]
+
 effects:
   - name: detector_array
     description: Single CCD 4096x4004 pixel detector
     class: DetectorList
     kwargs:
       filename: FPA_mavis_layout.dat
+
+  - name: detector_window
+    description: >
+      Optional 1024x1024 cut-out of the focal plane, for quick simulations that
+      do not need the full array. Disabled by default; to use it, enable this
+      effect and disable "detector_array". Mirrors MICADO's detector_window.
+      pixel_size must match the pitch in the layout file above, or the window
+      maps onto the wrong patch of sky.
+    class: DetectorWindow
+    include: False
+    kwargs:
+      image_plane_id: 0
+      pixel_size: 0.01
+      x: "!DET.x"
+      y: "!DET.y"
+      width: "!DET.width"
+      height: "!DET.height"
+      units: pixel
 
   - name: detector_readout_parameters
     description: Readout modes for MAVIS CCD (slow and fast)

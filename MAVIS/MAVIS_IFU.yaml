@@ -23,9 +23,10 @@ changes:
 
 properties:
   # Spaxel scale and the matching plate scale are set by the spatial mode
-  # (IFU_FINE / IFU_COARSE) in default.yaml.
-  pixel_scale: "!OBS.ifu_pixel_scale"      # [arcsec/spaxel]
-  plate_scale: "!OBS.ifu_plate_scale"      # [arcsec/mm]
+  # (IFU_FINE / IFU_COARSE), which loads MAVIS_IFU_FINE.yaml or
+  # MAVIS_IFU_COARSE.yaml alongside this file. They are literals there, not
+  # bang-references to !OBS, because ScopeSim reads "!INST.pixel_scale" with
+  # a non-resolving lookup; see the description in either of those files.
   image_plane_id: 0
 
   # Cube output: do not collapse the FieldOfView along the spectral axis, and
