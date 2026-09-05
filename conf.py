@@ -44,6 +44,7 @@ master_doc = "index"
 exclude_patterns = [
     "_build",
     "docs/ScopeSim_guide.md",  # shared include file, not a standalone page
+    "*/docs/sso/**",  # internal SSO progress reports, not public documentation
 ]
 
 intersphinx_mapping = {
