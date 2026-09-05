@@ -5,10 +5,11 @@ alias : OBS
 name : MOSAIC_default_configuration
 description : default parameters needed for a MOSAIC simulation
 needs_scopesim: "v0.11.0"
-date_modified: 2026-08-06
+date_modified: 2026-09-05
 changes:
   - 2025-09-01 (OC) adjusted resolutions for modes
   - 2026-08-06 (OC) set output format per mode
+  - 2026-09-05 (KL) fix trace and spectrograph TER filenames for mIFU-HR-H
 
 packages :
   - Armazones
@@ -229,8 +230,8 @@ mode_yamls :
     properties:
       ins_mode: mIFU-HR-H
       fibre_ter_file: TER_mIFU_HR-H.dat
-      spec_ter_file:  TER_spec_NIR_HR_H.dat
-      trace_file: TRACE_mIFU_NIR-HR-H.fits
+      spec_ter_file:  TER_spec_HR-H.dat
+      trace_file: TRACE_mIFU-HR-H.fits
       dispersion: 2.4e-5    # um/pixel on detector
       resolution: 72000     # resolution of sky spectrum
       output_format: table
