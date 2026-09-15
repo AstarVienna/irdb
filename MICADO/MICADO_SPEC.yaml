@@ -25,6 +25,12 @@ effects :
     s_colname : "xi"
     col_number_start : 1
 
+- name: spec_fits_keywords
+  description: FITS keywords specific to spectroscopy
+  class: ExtraFitsKeywords
+  include: True
+  kwargs:
+    filename: headers/FITS_spec_keywords.yaml
 
 ---
 ### default simulation parameters needed for a MICADO SPEC simulation
