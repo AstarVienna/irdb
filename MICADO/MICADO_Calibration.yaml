@@ -77,3 +77,9 @@ properties:
   psf:
     interp_psf: True
     interp_order: 1
+---
+# Required parameters to replace telescope
+alias: TEL
+properties:
+  area: 975.23478998
+  telescope: none (MCA)
