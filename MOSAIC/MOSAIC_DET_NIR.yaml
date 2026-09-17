@@ -46,6 +46,7 @@ effects:
     kwargs:
       fill_frac: 0.75     #"!OBS.auto_exposure.fill_frac"
       full_well: "!DET.full_well"
+      dark_current: "!DET.dark_current"
       mindit: "!DET.mindit"
 
   - name: exposure_integration

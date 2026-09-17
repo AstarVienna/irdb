@@ -5,7 +5,7 @@ name: VLT
 description : The very large telescope UT4
 
 properties:
-  temperture: "!ATMO.temperature"
+  temperature: "!ATMO.temperature"
 
 effects:
 - name: vlt_mirror_list
