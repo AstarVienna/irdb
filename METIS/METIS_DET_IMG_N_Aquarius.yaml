@@ -16,7 +16,7 @@ properties:
   temperature: -265
   dit: "!OBS.dit"
   ndit: "!OBS.ndit"
-  include_prnu: False      
+  include_prnu: False
   mindit: 0.008            # seconds, E-REP-NOVA-MET-1191, v2-0
   full_well: 1.e+6  # electrons, low-capacity mode
   dark_current: 13         # [e-/s] E-REP-NOVA-MET-1191, v2-0
@@ -65,13 +65,16 @@ effects:
     include: true
     kwargs:
       fill_frac: "!OBS.auto_exposure.fill_frac"
+      full_well: "!DET.full_well"
+      dark_current: "!DET.dark_current"
+      mindit: "!DET.mindit"
 
   - name: exposure_integration
     description: Summing up sky signal for all DITs and NDITs
     class: ExposureIntegration
 
   - name: prnu
-    description: Pixel-to-pixel response non-uniformity 
+    description: Pixel-to-pixel response non-uniformity
     class: PixelResponseNonUniformity
     include: "!DET.include_prnu"
     kwargs:
