@@ -14,13 +14,15 @@ properties:
     x: 0
     y: 0
     gain: 1  # should be taken from FPA layout??
-    include_ipc: false     # inter-pixel capacitance
+    include_ipc: False    # inter-pixel capacitance
+    include_full: False   # full 9 detectors array
+    include_window: True  # 1k x 1k detector window
 
 effects:
   - name: full_detector_array
     description : The full 3x3 MICADO detector array list
     class: DetectorList
-    include: False
+    include: "!DET.include_full"
     kwargs:
         filename : FPA_array_layout.dat
         active_detectors : "all"
@@ -28,7 +30,7 @@ effects:
   - name: detector_window
     class: DetectorWindow
     description: Cut-out of the focal plane image with custom dimensions and coordinates
-    include: True
+    include: "!DET.include_window"
     kwargs:
         image_plane_id: 0
         pixel_size: 0.015

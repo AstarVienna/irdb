@@ -5,9 +5,10 @@ object: Leiden sky
 alias: OBS
 name: Leiden_sky
 description: Leiden sky and telescope
-data_modified: 2025-08-26
+data_modified: 2026-08-13
 changes:
   - 2025-08-26 (OC) file created
+  - 2026-08-13 (OC) explicit parameter in AtmoLibraryTERCurve
 
 properties:
   location:    Leiden
@@ -21,6 +22,7 @@ effects:
     class:       AtmoLibraryTERCurve
     include:     True
     kwargs:
+      parameter: "pwv"
       pwv:       "!ATMO.pwv"
       remote_filename: "!ATMO.spectrum.filename"
 

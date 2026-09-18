@@ -46,6 +46,7 @@ effects:
     kwargs:
       fill_frac: 0.75     #"!OBS.auto_exposure.fill_frac"
       full_well: "!DET.full_well"
+      dark_current: "!DET.dark_current"
       mindit: "!DET.mindit"
 
   - name: exposure_integration
@@ -67,12 +68,6 @@ effects:
     class: LinearityCurve
     kwargs:
       filename: "!DET.linearity.file_name"
-
-  - name: border_reference_pixels
-    description: Blanks the signal on N edge row and column pixels
-    class: ReferencePixelBorder
-    kwargs:
-      border: [0, 0, 0, 0]
 
   - name: readout_noise
     description: Readout noise frames

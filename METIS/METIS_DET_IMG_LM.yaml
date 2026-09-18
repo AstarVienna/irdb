@@ -19,7 +19,7 @@ properties:
   temperature: -230
   dit: "!OBS.dit"
   ndit: "!OBS.ndit"
-  include_prnu: False     
+  include_prnu: False
   layout:
     file_name: "FPA_metis_img_lm_layout.dat"
   qe_curve:
@@ -70,6 +70,7 @@ effects:
     kwargs:
       fill_frac: "!OBS.auto_exposure.fill_frac"
       full_well: "!DET.full_well"
+      dark_current: "!DET.dark_current"
       mindit: "!DET.mindit"
 
   - name: reference_pixel_mask

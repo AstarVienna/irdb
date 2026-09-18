@@ -7,7 +7,7 @@ name: MICADO_default_configuration
 description: default parameters needed for a MICADO simulation
 status: development
 needs_scopesim: "v0.11.3"
-date_modified: 2025-10-09
+date_modified: 2026-07-28
 changes:
   - 2023-07-13 (OC) add modes for FDR slits, deprecate pre-FDR slits
   - 2025-06-27 (FH) add needs_scopesim keyword
@@ -15,18 +15,13 @@ changes:
   - 2025-10-17 (JB) add parametes for FITS keywords, tplstart as MJD
   - 2026-01-02 (OC) random seed to None
   - 2026-04-09 (OC) new SPEC mode, rename slits
+  - 2026-07-28 (OC) new CALIB mode, full yaml list in mode definitions
 
 packages:
 - Armazones
 - ELT
 - MORFEO
 - MICADO
-
-yamls:
-- Armazones.yaml
-- ELT.yaml
-- MICADO.yaml
-- MICADO_H4RG.yaml
 
 properties :
   instrument : MICADO
@@ -63,6 +58,8 @@ mode_yamls :
   name : SCAO
   description : "SCAO optical system"
   yamls :
+  - Armazones.yaml
+  - ELT.yaml
   - MICADO_Standalone_RO.yaml
 
 - object : instrument
@@ -70,9 +67,18 @@ mode_yamls :
   name : MCAO
   description : "MCAO optical system"
   yamls :
+  - Armazones.yaml
+  - ELT.yaml
   - MORFEO.yaml
   properties :
     ins_mode: "MCAO"
+
+- object: instrument
+  alias: OBS
+  name: CALIB
+  description: "Calibration assembly"
+  yamls:
+  - MICADO_Calibration.yaml
 
 - object : observation
   alias: OBS
@@ -80,7 +86,9 @@ mode_yamls :
   description : "wide-field imager  : 4mas/pix"
   status: development
   yamls :
+  - MICADO.yaml
   - MICADO_IMG_wide.yaml
+  - MICADO_H4RG.yaml
   properties :
     filter_name_fw1: open
     filter_name_fw2: Ks
@@ -93,7 +101,9 @@ mode_yamls :
   description : "high resolution imager  : 1.5mas/pix"
   status: development
   yamls :
+  - MICADO.yaml
   - MICADO_IMG_zoom.yaml
+  - MICADO_H4RG.yaml
   properties :
     filter_name_fw1: open
     filter_name_fw2: Ks
@@ -106,7 +116,9 @@ mode_yamls :
   description : "High contrast imaging"
   status: experimental
   yamls :
+  - MICADO.yaml
   - MICADO_IMG_HCI.yaml
+  - MICADO_H4RG.yaml
 
 - object: observation
   alias: OBS
@@ -114,7 +126,9 @@ mode_yamls :
   description: "spectrograph: all slits"
   status: development
   yamls:
+  - MICADO.yaml
   - MICADO_SPEC.yaml
+  - MICADO_H4RG.yaml
   properties:       # Todo: these parameters all need to be changeable
     trace_file: TRACE_MICADO.fits
     slit: Short
@@ -132,7 +146,9 @@ mode_yamls :
   status: deprecated
   deprecate: "Deprecated mode, use SPEC with '!OBS.slit'='Long' instead"
   yamls :
+  - MICADO.yaml
   - MICADO_SPEC.yaml
+  - MICADO_H4RG.yaml
   properties :
     trace_file : TRACE_MICADO.fits
     slit : Long
@@ -148,7 +164,9 @@ mode_yamls :
   status: deprecated
   deprecate: "Deprecated mode, use SPEC with '!OBS.slit'='Wide' instead"
   yamls :
+  - MICADO.yaml
   - MICADO_SPEC.yaml
+  - MICADO_H4RG.yaml
   properties :
     trace_file : TRACE_MICADO.fits
     slit : Wide
@@ -164,7 +182,9 @@ mode_yamls :
   status: deprecated
   deprecate: "Deprecated mode, use SPEC with '!OBS.slit'='Short' instead"
   yamls :
+  - MICADO.yaml
   - MICADO_SPEC.yaml
+  - MICADO_H4RG.yaml
   properties :
     trace_file : TRACE_MICADO.fits
     slit: Short
