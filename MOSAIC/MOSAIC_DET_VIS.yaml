@@ -4,7 +4,7 @@ object: detector
 alias: DET
 name: MOSAIC_DET_VIS
 description: virtual detector for one fiber bundle
-data_modified: 2025-10-24
+data_modified: 2026-08-06
 
 
 properties:
@@ -64,8 +64,9 @@ effects:
       dtype: float32
       gain: "!DET.gain"
 
-  - name: collapse_1d
-    description: Collapse fiber bundle to 1D spectrum
-    class: MosaicCollapseSpectralTraces
+  - name: output_format
+    description: Reformat MOS/mIFU output
+    class: MosaicOutputFormat
     kwargs:
       filename: "!OBS.trace_file"
+      format: "!OBS.output_format"

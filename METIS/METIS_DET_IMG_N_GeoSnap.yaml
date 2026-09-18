@@ -21,7 +21,7 @@ properties:
   temperature: -240
   dit: "!OBS.dit"
   ndit: "!OBS.ndit"
-  include_prnu: False      
+  include_prnu: False
   border: [28, 28, 28, 28]
   layout:
     file_name: "FPA_metis_img_n_geosnap_layout.dat"
@@ -74,6 +74,7 @@ effects:
     kwargs:
       fill_frac: "!OBS.auto_exposure.fill_frac"
       full_well: "!DET.full_well"
+      dark_current: "!DET.dark_current"
       mindit: "!DET.mindit"
 
   - name: reference_pixel_mask

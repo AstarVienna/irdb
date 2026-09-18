@@ -1,0 +1,14 @@
+# author : Oliver Czoske
+# source : Rodeghiero et al. 2020 (estimate)
+# date_created : 2026-08-14
+# date_modified : 2026-08-14
+# status : Design
+# type : mirror:list
+# outer_unit : m
+# inner_unit : m
+# angle_unit : degree
+# temperature_unit  : deg_C
+# changes :
+#
+name        outer  inner  angle  temperature        action         filename
+MIC_MCA_M1  0.505  0.     45.    !CALIB.temperature  reflection     TER_MICADO_mirror_mgf2agal.dat

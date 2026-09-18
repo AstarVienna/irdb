@@ -64,6 +64,8 @@ effects:
       filename_format: "METIS_psfs/PSF_{}.fits"
       wave_key: "WAVELENG"
       bkg_width: -1
+      interp_psf: "!SIM.psf.interp_psf"
+      interp_order: "!SIM.psf.interp_order"
 
   - name: lms_spectral_traces
     description: list of spectral order trace geometry on the focal plane
@@ -94,3 +96,6 @@ properties:
   spectral:
     spectral_bin_width: 1.e-5    # microns, defines fov wavelengths
     spectral_resolution: 200000  # defines skycalc resolution
+  psf:
+    interp_psf: False
+    interp_order: 1
