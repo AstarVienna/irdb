@@ -246,7 +246,7 @@ description : RC simulation paramters which need to change for a MOSAIC run
 
 properties :
   random :
-    seed : None
+    seed : Null
 
   spectral :
     wave_min : 0.35
