@@ -4,7 +4,7 @@
     HIERARCH:
       ESO:
         DPR:
-          TECH:   "IFU"
+          TECH: "!OBS.tech"  # duplicate from FITS_common_keywords.yaml
         INS:
           LMS:                  # LMS mode (Nominal or Extended)
             MODE: "Nominal"

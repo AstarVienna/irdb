@@ -4,7 +4,7 @@
     HIERARCH:
       ESO:
         DPR:
-          TECH:   "LSS"         # TODO: How to add the filter name?
+          TECH: "!OBS.tech"  # duplicate from FITS_common_keywords.yaml
         INS:
           OPTI4:                # LMS beamsplitter pickoff wheel
             DEVSIM: [true, "Device simulation flag"]
