@@ -39,7 +39,7 @@ effects :
 #    class : FieldVaryingPSF
 #    include : False
 #    kwargs:
-#        filename : None
+#        filename : Null
 
 ### set instrument mode
 ---

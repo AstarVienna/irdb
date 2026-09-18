@@ -24,7 +24,7 @@ effects :
     description: alterations to the PSF due to the coronagraph
     class: CoronagraphPSF
     kwargs:
-        filename: None
+        filename: Null
 
 ### set observation mode
 ---
