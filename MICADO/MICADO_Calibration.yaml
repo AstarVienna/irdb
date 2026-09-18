@@ -1,0 +1,85 @@
+### Calibration assembly
+object : calibration assembly
+alias : CALIB
+name : MICADO_Calibration
+description : Micado calibration assembly
+needs_scopesim: "v0.11.3"   # CHECK
+date_modified: 2026-08-15
+changes:
+  - 2026-07-28 (OC) new file from MICADO_Standalone_RO.yaml
+  - 2026-08-15 (OC) air_transmission, deployable mirror
+
+properties :
+  temperature : "!ATMO.temperature"
+  relH: "!ATMO.relH"
+
+effects :
+- name: mca_mirror
+  description: deployable mirror for the MCA
+  class: SurfaceList
+  kwargs:
+    filename: LIST_MCA_mirrors.dat
+
+- name: relay_surface_list
+  description : list of surfaces in the relay optics
+  class: SurfaceList
+  kwargs:
+    filename: LIST_RO_SCAO_mirrors.dat
+
+- name: air_transmission
+  description: Transmission of air in MCA and relay optics
+  class: AtmoLibraryTERCurve
+  include: True
+  kwargs:
+    parameter: "relH"
+    relH: "!ATMO.relH"
+    remote_filename: "!ATMO.spectrum.filename"
+    #filename: "!ATMO.spectrum.filename"
+
+- name : psf
+  description : PSF
+  class : SeeingPSF
+  kwargs:
+    fwhm: 0.02   # [arcsec]
+    interp_psf: "!SIM.psf.interp_psf"
+    interp_order: "!SIM.psf.interp_order"
+
+- name : calib_fits_keywords
+  description : adds extra FITS keywords for calibration unit
+  class : ExtraFitsKeywords
+  include : True
+  kwargs :
+    filename : headers/FITS_calibration_keywords.yaml
+
+### Overrides
+---
+alias: ATMO
+properties:
+  temperature: 7
+  relH: 0.2          # [0..1]
+  spectrum:
+    filename: MICADO_relay_air_trans.fits
+
+---
+object: observation
+alias : OBS
+name : SCAO
+
+properties :
+    ins_mode: "SCAO"
+
+---
+object: simulation
+alias: SIM
+name: simulation_parameters
+
+properties:
+  psf:
+    interp_psf: True
+    interp_order: 1
+---
+# Required parameters to replace telescope
+alias: TEL
+properties:
+  area: 975.23478998
+  telescope: none (MCA)

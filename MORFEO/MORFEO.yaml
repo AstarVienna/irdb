@@ -22,6 +22,8 @@ effects :
     kwargs:
         filename : "!RO.psf_file"
         warning : "Default PSF is not Field Varying. See Documentation"
+        interp_psf: "!SIM.psf.interp_psf"
+        interp_order: "!SIM.psf.interp_order"
 
 
 ####################### Alternative effects ####################################
@@ -36,3 +38,14 @@ effects :
 #        dit : "!OBS.dit"
 #        ndit : "!OBS.ndit"
 
+---
+### default simulation parameters
+object: simulation
+alias: SIM
+name: MORFEO_simulation_parameters
+description: RC simulation parameters for MORFEO simulations
+
+properties:
+  psf:
+    interp_psf: True
+    interp_order: 1

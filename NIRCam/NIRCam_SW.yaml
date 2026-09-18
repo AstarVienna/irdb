@@ -55,3 +55,17 @@ effects:
     kwargs:
       filename: "psfs/PSF_NIRCam_in_flight_opd_filter_F150W2.fits"
       wave_key: "WAVELEN"
+      interp_psf: "!SIM.psf.interp_psf"
+      interp_order: "!SIM.psf.interp_order"
+
+---
+### default simulation parameters
+object: simulation
+alias: SIM
+name: NIRCam_simulation_parameters
+description: RC simulation parameters for NIRCam simulations
+
+properties:
+  psf:
+    interp_psf: True
+    interp_order: 1

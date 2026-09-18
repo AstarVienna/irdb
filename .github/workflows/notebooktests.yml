@@ -50,10 +50,10 @@ jobs:
     name: Run MICADO Notebooks
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           # No matrix is used since this is a time-consuming task.
           python-version: 3.13
@@ -68,8 +68,8 @@ jobs:
         run: |
           echo "Re-installing ScopeSim from source" >> $GITHUB_STEP_SUMMARY
           pip uninstall -y scopesim scopesim_templates
-          pip install git+https://github.com/AstarVienna/ScopeSim.git@${{ inputs.ScopeSim }}
-          pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git@${{ inputs.ScopeSim_Templates }}
+          pip install --pre git+https://github.com/AstarVienna/ScopeSim_Templates.git@${{ inputs.ScopeSim_Templates }}
+          pip install --pre git+https://github.com/AstarVienna/ScopeSim.git@${{ inputs.ScopeSim }}
 
       - name: Run Notebooks
         env:
@@ -89,9 +89,9 @@ jobs:
     name: Run MOSAIC Notebooks
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           # No matrix is used since this is a time-consuming task.
           python-version: 3.13
@@ -105,8 +105,8 @@ jobs:
         run: |
           echo "Re-installing ScopeSim from source" >> $GITHUB_STEP_SUMMARY
           pip uninstall -y scopesim scopesim_templates
-          pip install git+https://github.com/AstarVienna/ScopeSim.git@${{ inputs.ScopeSim }}
-          pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git@${{ inputs.ScopeSim_Templates }}
+          pip install --pre git+https://github.com/AstarVienna/ScopeSim_Templates.git@${{ inputs.ScopeSim_Templates }}
+          pip install --pre git+https://github.com/AstarVienna/ScopeSim.git@${{ inputs.ScopeSim }}
       - name: Run Notebooks
         env:
           PYDEVD_DISABLE_FILE_VALIDATION: 1
@@ -123,9 +123,9 @@ jobs:
     name: Run METIS Notebooks
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           # No matrix is used since this is a time-consuming task.
           python-version: 3.13
@@ -139,8 +139,8 @@ jobs:
         run: |
           echo "Re-installing ScopeSim from source" >> $GITHUB_STEP_SUMMARY
           pip uninstall -y scopesim scopesim_templates
-          pip install git+https://github.com/AstarVienna/ScopeSim.git@${{ inputs.ScopeSim }}
-          pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git@${{ inputs.ScopeSim_Templates }}
+          pip install --pre git+https://github.com/AstarVienna/ScopeSim_Templates.git@${{ inputs.ScopeSim_Templates }}
+          pip install --pre git+https://github.com/AstarVienna/ScopeSim.git@${{ inputs.ScopeSim }}
       - name: Run Notebooks
         env:
           PYDEVD_DISABLE_FILE_VALIDATION: 1
@@ -157,9 +157,9 @@ jobs:
     name: Run METIS Demo Notebooks
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           # No matrix is used since this is a time-consuming task.
           python-version: 3.13
@@ -173,8 +173,8 @@ jobs:
         run: |
           echo "Re-installing ScopeSim from source" >> $GITHUB_STEP_SUMMARY
           pip uninstall -y scopesim scopesim_templates
-          pip install git+https://github.com/AstarVienna/ScopeSim.git@${{ inputs.ScopeSim }}
-          pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git@${{ inputs.ScopeSim_Templates }}
+          pip install --pre git+https://github.com/AstarVienna/ScopeSim_Templates.git@${{ inputs.ScopeSim_Templates }}
+          pip install --pre git+https://github.com/AstarVienna/ScopeSim.git@${{ inputs.ScopeSim }}
       - name: Run Notebooks
         env:
           PYDEVD_DISABLE_FILE_VALIDATION: 1

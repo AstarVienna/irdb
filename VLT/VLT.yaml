@@ -5,7 +5,7 @@ name: VLT
 description : The very large telescope UT4
 
 properties:
-  temperture: "!ATMO.temperature"
+  temperature: "!ATMO.temperature"
 
 effects:
 - name: vlt_mirror_list
@@ -19,3 +19,18 @@ effects:
   kwargs:
     filename: PSF_VLT_poppy.fits
     warning: "Default PSF was generated Poppy for a UT4 optical system"
+    interp_psf: "!SIM.psf.interp_psf"
+    interp_order: "!SIM.psf.interp_order"
+
+
+---
+### default simulation parameters
+object: simulation
+alias: SIM
+name: VLT_simulation_parameters
+description: RC simulation parameters for VLT simulations
+
+properties:
+  psf:
+    interp_psf: True
+    interp_order: 1

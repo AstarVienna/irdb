@@ -1,0 +1,11 @@
+- ext_type: PrimaryHDU
+  keywords:
+
+      WISE:
+        ATM:
+          HUMIDITY: ["#air_transmission.relH!", "relative humidity"]
+        REL:
+          PSF:
+            FWHM: ["#psf.fwhm!", "[arcsec] FWHM of Gaussian psf"]
+          SUR:
+            REALFILE: ["#relay_surface_list.filename", "relay optics surface list"]
