@@ -14,7 +14,7 @@ import scopesim
 PKGS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
 scopesim.rc.__config__["!SIM.file.local_packages_path"] = PKGS_DIR
 
-ELT_MODES = ["img_lm", "img_n", "lss_l", "lss_m", "lss_n", "lms", "lms_extended"]
+ELT_MODES = ["img_lm", "img_n", "lss_l", "lss_m", "lss_n", "lms"]  # , "lms_extended"]
 # Generate WCU_MODES automatically to ensure that each elt mode has a corresponding wcu mode
 WCU_MODES = [("wcu_" + mode) for mode in ELT_MODES]
 
