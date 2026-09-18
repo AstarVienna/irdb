@@ -58,7 +58,7 @@ description: RC simulation parameters that need to change for a WFC3
 
 properties:
   random:
-    seed: None         # 9001
+    seed: Null
 
   spectral:
     wave_min: 0.8
