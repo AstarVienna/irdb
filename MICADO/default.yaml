@@ -13,7 +13,7 @@ changes:
   - 2025-06-27 (FH) add needs_scopesim keyword
   - 2025-10-09 (OC) proper MJD value
   - 2025-10-17 (JB) add parametes for FITS keywords, tplstart as MJD
-  - 2026-01-02 (OC) random seed to None
+  - 2026-01-02 (OC) random seed to Null (i.e. None)
   - 2026-04-09 (OC) new SPEC mode, rename slits
   - 2026-07-28 (OC) new CALIB mode, full yaml list in mode definitions
 
@@ -220,7 +220,7 @@ description : RC simulation parameters which need to change for a MICADO run
 
 properties :
   random :
-    seed : None                 # 9001
+    seed : Null                 # 9001
 
   spectral :
     wave_min : 0.7
