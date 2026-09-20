@@ -16,11 +16,6 @@ This notebook is targeted at the AIT team who use Scopesim to simulate observati
 
 ```{code-cell} ipython3
 import scopesim as sim
-```
-
-```{code-cell} ipython3
-# Edit this path if you have a custom install directory, otherwise comment it out.
-sim.link_irdb("../../../../")
 
 # If you haven't got the instrument packages yet, uncomment the following line.
 # sim.download_packages(["METIS", "ELT", "Armazones"])
@@ -30,9 +25,6 @@ By default Scopesim loads one of the PPS masks with their corresponding PSF. The
 
 ```{code-cell} ipython3
 cmd = sim.UserCommands(use_instrument="METIS", set_modes=["wcu_img_lm"])
-```
-
-```{code-cell} ipython3
 metis = sim.OpticalTrain(cmd)
 ```
 

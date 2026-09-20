@@ -20,9 +20,6 @@ from matplotlib import pyplot as plt
 
 import scopesim as sim
 sim.bug_report()
-
-# Edit this path if you have a custom install directory, otherwise comment it out.
-sim.link_irdb("../../../../")
 ```
 
 If you haven't got the instrument packages yet, uncomment the following cell.

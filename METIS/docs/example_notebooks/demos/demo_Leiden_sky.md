@@ -23,9 +23,6 @@ METIS AIT activities in Leiden will use bespoke relay optics to observe the sky 
 ```{code-cell} ipython3
 import scopesim as sim
 
-# Edit this path if you have a custom install directory, otherwise comment it out.
-sim.link_irdb("../../../../")
-
 # If you haven't got the instrument packages yet, uncomment the following line.
 #sim.download_packages(["METIS"])
 ```

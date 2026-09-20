@@ -23,9 +23,6 @@ import scopesim as sim
 from scopesim.effects.metis_lms_trace_list import MetisLMSEfficiency
 
 sim.bug_report()
-
-# Edit this path if you have a custom install directory, otherwise comment it out.
-sim.link_irdb("../../../../")
 ```
 
 If you haven't got the instrument package yet, uncomment the following cell. The METIS package provides the spectral trace definition file. The ELT and Armazones packages are not needed for the purposes of this notebook.

@@ -34,21 +34,12 @@ When the $\alpha$ parameters are used to define the IPC kernel it is automatical
 import numpy as np
 from matplotlib import pyplot as plt
 from astropy import units as u
-```
 
-```{code-cell} ipython3
 import scopesim as sim
 sim.bug_report()
-
-# Edit this path if you have a custom install directory, otherwise comment it out. [For ReadTheDocs only]
-sim.link_irdb("../../../../")
 ```
 
-If you haven't got the instrument packages yet, uncomment the following cell, which will install the packages into `./inst_pkgs`, a subdirectory of your current working directory. If you have already downloaded the packages but to a different location you can set
-```python
-sim.set_inst_pgks_path("/path/to/inst/pkgs")
-```
-
+If you haven't got the instrument packages yet, uncomment the following cell, which will install the packages into `./inst_pkgs`, a subdirectory of your current working directory.
 ```{code-cell} ipython3
 # sim.download_package(["METIS", "ELT", "Armazones"])
 ```
@@ -57,9 +48,6 @@ The `InterPixelCapacitance` effect will be demonstrated in the METIS IMG_LM mode
 
 ```{code-cell} ipython3
 cmd = sim.UserCommands(use_instrument="METIS", set_modes=["img_lm"])
-```
-
-```{code-cell} ipython3
 metis = sim.OpticalTrain(cmd)
 ```
 

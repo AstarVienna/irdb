@@ -16,15 +16,8 @@ The METIS detectors have a number of masked rows and pixels around their borders
 
 ```{code-cell} ipython3
 from matplotlib import pyplot as plt
-```
 
-```{code-cell} ipython3
 import scopesim as sim
-```
-
-```{code-cell} ipython3
-# Edit this path if you have a custom install directorym otherwise comment it out
-sim.link_irdb("../../../../")
 
 # If you haven't got the instrument packages yet, uncomment the following line
 # sim.download_packages(["METIS", "ELT", "Armazones"])

@@ -19,10 +19,8 @@ The notebook uses the `irdb/METIS` configuration. The observed source is blank s
 ```{code-cell} ipython3
 from astropy import units as u
 import scopesim as sim
-sim.bug_report()
 
-# Edit this path if you have a custom install directory, otherwise comment it out.
-sim.link_irdb("../../../../")
+sim.bug_report()
 ```
 
 If you haven't got the instrument packages yet, uncomment the following cell.
