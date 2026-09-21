@@ -6,7 +6,7 @@ alias: OBS
 name: METIS_default_configuration
 description: default parameters needed for a METIS simulation
 status: development
-needs_scopesim: "v0.11.3"
+needs_scopesim: "v0.12.0rc2"
 date_modified: 2026-05-29
 changes:
   - 2021-12-16 (OC) chopnod defaults to perpendicular
