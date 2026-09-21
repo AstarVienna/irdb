@@ -88,4 +88,4 @@ def remove_inst_pkgs_symlink():
             path.unlink()
 
 
-# remove_inst_pkgs_symlink()
+remove_inst_pkgs_symlink()
