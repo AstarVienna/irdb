@@ -59,7 +59,7 @@ alias: SIM
 
 properties:
   random:
-    seed: None                         # 9001
+    seed: Null
 
   spectral:
     wave_min: 0.6
