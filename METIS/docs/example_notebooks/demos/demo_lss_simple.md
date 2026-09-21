@@ -16,6 +16,8 @@ This notebook shows the most basic setup for long-slit spectroscopy, using a sta
 
 ```{code-cell} ipython3
 import numpy as np
+from astropy import units as u
+from astropy.wcs import WCS
 from matplotlib import pyplot as plt
 
 import scopesim as sim
@@ -66,8 +68,6 @@ rectified = tracelist.rectify_traces(result, -4, 4)
 `rectified` is again an `HDUList` with the data in the first extension. The header of this extension contains the WCS keywords needed to translate from pixels to wavelength and spatial position.
 
 ```{code-cell} ipython3
-from astropy.wcs import WCS
-from astropy import units as u
 wcs = WCS(rectified[1].header)
 naxis1, naxis2 = wcs._naxis
 det_wave = wcs.all_pix2world(np.arange(naxis1), 1, 0)[0] * u.Unit(wcs.wcs.cunit[0])
@@ -81,7 +81,7 @@ plt.figure(figsize=(12,7))
 plt.imshow(rectified[1].data, vmin=100, norm="log",
            extent=(det_wave[0], det_wave[-1], det_xi[0], det_xi[-1]),
            origin="lower", aspect="auto")
-plt.xlabel(r"Wavelength [$\mu$m]")
+plt.xlabel(f"Wavelength [{u.um.to_string('latex')}]")
 plt.ylabel("Position along slit [arcsec]")
 plt.colorbar();
 ```

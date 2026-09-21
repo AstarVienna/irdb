@@ -52,11 +52,7 @@ metis = sim.OpticalTrain(cmd)
 ```
 
 ```{code-cell} ipython3
-metis.effects.pprint_all()
-```
-
-```{code-cell} ipython3
-
+metis.effects
 ```
 
 ```{code-cell} ipython3

@@ -50,10 +50,10 @@ eff.surface.transmission.plot()
 Alternatively, the order can be specified directly. This is used in the following to plot the efficiencies for all orders. The resulting figure can be compared to the original figure from E-REP-ATC-MET-1016.
 
 ```{code-cell} ipython3
-plt.figure(figsize=(8, 6))
+plt.figure(figsize=(10, 5))
 plt.ylim(0, 1)
 plt.xlim(3.0, 5.05)
-plt.xlabel(r"Wavelength [$\mu$m]")
+plt.xlabel(f"Wavelength [{u.um.to_string('latex')}]")
 plt.ylabel("Efficiency")
 plt.xticks(np.arange(3.0, 5.05, 0.2))
 for order in np.arange(22, 37):

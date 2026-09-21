@@ -58,9 +58,14 @@ src_linelamp.fields[0].spectra[0] = spec     # NB: Do not try to set src_linelam
 We use METIS in the L-band long-slit spectroscopic mode, using a fairly narrow slit. We explicitely request the realistic spectral mapping with non-linear dispersion.
 
 ```{code-cell} ipython3
-cmds = sim.UserCommands(use_instrument="METIS", set_modes=["lss_l"],
-                       properties={"!OBS.trace_file": "TRACE_LSS_L.fits",
-                                   "!OBS.slit": "B-28_6"})
+cmds = sim.UserCommands(
+    use_instrument="METIS",
+    set_modes=["lss_l"],
+    properties={
+        "!OBS.trace_file": "TRACE_LSS_L.fits",
+        "!OBS.slit": "B-28_6",
+    },
+)
 
 metis = sim.OpticalTrain(cmds)
 ```
@@ -112,7 +117,7 @@ xi = (wcs.all_pix2world(1000, np.arange(naxis2), 0)[1] * u.Unit(wcs.wcs.cunit[1]
 ```{code-cell} ipython3
 plt.imshow(rectified[1].data, origin="lower", extent=[lam[0], lam[-1], xi[0], xi[-1]])
 plt.gca().set_aspect("auto")
-plt.xlabel(r"Wavelength [$\mu$m]")
+plt.xlabel(f"Wavelength [{u.um.to_string('latex')}]")
 plt.ylabel(r"Spatial position along slit [arcsec]");
 ```
 
@@ -122,5 +127,5 @@ plt.figure(figsize=(15, 7))
 plt.plot(lam[i1:i2], rectified[1].data[800, i1:i2], label="single row")
 plt.plot(lam[i1:i2], rectified[1].data.mean(axis=0)[i1:i2], label="average")
 plt.legend()
-plt.xlabel(r"Wavelength [$\mu$m]");
+plt.xlabel(f"Wavelength [{u.um.to_string('latex')}]");
 ```

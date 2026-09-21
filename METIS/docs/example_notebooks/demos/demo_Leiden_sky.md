@@ -39,7 +39,7 @@ metis = sim.OpticalTrain(cmd)
 ```
 
 ```{code-cell} ipython3
-metis.effects.pprint_all()
+metis.effects
 ```
 
 The `leiden_` modes replace the `ELT` and `Armazones` packages with two effects, `leiden_sky`, which creates the background source using the atmospheric spectra for the selected PWV, and `telescope`, which models the relay optics.
