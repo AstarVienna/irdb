@@ -52,4 +52,4 @@ jupyter notebook <Notebook.ipynb>
 
 - [ScopeSim Slack](https://join.slack.com/t/scopesim/shared_invite/zt-143s42izo-LnyqoG7gH5j~aGn51Z~4IA)
 - [GitHub Issues](https://github.com/AstarVienna/irdb/issues)
-- Email: scopesim@univie.ac.at · kieran.leschinski@univie.ac.at
+- Email: astar.astro@univie.ac.at · kieran.leschinski@univie.ac.at
