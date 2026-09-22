@@ -11,3 +11,7 @@ jupytext
 ipykernel
 nbconvert
 astar-utils
+jupytext
+myst-nb
+seaborn
+pandas
