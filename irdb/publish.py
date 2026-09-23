@@ -40,35 +40,6 @@ class Password:
         return self.value == other.value
 
 
-def publish(pkg_names=None, compilezip=False, upload=True,
-            login=None, password=None, update_version=True):
-    """
-    Should be as easy as just calling this function to republish all packages.
-
-    Parameters
-    ----------
-    pkg_names : list
-    compilezip : str, bool
-        [False, "stable", "dev"]
-    upload : bool
-    login : str
-    password : str
-    update_version : bool
-        True (default): update version in <pkg_name>/version.yaml
-        False: use version in <pkg_name>/version.yaml
-        See make_package().
-    """
-    warn(("This function is deprecated and will be removed by the end of 2025."),
-         FutureWarning, stacklevel=2)
-    for pkg_name in pkg_names:
-        if compilezip:
-            make_package(pkg_name,
-                         stable=(compilezip == "stable"),
-                         keep_version=not update_version)
-        if upload:
-            push_to_server(pkg_name, login=login, password=password)
-
-
 def make_package(pkg_name: str, stable: bool = False,
                  keep_version: bool = False) -> str:
     """
