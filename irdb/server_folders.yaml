@@ -1,17 +1,21 @@
 Armazones: locations
+LaPalma: locations
+Paranal: locations
+
 ELT: telescopes
 GTC: telescopes
-HAWKI: instruments
 HST: telescopes
+JWST: telescopes
 LFOA: telescopes
-LaPalma: locations
-MAORY: instruments
+VLT: telescopes
+ViennaLT: telescopes
+
+HAWKI: instruments
 METIS: instruments
 MICADO: instruments
 MORFEO: instruments
 MOSAIC: instruments
+NIRCam: instruments
 OSIRIS: instruments
-Paranal: locations
-VLT: telescopes
 WFC3: instruments
 test_package: instruments
