@@ -2,19 +2,22 @@
 # author : Kieran Leschinski, Oliver Czoske
 # source : ELT-TRE-MCD-56300-0014_3.0
 # date_created  : 2026-02-03
-# date_modified : 2026-02-03
+# date_modified : 2026-09-17
 # status : FDR design
-# type : aperture:slit_geometry
 # x_unit : arcsec
 # y_unit : arcsec
+# offset_type : detector
+# offset_x : 0
+# offset_y : 3.
 # changes :
 # - 2019-07-10 (KL) Created the file
 # - 2020-03-24 (KL) Changed geometry to 3000x50mas
 # - 2023-07-13 (OC) Changed geometry to 3000x48mas
 # - 2026-02-03 (OC) Initialised from MASK_slit_3000x48.dat
+# - 2026-09-17 (OC) Put offset into meta data
 #
 x       y
--1.5    1.176
-1.5     1.176
-1.5     1.224
--1.5    1.224
+-1.5    2.976
++1.5    2.976
++1.5    3.024
+-1.5    3.024

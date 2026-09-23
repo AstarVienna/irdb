@@ -1,9 +1,14 @@
 # author : Kieran Leschinski
 # source : Ric Davies
 # date_created : 2022-03-17
-# date_modified : 2022-03-17
+# date_modified : 2026-05-03
 # status : FDR list of filters
+# wavelength_unit: um
+# changes:
+# - 2026-05-03 (OC) change level to 1e-32
 #
 wavelength  transmission
-0.3         0
+0.3         0.0
+0.35        1.e-32
+2.95        1.e-32
 3.0         0

@@ -53,12 +53,12 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        python-version: ['3.10', '3.11', '3.12', '3.13']
+        python-version: ['3.12', '3.13', '3.14']
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -72,8 +72,8 @@ jobs:
         run: |
           echo "Re-installing ScopeSim from source" >> $GITHUB_STEP_SUMMARY
           pip uninstall -y scopesim scopesim_templates
-          pip install git+https://github.com/AstarVienna/ScopeSim.git@${{ inputs.ScopeSim }}
           pip install git+https://github.com/AstarVienna/ScopeSim_Templates.git@${{ inputs.ScopeSim_Templates }}
+          pip install git+https://github.com/AstarVienna/ScopeSim.git@${{ inputs.ScopeSim }}
 
       - name: Run Pytest
         run: pytest

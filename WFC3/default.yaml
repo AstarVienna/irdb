@@ -8,7 +8,7 @@ alias: OBS
 name: HST_WFC3_default_config
 description: defatult configuration for HST WFC3 UVIS and NIR imaging
 status: experimental
-needs_scopesim: "v0.11.2a2"
+needs_scopesim: "v0.12.0rc2"
 date_modified: 2025-12-05
 changes:
   - 2019-11-20 (KL) initial version
@@ -58,7 +58,7 @@ description: RC simulation parameters that need to change for a WFC3
 
 properties:
   random:
-    seed: None         # 9001
+    seed: Null
 
   spectral:
     wave_min: 0.8

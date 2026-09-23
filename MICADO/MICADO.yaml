@@ -91,7 +91,7 @@ effects:
             - xY1
         filename_format: "!INST.filter_file_format"
         current_filter: "!OBS.filter_name_fw2"
-        minimum_throughput: 1.01e-4
+        minimum_throughput: 1.01e-33
         outer: 0.2
         outer_unit: "m"
 

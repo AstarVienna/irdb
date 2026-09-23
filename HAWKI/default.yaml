@@ -7,7 +7,7 @@ status: experimental
 date_modified: 2022-02-22
 changes:
   - 2022-02-22 (MV) formatting
-  - 2026-01-02 (OC) random seed to None
+  - 2026-01-02 (OC) random seed to Null
 
 packages:
   - Paranal
@@ -40,7 +40,7 @@ description : RC simulation parameters that need to change for a HAWKI run
 
 properties :
   random :
-    seed : None             # 9001
+    seed: Null
 
   spectral :
     wave_min : 0.85

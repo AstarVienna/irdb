@@ -80,6 +80,8 @@ effects:
       filename_format: "METIS_psfs/PSF_{}.fits"
       wave_key: "WAVELENG"
       bkg_width: -1
+      interp_psf: "!SIM.psf.interp_psf"
+      interp_order: "!SIM.psf.interp_order"
 
   - name: img_n_fits_keywords
     descriptions: FITS keywords specific to IMG-N
@@ -87,12 +89,12 @@ effects:
     include: True
     kwargs:
       filename: headers/FITS_img_n_keywords.yaml
-  
+
   - name: illumination
     description: Large-scale illumination variation across the image plane
     class: Illumination
     include: "!INST.include_illumination"
-    
+
 ---
 ### default simulation parameters needed for a METIS simulation
 object: simulation
@@ -104,3 +106,6 @@ properties:
   spectral:
     spectral_bin_width: 1.e-3  # microns, defines fov wavelengths
     spectral_resolution: 5000  # defines skycalc resolution
+  psf:
+    interp_psf: True
+    interp_order: 1

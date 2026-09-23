@@ -17,7 +17,7 @@ properties:
   dit: "!OBS.dit"
   ndit: "!OBS.ndit"
   mindit: 1.3               # seconds, Roy van Boekel, pers. communication
-  include_prnu: False      
+  include_prnu: False
   full_well: 1.e+5   # electrons, E-TNT-MPIA-1004, v1-0
   gain:
     1: 2.0            # electrons/ADU, email B.Serra 2024-10-09
@@ -58,6 +58,9 @@ effects:
     include: True
     kwargs:
       fill_frac: "!OBS.auto_exposure.fill_frac"
+      full_well: "!DET.full_well"
+      dark_current: "!DET.dark_current"
+      mindit: "!DET.mindit"
 
   - name: reference_pixel_mask
     description: Mask for reference pixels
@@ -71,11 +74,11 @@ effects:
     class: ExposureIntegration
 
   - name: prnu
-    description: Pixel-to-pixel response non-uniformity 
+    description: Pixel-to-pixel response non-uniformity
     class: PixelResponseNonUniformity
     include: "!DET.include_prnu"
     kwargs:
-      prnu_std: 0.005 
+      prnu_std: 0.005
       prnu_seed: 42
 
   - name: dark_current

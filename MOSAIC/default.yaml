@@ -4,10 +4,12 @@ object : configuration
 alias : OBS
 name : MOSAIC_default_configuration
 description : default parameters needed for a MOSAIC simulation
-needs_scopesim: "v0.11.0"
-date_modified: 2025-09-01
+needs_scopesim: "v0.12.0rc2"
+date_modified: 2026-09-10
 changes:
   - 2025-09-01 (OC) adjusted resolutions for modes
+  - 2026-08-06 (OC) set output format per mode
+  - 2026-09-10 (KL) fix trace and spectrograph TER filenames for mIFU-HR-H
 
 packages :
   - Armazones
@@ -31,8 +33,7 @@ properties :
   ra : 0.0
   dec : 0.0
   psf_fwhm : 0.2
-  include_fibres : True
-  do_collapse_1d: True
+  output_format: collapse1d
 
 mode_yamls :
   - object: observation
@@ -50,6 +51,7 @@ mode_yamls :
       trace_file: TRACE_MOS-LR-B.fits
       dispersion: 1.9e-5      # um/pixel on the output detector
       resolution: 32000       # resolution of sky spectrum
+      output_format: collapse1d
 
   - object: observation
     alias: OBS
@@ -65,6 +67,7 @@ mode_yamls :
       trace_file: TRACE_MOS-HR-B1.fits
       dispersion: 6.5e-6    # um/pixel on detector
       resolution: 72000     # resolution of sky spectrum
+      output_format: collapse1d
 
   - object: observation
     alias: OBS
@@ -80,6 +83,7 @@ mode_yamls :
       trace_file: TRACE_MOS-HR-B2.fits
       dispersion: 5e-6    # um/pixel on detector
       resolution: 72000     # resolution of sky spectrum
+      output_format: collapse1d
 
   - object: observation
     alias: OBS
@@ -96,6 +100,7 @@ mode_yamls :
       trace_file: TRACE_MOS-LR-R.fits
       dispersion: 3e-5      # um/pixel on the output detector
       resolution: 32000       # resolution of sky spectrum
+      output_format: collapse1d
 
   - object: observation
     alias: OBS
@@ -111,6 +116,7 @@ mode_yamls :
       trace_file: TRACE_MOS-HR-R1.fits
       dispersion: 8e-6    # um/pixel on detector
       resolution: 72000       # resolution of sky spectrum
+      output_format: collapse1d
 
   - object: observation
     alias: OBS
@@ -126,6 +132,7 @@ mode_yamls :
       trace_file: TRACE_MOS-HR-R2.fits
       dispersion: 1e-5    # um/pixel on detector
       resolution: 72000       # resolution of sky spectrum
+      output_format: collapse1d
 
   - object : instrument
     alias: OBS
@@ -142,6 +149,7 @@ mode_yamls :
       trace_file: TRACE_MOS-LR-J.fits
       dispersion: 9.5e-5    # um/pixel on detector
       resolution: 16000     # resolution of sky spectrum
+      output_format: collapse1d
 
   - object : instrument
     alias: OBS
@@ -158,6 +166,7 @@ mode_yamls :
       trace_file: TRACE_MOS-LR-H.fits
       dispersion: 9.e-5     # um/pixel on detector
       resolution: 16000     # resolution of sky spectrum
+      output_format: collapse1d
 
   - object : instrument
     alias: OBS
@@ -174,6 +183,7 @@ mode_yamls :
       trace_file: TRACE_MOS-HR-H.fits
       dispersion: 2.4e-5    # um/pixel on detector
       resolution: 72000     # resolution of sky spectrum
+      output_format: collapse1d
 
   - object : instrument
     alias: OBS
@@ -190,7 +200,7 @@ mode_yamls :
       trace_file: TRACE_mIFU-LR-J.fits
       dispersion: 9.5e-5    # um/pixel on detector
       resolution: 16000     # resolution of sky spectrum
-      do_collapse_1d: False
+      output_format: table
 
   - object : instrument
     alias: OBS
@@ -207,7 +217,7 @@ mode_yamls :
       trace_file: TRACE_mIFU-LR-H.fits
       dispersion: 9.e-5     # um/pixel on detector
       resolution: 16000     # resolution of sky spectrum
-      do_collapse_1d: False
+      output_format: table
 
   - object : instrument
     alias: OBS
@@ -220,12 +230,11 @@ mode_yamls :
     properties:
       ins_mode: mIFU-HR-H
       fibre_ter_file: TER_mIFU_HR-H.dat
-      spec_ter_file:  TER_spec_NIR_HR_H.dat
-      trace_file: TRACE_mIFU_NIR-HR-H.fits
+      spec_ter_file:  TER_spec_HR_H.dat
+      trace_file: TRACE_mIFU-HR-H.fits
       dispersion: 2.4e-5    # um/pixel on detector
       resolution: 72000     # resolution of sky spectrum
-      do_collapse_1d: False
-
+      output_format: table
 
 
 ---
@@ -237,7 +246,7 @@ description : RC simulation paramters which need to change for a MOSAIC run
 
 properties :
   random :
-    seed : None
+    seed : Null
 
   spectral :
     wave_min : 0.35

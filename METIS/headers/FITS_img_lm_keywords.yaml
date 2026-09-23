@@ -4,7 +4,7 @@
     HIERARCH:
       ESO:
         DPR:
-          TECH:   "IMAGE,LM"
+          TECH: "!OBS.tech"  # duplicate from FITS_common_keywords.yaml
         INS:
           OPTI4:                # LMS beamsplitter pickoff wheel
             DEVSIM: [true, "Device simulation flag"]

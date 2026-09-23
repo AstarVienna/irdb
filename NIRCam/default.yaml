@@ -3,7 +3,7 @@ object: configuration
 alias: OBS
 name: NIRCam
 status: experimental
-needs_scopesim: "v0.11.1"
+needs_scopesim: "v0.12.0rc2"
 date_modified: 2025-12-04
 changes:
   - 2025-12-04 (FH) initial version created
@@ -59,7 +59,7 @@ alias: SIM
 
 properties:
   random:
-    seed: None                         # 9001
+    seed: Null
 
   spectral:
     wave_min: 0.6

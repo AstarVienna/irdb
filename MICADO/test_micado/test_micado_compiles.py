@@ -5,17 +5,14 @@ Tests that the MICADO package runs with observe, readout flawlessly
 Comments
 --------
 - 2022-03-18 (KL) Green locally
-  ! SPEC mode is missing from the tests.
-
-.. todo:: Add SPEC modes to these tests
 
 """
 
 # integration test using everything and the MICADO package
+import os
 from pathlib import Path
 import pytest
 from pytest import approx
-import os
 
 import numpy as np
 from astropy.io import fits
@@ -31,6 +28,8 @@ PATH_IRDB = PATH_HERE.parent.parent
 rc.__config__["!SIM.file.local_packages_path"] = str(PATH_IRDB)
 PLOTS = False
 
+# pylint: disable=missing-class-docstring,
+# pylint: disable=missing-function-docstring
 
 class TestInit:
     def test_all_packages_are_available(self):
@@ -57,14 +56,14 @@ class TestLoadUserCommands:
 
     def test_user_commands_can_change_modes(self):
         cmd = scopesim.UserCommands(use_instrument="MICADO")
-        cmd.set_modes("MCAO", "SPEC_3000x48")
+        cmd.set_modes("MCAO", "SPEC")
 
         assert "MORFEO" in [yd["name"] for yd in cmd.yaml_dicts]
         assert "MICADO_SPEC" in [yd["name"] for yd in cmd.yaml_dicts]
 
     def test_user_commands_can_change_modes_via_init(self):
         cmd = scopesim.UserCommands(
-            use_instrument="MICADO", set_modes=["MCAO", "SPEC_3000x48"]
+            use_instrument="MICADO", set_modes=["MCAO", "SPEC"]
         )
 
         assert "MORFEO" in [yd["name"] for yd in cmd.yaml_dicts]
@@ -81,8 +80,7 @@ class TestMakeOpticalTrain:
         opt = scopesim.OpticalTrain(cmd)
         assert isinstance(opt, scopesim.OpticalTrain)
 
-        src = scopesim.source.source_templates.empty_sky()
-        opt.observe(src)
+        opt.observe()
         hdu_list = opt.readout()[0]
 
         assert isinstance(hdu_list, fits.HDUList)
@@ -99,8 +97,7 @@ class TestMakeOpticalTrain:
         micado = scopesim.OpticalTrain(cmd)
         assert isinstance(micado, scopesim.OpticalTrain)
 
-        src = scopesim.source.source_templates.empty_sky()
-        micado.observe(src)
+        micado.observe()
         hdu_list = micado.readout()[0]
 
         assert isinstance(hdu_list, fits.HDUList)
@@ -117,8 +114,7 @@ class TestDetector:
         micado["skycalc_atmosphere"].include = False
         micado["detector_linearity"].include = False
 
-        src = scopesim.source.source_templates.empty_sky()
-        micado.observe(src)
+        micado.observe()
         implane_image = micado.image_planes[0].data
 
         hdus = micado.readout()
