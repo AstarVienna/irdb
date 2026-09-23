@@ -8,7 +8,7 @@ import getpass
 from typing import Optional
 from warnings import warn
 from pathlib import Path
-from datetime import datetime as dt, timezone
+from datetime import datetime as dt, UTC
 from zipfile import ZIP_DEFLATED, ZipFile
 
 import yaml
@@ -16,8 +16,6 @@ import paramiko
 
 from scopesim.server import database as db
 
-# After 3.11, can just import UTC directly from datetime
-UTC = timezone.utc
 
 PATH_HERE = Path(__file__).parent
 PKGS_DIR = PATH_HERE.parent
