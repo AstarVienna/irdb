@@ -6,7 +6,6 @@ import argparse
 import logging
 import getpass
 from typing import Optional
-from warnings import warn
 from pathlib import Path
 from datetime import datetime as dt, UTC
 from zipfile import ZIP_DEFLATED, ZipFile
@@ -40,8 +39,11 @@ class Password:
         return self.value == other.value
 
 
-def make_package(pkg_name: str, stable: bool = False,
-                 keep_version: bool = False) -> str:
+def make_package(
+    pkg_name: str,
+    stable: bool = False,
+    keep_version: bool = False,
+) -> str:
     """
     Make a package (todo: update this description!).
 
