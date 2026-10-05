@@ -60,15 +60,15 @@ description : RC simulation paramters which need to change for a zshooter run
 properties :
   sub_pixel:
     flag : True
-  random :
-    seed : 9001
+#  random :
+#    seed : 9001
 
   spectral :
     wave_unit : "um"
     wave_min : 0.3
     wave_mid : 1.0
     wave_max : 2.5
-    spectral_bin_width: 0.000005 # in um, may want 0.000005
+    spectral_bin_width: 0.00001 # in um, may want 0.000005
     spectral_resolution: 40000
 
   computing :
