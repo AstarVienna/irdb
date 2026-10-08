@@ -14,7 +14,7 @@ packages:
 
 yamls:
   - JWST.yaml
-  - NIRCam.yaml
+  # - NIRCam.yaml  empty, would trip scopesim-service
 
 properties:
   instrument: "NIRCam"
