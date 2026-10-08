@@ -53,8 +53,9 @@ class TestFileStructureOfPackages:
 
         # METIS is special since in WCU mode it operates without METIS.
         # MOSAIC has no MOSAIC.yaml.
+        # NIRCam hasa a NIRCam.yaml, but it's empty.
         # TODO: is {pkg_name}.yaml necessary?
-        if pkg_name not in {"METIS", "MOSAIC", "MICADO"}:
+        if pkg_name not in {"METIS", "MOSAIC", "MICADO", "NIRCam"}:
             result &= "yamls" in yaml_dict \
                 and f"{pkg_name}.yaml" in yaml_dict["yamls"]
         if result:
