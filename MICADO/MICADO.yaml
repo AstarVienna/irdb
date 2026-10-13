@@ -115,3 +115,10 @@ effects:
         minimum_throughput: 1.01e-4
         outer: 0.2
         outer_unit: "m"
+
+- name: mcd_fits_keywords
+    description: FITS keywords specific to MICADO
+    class: ExtraFitsKeywords
+    include: True
+    kwargs:
+      filename: headers/FITS_mcd_keywords.yaml

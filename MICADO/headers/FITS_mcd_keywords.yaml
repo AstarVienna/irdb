@@ -1,0 +1,12 @@
+- ext_type: PrimaryHDU
+  keywords:
+    INSTRUME: MICADO
+
+    HIERARCH:
+      ESO:
+        INS:
+          SLIT:
+            NAME: ["#slit_wheel.current_slit!", "Selected slit"]
+          FILT:
+            NAME: ["#filter_wheel_1.current_filter!", "Selected filter"]
+            # Needs to be one of fw1 or fw2

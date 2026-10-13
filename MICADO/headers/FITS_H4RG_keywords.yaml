@@ -1,0 +1,18 @@
+- ext_type: PrimaryHDU
+  keywords:
+    HIERARCH:
+      ESO:
+        DET:
+          DIT:     ["!OBS.dit", "[s]"]
+          NDIT:    "!OBS.ndit"
+          NEXP:    1
+          READOUT: CDS
+          SUBARRY: FULL
+
+- ext_type: ImageHDU
+  keywords:
+    EXTNAME:       "DET§.IMG"
+    BUNIT:         "ADU"
+    HIERARCH:
+      ESO:
+        DET:
