@@ -29,7 +29,7 @@ properties :
 effects :
 - name : atmo_transmission    # Also applies thermal emission component using !ATMO.temperature and (1-transmission)
   description : Atmospheric transmission for Mauna Kea from TAPAS
-  class : TERCurve
+  class : TAPASTERCurve
   include : True
   kwargs:
     filename: "TER_maunakea_tapas.dat"
