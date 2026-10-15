@@ -1,0 +1,8 @@
+# name : ZShooter_v2 dichroic tree
+# author : Y. Sharma
+# date_created : 2026-10-14
+# description : Image plane ID mapping 0->A, 1->B, 2->C
+aperture_id        A-BC     B-C
+0                    R       X
+1                    T       R
+2                    T       T
