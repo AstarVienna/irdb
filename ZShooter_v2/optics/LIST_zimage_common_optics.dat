@@ -1,0 +1,18 @@
+# author : Jeb Bailey
+# date_created  : 2026-10-15
+# date_modified : 2026-10-15
+# status : ZShooter ZImager common optics throughput list
+# type : mirror:list
+# outer_unit : m
+# inner_unit : m
+# angle_unit : degree
+# temperature_unit  : deg_C
+# changes :
+# - 2026-10-15 : created
+#
+name                  outer   inner   angle   temperature   action         filename
+VIS_Fold              0.09    0.0     0       0             reflection     optics/TER_vis_armirror.dat
+VIS_field             0.09    0.0     0       0             transmission   optics/TER_vis_arcoat.dat
+VIS_Fold_2            0.09    0.0     0       0             reflection     optics/TER_vis_armirror.dat
+VIS_ADC_12            0.09    0.0     0       0             transmission   optics/TER_vis_arcoat.dat
+VIS_ADC_34            0.09    0.0     0       0             transmission   optics/TER_vis_arcoat.dat

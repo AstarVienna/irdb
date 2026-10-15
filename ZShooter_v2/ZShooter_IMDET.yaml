@@ -5,35 +5,32 @@ name : zimage_detectors
 description : 3 CMOS
 
 properties :
-    temperature : -120
+    temperature : -35
     binx : 1
     biny: 1
-    full_well: 64000
-    # Per-image-plane scales. These currently match the global ZShooter
-    # values in ZShooter.yaml, but live here so each camera can diverge when
-    # the final channel optics are available.
-    pixel_scale_A: 0.1570545
-    pixel_scale_B: 0.1570545
-    pixel_scale_C: 0.1570545
-    plate_scale_A: 10.4703
-    plate_scale_B: 10.4703
-    plate_scale_C: 10.4703
+    full_well: 7000
+    pixel_scale_A: 0.049922  #"/pix
+    pixel_scale_B: 0.049922
+    pixel_scale_C: 0.049922
+    plate_scale_A: 10.851 #"/mm
+    plate_scale_B: 10.851
+    plate_scale_C: 10.851
 
 effects :
-  - name: detector_A
+  - name: detector_u
     include: True
     class: DetectorList
     kwargs:
         image_plane_id : 0
-        pixel_scale: "!DET.pixel_scale_A"
-        plate_scale: "!DET.plate_scale_A"
+        pixel_scale: "!DET.pixel_scale_u"
+        plate_scale: "!DET.plate_scale_u"
         array_dict:
           id: [0]
           x_cen: [0.0]
           y_cen: [0.0]
-#          x_size: [4096]
-#          y_size: [4096]
-#          pixel_size: [0.015]
+          x_size: [xxx]
+          y_size: [2304]
+          pixel_size: [0.0046]
           angle: [0.0]
           gain: [1.0]
         x_cen_unit: mm
@@ -43,22 +40,22 @@ effects :
         pixel_size_unit: mm
         angle_unit: deg
         gain_unit: electron/adu
-        detector: "CMOS_A"
+        detector: "CMOS_u"
 
-  - name: detector_B
+  - name: detector_v
     include: True
     class: DetectorList
     kwargs:
         image_plane_id : 1
-        pixel_scale: "!DET.pixel_scale_B"
-        plate_scale: "!DET.plate_scale_B"
+        pixel_scale: "!DET.pixel_scale_v"
+        plate_scale: "!DET.plate_scale_v"
         array_dict:
           id: [1]
           x_cen: [0.0]
           y_cen: [0.0]
-#          x_size: [2048]
-#          y_size: [4096]
-#          pixel_size: [0.015]
+          x_size: [xxx]
+          y_size: [2304]
+          pixel_size: [0.0046]
           angle: [0.0]
           gain: [1.0]
         x_cen_unit: mm
@@ -68,22 +65,22 @@ effects :
         pixel_size_unit: mm
         angle_unit: deg
         gain_unit: electron/adu
-        detector: "CMOS_B"
+        detector: "CMOS_v"
 
-  - name: detector_C
+  - name: detector_z
     include: True
     class: DetectorList
     kwargs:
         image_plane_id : 2
-        pixel_scale: "!DET.pixel_scale_C"
-        plate_scale: "!DET.plate_scale_C"
+        pixel_scale: "!DET.pixel_scale_z"
+        plate_scale: "!DET.plate_scale_z"
         array_dict:
           id: [2]
           x_cen: [0.0]
           y_cen: [0.0]
-#          x_size: [2048]
-#          y_size: [4096]
-#          pixel_size: [0.015]
+          x_size: [xxx]
+          y_size: [2304]
+          pixel_size: [0.0046]
           angle: [0.0]
           gain: [1.0]
         x_cen_unit: mm
@@ -93,7 +90,7 @@ effects :
         pixel_size_unit: mm
         angle_unit: deg
         gain_unit: electron/adu
-        detector: "CMOS_C"
+        detector: "CMOS_z"
 
   - name: exposure_integration_selector
     description: Summing up sky signal for all DITs and NDITs for different detectors
@@ -105,18 +102,18 @@ effects :
         - selector_value: [0]
           effect_class: ExposureIntegration
           effect_kwargs:
-            dit: "!OBS.imager_dit_a"
-            ndit: "!OBS.imager_ndit_a"
+            dit: "!OBS.imager_dit_u"
+            ndit: "!OBS.imager_ndit_u"
         - selector_value: [1]
           effect_class: ExposureIntegration
           effect_kwargs:
-            dit: "!OBS.imager_dit_b"
-            ndit: "!OBS.imager_ndit_b"
+            dit: "!OBS.imager_dit_v"
+            ndit: "!OBS.imager_ndit_v"
         - selector_value: [2]
           effect_class: ExposureIntegration
           effect_kwargs:
-            dit: "!OBS.imager_dit_c"
-            ndit: "!OBS.imager_ndit_c"
+            dit: "!OBS.imager_dit_z"
+            ndit: "!OBS.imager_ndit_z"
 
 
   - name: shot_noise
@@ -133,21 +130,21 @@ effects :
         - selector_value: [0]
           effect_class: DarkCurrent
           effect_kwargs:
-            value: 0.0001    # [e-/s] level of dark current
-            dit: "!OBS.imager_dit_a"
-            ndit: "!OBS.imager_ndit_a"
+            value: 0.006    # [e-/s] level of dark current
+            dit: "!OBS.imager_dit_u"
+            ndit: "!OBS.imager_ndit_u"
         - selector_value: [1]
           effect_class: DarkCurrent
           effect_kwargs:
-            value: 0.0001    # [e-/s] level of dark current
-            dit: "!OBS.imager_dit_b"
-            ndit: "!OBS.imager_ndit_b"
+            value: 0.006    # [e-/s] level of dark current
+            dit: "!OBS.imager_dit_v"
+            ndit: "!OBS.imager_ndit_v"
         - selector_value: [2]
           effect_class: DarkCurrent
           effect_kwargs:
-            value: 0.0001     # [e-/s] level of dark current
-            dit: "!OBS.imager_dit_c"
-            ndit: "!OBS.imager_ndit_c"
+            value: 0.006     # [e-/s] level of dark current
+            dit: "!OBS.imager_dit_z"
+            ndit: "!OBS.imager_ndit_z"
 
   - name: detector_linearity_selector
     description: Selector Wheel for linearity characteristics for CMOS
@@ -160,23 +157,23 @@ effects :
           effect_class: LinearityCurve
           effect_kwargs:
             array_dict:
-              incident: [0, 64e3]
-              measured: [0, 64e3]
-            ndit: "!OBS.imager_ndit_a"
+              incident: [0, 7e3]
+              measured: [0, 7e3]
+            ndit: "!OBS.imager_ndit_u"
         - selector_value: [1]
           effect_class: LinearityCurve
           effect_kwargs:
             array_dict:
-              incident: [0, 64e3]
-              measured: [0, 64e3]
-            ndit: "!OBS.imager_ndit_b"
+              incident: [0, 7e3]
+              measured: [0, 7e3]
+            ndit: "!OBS.imager_ndit_v"
         - selector_value: [2]
           effect_class: LinearityCurve
           effect_kwargs:
             array_dict:
-              incident: [0, 64e3]
-              measured: [0, 64e3]
-            ndit: "!OBS.imager_ndit_c"
+              incident: [0, 7e3]
+              measured: [0, 7e3]
+            ndit: "!OBS.imager_ndit_z"
 
   - name: readout_noise_selector
     description: Selector Wheel for readout noise levels for CMOS
@@ -188,18 +185,18 @@ effects :
         - selector_value: [0]
           effect_class: BasicReadoutNoise
           effect_kwargs:
-            noise_std: 0.1
-            ndit: "!OBS.imager_ndit_a"
+            noise_std: 0.3
+            ndit: "!OBS.imager_ndit_u"
         - selector_value: [1]
           effect_class: BasicReadoutNoise
           effect_kwargs:
-            noise_std: 0.1
-            ndit: "!OBS.imager_ndit_b"
+            noise_std: 0.3
+            ndit: "!OBS.imager_ndit_v"
         - selector_value: [2]
           effect_class: BasicReadoutNoise
           effect_kwargs:
-            noise_std: 0.1
-            ndit: "!OBS.imager_ndit_c"
+            noise_std: 0.3
+            ndit: "!OBS.imager_ndit_z"
 
   - name: bias_selector
     description: Selector Wheel for bias levels for CMOS
@@ -211,4 +208,4 @@ effects :
         - selector_value: [0,1,2]   # CCD detectors
           effect_class: Bias
           effect_kwargs:
-            bias: 1040    # CCD bias level in electrons
+            bias: 0    # CCD bias level in electrons

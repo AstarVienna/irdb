@@ -96,6 +96,8 @@ def make_zshooter_dichroics(
         "yj-hk": split("yj-hk", ("yj",), ("h", "k")),
         "g-r": split("g-r", ("g",), ("r",)),
         "h-k": split("h-k", ("h",), ("k",)),
+        "u-vz": split("b-gr", ("u",), ("v", "z")),
+        "v-z": split("v-z", ("v",), ("z",)),
     }
 
 
@@ -136,16 +138,42 @@ DICHROIC_TRANS_WID = {'bgr-yjhk': 20 *u.nm,
              'b-gr': 10*u.nm,
              'g-r': 12 * u.nm,
              'yj-hk': 30 * u.nm,
-             'h-k': 40 * u.nm}
+             'h-k': 40 * u.nm,
+             'u-vz': 10 * u.nm,
+             'v-z': 12 * u.nm}
 
 TRACE_PARAMETERS_PATH = DICHROIC_DIR.parent / "traces" / "echelle_trace_parameters.dat"
 
 
 
 channel_range = read_channel_ranges(TRACE_PARAMETERS_PATH)
-
+channel_range['u']=u.Quantity([300, 400])*u.nm
+channel_range['v']=u.Quantity([400, 850])*u.nm
+channel_range['z']=u.Quantity([850, 1100])*u.nm
 dichroics = make_zshooter_dichroics(channel_range, DICHROIC_DOMAIN, DICHROIC_TRANS, DICHROIC_REFL, DICHROIC_PAD,
                                     transition_widths=DICHROIC_TRANS_WID)
+
+
+
+##  ZImager dichroics:
+hdr_zi_u = f"""# name : zimager_u_dichroic
+# author : unknown
+# date_created : 2026-10-15T12:00:00
+# date_modified : {Time.now().isot}
+# description : Transmits red, reflects u
+# wavelength_unit : um
+# changes :
+#"""
+hdr_zi_z = f"""# name : zimager_z_dichroic
+# author : unknown
+# date_created : 2026-10-15T12:00:00
+# date_modified : {Time.now().isot}
+# description : Logpass at z, reflects shorter wavelengths 
+# wavelength_unit : um
+# changes :
+#"""
+write_dichroic_curves(DICHROIC_DIR / 'TER_dichroic_u-v.dat', dichroics['u-vz'][1]._model, dichroics['u-vz'][0]._model, header=hdr_zi_u)
+write_dichroic_curves(DICHROIC_DIR / 'TER_dichroic_v-z.dat', dichroics['v-z'][1]._model, dichroics['v-z'][0]._model, header=hdr_zi_z)
 
 ## First dichroic: I, splits BGR from YJHK
 hdr_i = f"""# name : first_dichroic

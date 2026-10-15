@@ -11,14 +11,20 @@ description: Effects from the ZIMAGE optics
 # act selectively on different arms can be orchestrated using SelectorWheel effects.
 
 effects:
+ - name: preoptics
+   class: SurfaceList
+   include: True
+   kwargs:
+     filename: "optics/LIST_zimage_common_optics.dat"
+
  - name: dichroic_tree
    class: DichroicTree
    include: True
    kwargs:
      tree_filename: "dichroics/zimage_dichroic_tree.dat"
      dichroic_names:
-       - A-BC     # First dichroic, splits beam into A and BC
-       - B-C      # Next dichroic in BC arm, splits B from C
+       - u-vz     # First dichroic, splits beam into u and red
+       - v-z     # Next dichroic, splits z band light
      filename_format: "dichroics/TER_dichroic_{}.dat"
 
  - name: channel_optics_selector
@@ -32,44 +38,27 @@ effects:
        - selector_value: [0]
          effect_class: SurfaceList
          effect_kwargs:
-           filename: "optics/LIST_zimage_filter_A_optics.dat"
+           filename: "optics/LIST_zimage_u_optics.dat"
 
        - selector_value: [1]
          effect_class: SurfaceList
          effect_kwargs:
-           filename: "optics/LIST_zimage_filter_B_optics.dat"
+           filename: "optics/LIST_zimage_v_optics.dat"
 
        - selector_value: [2]
          effect_class: SurfaceList
          effect_kwargs:
-           filename: "optics/LIST_zimage_filter_C_optics.dat"
+           filename: "optics/LIST_zimage_z_optics.dat"
 
-
-# - name: ir_blocking_filter_selector
-#   description: nIR blocking filter
-#   class: SelectorWheel
-#   include: False
-#   kwargs:
-#     z_order: [610]
-#     selector_key: "aperture_id"
-#     allowed_missing_selector_values: [ 0, 1, 2 ]
-#     emission_phase: post_disperser
-#     wheel:
-#       - selector_value: [ 3 ]
-#         effect_class: TERCurve
-#         effect_kwargs:
-#           temperature: -198
-#           temperature_unit: deg_D
-#           filename: "optics/TER_nir_blocking_filtYJ.dat"
-#       - selector_value: [ 4 ]
-#         effect_class: TERCurve
-#         effect_kwargs:
-#           temperature: -198
-#           temperature_unit: deg_D
-#           filename: "optics/TER_nir_blocking_filtH.dat"
-#       - selector_value: [ 5 ]
-#         effect_class: TERCurve
-#         effect_kwargs:
-#           temperature: -198
-#           temperature_unit: deg_D
-#           filename: "optics/TER_nir_blocking_filtK.dat"
+ - name: detector_qe_selector
+   description: Throughput-only QE curves for different detectors
+   class: SelectorWheel
+   include: True
+   kwargs:
+     z_order: [610]
+     selector_key: "aperture_id"
+     wheel:
+       - selector_value: [0, 1, 2]
+         effect_class: SpectralQuantumEfficiency
+         effect_kwargs:
+           filename: "detector_specs/quest2_TER.dat"
