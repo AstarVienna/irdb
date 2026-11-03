@@ -134,7 +134,7 @@ mode_yamls :
       resolution: 72000       # resolution of sky spectrum
       output_format: collapse1d
 
-  - object : instrument
+  - object: observation
     alias: OBS
     name: MOS-LR-J
     description: "MOSAIC near-infrared low resolution J band"
@@ -151,7 +151,7 @@ mode_yamls :
       resolution: 16000     # resolution of sky spectrum
       output_format: collapse1d
 
-  - object : instrument
+  - object: observation
     alias: OBS
     name : MOS-LR-H
     description : "MOSAIC near-infrared low resolution H band"
@@ -168,7 +168,7 @@ mode_yamls :
       resolution: 16000     # resolution of sky spectrum
       output_format: collapse1d
 
-  - object : instrument
+  - object: observation
     alias: OBS
     name : MOS-HR-H
     description : "MOSAIC near-infrared high resolution H band"
@@ -185,7 +185,7 @@ mode_yamls :
       resolution: 72000     # resolution of sky spectrum
       output_format: collapse1d
 
-  - object : instrument
+  - object: observation
     alias: OBS
     name : mIFU-LR-J
     description : "MOSAIC near-infrared low resolution J band"
@@ -202,7 +202,7 @@ mode_yamls :
       resolution: 16000     # resolution of sky spectrum
       output_format: table
 
-  - object : instrument
+  - object: observation
     alias: OBS
     name : mIFU-LR-H
     description : "MOSAIC near-infrared low resolution H band"
@@ -219,7 +219,7 @@ mode_yamls :
       resolution: 16000     # resolution of sky spectrum
       output_format: table
 
-  - object : instrument
+  - object: observation
     alias: OBS
     name : mIFU-HR-H
     description : "MOSAIC near-infrared high resolution H band"
